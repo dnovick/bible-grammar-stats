@@ -45,7 +45,12 @@ Built to answer questions like:
   - [NT Quotations](#nt-quotations)
   - [NT Quotation Word Alignment](#nt-quotation-word-alignment)
   - [Intertextuality Network](#intertextuality-network)
+  - [NT Greek Syntax (MACULA)](#nt-greek-syntax-macula)
   - [OT Hebrew Syntax (MACULA)](#ot-hebrew-syntax-macula)
+  - [Speaker Attribution](#speaker-attribution)
+  - [Lexicon API](#lexicon-api)
+  - [Christological Titles](#christological-titles)
+  - [Syntactic Role Search](#syntactic-role-search)
   - [Theological Term Map](#theological-term-map)
   - [Synonym Comparison](#synonym-comparison)
   - [Phrase & Proximity Search](#phrase--proximity-search)
@@ -485,6 +490,41 @@ are in `output/reports/`.
 
 ---
 
+### NT Greek Syntax (MACULA)
+
+`syntax.py` wraps the MACULA Greek Nestle1904 data (137,779 word tokens) with a
+query API that exposes syntactic roles, participant referents, English glosses,
+and Louw-Nida semantic domains. Each word token carries a `subjref` attribute
+pointing to the xml_id of its grammatical subject.
+
+```python
+from bible_grammar import load_syntax, query_syntax, speech_verbs
+
+df = load_syntax()    # 137,779 rows; cached as Parquet after first load
+
+# John 1:1 with roles and glosses
+query_syntax(book='Jhn', chapter=1, verse=1)[
+    ['text', 'lemma', 'role', 'gloss', 'case_', 'tense']
+]
+
+# All aorist passive verbs in Romans
+query_syntax(book='Rom', tense='aorist', voice='passive')
+
+# Speech verbs (λέγω, φημί, λαλέω…) where Jesus is the grammatical subject
+speech_verbs('Mat', subject_strong='2424')
+
+# All Gospel verses where Jesus is the speaking subject
+from bible_grammar import jesus_speaking_verses
+gospel_books = ['Mat', 'Mrk', 'Luk', 'Jhn']
+speaking = jesus_speaking_verses(gospel_books)   # set of (book, ch, vs) tuples
+```
+
+Available filters: `book`, `chapter`, `verse`, `strong`, `lemma`, `role`,
+`class_`, `tense`, `voice`, `mood`, `case_`, `person`, `number`, `gender`,
+`has_subjref`, `has_referent`.
+
+---
+
 ### OT Hebrew Syntax (MACULA)
 
 `syntax_ot.py` wraps the MACULA Hebrew WLC data (475k word tokens, 930
@@ -528,6 +568,140 @@ in `ibm_align.py`, complementing it for detailed OT↔LXX studies.
 Available filters: `book`, `chapter`, `verse`, `strong_h`, `lemma`, `role`,
 `stem`, `pos`, `lang`, `tense` (wayyiqtol/qatal/yiqtol/…), `person`, `gender`,
 `number`, `state`, `greekstrong`, `has_subjref`, `has_participantref`.
+
+---
+
+### Speaker Attribution
+
+`speaker.py` identifies which NT verses contain Jesus speaking, using two
+complementary strategies that combine into a single `is_jesus_speaking()` predicate:
+
+1. **Curated allowlists** — hand-curated frozensets of (book, chapter, verse) triples
+   for Son of Man sayings (74 Gospel verses), all seven Johannine I AM declarations,
+   and Bridegroom parables. Confidence is 100%.
+2. **MACULA subjref detection** — speech verbs (λέγω, φημί, λαλέω, ἀποκρίνομαι,
+   εἶπεν, ὁμολογέω, κράζω) whose `subjref` resolves to Iesous (G2424) in the
+   MACULA Greek syntax tree.
+
+```python
+from bible_grammar import is_jesus_speaking, jesus_speaking_verse_set, ALLOWLIST_VERSES
+
+# Is Jesus the speaking subject in this verse?
+is_jesus_speaking('Mat', 16, 13)   # True  — "Who do people say the Son of Man is?"
+is_jesus_speaking('Jhn', 8, 58)    # True  — "Before Abraham was born, I AM"
+is_jesus_speaking('Mat', 3, 17)    # False — God speaks, not Jesus
+
+# Full set of Gospel verses where Jesus speaks
+speaking_set = jesus_speaking_verse_set(['Mat', 'Mrk', 'Luk', 'Jhn'])
+
+# View curated allowlists
+print(list(ALLOWLIST_VERSES.keys()))
+# ['Son of Man', 'I AM', 'Bridegroom']
+```
+
+---
+
+### Lexicon API
+
+`lexicon.py` provides a clean public API for the TBESH (Hebrew) and TBESG (Greek)
+Translators Brief lexicons from STEPBible, centralizing parsing that was previously
+duplicated. Each entry includes Strong's number, lemma, transliteration, POS code,
+gloss, and full definition.
+
+```python
+from bible_grammar import lookup, search_gloss, lex_entry, lemma_index
+
+# Dict lookup by Strong's number
+lookup('H7965')    # {'strongs': 'H7965', 'lemma': 'שָׁלוֹם', 'gloss': 'peace', ...}
+lookup('G3056')    # {'strongs': 'G3056', 'lemma': 'λόγος', 'gloss': 'word', ...}
+
+# Pretty-print a full lexicon article
+lex_entry('H2617')    # חֶסֶד — lovingkindness / steadfast love
+lex_entry('G26')      # ἀγάπη — love
+
+# Search by English gloss keyword
+search_gloss('covenant', lang='H')   # → H1285 בְּרִית, H6194 עָרֵם, …
+search_gloss('faith', lang='G')      # → G4102 πίστις, G4100 πιστεύω, …
+
+# Reverse lookup: lemma → Strong's number
+heb_idx = lemma_index('H')
+heb_idx['שָׁלוֹם']   # → 'H7965'
+```
+
+---
+
+### Christological Titles
+
+`christological_titles.py` counts how frequently Jesus used various titles to
+refer to Himself across the four Gospels. An optional **speaker filter** restricts
+counts to verses where Jesus is the grammatical speaking subject, removing narrator
+references and other characters' uses of the titles.
+
+```python
+from bible_grammar import title_counts, print_title_counts, title_chart, title_verses
+
+# All Gospel occurrences (unfiltered)
+print_title_counts(scope='gospels', speaker_filter=False)
+
+# Only where Jesus is the speaking subject (more precise)
+print_title_counts(scope='gospels', speaker_filter=True)
+
+# Bar chart
+title_chart(scope='gospels', speaker_filter=True,
+            output_path='output/charts/christological-titles.png')
+
+# All (book, ch, vs) tuples for a specific title
+title_verses('I AM')          # 7 Johannine I AM sayings
+title_verses('Son of Man')    # 76 filtered occurrences across the Gospels
+```
+
+**Effect of speaker filter:** Son of Man 88→76, Son of God 42→7, Kyrios 244→16.
+The filter removes instances where the narrator, disciples, or opponents use the
+title — leaving only Jesus' direct self-references.
+
+Pre-generated report: `output/reports/christological-titles.md`.
+
+---
+
+### Syntactic Role Search
+
+`role_search.py` answers "who does what to whom" by following MACULA `subjref`
+links. Given one or more Strong's numbers, it finds all verb tokens whose
+grammatical subject resolves to those entities — for both OT Hebrew and NT Greek.
+
+```python
+from bible_grammar import subject_verbs, verb_subjects, print_role_summary
+from bible_grammar import role_chart, divine_action_comparison, role_report
+from bible_grammar import GOD_OT, GOD_NT, JESUS_NT
+
+# What does God (YHWH + Elohim) do in the OT?
+print_role_summary(['H3068', 'H0430'], corpus='OT', top_n=20, label='YHWH+Elohim')
+
+# What does God do in the NT?
+print_role_summary(['G2316'], corpus='NT', top_n=20, label='Theos')
+
+# What does Jesus do in the Gospels?
+print_role_summary(['G2424'], corpus='NT', books=['Mat', 'Mrk', 'Luk', 'Jhn'],
+                   label='Iesous')
+
+# YHWH's verbs in Isaiah only
+print_role_summary(['H3068'], corpus='OT', books=['Isa'])
+
+# Who takes בָּרָא (bara, create) as their grammatical subject?
+# Result: exclusively divine entities (plus 2 edge cases)
+verb_subjects('H1254', corpus='OT')
+
+# Side-by-side OT/NT chart: God's top verbs in each corpus
+ot_df, nt_df, chart_path = divine_action_comparison()
+
+# Full Markdown report with book distribution and cross-testament comparison
+role_report(['H3068', 'H0430'], corpus='OT', label='YHWH+Elohim',
+            output_dir='output/reports', include_cross_testament=True)
+```
+
+Pre-generated report: `output/reports/role-yhwh-elohim-ot.md`.
+
+**Slash command:** `/role-search H3068,H0430` or `/role-search G2424 NT Mat Mrk Luk Jhn`
 
 ---
 
@@ -773,6 +947,8 @@ slash commands are available:
 | `/divine-names [OT\|NT\|LXX\|all]` | Divine name / christological title frequency |
 | `/genre-compare [OT\|NT] [feature]` | Morphological patterns across literary genres |
 | `/intertextuality <OT-ref>` | OT verse/chapter/book → NT citation network |
+| `/christological-titles [scope] [filter]` | Titles Jesus used to refer to Himself across the Gospels |
+| `/role-search <Strong's> [corpus] [book...]` | Verbs with given entity as grammatical subject (OT + NT) |
 | `/export <type> [args]` | Export any analysis to HTML + CSV |
 
 Examples:
@@ -788,6 +964,9 @@ Examples:
 /divine-names OT
 /genre-compare OT verb_stem
 /intertextuality Isa 53
+/christological-titles gospels filter
+/role-search H3068,H0430
+/role-search G2424 NT Mat Mrk Luk Jhn
 /export word-study G3056
 ```
 
@@ -807,6 +986,7 @@ Examples:
 | `08_parallel_passage.ipynb` | Parallel passage comparison (Synoptics, Samuel/Psalms) |
 | `09_language_analysis.ipynb` | LXX consistency, collocations, morphological distribution, semantic profiles, theological term maps |
 | `10_advanced_analysis.ipynb` | Divine names, genre comparison, intertextuality networks, HTML/CSV export |
+| `11_syntax_and_roles.ipynb` | NT and OT MACULA syntax trees, speaker attribution, lexicon API, christological titles, syntactic role search |
 
 Export a notebook as a shareable HTML file:
 
