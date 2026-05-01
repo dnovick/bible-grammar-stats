@@ -68,6 +68,12 @@ Pre-generated semantic profiles in `../output/reports/`. Each file includes a le
 | [../output/reports/h7307-semantic-profile.md](../output/reports/h7307-semantic-profile.md) | רוּחַ (spirit/wind), H7307 |
 | [../output/reports/g3056-semantic-profile.md](../output/reports/g3056-semantic-profile.md) | λόγος (word), G3056 |
 
+## Christological Titles (output/reports/)
+
+| Report | Description |
+|---|---|
+| [../output/reports/christological-titles.md](../output/reports/christological-titles.md) | Frequency of titles Jesus used to refer to Himself (Son of Man, I AM sayings, Son of God, etc.) across the four Gospels, with per-book counts, confidence ratings, and verse listings. |
+
 ## Divine Names (output/reports/)
 
 | Report | Description |

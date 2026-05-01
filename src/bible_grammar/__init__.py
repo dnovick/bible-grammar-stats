@@ -23,6 +23,14 @@ from .genre_compare import (genre_compare, print_genre_compare, genre_heatmap, g
                              OT_GENRES, NT_GENRES)
 from .intertextuality import (intertextuality, print_intertextuality,
                               intertextuality_graph, intertextuality_report)
+from .christological_titles import (title_counts, print_title_counts,
+                                     title_chart, title_verses, title_report,
+                                     TITLE_REGISTRY)
+from .syntax import (load_syntax, query_syntax, speech_verbs, referent_chain,
+                     clause_roles, jesus_speaking_verses, MACULA_BOOK_MAP)
+from .speaker import (is_jesus_speaking, jesus_speaking_verse_set,
+                      filter_to_jesus_speech, ALLOWLIST_VERSES)
+from .lexicon import lookup, search_gloss, lex_entry, lemma_index
 from .export import (export_csv, export_html_page,
                      export_word_study, export_semantic_profile,
                      export_genre_compare, export_divine_names, export_all)

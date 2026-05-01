@@ -26,18 +26,11 @@ from pathlib import Path
 import pandas as pd
 from . import db as _db
 from .reference import BOOKS, book_info, all_book_ids
-
-_REPO_ROOT = Path(__file__).resolve().parents[2]
-_TBESH = _REPO_ROOT / "stepbible-data" / "Lexicons" / \
-    "TBESH - Translators Brief lexicon of Extended Strongs for Hebrew - STEPBible.org CC BY.txt"
-_TBESG = _REPO_ROOT / "stepbible-data" / "Lexicons" / \
-    "TBESG - Translators Brief lexicon of Extended Strongs for Greek - STEPBible.org CC BY.txt"
+from .lexicon import lookup as _lex_lookup, lemma_index as _lemma_index
 
 _BOOK_ORDER = {b[0]: b[3] for b in BOOKS}
 
 # Module-level caches
-_heb_lex: dict | None = None
-_grk_lex: dict | None = None
 _words_cache: pd.DataFrame | None = None
 _lxx_cache: pd.DataFrame | None = None
 _tr_cache: pd.DataFrame | None = None
@@ -64,116 +57,9 @@ def _translations() -> pd.DataFrame:
     return _tr_cache
 
 
-def _clean_def(raw: str) -> str:
-    """Strip HTML tags and normalize whitespace from lexicon definition."""
-    text = re.sub(r'<[^>]+>', '', raw)
-    text = re.sub(r'\s+', ' ', text).strip()
-    return text
-
-
-def _load_heb_lex() -> dict:
-    global _heb_lex
-    if _heb_lex is not None:
-        return _heb_lex
-    if not _TBESH.exists():
-        return {}
-    result: dict[str, dict] = {}
-    with open(_TBESH, encoding="utf-8") as fh:
-        for line in fh:
-            line = line.rstrip("\n")
-            if not line or line.startswith("#") or line.startswith("=") or line.startswith("TBESH"):
-                continue
-            parts = line.split("\t")
-            if len(parts) < 7:
-                continue
-            # col2 = canonical extended strongs (H1234A), col3 = lemma,
-            # col4 = translit, col5 = type, col6 = short gloss, col7 = definition
-            ext_id = parts[2].strip()           # e.g. H1254A
-            base   = re.sub(r'[A-Z]$', '', ext_id)  # H1254
-            lemma  = parts[3].strip()
-            translit = parts[4].strip()
-            gloss  = parts[6].strip() if len(parts) > 6 else ""
-            defn   = _clean_def(parts[7]) if len(parts) > 7 else ""
-            pos_code = parts[5].strip()  # e.g. H:V, H:N-M, N:N-M-P
-
-            # Index by both base and extended id
-            for key in (base, ext_id):
-                if key not in result:
-                    result[key] = {
-                        "strongs": ext_id, "lemma": lemma,
-                        "translit": translit, "pos_code": pos_code,
-                        "gloss": gloss, "definition": defn,
-                    }
-    _heb_lex = result
-    return _heb_lex
-
-
-def _load_grk_lex() -> dict:
-    global _grk_lex
-    if _grk_lex is not None:
-        return _grk_lex
-    if not _TBESG.exists():
-        return {}
-    result: dict[str, dict] = {}
-    with open(_TBESG, encoding="utf-8") as fh:
-        for line in fh:
-            line = line.rstrip("\n")
-            if not line or line.startswith("#") or line.startswith("=") or line.startswith("TBESG"):
-                continue
-            parts = line.split("\t")
-            if len(parts) < 7:
-                continue
-            ext_id   = parts[2].strip()   # e.g. G4160G
-            base     = re.sub(r'[A-Z]$', '', ext_id)  # G4160
-            lemma    = parts[3].strip()
-            translit = parts[4].strip()
-            pos_code = parts[5].strip()
-            gloss    = parts[6].strip()
-            defn     = _clean_def(parts[7]) if len(parts) > 7 else ""
-
-            for key in (base, ext_id):
-                if key not in result:
-                    result[key] = {
-                        "strongs": ext_id, "lemma": lemma,
-                        "translit": translit, "pos_code": pos_code,
-                        "gloss": gloss, "definition": defn,
-                    }
-    _grk_lex = result
-    return _grk_lex
-
-
 def _build_lemma_index() -> tuple[dict, dict]:
-    """Return (heb_lemma→strongs, grk_lemma→strongs) reverse lookup dicts."""
-    import unicodedata
-    heb_idx: dict[str, str] = {}
-    for k, v in _load_heb_lex().items():
-        lemma = v.get("lemma", "").strip()
-        if not lemma or not k.startswith("H"):
-            continue
-        num_part = k[1:].rstrip("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-        if not num_part.isdigit():
-            continue
-        nfc = unicodedata.normalize("NFC", lemma)
-        if nfc not in heb_idx:
-            heb_idx[nfc] = k
-        # Also index without vowel points (consonants only)
-        consonants = re.sub(r'[֑-ׇ]', '', nfc)
-        if consonants not in heb_idx:
-            heb_idx[consonants] = k
-
-    grk_idx: dict[str, str] = {}
-    for k, v in _load_grk_lex().items():
-        lemma = v.get("lemma", "").strip()
-        if not lemma or not k.startswith("G"):
-            continue
-        num_part = k[1:].rstrip("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-        if not num_part.isdigit():
-            continue
-        nfc = unicodedata.normalize("NFC", lemma.lower())
-        if nfc not in grk_idx:
-            grk_idx[nfc] = k
-
-    return heb_idx, grk_idx
+    """Return (heb_lemma→strongs, grk_lemma→strongs) — delegates to lexicon module."""
+    return _lemma_index('H'), _lemma_index('G')
 
 
 def resolve_strongs(term: str) -> str | None:
@@ -215,23 +101,16 @@ def resolve_strongs(term: str) -> str | None:
 
 
 def _lookup_lex(strongs: str) -> dict | None:
-    """Look up a Strong's number in the appropriate lexicon."""
+    """Look up a Strong's number — delegates to lexicon module."""
     clean = strongs.strip("{}").upper()
-    # Try direct, then zero-padded (H157 → H0157), then strip variant suffix
-    m = re.match(r'^([HG])(\d+)([A-Z]?)$', clean)
-    zero_padded = (f"{m.group(1)}{int(m.group(2)):04d}{m.group(3)}" if m else clean)
-    base = re.sub(r'[A-Z]$', '', clean)
-    base_padded = (f"{m.group(1)}{int(m.group(2)):04d}" if m else base)
-
-    if clean.startswith("H"):
-        lex = _load_heb_lex()
-    elif clean.startswith("G"):
-        lex = _load_grk_lex()
-    else:
-        return None
-
-    return (lex.get(clean) or lex.get(zero_padded) or
-            lex.get(base) or lex.get(base_padded))
+    entry = _lex_lookup(clean)
+    if not entry:
+        # Try zero-padded form
+        m = re.match(r'^([HG])(\d+)([A-Z]?)$', clean)
+        if m:
+            padded = f"{m.group(1)}{int(m.group(2)):04d}{m.group(3)}"
+            entry = _lex_lookup(padded)
+    return entry or None
 
 
 def _kjv_verse(book_id: str, chapter: int, verse: int) -> str:
@@ -360,7 +239,6 @@ def word_study(strongs: str, *, example_verses: int = 5) -> dict:
         # NT usage of the primary LXX equivalent (OT → LXX → NT trajectory)
         nt_equiv: list[dict] = []
         if not te.empty:
-            grk_lex = _load_grk_lex()
             nt_df = df[df["source"] == "TAGNT"]
             for _, te_row in te.head(3).iterrows():
                 g_strongs = te_row.get("lxx_strongs", "")
@@ -377,8 +255,10 @@ def word_study(strongs: str, *, example_verses: int = 5) -> dict:
                     .sort_values("_order").drop(columns="_order")
                 )
                 g_lemma = te_row.get("lxx_lemma", "")
-                if not g_lemma and g_strongs in grk_lex:
-                    g_lemma = grk_lex[g_strongs]["lemma"]
+                if not g_lemma:
+                    entry = _lex_lookup(g_strongs)
+                    if entry:
+                        g_lemma = entry.get("lemma", "")
                 nt_equiv.append({
                     "strongs": g_strongs,
                     "lemma": g_lemma,

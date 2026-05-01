@@ -4,3 +4,6 @@
 [submodule "scrollmapper-data"]
 	path = scrollmapper-data
 	url = https://github.com/scrollmapper/bible_databases.git
+[submodule "macula-greek"]
+	path = macula-greek
+	url = https://github.com/Clear-Bible/macula-greek.git

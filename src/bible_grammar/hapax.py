@@ -36,21 +36,14 @@ from pathlib import Path
 import pandas as pd
 from . import db as _db
 from .reference import BOOKS, book_info, TORAH, PROPHETS, WRITINGS, GOSPELS, PAULINE
+from .lexicon import lookup as _lex_lookup
 
 _BOOK_ORDER = {b[0]: b[3] for b in BOOKS}
 _OT_IDS = {b[0] for b in BOOKS if b[2] == "OT"}
 _NT_IDS = {b[0] for b in BOOKS if b[2] == "NT"}
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
-_TBESH = _REPO_ROOT / "stepbible-data" / "Lexicons" / \
-    "TBESH - Translators Brief lexicon of Extended Strongs for Hebrew - STEPBible.org CC BY.txt"
-_TBESG = _REPO_ROOT / "stepbible-data" / "Lexicons" / \
-    "TBESG - Translators Brief lexicon of Extended Strongs for Greek - STEPBible.org CC BY.txt"
-
 _words_cache: pd.DataFrame | None = None
 _tr_cache: pd.DataFrame | None = None
-_heb_lex: dict | None = None
-_grk_lex: dict | None = None
 
 
 def _words() -> pd.DataFrame:
@@ -67,70 +60,12 @@ def _translations() -> pd.DataFrame:
     return _tr_cache
 
 
-def _load_heb_lex() -> dict:
-    global _heb_lex
-    if _heb_lex is not None:
-        return _heb_lex
-    lex: dict = {}
-    with open(_TBESH, encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if not line or line.startswith("#"):
-                continue
-            parts = line.split("\t")
-            if len(parts) < 7:
-                continue
-            key = parts[0].strip()
-            lex[key] = {
-                "lemma": parts[3].strip() if len(parts) > 3 else "",
-                "translit": parts[4].strip() if len(parts) > 4 else "",
-                "pos": parts[5].strip() if len(parts) > 5 else "",
-                "gloss": parts[6].strip() if len(parts) > 6 else "",
-                "definition": parts[7].strip() if len(parts) > 7 else "",
-            }
-    _heb_lex = lex
-    return lex
-
-
-def _load_grk_lex() -> dict:
-    global _grk_lex
-    if _grk_lex is not None:
-        return _grk_lex
-    lex: dict = {}
-    with open(_TBESG, encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if not line or line.startswith("#"):
-                continue
-            parts = line.split("\t")
-            if len(parts) < 7:
-                continue
-            key = parts[0].strip()
-            lex[key] = {
-                "lemma": parts[3].strip() if len(parts) > 3 else "",
-                "translit": parts[4].strip() if len(parts) > 4 else "",
-                "pos": parts[5].strip() if len(parts) > 5 else "",
-                "gloss": parts[6].strip() if len(parts) > 6 else "",
-                "definition": parts[7].strip() if len(parts) > 7 else "",
-            }
-    _grk_lex = lex
-    return lex
-
-
 def _lookup_gloss(strongs: str) -> tuple[str, str]:
     """Return (lemma, gloss) for a Strong's number, or ('', '') if not found."""
     if not strongs:
         return "", ""
-    s = strongs.strip("{}").upper()
-    if s.startswith("H"):
-        lex = _load_heb_lex()
-        entry = lex.get(s) or lex.get(s.rstrip("ABCDEF"))
-    elif s.startswith("G"):
-        lex = _load_grk_lex()
-        entry = lex.get(s) or lex.get(s.rstrip("ABCDEF"))
-    else:
-        return "", ""
-    if entry is None:
+    entry = _lex_lookup(strongs.strip("{}"))
+    if not entry:
         return "", ""
     return entry.get("lemma", ""), entry.get("gloss", "")
 

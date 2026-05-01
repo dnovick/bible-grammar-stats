@@ -29,7 +29,8 @@ import re
 import pandas as pd
 from pathlib import Path
 from . import db as _db
-from .wordstudy import _load_heb_lex, _load_grk_lex, _BOOK_ORDER
+from .wordstudy import _BOOK_ORDER
+from .lexicon import _heb as _load_heb_lex, _grk as _load_grk_lex
 from .reference import BOOKS
 
 # Key Hebrew theological roots organized by theme
