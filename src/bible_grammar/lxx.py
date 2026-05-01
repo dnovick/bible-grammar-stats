@@ -138,6 +138,8 @@ def load_lxx() -> pd.DataFrame:
                     "verse":            verse,
                     "word_num":         word_num,
                     "word":             F.word.v(word_node) or "",
+                    "lemma":            F.lex_utf8.v(word_node) or "",
+                    "lemma_translit":   F.lex.v(word_node) or "",
                     "transliteration":  F.translit_SBL.v(word_node) or "",
                     "translation":      F.gloss.v(word_node) or "",
                     "strongs":          F.strongs.v(word_node) or "",

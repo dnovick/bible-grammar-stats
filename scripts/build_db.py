@@ -10,6 +10,7 @@ from bible_grammar.ingest import load_all
 from bible_grammar.translations import load_translations
 from bible_grammar.lxx import load_lxx
 from bible_grammar.db import save, save_translations, save_lxx
+from bible_grammar.alignment import save_alignment, build_alignment
 
 if __name__ == "__main__":
     t0 = time.time()
@@ -34,5 +35,11 @@ if __name__ == "__main__":
     deut  = lxx[lxx.is_deuterocanon]
     print(f"  Canonical OT books: {len(canon):,}  Deuterocanonical: {len(deut):,}")
     save_lxx(lxx)
+
+    print("\nBuilding Hebrew↔LXX verse-level alignment...")
+    t3 = time.time()
+    alignment = build_alignment(heb_df=df, lxx_df=lxx)
+    print(f"  {len(alignment):,} co-occurrence pairs in {time.time()-t3:.1f}s")
+    save_alignment(alignment)
 
     print(f"\nAll done in {time.time()-t0:.1f}s")
