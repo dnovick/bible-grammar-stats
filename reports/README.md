@@ -21,5 +21,12 @@ includes a summary, key observations, and data notes.
 | [greek-pauline-tense-voice-heatmap.md](greek-pauline-tense-voice-heatmap.md) | Tense × Voice heatmap for Paul's letters |
 | [greek-aorist-passives-by-nt-book.md](greek-aorist-passives-by-nt-book.md) | Aorist Passive verb counts by NT book |
 
+## Translation & Cross-Testament
+
+| Report | Description |
+|---|---|
+| [nt_quotations_overview.md](nt_quotations_overview.md) | NT→OT quotation density by book, highest-confidence pairs, three-way text comparison |
+
 ---
-*Charts are in `../output/charts/`. Regenerate with `notebooks/02_query_demo.ipynb` or `notebooks/03_statistics.ipynb`.*
+*Charts are in `../output/charts/`. Regenerate with `notebooks/02_query_demo.ipynb` or `notebooks/03_statistics.ipynb`.*  
+*NT quotations notebook: `notebooks/04_nt_quotations.ipynb`.*
