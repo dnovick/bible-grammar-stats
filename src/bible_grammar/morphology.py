@@ -225,8 +225,24 @@ def decode_greek(grammar_field: str) -> dict:
             result["number"] = _GRK_NUMBER.get(cng[1], cng[1]) if len(cng) > 1 else ""
             result["gender"] = _GRK_GENDER.get(cng[2], cng[2]) if len(cng) > 2 else ""
 
+    elif func == "P":
+        # Pronouns have two patterns:
+        #   1st/2nd person: P-{person}{case}{number}  e.g. P-2GS, P-1NP
+        #   3rd person/demonstrative: P-{case}{number}{gender}  e.g. P-GSM, P-NPM
+        if len(parts) >= 2:
+            cng = parts[1].split(" + ")[0]  # strip compound tokens like "1NS + G2532=CONJ"
+            if cng and cng[0] in ("1", "2"):
+                result["person"] = _GRK_PERSON.get(cng[0], cng[0])
+                result["case_"]  = _GRK_CASE.get(cng[1], cng[1]) if len(cng) > 1 else ""
+                result["number"] = _GRK_NUMBER.get(cng[2], cng[2]) if len(cng) > 2 else ""
+            else:
+                result["person"] = "3rd"
+                result["case_"]  = _GRK_CASE.get(cng[0], cng[0]) if cng else ""
+                result["number"] = _GRK_NUMBER.get(cng[1], cng[1]) if len(cng) > 1 else ""
+                result["gender"] = _GRK_GENDER.get(cng[2], cng[2]) if len(cng) > 2 else ""
+
     else:
-        # Nouns, adjectives, articles, pronouns: <func>-<case><number><gender>[-extra]
+        # Nouns, adjectives, articles: <func>-<case><number><gender>
         if len(parts) >= 2:
             cng = parts[1]
             result["case_"] = _GRK_CASE.get(cng[0], cng[0]) if cng else ""
