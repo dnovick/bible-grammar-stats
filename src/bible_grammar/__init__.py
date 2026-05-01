@@ -16,4 +16,7 @@ from .morph_chart import morph_distribution, print_morph_distribution, morph_cha
 from .semantic_profile import semantic_profile, print_semantic_profile, save_semantic_profile
 from .synonym import compare_synonyms, print_synonym_comparison, synonym_table
 from .quotation_align import quotation_align, print_quotation_align, batch_align
+from .divine_names import (divine_name_table, divine_name_summary, divine_name_by_section,
+                            print_divine_names, divine_names_chart, divine_names_report,
+                            OT_DIVINE_NAMES, NT_DIVINE_NAMES, LXX_DIVINE_NAMES)
 from . import charts
