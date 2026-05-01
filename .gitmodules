@@ -1,0 +1,6 @@
+[submodule "stepbible-data"]
+	path = stepbible-data
+	url = https://github.com/STEPBible/STEPBible-Data.git
+[submodule "scrollmapper-data"]
+	path = scrollmapper-data
+	url = https://github.com/scrollmapper/bible_databases.git
