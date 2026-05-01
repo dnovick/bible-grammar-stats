@@ -335,6 +335,250 @@ def phrase_search(
     return result.reset_index(drop=True)
 
 
+def proximity_search(
+    tokens: list,
+    *,
+    within: int = 5,
+    ordered: bool = False,
+    corpus: str = 'OT',
+    book: str | list[str] | None = None,
+    book_group: str | None = None,
+    include_kjv: bool = True,
+    max_results: int = 500,
+) -> pd.DataFrame:
+    """
+    Find verses where two or more tokens appear within N words of each other,
+    optionally crossing verse boundaries.
+
+    Parameters
+    ----------
+    tokens   : List of 2+ search tokens (same formats as phrase_search:
+               Strong's numbers, lemmas, or morphology constraint dicts).
+               Wildcards ('*') are not meaningful here and will be ignored.
+    within   : Maximum word distance between the first and last matched token
+               (counts intervening words, including across verse boundaries).
+               E.g. within=5 means at most 4 words between the two terms.
+    ordered  : If True, tokens must appear in the given order (left to right).
+               If False (default), any order is accepted.
+    corpus   : 'OT', 'NT', or 'LXX'
+    book     : Restrict to one book or list of books
+    book_group: 'torah', 'prophets', 'writings', 'gospels', 'pauline'
+    include_kjv: Attach KJV verse text for the verse of the first match token
+    max_results: Cap on number of results (default 500)
+
+    Returns a DataFrame with columns:
+      book_id, chapter_1, verse_1, word_num_1, word_1, strongs_1,
+      book_id, chapter_2, verse_2, word_num_2, word_2, strongs_2,
+      distance, reference, kjv_text (if include_kjv)
+
+    For 3+ tokens: columns extend to _3, _4 etc., distance is span of all.
+
+    Examples
+    --------
+    # אמונה and חסד within 5 words in Psalms
+    proximity_search(['H0530', 'H2617'], within=5, book_group='writings')
+
+    # ברית and שלום within 8 words anywhere in OT
+    proximity_search(['H1285', 'H7965'], within=8)
+
+    # πίστις and ἀγάπη within 7 words in Paul
+    proximity_search(['G4102', 'G26'], within=7, corpus='NT', book_group='pauline')
+
+    # Ordered: H6944 (holy) before H2617 (kindness) within 10 words
+    proximity_search(['H6944', 'H2617'], within=10, ordered=True)
+    """
+    from .reference import TORAH, PROPHETS, WRITINGS, GOSPELS, PAULINE
+    from .wordstudy import _BOOK_ORDER
+
+    corpus = corpus.upper()
+    is_lxx = (corpus == _LXX)
+
+    # Load and filter corpus
+    if is_lxx:
+        df = _db.load_lxx()
+        df = df[~df['is_deuterocanon']].copy()
+    else:
+        df = _db.load()
+        df = df[df['source'] == ('TAHOT' if corpus == _OT else 'TAGNT')].copy()
+
+    if book_group is not None:
+        groups = {'torah': TORAH, 'prophets': PROPHETS, 'writings': WRITINGS,
+                  'gospels': GOSPELS, 'pauline': PAULINE}
+        grp = groups.get(book_group.lower())
+        if grp is None:
+            raise ValueError(f"Unknown book_group {book_group!r}")
+        df = df[df['book_id'].isin(grp)]
+    if book is not None:
+        vals = [book] if isinstance(book, str) else book
+        df = df[df['book_id'].isin(vals)]
+
+    if df.empty:
+        return pd.DataFrame()
+
+    # Build global position index: sort by canonical book order → ch → vs → word_num
+    df = df.copy()
+    df['_book_order'] = df['book_id'].map(_BOOK_ORDER).fillna(999)
+    df = df.sort_values(['_book_order', 'chapter', 'verse', 'word_num']).reset_index(drop=True)
+    df['_gpos'] = df.index  # global sequential position
+
+    # Resolve tokens (skip wildcards)
+    constraints = [_resolve_token(t) for t in tokens if t != '*']
+    n = len(constraints)
+    if n < 2:
+        raise ValueError("proximity_search requires at least 2 non-wildcard tokens")
+
+    # For each constraint, find all matching row indices (global positions)
+    match_sets: list[pd.Index] = []
+    for constraint in constraints:
+        mask = pd.Series(True, index=df.index)
+        if constraint.get('wildcard'):
+            match_sets.append(df.index)
+            continue
+        matched = [i for i, row in df.iterrows() if _matches_row(row, constraint, is_lxx)]
+        match_sets.append(pd.Index(matched))
+
+    if any(len(s) == 0 for s in match_sets):
+        return pd.DataFrame()
+
+    # Build result rows: for each hit of token[0], find hits of all other tokens
+    # within the window.  Use numpy for speed on large sets.
+    import numpy as np
+
+    pos_arrays = [df.loc[s, '_gpos'].values for s in match_sets]
+    idx_arrays = [s.values for s in match_sets]
+
+    rows_out = []
+
+    # Iterate over positions of the anchor (first token)
+    for anchor_idx, anchor_pos in zip(idx_arrays[0], pos_arrays[0]):
+        candidate_idxs = [anchor_idx]
+        candidate_pos  = [anchor_pos]
+        ok = True
+
+        for ti in range(1, n):
+            # Find positions of token ti within [anchor_pos - within, anchor_pos + within]
+            lo = anchor_pos - within
+            hi = anchor_pos + within
+            cands = pos_arrays[ti]
+            in_window = idx_arrays[ti][(cands >= lo) & (cands <= hi)]
+
+            if len(in_window) == 0:
+                ok = False
+                break
+
+            if ordered:
+                # Must be after previous token
+                prev_pos = candidate_pos[-1]
+                cands_ordered = [(i, pos_arrays[ti][np.where(idx_arrays[ti] == i)[0][0]])
+                                 for i in in_window
+                                 if pos_arrays[ti][np.where(idx_arrays[ti] == i)[0][0]] > prev_pos]
+                if not cands_ordered:
+                    ok = False
+                    break
+                # Pick the closest one
+                best_i, best_pos = min(cands_ordered, key=lambda x: x[1])
+            else:
+                # Pick the closest to anchor
+                best_i = in_window[
+                    np.argmin(np.abs(pos_arrays[ti][
+                        np.isin(idx_arrays[ti], in_window)] - anchor_pos))
+                ]
+                best_pos = int(df.loc[best_i, '_gpos'])
+
+            candidate_idxs.append(best_i)
+            candidate_pos.append(best_pos)
+
+        if not ok:
+            continue
+
+        # Distance = span of global positions
+        distance = max(candidate_pos) - min(candidate_pos)
+
+        row_out: dict = {'distance': distance}
+        for ti, (ridx, rpos) in enumerate(zip(candidate_idxs, candidate_pos)):
+            w = df.loc[ridx]
+            suffix = f'_{ti+1}'
+            row_out[f'book_id{suffix}']   = w['book_id']
+            row_out[f'chapter{suffix}']   = int(w['chapter'])
+            row_out[f'verse{suffix}']     = int(w['verse'])
+            row_out[f'word_num{suffix}']  = int(w['word_num'])
+            row_out[f'word{suffix}']      = w['word']
+            row_out[f'strongs{suffix}']   = _norm_strongs(str(w.get('strongs', '')))
+            if is_lxx:
+                row_out[f'lemma{suffix}'] = w.get('lemma', '')
+
+        # Reference = location of first token
+        r1 = df.loc[candidate_idxs[0]]
+        row_out['reference'] = f"{r1['book_id']} {int(r1['chapter'])}:{int(r1['verse'])}"
+        rows_out.append(row_out)
+
+        if len(rows_out) >= max_results:
+            break
+
+    if not rows_out:
+        return pd.DataFrame()
+
+    result = pd.DataFrame(rows_out).sort_values('distance').reset_index(drop=True)
+
+    if include_kjv:
+        try:
+            tr = _db.load_translations()
+            kjv = tr[tr['translation'] == 'KJV'][['book_id', 'chapter', 'verse', 'text']]
+            kjv = kjv.rename(columns={'book_id': 'book_id_1', 'chapter': 'chapter_1',
+                                      'verse': 'verse_1', 'text': 'kjv_text'})
+            result = result.merge(kjv, on=['book_id_1', 'chapter_1', 'verse_1'], how='left')
+        except Exception:
+            pass
+
+    return result
+
+
+def print_proximity_results(
+    df: pd.DataFrame,
+    *,
+    max_rows: int = 25,
+) -> None:
+    """Print proximity search results in a readable format."""
+    if df.empty:
+        print("  No matches found.")
+        return
+
+    total = len(df)
+    shown = min(total, max_rows)
+    print(f"  {total:,} match{'es' if total != 1 else ''}"
+          f"{' (showing first ' + str(shown) + ')' if total > max_rows else ''}:\n")
+
+    # Find token count (proximity cols are word_1, word_2 ... not word_num_1)
+    n_tokens = sum(1 for c in df.columns
+                   if c.startswith('word_') and c[5:].isdigit())
+
+    for _, row in df.head(max_rows).iterrows():
+        ref = row['reference']
+        dist = int(row['distance'])
+        parts = []
+        for i in range(1, n_tokens + 1):
+            w   = row.get(f'word_{i}', '')
+            ref_i = f"{row.get(f'book_id_{i}','')} {row.get(f'chapter_{i}','')}:{row.get(f'verse_{i}','')}"
+            same_verse = all(
+                row.get(f'book_id_{j}') == row.get('book_id_1') and
+                row.get(f'chapter_{j}') == row.get('chapter_1') and
+                row.get(f'verse_{j}')   == row.get('verse_1')
+                for j in range(1, n_tokens + 1)
+            )
+            if same_verse:
+                parts.append(str(w))
+            else:
+                parts.append(f"{w} ({ref_i})")
+        words_str = '  …  '.join(parts)
+        print(f"  [{ref}]  {words_str}  (dist: {dist})")
+        if 'kjv_text' in row and pd.notna(row.get('kjv_text', '')):
+            text = str(row['kjv_text'])
+            if len(text) > 100:
+                text = text[:97] + '...'
+            print(f"    {text}")
+    print()
+
+
 def print_phrase_results(
     df: pd.DataFrame,
     *,
