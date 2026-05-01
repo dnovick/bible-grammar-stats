@@ -18,6 +18,7 @@ includes a summary, key observations, and data notes.
 | Report | Description |
 |---|---|
 | [2fp-perfect-verbs.md](2fp-perfect-verbs.md) | All 13 2nd person feminine plural perfect verbs in the OT, by book and stem |
+| [hapax-legomena-by-book.md](hapax-legomena-by-book.md) | Hapax legomena counts by book for OT and NT, with sample lists |
 
 ## Greek New Testament
 
