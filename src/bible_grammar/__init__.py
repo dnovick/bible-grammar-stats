@@ -52,6 +52,12 @@ from .theological_reports import (run_theological_report, run_all_theological_re
                                    print_all_trajectories, theological_summary_table,
                                    print_theological_summary,
                                    THEOLOGICAL_TRAJECTORIES)
+from .poetry import (split_cola, verse_cola, verse_parallel_pairs,
+                     book_word_pairs, parallelism_type,
+                     book_parallelism_stats, compare_poetry_books,
+                     print_verse_analysis, print_book_pairs,
+                     print_parallelism_stats, poetry_report,
+                     POETRY_BOOKS)
 from .speaker import (is_jesus_speaking, jesus_speaking_verse_set,
                       filter_to_jesus_speech, ALLOWLIST_VERSES)
 from .lexicon import lookup, search_gloss, lex_entry, lemma_index

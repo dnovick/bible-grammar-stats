@@ -57,6 +57,7 @@ Built to answer questions like:
   - [Louw-Nida Domain Search](#louw-nida-domain-search)
   - [Cross-Testament Trajectory](#cross-testament-trajectory)
   - [Theological Term Reports](#theological-term-reports)
+  - [Hebrew Poetry Analysis](#hebrew-poetry-analysis)
   - [Theological Term Map](#theological-term-map)
   - [Synonym Comparison](#synonym-comparison)
   - [Phrase & Proximity Search](#phrase--proximity-search)
@@ -968,6 +969,50 @@ run_all_theological_reports(output_dir='output/reports/theological')
 
 ---
 
+### Hebrew Poetry Analysis
+
+`poetry.py` analyzes the structure of Hebrew poetry using the cantillation accent
+system embedded in the Masoretic Text. The **Etnahta** (U+0591) marks the primary
+mid-verse division (end of A-colon); **Zaqef Gadol/Revia** may mark a C-colon.
+
+**Features:**
+- **Cola splitting** — every verse split into 2 or 3 cola by accent detection
+- **Parallel word pairs** — content words (nouns, verbs, adjectives) paired across
+  A/B cola; aggregated across a whole book to reveal canonical word pairs
+- **Parallelism classification** — heuristic classifier: synonymous (high
+  lexical/domain overlap) · antithetic (negation in B-colon) · synthetic (default)
+- **Book statistics** — type distribution and cross-book comparison
+
+```python
+from bible_grammar import print_verse_analysis, print_book_pairs, print_parallelism_stats
+
+# Cola split + parallelism type for one verse
+print_verse_analysis('Psa', 19, 2)
+# → Colon A: "The heavens declare the glory of God"
+# → Colon B: "and the work of his hands"
+# → Colon C: "the firmament shows"
+# → Parallelism: SYNTHETIC
+
+print_verse_analysis('Pro', 10, 1)
+# → Colon A: "A wise son makes a father glad"  (+ superscription)
+# → Colon C: "the grief of his mother" (shared lemma: בֵּן son)
+
+# Most frequent A/B parallel word pairs in Proverbs
+print_book_pairs('Pro', top_n=20, min_count=2)
+# → חׇכְמָה/דַּעַת (wisdom/knowledge) × 4
+# → מֶלֶךְ/רָזַן (kings/rulers) × 3
+# → פֶּה/שָׂפָה (mouth/lips) × 3
+
+# Parallelism type breakdown
+print_parallelism_stats('Pro')
+```
+
+Primary poetry books: `Psa` · `Pro` · `Job` · `Sng` · `Lam` · `Ecc`
+
+**Slash command:** `/poetry verse Psa 19:2` · `/poetry pairs Pro` · `/poetry stats Psa` · `/poetry compare Psa Pro Job`
+
+---
+
 ### Theological Term Map
 
 Traces key theological concepts across OT Hebrew → LXX Greek → NT Greek,
@@ -1217,6 +1262,9 @@ slash commands are available:
 | `/ot-speaker <Strong's> [book...]` | OT speech-verb tokens with given entity as subject; character dialogue breakdown |
 | `/domain-search <domain> [subject] [book...]` | Louw-Nida domain query; cross-book domain profile comparison |
 | `/trajectory <Strong's> [report]` | Cross-testament word trajectory OT → LXX → NT with continuity assessment |
+| `/poetry verse <book> <ch>:<vs>` | Hebrew poetry cola split + parallelism classification |
+| `/poetry pairs <book>` | Most frequent A/B parallel word pairs in a poetry book |
+| `/poetry stats <book>` | Parallelism type distribution (synonymous/antithetic/synthetic) |
 | `/export <type> [args]` | Export any analysis to HTML + CSV |
 
 Examples:
@@ -1248,6 +1296,10 @@ Examples:
 /trajectory H7307 report
 /trajectory summary
 /trajectory all
+/poetry verse Psa 19:2
+/poetry verse Pro 10:1
+/poetry pairs Pro
+/poetry stats Psa
 /export word-study G3056
 ```
 
@@ -1267,7 +1319,7 @@ Examples:
 | `08_parallel_passage.ipynb` | Parallel passage comparison (Synoptics, Samuel/Psalms) |
 | `09_language_analysis.ipynb` | LXX consistency, collocations, morphological distribution, semantic profiles, theological term maps |
 | `10_advanced_analysis.ipynb` | Divine names, genre comparison, intertextuality networks, HTML/CSV export |
-| `11_syntax_and_roles.ipynb` | NT/OT MACULA syntax trees, speaker attribution, lexicon API, christological titles, syntactic role/object search, LXX corpus query, cross-testament trajectory, theological term reports |
+| `11_syntax_and_roles.ipynb` | NT/OT MACULA syntax trees, speaker attribution, lexicon API, christological titles, syntactic role/object search, LXX corpus query, cross-testament trajectory, theological term reports, Hebrew poetry analysis |
 
 Export a notebook as a shareable HTML file:
 
