@@ -21,6 +21,19 @@ includes a summary, key observations, and data notes.
 | [greek-pauline-tense-voice-heatmap.md](greek-pauline-tense-voice-heatmap.md) | Tense × Voice heatmap for Paul's letters |
 | [greek-aorist-passives-by-nt-book.md](greek-aorist-passives-by-nt-book.md) | Aorist Passive verb counts by NT book |
 
+## Per-Book Language Profiles
+
+Generated reports in `profiles/` — one file per book. Available for: Gen, Exo, Psa, Isa, Dan, Mat, Jhn, Rom, Heb, Rev (and any book via `save_profile_report()`).
+
+| Report | Description |
+|---|---|
+| [profiles/Gen_profile.md](profiles/Gen_profile.md) | Genesis |
+| [profiles/Isa_profile.md](profiles/Isa_profile.md) | Isaiah |
+| [profiles/Rom_profile.md](profiles/Rom_profile.md) | Romans |
+| [profiles/Heb_profile.md](profiles/Heb_profile.md) | Hebrews |
+
+*See `notebooks/06_book_profiles.ipynb` for cross-book comparisons and batch generation.*
+
 ## Translation & Cross-Testament
 
 | Report | Description |
