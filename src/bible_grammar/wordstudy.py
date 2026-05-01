@@ -217,11 +217,21 @@ def resolve_strongs(term: str) -> str | None:
 def _lookup_lex(strongs: str) -> dict | None:
     """Look up a Strong's number in the appropriate lexicon."""
     clean = strongs.strip("{}").upper()
+    # Try direct, then zero-padded (H157 → H0157), then strip variant suffix
+    m = re.match(r'^([HG])(\d+)([A-Z]?)$', clean)
+    zero_padded = (f"{m.group(1)}{int(m.group(2)):04d}{m.group(3)}" if m else clean)
+    base = re.sub(r'[A-Z]$', '', clean)
+    base_padded = (f"{m.group(1)}{int(m.group(2)):04d}" if m else base)
+
     if clean.startswith("H"):
-        return _load_heb_lex().get(clean)
+        lex = _load_heb_lex()
     elif clean.startswith("G"):
-        return _load_grk_lex().get(clean)
-    return None
+        lex = _load_grk_lex()
+    else:
+        return None
+
+    return (lex.get(clean) or lex.get(zero_padded) or
+            lex.get(base) or lex.get(base_padded))
 
 
 def _kjv_verse(book_id: str, chapter: int, verse: int) -> str:
@@ -276,13 +286,19 @@ def word_study(strongs: str, *, example_verses: int = 5) -> dict:
     source = "TAHOT" if is_hebrew else "TAGNT"
     corpus = df[df["source"] == source]
 
-    # Match on strongs column (handles curly-brace wrapped Hebrew and plain Greek)
-    if is_hebrew:
-        base = re.sub(r'[A-Z]$', '', clean)  # H1254 matches H1254, H1254A, H1254B
-        mask = corpus["strongs"].str.upper().str.contains(base, na=False)
+    # Match on strongs column using a regex that anchors the number to avoid
+    # false positives (e.g. H157 matching H1571, H1573 etc.)
+    # Hebrew strongs are wrapped in curly braces: {H1254A}, H9003/{H1254A}
+    # Greek strongs are plain: G4160, G4160G
+    m_clean = re.match(r'^([HG])0*(\d+)([A-Z]?)$', clean)
+    if m_clean:
+        pfx, num, suf = m_clean.groups()
+        # Match the number with optional leading zeros and optional trailing variant letter
+        pat = rf'\{{{pfx}0*{num}[A-Z]?\}}' if is_hebrew else rf'\b{pfx}0*{num}[A-Z]?\b'
     else:
-        base = re.sub(r'[A-Z]$', '', clean)  # G4160 matches G4160, G4160G etc.
-        mask = corpus["strongs"].str.upper().str.contains(base, na=False)
+        pat = re.escape(clean)
+    mask = corpus["strongs"].str.upper().str.contains(pat, regex=True, na=False)
+    base = re.sub(r'[A-Z]$', '', clean)
 
     hits = corpus[mask].copy()
     result["total_occurrences"] = len(hits)

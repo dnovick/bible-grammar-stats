@@ -10,4 +10,5 @@ from .parallel import parallel_passage, print_parallel, parallel_words
 from .hapax import hapax_legomena, hapax_table, hapax_summary
 from .termmap import term_map, print_term_map, term_map_table, THEOLOGICAL_TERMS
 from .phrase import phrase_search, print_phrase_results, proximity_search, print_proximity_results
+from .synonym import compare_synonyms, print_synonym_comparison, synonym_table
 from . import charts
