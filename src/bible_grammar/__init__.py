@@ -37,6 +37,14 @@ from .role_search import (subject_verbs, verb_subjects, print_role_summary,
 from .lxx_query import (load_lxx_data, query_lxx, lxx_freq_table,
                         lxx_concordance, lxx_verb_stats, lxx_by_book,
                         print_lxx_query, LXX_BOOK_ORDER)
+from .ot_speaker import (speaker_verses, divine_speech_by_book, who_speaks,
+                         divine_speech_verses, print_speaker_summary,
+                         print_divine_speech_by_book, speaker_report,
+                         GOD_OT_SPEECH, SPEECH_VERB_STRONGS)
+from .domain_search import (query_domain, top_domain_words, domain_profile,
+                             domain_role_search, domain_comparison,
+                             print_domain_summary, print_domain_role,
+                             DOMAIN_NAMES, THEOLOGY_DOMAINS)
 from .speaker import (is_jesus_speaking, jesus_speaking_verse_set,
                       filter_to_jesus_speech, ALLOWLIST_VERSES)
 from .lexicon import lookup, search_gloss, lex_entry, lemma_index

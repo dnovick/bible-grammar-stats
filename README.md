@@ -53,6 +53,8 @@ Built to answer questions like:
   - [Syntactic Role Search](#syntactic-role-search)
   - [Object / Argument Search](#object--argument-search)
   - [LXX as a Queryable Corpus](#lxx-as-a-queryable-corpus)
+  - [OT Speaker Attribution](#ot-speaker-attribution)
+  - [Louw-Nida Domain Search](#louw-nida-domain-search)
   - [Theological Term Map](#theological-term-map)
   - [Synonym Comparison](#synonym-comparison)
   - [Phrase & Proximity Search](#phrase--proximity-search)
@@ -794,6 +796,83 @@ The LXX corpus completes the **OT → LXX → NT pipeline**:
 
 ---
 
+### OT Speaker Attribution
+
+`ot_speaker.py` identifies who speaks in the Hebrew Bible by resolving MACULA
+Hebrew `subjref` links on speech-verb tokens (אָמַר, דָּבַר, קָרָא, עָנָה,
+צָוָה, שָׁלַח, נָאַם) to their grammatical subjects.
+
+```python
+from bible_grammar import (speaker_verses, divine_speech_by_book, who_speaks,
+                            divine_speech_verses, print_speaker_summary,
+                            print_divine_speech_by_book, speaker_report,
+                            GOD_OT_SPEECH)
+
+# What does YHWH+Elohim say in Isaiah?
+print_speaker_summary(['H3068', 'H0430'], books=['Isa'], label='YHWH+Elohim')
+
+# Per-book divine speech counts with percentage of all speech in that book
+print_divine_speech_by_book()
+# → Lamentations 31.8% | Psalms 25.9% | Leviticus 22.0% | …
+
+# Who speaks in Job? (character breakdown)
+who_speaks('Job')
+# → Job 47 tokens | Elihu 10 | El 7 | Satan 5 | YHWH 5 | Eliphaz 4 | …
+
+# List all verses where YHWH speaks in Jeremiah
+divine_speech_verses('Jer')   # → ['JER 1:5!...', 'JER 1:7!...', ...]
+
+# Full Markdown report with by-book table and character breakdown
+speaker_report(['H3068', 'H0430'], books=['Isa'], label='YHWH+Elohim',
+               output_dir='output/reports')
+```
+
+**Slash command:** `/ot-speaker H3068,H0430 Isa` or `/ot-speaker who Job`
+
+---
+
+### Louw-Nida Domain Search
+
+`domain_search.py` queries the Greek NT by Louw-Nida semantic domain. Each
+MACULA Greek token carries a `domain` code (e.g. `033006`) and an `ln` reference
+(e.g. `33.69`), covering all 93 top-level Louw-Nida domains.
+
+```python
+from bible_grammar import (query_domain, top_domain_words, domain_profile,
+                            domain_role_search, domain_comparison,
+                            print_domain_summary, print_domain_role,
+                            DOMAIN_NAMES, THEOLOGY_DOMAINS)
+
+# Top words in the Communication domain (33)
+print_domain_summary(33, top_n=15)
+
+# Supernatural Beings domain (12) in Revelation
+print_domain_summary(12, book='Rev')
+
+# Communication-domain verbs where God (Theos) is the subject
+print_domain_role(33, ['G2316'], subject_label='Theos')
+# → λέγω 33.69 (say), καλέω 33.312 (call), ἐπαγγέλλομαι 33.286 (promise) …
+
+# Religious Activity domain (53) where Jesus acts in the Gospels
+print_domain_role(53, ['G2424'], books=['Mat', 'Mrk', 'Luk', 'Jhn'])
+
+# Semantic domain profile of a NT book
+domain_profile('Rom', top_n=15)
+
+# Compare domain profiles across books
+domain_comparison(['Rom', 'Heb', 'Rev'], top_n=12)
+# → Romans: Communication 11.5%, Supernatural 7.1%, Affirmation 6.4%
+# → Revelation: Geographical 6.8%, Number/Quantity 6.7%, Artifacts 5.9%
+
+# Theological domain groupings
+print(THEOLOGY_DOMAINS)
+# → {'God / Supernatural': [12], 'Communication': [33], 'Forgiveness': [39,40], …}
+```
+
+**Slash command:** `/domain-search 33` · `/domain-search 33 G2316` · `/domain-search compare Rom Heb Rev`
+
+---
+
 ### Theological Term Map
 
 Traces key theological concepts across OT Hebrew → LXX Greek → NT Greek,
@@ -1040,6 +1119,8 @@ slash commands are available:
 | `/role-search <Strong's> [corpus] [book...]` | Verbs with given entity as grammatical subject (OT + NT) |
 | `/object-search <Strong's> [corpus] [book...]` | Objects acted upon by a given entity; verbs performed on an entity |
 | `/lxx-query <Strong's> [book_or_group]` | LXX word query: per-book counts, verb morphology, concordance |
+| `/ot-speaker <Strong's> [book...]` | OT speech-verb tokens with given entity as subject; character dialogue breakdown |
+| `/domain-search <domain> [subject] [book...]` | Louw-Nida domain query; cross-book domain profile comparison |
 | `/export <type> [args]` | Export any analysis to HTML + CSV |
 
 Examples:
@@ -1062,6 +1143,11 @@ Examples:
 /object-search G2424 NT Mat Mrk Luk Jhn
 /lxx-query G1242
 /lxx-query G2316 prophets
+/ot-speaker H3068,H0430 Isa
+/ot-speaker who Job
+/domain-search 33
+/domain-search 33 G2316
+/domain-search compare Rom Heb Rev
 /export word-study G3056
 ```
 
