@@ -142,6 +142,78 @@ def _load_grk_lex() -> dict:
     return _grk_lex
 
 
+def _build_lemma_index() -> tuple[dict, dict]:
+    """Return (heb_lemma→strongs, grk_lemma→strongs) reverse lookup dicts."""
+    import unicodedata
+    heb_idx: dict[str, str] = {}
+    for k, v in _load_heb_lex().items():
+        lemma = v.get("lemma", "").strip()
+        if not lemma or not k.startswith("H"):
+            continue
+        num_part = k[1:].rstrip("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        if not num_part.isdigit():
+            continue
+        nfc = unicodedata.normalize("NFC", lemma)
+        if nfc not in heb_idx:
+            heb_idx[nfc] = k
+        # Also index without vowel points (consonants only)
+        consonants = re.sub(r'[֑-ׇ]', '', nfc)
+        if consonants not in heb_idx:
+            heb_idx[consonants] = k
+
+    grk_idx: dict[str, str] = {}
+    for k, v in _load_grk_lex().items():
+        lemma = v.get("lemma", "").strip()
+        if not lemma or not k.startswith("G"):
+            continue
+        num_part = k[1:].rstrip("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        if not num_part.isdigit():
+            continue
+        nfc = unicodedata.normalize("NFC", lemma.lower())
+        if nfc not in grk_idx:
+            grk_idx[nfc] = k
+
+    return heb_idx, grk_idx
+
+
+def resolve_strongs(term: str) -> str | None:
+    """
+    Resolve a term to a Strong's number.
+
+    Accepts:
+      - A Strong's number directly: 'H1285', 'G3056'
+      - A Hebrew lemma (with or without vowel points): 'שָׁלוֹם', 'שלום'
+      - A Greek lemma: 'λόγος', 'εἰρήνη'
+
+    Returns the Strong's number string, or None if not found.
+    """
+    import unicodedata
+    term = term.strip()
+
+    # Direct strongs number
+    if re.match(r'^[HG]\d', term.upper()):
+        return term.upper()
+
+    nfc = unicodedata.normalize("NFC", term)
+    heb_idx, grk_idx = _build_lemma_index()
+
+    # Try Hebrew (with vowels, then without)
+    result = heb_idx.get(nfc)
+    if result:
+        return result
+    consonants = re.sub(r'[֑-ׇ]', '', nfc)
+    result = heb_idx.get(consonants)
+    if result:
+        return result
+
+    # Try Greek (case-insensitive)
+    result = grk_idx.get(nfc.lower())
+    if result:
+        return result
+
+    return None
+
+
 def _lookup_lex(strongs: str) -> dict | None:
     """Look up a Strong's number in the appropriate lexicon."""
     clean = strongs.strip("{}").upper()
