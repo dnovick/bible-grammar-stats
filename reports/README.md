@@ -51,6 +51,46 @@ Generated reports in `profiles/` — one file per book. Available for: Gen, Exo,
 |---|---|
 | [nt_quotations_overview.md](nt_quotations_overview.md) | NT→OT quotation density by book, highest-confidence pairs, three-way text comparison |
 
+## Word Studies (reports/)
+
+| Report | Description |
+|---|---|
+| [obey-greek-word-study.md](obey-greek-word-study.md) | NT usage of ὑπακούω, ὑπακοή, πείθω, πειθαρχέω, ὑποτάσσω, ὑπήκοος with tense/voice/mood/KJV context. LXX analysis showing πείθω almost exclusively translates בָּטַח (trust), not obedience words. Zephaniah 3:2 as a key illustration. |
+
+## Semantic Profiles (output/reports/)
+
+Pre-generated semantic profiles in `../output/reports/`. Each file includes a lexicon entry, frequency by book, morphological forms, LXX equivalents and consistency, OT→LXX→NT trajectory, top collocates, and example verses.
+
+| Report | Description |
+|---|---|
+| [../output/reports/h7965-semantic-profile.md](../output/reports/h7965-semantic-profile.md) | שָׁלוֹם (shalom / peace), H7965 |
+| [../output/reports/h1285-semantic-profile.md](../output/reports/h1285-semantic-profile.md) | בְּרִית (covenant), H1285 |
+| [../output/reports/h7307-semantic-profile.md](../output/reports/h7307-semantic-profile.md) | רוּחַ (spirit/wind), H7307 |
+| [../output/reports/g3056-semantic-profile.md](../output/reports/g3056-semantic-profile.md) | λόγος (word), G3056 |
+
+## Divine Names (output/reports/)
+
+| Report | Description |
+|---|---|
+| [../output/reports/divine-names-report.md](../output/reports/divine-names-report.md) | Distribution of YHWH, Elohim, Adonai, El, Yah, Shaddai in OT Hebrew; Kyrios and Theos in the LXX; Theos, Kyrios, Iesous, Christos, Pater, Pneuma in the NT. Includes distribution by book and canonical section, stacked bar charts, and heatmaps. |
+
+## Genre Comparison (output/reports/)
+
+| Report | Description |
+|---|---|
+| [../output/reports/genre-comparison-report.md](../output/reports/genre-comparison-report.md) | Verb stem, conjugation, and POS distribution across Torah/Historical/Wisdom/Prophets (OT) and Gospels/Pauline/General (NT). Heatmap charts for each feature. Key findings: wayyiqtol dominates Historical prose (36%), Imperfect dominates Wisdom (31%), Paul's letters have highest Present tense ratio (55%). |
+
+## Intertextuality (output/reports/)
+
+Pre-generated intertextuality network reports in `../output/reports/`. Each includes a network graph, NT book coverage summary, full citation table with KJV text, and verse-by-verse detail.
+
+| Report | Description |
+|---|---|
+| [../output/reports/isa-53-intertextuality.md](../output/reports/isa-53-intertextuality.md) | Isaiah 53: 26 NT citations across 13 books (min votes 20) |
+| [../output/reports/psa-22-intertextuality.md](../output/reports/psa-22-intertextuality.md) | Psalm 22 (min votes 15) |
+| [../output/reports/isa-intertextuality.md](../output/reports/isa-intertextuality.md) | Full Isaiah: 224+ links to 20 NT books (min votes 50) |
+
 ---
 *Charts are in `../output/charts/`. Regenerate with `notebooks/02_query_demo.ipynb` or `notebooks/03_statistics.ipynb`.*  
-*NT quotations notebook: `notebooks/04_nt_quotations.ipynb`.*
+*NT quotations notebook: `notebooks/04_nt_quotations.ipynb`.*  
+*HTML and CSV exports are generated to `../output/exports/` (gitignored; regenerate via `/export`).*
