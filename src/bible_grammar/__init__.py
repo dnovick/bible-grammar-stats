@@ -3,6 +3,7 @@ from .stats import freq_table
 from .alignment import translation_equivalents, hebrew_sources
 from .ibm_align import translation_equivalents_w, hebrew_sources_w
 from .quotations import nt_quotations, verse_comparison, quotation_table, quotation_summary
+from .lxx_consistency import lxx_consistency, print_lxx_consistency, consistency_heatmap, batch_consistency
 from .concordance import concordance, lemma_frequency, top_lemmas
 from .profiles import book_profile, print_profile, save_profile_report, batch_profiles
 from .wordstudy import word_study, print_word_study, word_study_table, resolve_strongs
