@@ -9,4 +9,5 @@ from .wordstudy import word_study, print_word_study, word_study_table, resolve_s
 from .parallel import parallel_passage, print_parallel, parallel_words
 from .hapax import hapax_legomena, hapax_table, hapax_summary
 from .termmap import term_map, print_term_map, term_map_table, THEOLOGICAL_TERMS
+from .phrase import phrase_search, print_phrase_results
 from . import charts
