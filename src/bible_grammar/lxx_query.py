@@ -126,13 +126,16 @@ def query_lxx(
     if strongs is not None:
         if isinstance(strongs, str):
             strongs = [strongs]
-        # normalise: ensure G-prefix, zero-pad to 4 digits
+        # Normalise to the format used in the parquet: 'G' + unpadded int (e.g. 'G25', 'G1515')
         normed = []
         for s in strongs:
             s = s.strip().upper()
             if not s.startswith('G'):
                 s = 'G' + s
-            normed.append(s)
+            try:
+                normed.append(f"G{int(s[1:])}")
+            except ValueError:
+                normed.append(s)
         df = df[df['strongs'].isin(normed)]
 
     if lemma is not None:

@@ -45,6 +45,13 @@ from .domain_search import (query_domain, top_domain_words, domain_profile,
                              domain_role_search, domain_comparison,
                              print_domain_summary, print_domain_role,
                              DOMAIN_NAMES, THEOLOGY_DOMAINS)
+from .trajectory import (word_trajectory, print_trajectory,
+                         trajectory_chart, save_trajectory_report,
+                         batch_trajectories)
+from .theological_reports import (run_theological_report, run_all_theological_reports,
+                                   print_all_trajectories, theological_summary_table,
+                                   print_theological_summary,
+                                   THEOLOGICAL_TRAJECTORIES)
 from .speaker import (is_jesus_speaking, jesus_speaking_verse_set,
                       filter_to_jesus_speech, ALLOWLIST_VERSES)
 from .lexicon import lookup, search_gloss, lex_entry, lemma_index

@@ -55,6 +55,8 @@ Built to answer questions like:
   - [LXX as a Queryable Corpus](#lxx-as-a-queryable-corpus)
   - [OT Speaker Attribution](#ot-speaker-attribution)
   - [Louw-Nida Domain Search](#louw-nida-domain-search)
+  - [Cross-Testament Trajectory](#cross-testament-trajectory)
+  - [Theological Term Reports](#theological-term-reports)
   - [Theological Term Map](#theological-term-map)
   - [Synonym Comparison](#synonym-comparison)
   - [Phrase & Proximity Search](#phrase--proximity-search)
@@ -873,6 +875,99 @@ print(THEOLOGY_DOMAINS)
 
 ---
 
+### Cross-Testament Trajectory
+
+`trajectory.py` stitches together the full lexical journey of a word from Hebrew OT
+→ LXX Septuagint → Greek NT, assessing whether the NT adopts the LXX's vocabulary
+(high continuity) or diverges to new word choices.
+
+**Pipeline stages:**
+1. OT Hebrew stats (`word_study`)
+2. OT → LXX alignment (MACULA Hebrew inline Greek — word-level precision)
+3. LXX corpus distribution (`lxx.parquet`)
+4. NT usage (TAGNT parquet)
+5. Continuity assessment: `high | medium | low | none`
+
+```python
+from bible_grammar import print_trajectory, save_trajectory_report, word_trajectory
+
+# Terminal report: shalom OT → LXX εἰρήνη → NT
+print_trajectory('H7965')
+
+# Terminal report: ruach/spirit OT → LXX πνεῦμα → NT
+print_trajectory('H7307')
+
+# Terminal report: berith/covenant OT → LXX διαθήκη → NT
+print_trajectory('H1285')
+
+# Start from Greek side
+print_trajectory('G1515')    # eirene in NT/LXX
+
+# Full Markdown report + 3-panel chart (OT blue | LXX green | NT red)
+path = save_trajectory_report('H7965', output_dir='output/reports')
+
+# Full pipeline dict (all stages accessible programmatically)
+t = word_trajectory('H7965')
+print(t['continuity'])        # 'high'
+print(t['continuity_note'])   # explanation
+print(t['lxx_total'])         # tokens in LXX
+print(t['nt_total'])          # tokens in NT
+```
+
+Continuity levels:
+- **high** — NT uses the same Greek word as the LXX's dominant rendering (≥80% consistent)
+- **medium** — same word, but LXX rendering is split (<80% consistent) or vice versa
+- **low** — NT uses a different word than the LXX primary rendering
+- **none** — insufficient data
+
+**Slash command:** `/trajectory H7965` · `/trajectory H7307 report` · `/trajectory summary` · `/trajectory all`
+
+---
+
+### Theological Term Reports
+
+`theological_reports.py` provides 14 pre-built cross-testament trajectory studies for
+key Hebrew theological terms. Each generates a Markdown + chart report and contributes
+to a summary comparison table.
+
+**Terms covered:**
+
+| Key | Hebrew | Gloss | Theme |
+|---|---|---|---|
+| `bara` | בָּרָא | create | Creation |
+| `berith` | בְּרִית | covenant | Covenant |
+| `ruach` | רוּחַ | spirit/wind | Spirit |
+| `shalom` | שָׁלוֹם | peace/welfare | Peace |
+| `tsedeq` | צֶדֶק | righteousness | Righteousness |
+| `hesed` | חֶסֶד | lovingkindness | Covenant Love |
+| `yeshua` | יְשׁוּעָה | salvation | Salvation |
+| `kavod` | כָּבוֹד | glory | Glory |
+| `ahav` | אָהַב | love | Love |
+| `emunah` | אֱמוּנָה | faithfulness | Faith |
+| `torah` | תּוֹרָה | law/instruction | Law |
+| `padah` | פָּדָה | redeem | Redemption |
+| `kaphar` | כָּפַר | atone | Atonement |
+| `qadosh` | קָדוֹשׁ | holy | Holiness |
+
+```python
+from bible_grammar import (print_theological_summary, run_theological_report,
+                            run_all_theological_reports, THEOLOGICAL_TRAJECTORIES)
+
+# Compact overview: OT total | LXX total | NT total | continuity
+print_theological_summary()
+
+# Full report for one term → Markdown + chart
+r = run_theological_report('hesed', output_dir='output/reports/theological')
+print(r['trajectory']['continuity_note'])
+
+# Batch: generate all 14 reports
+run_all_theological_reports(output_dir='output/reports/theological')
+```
+
+**Slash command:** `/trajectory summary` · `/trajectory all` · `/trajectory hesed`
+
+---
+
 ### Theological Term Map
 
 Traces key theological concepts across OT Hebrew → LXX Greek → NT Greek,
@@ -1121,6 +1216,7 @@ slash commands are available:
 | `/lxx-query <Strong's> [book_or_group]` | LXX word query: per-book counts, verb morphology, concordance |
 | `/ot-speaker <Strong's> [book...]` | OT speech-verb tokens with given entity as subject; character dialogue breakdown |
 | `/domain-search <domain> [subject] [book...]` | Louw-Nida domain query; cross-book domain profile comparison |
+| `/trajectory <Strong's> [report]` | Cross-testament word trajectory OT → LXX → NT with continuity assessment |
 | `/export <type> [args]` | Export any analysis to HTML + CSV |
 
 Examples:
@@ -1148,6 +1244,10 @@ Examples:
 /domain-search 33
 /domain-search 33 G2316
 /domain-search compare Rom Heb Rev
+/trajectory H7965
+/trajectory H7307 report
+/trajectory summary
+/trajectory all
 /export word-study G3056
 ```
 
@@ -1167,7 +1267,7 @@ Examples:
 | `08_parallel_passage.ipynb` | Parallel passage comparison (Synoptics, Samuel/Psalms) |
 | `09_language_analysis.ipynb` | LXX consistency, collocations, morphological distribution, semantic profiles, theological term maps |
 | `10_advanced_analysis.ipynb` | Divine names, genre comparison, intertextuality networks, HTML/CSV export |
-| `11_syntax_and_roles.ipynb` | NT/OT MACULA syntax trees, speaker attribution, lexicon API, christological titles, syntactic role/object search, LXX corpus query |
+| `11_syntax_and_roles.ipynb` | NT/OT MACULA syntax trees, speaker attribution, lexicon API, christological titles, syntactic role/object search, LXX corpus query, cross-testament trajectory, theological term reports |
 
 Export a notebook as a shareable HTML file:
 

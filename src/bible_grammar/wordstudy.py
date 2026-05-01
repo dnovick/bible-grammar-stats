@@ -244,8 +244,19 @@ def word_study(strongs: str, *, example_verses: int = 5) -> dict:
                 g_strongs = te_row.get("lxx_strongs", "")
                 if not g_strongs or g_strongs == "__NULL__":
                     continue
+                # Strip trailing letter variant suffix (e.g. 'G1234A' → 'G1234')
                 g_base = re.sub(r'[A-Z]$', '', g_strongs.upper())
-                nt_hits = nt_df[nt_df["strongs"].str.upper().str.contains(g_base, na=False)]
+                # Use exact match to avoid 'G25' matching 'G250', 'G251', etc.
+                nt_hits = nt_df[nt_df["strongs"].str.upper() == g_base]
+                if nt_hits.empty:
+                    # Fallback: also try zero-padded variants (TAGNT may use G0025 or G25)
+                    try:
+                        num = int(g_base.lstrip('G'))
+                        alt = f"G{num:04d}"
+                        alt2 = f"G{num}"
+                        nt_hits = nt_df[nt_df["strongs"].str.upper().isin({alt, alt2})]
+                    except ValueError:
+                        pass
                 if nt_hits.empty:
                     continue
                 nt_by_book = (
