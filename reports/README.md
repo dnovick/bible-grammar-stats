@@ -13,6 +13,12 @@ includes a summary, key observations, and data notes.
 | [niphal-perfects-by-book.md](niphal-perfects-by-book.md) | Niphal Perfect counts for every OT book |
 | [niphal-perfects-by-book-top20.md](niphal-perfects-by-book-top20.md) | Top 20 OT books by Niphal Perfect count |
 
+## Special Studies
+
+| Report | Description |
+|---|---|
+| [2fp-perfect-verbs.md](2fp-perfect-verbs.md) | All 13 2nd person feminine plural perfect verbs in the OT, by book and stem |
+
 ## Greek New Testament
 
 | Report | Description |
