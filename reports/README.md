@@ -68,6 +68,12 @@ Pre-generated semantic profiles in `../output/reports/`. Each file includes a le
 | [../output/reports/h7307-semantic-profile.md](../output/reports/h7307-semantic-profile.md) | רוּחַ (spirit/wind), H7307 |
 | [../output/reports/g3056-semantic-profile.md](../output/reports/g3056-semantic-profile.md) | λόγος (word), G3056 |
 
+## Syntactic Role Analysis (output/reports/)
+
+| Report | Description |
+|---|---|
+| [../output/reports/role-yhwh-elohim-ot.md](../output/reports/role-yhwh-elohim-ot.md) | Verbs with YHWH/Elohim as grammatical subject in the OT — top 30 verbs with inline LXX equivalents, book distribution, and cross-testament comparison with NT θεός. |
+
 ## Christological Titles (output/reports/)
 
 | Report | Description |

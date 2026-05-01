@@ -30,6 +30,9 @@ from .syntax import (load_syntax, query_syntax, speech_verbs, referent_chain,
                      clause_roles, jesus_speaking_verses, MACULA_BOOK_MAP)
 from .syntax_ot import (load_syntax_ot, query_syntax_ot, lxx_alignment,
                         clause_roles_ot, MACULA_OT_BOOK_MAP)
+from .role_search import (subject_verbs, verb_subjects, print_role_summary,
+                          role_chart, divine_action_comparison, role_report,
+                          GOD_OT, GOD_NT, JESUS_NT)
 from .speaker import (is_jesus_speaking, jesus_speaking_verse_set,
                       filter_to_jesus_speech, ALLOWLIST_VERSES)
 from .lexicon import lookup, search_gloss, lex_entry, lemma_index
