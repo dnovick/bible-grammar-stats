@@ -20,8 +20,9 @@ _TAGNT_FILES = [
     "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
 ]
 
-# Regex to match a reference like Gen.1.1#01=L or Mat.1.1#01=NKO
-_REF_RE = re.compile(r'^([1-3]?[A-Za-z]+)\.(\d+)\.(\d+)#(\d+)')
+# Regex to match a reference like Gen.1.1#01=L, Psa.8.0(8.1)#01=L, or Mat.1.1#01=NKO
+# The optional (?:\(\d+\.\d+\)) handles Psalm lines with parenthetical Hebrew verse numbers
+_REF_RE = re.compile(r'^([1-3]?[A-Za-z]+)\.(\d+)\.(\d+)(?:\(\d+\.\d+\))?#(\d+)')
 
 
 def _parse_ref(ref: str) -> tuple[str, int, int, int] | None:
