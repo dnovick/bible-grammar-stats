@@ -21,6 +21,8 @@ includes a summary, key observations, and data notes.
 | [hapax-legomena-by-book.md](hapax-legomena-by-book.md) | Hapax legomena counts by book for OT and NT, with sample lists |
 | [nouns-by-gender-by-book.md](nouns-by-gender-by-book.md) | Noun gender distribution (M/F/Both/Proper for OT; M/F/N for NT) per book |
 | [verb-morphology-by-book.md](verb-morphology-by-book.md) | OT verb stems (binyanim) and NT verb tense/mood distribution per book |
+| [nt-case-distribution-by-book.md](nt-case-distribution-by-book.md) | Greek NT case distribution (Nom/Gen/Acc/Dat/Voc) per book |
+| [ot-hebrew-aramaic-by-book.md](ot-hebrew-aramaic-by-book.md) | Hebrew vs. Aramaic word counts for every OT book; Daniel and Ezra Aramaic sections |
 
 ## Greek New Testament
 
