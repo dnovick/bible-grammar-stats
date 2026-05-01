@@ -2,15 +2,24 @@
 
 A Python project for generating statistics, charts, and reports on the grammatical
 constructs of the biblical text — Hebrew and Aramaic Old Testament, Greek New Testament,
-and English/Latin translations.
+Greek Septuagint (LXX), and English/Latin translations.
+
+The LXX (Septuagint) is the ancient Greek translation of the Hebrew scriptures, and plays
+a central role in this project: it bridges the Hebrew OT and Greek NT vocabulary, and is
+the primary text NT authors quote when citing the Old Testament. This project supports
+word-level alignment between the Hebrew OT and the LXX, per-book translation consistency
+analysis, and NT quotation alignment that determines whether a NT author follows the LXX
+wording or the Hebrew MT.
 
 Built to answer questions like:
 - *How many Niphal perfect verbs are in each book of the OT?*
 - *What is the verb stem distribution across the Torah?*
 - *How does Paul use the aorist passive compared to the rest of the NT?*
 - *Where does the word "grace" appear in Paul's letters (KJV)?*
-- *How consistently does the LXX render רוּחַ (spirit) across books?*
-- *Does Hebrews quote the OT following the LXX or the MT?*
+- *How consistently does the LXX render רוּחַ (spirit/wind) across books?*
+- *Does Hebrews quote the OT following the LXX or the Hebrew MT?*
+- *What Greek word does the LXX use to translate חֶסֶד (lovingkindness), and how does that word travel into the NT?*
+- *Which words cluster significantly near שָׁלוֹם (peace) in the OT?*
 
 ---
 
