@@ -51,6 +51,8 @@ Built to answer questions like:
   - [Lexicon API](#lexicon-api)
   - [Christological Titles](#christological-titles)
   - [Syntactic Role Search](#syntactic-role-search)
+  - [Object / Argument Search](#object--argument-search)
+  - [LXX as a Queryable Corpus](#lxx-as-a-queryable-corpus)
   - [Theological Term Map](#theological-term-map)
   - [Synonym Comparison](#synonym-comparison)
   - [Phrase & Proximity Search](#phrase--proximity-search)
@@ -705,6 +707,93 @@ Pre-generated report: `output/reports/role-yhwh-elohim-ot.md`.
 
 ---
 
+### Object / Argument Search
+
+`role_search.py` also provides the *symmetric* direction: given an entity's Strong's
+number(s), find what verbs are performed *on* that entity, and what objects verbs
+with that subject act upon — the patient/object slots of the predicate.
+
+**OT method:** parses the MACULA Hebrew verb `frame` column (`A0`=agent, `A1`=patient)
+to find verb→object triples where `A0` resolves to the target entity.
+
+**NT method:** finds verbs with the target as `subjref` subject, then collects
+co-verse tokens tagged `role='o'` or `role='o2'`.
+
+```python
+from bible_grammar import subject_objects, object_verbs, print_object_summary
+
+# What does YHWH+Elohim act upon in the OT?
+print_object_summary(['H3068', 'H0430'], corpus='OT', top_n=20)
+
+# What does Jesus act upon in the Gospels?
+print_object_summary(['G2424'], corpus='NT', books=['Mat', 'Mrk', 'Luk', 'Jhn'])
+
+# What verbs are performed ON Israel?
+object_verbs('H3478', corpus='OT')
+
+# What is done TO the disciples (G3101) in the NT?
+object_verbs('G3101', corpus='NT')
+
+# Get raw verb+object pairs as a DataFrame
+df = subject_objects(['H3068'], corpus='OT', books=['Isa'])
+```
+
+**Slash command:** `/object-search H3068,H0430` or `/object-search G2424 NT Mat Mrk Luk Jhn`
+
+---
+
+### LXX as a Queryable Corpus
+
+`lxx_query.py` exposes the full Septuagint (Rahlfs 1935, CenterBLC edition,
+623,693 tokens) as a first-class queryable corpus with the same filter API
+as `query.py` and `syntax.py`. Covers all 39 canonical OT books plus
+deuterocanonical books; filters for canonical-only are on by default.
+
+Each token carries: word form, lemma, transliteration, gloss, Strong's number,
+part of speech, tense, voice, mood, case, number, gender, person.
+
+```python
+from bible_grammar import (query_lxx, lxx_by_book, lxx_freq_table,
+                            lxx_concordance, lxx_verb_stats, print_lxx_query)
+
+# Word query — all occurrences of διαθήκη (covenant) in the LXX
+query_lxx(strongs='G1242')
+
+# Restrict to a book or group
+query_lxx(strongs='G2316', book='Isa')          # θεός in Isaiah
+query_lxx(strongs='G4151', book_group='prophets')  # πνεῦμα in Prophets
+query_lxx(lemma='εἰρήνη')                       # all peace occurrences
+
+# Per-book counts
+lxx_by_book(strongs='G1242')     # διαθήκη in canonical order
+
+# Verb morphology breakdown
+lxx_verb_stats(strongs='G4160')  # ποιέω tense/voice/mood
+
+# Frequency table of any column
+lxx_freq_table('tense', part_of_speech='Verb', book_group='prophets')
+lxx_freq_table(['book_id', 'part_of_speech'])
+
+# Concordance (one row per occurrence)
+lxx_concordance('G2316', book='Isa')
+
+# Formatted terminal summary
+print_lxx_query(strongs='G1242')   # by-book table + verb breakdown
+print_lxx_query(strongs='G2316', book_group='prophets')
+
+# Deuterocanonical books (excluded by default)
+query_lxx(strongs='G4678', include_deuterocanon=True)  # Wisdom books
+```
+
+The LXX corpus completes the **OT → LXX → NT pipeline**:
+- `lxx_alignment()` (MACULA Hebrew) gives word-level Hebrew→LXX alignment
+- `lxx_query()` / `lxx_by_book()` give LXX morphology and distribution
+- `query()` / `query_syntax()` (TAGNT / MACULA Greek) give NT usage
+
+**Slash command:** `/lxx-query G1242` or `/lxx-query G2316 prophets`
+
+---
+
 ### Theological Term Map
 
 Traces key theological concepts across OT Hebrew → LXX Greek → NT Greek,
@@ -949,6 +1038,8 @@ slash commands are available:
 | `/intertextuality <OT-ref>` | OT verse/chapter/book → NT citation network |
 | `/christological-titles [scope] [filter]` | Titles Jesus used to refer to Himself across the Gospels |
 | `/role-search <Strong's> [corpus] [book...]` | Verbs with given entity as grammatical subject (OT + NT) |
+| `/object-search <Strong's> [corpus] [book...]` | Objects acted upon by a given entity; verbs performed on an entity |
+| `/lxx-query <Strong's> [book_or_group]` | LXX word query: per-book counts, verb morphology, concordance |
 | `/export <type> [args]` | Export any analysis to HTML + CSV |
 
 Examples:
@@ -967,6 +1058,10 @@ Examples:
 /christological-titles gospels filter
 /role-search H3068,H0430
 /role-search G2424 NT Mat Mrk Luk Jhn
+/object-search H3068,H0430
+/object-search G2424 NT Mat Mrk Luk Jhn
+/lxx-query G1242
+/lxx-query G2316 prophets
 /export word-study G3056
 ```
 
@@ -986,7 +1081,7 @@ Examples:
 | `08_parallel_passage.ipynb` | Parallel passage comparison (Synoptics, Samuel/Psalms) |
 | `09_language_analysis.ipynb` | LXX consistency, collocations, morphological distribution, semantic profiles, theological term maps |
 | `10_advanced_analysis.ipynb` | Divine names, genre comparison, intertextuality networks, HTML/CSV export |
-| `11_syntax_and_roles.ipynb` | NT and OT MACULA syntax trees, speaker attribution, lexicon API, christological titles, syntactic role search |
+| `11_syntax_and_roles.ipynb` | NT/OT MACULA syntax trees, speaker attribution, lexicon API, christological titles, syntactic role/object search, LXX corpus query |
 
 Export a notebook as a shareable HTML file:
 

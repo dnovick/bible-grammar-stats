@@ -31,8 +31,12 @@ from .syntax import (load_syntax, query_syntax, speech_verbs, referent_chain,
 from .syntax_ot import (load_syntax_ot, query_syntax_ot, lxx_alignment,
                         clause_roles_ot, MACULA_OT_BOOK_MAP)
 from .role_search import (subject_verbs, verb_subjects, print_role_summary,
+                          subject_objects, object_verbs, print_object_summary,
                           role_chart, divine_action_comparison, role_report,
                           GOD_OT, GOD_NT, JESUS_NT)
+from .lxx_query import (load_lxx_data, query_lxx, lxx_freq_table,
+                        lxx_concordance, lxx_verb_stats, lxx_by_book,
+                        print_lxx_query, LXX_BOOK_ORDER)
 from .speaker import (is_jesus_speaking, jesus_speaking_verse_set,
                       filter_to_jesus_speech, ALLOWLIST_VERSES)
 from .lexicon import lookup, search_gloss, lex_entry, lemma_index

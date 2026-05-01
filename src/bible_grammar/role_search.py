@@ -1,12 +1,13 @@
 """
 Syntactic role search — "who does what to whom" across OT and NT.
 
-Uses MACULA Hebrew (syntax_ot) and MACULA Greek (syntax) subjref links to
+Uses MACULA Hebrew (syntax_ot) and MACULA Greek (syntax) subjref/frame links to
 find verbs by their grammatical subject, object, or argument.
 
 Questions this answers
 ──────────────────────
   • What verbs take God as their grammatical subject in the OT?
+  • What does God act *upon* — what are the objects of His verbs?
   • What does creation/salvation/judgment language look like when YHWH acts?
   • What verbs take Jesus as subject in the Gospels?
   • What does God say about Himself? (speech verbs + divine subject)
@@ -17,18 +18,28 @@ Public API
 ──────────
 subject_verbs(subject_strongs, corpus, ...)   → DataFrame of verb tokens
 verb_subjects(verb_strongs, corpus, ...)       → DataFrame of subject tokens
+subject_objects(subject_strongs, corpus, ...) → DataFrame of verb+object pairs
+object_verbs(object_strongs, corpus, ...)     → DataFrame of verbs that act on an entity
 role_report(subject_strongs, ...)              → Markdown report + chart
 print_role_summary(subject_strongs, ...)       → terminal table
+print_object_summary(subject_strongs, ...)    → terminal table of objects
 
 Typical usage
 ─────────────
 from bible_grammar.role_search import subject_verbs, print_role_summary, role_report
+from bible_grammar.role_search import subject_objects, print_object_summary
 
 # What does YHWH do in the OT?
 subject_verbs(['H3068','H0430'], corpus='OT')
 
+# What does YHWH act *upon*?
+subject_objects(['H3068','H0430'], corpus='OT')
+
 # What does Jesus do in the Gospels?
 subject_verbs(['G2424'], corpus='NT', books=['Mat','Mrk','Luk','Jhn'])
+
+# What does Jesus act upon in the Gospels?
+subject_objects(['G2424'], corpus='NT', books=['Mat','Mrk','Luk','Jhn'])
 
 # Cross-testament: divine agency verbs (OT Hebrew + LXX equivalents)
 role_report(['H3068','H0430'], corpus='OT', output_dir='output/reports')
@@ -36,6 +47,7 @@ role_report(['H3068','H0430'], corpus='OT', output_dir='output/reports')
 
 from __future__ import annotations
 from pathlib import Path
+import re
 import pandas as pd
 
 # Strong's numbers for divine / key figures — convenience constants
@@ -258,6 +270,258 @@ def verb_subjects(
     )
 
 
+# ── Object search ─────────────────────────────────────────────────────────────
+
+def _parse_frame_a1(frame: str) -> list[str]:
+    """
+    Extract A1 (patient/object) xml_ids from a MACULA Hebrew frame string.
+
+    Frame format: 'A0:id1;id2; A1:id3;id4; A2:id5;'
+    Returns list of stripped id strings for the A1 slot.
+    """
+    m = re.search(r'A1:([^A]+)', frame)
+    if not m:
+        return []
+    return [x.strip() for x in m.group(1).split(';') if x.strip()]
+
+
+def subject_objects(
+    subject_strongs: list[str] | str,
+    corpus: str = 'OT',
+    *,
+    books: list[str] | None = None,
+    verb_strongs: list[str] | None = None,
+    min_count: int = 1,
+    top_n: int | None = None,
+    include_tokens: bool = False,
+) -> pd.DataFrame:
+    """
+    Return the objects (patients) acted upon by verbs whose subject is one
+    of the given Strong's numbers.
+
+    OT method: parses the MACULA Hebrew verb `frame` column (A0=agent, A1=patient)
+    to find object tokens when the A0 slot resolves to a target Strong's number.
+
+    NT method: finds verb tokens with the subject's subjref, then collects
+    co-verse tokens tagged role='o' or role='io'.
+
+    Parameters
+    ----------
+    subject_strongs : Strong's number(s) for the acting subject
+    corpus          : 'OT' or 'NT'
+    books           : restrict to specific book_ids
+    verb_strongs    : optional — restrict to specific verbs (by Strong's)
+    min_count       : minimum object frequency
+    top_n           : return only top N objects by count
+    include_tokens  : if True return the raw token DataFrame
+
+    Returns a DataFrame with columns:
+      OT: verb_lemma, verb_gloss, obj_lemma, obj_gloss, obj_strong_h, count
+      NT: verb_lemma, verb_gloss, obj_lemma, obj_gloss, obj_strong_g, count
+    """
+    if isinstance(subject_strongs, str):
+        subject_strongs = [subject_strongs]
+
+    targets = _normalise_strongs(subject_strongs, corpus)
+
+    if corpus == 'OT':
+        df = _load_ot()
+        id_map = _ot_id_to_strong()
+        # Build reverse map: stripped_xml_id → row index for fast lookup
+        id_to_row = df.set_index(df['xml_id'].str.lstrip('o'))
+
+        verbs = df[(df['pos'] == 'verb') & df['frame'].notna() & (df['frame'] != '')].copy()
+        if books:
+            verbs = verbs[verbs['book'].isin(books)]
+        if verb_strongs:
+            vtargets = _normalise_strongs(verb_strongs, 'OT')
+            verbs = verbs[verbs['strongnumberx'].isin(vtargets)]
+
+        rows = []
+        for _, vrow in verbs.iterrows():
+            frame = vrow['frame']
+            # Check if A0 slot matches our subject
+            a0_m = re.search(r'A0:([^A]+)', frame)
+            if not a0_m:
+                continue
+            a0_ids = [x.strip() for x in a0_m.group(1).split(';') if x.strip()]
+            is_target = any(id_map.get(i, '') in targets for i in a0_ids)
+            if not is_target:
+                continue
+            # Extract A1 objects
+            for obj_id in _parse_frame_a1(frame):
+                try:
+                    orow = id_to_row.loc[obj_id]
+                    if isinstance(orow, pd.DataFrame):
+                        orow = orow.iloc[0]
+                    rows.append({
+                        'verb_lemma':    vrow['lemma'],
+                        'verb_gloss':    vrow.get('gloss', ''),
+                        'verb_strong_h': vrow.get('strong_h', ''),
+                        'obj_lemma':     orow['lemma'],
+                        'obj_gloss':     orow.get('gloss', ''),
+                        'obj_strong_h':  orow.get('strong_h', ''),
+                        'book':          vrow['book'],
+                        'ref':           vrow['ref'],
+                    })
+                except (KeyError, IndexError):
+                    continue
+
+        if not rows:
+            return pd.DataFrame()
+        token_df = pd.DataFrame(rows)
+        if include_tokens:
+            return token_df
+        agg = (
+            token_df.groupby(['verb_lemma', 'verb_gloss', 'obj_lemma', 'obj_gloss', 'obj_strong_h'])
+            .size().reset_index(name='count')
+            .sort_values('count', ascending=False)
+        )
+
+    else:  # NT
+        df = _load_nt()
+        id_map = _nt_id_to_strong()
+        verbs = df[df['class_'] == 'verb'].copy()
+        if books:
+            verbs = verbs[verbs['book'].isin(books)]
+        if verb_strongs:
+            vtargets = _normalise_strongs(verb_strongs, 'NT')
+            verbs = verbs[verbs['strong'].isin(vtargets)]
+
+        # Find verb tokens where subject resolves to target
+        matched_verbs = verbs[
+            verbs['subjref'].notna() &
+            verbs['subjref'].map(lambda x: id_map.get(x, '') in targets)
+        ]
+
+        if matched_verbs.empty:
+            return pd.DataFrame()
+
+        # For each matched verb, find co-verse 'o'/'io' tokens
+        obj_role_tokens = df[df['role'].isin(['o', 'o2'])]
+        # Group objects by verse key for fast lookup
+        obj_by_verse = obj_role_tokens.groupby(['book', 'chapter', 'verse'])
+
+        rows = []
+        for _, vrow in matched_verbs.iterrows():
+            key = (vrow['book'], vrow['chapter'], vrow['verse'])
+            try:
+                objs = obj_by_verse.get_group(key)
+            except KeyError:
+                continue
+            for _, orow in objs.iterrows():
+                rows.append({
+                    'verb_lemma':    vrow['lemma'],
+                    'verb_gloss':    vrow.get('gloss', ''),
+                    'verb_strong_g': vrow.get('strong_g', ''),
+                    'obj_lemma':     orow['lemma'],
+                    'obj_gloss':     orow.get('gloss', ''),
+                    'obj_strong_g':  orow.get('strong_g', ''),
+                    'book':          vrow['book'],
+                    'ref':           vrow['ref'],
+                })
+
+        if not rows:
+            return pd.DataFrame()
+        token_df = pd.DataFrame(rows)
+        if include_tokens:
+            return token_df
+        agg = (
+            token_df.groupby(['verb_lemma', 'verb_gloss', 'obj_lemma', 'obj_gloss', 'obj_strong_g'])
+            .size().reset_index(name='count')
+            .sort_values('count', ascending=False)
+        )
+
+    agg = agg[agg['count'] >= min_count]
+    if top_n:
+        agg = agg.head(top_n)
+    return agg.reset_index(drop=True)
+
+
+def object_verbs(
+    object_strongs: list[str] | str,
+    corpus: str = 'OT',
+    *,
+    books: list[str] | None = None,
+) -> pd.DataFrame:
+    """
+    Return the verbs that take the given entity as their grammatical object.
+
+    Symmetric to subject_verbs: answers "what is done TO this entity?"
+
+    OT: uses the MACULA Hebrew frame A1 slot.
+    NT: finds tokens with role='o'/'o2' matching the Strong's number,
+        then collects the co-verse verb tokens.
+
+    Returns a DataFrame with verb_lemma, verb_gloss, count (+ subject info for OT).
+    """
+    if isinstance(object_strongs, str):
+        object_strongs = [object_strongs]
+
+    targets = _normalise_strongs(object_strongs, corpus)
+
+    if corpus == 'OT':
+        df = _load_ot()
+        id_map = _ot_id_to_strong()
+        id_to_row = df.set_index(df['xml_id'].str.lstrip('o'))
+
+        verbs = df[(df['pos'] == 'verb') & df['frame'].notna() & (df['frame'] != '')].copy()
+        if books:
+            verbs = verbs[verbs['book'].isin(books)]
+
+        rows = []
+        for _, vrow in verbs.iterrows():
+            for obj_id in _parse_frame_a1(vrow['frame']):
+                if id_map.get(obj_id, '') in targets:
+                    rows.append({
+                        'verb_lemma':  vrow['lemma'],
+                        'verb_gloss':  vrow.get('gloss', ''),
+                        'verb_strong': 'H' + vrow['strongnumberx'],
+                        'book':        vrow['book'],
+                    })
+
+    else:  # NT
+        df = _load_nt()
+        id_map = _nt_id_to_strong()
+
+        obj_tokens = df[
+            df['role'].isin(['o', 'o2']) &
+            df['strong'].notna() &
+            df['strong'].isin(targets)
+        ].copy()
+        if books:
+            obj_tokens = obj_tokens[obj_tokens['book'].isin(books)]
+
+        verb_tokens = df[df['class_'] == 'verb']
+        verb_by_verse = verb_tokens.groupby(['book', 'chapter', 'verse'])
+
+        rows = []
+        for _, orow in obj_tokens.iterrows():
+            key = (orow['book'], orow['chapter'], orow['verse'])
+            try:
+                vbs = verb_by_verse.get_group(key)
+            except KeyError:
+                continue
+            for _, vrow in vbs.iterrows():
+                rows.append({
+                    'verb_lemma':  vrow['lemma'],
+                    'verb_gloss':  vrow.get('gloss', ''),
+                    'verb_strong': vrow.get('strong_g', ''),
+                    'book':        vrow['book'],
+                })
+
+    if not rows:
+        return pd.DataFrame()
+
+    result = pd.DataFrame(rows)
+    return (
+        result.groupby(['verb_lemma', 'verb_gloss', 'verb_strong'])
+        .size().reset_index(name='count')
+        .sort_values('count', ascending=False)
+        .reset_index(drop=True)
+    )
+
+
 # ── Terminal output ───────────────────────────────────────────────────────────
 
 def print_role_summary(
@@ -300,6 +564,49 @@ def print_role_summary(
             print(f"  {str(row['lemma']):<20} {str(row['gloss']):<30} {row['count']:>5}")
 
     print(f"\n  Total distinct verb lemmas: {len(df)}")
+    print()
+
+
+def print_object_summary(
+    subject_strongs: list[str] | str,
+    corpus: str = 'OT',
+    *,
+    books: list[str] | None = None,
+    top_n: int = 20,
+    label: str | None = None,
+) -> None:
+    """Print a formatted table of objects acted upon by verbs with the given subject."""
+    df = subject_objects(subject_strongs, corpus, books=books, top_n=top_n)
+    if isinstance(subject_strongs, str):
+        subject_strongs = [subject_strongs]
+
+    display_label = label or '/'.join(subject_strongs)
+    scope = f" ({', '.join(books)})" if books else ''
+    w = 80
+
+    print(f"\n{'═'*w}")
+    print(f"  Objects acted upon by: {display_label}{scope}  [{corpus}]")
+    print(f"{'═'*w}")
+
+    if df.empty:
+        print("  No results found.")
+        print()
+        return
+
+    if corpus == 'OT':
+        print(f"  {'Verb':<16} {'Verb Gloss':<22} {'Object':<16} {'Obj Gloss':<22} Count")
+        print(f"  {'-'*15} {'-'*21} {'-'*15} {'-'*21} -----")
+        for _, row in df.iterrows():
+            print(f"  {str(row['verb_lemma']):<16} {str(row['verb_gloss']):<22} "
+                  f"{str(row['obj_lemma']):<16} {str(row['obj_gloss']):<22} {row['count']:>5}")
+    else:
+        print(f"  {'Verb':<20} {'Verb Gloss':<28} {'Object':<20} {'Obj Gloss':<24} Count")
+        print(f"  {'-'*19} {'-'*27} {'-'*19} {'-'*23} -----")
+        for _, row in df.iterrows():
+            print(f"  {str(row['verb_lemma']):<20} {str(row['verb_gloss']):<28} "
+                  f"{str(row['obj_lemma']):<20} {str(row['obj_gloss']):<24} {row['count']:>5}")
+
+    print(f"\n  Total verb-object pairs: {len(df)}")
     print()
 
 
