@@ -6,6 +6,7 @@ from . import db as _db
 
 _cache: pd.DataFrame | None = None
 _tr_cache: pd.DataFrame | None = None
+_lxx_cache: pd.DataFrame | None = None
 
 
 def _df() -> pd.DataFrame:
@@ -17,9 +18,119 @@ def _df() -> pd.DataFrame:
 
 def reload() -> None:
     """Force reload from disk (useful after rebuilding the database)."""
-    global _cache, _tr_cache
+    global _cache, _tr_cache, _lxx_cache
     _cache = None
     _tr_cache = None
+    _lxx_cache = None
+
+
+def _lxx_df() -> pd.DataFrame:
+    global _lxx_cache
+    if _lxx_cache is None:
+        _lxx_cache = _db.load_lxx()
+    return _lxx_cache
+
+
+def lxx_query(
+    *,
+    book: str | list[str] | None = None,
+    lxx_book: str | None = None,
+    testament: str | None = None,
+    chapter: int | None = None,
+    verse: int | None = None,
+    book_group: str | None = None,
+    include_deuterocanon: bool = False,
+    part_of_speech: str | None = None,
+    tense: str | None = None,
+    voice: str | None = None,
+    mood: str | None = None,
+    person: str | None = None,
+    number: str | None = None,
+    gender: str | None = None,
+    case_: str | None = None,
+) -> pd.DataFrame:
+    """
+    Query the LXX Septuagint word data (CenterBLC/LXX, Rahlfs 1935).
+
+    Parameters
+    ----------
+    book                 : canonical book_id (e.g. 'Gen', 'Isa') or list
+    lxx_book             : LXX-native book name (e.g. 'Exod', '1Mac')
+    testament            : 'OT' (canonical) — NT not in LXX
+    chapter / verse      : filter to specific chapter or verse
+    book_group           : 'torah', 'prophets', 'writings', 'gospels', 'pauline'
+    include_deuterocanon : include deuterocanonical books (default False)
+    part_of_speech       : 'Verb', 'Noun', 'Adjective', etc.
+    tense                : 'Aorist', 'Present', 'Perfect', etc.
+    voice                : 'Active', 'Middle', 'Passive'
+    mood                 : 'Indicative', 'Participle', 'Infinitive', etc.
+    person               : '1st', '2nd', '3rd'
+    number               : 'Singular', 'Plural'
+    gender               : 'Masculine', 'Feminine', 'Neuter'
+    case_                : 'Nominative', 'Genitive', 'Dative', 'Accusative', 'Vocative'
+
+    Examples
+    --------
+    # Aorist passives in Isaiah LXX
+    lxx_query(book='Isa', tense='Aorist', voice='Passive')
+
+    # All verbs in LXX Genesis
+    lxx_query(book='Gen', part_of_speech='Verb')
+
+    # Deuterocanonical books only
+    lxx_query(include_deuterocanon=True, lxx_book='Sir')
+    """
+    from .reference import TORAH, PROPHETS, WRITINGS, GOSPELS, PAULINE, all_book_ids
+
+    df = _lxx_df()
+    mask = pd.Series(True, index=df.index)
+
+    if not include_deuterocanon:
+        mask &= ~df["is_deuterocanon"]
+
+    if lxx_book is not None:
+        mask &= df["lxx_book"] == lxx_book
+    if book is not None:
+        vals = [book] if isinstance(book, str) else book
+        mask &= df["book_id"].isin(vals)
+    if testament is not None:
+        ids = all_book_ids(testament.upper())
+        mask &= df["book_id"].isin(ids)
+    if book_group is not None:
+        groups = {
+            "torah": TORAH, "prophets": PROPHETS, "writings": WRITINGS,
+            "gospels": GOSPELS, "pauline": PAULINE,
+        }
+        grp = groups.get(book_group.lower())
+        if grp is None:
+            raise ValueError(f"Unknown book_group {book_group!r}")
+        mask &= df["book_id"].isin(grp)
+    if chapter is not None:
+        mask &= df["chapter"] == chapter
+    if verse is not None:
+        mask &= df["verse"] == verse
+
+    def _c(col: str, val: str) -> pd.Series:
+        return df[col].str.lower().str.contains(val.lower(), na=False)
+
+    if part_of_speech is not None:
+        mask &= _c("part_of_speech", part_of_speech)
+    if tense is not None:
+        mask &= _c("tense", tense)
+    if voice is not None:
+        mask &= _c("voice", voice)
+    if mood is not None:
+        mask &= _c("mood", mood)
+    if person is not None:
+        mask &= _c("person", person)
+    if number is not None:
+        mask &= _c("number", number)
+    if gender is not None:
+        mask &= _c("gender", gender)
+    if case_ is not None:
+        mask &= _c("case_", case_)
+
+    return df[mask].reset_index(drop=True)
 
 
 def _tr_df() -> pd.DataFrame:

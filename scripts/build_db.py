@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Parse STEPBible TSV files and build the processed database."""
+"""Parse all source data and build the processed database."""
 import sys
 import time
 from pathlib import Path
@@ -8,7 +8,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from bible_grammar.ingest import load_all
 from bible_grammar.translations import load_translations
-from bible_grammar.db import save, save_translations
+from bible_grammar.lxx import load_lxx
+from bible_grammar.db import save, save_translations, save_lxx
 
 if __name__ == "__main__":
     t0 = time.time()
@@ -24,5 +25,14 @@ if __name__ == "__main__":
     tr = load_translations()
     print(f"  {len(tr):,} verses loaded in {time.time()-t1:.1f}s")
     save_translations(tr)
+
+    print("\nLoading LXX Septuagint (CenterBLC/LXX via TextFabric)...")
+    t2 = time.time()
+    lxx = load_lxx()
+    print(f"  {len(lxx):,} words loaded in {time.time()-t2:.1f}s")
+    canon = lxx[~lxx.is_deuterocanon]
+    deut  = lxx[lxx.is_deuterocanon]
+    print(f"  Canonical OT books: {len(canon):,}  Deuterocanonical: {len(deut):,}")
+    save_lxx(lxx)
 
     print(f"\nAll done in {time.time()-t0:.1f}s")

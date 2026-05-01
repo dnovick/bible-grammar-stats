@@ -4,3 +4,4 @@ matplotlib>=3.7
 seaborn>=0.13
 notebook>=7.0
 ipykernel>=6.0
+text-fabric[github]>=13.0

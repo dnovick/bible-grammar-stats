@@ -9,6 +9,7 @@ _PROCESSED = _REPO_ROOT / "data" / "processed"
 DB_PATH = _PROCESSED / "bible_grammar.db"
 PARQUET_PATH = _PROCESSED / "words.parquet"
 TRANSLATIONS_PARQUET = _PROCESSED / "translations.parquet"
+LXX_PARQUET = _PROCESSED / "lxx.parquet"
 
 
 def save(df: pd.DataFrame, db_path: Path = DB_PATH,
@@ -82,6 +83,36 @@ def load(parquet_path: Path = PARQUET_PATH) -> pd.DataFrame:
     raise FileNotFoundError(
         f"No processed data found at {parquet_path} or {DB_PATH}.\n"
         "Run: python scripts/build_db.py"
+    )
+
+
+def save_lxx(df: pd.DataFrame, db_path: Path = DB_PATH,
+             parquet_path: Path = LXX_PARQUET) -> None:
+    """Write the LXX DataFrame to SQLite and Parquet."""
+    parquet_path.parent.mkdir(parents=True, exist_ok=True)
+    df.to_parquet(parquet_path, index=False)
+    print(f"Saved Parquet: {parquet_path}  ({len(df):,} rows)")
+
+    import sqlite3
+    with sqlite3.connect(db_path) as con:
+        df.to_sql("lxx", con, if_exists="replace", index=True, index_label="id")
+        con.execute("CREATE INDEX IF NOT EXISTS idx_lxx_book ON lxx(book_id)")
+        con.execute("CREATE INDEX IF NOT EXISTS idx_lxx_pos  ON lxx(part_of_speech)")
+        con.execute("CREATE INDEX IF NOT EXISTS idx_lxx_tns  ON lxx(tense)")
+        con.execute("CREATE INDEX IF NOT EXISTS idx_lxx_deut ON lxx(is_deuterocanon)")
+    print(f"Saved SQLite lxx table: {db_path}")
+
+
+def load_lxx(parquet_path: Path = LXX_PARQUET) -> pd.DataFrame:
+    """Load LXX word data from Parquet."""
+    if parquet_path.exists():
+        return pd.read_parquet(parquet_path)
+    if DB_PATH.exists():
+        import sqlite3
+        with sqlite3.connect(DB_PATH) as con:
+            return pd.read_sql("SELECT * FROM lxx", con)
+    raise FileNotFoundError(
+        "No LXX data found. Run: python scripts/build_db.py"
     )
 
 
