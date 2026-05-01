@@ -7,3 +7,6 @@
 [submodule "macula-greek"]
 	path = macula-greek
 	url = https://github.com/Clear-Bible/macula-greek.git
+[submodule "macula-hebrew"]
+	path = macula-hebrew
+	url = https://github.com/Clear-Bible/macula-hebrew.git

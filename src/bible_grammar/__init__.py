@@ -28,6 +28,8 @@ from .christological_titles import (title_counts, print_title_counts,
                                      TITLE_REGISTRY)
 from .syntax import (load_syntax, query_syntax, speech_verbs, referent_chain,
                      clause_roles, jesus_speaking_verses, MACULA_BOOK_MAP)
+from .syntax_ot import (load_syntax_ot, query_syntax_ot, lxx_alignment,
+                        clause_roles_ot, MACULA_OT_BOOK_MAP)
 from .speaker import (is_jesus_speaking, jesus_speaking_verse_set,
                       filter_to_jesus_speech, ALLOWLIST_VERSES)
 from .lexicon import lookup, search_gloss, lex_entry, lemma_index

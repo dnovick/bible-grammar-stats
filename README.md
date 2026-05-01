@@ -45,6 +45,7 @@ Built to answer questions like:
   - [NT Quotations](#nt-quotations)
   - [NT Quotation Word Alignment](#nt-quotation-word-alignment)
   - [Intertextuality Network](#intertextuality-network)
+  - [OT Hebrew Syntax (MACULA)](#ot-hebrew-syntax-macula)
   - [Theological Term Map](#theological-term-map)
   - [Synonym Comparison](#synonym-comparison)
   - [Phrase & Proximity Search](#phrase--proximity-search)
@@ -66,6 +67,8 @@ Built to answer questions like:
 |---|---|---|
 | `stepbible-data/` | Hebrew OT (TAHOT, ~284k words) and Greek NT (TAGNT, ~142k words) with full morphological tagging; LXX Greek (TALXX); lexicons TBESH/TBESG; NT→OT cross-references | CC BY 4.0 — Tyndale House Cambridge |
 | `scrollmapper-data/` | KJV English (24,570 verses) and Latin Vulgate Clementine (24,909 verses) | MIT — scrollmapper |
+| `macula-greek/` | MACULA Greek NT (Nestle1904, 137k words) with syntax trees, semantic roles (`role`), participant referents (`subjref`/`referent`), English glosses, and Louw-Nida semantic domains | CC BY 4.0 — Clear Bible / Tyndale House |
+| `macula-hebrew/` | MACULA Hebrew OT (WLC, 475k words) with syntax trees, semantic roles, LXX alignment per word (`greek`/`greekstrong`), stem, clause type (wayyiqtol/qatal/etc.), and Aramaic sections | CC BY 4.0 — Clear Bible |
 
 ### Morphological coverage
 
@@ -152,6 +155,11 @@ bible-grammar-stats/
 │   ├── hapax.py                # Hapax legomena analysis
 │   ├── parallel.py             # Parallel passage comparison
 │   ├── export.py               # HTML and CSV export for all analyses
+│   ├── syntax.py               # MACULA Greek NT syntax query API (roles, subjref)
+│   ├── syntax_ot.py            # MACULA Hebrew OT syntax query API (roles, LXX alignment)
+│   ├── speaker.py              # NT speaker attribution (allowlists + MACULA subjref)
+│   ├── lexicon.py              # TBESH/TBESG public API (lookup, search_gloss, lex_entry)
+│   ├── christological_titles.py # Christological title frequency with speaker filter
 │   ├── alignment.py            # Verse-level Hebrew↔Greek alignment
 │   ├── morphology.py           # Decode Hebrew/Greek morphology codes
 │   ├── reference.py            # Book metadata: names, testament, order
@@ -169,11 +177,15 @@ bible-grammar-stats/
 ├── .claude/commands/           # Claude Code slash command skills
 ├── stepbible-data/             # Git submodule: STEPBible/STEPBible-Data
 ├── scrollmapper-data/          # Git submodule: scrollmapper/bible_databases
+├── macula-greek/               # Git submodule: Clear-Bible/macula-greek (NT syntax trees)
+├── macula-hebrew/              # Git submodule: Clear-Bible/macula-hebrew (OT syntax trees)
 └── data/processed/             # Generated files (gitignored)
     ├── bible_grammar.db        # SQLite database
-    ├── words.parquet           # Hebrew/Greek word data
+    ├── words.parquet           # Hebrew/Greek word data (STEPBible)
     ├── translations.parquet    # KJV + Vulgate verse data
-    └── word_alignment.parquet  # IBM Model 1 alignment data
+    ├── word_alignment.parquet  # IBM Model 1 alignment data
+    ├── macula_syntax.parquet   # MACULA Greek NT syntax (137k tokens, cached)
+    └── macula_syntax_ot.parquet # MACULA Hebrew OT syntax (475k tokens, cached)
 ```
 
 ---
@@ -470,6 +482,52 @@ Vote scores reflect how many independent scholars have identified the connection
 scores ≥50 are strong explicit quotations, 20–49 are probable allusions, 10–19 are
 possible echoes. Pre-generated reports for Isaiah 53, Psalm 22, and full Isaiah
 are in `output/reports/`.
+
+---
+
+### OT Hebrew Syntax (MACULA)
+
+`syntax_ot.py` wraps the MACULA Hebrew WLC data (475k word tokens, 930
+per-chapter lowfat XML files) with the same query API as `syntax.py` for
+the NT.  Each word carries syntactic role, stem, clause type, and an inline
+LXX alignment — the Greek word and Strong's number that translates this
+specific token in the Septuagint.
+
+```python
+from bible_grammar import load_syntax_ot, query_syntax_ot, lxx_alignment
+
+df = load_syntax_ot()     # 475,911 rows; cached as Parquet after first load
+
+# Gen 1:1 with syntactic roles and LXX words
+query_syntax_ot(book='Gen', chapter=1, verse=1)[
+    ['text','lemma','strong_h','role','gloss','greek','greek_g','stem','type_']
+]
+
+# All wayyiqtol (narrative past) verbs in Genesis
+query_syntax_ot(book='Gen', tense='wayyiqtol')     # 2,105 tokens
+
+# Niphal perfects in Isaiah
+query_syntax_ot(book='Isa', stem='niphal', tense='qatal')   # 97 tokens
+
+# Aramaic sections (Daniel, Ezra, 2 words in Gen/Jer)
+query_syntax_ot(lang='A')                          # 7,549 Aramaic tokens
+
+# How does the LXX translate שָׁלוֹם?
+lxx_alignment('H7965')
+# → εἰρήνη 98%, σωτηρίας 2%
+
+# How does the LXX translate רוּחַ?
+lxx_alignment('H7307')
+# → πνεῦμα 94%, ἄνεμος 5%
+```
+
+The inline LXX alignment in MACULA Hebrew is word-level, derived from the
+actual syntax tree — a higher-precision source than the IBM Model 1 alignment
+in `ibm_align.py`, complementing it for detailed OT↔LXX studies.
+
+Available filters: `book`, `chapter`, `verse`, `strong_h`, `lemma`, `role`,
+`stem`, `pos`, `lang`, `tense` (wayyiqtol/qatal/yiqtol/…), `person`, `gender`,
+`number`, `state`, `greekstrong`, `has_subjref`, `has_participantref`.
 
 ---
 
