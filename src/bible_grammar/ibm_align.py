@@ -291,9 +291,16 @@ def translation_equivalents_w(
 
     if heb_strongs is not None:
         clean = heb_strongs.strip("{}").upper()
-        # Match against heb_strongs column (may be in {H1234} format)
-        mask &= df["heb_strongs"].str.upper().str.contains(
-            clean.replace("{","").replace("}",""), na=False)
+        # Normalize: strip variant suffix letter and leading zeros from the numeric part
+        # so H530 matches H0530, H530A, H0530A etc.
+        m = _re.match(r'^([HG])0*(\d+)([A-Z]?)$', clean)
+        if m:
+            prefix, num, suffix = m.groups()
+            # Build a pattern matching H/G + optional leading zeros + number + optional letter
+            pat = rf'^{prefix}0*{num}{suffix}[A-Z]?$'
+        else:
+            pat = clean
+        mask &= df["heb_strongs"].str.upper().str.match(pat, na=False)
     if heb_stem is not None:
         mask &= df["heb_stem"].str.lower().str.contains(heb_stem.lower(), na=False)
     if heb_pos is not None:

@@ -254,27 +254,53 @@ def word_study(strongs: str, *, example_verses: int = 5) -> dict:
 
     # --- Translation equivalents (Hebrew OT → LXX) ---
     if is_hebrew:
+        # Prefer word-level IBM Model 1 alignment; fall back to verse-level
+        te = pd.DataFrame()
         try:
-            from .alignment import translation_equivalents
-            te = translation_equivalents(heb_strongs=clean, top_n=15, min_count=1)
-            result["translation_equivalents"] = te
+            from .ibm_align import translation_equivalents_w
+            te = translation_equivalents_w(heb_strongs=clean, top_n=15, min_count=1)
         except Exception:
-            result["translation_equivalents"] = pd.DataFrame()
+            pass
+        if te.empty:
+            try:
+                from .alignment import translation_equivalents
+                te = translation_equivalents(heb_strongs=clean, top_n=15, min_count=1)
+            except Exception:
+                pass
+        result["translation_equivalents"] = te
 
-        # NT occurrences of the same strongs (rare but possible for shared roots)
-        nt_hits = df[(df["source"] == "TAGNT") &
-                     df["strongs"].str.upper().str.contains(base, na=False)]
-        result["nt_usage"] = nt_hits[["book_id", "word", "strongs"]].head(10)
-
-        # LXX gloss: what Greek lemma does this Hebrew word use most often?
-        try:
-            from .alignment import translation_equivalents as te_fn
-            result["lxx_summary"] = te_fn(heb_strongs=clean, lxx_pos="Verb",
-                                           top_n=5, min_count=2)
-        except Exception:
-            result["lxx_summary"] = pd.DataFrame()
+        # NT usage of the primary LXX equivalent (OT → LXX → NT trajectory)
+        nt_equiv: list[dict] = []
+        if not te.empty:
+            grk_lex = _load_grk_lex()
+            nt_df = df[df["source"] == "TAGNT"]
+            for _, te_row in te.head(3).iterrows():
+                g_strongs = te_row.get("lxx_strongs", "")
+                if not g_strongs or g_strongs == "__NULL__":
+                    continue
+                g_base = re.sub(r'[A-Z]$', '', g_strongs.upper())
+                nt_hits = nt_df[nt_df["strongs"].str.upper().str.contains(g_base, na=False)]
+                if nt_hits.empty:
+                    continue
+                nt_by_book = (
+                    nt_hits.groupby("book_id").size()
+                    .reset_index(name="count")
+                    .assign(_order=lambda d: d["book_id"].map(_BOOK_ORDER).fillna(99))
+                    .sort_values("_order").drop(columns="_order")
+                )
+                g_lemma = te_row.get("lxx_lemma", "")
+                if not g_lemma and g_strongs in grk_lex:
+                    g_lemma = grk_lex[g_strongs]["lemma"]
+                nt_equiv.append({
+                    "strongs": g_strongs,
+                    "lemma": g_lemma,
+                    "nt_total": len(nt_hits),
+                    "nt_by_book": nt_by_book,
+                })
+        result["nt_lxx_equiv"] = nt_equiv
     else:
         result["translation_equivalents"] = pd.DataFrame()
+        result["nt_lxx_equiv"] = []
 
     # --- Example verses ---
     hits_sorted = hits.copy()
@@ -351,9 +377,18 @@ def print_word_study(strongs: str, *, example_verses: int = 5) -> None:
 
     if is_hebrew and not ws["translation_equivalents"].empty:
         print()
-        print("  LXX Translation Equivalents (top 10):")
+        print("  LXX Translation Equivalents (word-level alignment, top 10):")
         te = ws["translation_equivalents"].head(10)
         print(te.to_string(index=False))
+
+    if is_hebrew and ws.get("nt_lxx_equiv"):
+        print()
+        print("  OT → LXX → NT Trajectory:")
+        for equiv in ws["nt_lxx_equiv"]:
+            print(f"    {equiv['lemma']} ({equiv['strongs']})  —  {equiv['nt_total']:,} NT occurrences")
+            nt_bb = equiv["nt_by_book"].head(8)
+            for _, row in nt_bb.iterrows():
+                print(f"      {row['book_id']:<10} {row['count']:4d}")
 
     print()
     print(f"  Example Verses:")
