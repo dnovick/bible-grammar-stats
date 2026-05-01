@@ -20,6 +20,7 @@ includes a summary, key observations, and data notes.
 | [2fp-perfect-verbs.md](2fp-perfect-verbs.md) | All 13 2nd person feminine plural perfect verbs in the OT, by book and stem |
 | [hapax-legomena-by-book.md](hapax-legomena-by-book.md) | Hapax legomena counts by book for OT and NT, with sample lists |
 | [nouns-by-gender-by-book.md](nouns-by-gender-by-book.md) | Noun gender distribution (M/F/Both/Proper for OT; M/F/N for NT) per book |
+| [verb-morphology-by-book.md](verb-morphology-by-book.md) | OT verb stems (binyanim) and NT verb tense/mood distribution per book |
 
 ## Greek New Testament
 
