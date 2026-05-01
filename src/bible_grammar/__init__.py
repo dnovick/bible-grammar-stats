@@ -11,4 +11,5 @@ from .hapax import hapax_legomena, hapax_table, hapax_summary
 from .termmap import term_map, print_term_map, term_map_table, THEOLOGICAL_TERMS
 from .phrase import phrase_search, print_phrase_results, proximity_search, print_proximity_results
 from .synonym import compare_synonyms, print_synonym_comparison, synonym_table
+from .quotation_align import quotation_align, print_quotation_align, batch_align
 from . import charts
