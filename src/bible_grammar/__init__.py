@@ -19,4 +19,6 @@ from .quotation_align import quotation_align, print_quotation_align, batch_align
 from .divine_names import (divine_name_table, divine_name_summary, divine_name_by_section,
                             print_divine_names, divine_names_chart, divine_names_report,
                             OT_DIVINE_NAMES, NT_DIVINE_NAMES, LXX_DIVINE_NAMES)
+from .genre_compare import (genre_compare, print_genre_compare, genre_heatmap, genre_report,
+                             OT_GENRES, NT_GENRES)
 from . import charts
