@@ -13,6 +13,7 @@ from .termmap import term_map, print_term_map, term_map_table, THEOLOGICAL_TERMS
 from .phrase import phrase_search, print_phrase_results, proximity_search, print_proximity_results
 from .collocation import collocations, print_collocations, collocation_network
 from .morph_chart import morph_distribution, print_morph_distribution, morph_chart
+from .semantic_profile import semantic_profile, print_semantic_profile, save_semantic_profile
 from .synonym import compare_synonyms, print_synonym_comparison, synonym_table
 from .quotation_align import quotation_align, print_quotation_align, batch_align
 from . import charts
