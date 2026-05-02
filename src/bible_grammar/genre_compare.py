@@ -281,7 +281,7 @@ def genre_heatmap(
     value_fmt   = '{:.1f}%' if pct else '{:,.0f}'
 
     if output_path is None:
-        out_dir = Path('output/charts')
+        out_dir = Path('output') / 'charts' / 'both' / 'genre'
         out_dir.mkdir(parents=True, exist_ok=True)
         output_path = str(out_dir / f"{corpus.lower()}-genre-{feature.replace('_','-')}.png")
 
@@ -324,7 +324,7 @@ def genre_heatmap(
 # ── Full Markdown report ──────────────────────────────────────────────────────
 
 def genre_report(
-    output_dir: str = 'output/reports',
+    output_dir: str = 'output/reports/both/genre',
     *,
     ot_features: list[str] | None = None,
     nt_features: list[str] | None = None,

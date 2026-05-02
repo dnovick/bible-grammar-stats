@@ -218,7 +218,7 @@ def verb_form_chart(
 
     if output_path is None:
         slug = f"{book.lower()}-ch{chapter}" if chapter else book.lower()
-        out = Path('output/charts')
+        out = Path('output') / 'charts' / 'ot' / 'verbs'
         out.mkdir(parents=True, exist_ok=True)
         output_path = str(out / f'verb-forms-{slug}.png')
 
@@ -660,7 +660,7 @@ def stem_chart(
     plt.tight_layout()
 
     if output_path is None:
-        out = Path('output/charts')
+        out = Path('output') / 'charts' / 'ot' / 'verbs'
         out.mkdir(parents=True, exist_ok=True)
         output_path = str(out / f'stems-{book.lower()}.png')
 
@@ -674,7 +674,7 @@ def stem_chart(
 # COMPOSITE: full verbal syntax report for a book
 # ═══════════════════════════════════════════════════════════════════════════════
 
-def verbal_syntax_report(book: str, *, output_dir: str = 'output/reports') -> str:
+def verbal_syntax_report(book: str, *, output_dir: str = 'output/reports/ot/verbs') -> str:
     """
     Generate a Markdown report covering all five verbal syntax analyses for a book.
     Returns path to the saved file.
@@ -1763,7 +1763,7 @@ def aspect_comparison_chart(
     fig.tight_layout()
 
     if output_path is None:
-        out_dir = Path('output') / 'charts'
+        out_dir = Path('output') / 'charts' / 'ot' / 'verbs'
         out_dir.mkdir(parents=True, exist_ok=True)
         slug = '_'.join(books)
         if chapter:

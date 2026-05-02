@@ -281,12 +281,12 @@ from bible_grammar import semantic_profile, print_semantic_profile, save_semanti
 print_semantic_profile('H7965')   # שָׁלוֹם peace
 print_semantic_profile('G3056')   # λόγος word
 
-# Save as Markdown + PNG chart to output/reports/
+# Save as Markdown + PNG chart (OT → output/reports/ot/lexicon/, NT → output/reports/nt/lexicon/)
 save_semantic_profile('H1285')    # בְּרִית covenant
 save_semantic_profile('H7307')    # רוּחַ spirit/wind
 ```
 
-Pre-generated profiles for שָׁלוֹם, בְּרִית, רוּחַ, and λόγος are in `output/reports/`.
+Pre-generated profiles: בְּרִית, רוּחַ, שָׁלוֹם in `output/reports/ot/lexicon/`; λόγος in `output/reports/nt/lexicon/`.
 
 ---
 
@@ -368,7 +368,7 @@ print_collocations('H7965', corpus='OT', window=5)
 print_collocations('G1515', corpus='NT', window=5)
 
 # Heatmap comparing collocate overlap for multiple roots
-collocation_network(['H7965', 'H2617', 'H6666'], output_path='output/charts/peace-network.png')
+collocation_network(['H7965', 'H2617', 'H6666'], output_path='output/charts/ot/lexicon/peace-network.png')
 ```
 
 ---
@@ -384,11 +384,11 @@ from bible_grammar import morph_distribution, print_morph_distribution, morph_ch
 # OT verb — stem breakdown across books
 print_morph_distribution('H1696')    # דָּבַר to speak
 morph_chart('H1696', chart_type='stacked_bar',
-            output_path='output/charts/dabar-stems.png')
+            output_path='output/charts/ot/lexicon/dabar-stems.png')
 
 # NT verb — tense × voice per book
 morph_chart('G3004', chart_type='heatmap',
-            output_path='output/charts/lego-tense.png')
+            output_path='output/charts/nt/lexicon/lego-tense.png')
 ```
 
 ---
@@ -408,7 +408,7 @@ from bible_grammar import consistency_heatmap, batch_consistency
 print_lxx_consistency('H7307')
 
 # Heatmap: rows=LXX lemmas, cols=OT books, cells=% usage
-consistency_heatmap('H7307', output_path='output/charts/ruach-consistency.png')
+consistency_heatmap('H7307', output_path='output/charts/ot/lexicon/ruach-consistency.png')
 
 # Batch summary across multiple roots
 batch_consistency(['H7307', 'H1697', 'H2617', 'H6944'])
@@ -485,16 +485,16 @@ print_intertextuality('Isa', min_votes=50)
 
 # Network graph PNG
 intertextuality_graph('Isa', chapter=53, min_votes=20,
-                      output_path='output/charts/isa53-network.png')
+                      output_path='output/charts/both/intertextuality/isa53-network.png')
 
 # Markdown report + CSV
-intertextuality_report('Psa', chapter=22, output_dir='output/reports')
+intertextuality_report('Psa', chapter=22)
 ```
 
 Vote scores reflect how many independent scholars have identified the connection;
 scores ≥50 are strong explicit quotations, 20–49 are probable allusions, 10–19 are
 possible echoes. Pre-generated reports for Isaiah 53, Psalm 22, and full Isaiah
-are in `output/reports/`.
+are in `output/reports/both/intertextuality/`.
 
 ---
 
@@ -656,7 +656,7 @@ print_title_counts(scope='gospels', speaker_filter=True)
 
 # Bar chart
 title_chart(scope='gospels', speaker_filter=True,
-            output_path='output/charts/christological-titles.png')
+            output_path='output/charts/nt/names/christological-titles.png')
 
 # All (book, ch, vs) tuples for a specific title
 title_verses('I AM')          # 7 Johannine I AM sayings
@@ -667,7 +667,7 @@ title_verses('Son of Man')    # 76 filtered occurrences across the Gospels
 The filter removes instances where the narrator, disciples, or opponents use the
 title — leaving only Jesus' direct self-references.
 
-Pre-generated report: `output/reports/christological-titles.md`.
+Pre-generated report: `output/reports/nt/names/christological-titles.md`.
 
 ---
 
@@ -704,10 +704,10 @@ ot_df, nt_df, chart_path = divine_action_comparison()
 
 # Full Markdown report with book distribution and cross-testament comparison
 role_report(['H3068', 'H0430'], corpus='OT', label='YHWH+Elohim',
-            output_dir='output/reports', include_cross_testament=True)
+            include_cross_testament=True)
 ```
 
-Pre-generated report: `output/reports/role-yhwh-elohim-ot.md`.
+Pre-generated report: `output/reports/ot/names/role-yhwh-elohim-ot.md`.
 
 **Slash command:** `/role-search H3068,H0430` or `/role-search G2424 NT Mat Mrk Luk Jhn`
 
@@ -906,7 +906,7 @@ print_trajectory('H1285')
 print_trajectory('G1515')    # eirene in NT/LXX
 
 # Full Markdown report + 3-panel chart (OT blue | LXX green | NT red)
-path = save_trajectory_report('H7965', output_dir='output/reports')
+path = save_trajectory_report('H7965')
 
 # Full pipeline dict (all stages accessible programmatically)
 t = word_trajectory('H7965')
@@ -959,11 +959,11 @@ from bible_grammar import (print_theological_summary, run_theological_report,
 print_theological_summary()
 
 # Full report for one term → Markdown + chart
-r = run_theological_report('hesed', output_dir='output/reports/theological')
+r = run_theological_report('hesed', output_dir='output/reports/ot/lexicon')
 print(r['trajectory']['continuity_note'])
 
 # Batch: generate all 14 reports
-run_all_theological_reports(output_dir='output/reports/theological')
+run_all_theological_reports(output_dir='output/reports/ot/lexicon')
 ```
 
 **Slash command:** `/trajectory summary` · `/trajectory all` · `/trajectory hesed`
@@ -1116,7 +1116,7 @@ print_verb_form_profile('Psa')
 print_verb_form_profile('Gen', chapter=1)
 
 # Save a bar chart PNG
-verb_form_chart('Gen', output_path='output/charts/verb-forms-gen.png')
+verb_form_chart('Gen', output_path='output/charts/ot/verbs/verb-forms-gen.png')
 ```
 
 #### Wayyiqtol Chain Analysis
@@ -1338,7 +1338,7 @@ print_aspect_comparison(['Gen', 'Psa', 'Isa', 'Deu'])
 
 # Save grouped bar chart
 path = aspect_comparison_chart(['Gen', 'Psa', 'Isa', 'Deu', 'Pro'])
-# → output/charts/aspect_comparison_Gen_Psa_Isa_Deu_Pro.png
+# → output/charts/ot/verbs/aspect_comparison_Gen_Psa_Isa_Deu_Pro.png
 
 # Raw DataFrame for custom analysis
 df = aspect_comparison(['Gen', 'Psa', 'Isa', 'Deu'])
@@ -1491,7 +1491,7 @@ divine_names_chart('NT', chart_type='stacked_bar')
 divine_names_chart('OT', chart_type='heatmap')
 
 # Full Markdown report (OT + LXX + NT)
-divine_names_report(output_dir='output/reports')
+divine_names_report()
 ```
 
 Notable finding: **Adonai** is overwhelmingly a prophetic title (343 of 440 OT occurrences
@@ -1519,10 +1519,10 @@ print_genre_compare('NT', feature='verb_mood')
 
 # Heatmap chart
 genre_heatmap('OT', feature='verb_stem',
-              output_path='output/charts/ot-genre-verb-stem.png')
+              output_path='output/charts/both/genre/ot-genre-verb-stem.png')
 
 # Full Markdown report (OT + NT, all features)
-genre_report(output_dir='output/reports')
+genre_report()
 ```
 
 Key findings:
@@ -1602,7 +1602,7 @@ from bible_grammar import charts
 
 # Bar chart from any DataFrame
 charts.bar_chart(df, x='stem', title='Verb Stems in Isaiah',
-                 output_path='output/charts/isaiah_stems.png')
+                 output_path='output/charts/ot/verbs/isaiah_stems.png')
 
 # Heatmap (e.g. tense × voice)
 charts.heatmap(df, index='tense', columns='voice', title='Tense × Voice in John')
@@ -1612,7 +1612,7 @@ charts.grouped_bar(df, x='book_id', hue='stem', title='Stems by Book')
 
 # LXX consistency heatmap
 from bible_grammar import consistency_heatmap
-consistency_heatmap(['H7307', 'H2617'], output_path='output/charts/consistency.png')
+consistency_heatmap(['H7307', 'H2617'], output_path='output/charts/ot/lexicon/consistency.png')
 ```
 
 ---
@@ -1668,7 +1668,7 @@ print_hiphil_semantic_categories()
 
 # Generate full report + 6 PNG charts
 path = hiphil_report()
-# Saves output/reports/hiphil_report.md + output/charts/hiphil_*.png
+# Saves output/reports/ot/verbs/hiphil_report.md + output/charts/ot/verbs/hiphil_*.png
 ```
 
 **Slash commands:**
@@ -1780,25 +1780,59 @@ Examples:
 
 ## Notebooks
 
+Notebooks are organized under `notebooks/` into subdirectories by testament and topic.
+
+**`notebooks/both/survey/`** — cross-testament survey
+
 | Notebook | Purpose |
 |---|---|
 | `01_data_exploration.ipynb` | Raw data inspection, word counts, Gen 1:1 and Matt 1:1 spot-checks |
 | `02_query_demo.ipynb` | End-to-end walkthrough: Niphal perfects, Torah verb stems, Greek tense/voice, CSV export |
-| `03_statistics.ipynb` | Full showcase — OT verb stems, Torah comparison, Greek NT heatmaps, aorist passives by book |
-| `04_nt_quotations.ipynb` | NT→OT quotation database, three-way text comparison, LXX vs MT alignment |
-| `05_concordance.ipynb` | Concordance, lemma frequency, top lemmas by book |
-| `06_book_profiles.ipynb` | Per-book morphological fingerprints, cross-book comparison |
-| `07_word_study.ipynb` | Word study API, LXX equivalents, OT→LXX→NT trajectory |
-| `08_parallel_passage.ipynb` | Parallel passage comparison (Synoptics, Samuel/Psalms) |
-| `09_language_analysis.ipynb` | LXX consistency, collocations, morphological distribution, semantic profiles, theological term maps |
 | `10_advanced_analysis.ipynb` | Divine names, genre comparison, intertextuality networks, HTML/CSV export |
+
+**`notebooks/both/verbs/`** — verb morphology (both testaments)
+
+| Notebook | Purpose |
+|---|---|
+| `03_statistics.ipynb` | Full showcase — OT verb stems, Torah comparison, Greek NT heatmaps, aorist passives by book |
+
+**`notebooks/both/intertextuality/`** — quotation and parallel studies
+
+| Notebook | Purpose |
+|---|---|
+| `04_nt_quotations.ipynb` | NT→OT quotation database, three-way text comparison, LXX vs MT alignment |
+| `08_parallel_passage.ipynb` | Parallel passage comparison (Synoptics, Samuel/Psalms) |
+
+**`notebooks/both/lexicon/`** — lexicon and word study
+
+| Notebook | Purpose |
+|---|---|
+| `05_concordance.ipynb` | Concordance, lemma frequency, top lemmas by book |
+| `07_word_study.ipynb` | Word study API, LXX equivalents, OT→LXX→NT trajectory |
+| `09_language_analysis.ipynb` | LXX consistency, collocations, morphological distribution, semantic profiles, theological term maps |
+
+**`notebooks/both/syntax/`** — syntax, roles, poetry
+
+| Notebook | Purpose |
+|---|---|
 | `11_syntax_and_roles.ipynb` | NT/OT MACULA syntax trees, speaker attribution, lexicon API, christological titles, syntactic role/object search, LXX corpus query, cross-testament trajectory, theological term reports, Hebrew poetry analysis (cola/parallelism/chiasm/acrostic/meter), Hebrew verbal syntax (verb form profiles, wayyiqtol chains, infinitive usage, clause types, stem distribution, disjunctive clauses, conditional clauses, relative clauses, aspect comparison, discourse particles) |
+
+**`notebooks/ot/survey/`** — OT survey
+
+| Notebook | Purpose |
+|---|---|
+| `06_book_profiles.ipynb` | Per-book morphological fingerprints, cross-book comparison |
+
+**`notebooks/ot/verbs/`** — OT verb morphology
+
+| Notebook | Purpose |
+|---|---|
 | `12_hiphil_morphology.ipynb` | Hiphil (הִפְעִיל) verb morphology: conjugation distribution, top roots, root × conjugation heatmap, book distribution, Hiphil-dominant roots, semantic function categories, full report generation |
 
 Export a notebook as a shareable HTML file:
 
 ```bash
-jupyter nbconvert --to html notebooks/10_advanced_analysis.ipynb
+jupyter nbconvert --to html notebooks/both/survey/10_advanced_analysis.ipynb
 ```
 
 ---

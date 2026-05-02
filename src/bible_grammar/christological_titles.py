@@ -432,7 +432,7 @@ def title_chart(
     active_books = [b for b in books if df[b].sum() > 0]
 
     if output_path is None:
-        out_dir = Path('output/charts')
+        out_dir = Path('output') / 'charts' / 'nt' / 'names'
         out_dir.mkdir(parents=True, exist_ok=True)
         output_path = str(out_dir / f'christological-titles-{scope}.png')
 
@@ -522,7 +522,7 @@ def title_verses(label: str, *, book: str | None = None) -> 'pd.DataFrame':
 # ── Markdown report ───────────────────────────────────────────────────────────
 
 def title_report(
-    output_dir: str = 'output/reports',
+    output_dir: str = 'output/reports/nt/names',
     *,
     include_verses: bool = True,
 ) -> str:

@@ -421,7 +421,7 @@ def trajectory_chart(
 
     slug = strongs.lower().replace(' ', '')
     if output_path is None:
-        out_dir = Path('output/charts')
+        out_dir = Path('output') / 'charts' / 'ot' / 'lexicon'
         out_dir.mkdir(parents=True, exist_ok=True)
         output_path = str(out_dir / f'trajectory-{slug}.png')
 
@@ -503,7 +503,7 @@ def trajectory_chart(
 def save_trajectory_report(
     strongs: str,
     *,
-    output_dir: str = 'output/reports',
+    output_dir: str = 'output/reports/ot/lexicon',
     top_n: int = 15,
 ) -> str:
     """
@@ -630,7 +630,7 @@ def save_trajectory_report(
 def batch_trajectories(
     strongs_list: list[str],
     *,
-    output_dir: str = 'output/reports',
+    output_dir: str = 'output/reports/ot/lexicon',
 ) -> list[str]:
     """
     Generate trajectory reports for a list of Strong's numbers.

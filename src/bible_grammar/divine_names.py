@@ -276,7 +276,8 @@ def divine_names_chart(
     name_labels = [meta['label'] for meta in names.values()]
 
     if output_path is None:
-        out_dir = Path('output/charts')
+        sub = 'ot' if corpus in ('OT', 'LXX') else 'nt'
+        out_dir = Path('output') / 'charts' / sub / 'names'
         out_dir.mkdir(parents=True, exist_ok=True)
         suffix = 'bar' if chart_type == 'stacked_bar' else 'heatmap'
         output_path = str(out_dir / f"{corpus.lower()}-divine-names-{suffix}.png")
@@ -350,7 +351,7 @@ def divine_names_chart(
 
 
 def divine_names_report(
-    output_dir: str = 'output/reports',
+    output_dir: str = 'output/reports/both/names',
     *,
     corpora: list[str] | None = None,
 ) -> str:

@@ -84,7 +84,7 @@ Verbs whose grammatical subject is **YHWH/Elohim**, resolved via MACULA Hebrew `
 
 ## Cross-Testament: OT vs NT Divine Action
 
-![OT vs NT divine action chart](divine-action-ot-nt.png)
+![OT vs NT divine action chart](../both/names/divine-action-ot-nt.png)
 
 The OT column shows Hebrew verb lemmas with their inline LXX Greek equivalent. The NT column shows Greek verbs with Θεός as subject.
 

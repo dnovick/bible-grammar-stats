@@ -252,7 +252,7 @@ def intertextuality_graph(
                          min_votes=min_votes, include_kjv=False)
 
     if output_path is None:
-        out_dir = Path('output/charts')
+        out_dir = Path('output') / 'charts' / 'both' / 'intertextuality'
         out_dir.mkdir(parents=True, exist_ok=True)
         slug_parts = [ot_book.lower()]
         if chapter:
@@ -391,7 +391,7 @@ def intertextuality_report(
     chapter: int | None = None,
     verse: int | None = None,
     min_votes: int = 20,
-    output_dir: str = 'output/reports',
+    output_dir: str = 'output/reports/both/intertextuality',
 ) -> str:
     """
     Generate an HTML + CSV report for an OT→NT intertextuality network.

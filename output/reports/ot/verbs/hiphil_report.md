@@ -25,7 +25,7 @@ The **Hiphil** stem expresses causative or declarative action. It is formed with
 
 ## 2. Conjugation (Tense/Aspect) Distribution
 
-![Hiphil conjugation chart](../charts/hiphil_conjugation.png)
+![Hiphil conjugation chart](../../charts/ot/verbs/hiphil_conjugation.png)
 
 | Conjugation | Count | % |
 |---|---|---|
@@ -44,7 +44,7 @@ The **Hiphil** stem expresses causative or declarative action. It is formed with
 
 ## 3. Distribution Across Books
 
-![Hiphil book distribution](../charts/hiphil_books.png)
+![Hiphil book distribution](../../charts/ot/verbs/hiphil_books.png)
 
 | Book | Count | % of OT Hiphil | % of book verbs |
 |---|---|---|---|
@@ -71,13 +71,13 @@ The **Hiphil** stem expresses causative or declarative action. It is formed with
 
 ## 4. Hiphil vs. Other Stems by Genre
 
-![Stem comparison chart](../charts/hiphil_stem_comparison.png)
+![Stem comparison chart](../../charts/ot/verbs/hiphil_stem_comparison.png)
 
 The Hiphil typically represents **9–16% of all verb tokens** per book. Poetry (Psalms 15.4%, Proverbs 14.8%) and prophecy (Isaiah 13.4%, Jeremiah 12.8%) use the Hiphil proportionally more than narrative (Genesis 9.8%).
 
 ## 5. Most Frequent Hiphil Roots
 
-![Top roots chart](../charts/hiphil_top_roots.png)
+![Top roots chart](../../charts/ot/verbs/hiphil_top_roots.png)
 
 | # | Root | Lemma | Count | % | Primary meaning |
 |---|---|---|---|---|---|
@@ -104,7 +104,7 @@ The Hiphil typically represents **9–16% of all verb tokens** per book. Poetry 
 
 ## 6. Root × Conjugation Heatmap
 
-![Root-conjugation heatmap](../charts/hiphil_root_heatmap.png)
+![Root-conjugation heatmap](../../charts/ot/verbs/hiphil_root_heatmap.png)
 
 Each cell shows what percentage of that root's total Hiphil tokens appear in that conjugation. Rows are row-normalized (each root sums to 100%).
 
@@ -143,7 +143,7 @@ These roots almost exclusively occur in the Hiphil. They are "built-in causative
 
 ## 8. Semantic Function Categories
 
-![Semantic categories pie chart](../charts/hiphil_semantic.png)
+![Semantic categories pie chart](../../charts/ot/verbs/hiphil_semantic.png)
 
 | Category | Count | % |
 |---|---|---|

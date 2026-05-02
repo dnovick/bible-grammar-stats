@@ -639,7 +639,8 @@ def role_chart(
 
     if output_path is None:
         slug = display_label.replace('/', '-').replace(' ', '').lower()
-        out_dir = Path('output/charts')
+        sub = 'ot' if corpus == 'OT' else 'nt'
+        out_dir = Path('output') / 'charts' / sub / 'names'
         out_dir.mkdir(parents=True, exist_ok=True)
         output_path = str(out_dir / f'role-{slug}-{corpus.lower()}.png')
 
@@ -701,7 +702,7 @@ def divine_action_comparison(
     nt_df = subject_verbs(nt_strongs, 'NT', top_n=top_n)
 
     if output_path is None:
-        out_dir = Path('output/charts')
+        out_dir = Path('output') / 'charts' / 'both' / 'names'
         out_dir.mkdir(parents=True, exist_ok=True)
         output_path = str(out_dir / 'divine-action-ot-nt.png')
 
@@ -743,7 +744,7 @@ def role_report(
     books: list[str] | None = None,
     top_n: int = 30,
     label: str | None = None,
-    output_dir: str = 'output/reports',
+    output_dir: str | None = None,
     include_cross_testament: bool = True,
 ) -> str:
     """
@@ -756,7 +757,11 @@ def role_report(
         subject_strongs = [subject_strongs]
 
     display_label = label or '/'.join(subject_strongs)
-    out_dir = Path(output_dir)
+    if output_dir is None:
+        sub = 'ot' if corpus == 'OT' else 'nt'
+        out_dir = Path('output') / 'reports' / sub / 'names'
+    else:
+        out_dir = Path(output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     slug = display_label.replace('/', '-').replace(' ', '').lower()

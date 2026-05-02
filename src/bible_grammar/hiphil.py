@@ -505,7 +505,7 @@ def print_hiphil_semantic_categories() -> None:
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def _ensure_output_dir() -> Path:
-    p = Path('output') / 'charts'
+    p = Path('output') / 'charts' / 'ot' / 'verbs'
     p.mkdir(parents=True, exist_ok=True)
     return p
 
@@ -800,7 +800,7 @@ def hiphil_report(output_dir: str | None = None) -> Path:
     Returns path to the Markdown report.
     """
     if output_dir is None:
-        out_dir = Path('output') / 'reports'
+        out_dir = Path('output') / 'reports' / 'ot' / 'verbs'
     else:
         out_dir = Path(output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -862,7 +862,7 @@ def hiphil_report(output_dir: str | None = None) -> Path:
     # 2. Conjugation
     lines.append('## 2. Conjugation (Tense/Aspect) Distribution\n\n')
     if charts['conjugation']:
-        rel = Path('..') / 'charts' / charts['conjugation'].name
+        rel = Path('../..') / 'charts' / 'ot' / 'verbs' / charts['conjugation'].name
         lines.append(f'![Hiphil conjugation chart]({rel})\n\n')
     lines.append('| Conjugation | Count | % |\n|---|---|---|\n')
     for _, row in conj_df.iterrows():
@@ -879,7 +879,7 @@ def hiphil_report(output_dir: str | None = None) -> Path:
     # 3. Book distribution
     lines.append('## 3. Distribution Across Books\n\n')
     if charts['books']:
-        rel = Path('..') / 'charts' / charts['books'].name
+        rel = Path('../..') / 'charts' / 'ot' / 'verbs' / charts['books'].name
         lines.append(f'![Hiphil book distribution]({rel})\n\n')
     lines.append('| Book | Count | % of OT Hiphil | % of book verbs |\n|---|---|---|---|\n')
     for _, row in book_df.iterrows():
@@ -889,7 +889,7 @@ def hiphil_report(output_dir: str | None = None) -> Path:
     # 4. Stem comparison
     lines.append('## 4. Hiphil vs. Other Stems by Genre\n\n')
     if charts['stems']:
-        rel = Path('..') / 'charts' / charts['stems'].name
+        rel = Path('../..') / 'charts' / 'ot' / 'verbs' / charts['stems'].name
         lines.append(f'![Stem comparison chart]({rel})\n\n')
     lines.append(
         'The Hiphil typically represents **9–16% of all verb tokens** per book. '
@@ -900,7 +900,7 @@ def hiphil_report(output_dir: str | None = None) -> Path:
     # 5. Top roots
     lines.append('## 5. Most Frequent Hiphil Roots\n\n')
     if charts['top_roots']:
-        rel = Path('..') / 'charts' / charts['top_roots'].name
+        rel = Path('../..') / 'charts' / 'ot' / 'verbs' / charts['top_roots'].name
         lines.append(f'![Top roots chart]({rel})\n\n')
     lines.append('| # | Root | Lemma | Count | % | Primary meaning |\n|---|---|---|---|---|---|\n')
     for i, row in top_roots_df.iterrows():
@@ -910,7 +910,7 @@ def hiphil_report(output_dir: str | None = None) -> Path:
     # 6. Root × conjugation heatmap
     lines.append('## 6. Root × Conjugation Heatmap\n\n')
     if charts['heatmap']:
-        rel = Path('..') / 'charts' / charts['heatmap'].name
+        rel = Path('../..') / 'charts' / 'ot' / 'verbs' / charts['heatmap'].name
         lines.append(f'![Root-conjugation heatmap]({rel})\n\n')
     lines.append(
         'Each cell shows what percentage of that root\'s total Hiphil tokens appear '
@@ -936,7 +936,7 @@ def hiphil_report(output_dir: str | None = None) -> Path:
     # 8. Semantic categories
     lines.append('## 8. Semantic Function Categories\n\n')
     if charts['semantic']:
-        rel = Path('..') / 'charts' / charts['semantic'].name
+        rel = Path('../..') / 'charts' / 'ot' / 'verbs' / charts['semantic'].name
         lines.append(f'![Semantic categories pie chart]({rel})\n\n')
     lines.append('| Category | Count | % |\n|---|---|---|\n')
     for _, row in sem_df.iterrows():
