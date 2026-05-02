@@ -20,6 +20,8 @@ conditional clauses, and relative clause analysis.
 - `/verbal-syntax rel <book> [chapter]` — relative clauses (אֲשֶׁר/שֶׁ/דִּי) with role inference
 - `/verbal-syntax relsum <book>` — relative clause role/verb-form summary for a book
 - `/verbal-syntax aspect <book1> [book2 ...]` — side-by-side verb form % comparison across genres
+- `/verbal-syntax particles <book> [chapter]` — discourse particles (הִנֵּה/כִּי/וְ/לָכֵן/עַתָּה/גַּם/אַךְ)
+- `/verbal-syntax ptclsum <book>` — discourse particle function summary for a book
 - `/verbal-syntax report <book>` — full Markdown report (all analyses)
 
 **Examples:**
@@ -52,6 +54,12 @@ conditional clauses, and relative clause analysis.
 - `/verbal-syntax aspect Gen Psa`     — narrative vs. poetry verb form profile
 - `/verbal-syntax aspect Gen Psa Isa Deu` — 4-genre comparison
 - `/verbal-syntax aspect Gen Deu Pro Psa Isa` — full 5-genre comparison (saves PNG)
+- `/verbal-syntax particles Gen 3`    — discourse particles in Gen 3 (הִנֵּה/כִּי/גַּם)
+- `/verbal-syntax particles Isa 40`   — Isa 40: three הִנֵּה + כִּי content clauses
+- `/verbal-syntax particles Deu 6`    — Deuteronomy 6 שְׁמַע/כִּי density
+- `/verbal-syntax ptclsum Gen`        — Genesis: כִּי 55% causal, 29% content
+- `/verbal-syntax ptclsum Deu`        — Deuteronomy particle profile
+- `/verbal-syntax ptclsum Psa`        — Psalms: הִנֵּה and כִּי asseverative
 - `/verbal-syntax report Gen`         — full report saved to output/reports/
 
 ---
@@ -65,7 +73,8 @@ from bible_grammar import (print_verb_form_profile, print_wayyiqtol_chains,
                             print_disjunctive_clauses, print_disjunctive_in_chains,
                             print_conditional_clauses, print_conditional_summary,
                             print_relative_clauses, print_relative_summary,
-                            print_aspect_comparison, aspect_comparison_chart)
+                            print_aspect_comparison, aspect_comparison_chart,
+                            print_discourse_particles, print_particle_summary)
 
 raw = "$ARGUMENTS".strip().split()
 
@@ -119,6 +128,12 @@ elif raw[0] == 'aspect' and len(raw) >= 2:
         path = aspect_comparison_chart(books)
         if path:
             print(f'Chart saved: {path}')
+elif raw[0] == 'particles' and len(raw) >= 2:
+    book = raw[1]
+    ch = int(raw[2]) if len(raw) > 2 else None
+    print_discourse_particles(book, ch)
+elif raw[0] == 'ptclsum' and len(raw) >= 2:
+    print_particle_summary(raw[1])
 elif raw[0] == 'report' and len(raw) >= 2:
     path = verbal_syntax_report(raw[1])
     print(f'Report saved: {path}')

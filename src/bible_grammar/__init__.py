@@ -79,6 +79,8 @@ from .verbal_syntax import (
     relative_clause_summary, print_relative_summary,
     aspect_comparison, print_aspect_comparison,
     aspect_comparison_chart, GENRE_SETS,
+    discourse_particles, print_discourse_particles,
+    discourse_particle_summary, print_particle_summary,
 )
 from .speaker import (is_jesus_speaking, jesus_speaking_verse_set,
                       filter_to_jesus_speech, ALLOWLIST_VERSES)

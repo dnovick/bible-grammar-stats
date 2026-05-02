@@ -1352,6 +1352,45 @@ print(GENRE_SETS['poetry'])     # ['Psa', 'Pro', 'Job', 'Sng', 'Lam']
 **Slash command:**
 - `/verbal-syntax aspect <book1> [book2 ...]` — side-by-side comparison + saves PNG
 
+#### Discourse Particle Tagging
+
+Seven key Hebrew discourse particles classified by discourse function using
+MACULA's English gloss annotations:
+
+| Particle | Category | Functions |
+|---|---|---|
+| הִנֵּה | presentative | attention-getter ("behold/look") |
+| כִּי | connective | causal · content · adversative · conditional · asseverative · temporal |
+| וְ | connective | sequential · adversative · logical · emphatic · temporal |
+| לָכֵן | consequence | "therefore / so" |
+| עַתָּה | temporal | discourse "now" (logical pivot) |
+| גַּם | additive | "also / even" |
+| אַךְ | restrictive | "only / surely / but" |
+
+```python
+from bible_grammar import (print_discourse_particles, print_particle_summary,
+                            discourse_particles, discourse_particle_summary)
+
+# Chapter detail — Isaiah 40 has three הִנֵּה presentatives + כִּי clauses
+print_discourse_particles('Isa', 40)
+
+# Book summary — Genesis כִּי breakdown
+print_particle_summary('Gen')
+# כִּי: 55.2% causal · 28.6% content · 4.8% temporal · 4.1% adversative
+
+# Deuteronomy: more conditional כִּי (legal "if…then" protases)
+print_particle_summary('Deu')
+
+# Cross-book כִּי comparison
+from bible_grammar import discourse_particle_summary
+import pandas as pd
+frames = {b: discourse_particle_summary(b) for b in ['Gen', 'Deu', 'Isa', 'Psa']}
+```
+
+**Slash commands:**
+- `/verbal-syntax particles <book> [ch]` — per-verse particle listing with function
+- `/verbal-syntax ptclsum <book>` — summary per particle type for a whole book
+
 ---
 
 ### Theological Term Map
@@ -1622,6 +1661,8 @@ slash commands are available:
 | `/verbal-syntax rel <book> [ch]` | Relative clauses (אֲשֶׁר/שֶׁ/דִּי) with inferred subject/object/oblique role |
 | `/verbal-syntax relsum <book>` | Relative clause role × verb-form × antecedent summary |
 | `/verbal-syntax aspect <book1> [book2...]` | Side-by-side verb form % comparison across genres; saves PNG chart |
+| `/verbal-syntax particles <book> [ch]` | Discourse particles (הִנֵּה/כִּי/וְ/לָכֵן/עַתָּה/גַּם/אַךְ) with function classification |
+| `/verbal-syntax ptclsum <book>` | Discourse particle function distribution for a whole book |
 | `/verbal-syntax report <book>` | Full Markdown verbal syntax report |
 | `/export <type> [args]` | Export any analysis to HTML + CSV |
 

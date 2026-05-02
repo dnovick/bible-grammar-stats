@@ -50,6 +50,11 @@ aspect_comparison(books, chapter=None)          → DataFrame
 print_aspect_comparison(books, chapter=None)    → None
 aspect_comparison_chart(books, chapter=None)    → Path | None
 GENRE_SETS                                      → dict[str, list[str]]
+
+discourse_particles(book, chapter=None)         → DataFrame
+print_discourse_particles(book, chapter=None)   → None
+discourse_particle_summary(book)                → DataFrame
+print_particle_summary(book)                    → None
 """
 
 from __future__ import annotations
@@ -1768,3 +1773,290 @@ def aspect_comparison_chart(
     fig.savefig(output_path, dpi=150, bbox_inches='tight')
     plt.close(fig)
     return Path(output_path)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DISCOURSE PARTICLE TAGGING
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Hebrew discourse particles mark logical / discourse transitions at clause and
+# sentence level.  This module tracks seven key particles that 2nd-year students
+# encounter constantly:
+#
+#   הִנֵּה (hinneh) — presentative attention-getter ("behold/look"), vividness
+#   כִּי             — multi-sense connective: causal · content · adversative ·
+#                      conditional · asseverative · temporal
+#   וְ  (waw)        — most frequent: sequential · adversative · logical ·
+#                      emphatic · temporal
+#   לָכֵן           — consequence / result ("therefore")
+#   עַתָּה           — discourse "now" (temporal transition or logical pivot)
+#   גַּם             — additive / emphatic ("also / even")
+#   אַךְ             — restrictive / asseverative ("only / surely / but")
+#
+# We use MACULA's `english` gloss to sub-classify כִּי and וְ into discourse
+# functions.  For the remaining particles the lemma alone determines function.
+# ───────────────────────────────────────────────────────────────────────────────
+
+# Particle registry: stripped lemma → (class_filter, display_label, category)
+# class_filter=None means accept any class_
+_PTCL_REGISTRY: dict[str, tuple[str | None, str, str]] = {
+    'הנה':  (None,  'הִנֵּה',  'presentative'),
+    'כי':   ('cj',  'כִּי',    'connective'),
+    'ו':    ('cj',  'וְ',      'connective'),
+    'לכן':  (None,  'לָכֵן',   'consequence'),
+    'עתה':  (None,  'עַתָּה',  'temporal'),
+    'גם':   (None,  'גַּם',    'additive'),
+    'אך':   (None,  'אַךְ',    'restrictive'),
+}
+
+# Map MACULA english glosses → discourse function label for כִּי
+_KI_SENSE_MAP: dict[str, str] = {
+    'because':  'causal',
+    'for':      'causal',
+    'since':    'causal',
+    'so':       'causal',
+    'that':     'content',
+    'indeed':   'asseverative',
+    'surely':   'asseverative',
+    'yes':      'asseverative',
+    'truly':    'asseverative',
+    'verily':   'asseverative',
+    'but':      'adversative',
+    'yet':      'adversative',
+    'though':   'adversative',
+    'although': 'adversative',
+    'however':  'adversative',
+    'nevertheless': 'adversative',
+    'if':       'conditional',
+    'unless':   'conditional',
+    'except':   'conditional',
+    'when':     'temporal',
+    'as':       'temporal',
+    'while':    'temporal',
+    'how':      'exclamatory',
+    'even':     'emphatic',
+    'and':      'emphatic',
+}
+
+# Map MACULA english glosses → discourse function label for וְ
+_WAW_SENSE_MAP: dict[str, str] = {
+    'and':     'sequential',
+    'then':    'sequential',
+    'or':      'sequential',
+    'now':     'sequential',
+    'that':    'sequential',
+    'with':    'sequential',
+    'but':     'adversative',
+    'yet':     'adversative',
+    'though':  'adversative',
+    'however': 'adversative',
+    'nevertheless': 'adversative',
+    'so':      'logical',
+    'for':     'logical',
+    'since':   'logical',
+    'therefore': 'logical',
+    'when':    'temporal',
+    'while':   'temporal',
+    'even':    'emphatic',
+    'indeed':  'emphatic',
+    'also':    'emphatic',
+    'also ':   'emphatic',
+}
+
+
+def _ptcl_function(lem: str, english_gloss: str) -> str:
+    """Return discourse function label for a particle token."""
+    g = english_gloss.strip().lower()
+    if lem == 'כי':
+        return _KI_SENSE_MAP.get(g, f'other ({g})' if g else 'unclassified')
+    if lem == 'ו':
+        return _WAW_SENSE_MAP.get(g, f'other ({g})' if g else 'sequential')
+    # Fixed-function particles
+    fixed = {
+        'הנה': 'presentative',
+        'לכן': 'consequence',
+        'עתה': 'temporal',
+        'גם':  'additive',
+        'אך':  'restrictive',
+    }
+    return fixed.get(lem, 'particle')
+
+
+def discourse_particles(
+    book: str,
+    chapter: int | None = None,
+    *,
+    particles: list[str] | None = None,
+) -> pd.DataFrame:
+    """
+    Tag all discourse particle tokens in a book or chapter.
+
+    Parameters
+    ----------
+    book : str
+        MACULA book ID.
+    chapter : int, optional
+        Single chapter filter.
+    particles : list of str, optional
+        Subset of particle lemmas to include (stripped, consonants only).
+        Defaults to all seven in _PTCL_REGISTRY.
+
+    Returns
+    -------
+    DataFrame with columns:
+        chapter, verse, particle_label, particle_text, discourse_function,
+        following_text, verse_text
+    """
+    if particles is None:
+        particles = list(_PTCL_REGISTRY.keys())
+
+    df = _load_macula()
+    scope = _filter_book(df, book, chapter).reset_index(drop=True)
+    scope['_lem'] = scope['lemma'].apply(_strip_diacritics)
+
+    records: list[dict] = []
+    for pos, row in scope.iterrows():
+        lem = row['_lem']
+        if lem not in particles:
+            continue
+        cls = str(row.get('class_', ''))
+        reg_cls, display_label, _ = _PTCL_REGISTRY.get(lem, (None, lem, ''))
+        if reg_cls is not None and cls != reg_cls:
+            continue
+
+        ch_val = row['chapter']
+        vs_val = row['verse']
+        bk_val = row['book']
+
+        english = str(row.get('english', ''))
+        func = _ptcl_function(lem, english)
+
+        # The next 1–3 content words following the particle
+        following = []
+        for fwd in range(1, 6):
+            fpos = pos + fwd
+            if fpos >= len(scope):
+                break
+            fr = scope.iloc[fpos]
+            if fr['chapter'] != ch_val:
+                break
+            if str(fr.get('class_', '')) in ('noun', 'verb', 'adj', 'pron', 'adv'):
+                following.append(str(fr.get('text', '')))
+                if len(following) >= 3:
+                    break
+
+        # Verse text
+        vs_tokens = scope[
+            (scope['book'] == bk_val) &
+            (scope['chapter'] == ch_val) &
+            (scope['verse'] == vs_val)
+        ]
+        vs_text = ' '.join(str(r['text']) for _, r in vs_tokens.iterrows())
+
+        records.append({
+            'chapter':            int(ch_val),
+            'verse':              int(vs_val),
+            'particle_label':     display_label,
+            'particle_text':      str(row.get('text', '')),
+            'discourse_function': func,
+            'following_text':     ' '.join(following),
+            'verse_text':         vs_text[:70],
+        })
+
+    return pd.DataFrame(records)
+
+
+def print_discourse_particles(
+    book: str,
+    chapter: int | None = None,
+    *,
+    particles: list[str] | None = None,
+    max_rows: int = 50,
+    omit_waw: bool = True,
+) -> None:
+    """
+    Print a formatted report of discourse particles in a book or chapter.
+
+    Parameters
+    ----------
+    omit_waw : bool
+        If True (default), suppress וְ from the per-verse listing (it is far
+        too frequent to be useful there) but include it in the summary counts.
+    """
+    df = discourse_particles(book, chapter, particles=particles)
+    scope = f"{book} ch.{chapter}" if chapter else book
+
+    print()
+    print('═' * 80)
+    print(f"  Discourse particles: {scope}  ({len(df)} total tokens)")
+    print('─' * 80)
+
+    if df.empty:
+        print("  None found.")
+        print()
+        return
+
+    # Per-particle summary
+    print("  By particle and discourse function:")
+    for ptcl_lbl in df['particle_label'].unique():
+        sub = df[df['particle_label'] == ptcl_lbl]
+        print(f"\n  {ptcl_lbl}  ({len(sub)} tokens)")
+        for func, cnt in sub['discourse_function'].value_counts().items():
+            pct = cnt / len(sub) * 100
+            bar = '█' * int(pct / 5)
+            print(f"    {func:<30} {cnt:>4}  {pct:>5.1f}%  {bar}")
+
+    print()
+    print(f"  {'Ref':<10} {'Particle':<10} {'Function':<28} {'Following'}")
+    print('  ' + '─' * 78)
+
+    display_df = df if not omit_waw else df[df['particle_label'] != 'וְ']
+    shown = 0
+    for _, row in display_df.iterrows():
+        if shown >= max_rows:
+            remaining = len(display_df) - shown
+            print(f"  … ({remaining} more — use discourse_particles() for full DataFrame)")
+            break
+        ref = f"{book} {row['chapter']}:{row['verse']}"
+        print(f"  {ref:<10} {row['particle_text']:<10} "
+              f"{row['discourse_function']:<28} {row['following_text']}")
+        shown += 1
+    print()
+
+
+def discourse_particle_summary(book: str) -> pd.DataFrame:
+    """
+    Return a summary DataFrame of discourse particle function counts for a book.
+
+    Columns: particle_label, discourse_function, count, pct_of_particle.
+    """
+    df = discourse_particles(book)
+    if df.empty:
+        return pd.DataFrame(columns=['particle_label', 'discourse_function',
+                                     'count', 'pct_of_particle'])
+    grp = df.groupby(['particle_label', 'discourse_function']).size().reset_index(name='count')
+    totals = grp.groupby('particle_label')['count'].transform('sum')
+    grp['pct_of_particle'] = (grp['count'] / totals * 100).round(1)
+    return grp.sort_values(['particle_label', 'count'], ascending=[True, False])
+
+
+def print_particle_summary(book: str) -> None:
+    """Print a compact summary of all discourse particle functions for a book."""
+    df = discourse_particle_summary(book)
+    if df.empty:
+        print(f"\n  No discourse particles found in {book}.\n")
+        return
+    total_tokens = df['count'].sum()
+
+    print()
+    print('═' * 80)
+    print(f"  Discourse particle summary: {book}  (total tokens: {total_tokens})")
+    print()
+    for ptcl_lbl, sub in df.groupby('particle_label'):
+        ptcl_total = sub['count'].sum()
+        print(f"  {ptcl_lbl}  — {ptcl_total} tokens")
+        for _, row in sub.iterrows():
+            bar = '█' * int(row['pct_of_particle'] / 5)
+            print(f"    {row['discourse_function']:<30} {row['count']:>4}  "
+                  f"{row['pct_of_particle']:>5.1f}%  {bar}")
+        print()
