@@ -82,6 +82,20 @@ from .verbal_syntax import (
     discourse_particles, print_discourse_particles,
     discourse_particle_summary, print_particle_summary,
 )
+from .hiphil import (
+    hiphil_data, hiphil_conjugation_profile, hiphil_top_roots,
+    hiphil_root_conjugation, hiphil_book_distribution,
+    hiphil_stem_comparison, hiphil_dominant_roots,
+    hiphil_semantic_categories,
+    print_hiphil_overview, print_hiphil_conjugation,
+    print_hiphil_top_roots, print_hiphil_root_conjugation,
+    print_hiphil_book_distribution, print_hiphil_dominant_roots,
+    print_hiphil_semantic_categories,
+    hiphil_conjugation_chart, hiphil_book_chart,
+    hiphil_stem_chart, hiphil_root_heatmap,
+    hiphil_semantic_chart, hiphil_top_roots_chart,
+    hiphil_report,
+)
 from .speaker import (is_jesus_speaking, jesus_speaking_verse_set,
                       filter_to_jesus_speech, ALLOWLIST_VERSES)
 from .lexicon import lookup, search_gloss, lex_entry, lemma_index

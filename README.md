@@ -1617,6 +1617,72 @@ consistency_heatmap(['H7307', 'H2617'], output_path='output/charts/consistency.p
 
 ---
 
+### Hiphil (הִפְעִיל) Verb Morphology
+
+Dedicated analysis module for teaching the Hiphil stem. Covers conjugation
+distribution, most frequent roots, root × conjugation heatmap, book distribution,
+Hiphil-dominant roots, and semantic function categories. Generates a full
+Markdown report with 6 charts.
+
+```python
+from bible_grammar import (
+    print_hiphil_overview, print_hiphil_conjugation,
+    print_hiphil_top_roots, print_hiphil_root_conjugation,
+    print_hiphil_book_distribution, print_hiphil_dominant_roots,
+    print_hiphil_semantic_categories,
+    hiphil_conjugation_chart, hiphil_book_chart,
+    hiphil_stem_chart, hiphil_root_heatmap,
+    hiphil_semantic_chart, hiphil_report,
+    hiphil_data, hiphil_dominant_roots,
+)
+
+# Quick statistics
+print_hiphil_overview()
+# → 9,409 tokens · 12.9% of all OT verbs · 479 unique roots · 39 books
+
+# Conjugation distribution
+print_hiphil_conjugation()
+# → yiqtol 21.5% · qatal 19.1% · wayyiqtol 18.6% · inf.cst 10.0%
+
+print_hiphil_conjugation('Gen')   # Genesis only
+print_hiphil_conjugation('Psa')   # Psalms only
+
+# Top roots
+print_hiphil_top_roots(25)
+# → בּוֹא 548 (bring) · נָכָה 481 (strike) · שׁוּב 357 (restore)
+
+# Root × conjugation cross-table
+print_hiphil_root_conjugation(top_n=15)
+# נָכָה: wayyiqtol-heavy (combat) · יָסַף: yiqtol-heavy (do again) · etc.
+
+# Book distribution (top 20 + % of book's verbs)
+print_hiphil_book_distribution()
+
+# Hiphil-dominant roots (≥70% of their occurrences are Hiphil)
+print_hiphil_dominant_roots()
+# שָׁכַם 100% · נָבַט 98.6% · נָכָה 96.2% · קָשַׁב 97.8%
+
+# Semantic function categories
+print_hiphil_semantic_categories()
+# causative motion 30.8% · violent/lethal 8.6% · declaration 7.5%
+
+# Generate full report + 6 PNG charts
+path = hiphil_report()
+# Saves output/reports/hiphil_report.md + output/charts/hiphil_*.png
+```
+
+**Slash commands:**
+- `/hiphil overview` — key OT-wide statistics
+- `/hiphil conj [book]` — conjugation distribution
+- `/hiphil roots [n]` — top n roots
+- `/hiphil roottable [n]` — root × conjugation frequency table
+- `/hiphil books` — distribution across all books
+- `/hiphil dominant` — Hiphil-only roots
+- `/hiphil semantic` — semantic function distribution
+- `/hiphil report` — full report + all charts
+
+---
+
 ### Slash Commands (Claude Code skills)
 
 When using this project with [Claude Code](https://claude.ai/code), the following
@@ -1664,6 +1730,14 @@ slash commands are available:
 | `/verbal-syntax particles <book> [ch]` | Discourse particles (הִנֵּה/כִּי/וְ/לָכֵן/עַתָּה/גַּם/אַךְ) with function classification |
 | `/verbal-syntax ptclsum <book>` | Discourse particle function distribution for a whole book |
 | `/verbal-syntax report <book>` | Full Markdown verbal syntax report |
+| `/hiphil overview` | Hiphil OT-wide statistics (9,409 tokens, 12.9% of verbs) |
+| `/hiphil conj [book]` | Hiphil conjugation distribution (whole OT or one book) |
+| `/hiphil roots [n]` | Top n Hiphil roots with counts and primary gloss |
+| `/hiphil roottable [n]` | Root × conjugation frequency cross-table |
+| `/hiphil books` | Hiphil count and % per OT book |
+| `/hiphil dominant` | Roots ≥70% Hiphil — functionally Hiphil-only verbs |
+| `/hiphil semantic` | Semantic function category distribution |
+| `/hiphil report` | Full Markdown report + 6 PNG charts saved to output/ |
 | `/export <type> [args]` | Export any analysis to HTML + CSV |
 
 Examples:
@@ -1718,7 +1792,8 @@ Examples:
 | `08_parallel_passage.ipynb` | Parallel passage comparison (Synoptics, Samuel/Psalms) |
 | `09_language_analysis.ipynb` | LXX consistency, collocations, morphological distribution, semantic profiles, theological term maps |
 | `10_advanced_analysis.ipynb` | Divine names, genre comparison, intertextuality networks, HTML/CSV export |
-| `11_syntax_and_roles.ipynb` | NT/OT MACULA syntax trees, speaker attribution, lexicon API, christological titles, syntactic role/object search, LXX corpus query, cross-testament trajectory, theological term reports, Hebrew poetry analysis (cola/parallelism/chiasm/acrostic/meter), Hebrew verbal syntax (verb form profiles, wayyiqtol chains, infinitive usage, clause types, stem distribution, disjunctive clauses) |
+| `11_syntax_and_roles.ipynb` | NT/OT MACULA syntax trees, speaker attribution, lexicon API, christological titles, syntactic role/object search, LXX corpus query, cross-testament trajectory, theological term reports, Hebrew poetry analysis (cola/parallelism/chiasm/acrostic/meter), Hebrew verbal syntax (verb form profiles, wayyiqtol chains, infinitive usage, clause types, stem distribution, disjunctive clauses, conditional clauses, relative clauses, aspect comparison, discourse particles) |
+| `12_hiphil_morphology.ipynb` | Hiphil (הִפְעִיל) verb morphology: conjugation distribution, top roots, root × conjugation heatmap, book distribution, Hiphil-dominant roots, semantic function categories, full report generation |
 
 Export a notebook as a shareable HTML file:
 
