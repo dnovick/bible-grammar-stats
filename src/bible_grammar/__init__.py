@@ -73,6 +73,8 @@ from .verbal_syntax import (
     VERB_FORM_ORDER, VERB_FORM_LABELS,
     disjunctive_clauses, print_disjunctive_clauses,
     disjunctive_in_chains, print_disjunctive_in_chains,
+    conditional_clauses, print_conditional_clauses,
+    conditional_summary, print_conditional_summary,
 )
 from .speaker import (is_jesus_speaking, jesus_speaking_verse_set,
                       filter_to_jesus_speech, ALLOWLIST_VERSES)

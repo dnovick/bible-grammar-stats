@@ -14,6 +14,8 @@ usage, clause type profiles, stem (binyan) distribution, and disjunctive clauses
 - `/verbal-syntax stems <book>` — verb stem (binyan) distribution
 - `/verbal-syntax disj <book> [chapter]` — disjunctive (noun-first) clauses
 - `/verbal-syntax disjchains <book> <chapter>` — chains annotated with disjunctive interruptions
+- `/verbal-syntax cond <book> [chapter]` — conditional clauses (אִם/לוּ/לוּלֵא) with type classification
+- `/verbal-syntax condsum <book>` — conditional type distribution summary for a book
 - `/verbal-syntax report <book>` — full Markdown report (all analyses)
 
 **Examples:**
@@ -34,6 +36,10 @@ usage, clause type profiles, stem (binyan) distribution, and disjunctive clauses
 - `/verbal-syntax disj Gen 37`        — Gen 37:3 "Israel loved Joseph" (circumstantial)
 - `/verbal-syntax disj Ruth`          — whole book disjunctive survey
 - `/verbal-syntax disjchains Gen 37`  — chains + disjunctive interruptions
+- `/verbal-syntax cond Gen 18`        — Abraham's bargaining (אִם + yiqtol)
+- `/verbal-syntax cond Gen`           — all conditionals in Genesis
+- `/verbal-syntax condsum Deu`        — Deuteronomy: 50% אִם + yiqtol
+- `/verbal-syntax condsum Psa`        — Psalms conditional patterns
 - `/verbal-syntax report Gen`         — full report saved to output/reports/
 
 ---
@@ -44,7 +50,8 @@ sys.path.insert(0, 'src')
 from bible_grammar import (print_verb_form_profile, print_wayyiqtol_chains,
                             print_infinitive_usage, print_clause_type_profile,
                             print_stem_distribution, verbal_syntax_report,
-                            print_disjunctive_clauses, print_disjunctive_in_chains)
+                            print_disjunctive_clauses, print_disjunctive_in_chains,
+                            print_conditional_clauses, print_conditional_summary)
 
 raw = "$ARGUMENTS".strip().split()
 
@@ -79,6 +86,12 @@ elif raw[0] == 'disjchains' and len(raw) >= 3:
     except Exception as e:
         print(f'Error: {e}')
         print('Usage: /verbal-syntax disjchains Gen 37')
+elif raw[0] == 'cond' and len(raw) >= 2:
+    book = raw[1]
+    ch = int(raw[2]) if len(raw) > 2 else None
+    print_conditional_clauses(book, ch)
+elif raw[0] == 'condsum' and len(raw) >= 2:
+    print_conditional_summary(raw[1])
 elif raw[0] == 'report' and len(raw) >= 2:
     path = verbal_syntax_report(raw[1])
     print(f'Report saved: {path}')

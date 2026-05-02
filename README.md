@@ -1234,6 +1234,46 @@ print(df['discourse_function'].value_counts())
 - `/verbal-syntax disj <book> [ch]`      — list all disjunctive clauses
 - `/verbal-syntax disjchains <book> <ch>` — chains + interruption annotations
 
+#### Conditional Clause Analysis
+
+Detects אִם (real conditions), לוּ (wish/irreal), and לוּלֵא (counterfactual), and
+classifies each by protasis verb form:
+
+| Type | Particle | Protasis verb | Meaning |
+|---|---|---|---|
+| Real — open future | אִם | yiqtol | "if you do X" (most common) |
+| Real — past/present | אִם | qatal | "if you have done X" |
+| Real — stative | אִם | participle | habitual/general truth |
+| Irreal — wish | לוּ | yiqtol | "if only…" |
+| Irreal — counterfactual | לוּ / לוּלֵא | qatal | "had it not been…" |
+
+```python
+from bible_grammar import (print_conditional_clauses, print_conditional_summary,
+                            conditional_clauses, conditional_summary)
+
+# Chapter-level: Gen 18 Abraham bargaining (4× אִם + yiqtol, 1× אִם + qatal)
+print_conditional_clauses('Gen', 18)
+
+# Whole-book summary
+print_conditional_summary('Gen')
+# → 45% real-future (אִם + yiqtol)
+# → 20% real-past (אִם + qatal)
+# → irreal לוּ/לוּלֵא: Gen 17:18, 31:42, 43:10, 50:15 etc.
+
+print_conditional_summary('Deu')
+# → 50% real-future — Deuteronomy's legal conditional style
+
+# Get raw DataFrame for custom analysis
+df = conditional_clauses('Gen')
+irreal = df[df['condition_type'].str.startswith('irreal')]
+```
+
+Note: MACULA uses `Deu` (not `Deut`) as the book ID for Deuteronomy.
+
+**Slash commands:**
+- `/verbal-syntax cond <book> [ch]`   — list conditionals with type classification
+- `/verbal-syntax condsum <book>`      — summary distribution for a whole book
+
 ---
 
 ### Theological Term Map
@@ -1499,6 +1539,8 @@ slash commands are available:
 | `/verbal-syntax stems <book>` | Verb stem (binyan) distribution: Qal/Niphal/Piel/Hiphil/Hitpael |
 | `/verbal-syntax disj <book> [ch]` | Disjunctive (noun/subject-first) clauses with discourse function |
 | `/verbal-syntax disjchains <book> <ch>` | Wayyiqtol chains annotated with disjunctive interruptions |
+| `/verbal-syntax cond <book> [ch]` | Conditional clauses (אִם/לוּ/לוּלֵא) with real/irreal classification |
+| `/verbal-syntax condsum <book>` | Conditional type distribution summary for a whole book |
 | `/verbal-syntax report <book>` | Full Markdown verbal syntax report |
 | `/export <type> [args]` | Export any analysis to HTML + CSV |
 
