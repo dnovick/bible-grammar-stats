@@ -2,7 +2,8 @@
 
 Syntactic analysis of the Hebrew verb system for 2nd-year Biblical Hebrew study.
 Covers verb form distribution, wayyiqtol narrative chains, infinitive construct/absolute
-usage, clause type profiles, stem (binyan) distribution, and disjunctive clauses.
+usage, clause type profiles, stem (binyan) distribution, disjunctive clauses,
+conditional clauses, and relative clause analysis.
 
 **Usage:** `/verbal-syntax <command> [args]`
 
@@ -16,6 +17,8 @@ usage, clause type profiles, stem (binyan) distribution, and disjunctive clauses
 - `/verbal-syntax disjchains <book> <chapter>` — chains annotated with disjunctive interruptions
 - `/verbal-syntax cond <book> [chapter]` — conditional clauses (אִם/לוּ/לוּלֵא) with type classification
 - `/verbal-syntax condsum <book>` — conditional type distribution summary for a book
+- `/verbal-syntax rel <book> [chapter]` — relative clauses (אֲשֶׁר/שֶׁ/דִּי) with role inference
+- `/verbal-syntax relsum <book>` — relative clause role/verb-form summary for a book
 - `/verbal-syntax report <book>` — full Markdown report (all analyses)
 
 **Examples:**
@@ -40,6 +43,11 @@ usage, clause type profiles, stem (binyan) distribution, and disjunctive clauses
 - `/verbal-syntax cond Gen`           — all conditionals in Genesis
 - `/verbal-syntax condsum Deu`        — Deuteronomy: 50% אִם + yiqtol
 - `/verbal-syntax condsum Psa`        — Psalms conditional patterns
+- `/verbal-syntax rel Gen 3`          — relative clauses in Gen 3 (mostly obj qatal)
+- `/verbal-syntax rel Psa 1`          — Psalm 1 relative clauses
+- `/verbal-syntax rel Rut`            — Ruth relative clause survey
+- `/verbal-syntax relsum Gen`         — Genesis relative clause role breakdown
+- `/verbal-syntax relsum Pro`         — Proverbs relative clause patterns
 - `/verbal-syntax report Gen`         — full report saved to output/reports/
 
 ---
@@ -51,12 +59,13 @@ from bible_grammar import (print_verb_form_profile, print_wayyiqtol_chains,
                             print_infinitive_usage, print_clause_type_profile,
                             print_stem_distribution, verbal_syntax_report,
                             print_disjunctive_clauses, print_disjunctive_in_chains,
-                            print_conditional_clauses, print_conditional_summary)
+                            print_conditional_clauses, print_conditional_summary,
+                            print_relative_clauses, print_relative_summary)
 
 raw = "$ARGUMENTS".strip().split()
 
 def _usage():
-    print('Usage: /verbal-syntax forms|chains|inf|clauses|stems|disj|disjchains|report <book> [args]')
+    print('Usage: /verbal-syntax forms|chains|inf|clauses|stems|disj|disjchains|cond|condsum|rel|relsum|report <book> [args]')
 
 if not raw:
     _usage()
@@ -92,6 +101,12 @@ elif raw[0] == 'cond' and len(raw) >= 2:
     print_conditional_clauses(book, ch)
 elif raw[0] == 'condsum' and len(raw) >= 2:
     print_conditional_summary(raw[1])
+elif raw[0] == 'rel' and len(raw) >= 2:
+    book = raw[1]
+    ch = int(raw[2]) if len(raw) > 2 else None
+    print_relative_clauses(book, ch)
+elif raw[0] == 'relsum' and len(raw) >= 2:
+    print_relative_summary(raw[1])
 elif raw[0] == 'report' and len(raw) >= 2:
     path = verbal_syntax_report(raw[1])
     print(f'Report saved: {path}')

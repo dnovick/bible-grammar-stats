@@ -75,6 +75,8 @@ from .verbal_syntax import (
     disjunctive_in_chains, print_disjunctive_in_chains,
     conditional_clauses, print_conditional_clauses,
     conditional_summary, print_conditional_summary,
+    relative_clauses, print_relative_clauses,
+    relative_clause_summary, print_relative_summary,
 )
 from .speaker import (is_jesus_speaking, jesus_speaking_verse_set,
                       filter_to_jesus_speech, ALLOWLIST_VERSES)

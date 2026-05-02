@@ -1274,6 +1274,45 @@ Note: MACULA uses `Deu` (not `Deut`) as the book ID for Deuteronomy.
 - `/verbal-syntax cond <book> [ch]`   — list conditionals with type classification
 - `/verbal-syntax condsum <book>`      — summary distribution for a whole book
 
+#### Relative Clause Analysis
+
+Detects אֲשֶׁר, שֶׁ, and דִּי relative markers and infers the syntactic role of
+the relative pronoun within its clause using a three-step heuristic:
+
+| Inferred role | Heuristic |
+|---|---|
+| **subject** | No overt subject in relative clause — אֲשֶׁר fills the slot |
+| **object** | Rel clause has own subject, OR resumptive pronoun (role=o) |
+| **oblique** | Resumptive pronoun with role=p (prepositional) |
+| **verbless** | No verb in relative clause (predicate nominal / headless) |
+
+Also classifies antecedent by semantic category: person / place / time / thing.
+
+```python
+from bible_grammar import (print_relative_clauses, print_relative_summary,
+                            relative_clauses, relative_clause_summary)
+
+# Chapter detail
+print_relative_clauses('Gen', 3)
+# → 5 object relatives (qatal), 1 subject relative
+
+# Whole-book role × verb-form breakdown
+print_relative_summary('Gen')
+# Gen: 62% object, 34% subject; qatal dominates (57%)
+
+# Cross-book comparison
+import pandas as pd
+books = ['Gen', 'Rut', 'Psa', 'Pro']
+dfs = {b: relative_clauses(b) for b in books}
+pivot = pd.DataFrame(
+    {b: df['inferred_role'].value_counts() for b, df in dfs.items()}
+).fillna(0).astype(int)
+```
+
+**Slash commands:**
+- `/verbal-syntax rel <book> [ch]`   — relative clauses with role inference
+- `/verbal-syntax relsum <book>`      — role/verb-form/antecedent summary
+
 ---
 
 ### Theological Term Map
@@ -1541,6 +1580,8 @@ slash commands are available:
 | `/verbal-syntax disjchains <book> <ch>` | Wayyiqtol chains annotated with disjunctive interruptions |
 | `/verbal-syntax cond <book> [ch]` | Conditional clauses (אִם/לוּ/לוּלֵא) with real/irreal classification |
 | `/verbal-syntax condsum <book>` | Conditional type distribution summary for a whole book |
+| `/verbal-syntax rel <book> [ch]` | Relative clauses (אֲשֶׁר/שֶׁ/דִּי) with inferred subject/object/oblique role |
+| `/verbal-syntax relsum <book>` | Relative clause role × verb-form × antecedent summary |
 | `/verbal-syntax report <book>` | Full Markdown verbal syntax report |
 | `/export <type> [args]` | Export any analysis to HTML + CSV |
 

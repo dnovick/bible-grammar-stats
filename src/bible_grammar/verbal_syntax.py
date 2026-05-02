@@ -40,6 +40,11 @@ conditional_clauses(book, chapter=None)         → DataFrame
 print_conditional_clauses(book, chapter=None)   → None
 conditional_summary(book)                       → DataFrame
 print_conditional_summary(book)                 → None
+
+relative_clauses(book, chapter=None)            → DataFrame
+print_relative_clauses(book, chapter=None)      → None
+relative_clause_summary(book)                   → DataFrame
+print_relative_summary(book)                    → None
 """
 
 from __future__ import annotations
@@ -1240,4 +1245,312 @@ def print_conditional_summary(book: str) -> None:
     for _, row in df.iterrows():
         bar = '█' * int(row['pct'] / 3)
         print(f"  {row['condition_type']:<46} {row['count']:>4}  {row['pct']:>5.1f}%  {bar}")
+    print()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# RELATIVE CLAUSE DRILL
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Hebrew relative clauses are introduced by:
+#   אֲשֶׁר — the standard relative marker (prose, poetry, formal register)
+#   שֶׁ    — the prefixed short form (later Biblical Hebrew, Song of Songs)
+#   דִּי   — Aramaic relative (Daniel, Ezra)
+#
+# The syntactic ROLE of אֲשֶׁר within the relative clause is not directly encoded
+# in MACULA. We infer it from a three-step heuristic:
+#
+#   1. Resumptive pronoun: if a pronoun with role='o'|'p' appears after the first
+#      verb, the antecedent has been resumed → OBJECT or OBLIQUE relative.
+#   2. Overt subject: if the relative clause has an explicit subject token
+#      (role='s'), then אֲשֶׁר fills the object slot → OBJECT relative.
+#   3. Default: אֲשֶׁר is the SUBJECT of the relative verb → SUBJECT relative.
+#   4. No verb found → VERBLESS (predicate nominal / headless relative).
+#
+# Antecedent semantic class (rough heuristic based on lemma consonants):
+#   person — proper names + human-denoting nouns (אִישׁ, אִשָּׁה, בֵּן, etc.)
+#   place  — geographic proper nouns + locative nouns (אֶרֶץ, עִיר, הַר, etc.)
+#   time   — temporal nouns (יוֹם, שָׁנָה, עֵת, etc.)
+#   thing  — all other common nouns
+# ───────────────────────────────────────────────────────────────────────────────
+
+_REL_MARKERS = {'אשר', 'ש', 'די', 'זו', 'זה'}
+
+# Stripped lemmas → semantic category hint
+_ANT_PERSON_LEMMAS = {
+    'איש', 'אשה', 'בן', 'בת', 'אב', 'אם', 'אח', 'אחות',
+    'עבד', 'שפחה', 'מלך', 'נביא', 'כהן', 'שופט', 'עם',
+    'זקן', 'נשיא', 'אדם', 'ילד', 'נער', 'נערה',
+}
+_ANT_TIME_LEMMAS = {
+    'יום', 'שנה', 'עת', 'פעם', 'עולם', 'רגע', 'שעה',
+    'בקר', 'ערב', 'לילה', 'חדש', 'שבת', 'יובל', 'שמטה',
+}
+_ANT_PLACE_LEMMAS = {
+    'ארץ', 'מקום', 'עיר', 'הר', 'גבול', 'שדה', 'בית',
+    'שמים', 'ים', 'מדבר', 'נחל', 'נהר', 'גן', 'מזבח',
+}
+
+
+def _antecedent_class(lemma_stripped: str, cls: str, noun_type: str) -> str:
+    """Rough semantic class of antecedent head noun."""
+    l = lemma_stripped.lower()
+    if cls == 'noun' and noun_type == 'proper':
+        return 'person/place (proper)'
+    if l in _ANT_PERSON_LEMMAS:
+        return 'person'
+    if l in _ANT_TIME_LEMMAS:
+        return 'time'
+    if l in _ANT_PLACE_LEMMAS:
+        return 'place'
+    return 'thing'
+
+
+def _infer_rel_role(
+    pos: int,
+    row: pd.Series,
+    df_idx: pd.DataFrame,
+) -> tuple[str, str, str]:
+    """
+    Infer (inferred_role, rel_verb_form, rel_verb_text) for a relative pronoun
+    at position `pos` in `df_idx`.
+    """
+    verb_found = False
+    rel_verb_form = ''
+    rel_verb_text = ''
+    resumptive_role = ''
+    has_explicit_subj = False
+
+    for fwd in range(1, 18):
+        fpos = pos + fwd
+        if fpos >= len(df_idx):
+            break
+        fr = df_idx.iloc[fpos]
+        # Stay within same or adjacent verse (max 1 verse forward)
+        if fr['chapter'] != row['chapter']:
+            break
+        if int(fr['verse']) - int(row['verse']) > 1:
+            break
+
+        if fr['class_'] == 'verb' and not verb_found:
+            verb_found = True
+            rel_verb_form = str(fr['type_'])
+            rel_verb_text = str(fr['text'])
+
+        if fr['class_'] == 'pron' and fr['role'] in ('o', 'o2', 'p'):
+            if not resumptive_role:
+                resumptive_role = fr['role']
+
+        if fr['role'] == 's' and fr['class_'] != 'rel':
+            has_explicit_subj = True
+
+    if not verb_found:
+        inferred = 'verbless'
+    elif resumptive_role in ('o', 'o2'):
+        inferred = 'object'
+    elif resumptive_role == 'p':
+        inferred = 'oblique'
+    elif has_explicit_subj:
+        inferred = 'object'
+    else:
+        inferred = 'subject'
+
+    return inferred, rel_verb_form, rel_verb_text
+
+
+def relative_clauses(
+    book: str,
+    chapter: int | None = None,
+    *,
+    markers: set[str] | None = None,
+) -> pd.DataFrame:
+    """
+    Find all relative clauses in a book or chapter.
+
+    Detects אֲשֶׁר, שֶׁ, and דִּי tokens (class_='rel').
+    Infers the syntactic role of the relative pronoun within its clause
+    (subject / object / oblique / verbless) and records the antecedent
+    noun and its semantic class (person / place / time / thing).
+
+    Parameters
+    ----------
+    book : str
+        MACULA book ID (e.g. 'Gen', 'Psa', 'Rut').
+    chapter : int, optional
+        Filter to a single chapter.
+    markers : set of str, optional
+        Set of stripped lemmas to detect. Defaults to {'אשר', 'ש', 'די'}.
+
+    Returns
+    -------
+    DataFrame with columns:
+        chapter, verse, marker, antecedent_text, antecedent_class,
+        inferred_role, rel_verb_form, rel_verb_text, verse_text
+    """
+    if markers is None:
+        markers = {'אשר', 'ש', 'די'}
+
+    df = _load_macula()
+    scope = _filter_book(df, book, chapter).reset_index(drop=True)
+    scope['_lem'] = scope['lemma'].apply(_strip_diacritics)
+
+    records: list[dict] = []
+    for pos, row in scope.iterrows():
+        if str(row.get('class_', '')) != 'rel':
+            continue
+        lem = row['_lem']
+        if lem not in markers:
+            continue
+
+        ch_val = row['chapter']
+        vs_val = row['verse']
+        bk_val = row['book']
+
+        # Antecedent: nearest content word before the marker
+        ant_text = ''
+        ant_cls = ''
+        ant_type = ''
+        ant_lem = ''
+        for back in range(1, 10):
+            bpos = pos - back
+            if bpos < 0:
+                break
+            br = scope.iloc[bpos]
+            if br['chapter'] != ch_val:
+                break
+            if str(br.get('class_', '')) in ('noun', 'adj', 'pron', 'verb'):
+                ant_text = str(br.get('text', ''))
+                ant_cls = str(br.get('class_', ''))
+                ant_type = str(br.get('type_', ''))
+                ant_lem = br['_lem']
+                break
+
+        ant_sem = _antecedent_class(ant_lem, ant_cls, ant_type)
+
+        # Infer role in relative clause (using full scope for index)
+        inferred, rv_form, rv_text = _infer_rel_role(pos, row, scope)
+
+        # Verse text
+        vs_tokens = scope[
+            (scope['book'] == bk_val) &
+            (scope['chapter'] == ch_val) &
+            (scope['verse'] == vs_val)
+        ]
+        vs_text = ' '.join(str(r['text']) for _, r in vs_tokens.iterrows())
+
+        records.append({
+            'chapter':          int(ch_val),
+            'verse':            int(vs_val),
+            'marker':           str(row.get('text', '')),
+            'antecedent_text':  ant_text,
+            'antecedent_class': ant_sem,
+            'inferred_role':    inferred,
+            'rel_verb_form':    rv_form,
+            'rel_verb_text':    rv_text,
+            'verse_text':       vs_text[:70],
+        })
+
+    return pd.DataFrame(records)
+
+
+def print_relative_clauses(
+    book: str,
+    chapter: int | None = None,
+    *,
+    max_rows: int = 40,
+) -> None:
+    """Print a formatted table of relative clauses in a book or chapter."""
+    df = relative_clauses(book, chapter)
+    scope = f"{book} ch.{chapter}" if chapter else book
+
+    print()
+    print('═' * 80)
+    print(f"  Relative clauses: {scope}  ({len(df)} found)")
+    print('─' * 80)
+
+    if df.empty:
+        print("  None found.")
+        print()
+        return
+
+    # Role distribution
+    print("  Inferred role distribution:")
+    for role, cnt in df['inferred_role'].value_counts().items():
+        pct = cnt / len(df) * 100
+        bar = '█' * int(pct / 4)
+        print(f"    {role:<12} {cnt:>4}  ({pct:>4.1f}%)  {bar}")
+    print()
+
+    # Verb form distribution
+    print("  Rel clause verb form distribution:")
+    for form, cnt in df['rel_verb_form'].value_counts().head(8).items():
+        if form:
+            pct = cnt / len(df) * 100
+            print(f"    {form:<25} {cnt:>4}  ({pct:>4.1f}%)")
+    print()
+
+    # Per-verse listing
+    print(f"  {'Ref':<10} {'Marker':<10} {'Antecedent':<18} {'Role':<12} {'Verb form':<22} {'Rel verb'}")
+    print('  ' + '─' * 78)
+    for _, row in df.head(max_rows).iterrows():
+        ref = f"{book} {row['chapter']}:{row['verse']}"
+        print(f"  {ref:<10} {row['marker']:<10} {row['antecedent_text']:<18} "
+              f"{row['inferred_role']:<12} {row['rel_verb_form']:<22} {row['rel_verb_text']}")
+
+    if len(df) > max_rows:
+        print(f"  … ({len(df) - max_rows} more — use relative_clauses() for full DataFrame)")
+    print()
+
+
+def relative_clause_summary(book: str) -> pd.DataFrame:
+    """
+    Return a cross-tabulation of inferred role × verb form for a book.
+
+    Columns: inferred_role, rel_verb_form, count, pct.
+    """
+    df = relative_clauses(book)
+    if df.empty:
+        return pd.DataFrame(columns=['inferred_role', 'rel_verb_form', 'count', 'pct'])
+    grp = df.groupby(['inferred_role', 'rel_verb_form']).size().reset_index(name='count')
+    total = grp['count'].sum()
+    grp['pct'] = (grp['count'] / total * 100).round(1)
+    return grp.sort_values('count', ascending=False)
+
+
+def print_relative_summary(book: str) -> None:
+    """Print a compact summary of relative clause types for a book."""
+    df = relative_clauses(book)
+    if df.empty:
+        print(f"\n  No relative clauses found in {book}.\n")
+        return
+
+    total = len(df)
+    print()
+    print('═' * 80)
+    print(f"  Relative clause summary: {book}  (total: {total})")
+    print('─' * 80)
+
+    # Role breakdown
+    print("  By inferred role:")
+    for role, cnt in df['inferred_role'].value_counts().items():
+        pct = cnt / total * 100
+        bar = '█' * int(pct / 3)
+        print(f"    {role:<12} {cnt:>4}  {pct:>5.1f}%  {bar}")
+    print()
+
+    # Verb form breakdown
+    print("  By relative clause verb form:")
+    for form, cnt in df['rel_verb_form'].value_counts().head(8).items():
+        if form:
+            pct = cnt / total * 100
+            bar = '█' * int(pct / 3)
+            print(f"    {form:<25} {cnt:>4}  {pct:>5.1f}%  {bar}")
+    print()
+
+    # Antecedent semantic class
+    print("  By antecedent semantic class:")
+    for sem, cnt in df['antecedent_class'].value_counts().items():
+        pct = cnt / total * 100
+        bar = '█' * int(pct / 3)
+        print(f"    {sem:<25} {cnt:>4}  {pct:>5.1f}%  {bar}")
     print()
