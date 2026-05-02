@@ -2,7 +2,7 @@
 
 Syntactic analysis of the Hebrew verb system for 2nd-year Biblical Hebrew study.
 Covers verb form distribution, wayyiqtol narrative chains, infinitive construct/absolute
-usage, clause type profiles, and stem (binyan) distribution.
+usage, clause type profiles, stem (binyan) distribution, and disjunctive clauses.
 
 **Usage:** `/verbal-syntax <command> [args]`
 
@@ -12,7 +12,9 @@ usage, clause type profiles, and stem (binyan) distribution.
 - `/verbal-syntax inf <book>` — infinitive construct/absolute usage
 - `/verbal-syntax clauses <book>` — clause type profile (verbal/nominal/negation/conditional)
 - `/verbal-syntax stems <book>` — verb stem (binyan) distribution
-- `/verbal-syntax report <book>` — full Markdown report (all 5 analyses)
+- `/verbal-syntax disj <book> [chapter]` — disjunctive (noun-first) clauses
+- `/verbal-syntax disjchains <book> <chapter>` — chains annotated with disjunctive interruptions
+- `/verbal-syntax report <book>` — full Markdown report (all analyses)
 
 **Examples:**
 - `/verbal-syntax forms Gen`          — wayyiqtol-heavy narrative profile
@@ -28,6 +30,10 @@ usage, clause type profiles, and stem (binyan) distribution.
 - `/verbal-syntax clauses Pro`        — Proverbs: more nominal clauses
 - `/verbal-syntax stems Gen`          — 77% Qal, 10% Hiphil
 - `/verbal-syntax stems Psa`          — more Piel in poetry
+- `/verbal-syntax disj Gen 1`         — Gen 1:1-2 disjunctives (setting the stage)
+- `/verbal-syntax disj Gen 37`        — Gen 37:3 "Israel loved Joseph" (circumstantial)
+- `/verbal-syntax disj Ruth`          — whole book disjunctive survey
+- `/verbal-syntax disjchains Gen 37`  — chains + disjunctive interruptions
 - `/verbal-syntax report Gen`         — full report saved to output/reports/
 
 ---
@@ -37,12 +43,13 @@ import sys
 sys.path.insert(0, 'src')
 from bible_grammar import (print_verb_form_profile, print_wayyiqtol_chains,
                             print_infinitive_usage, print_clause_type_profile,
-                            print_stem_distribution, verbal_syntax_report)
+                            print_stem_distribution, verbal_syntax_report,
+                            print_disjunctive_clauses, print_disjunctive_in_chains)
 
 raw = "$ARGUMENTS".strip().split()
 
 def _usage():
-    print('Usage: /verbal-syntax forms|chains|inf|clauses|stems|report <book> [args]')
+    print('Usage: /verbal-syntax forms|chains|inf|clauses|stems|disj|disjchains|report <book> [args]')
 
 if not raw:
     _usage()
@@ -62,6 +69,16 @@ elif raw[0] == 'clauses' and len(raw) >= 2:
     print_clause_type_profile(raw[1])
 elif raw[0] == 'stems' and len(raw) >= 2:
     print_stem_distribution(raw[1])
+elif raw[0] == 'disj' and len(raw) >= 2:
+    book = raw[1]
+    ch = int(raw[2]) if len(raw) > 2 else None
+    print_disjunctive_clauses(book, ch)
+elif raw[0] == 'disjchains' and len(raw) >= 3:
+    try:
+        print_disjunctive_in_chains(raw[1], int(raw[2]))
+    except Exception as e:
+        print(f'Error: {e}')
+        print('Usage: /verbal-syntax disjchains Gen 37')
 elif raw[0] == 'report' and len(raw) >= 2:
     path = verbal_syntax_report(raw[1])
     print(f'Report saved: {path}')

@@ -1197,6 +1197,42 @@ stem_chart('Gen')
 - `/verbal-syntax clauses Gen`    — clause type profile
 - `/verbal-syntax stems Gen`      — stem distribution
 - `/verbal-syntax report Gen`     — full Markdown report
+- `/verbal-syntax disj Gen 37`    — disjunctive clauses in Gen 37
+- `/verbal-syntax disjchains Gen 37` — chains + disjunctive interruptions
+
+#### Disjunctive Clause Analysis
+
+A **disjunctive clause** opens with a noun, pronoun, or adjective rather than a
+verb — subject-first word order that signals a departure from the main narrative
+line. Discourse grammarians (Longacre, Niccacci, Waltke-O'Connor) identify these
+functions: circumstantial background, contrastive, resumptive, flashback, and
+summary/comment.
+
+```python
+from bible_grammar import (print_disjunctive_clauses, print_disjunctive_in_chains,
+                            disjunctive_clauses, disjunctive_in_chains)
+
+# Survey disjunctives in a chapter
+print_disjunctive_clauses('Gen', 1)
+# → Gen 1:1  noun/qatal  — circumstantial / background
+# → Gen 1:2  noun/qatal  — circumstantial / background (וְהָאָרֶץ הָיְתָה תֹהוּ)
+
+print_disjunctive_clauses('Gen', 37)
+# → Gen 37:3  noun/qatal  — "Israel loved Joseph" (contrastive with brothers)
+# → Gen 37:36 noun/qatal  — Midianites subplot (new background thread)
+
+# Cross-reference with wayyiqtol chains to see flow interruptions
+print_disjunctive_in_chains('Gen', 37)
+# → Chain 14 [vv34-35] terminated by disjunctive at v36 (subplot begins)
+
+# Whole-book survey
+df = disjunctive_clauses('Gen')
+print(df['discourse_function'].value_counts())
+```
+
+**Slash commands:**
+- `/verbal-syntax disj <book> [ch]`      — list all disjunctive clauses
+- `/verbal-syntax disjchains <book> <ch>` — chains + interruption annotations
 
 ---
 
@@ -1461,6 +1497,8 @@ slash commands are available:
 | `/verbal-syntax inf <book>` | Infinitive construct (+ governing prep) and absolute (paronomastic) |
 | `/verbal-syntax clauses <book>` | Verbal/nominal clause ratio; negation, conditional, relative counts |
 | `/verbal-syntax stems <book>` | Verb stem (binyan) distribution: Qal/Niphal/Piel/Hiphil/Hitpael |
+| `/verbal-syntax disj <book> [ch]` | Disjunctive (noun/subject-first) clauses with discourse function |
+| `/verbal-syntax disjchains <book> <ch>` | Wayyiqtol chains annotated with disjunctive interruptions |
 | `/verbal-syntax report <book>` | Full Markdown verbal syntax report |
 | `/export <type> [args]` | Export any analysis to HTML + CSV |
 
@@ -1516,7 +1554,7 @@ Examples:
 | `08_parallel_passage.ipynb` | Parallel passage comparison (Synoptics, Samuel/Psalms) |
 | `09_language_analysis.ipynb` | LXX consistency, collocations, morphological distribution, semantic profiles, theological term maps |
 | `10_advanced_analysis.ipynb` | Divine names, genre comparison, intertextuality networks, HTML/CSV export |
-| `11_syntax_and_roles.ipynb` | NT/OT MACULA syntax trees, speaker attribution, lexicon API, christological titles, syntactic role/object search, LXX corpus query, cross-testament trajectory, theological term reports, Hebrew poetry analysis (cola/parallelism/chiasm/acrostic/meter), Hebrew verbal syntax (verb form profiles, wayyiqtol chains, infinitive usage, clause types, stem distribution) |
+| `11_syntax_and_roles.ipynb` | NT/OT MACULA syntax trees, speaker attribution, lexicon API, christological titles, syntactic role/object search, LXX corpus query, cross-testament trajectory, theological term reports, Hebrew poetry analysis (cola/parallelism/chiasm/acrostic/meter), Hebrew verbal syntax (verb form profiles, wayyiqtol chains, infinitive usage, clause types, stem distribution, disjunctive clauses) |
 
 Export a notebook as a shareable HTML file:
 

@@ -71,6 +71,8 @@ from .verbal_syntax import (
     stem_distribution, print_stem_distribution, stem_chart,
     verbal_syntax_report,
     VERB_FORM_ORDER, VERB_FORM_LABELS,
+    disjunctive_clauses, print_disjunctive_clauses,
+    disjunctive_in_chains, print_disjunctive_in_chains,
 )
 from .speaker import (is_jesus_speaking, jesus_speaking_verse_set,
                       filter_to_jesus_speech, ALLOWLIST_VERSES)

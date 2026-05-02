@@ -30,6 +30,11 @@ print_clause_type_profile(book)                 → None
 stem_distribution(book)                         → DataFrame
 print_stem_distribution(book)                   → None
 stem_chart(book, *, output_path=None)           → Path | None
+
+disjunctive_clauses(book, chapter=None)         → DataFrame
+print_disjunctive_clauses(book, chapter=None)   → None
+disjunctive_in_chains(book, chapter)            → list[dict]
+print_disjunctive_in_chains(book, chapter)      → None
 """
 
 from __future__ import annotations
@@ -733,3 +738,277 @@ def verbal_syntax_report(book: str, *, output_dir: str = 'output/reports') -> st
     md_path.write_text('\n'.join(lines), encoding='utf-8')
     print(f"  Saved: {md_path}")
     return str(md_path)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DISJUNCTIVE CLAUSE ANALYSIS
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# In Biblical Hebrew prose, the normal (non-disjunctive) word order is VERB-first:
+#   וַיֹּאמֶר אֱלֹהִים — "And God said" (wayyiqtol + subject)
+#
+# A disjunctive clause opens with a NON-VERB content word (noun, pronoun, or
+# adjective), typically prefixed with וְ. Discourse grammarians (Longacre,
+# Waltke-O'Connor, Niccacci) identify several functions:
+#
+#   Circumstantial  — background setting (Gen 1:2 וְהָאָרֶץ הָיְתָה תֹהוּ)
+#   Contrastive     — adversative contrast (Gen 37:3 וְיִשְׂרָאֵל אָהַב)
+#   Resumptive      — restarts after an embedded section
+#   Flashback       — analeptic (going back in time to explain)
+#   Summary/Comment — editorial aside or conclusion
+#
+# Detection heuristic:
+#   A verse (or clause) is disjunctive when its FIRST CONTENT WORD
+#   (skipping conjunctions, articles, prepositions) is NOT a verb.
+#   We also classify the leading conjunction (וְ / וַ / כִּי / אֲבָל / רַק / אַךְ)
+#   and the type of first content word (noun / pronoun / adjective / adverb).
+#
+# Limitation: MACULA does not mark clause boundaries within a verse.
+# We work at verse granularity; within-verse disjunctions are not detected.
+# ───────────────────────────────────────────────────────────────────────────────
+
+# POS classes that can open a disjunctive clause
+_DISJUNCTIVE_OPENERS = {'noun', 'pron', 'adj'}
+
+# Classes that are transparent (skip over them to find first content word)
+_TRANSPARENT = {'cj', 'art', 'prep', 'om', 'ptcl'}
+
+# Conjunction lemmas and their discourse labels
+_CONJ_LABELS = {
+    'וְ':    'waw-disjunctive',
+    'וַ':    'waw-disjunctive',
+    'כִּי':  'ki (causal/asseverative)',
+    'אֲבָל': 'aval (but)',
+    'רַק':   'raq (only/however)',
+    'אַךְ':  'akh (surely/however)',
+    'אֶפֶס': 'efes (nevertheless)',
+    'אוּלָם':'ulam (but)',
+}
+
+# Discourse function heuristics — based on the verb form that follows the
+# subject-first opening.  These are approximations; context always wins.
+def _discourse_function(verb_form: str, opener_class: str) -> str:
+    if not verb_form:
+        return 'nominal clause'
+    if verb_form == 'qatal':
+        return 'circumstantial / background'
+    if verb_form in ('yiqtol', 'weqatal'):
+        return 'prospective / result'
+    if 'participle' in verb_form:
+        return 'circumstantial (ongoing action)'
+    if verb_form == 'wayyiqtol':
+        # Unusual — wayyiqtol after subject-first signals a strong contrast
+        return 'contrastive'
+    return 'nominal / comment'
+
+
+def disjunctive_clauses(
+    book: str,
+    chapter: int | None = None,
+) -> pd.DataFrame:
+    """
+    Find all disjunctive (noun/subject-first) clauses in a book or chapter.
+
+    Returns a DataFrame with columns:
+      chapter, verse, opener_text, opener_class, opener_type,
+      leading_conj, verb_form, discourse_function, full_text
+    """
+    df = _load_macula()
+    scope = _filter_book(df, book, chapter)
+
+    # Group by verse
+    refs = (scope[['chapter', 'verse']]
+            .drop_duplicates()
+            .sort_values(['chapter', 'verse'])
+            .values.tolist())
+
+    records = []
+    for ch, vs in refs:
+        verse_df = scope[
+            (scope['chapter'] == ch) & (scope['verse'] == vs)
+        ].sort_values('word_num').reset_index(drop=True)
+
+        if verse_df.empty:
+            continue
+
+        # Collect leading conjunction (first token if class_=='cj')
+        leading_conj = ''
+        start_idx = 0
+        if not verse_df.empty and verse_df.iloc[0]['class_'] == 'cj':
+            leading_conj = _strip_diacritics(
+                str(verse_df.iloc[0].get('lemma', '')))
+            start_idx = 1
+
+        # Find first content word (skip art/prep/om/ptcl after conj)
+        first_content = None
+        for idx in range(start_idx, len(verse_df)):
+            row = verse_df.iloc[idx]
+            cls = str(row.get('class_', ''))
+            if cls not in _TRANSPARENT:
+                first_content = row
+                break
+
+        if first_content is None:
+            continue
+
+        opener_class = str(first_content.get('class_', ''))
+
+        # Disjunctive: opener is NOT a verb
+        if opener_class in _DISJUNCTIVE_OPENERS:
+            opener_type = str(first_content.get('type_', ''))
+            opener_text = str(first_content.get('text', ''))
+
+            # Find the first VERB in the verse for the form
+            verb_rows = verse_df[verse_df['class_'] == 'verb']
+            verb_form = ''
+            if not verb_rows.empty:
+                verb_form = str(verb_rows.iloc[0].get('type_', ''))
+
+            # Full verse text (joined, first 60 chars)
+            full_text = ' '.join(str(r['text']) for _, r in verse_df.iterrows())
+
+            conj_label = _CONJ_LABELS.get(leading_conj, leading_conj or '—')
+            disc_fn = _discourse_function(verb_form, opener_class)
+
+            records.append({
+                'chapter':            int(ch),
+                'verse':              int(vs),
+                'opener_text':        opener_text,
+                'opener_class':       opener_class,
+                'opener_type':        opener_type,
+                'leading_conj':       conj_label,
+                'verb_form':          verb_form,
+                'discourse_function': disc_fn,
+                'full_text':          full_text[:70],
+            })
+
+    return pd.DataFrame(records)
+
+
+def print_disjunctive_clauses(
+    book: str,
+    chapter: int | None = None,
+    *,
+    max_rows: int = 40,
+) -> None:
+    """Print a formatted list of disjunctive clauses in a book or chapter."""
+    df = disjunctive_clauses(book, chapter)
+    scope = f"{book} ch.{chapter}" if chapter else book
+
+    print()
+    print('═' * 80)
+    print(f"  Disjunctive clauses: {scope}  ({len(df)} found)")
+    print('─' * 80)
+
+    if df.empty:
+        print("  None found.")
+        print()
+        return
+
+    # Summary by discourse function
+    fn_counts = df['discourse_function'].value_counts()
+    print("  By discourse function:")
+    for fn, cnt in fn_counts.items():
+        print(f"    {fn:<36} × {cnt}")
+    print()
+
+    print(f"  {'Ref':<10} {'Opener':<18} {'Class':<8} {'Verb form':<22} {'Function'}")
+    print('  ' + '─' * 76)
+    for _, row in df.head(max_rows).iterrows():
+        ref = f"{book} {row['chapter']}:{row['verse']}"
+        print(f"  {ref:<10} {row['opener_text']:<18} {row['opener_class']:<8} "
+              f"{row['verb_form']:<22} {row['discourse_function']}")
+
+    if len(df) > max_rows:
+        print(f"  … ({len(df) - max_rows} more rows — use disjunctive_clauses() for full DataFrame)")
+    print()
+
+
+def disjunctive_in_chains(book: str, chapter: int) -> list[dict]:
+    """
+    Cross-reference wayyiqtol chains with disjunctive clauses in a chapter.
+
+    Returns a list of dicts describing each wayyiqtol chain, annotated with
+    any disjunctive clauses that appear WITHIN or IMMEDIATELY AFTER the chain.
+    This reveals how disjunctives interrupt the narrative flow.
+
+    Each dict has all fields from wayyiqtol_chains() plus:
+      disjunctives_in_chain  : list of (verse, discourse_function) tuples
+      interruption_type      : 'clean' | 'interrupted' | 'terminated-by-disj'
+    """
+    chains = wayyiqtol_chains(book, chapter)
+    disj_df = disjunctive_clauses(book, chapter)
+    disj_by_verse: dict[int, str] = {
+        int(r['verse']): r['discourse_function']
+        for _, r in disj_df.iterrows()
+    }
+
+    annotated = []
+    for ch in chains:
+        chain_verses = set(range(ch['start_verse'], ch['end_verse'] + 1))
+        # Look one verse past the end of the chain too (terminating disjunctive)
+        post_verse = ch['end_verse'] + 1
+
+        disj_in = [(v, disj_by_verse[v])
+                   for v in sorted(chain_verses)
+                   if v in disj_by_verse]
+        disj_post = disj_by_verse.get(post_verse)
+
+        if disj_in:
+            interruption = 'interrupted'
+        elif disj_post:
+            interruption = 'terminated-by-disj'
+        else:
+            interruption = 'clean'
+
+        annotated.append({
+            **ch,
+            'disjunctives_in_chain': disj_in,
+            'post_chain_disj':       disj_post,
+            'interruption_type':     interruption,
+        })
+
+    return annotated
+
+
+def print_disjunctive_in_chains(book: str, chapter: int) -> None:
+    """Print wayyiqtol chains annotated with interrupting disjunctive clauses."""
+    annotated = disjunctive_in_chains(book, chapter)
+
+    print()
+    print('═' * 80)
+    print(f"  Wayyiqtol chains + disjunctive interruptions: {book} ch.{chapter}")
+    print('─' * 80)
+
+    if not annotated:
+        print("  No chains found.")
+        print()
+        return
+
+    for i, ch in enumerate(annotated, 1):
+        vref = (f"v{ch['start_verse']}"
+                if ch['start_verse'] == ch['end_verse']
+                else f"vv{ch['start_verse']}–{ch['end_verse']}")
+        itype = ch['interruption_type']
+        icon = {'clean': '✓', 'interrupted': '⚡', 'terminated-by-disj': '↵'}.get(itype, '?')
+        print(f"\n  {icon} Chain {i}  [{vref}]  length={ch['length']}  [{itype}]")
+
+        for v in ch['verbs']:
+            disj_note = ''
+            for dv, dfn in ch['disjunctives_in_chain']:
+                if dv == v['verse']:
+                    disj_note = f'  ← DISJUNCTIVE ({dfn})'
+            print(f"    v{v['verse']}  {v['text']:<20}  {v['lemma']:<12}  "
+                  f"{v['stem']:<10}{disj_note}")
+
+        if ch['post_chain_disj']:
+            print(f"    → chain ends; v{ch['end_verse']+1} = "
+                  f"disjunctive ({ch['post_chain_disj']})")
+
+    # Summary stats
+    clean = sum(1 for c in annotated if c['interruption_type'] == 'clean')
+    inter = sum(1 for c in annotated if c['interruption_type'] == 'interrupted')
+    term  = sum(1 for c in annotated if c['interruption_type'] == 'terminated-by-disj')
+    print(f"\n  Summary: {len(annotated)} chains — "
+          f"{clean} clean · {inter} interrupted · {term} terminated-by-disjunctive")
+    print()
