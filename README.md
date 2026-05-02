@@ -58,6 +58,7 @@ Built to answer questions like:
   - [Cross-Testament Trajectory](#cross-testament-trajectory)
   - [Theological Term Reports](#theological-term-reports)
   - [Hebrew Poetry Analysis](#hebrew-poetry-analysis)
+  - [Hebrew Verbal Syntax Analysis](#hebrew-verbal-syntax-analysis)
   - [Theological Term Map](#theological-term-map)
   - [Synonym Comparison](#synonym-comparison)
   - [Phrase & Proximity Search](#phrase--proximity-search)
@@ -1091,6 +1092,114 @@ print(m['meter_type'])  # 'balanced(3+3)'
 
 ---
 
+### Hebrew Verbal Syntax Analysis
+
+`verbal_syntax.py` provides five analysis tools for studying the Hebrew verb system
+at the syntactic and discourse level — designed for 2nd-year Biblical Hebrew study.
+
+#### Verb Form Profile
+
+Distribution of all eleven Hebrew verb conjugation types for a book or chapter.
+Immediately reveals the text-type: narrative is wayyiqtol-heavy; poetry is
+yiqtol/qatal-heavy; prophecy blends qatal (certainty) with yiqtol (future).
+
+```python
+from bible_grammar import print_verb_form_profile, verb_form_chart
+
+# Genesis: 42% wayyiqtol (narrative prose)
+print_verb_form_profile('Gen')
+
+# Psalms: 31% yiqtol, 25% qatal, 6% wayyiqtol (poetry)
+print_verb_form_profile('Psa')
+
+# Chapter-level profile
+print_verb_form_profile('Gen', chapter=1)
+
+# Save a bar chart PNG
+verb_form_chart('Gen', output_path='output/charts/verb-forms-gen.png')
+```
+
+#### Wayyiqtol Chain Analysis
+
+Identifies consecutive wayyiqtol sequences (the "and he did X, and he did Y"
+narrative backbone) and reports what breaks each chain — whether a jussive,
+qatal summary, participle, or direct speech marker.
+
+```python
+from bible_grammar import print_wayyiqtol_chains, wayyiqtol_chains
+
+# Genesis 1: 15 chains, longest = 7 verbs; chains break on God's speech (jussive)
+print_wayyiqtol_chains('Gen', 1)
+
+# Programmatic access
+chains = wayyiqtol_chains('Ruth', 1)
+for c in chains:
+    print(c['length'], c['break_type'])
+```
+
+#### Infinitive Usage
+
+Analyses infinitive construct (with governing preposition) and infinitive absolute
+(with paronomastic detection). Shows whether inf-construct follows לְ (purpose),
+בְּ/כ (temporal), אחרי (sequence), or serves as subject/object.
+
+```python
+from bible_grammar import print_infinitive_usage
+
+# Genesis: 66% lamed (purpose), detects Gen 2:16-17 paronomastic inf-abs
+print_infinitive_usage('Gen')
+
+# Deuteronomy: rich in inf-construct (legal instructions)
+print_infinitive_usage('Deut')
+```
+
+Key findings for teaching:
+- Gen 2:16 `אָכֹל תֹּאכַל` — paronomastic inf-abs ⟦you may freely eat⟧
+- Gen 2:17 `מוֹת תָּמוּת` — paronomastic inf-abs ⟦you shall surely die⟧
+- ~66% of all inf-construct in Genesis governed by לְ (purpose/result clauses)
+
+#### Clause Type Profile
+
+Counts verbal vs. nominal clauses, plus negation tokens, conditional markers
+(אִם, לוּ), relative clauses (אֲשֶׁר), and interrogatives.
+
+```python
+from bible_grammar import print_clause_type_profile
+
+# Genesis: 95% verbal clauses (prose narrative — almost always finite verb)
+print_clause_type_profile('Gen')
+
+# Proverbs: more nominal clauses (aphorisms, stative descriptions)
+print_clause_type_profile('Pro')
+```
+
+#### Stem (Binyan) Distribution
+
+Frequency of each binyan — Qal, Niphal, Piel, Pual, Hiphil, Hophal, Hithpael,
+and rarer stems. Useful for asking: where does the author concentrate Hiphil
+(causative) vs. Piel (intensive)?
+
+```python
+from bible_grammar import print_stem_distribution, stem_chart
+
+# Genesis: Qal 77%, Hiphil 10%, Piel 7%
+print_stem_distribution('Gen')
+
+# Save horizontal bar chart
+stem_chart('Gen')
+```
+
+**Slash command:** `/verbal-syntax <command> <book> [args]`
+- `/verbal-syntax forms Gen`      — verb form profile
+- `/verbal-syntax forms Gen 1`    — chapter-level profile
+- `/verbal-syntax chains Gen 1`   — wayyiqtol chain analysis
+- `/verbal-syntax inf Gen`        — infinitive usage
+- `/verbal-syntax clauses Gen`    — clause type profile
+- `/verbal-syntax stems Gen`      — stem distribution
+- `/verbal-syntax report Gen`     — full Markdown report
+
+---
+
 ### Theological Term Map
 
 Traces key theological concepts across OT Hebrew → LXX Greek → NT Greek,
@@ -1347,6 +1456,12 @@ slash commands are available:
 | `/poetry acrostic <book> <ch> <vs1> <vs2> [stanza]` | Alphabetic acrostic detection |
 | `/poetry meter <book> <ch>:<vs>` | Stress/syllable count and meter type for one verse |
 | `/poetry meterstats <book>` | Meter pattern distribution for an entire book |
+| `/verbal-syntax forms <book> [ch]` | Verb conjugation type distribution (wayyiqtol/qatal/yiqtol/…) |
+| `/verbal-syntax chains <book> <ch>` | Wayyiqtol narrative chain analysis with break-type classification |
+| `/verbal-syntax inf <book>` | Infinitive construct (+ governing prep) and absolute (paronomastic) |
+| `/verbal-syntax clauses <book>` | Verbal/nominal clause ratio; negation, conditional, relative counts |
+| `/verbal-syntax stems <book>` | Verb stem (binyan) distribution: Qal/Niphal/Piel/Hiphil/Hitpael |
+| `/verbal-syntax report <book>` | Full Markdown verbal syntax report |
 | `/export <type> [args]` | Export any analysis to HTML + CSV |
 
 Examples:
@@ -1401,7 +1516,7 @@ Examples:
 | `08_parallel_passage.ipynb` | Parallel passage comparison (Synoptics, Samuel/Psalms) |
 | `09_language_analysis.ipynb` | LXX consistency, collocations, morphological distribution, semantic profiles, theological term maps |
 | `10_advanced_analysis.ipynb` | Divine names, genre comparison, intertextuality networks, HTML/CSV export |
-| `11_syntax_and_roles.ipynb` | NT/OT MACULA syntax trees, speaker attribution, lexicon API, christological titles, syntactic role/object search, LXX corpus query, cross-testament trajectory, theological term reports, Hebrew poetry analysis |
+| `11_syntax_and_roles.ipynb` | NT/OT MACULA syntax trees, speaker attribution, lexicon API, christological titles, syntactic role/object search, LXX corpus query, cross-testament trajectory, theological term reports, Hebrew poetry analysis (cola/parallelism/chiasm/acrostic/meter), Hebrew verbal syntax (verb form profiles, wayyiqtol chains, infinitive usage, clause types, stem distribution) |
 
 Export a notebook as a shareable HTML file:
 

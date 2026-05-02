@@ -63,6 +63,15 @@ from .poetry import (split_cola, verse_cola, verse_parallel_pairs,
                      acrostic_known, KNOWN_ACROSTICS,
                      verse_meter, book_meter_stats,
                      print_meter_stats, print_verse_meter)
+from .verbal_syntax import (
+    verb_form_profile, print_verb_form_profile, verb_form_chart,
+    wayyiqtol_chains, print_wayyiqtol_chains,
+    infinitive_usage, print_infinitive_usage,
+    clause_type_profile, print_clause_type_profile,
+    stem_distribution, print_stem_distribution, stem_chart,
+    verbal_syntax_report,
+    VERB_FORM_ORDER, VERB_FORM_LABELS,
+)
 from .speaker import (is_jesus_speaking, jesus_speaking_verse_set,
                       filter_to_jesus_speech, ALLOWLIST_VERSES)
 from .lexicon import lookup, search_gloss, lex_entry, lemma_index
