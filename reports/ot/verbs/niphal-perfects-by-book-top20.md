@@ -3,7 +3,7 @@
 **Source:** STEPBible TAHOT  
 **Scope:** Top 20 OT books by Niphal Perfect verb count
 
-![Niphal Perfect Verbs by Book — Top 20](../output/charts/niphal_perfects_by_book.png)
+![Niphal Perfect Verbs by Book — Top 20](../../../output/charts/ot/verbs/niphal_perfects_by_book.png)
 
 ## Summary
 

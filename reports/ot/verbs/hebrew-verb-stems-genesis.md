@@ -3,7 +3,7 @@
 **Source:** STEPBible TAHOT  
 **Scope:** All verb tokens in Genesis
 
-![Hebrew Verb Stems in Genesis](../output/charts/genesis_verb_stems.png)
+![Hebrew Verb Stems in Genesis](../../../output/charts/ot/verbs/genesis_verb_stems.png)
 
 ## Summary
 

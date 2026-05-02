@@ -11,7 +11,7 @@ shown as a percentage of all verbs in each book.
 
 ### Chart
 
-![Hebrew OT Verb Stems Per Book](../output/charts/verb-stems-ot-by-book.png)
+![Hebrew OT Verb Stems Per Book](../../../output/charts/ot/verbs/verb-stems-ot-by-book.png)
 
 ### Data Table
 
@@ -72,7 +72,7 @@ shown as a percentage of all verbs in each book.
 
 ### Chart
 
-![Greek NT Verb Tenses Per Book](../output/charts/verb-tenses-nt-by-book.png)
+![Greek NT Verb Tenses Per Book](../../../output/charts/nt/verbs/verb-tenses-nt-by-book.png)
 
 ### Tense Data Table
 
@@ -112,7 +112,7 @@ shown as a percentage of all verbs in each book.
 
 ### Chart
 
-![Greek NT Verb Moods Per Book](../output/charts/verb-moods-nt-by-book.png)
+![Greek NT Verb Moods Per Book](../../../output/charts/nt/verbs/verb-moods-nt-by-book.png)
 
 ### Mood Data Table
 

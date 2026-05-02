@@ -12,7 +12,7 @@ Includes: Perfect, Consecutive Perfect, and Weqatal (Consecutive Imperfect) form
 
 ## Chart
 
-![2fp Perfect Verbs by Book and Stem](../output/charts/2fp-perfect-by-book-stem-v3.png)
+![2fp Perfect Verbs by Book and Stem](../../../output/charts/ot/verbs/2fp-perfect-by-book-stem-v3.png)
 
 ---
 

@@ -12,7 +12,7 @@ scheme in the source data.
 
 ## Chart
 
-![Greek NT Case Distribution Per Book](../output/charts/nt-case-distribution-by-book.png)
+![Greek NT Case Distribution Per Book](../../../output/charts/nt/lexicon/nt-case-distribution-by-book.png)
 
 ---
 

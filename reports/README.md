@@ -1,108 +1,100 @@
 # Reports
 
-Markdown reports for generated Bible grammar charts. Each file embeds its chart and
-includes a summary, key observations, and data notes.
-
-## Hebrew Old Testament
-
-| Report | Description |
-|---|---|
-| [hebrew-verb-stems-ot-total.md](hebrew-verb-stems-ot-total.md) | All Hebrew verb stems across the entire OT |
-| [hebrew-verb-stems-genesis.md](hebrew-verb-stems-genesis.md) | Verb stem distribution in Genesis |
-| [hebrew-verb-stems-torah-by-book.md](hebrew-verb-stems-torah-by-book.md) | Top 6 stems compared across all five Torah books |
-| [niphal-perfects-by-book.md](niphal-perfects-by-book.md) | Niphal Perfect counts for every OT book |
-| [niphal-perfects-by-book-top20.md](niphal-perfects-by-book-top20.md) | Top 20 OT books by Niphal Perfect count |
-
-## Special Studies
-
-| Report | Description |
-|---|---|
-| [2fp-perfect-verbs.md](2fp-perfect-verbs.md) | All 13 2nd person feminine plural perfect verbs in the OT, by book and stem |
-| [hapax-legomena-by-book.md](hapax-legomena-by-book.md) | Hapax legomena counts by book for OT and NT, with sample lists |
-| [nouns-by-gender-by-book.md](nouns-by-gender-by-book.md) | Noun gender distribution (M/F/Both/Proper for OT; M/F/N for NT) per book |
-| [verb-morphology-by-book.md](verb-morphology-by-book.md) | OT verb stems (binyanim) and NT verb tense/mood distribution per book |
-| [nt-case-distribution-by-book.md](nt-case-distribution-by-book.md) | Greek NT case distribution (Nom/Gen/Acc/Dat/Voc) per book |
-| [ot-hebrew-aramaic-by-book.md](ot-hebrew-aramaic-by-book.md) | Hebrew vs. Aramaic word counts for every OT book; Daniel and Ezra Aramaic sections |
-
-## Greek New Testament
-
-| Report | Description |
-|---|---|
-| [greek-nt-tense-voice-heatmap.md](greek-nt-tense-voice-heatmap.md) | Tense × Voice heatmap for all NT verbs |
-| [greek-pauline-tense-voice-heatmap.md](greek-pauline-tense-voice-heatmap.md) | Tense × Voice heatmap for Paul's letters |
-| [greek-aorist-passives-by-nt-book.md](greek-aorist-passives-by-nt-book.md) | Aorist Passive verb counts by NT book |
-
-## Per-Book Language Profiles
-
-Generated reports in `profiles/` — one file per book. Available for: Gen, Exo, Psa, Isa, Dan, Mat, Jhn, Rom, Heb, Rev (and any book via `save_profile_report()`).
-
-| Report | Description |
-|---|---|
-| [profiles/Gen_profile.md](profiles/Gen_profile.md) | Genesis |
-| [profiles/Isa_profile.md](profiles/Isa_profile.md) | Isaiah |
-| [profiles/Rom_profile.md](profiles/Rom_profile.md) | Romans |
-| [profiles/Heb_profile.md](profiles/Heb_profile.md) | Hebrews |
-
-*See `notebooks/06_book_profiles.ipynb` for cross-book comparisons and batch generation.*
-
-## Translation & Cross-Testament
-
-| Report | Description |
-|---|---|
-| [nt_quotations_overview.md](nt_quotations_overview.md) | NT→OT quotation density by book, highest-confidence pairs, three-way text comparison |
-
-## Word Studies (reports/)
-
-| Report | Description |
-|---|---|
-| [obey-greek-word-study.md](obey-greek-word-study.md) | NT usage of ὑπακούω, ὑπακοή, πείθω, πειθαρχέω, ὑποτάσσω, ὑπήκοος with tense/voice/mood/KJV context. LXX analysis showing πείθω almost exclusively translates בָּטַח (trust), not obedience words. Zephaniah 3:2 as a key illustration. |
-
-## Semantic Profiles (output/reports/)
-
-Pre-generated semantic profiles in `../output/reports/`. Each file includes a lexicon entry, frequency by book, morphological forms, LXX equivalents and consistency, OT→LXX→NT trajectory, top collocates, and example verses.
-
-| Report | Description |
-|---|---|
-| [../output/reports/h7965-semantic-profile.md](../output/reports/h7965-semantic-profile.md) | שָׁלוֹם (shalom / peace), H7965 |
-| [../output/reports/h1285-semantic-profile.md](../output/reports/h1285-semantic-profile.md) | בְּרִית (covenant), H1285 |
-| [../output/reports/h7307-semantic-profile.md](../output/reports/h7307-semantic-profile.md) | רוּחַ (spirit/wind), H7307 |
-| [../output/reports/g3056-semantic-profile.md](../output/reports/g3056-semantic-profile.md) | λόγος (word), G3056 |
-
-## Syntactic Role Analysis (output/reports/)
-
-| Report | Description |
-|---|---|
-| [../output/reports/role-yhwh-elohim-ot.md](../output/reports/role-yhwh-elohim-ot.md) | Verbs with YHWH/Elohim as grammatical subject in the OT — top 30 verbs with inline LXX equivalents, book distribution, and cross-testament comparison with NT θεός. |
-
-## Christological Titles (output/reports/)
-
-| Report | Description |
-|---|---|
-| [../output/reports/christological-titles.md](../output/reports/christological-titles.md) | Frequency of titles Jesus used to refer to Himself (Son of Man, I AM sayings, Son of God, etc.) across the four Gospels, with per-book counts, confidence ratings, and verse listings. |
-
-## Divine Names (output/reports/)
-
-| Report | Description |
-|---|---|
-| [../output/reports/divine-names-report.md](../output/reports/divine-names-report.md) | Distribution of YHWH, Elohim, Adonai, El, Yah, Shaddai in OT Hebrew; Kyrios and Theos in the LXX; Theos, Kyrios, Iesous, Christos, Pater, Pneuma in the NT. Includes distribution by book and canonical section, stacked bar charts, and heatmaps. |
-
-## Genre Comparison (output/reports/)
-
-| Report | Description |
-|---|---|
-| [../output/reports/genre-comparison-report.md](../output/reports/genre-comparison-report.md) | Verb stem, conjugation, and POS distribution across Torah/Historical/Wisdom/Prophets (OT) and Gospels/Pauline/General (NT). Heatmap charts for each feature. Key findings: wayyiqtol dominates Historical prose (36%), Imperfect dominates Wisdom (31%), Paul's letters have highest Present tense ratio (55%). |
-
-## Intertextuality (output/reports/)
-
-Pre-generated intertextuality network reports in `../output/reports/`. Each includes a network graph, NT book coverage summary, full citation table with KJV text, and verse-by-verse detail.
-
-| Report | Description |
-|---|---|
-| [../output/reports/isa-53-intertextuality.md](../output/reports/isa-53-intertextuality.md) | Isaiah 53: 26 NT citations across 13 books (min votes 20) |
-| [../output/reports/psa-22-intertextuality.md](../output/reports/psa-22-intertextuality.md) | Psalm 22 (min votes 15) |
-| [../output/reports/isa-intertextuality.md](../output/reports/isa-intertextuality.md) | Full Isaiah: 224+ links to 20 NT books (min votes 50) |
+Markdown reports for generated Bible grammar charts and analyses. Organized by
+testament (`ot/`, `nt/`, `both/`) and topic.
 
 ---
-*Charts are in `../output/charts/`. Regenerate with `notebooks/02_query_demo.ipynb` or `notebooks/03_statistics.ipynb`.*  
-*NT quotations notebook: `notebooks/04_nt_quotations.ipynb`.*  
-*HTML and CSV exports are generated to `../output/exports/` (gitignored; regenerate via `/export`).*
+
+## `ot/verbs/` — Hebrew OT Verb Morphology
+
+| Report | Description |
+|---|---|
+| [hebrew-verb-stems-ot-total.md](ot/verbs/hebrew-verb-stems-ot-total.md) | All Hebrew verb stems across the entire OT |
+| [hebrew-verb-stems-genesis.md](ot/verbs/hebrew-verb-stems-genesis.md) | Verb stem distribution in Genesis |
+| [hebrew-verb-stems-torah-by-book.md](ot/verbs/hebrew-verb-stems-torah-by-book.md) | Top 6 stems compared across all five Torah books |
+| [niphal-perfects-by-book.md](ot/verbs/niphal-perfects-by-book.md) | Niphal Perfect counts for every OT book |
+| [niphal-perfects-by-book-top20.md](ot/verbs/niphal-perfects-by-book-top20.md) | Top 20 OT books by Niphal Perfect count |
+| [2fp-perfect-verbs.md](ot/verbs/2fp-perfect-verbs.md) | All 13 2nd person feminine plural perfect verbs in the OT, by book and stem |
+| [ot-verb-stems-pie.md](ot/verbs/ot-verb-stems-pie.md) | Pie chart of verb stem distribution across the entire OT |
+| [verb-morphology-by-book.md](ot/verbs/verb-morphology-by-book.md) | OT verb stems (binyanim) and NT verb tense/mood distribution per book |
+
+## `ot/lexicon/` — Hebrew OT Lexicon
+
+| Report | Description |
+|---|---|
+| [ot-hebrew-aramaic-by-book.md](ot/lexicon/ot-hebrew-aramaic-by-book.md) | Hebrew vs. Aramaic word counts for every OT book; Daniel and Ezra Aramaic sections |
+
+## `ot/survey/` — OT Book Profiles
+
+Per-book morphological fingerprints. Available for: Gen, Exo, Psa, Isa, Dan (and any book via `save_profile_report()`).
+
+| Report | Description |
+|---|---|
+| [Gen_profile.md](ot/survey/Gen_profile.md) | Genesis |
+| [Exo_profile.md](ot/survey/Exo_profile.md) | Exodus |
+| [Psa_profile.md](ot/survey/Psa_profile.md) | Psalms |
+| [Isa_profile.md](ot/survey/Isa_profile.md) | Isaiah |
+| [Dan_profile.md](ot/survey/Dan_profile.md) | Daniel |
+
+---
+
+## `nt/verbs/` — Greek NT Verb Morphology
+
+| Report | Description |
+|---|---|
+| [greek-nt-tense-voice-heatmap.md](nt/verbs/greek-nt-tense-voice-heatmap.md) | Tense × Voice heatmap for all NT verbs |
+| [greek-pauline-tense-voice-heatmap.md](nt/verbs/greek-pauline-tense-voice-heatmap.md) | Tense × Voice heatmap for Paul's letters |
+| [greek-aorist-passives-by-nt-book.md](nt/verbs/greek-aorist-passives-by-nt-book.md) | Aorist Passive verb counts by NT book |
+
+## `nt/lexicon/` — Greek NT Lexicon
+
+| Report | Description |
+|---|---|
+| [nt-case-distribution-by-book.md](nt/lexicon/nt-case-distribution-by-book.md) | Greek NT case distribution (Nom/Gen/Acc/Dat/Voc) per book |
+| [obey-greek-word-study.md](nt/lexicon/obey-greek-word-study.md) | NT usage of ὑπακούω, ὑπακοή, πείθω, πειθαρχέω, ὑποτάσσω, ὑπήκοος; LXX analysis of πείθω vs. obedience words |
+
+## `nt/survey/` — NT Book Profiles
+
+| Report | Description |
+|---|---|
+| [Mat_profile.md](nt/survey/Mat_profile.md) | Matthew |
+| [Jhn_profile.md](nt/survey/Jhn_profile.md) | John |
+| [Rom_profile.md](nt/survey/Rom_profile.md) | Romans |
+| [Heb_profile.md](nt/survey/Heb_profile.md) | Hebrews |
+| [Rev_profile.md](nt/survey/Rev_profile.md) | Revelation |
+
+---
+
+## `both/lexicon/` — Cross-Testament Lexicon
+
+| Report | Description |
+|---|---|
+| [hapax-legomena-by-book.md](both/lexicon/hapax-legomena-by-book.md) | Hapax legomena counts by book for OT and NT, with sample lists |
+| [nouns-by-gender-by-book.md](both/lexicon/nouns-by-gender-by-book.md) | Noun gender distribution (M/F for OT; M/F/N for NT) per book |
+
+## `both/intertextuality/` — NT Quotations
+
+| Report | Description |
+|---|---|
+| [nt_quotations_overview.md](both/intertextuality/nt_quotations_overview.md) | NT→OT quotation density by book, highest-confidence pairs, three-way text comparison |
+
+---
+
+## Programmatically Generated Reports (`output/reports/`)
+
+More detailed reports generated by Python functions live in `../output/reports/` under the same `ot/nt/both × topic` structure:
+
+| Path | Contents |
+|---|---|
+| `../output/reports/ot/verbs/` | Hiphil morphology report |
+| `../output/reports/ot/lexicon/` | Semantic profiles (שָׁלוֹם, בְּרִית, רוּחַ), trajectory reports |
+| `../output/reports/ot/names/` | Syntactic role analysis (YHWH/Elohim as subject) |
+| `../output/reports/nt/lexicon/` | λόγος semantic profile |
+| `../output/reports/nt/names/` | Christological titles |
+| `../output/reports/both/names/` | Divine names (OT + LXX + NT) |
+| `../output/reports/both/genre/` | Genre comparison (OT + NT) |
+| `../output/reports/both/intertextuality/` | Isa 53, Psa 22, full Isaiah intertextuality networks |
+
+---
+*Charts are in `../output/charts/` under the same subdirectory structure.*  
+*Regenerate reports via the relevant notebook in `notebooks/` or the corresponding slash command.*
