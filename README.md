@@ -1009,7 +1009,85 @@ print_parallelism_stats('Pro')
 
 Primary poetry books: `Psa` · `Pro` · `Job` · `Sng` · `Lam` · `Ecc`
 
-**Slash command:** `/poetry verse Psa 19:2` · `/poetry pairs Pro` · `/poetry stats Psa` · `/poetry compare Psa Pro Job`
+**Slash commands:**
+`/poetry verse Psa 19:2` · `/poetry pairs Pro` · `/poetry stats Psa` · `/poetry compare Psa Pro Job`
+
+#### Chiasm Detection
+
+Identifies A B … B' A' mirror structure across a verse range using lemma-level
+Jaccard similarity between mirrored verse pairs. Each verse's content-word lemmas
+are compared against its structural mirror.
+
+```python
+from bible_grammar import print_chiasm, detect_chiasm
+
+# Psalm 8 — framed by "how majestic is your name" (vv. 1, 9)
+print_chiasm('Psa', 8, 1, 9)
+
+# Programmatic access: get raw scores and pattern labels
+result = detect_chiasm('Psa', 23, 1, 6)
+print(result['pattern'])       # ['A', 'B', 'C', "C'", "B'", "A'"]
+print(result['mean_score'])    # average Jaccard across mirror pairs
+print(result['is_chiasm'])     # True if mean_score >= 0.10
+```
+
+**Slash command:** `/poetry chiasm <book> <ch> <vs1> <vs2>`
+- `/poetry chiasm Psa 8 1 9`   — Psalm 8 frame
+- `/poetry chiasm Psa 23 1 6`  — Psalm 23
+
+#### Acrostic Detection
+
+Checks whether successive verses begin with successive letters of the Hebrew
+alphabet (א through ת = 22 letters). Supports stanza acrostics where groups of
+verses share the same opening letter (e.g. Psalm 119: 8 verses per letter).
+
+```python
+from bible_grammar import print_acrostic, acrostic_known, KNOWN_ACROSTICS
+
+# Lamentations 1 — 100% match (all 22 letters)
+print_acrostic('Lam', 1, 1, 22)
+
+# Psalm 119 — stanza acrostic: 8 verses per letter, 176 verses total
+print_acrostic('Psa', 119, 1, 176, stanza_size=8)
+
+# Check what acrostics are known for a book
+print(acrostic_known('Psa'))   # [9, 10, 25, 34, 37, 111, 112, 119, 145]
+print(KNOWN_ACROSTICS)         # full registry: Psa, Pro, Lam, Nah
+```
+
+**Slash command:** `/poetry acrostic <book> <ch> <vs1> <vs2> [stanza]`
+- `/poetry acrostic Lam 1 1 22`        — Lamentations 1
+- `/poetry acrostic Psa 25 1 22`       — Psalm 25
+- `/poetry acrostic Psa 119 1 176 8`   — Psalm 119 (stanza=8)
+
+#### Meter Analysis
+
+Estimates the stress pattern per colon using content-word counting (heuristic
+approximation of classical Hebrew stress-counting meter). Syllables are estimated
+from vowel-point counts in the MT. The qinah (3+2) pattern characteristic of
+lament poetry is flagged automatically.
+
+```python
+from bible_grammar import print_verse_meter, print_meter_stats, verse_meter
+
+# Single verse — stress count + syllable estimate per colon
+print_verse_meter('Lam', 1, 1)
+# → Colon A: 3 stresses, ~10 syllables
+# → Colon B: 2 stresses, ~7 syllables
+# → pattern=3+2  type=qinah(3+2)
+
+# Meter distribution across a whole book
+print_meter_stats('Lam')
+
+# Programmatic access
+m = verse_meter('Psa', 23, 1)
+print(m['pattern'])     # e.g. '3+3'
+print(m['meter_type'])  # 'balanced(3+3)'
+```
+
+**Slash command:** `/poetry meter <book> <ch>:<vs>` · `/poetry meterstats <book>`
+- `/poetry meter Lam 1:1`    — qinah pattern
+- `/poetry meterstats Lam`   — distribution across Lamentations
 
 ---
 
@@ -1265,6 +1343,10 @@ slash commands are available:
 | `/poetry verse <book> <ch>:<vs>` | Hebrew poetry cola split + parallelism classification |
 | `/poetry pairs <book>` | Most frequent A/B parallel word pairs in a poetry book |
 | `/poetry stats <book>` | Parallelism type distribution (synonymous/antithetic/synthetic) |
+| `/poetry chiasm <book> <ch> <vs1> <vs2>` | Chiasm (A B B' A') detection across a verse range |
+| `/poetry acrostic <book> <ch> <vs1> <vs2> [stanza]` | Alphabetic acrostic detection |
+| `/poetry meter <book> <ch>:<vs>` | Stress/syllable count and meter type for one verse |
+| `/poetry meterstats <book>` | Meter pattern distribution for an entire book |
 | `/export <type> [args]` | Export any analysis to HTML + CSV |
 
 Examples:

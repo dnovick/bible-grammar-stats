@@ -57,7 +57,12 @@ from .poetry import (split_cola, verse_cola, verse_parallel_pairs,
                      book_parallelism_stats, compare_poetry_books,
                      print_verse_analysis, print_book_pairs,
                      print_parallelism_stats, poetry_report,
-                     POETRY_BOOKS)
+                     is_superscription, POETRY_BOOKS,
+                     detect_chiasm, print_chiasm,
+                     detect_acrostic, print_acrostic,
+                     acrostic_known, KNOWN_ACROSTICS,
+                     verse_meter, book_meter_stats,
+                     print_meter_stats, print_verse_meter)
 from .speaker import (is_jesus_speaking, jesus_speaking_verse_set,
                       filter_to_jesus_speech, ALLOWLIST_VERSES)
 from .lexicon import lookup, search_gloss, lex_entry, lemma_index

@@ -160,6 +160,65 @@ def split_cola(verse_df: pd.DataFrame) -> list[pd.DataFrame]:
     return [cola_a, remainder]
 
 
+# ── Psalm superscription handling ────────────────────────────────────────────
+
+# Psalms whose verse 1 in the Hebrew MT is a superscription (not poetry).
+# English Bibles typically fold the superscription into the heading and number
+# the actual poetry starting at English v.1 = Hebrew v.2.
+# Psalms with no superscription (e.g. 1, 2, 10, 33…) are not affected.
+#
+# Rather than hardcode every psalm, we detect superscriptions heuristically:
+# verse 1 of a psalm is likely a superscription if it contains לַמְנַצֵּחַ
+# (to the choirmaster), מִזְמוֹר (psalm), שִׁיר (song), מַשְׂכִּיל (maskil),
+# or similar liturgical lemmas — and has no Etnahta mid-verse split (i.e. it
+# is a single short label rather than a bicolon).
+
+_SUPERSCRIPTION_LEMMAS = {
+    'נָצַח',     # lamnatstseak — to the choirmaster
+    'מִזְמוֹר',  # mizmor — psalm
+    'שִׁיר',     # shir — song
+    'מַשְׂכִּיל', # maskil
+    'מִכְתָּם',  # miktam
+    'תְּפִלָּה', # tefillah — prayer
+    'תְּהִלָּה', # tehillah — praise
+    'לְדָוִד',   # of David (used as marker)
+    'דָּוִד',    # David
+    'שְׁלֹמֹה',  # Solomon
+    'אָסָף',     # Asaph
+    'קֹרַח',     # Korah
+    'הֵמָן',     # Heman
+    'אֵיתָן',    # Ethan
+    'מֹשֶׁה',    # Moses
+}
+
+
+def is_superscription(book: str, chapter: int, verse: int) -> bool:
+    """
+    Return True if this verse appears to be a Psalm superscription.
+
+    A verse is considered a superscription if:
+      - It is verse 1 of a Psalm chapter
+      - The majority of its content words are superscription lemmas
+      - The total word count is short (≤8 content words — headings are brief)
+
+    Note: MACULA places an Etnahta between "To the choirmaster" and "A psalm of David",
+    so the "no mid-verse split" heuristic is unreliable; we use lemma ratio instead.
+    """
+    if book != 'Psa' or verse != 1:
+        return False
+    df = _load_macula()
+    v = df[(df['book'] == book) & (df['chapter'] == chapter) & (df['verse'] == verse)]
+    if v.empty:
+        return False
+    cw = _content_words(v)
+    if cw.empty:
+        return True
+    if len(cw) > 8:
+        return False  # too long to be a heading
+    sup_count = sum(1 for lemma in cw['lemma'] if lemma in _SUPERSCRIPTION_LEMMAS)
+    return sup_count / len(cw) > 0.4
+
+
 def verse_cola(book: str, chapter: int, verse: int) -> list[pd.DataFrame]:
     """Return the cola for a single verse."""
     df = _load_macula()
@@ -399,6 +458,14 @@ def print_verse_analysis(
     show_accents: bool = False,
 ) -> None:
     """Print a formatted cola analysis for a single verse."""
+    # Warn if this looks like a Psalm superscription
+    if is_superscription(book, chapter, verse):
+        print(f"\n  Note: {book} {chapter}:{verse} appears to be a superscription "
+              f"(liturgical heading), not a poetic bicolon.")
+        print(f"  Hebrew versification counts superscriptions as verse 1; "
+              f"English Bibles fold them into the heading.")
+        print(f"  Try verse {verse + 1} for the first line of actual poetry.\n")
+
     cola = verse_cola(book, chapter, verse)
     ptype, conf = parallelism_type(book, chapter, verse)
 
@@ -539,3 +606,523 @@ def poetry_report(
     md_path.write_text('\n'.join(lines), encoding='utf-8')
     print(f"  Saved: {md_path}")
     return str(md_path)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CHIASM DETECTION
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# A chiasm (or chiasmus) is a rhetorical structure A B ... B' A' where the
+# outer elements mirror the inner elements. In Hebrew poetry this often spans
+# several verses.
+#
+# Detection approach:
+#   1. Extract a lemma "fingerprint" for each verse (set of content-word lemmas).
+#   2. Build a similarity matrix over the verse range.
+#   3. Search for the anti-diagonal pattern: verse[i] ≅ verse[n-1-i].
+#   4. Score by average pairwise Jaccard similarity of the mirrored pairs.
+#   5. Also detect the optional central pivot (single verse with no mirror).
+#
+# This is heuristic — Hebrew scholars debate chiasm boundaries and significance.
+# Treat output as a starting point for manual study, not a definitive verdict.
+# ───────────────────────────────────────────────────────────────────────────────
+
+def _verse_lemma_set(macula: pd.DataFrame, book: str, ch: int, vs: int) -> set[str]:
+    """Return the set of content-word lemmas for one verse."""
+    book_col = 'book_id' if 'book_id' in macula.columns else 'book'
+    rows = macula[
+        (macula[book_col] == book) &
+        (macula['chapter'] == ch) &
+        (macula['verse'] == vs)
+    ]
+    out: set[str] = set()
+    for _, r in rows.iterrows():
+        if _is_content_word(str(r.get('class_', ''))):
+            lem = str(r.get('lemma', '') or r.get('lemma_id', '') or '')
+            if lem:
+                out.add(lem)
+    return out
+
+
+def _jaccard(a: set, b: set) -> float:
+    if not a or not b:
+        return 0.0
+    return len(a & b) / len(a | b)
+
+
+def detect_chiasm(
+    book: str,
+    chapter: int,
+    start_verse: int,
+    end_verse: int,
+    *,
+    min_score: float = 0.10,
+) -> dict:
+    """
+    Detect chiastic (A B B' A') structure across a verse range.
+
+    Parameters
+    ----------
+    book, chapter       : book ID and chapter number
+    start_verse, end_verse : inclusive verse range (within one chapter)
+    min_score           : minimum average mirror-pair Jaccard to report a hit
+
+    Returns a dict with keys:
+      pattern      : list of str labels e.g. ['A', 'B', 'B\'', 'A\'']
+      verses       : list of (ch, vs) tuples in order
+      pairs        : list of ((ch1,vs1), (ch2,vs2), score) for each mirror pair
+      pivot        : (ch, vs) or None if even number of verses
+      mean_score   : float — average Jaccard across mirror pairs
+      is_chiasm    : bool — True if mean_score >= min_score
+      lemma_sets   : dict mapping (ch,vs) → frozenset of lemmas
+    """
+    macula = _load_macula()
+    verses = list(range(start_verse, end_verse + 1))
+    n = len(verses)
+
+    lemma_sets: dict[tuple, frozenset] = {}
+    for vs in verses:
+        ls = _verse_lemma_set(macula, book, chapter, vs)
+        lemma_sets[(chapter, vs)] = frozenset(ls)
+
+    pairs = []
+    n_pairs = n // 2
+    for i in range(n_pairs):
+        v_outer = (chapter, verses[i])
+        v_inner = (chapter, verses[n - 1 - i])
+        score = _jaccard(lemma_sets[v_outer], lemma_sets[v_inner])
+        pairs.append((v_outer, v_inner, score))
+
+    pivot = (chapter, verses[n // 2]) if n % 2 == 1 else None
+    mean_score = sum(s for _, _, s in pairs) / len(pairs) if pairs else 0.0
+
+    # Build letter labels A, B, C …
+    letters = [chr(ord('A') + i) for i in range(n_pairs)]
+    pattern = []
+    for i in range(n):
+        mirror_idx = n - 1 - i
+        pair_idx = min(i, mirror_idx)
+        letter = letters[pair_idx] if pair_idx < len(letters) else '?'
+        if i < n // 2:
+            pattern.append(letter)
+        elif n % 2 == 1 and i == n // 2:
+            pattern.append('X')   # pivot
+        else:
+            pattern.append(letter + "'")
+
+    return {
+        'pattern': pattern,
+        'verses': [(chapter, v) for v in verses],
+        'pairs': pairs,
+        'pivot': pivot,
+        'mean_score': mean_score,
+        'is_chiasm': mean_score >= min_score,
+        'lemma_sets': lemma_sets,
+    }
+
+
+def print_chiasm(
+    book: str,
+    chapter: int,
+    start_verse: int,
+    end_verse: int,
+    *,
+    min_score: float = 0.10,
+) -> None:
+    """Print a formatted chiasm analysis for a verse range."""
+    result = detect_chiasm(book, chapter, start_verse, end_verse,
+                           min_score=min_score)
+    n = len(result['verses'])
+    label = f"{book} {chapter}:{start_verse}–{end_verse}"
+
+    print()
+    print('═' * 72)
+    verdict = 'CHIASM DETECTED' if result['is_chiasm'] else 'weak / no chiasm'
+    print(f"  Chiasm analysis: {label}  [{verdict}]")
+    print(f"  Mirror-pair mean Jaccard: {result['mean_score']:.3f}")
+    print('─' * 72)
+
+    macula = _load_macula()
+    book_col = 'book_id' if 'book_id' in macula.columns else 'book'
+    for i, (ch, vs) in enumerate(result['verses']):
+        label_tag = result['pattern'][i]
+        rows = macula[
+            (macula[book_col] == book) &
+            (macula['chapter'] == ch) &
+            (macula['verse'] == vs)
+        ]
+        words = ' '.join(str(r.get('text', '')) for _, r in rows.iterrows())
+        ls = result['lemma_sets'][(ch, vs)]
+        shared = ''
+        # find which pair this verse belongs to for overlap hint
+        mirror_idx = n - 1 - i
+        if i != mirror_idx:
+            other_key = result['verses'][mirror_idx]
+            overlap = result['lemma_sets'][(ch, vs)] & result['lemma_sets'][other_key]
+            if overlap:
+                shared = '  [shared: ' + ', '.join(sorted(overlap)[:4]) + ']'
+        print(f"  {label_tag:<4} {book} {ch}:{vs:<4}  {words[:50]:<50}{shared}")
+
+    print()
+    print('  Mirror pairs:')
+    for (ch1, vs1), (ch2, vs2), score in result['pairs']:
+        bar = '█' * int(score * 20)
+        print(f"    {book} {ch1}:{vs1} ↔ {book} {ch2}:{vs2}  "
+              f"Jaccard={score:.3f}  {bar}")
+    if result['pivot']:
+        ch, vs = result['pivot']
+        print(f"\n  Pivot (X): {book} {ch}:{vs}")
+    print()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ACROSTIC DETECTION
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# An acrostic is a poem where successive verses (or stanzas) begin with
+# successive letters of the Hebrew alphabet (aleph through tav = 22 letters).
+#
+# Known acrostics in the Hebrew Bible:
+#   Psalm 9–10 (partial), 25, 34, 37, 111, 112, 119, 145
+#   Proverbs 31:10–31 (the virtuous woman)
+#   Lamentations 1, 2, 3 (triple acrostic), 4
+#   Nahum 1:2–8 (partial)
+#
+# Detection: check whether the first consonant of the first word of each verse
+# follows the Hebrew alphabet order. We strip vowel points and cantillation
+# so only the leading consonant is compared.
+# ───────────────────────────────────────────────────────────────────────────────
+
+# Hebrew alphabet in order (consonantal)
+_HEB_ALPHABET = list('אבגדהוזחטיכלמנסעפצקרשת')
+
+# Map from first letter → alphabet position (0-based)
+_HEB_LETTER_POS = {c: i for i, c in enumerate(_HEB_ALPHABET)}
+
+# Known acrostics for reference (OSIS book + chapter or verse range)
+KNOWN_ACROSTICS = {
+    'Psa': [9, 10, 25, 34, 37, 111, 112, 119, 145],
+    'Pro': ['31:10-31'],
+    'Lam': [1, 2, 3, 4],
+    'Nah': ['1:2-8'],
+}
+
+
+def _first_consonant(text: str) -> str | None:
+    """Return the first Hebrew consonant in text (strip diacritics first)."""
+    for ch in text:
+        if ch in _HEB_LETTER_POS:
+            return ch
+    return None
+
+
+def detect_acrostic(
+    book: str,
+    chapter: int,
+    start_verse: int,
+    end_verse: int,
+    *,
+    stanza_size: int = 1,
+) -> dict:
+    """
+    Detect an alphabetic acrostic across a verse range.
+
+    Parameters
+    ----------
+    book, chapter       : book and chapter
+    start_verse, end_verse : inclusive verse range
+    stanza_size         : verses per stanza (1 for most acrostics; 8 for Ps 119
+                          where each stanza of 8 verses starts with the same letter)
+
+    Returns dict with keys:
+      hits        : list of (verse, expected_letter, actual_letter, match)
+      match_count : int
+      total       : int
+      pct_match   : float
+      is_acrostic : bool (match_count / total >= 0.75)
+      pattern     : 'full' | 'partial' | 'none'
+    """
+    macula = _load_macula()
+    book_col = 'book_id' if 'book_id' in macula.columns else 'book'
+    verses = list(range(start_verse, end_verse + 1))
+
+    hits = []
+    alpha_pos = 0   # index into _HEB_ALPHABET
+
+    for stanza_start_idx in range(0, len(verses), stanza_size):
+        stanza_verses = verses[stanza_start_idx: stanza_start_idx + stanza_size]
+        expected = _HEB_ALPHABET[alpha_pos] if alpha_pos < 22 else '?'
+
+        for vs in stanza_verses:
+            rows = macula[
+                (macula[book_col] == book) &
+                (macula['chapter'] == chapter) &
+                (macula['verse'] == vs)
+            ].sort_values('word_num' if 'word_num' in macula.columns else macula.columns[0])
+
+            first_word_text = ''
+            if not rows.empty:
+                first_word_text = str(rows.iloc[0].get('text', ''))
+
+            actual = _first_consonant(first_word_text)
+            match = (actual == expected)
+            hits.append({
+                'verse': vs,
+                'expected': expected,
+                'actual': actual or '',
+                'first_word': first_word_text,
+                'match': match,
+            })
+
+        alpha_pos += 1
+
+    match_count = sum(1 for h in hits if h['match'])
+    total = len(hits)
+    pct = match_count / total if total else 0.0
+
+    if pct >= 0.85:
+        pattern = 'full'
+    elif pct >= 0.50:
+        pattern = 'partial'
+    else:
+        pattern = 'none'
+
+    return {
+        'hits': hits,
+        'match_count': match_count,
+        'total': total,
+        'pct_match': round(pct * 100, 1),
+        'is_acrostic': pct >= 0.75,
+        'pattern': pattern,
+    }
+
+
+def print_acrostic(
+    book: str,
+    chapter: int,
+    start_verse: int,
+    end_verse: int,
+    *,
+    stanza_size: int = 1,
+) -> None:
+    """Print an acrostic analysis for a verse range."""
+    result = detect_acrostic(book, chapter, start_verse, end_verse,
+                             stanza_size=stanza_size)
+    ref = f"{book} {chapter}:{start_verse}–{end_verse}"
+
+    print()
+    print('═' * 72)
+    verdict = f"ACROSTIC ({result['pattern'].upper()})" if result['is_acrostic'] else 'not acrostic'
+    print(f"  Acrostic analysis: {ref}  [{verdict}]")
+    print(f"  Matches: {result['match_count']}/{result['total']}  "
+          f"({result['pct_match']}%)")
+    print('─' * 72)
+    print(f"  {'Verse':<7} {'Expected':<10} {'Actual':<10} {'First word':<30} {'✓'}")
+    print('  ' + '─' * 60)
+    for h in result['hits']:
+        tick = '✓' if h['match'] else '✗'
+        word_preview = h['first_word'][:28]
+        print(f"  v{h['verse']:<6} {h['expected']:<10} {h['actual']:<10} "
+              f"{word_preview:<30} {tick}")
+    print()
+
+
+def acrostic_known(book: str) -> list:
+    """Return list of known acrostic chapters/ranges for a book."""
+    return KNOWN_ACROSTICS.get(book, [])
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# METER / SYLLABLE COUNTING
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Hebrew meter is still debated, but the most influential model counts stressed
+# syllables per colon (Ley-Sievers stress-counting). The "qinah" meter (3+2)
+# is characteristic of laments (qinah = dirge). Psalms of praise often show 3+3.
+#
+# Syllable counting heuristic (without a full phonological parser):
+#   - Each vowel letter (qamets, patah, tsere, etc.) or full vowel point counts
+#     as one syllable.
+#   - Shewa na (vocal shewa) adds half a syllable; we round conservatively.
+#   - Maqeph-joined words count as one stress unit.
+#
+# This is an approximation. For rigorous metrical analysis, consult a full
+# phonological tool. We provide it as a quick heuristic signal.
+# ───────────────────────────────────────────────────────────────────────────────
+
+# Hebrew vowel diacritics that each represent one syllable nucleus
+_VOWEL_POINTS = {
+    0x05B0,  # shewa (vocal when after consonant opening syllable)
+    0x05B1,  # hataf segol
+    0x05B2,  # hataf patah
+    0x05B3,  # hataf qamets
+    0x05B4,  # hiriq
+    0x05B5,  # tsere
+    0x05B6,  # segol
+    0x05B7,  # patah
+    0x05B8,  # qamets
+    0x05B9,  # holam
+    0x05BA,  # holam vav
+    0x05BB,  # qubuts
+    0x05BC,  # dagesh/mappiq (not a vowel — excluded below)
+    0x05C7,  # qamets qatan
+}
+_NON_SYLLABIC = {0x05BC, 0x05BD, 0x05BF, 0x05C1, 0x05C2}  # dagesh, rafe, shin dot
+
+
+def _count_syllables(text: str) -> int:
+    """Estimate syllable count for one Hebrew word token."""
+    count = 0
+    for c in text:
+        cp = ord(c)
+        if cp in _VOWEL_POINTS and cp not in _NON_SYLLABIC:
+            count += 1
+    # Fallback: if no vowel points found (unvocalized text), count consonants/2
+    if count == 0:
+        consonants = sum(1 for c in text if 'א' <= c <= 'ת')
+        count = max(1, consonants // 2)
+    return max(1, count)
+
+
+def _count_stresses(colon_df: pd.DataFrame) -> int:
+    """
+    Count stressed syllable units in a colon.
+
+    MACULA tokenizes prefixed particles separately (הָ + עִיר = two tokens).
+    Classical stress-counting ignores unaccented particles; we approximate by
+    counting only content-word tokens (nouns, verbs, adjectives, adverbs).
+    Maqeph-joined groups count as one stress unit.
+    """
+    if colon_df.empty:
+        return 0
+
+    has_class = 'class_' in colon_df.columns
+
+    stresses = 0
+    rows = colon_df.reset_index(drop=True)
+    i = 0
+    while i < len(rows):
+        row = rows.iloc[i]
+        text = str(row.get('text', ''))
+        cls = str(row.get('class_', '')) if has_class else ''
+
+        # Maqeph: absorb following tokens into this stress unit
+        while '־' in text and i + 1 < len(rows):
+            i += 1
+            next_row = rows.iloc[i]
+            text = text + str(next_row.get('text', ''))
+            if not cls:
+                cls = str(next_row.get('class_', ''))
+
+        # Count only content-word tokens
+        if _is_content_word(cls) or not has_class:
+            stresses += 1
+        i += 1
+
+    return max(stresses, 0)
+
+
+def verse_meter(book: str, chapter: int, verse: int) -> dict:
+    """
+    Estimate the meter pattern for one verse.
+
+    Returns dict with:
+      cola          : list of int — stress count per colon
+      pattern       : str e.g. '3+2' or '3+3'
+      syllables     : list of int — syllable count per colon
+      meter_type    : 'qinah(3+2)' | 'balanced(3+3)' | 'other'
+    """
+    cola = verse_cola(book, chapter, verse)
+    stress_counts = [_count_stresses(c) for c in cola]
+    syllable_counts = [
+        sum(_count_syllables(str(r['text'])) for _, r in c.iterrows())
+        for c in cola
+    ]
+
+    pattern = '+'.join(str(s) for s in stress_counts)
+
+    if stress_counts == [3, 2] or stress_counts == [3, 2, 2]:
+        meter_type = 'qinah(3+2)'
+    elif stress_counts == [3, 3]:
+        meter_type = 'balanced(3+3)'
+    elif stress_counts == [2, 2]:
+        meter_type = 'balanced(2+2)'
+    elif stress_counts == [4, 4] or stress_counts == [4, 3]:
+        meter_type = 'longer(4+x)'
+    else:
+        meter_type = 'other'
+
+    return {
+        'cola': stress_counts,
+        'pattern': pattern,
+        'syllables': syllable_counts,
+        'meter_type': meter_type,
+    }
+
+
+def book_meter_stats(book: str) -> pd.DataFrame:
+    """
+    Compute meter statistics for every verse in a book.
+
+    Returns DataFrame with columns: chapter, verse, pattern, meter_type,
+    stresses_a, stresses_b, syllables_a, syllables_b.
+    """
+    macula = _load_macula()
+    book_col = 'book_id' if 'book_id' in macula.columns else 'book'
+    book_rows = macula[macula[book_col] == book]
+    refs = (book_rows[['chapter', 'verse']]
+            .drop_duplicates()
+            .sort_values(['chapter', 'verse'])
+            .values.tolist())
+
+    records = []
+    for ch, vs in refs:
+        m = verse_meter(book, int(ch), int(vs))
+        rec = {
+            'chapter': ch,
+            'verse': vs,
+            'pattern': m['pattern'],
+            'meter_type': m['meter_type'],
+        }
+        for idx, (s, syl) in enumerate(zip(m['cola'], m['syllables'])):
+            rec[f'stresses_{chr(ord("a")+idx)}'] = s
+            rec[f'syllables_{chr(ord("a")+idx)}'] = syl
+        records.append(rec)
+
+    return pd.DataFrame(records)
+
+
+def print_meter_stats(book: str) -> None:
+    """Print a summary of meter patterns for a book."""
+    df = book_meter_stats(book)
+    total = len(df)
+    counts = df['meter_type'].value_counts().reset_index()
+    counts.columns = ['meter_type', 'count']
+    counts['pct'] = (counts['count'] / total * 100).round(1)
+
+    print()
+    print('═' * 72)
+    print(f"  Meter analysis: {book}  ({total} verses)")
+    print('─' * 72)
+    for _, row in counts.iterrows():
+        bar = '█' * int(row['pct'] / 2)
+        print(f"  {str(row['meter_type']):<20} {row['count']:>5}  "
+              f"{row['pct']:>5.1f}%  {bar}")
+    print()
+
+
+def print_verse_meter(book: str, chapter: int, verse: int) -> None:
+    """Print meter analysis for one verse."""
+    m = verse_meter(book, chapter, verse)
+    cola_list = verse_cola(book, chapter, verse)
+
+    print()
+    print(f"  Meter: {book} {chapter}:{verse}  pattern={m['pattern']}  "
+          f"type={m['meter_type']}")
+    labels = ['A', 'B', 'C']
+    for i, (c_df, stresses, syls) in enumerate(
+            zip(cola_list, m['cola'], m['syllables'])):
+        words = ' '.join(str(r['text']) for _, r in c_df.iterrows())
+        print(f"  Colon {labels[i]}: {stresses} stresses, ~{syls} syllables")
+        print(f"           {words}")
+    print()
