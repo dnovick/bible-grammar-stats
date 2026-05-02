@@ -182,10 +182,10 @@ bible-grammar-stats/
 ├── scripts/
 │   └── build_db.py             # Build data/processed/ from scratch
 │
-├── notebooks/                  # Jupyter notebooks
-├── reports/                    # Markdown reports with embedded charts
+├── notebooks/                  # Jupyter notebooks (both/ot/nt × topic)
 ├── output/
-│   ├── charts/                 # Generated PNG chart files
+│   ├── reports/                # Markdown reports (both/ot/nt × topic)
+│   ├── charts/                 # Generated PNG chart files (both/ot/nt × topic)
 │   └── exports/                # Generated CSV exports (gitignored)
 ├── .claude/commands/           # Claude Code slash command skills
 ├── stepbible-data/             # Git submodule: STEPBible/STEPBible-Data

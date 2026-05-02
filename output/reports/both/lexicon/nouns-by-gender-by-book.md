@@ -15,7 +15,7 @@ percentage of all nouns in that book.
 
 ### Chart
 
-![Hebrew OT Nouns by Gender Per Book](../../../output/charts/ot/lexicon/nouns-by-gender-ot.png)
+![Hebrew OT Nouns by Gender Per Book](../../charts/ot/lexicon/nouns-by-gender-ot.png)
 
 ### Data Table
 
@@ -68,7 +68,7 @@ percentage of all nouns in that book.
 
 ### Chart
 
-![Greek NT Nouns by Gender Per Book](../../../output/charts/nt/lexicon/nouns-by-gender-nt.png)
+![Greek NT Nouns by Gender Per Book](../../charts/nt/lexicon/nouns-by-gender-nt.png)
 
 ### Data Table
 

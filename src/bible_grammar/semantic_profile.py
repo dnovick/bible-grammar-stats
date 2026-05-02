@@ -207,7 +207,7 @@ def print_semantic_profile(strongs: str, **kwargs) -> None:
 def save_semantic_profile(
     strongs: str,
     *,
-    output_dir: str = 'output/reports',
+    output_dir: str | None = None,
     collocate_window: int = 5,
     min_collocate_count: int = 3,
     top_collocates: int = 10,
@@ -238,7 +238,11 @@ def save_semantic_profile(
     is_heb = p['is_hebrew']
     clean  = p['strongs']
 
-    out_dir = Path(output_dir)
+    if output_dir is None:
+        sub = 'ot' if is_heb else 'nt'
+        out_dir = Path('output') / 'reports' / sub / 'lexicon'
+    else:
+        out_dir = Path(output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     slug = clean.lower()
     chart_path = out_dir / f"{slug}-distribution.png"

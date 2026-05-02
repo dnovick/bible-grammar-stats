@@ -5,7 +5,7 @@
 (Romans, 1–2 Corinthians, Galatians, Ephesians, Philippians, Colossians,
 1–2 Thessalonians, 1–2 Timothy, Titus, Philemon)
 
-![Greek Tense × Voice in Pauline Letters](../../../output/charts/nt/verbs/pauline_tense_voice.png)
+![Greek Tense × Voice in Pauline Letters](../../charts/nt/verbs/pauline_tense_voice.png)
 
 ## Summary
 

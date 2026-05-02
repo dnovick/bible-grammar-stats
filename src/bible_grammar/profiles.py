@@ -34,7 +34,7 @@ from . import db as _db
 from .reference import BOOKS, book_info, all_book_ids
 
 _REPO_ROOT = Path(__file__).resolve().parents[2]
-_PROFILES_DIR = _REPO_ROOT / "reports" / "profiles"
+_PROFILES_DIR = _REPO_ROOT / "output" / "reports" / "ot" / "survey"
 
 _BOOK_ORDER = {b[0]: b[3] for b in BOOKS}
 
@@ -270,8 +270,10 @@ def save_profile_report(
         raise ValueError(f"Cannot generate profile for {book_id}: {p['error']}")
 
     if output_path is None:
-        _PROFILES_DIR.mkdir(parents=True, exist_ok=True)
-        output_path = _PROFILES_DIR / f"{book_id}_profile.md"
+        sub = 'ot' if p['testament'] == 'OT' else 'nt'
+        profile_dir = _REPO_ROOT / 'output' / 'reports' / sub / 'survey'
+        profile_dir.mkdir(parents=True, exist_ok=True)
+        output_path = profile_dir / f"{book_id}_profile.md"
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
