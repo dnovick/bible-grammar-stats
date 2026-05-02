@@ -1313,6 +1313,45 @@ pivot = pd.DataFrame(
 - `/verbal-syntax rel <book> [ch]`   — relative clauses with role inference
 - `/verbal-syntax relsum <book>`      — role/verb-form/antecedent summary
 
+#### Aspect Comparison Across Genres
+
+Hebrew verb form distribution is one of the clearest markers of genre.
+`aspect_comparison` builds a side-by-side percentage table; `aspect_comparison_chart`
+saves a grouped bar chart PNG.
+
+| Genre | Dominant forms | Signature |
+|---|---|---|
+| Narrative (Gen, Josh…) | wayyiqtol ~41% | Sequential foreground action |
+| Legal (Deu, Lev) | weqatal 18% + yiqtol 28% | Future obligation sequences |
+| Prophecy (Isa, Jer) | qatal + yiqtol balanced | Prophetic perfect; vision participles |
+| Poetry (Psa, Pro) | yiqtol 31–36% + ptc.act 13–26% | Petition, habitual truth |
+
+```python
+from bible_grammar import (print_aspect_comparison, aspect_comparison_chart,
+                            aspect_comparison, GENRE_SETS)
+
+# Side-by-side percentage table
+print_aspect_comparison(['Gen', 'Psa', 'Isa', 'Deu'])
+# wayyiqtol: Gen 41.8% / Psa 5.8% / Isa 5.0% / Deu 7.3%  ← narrative marker
+# yiqtol:    Gen 10.7% / Psa 30.9% / Isa 29.6% / Deu 27.6% ← poetry/law
+# weqatal:   Gen  3.3% / Psa  0.8% / Isa  9.4% / Deu 18.0% ← Deu legal sequences
+
+# Save grouped bar chart
+path = aspect_comparison_chart(['Gen', 'Psa', 'Isa', 'Deu', 'Pro'])
+# → output/charts/aspect_comparison_Gen_Psa_Isa_Deu_Pro.png
+
+# Raw DataFrame for custom analysis
+df = aspect_comparison(['Gen', 'Psa', 'Isa', 'Deu'])
+# MultiIndex columns: (book, 'count') and (book, 'pct')
+
+# Use pre-defined genre book lists
+print(GENRE_SETS['narrative'])  # ['Gen', 'Exod', 'Num', 'Josh', ...]
+print(GENRE_SETS['poetry'])     # ['Psa', 'Pro', 'Job', 'Sng', 'Lam']
+```
+
+**Slash command:**
+- `/verbal-syntax aspect <book1> [book2 ...]` — side-by-side comparison + saves PNG
+
 ---
 
 ### Theological Term Map
@@ -1582,6 +1621,7 @@ slash commands are available:
 | `/verbal-syntax condsum <book>` | Conditional type distribution summary for a whole book |
 | `/verbal-syntax rel <book> [ch]` | Relative clauses (אֲשֶׁר/שֶׁ/דִּי) with inferred subject/object/oblique role |
 | `/verbal-syntax relsum <book>` | Relative clause role × verb-form × antecedent summary |
+| `/verbal-syntax aspect <book1> [book2...]` | Side-by-side verb form % comparison across genres; saves PNG chart |
 | `/verbal-syntax report <book>` | Full Markdown verbal syntax report |
 | `/export <type> [args]` | Export any analysis to HTML + CSV |
 

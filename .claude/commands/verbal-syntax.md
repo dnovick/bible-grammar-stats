@@ -19,6 +19,7 @@ conditional clauses, and relative clause analysis.
 - `/verbal-syntax condsum <book>` — conditional type distribution summary for a book
 - `/verbal-syntax rel <book> [chapter]` — relative clauses (אֲשֶׁר/שֶׁ/דִּי) with role inference
 - `/verbal-syntax relsum <book>` — relative clause role/verb-form summary for a book
+- `/verbal-syntax aspect <book1> [book2 ...]` — side-by-side verb form % comparison across genres
 - `/verbal-syntax report <book>` — full Markdown report (all analyses)
 
 **Examples:**
@@ -48,6 +49,9 @@ conditional clauses, and relative clause analysis.
 - `/verbal-syntax rel Rut`            — Ruth relative clause survey
 - `/verbal-syntax relsum Gen`         — Genesis relative clause role breakdown
 - `/verbal-syntax relsum Pro`         — Proverbs relative clause patterns
+- `/verbal-syntax aspect Gen Psa`     — narrative vs. poetry verb form profile
+- `/verbal-syntax aspect Gen Psa Isa Deu` — 4-genre comparison
+- `/verbal-syntax aspect Gen Deu Pro Psa Isa` — full 5-genre comparison (saves PNG)
 - `/verbal-syntax report Gen`         — full report saved to output/reports/
 
 ---
@@ -60,7 +64,8 @@ from bible_grammar import (print_verb_form_profile, print_wayyiqtol_chains,
                             print_stem_distribution, verbal_syntax_report,
                             print_disjunctive_clauses, print_disjunctive_in_chains,
                             print_conditional_clauses, print_conditional_summary,
-                            print_relative_clauses, print_relative_summary)
+                            print_relative_clauses, print_relative_summary,
+                            print_aspect_comparison, aspect_comparison_chart)
 
 raw = "$ARGUMENTS".strip().split()
 
@@ -107,6 +112,13 @@ elif raw[0] == 'rel' and len(raw) >= 2:
     print_relative_clauses(book, ch)
 elif raw[0] == 'relsum' and len(raw) >= 2:
     print_relative_summary(raw[1])
+elif raw[0] == 'aspect' and len(raw) >= 2:
+    books = raw[1:]
+    print_aspect_comparison(books)
+    if len(books) >= 2:
+        path = aspect_comparison_chart(books)
+        if path:
+            print(f'Chart saved: {path}')
 elif raw[0] == 'report' and len(raw) >= 2:
     path = verbal_syntax_report(raw[1])
     print(f'Report saved: {path}')

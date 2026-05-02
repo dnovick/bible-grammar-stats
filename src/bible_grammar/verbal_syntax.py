@@ -45,6 +45,11 @@ relative_clauses(book, chapter=None)            → DataFrame
 print_relative_clauses(book, chapter=None)      → None
 relative_clause_summary(book)                   → DataFrame
 print_relative_summary(book)                    → None
+
+aspect_comparison(books, chapter=None)          → DataFrame
+print_aspect_comparison(books, chapter=None)    → None
+aspect_comparison_chart(books, chapter=None)    → Path | None
+GENRE_SETS                                      → dict[str, list[str]]
 """
 
 from __future__ import annotations
@@ -1554,3 +1559,212 @@ def print_relative_summary(book: str) -> None:
         bar = '█' * int(pct / 3)
         print(f"    {sem:<25} {cnt:>4}  {pct:>5.1f}%  {bar}")
     print()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ASPECT COMPARISON ACROSS GENRES
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Hebrew verb forms carry aspectual and discourse-pragmatic load that varies
+# sharply by genre:
+#
+#  Narrative prose (Gen, Exod, Josh…)
+#    ↳ wayyiqtol-dominant: sequential foreground action, ~40-50% of verbs
+#    ↳ qatal for summary / background events
+#
+#  Legal / instructional (Deu, Lev, Num)
+#    ↳ weqatal (sequential future) + yiqtol (apodosis) + imperative
+#    ↳ wayyiqtol drops to near zero
+#
+#  Prophecy (Isa, Jer, Eze, Amos…)
+#    ↳ qatal + yiqtol roughly balanced; prophetic perfect (qatal of future)
+#    ↳ significant participle (active) for present-continuous vision
+#
+#  Poetry (Psa, Pro, Job, Sng)
+#    ↳ yiqtol dominant (expressing desire, petition, habitual truth)
+#    ↳ participle active high (stative / attribute)
+#    ↳ wayyiqtol nearly absent
+#
+# This module provides:
+#   aspect_comparison(books)         → wide DataFrame (form × books, % values)
+#   print_aspect_comparison(books)   → side-by-side terminal display
+#   aspect_comparison_chart(books)   → grouped bar chart PNG
+# ───────────────────────────────────────────────────────────────────────────────
+
+# Pre-defined genre groupings for convenience
+GENRE_SETS: dict[str, list[str]] = {
+    'narrative': ['Gen', 'Exod', 'Num', 'Josh', 'Judg', 'Rut', '1Sam', '2Sam',
+                  '1Kgs', '2Kgs', '1Chr', '2Chr', 'Ezra', 'Neh', 'Esth', 'Jonah'],
+    'law':       ['Lev', 'Deu'],
+    'prophecy':  ['Isa', 'Jer', 'Eze', 'Hos', 'Joel', 'Amos', 'Mic', 'Zeph',
+                  'Zech', 'Mal'],
+    'poetry':    ['Psa', 'Pro', 'Job', 'Sng', 'Lam'],
+    'wisdom':    ['Pro', 'Job', 'Ecc'],
+}
+
+
+def aspect_comparison(
+    books: list[str],
+    chapter: int | None = None,
+) -> pd.DataFrame:
+    """
+    Build a side-by-side verb form profile for multiple books.
+
+    Returns a DataFrame indexed by verb form (VERB_FORM_ORDER), with
+    one column per book showing the percentage of verbs in that form.
+    A 'count' sub-column is also included.
+
+    Parameters
+    ----------
+    books : list of str
+        MACULA book IDs to compare (e.g. ['Gen', 'Psa', 'Isa']).
+    chapter : int, optional
+        Restrict all books to a single chapter number (only useful for
+        same-chapter comparisons such as Gen 1 vs. Psa 1).
+
+    Returns
+    -------
+    DataFrame with MultiIndex columns (book, 'count'|'pct') and form rows.
+    """
+    frames: dict[str, pd.DataFrame] = {}
+    for book in books:
+        df = verb_form_profile(book, chapter)
+        frames[book] = df.set_index('form')
+
+    combined = pd.concat(frames, axis=1)
+    combined = combined.reindex(VERB_FORM_ORDER)
+    combined = combined.fillna(0)
+    return combined
+
+
+def print_aspect_comparison(
+    books: list[str],
+    chapter: int | None = None,
+    *,
+    show_counts: bool = False,
+) -> None:
+    """
+    Print a side-by-side verb form percentage comparison for multiple books.
+
+    Each book gets a column of percentages and a mini bar showing relative
+    weight.  Forms where all books show <0.5% are omitted to reduce clutter.
+    """
+    df = aspect_comparison(books, chapter)
+    scope = f" ch.{chapter}" if chapter else ''
+
+    header_books = '  '.join(f"{b:>8}" for b in books)
+    print()
+    print('═' * (28 + 11 * len(books)))
+    print(f"  Aspect / verb-form comparison{scope}: {' · '.join(books)}")
+    print('─' * (28 + 11 * len(books)))
+    print(f"  {'Form':<22}  {header_books}")
+    print('  ' + '─' * (24 + 11 * len(books)))
+
+    for form in VERB_FORM_ORDER:
+        pcts = [df.loc[form, (b, 'pct')] if (b, 'pct') in df.columns else 0.0
+                for b in books]
+        # Skip forms where every book is below 0.5 %
+        if max(pcts) < 0.5:
+            continue
+        label = VERB_FORM_LABELS.get(form, form)
+        cols = '  '.join(f"{p:>6.1f}%" for p in pcts)
+        # Highlight the dominant book with a bar proportional to max pct
+        dom_idx = pcts.index(max(pcts))
+        bar = '█' * int(max(pcts) / 3)
+        print(f"  {label:<22}  {cols}   {bar} ← {books[dom_idx]}")
+
+    # Show totals
+    print('  ' + '─' * (24 + 11 * len(books)))
+    totals = []
+    for book in books:
+        if (book, 'count') in df.columns:
+            totals.append(int(df[(book, 'count')].sum()))
+        else:
+            totals.append(0)
+    total_str = '  '.join(f"{t:>8,}" for t in totals)
+    print(f"  {'Total verbs':<22}  {total_str}")
+    print()
+
+
+def aspect_comparison_chart(
+    books: list[str],
+    chapter: int | None = None,
+    *,
+    output_path: str | None = None,
+) -> 'Path | None':
+    """
+    Save a grouped bar chart comparing verb form percentages across books.
+
+    Parameters
+    ----------
+    books : list of str
+    chapter : int, optional
+    output_path : str, optional
+        Save path for PNG. Defaults to output/charts/aspect_comparison_<books>.png.
+
+    Returns
+    -------
+    Path to the saved chart, or None if matplotlib is unavailable.
+    """
+    try:
+        import matplotlib.pyplot as plt
+        import numpy as np
+    except ImportError:
+        return None
+
+    df = aspect_comparison(books, chapter)
+
+    # Keep only forms with at least one book above 1%
+    active_forms = [
+        f for f in VERB_FORM_ORDER
+        if any(
+            df.loc[f, (b, 'pct')] > 1.0
+            for b in books
+            if (b, 'pct') in df.columns
+        )
+    ]
+    labels = [VERB_FORM_LABELS.get(f, f) for f in active_forms]
+
+    x = np.arange(len(active_forms))
+    width = 0.8 / len(books)
+
+    fig, ax = plt.subplots(figsize=(max(10, len(active_forms) * 1.4), 6))
+    colors = plt.cm.tab10.colors  # type: ignore[attr-defined]
+
+    for i, book in enumerate(books):
+        pcts = [
+            df.loc[form, (book, 'pct')] if (book, 'pct') in df.columns else 0.0
+            for form in active_forms
+        ]
+        offset = (i - len(books) / 2 + 0.5) * width
+        bars = ax.bar(x + offset, pcts, width, label=book, color=colors[i % 10])
+        for bar, val in zip(bars, pcts):
+            if val > 2:
+                ax.text(
+                    bar.get_x() + bar.get_width() / 2,
+                    bar.get_height() + 0.3,
+                    f"{val:.0f}",
+                    ha='center', va='bottom', fontsize=7,
+                )
+
+    scope_str = f" ch.{chapter}" if chapter else ''
+    ax.set_title(f"Verb Form Distribution{scope_str}: {' vs. '.join(books)}")
+    ax.set_ylabel('% of verbs')
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels, rotation=30, ha='right')
+    ax.legend()
+    ax.yaxis.grid(True, linestyle='--', alpha=0.5)
+    ax.set_axisbelow(True)
+    fig.tight_layout()
+
+    if output_path is None:
+        out_dir = Path('output') / 'charts'
+        out_dir.mkdir(parents=True, exist_ok=True)
+        slug = '_'.join(books)
+        if chapter:
+            slug += f'_ch{chapter}'
+        output_path = str(out_dir / f'aspect_comparison_{slug}.png')
+
+    fig.savefig(output_path, dpi=150, bbox_inches='tight')
+    plt.close(fig)
+    return Path(output_path)
