@@ -23,7 +23,7 @@
 
 ## Imperfect (Yiqtol) {#imperfect}
 
-*BBH §26.4 — Prefix vowel: patach (יַ); characteristic: chiriq in final syllable*
+*BBH §26.5 — Prefix vowel: patach (יַ); characteristic: chiriq in final syllable*
 
 | Person | Singular | Plural |
 |---|---|---|
@@ -39,7 +39,7 @@
 
 ## Wayyiqtol {#wayyiqtol}
 
-*BBH §26.5 — Prefix: וַיַּ; final syllable shifts from chiriq to tsere*
+*BBH §26.4 — Prefix: וַיַּ; final syllable shifts from chiriq to tsere*
 
 | Person | Singular | Plural |
 |---|---|---|
@@ -69,7 +69,7 @@
 
 ## Imperative {#imperative}
 
-*BBH §26.7 — Prefix: הַ; tsere in final syllable*
+*BBH §26.7 — Prefix: הַ; tsere in final syllable (§26.8 discusses the cohortative/jussive)*
 
 | | Singular | Plural |
 |---|---|---|
@@ -82,7 +82,7 @@
 
 ## Infinitive Construct {#infinitive-construct}
 
-*BBH §26.8 — Prefix: הַ; chiriq in final syllable*
+*BBH §26.9 — Prefix: הַ; chiriq in final syllable*
 
 | Form | Notes |
 |---|---|
@@ -97,7 +97,7 @@
 
 ## Infinitive Absolute {#infinitive-absolute}
 
-*BBH §26.9 — Prefix: הַ; tsere in final syllable*
+*BBH §26.11 — Prefix: הַ; tsere in final syllable*
 
 | Form | Notes |
 |---|---|
@@ -109,7 +109,7 @@
 
 ## Participle (Active) {#participle}
 
-*BBH §26.10 — Prefix: מַ; chiriq in final syllable*
+*BBH §26.13 — Prefix: מַ; chiriq in final syllable*
 
 | | Singular | Plural |
 |---|---|---|
