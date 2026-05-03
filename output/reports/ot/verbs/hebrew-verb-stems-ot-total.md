@@ -3,7 +3,7 @@
 **Source:** STEPBible TAHOT (Translators Amalgamated Hebrew OT)  
 **Scope:** All verb tokens across the entire Hebrew/Aramaic Old Testament
 
-![Hebrew Verb Stems — Entire OT](../../charts/ot/verbs/ot_verb_stems_total.png)
+![Hebrew Verb Stems — Entire OT](../../../charts/ot/verbs/ot_verb_stems_total.png)
 
 ## Summary
 

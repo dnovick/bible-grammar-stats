@@ -1,6 +1,6 @@
 # Hebrew Verb Stem Distribution — Old Testament
 
-![Hebrew Verb Stem Distribution](../../charts/ot/verbs/ot-verb-stems-pie.png)
+![Hebrew Verb Stem Distribution](../../../charts/ot/verbs/ot-verb-stems-pie.png)
 
 ## Summary
 

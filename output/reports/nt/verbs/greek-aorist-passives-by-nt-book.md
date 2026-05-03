@@ -3,7 +3,7 @@
 **Source:** STEPBible TAGNT  
 **Scope:** All Aorist Passive verb forms across the New Testament
 
-![Greek Aorist Passives by NT Book](../../charts/nt/verbs/nt_aorist_passive_by_book.png)
+![Greek Aorist Passives by NT Book](../../../charts/nt/verbs/nt_aorist_passive_by_book.png)
 
 ## Summary
 

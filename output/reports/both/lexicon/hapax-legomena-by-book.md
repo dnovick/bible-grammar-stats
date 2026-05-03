@@ -12,7 +12,7 @@ A **hapax legomenon** (plural: *hapax legomena*; Greek, "said only once") is a w
 
 ### Chart
 
-![Hapax Legomena by OT Book](../../charts/ot/lexicon/hapax-ot-by-book.png)
+![Hapax Legomena by OT Book](../../../charts/ot/lexicon/hapax-ot-by-book.png)
 
 ### Summary Table
 
@@ -81,7 +81,7 @@ Job is the most lexically dense OT book relative to its size (9.5% hapax rate). 
 
 ### Chart
 
-![Hapax Legomena by NT Book](../../charts/nt/lexicon/hapax-nt-by-book.png)
+![Hapax Legomena by NT Book](../../../charts/nt/lexicon/hapax-nt-by-book.png)
 
 ### Summary Table
 

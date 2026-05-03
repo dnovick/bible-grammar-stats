@@ -8,7 +8,7 @@ The TAHOT morphology data tags each word with its language, enabling precise sep
 
 ## Chart
 
-![Hebrew vs Aramaic Words by OT Book](../../charts/ot/lexicon/ot-hebrew-aramaic-by-book.png)
+![Hebrew vs Aramaic Words by OT Book](../../../charts/ot/lexicon/ot-hebrew-aramaic-by-book.png)
 
 ---
 
