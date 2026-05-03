@@ -91,7 +91,7 @@ Close with a **Summary** table: Conjugation | Prefix | Final vowel | Quick ID.
 
 ## Passage exercise file structure
 
-Always generate **both** a `.md` and a `.html` version of every passage exercise.
+Always generate **all three formats** — `.md`, `.html`, and `.pdf` — for every exercise, without exception.
 
 ### HTML exercise format
 

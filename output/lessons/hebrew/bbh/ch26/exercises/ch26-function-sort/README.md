@@ -25,3 +25,4 @@ A 24-item classification exercise drawn entirely from Genesis, Exodus, Leviticus
 |---|---|---|
 | [ch26-function-sort.md](ch26-function-sort.md) | Markdown | Reference copy — static answer key at bottom |
 | [ch26-function-sort.html](ch26-function-sort.html) | HTML | Classroom use — fillable fields, per-item ▶ Answer reveal, Show/Hide/Clear All controls |
+| [ch26-function-sort.pdf](ch26-function-sort.pdf) | PDF | Print or tablet use — AcroForm text fields, answer rows always visible |

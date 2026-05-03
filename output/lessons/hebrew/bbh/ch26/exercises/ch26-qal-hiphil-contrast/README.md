@@ -25,3 +25,4 @@ A 14-root exercise in three parts. Students are given a root with its Qal meanin
 |---|---|---|
 | [ch26-qal-hiphil-contrast.md](ch26-qal-hiphil-contrast.md) | Markdown | Reference copy — static answer key at bottom |
 | [ch26-qal-hiphil-contrast.html](ch26-qal-hiphil-contrast.html) | HTML | Classroom use — fillable fields, per-item ▶ Answer reveal, Show/Hide/Clear All controls |
+| [ch26-qal-hiphil-contrast.pdf](ch26-qal-hiphil-contrast.pdf) | PDF | Print or tablet use — AcroForm text fields, answer rows always visible |
