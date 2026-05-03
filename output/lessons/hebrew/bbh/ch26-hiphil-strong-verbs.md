@@ -86,55 +86,161 @@ Frequency counts from Genesis–Deuteronomy only. The Hiphil gloss is given, not
 
 ---
 
-## 4. Example Passages (Pentateuch)
+## 4. Example Passages
 
-### Causative — bringing / leading
+One example per semantic function × conjugation form. Torah passages preferred; Psalms, Proverbs, and Samuel used where Torah has no example of that combination.
 
-**Gen 2:19** — וַיָּבֵ֨א אֹתָ֜ם אֶל־הָֽאָדָ֗ם
+### Causative
+
+The subject causes another person or thing to perform the action. The eight major conjugation forms are all attested in Genesis–Deuteronomy.
+
+**Perfect (qatal) — Gen 2:6** — וְאֵד֙ יַֽעֲלֶ֣ה … וְהִשְׁקָ֖ה
+*"A mist went up … and it watered."*
+→ שָׁקָה Hiphil perfect 3ms; the mist causes the ground to drink (Hiphil of an intransitive root).
+
+**Wayyiqtol — Gen 2:19** — וַיָּבֵ֨א אֹתָ֜ם אֶל־הָֽאָדָ֗ם
 *"And he brought them to the man."*
-→ God causes the animals to come (בּוֹא Hiphil wayyiqtol 3ms + 3mp suffix).
+→ בּוֹא Hiphil wayyiqtol 3ms; God causes the animals to come (sequential narrative action).
 
-**Gen 6:17** — הִנְנִ֤י מֵבִיא֙ אֶת־הַמַּבּ֔וּל
+**Imperfect (yiqtol) — Gen 3:16** — הַרְבָּ֤ה אַרְבֶּה֙ עִצְּבוֹנֵ֣ךְ
+*"I will greatly increase your pain."*
+→ רָבָה Hiphil imperfect 1cs; preceded by infinitive absolute for emphasis (see Inf. Absolute below).
+
+**Weqatal — Gen 4:4** — וְהֵבִ֥יא מִבְּכֹרֹ֖ות צֹאנ֑וֹ
+*"And Abel brought from the firstborn of his flock."*
+→ בּוֹא Hiphil weqatal 3ms; sequential future/narrative continuation.
+
+**Imperative — Gen 8:17** — הַיְצֵ֣א אִתָּ֗ךְ
+*"Bring out with you…"*
+→ יָצָא Hiphil imperative 2ms; God commands Noah to cause the animals to come out (הַ prefix + tsere).
+
+**Infinitive Construct — Gen 2:10** — לְהַשְׁק֖וֹת
+*"to water [the garden]"*
+→ שָׁקָה Hiphil infinitive construct with לְ; expressing purpose.
+
+**Infinitive Absolute — Gen 3:16** — הַרְבָּ֤ה אַרְבֶּה֙
+*"I will surely increase…"*
+→ רָבָה Hiphil infinitive absolute + imperfect; the infinitive absolute before the finite verb creates an emphatic, certain assertion.
+
+**Participle — Gen 6:17** — הִנְנִ֤י מֵבִיא֙ אֶת־הַמַּבּ֔וּל
 *"Behold, I am bringing the flood."*
-→ Hiphil participle; God as agent causing the flood to come.
+→ בּוֹא Hiphil participle ms; God as agent causing the flood to come (participial predicate with הִנֵּה).
 
-**Exo 13:5** — כִּ֣י יְבִֽיאֲךָ֣ יְהוָ֗ה
-*"When the LORD brings you in…"*
-→ Hiphil yiqtol 3ms + 2ms suffix; conditional clause introducing the Passover law.
+---
 
-### Causative — striking / defeating
+### Declarative
 
-**Gen 14:5** — וַיַּכּ֤וּ אֶת־רְפָאִים֙
-*"And they defeated the Rephaim."*
-→ נָכָה Hiphil wayyiqtol 3mp; standard narrative verb for military victory.
+The subject declares, communicates, or causes knowledge to be known. נָגַד occurs almost exclusively in the Hiphil (90%+ of all its OT tokens); it is a "built-in causative."
 
-### Declarative / communicative
+**Perfect (qatal) — Gen 45:13** — וְהִגַּדְתֶּ֣ם לְאָבִ֗י
+*"And you will tell my father."*
+→ נָגַד Hiphil perfect 2mp; Joseph instructs his brothers to declare everything to Jacob.
 
-**Gen 9:22** — וַיַּגֵּ֥ד לִשְׁנֵֽי־אֶחָ֖יו
+**Wayyiqtol — Gen 9:22** — וַיַּגֵּ֥ד לִשְׁנֵֽי־אֶחָ֖יו
 *"And he told his two brothers."*
-→ נָגַד Hiphil wayyiqtol 3ms; the most common Hiphil verb of speech in the OT.
+→ נָגַד Hiphil wayyiqtol 3ms; standard narrative verb of speech.
 
-### Causative — offering / worship context
+**Imperfect (yiqtol) — Gen 46:31** — אֶגְּלֶ֨ה וְאַגִּ֣ידָה לְפַרְעֹ֗ה
+*"I will go up and tell Pharaoh."*
+→ נָגַד Hiphil imperfect 1cs cohortative; Joseph announces his plan.
 
-**Gen 8:20** — וַיַּ֥עַל עֹלֹ֖ת
-*"And he offered burnt offerings."*
-→ עָלָה Hiphil wayyiqtol 3ms; Noah causes the offering to go up (onto the altar).
+**Weqatal — Gen 12:18** — מַדּ֖וּעַ לֹא־הִגַּ֣דְתָּ לִּ֑י
+*"Why did you not tell me?"*
+→ נָגַד Hiphil weqatal 2ms (rhetorical question); Pharaoh rebukes Abram for concealing that Sarai was his wife. *(The "we" prefix functions as a simple conjunction here.)*
 
-**Exo 40:27** — וַיַּקְטֵ֥ר עָלָ֖יו
-*"And he burned incense on it."*
-→ קָטַר Hiphil wayyiqtol 3ms; Moses at the golden incense altar.
+**Imperative — Gen 4:23** — הַאְזֵ֖נָּה אִמְרָתִ֑י
+*"Give ear to my speech!"*
+→ אָזַן Hiphil imperative 2fp; Lamech demands his wives listen — the Hiphil of אָזַן "to have ears" means "lend an ear / pay attention."
 
-### Factitive — establishing / setting up
+**Infinitive Construct — Gen 32:6 (Eng. 32:5)** — לִהַגִּ֥יד לַֽאדֹנִ֖י
+*"to tell my lord"*
+→ נָגַד Hiphil infinitive construct with לְ; purpose clause explaining why Jacob sent messengers ahead.
 
-**Exo 40:18** — וַיָּ֨קֶם מֹשֶׁ֤ה אֶת־הַמִּשְׁכָּן֙
+**Infinitive Absolute — Gen 43:3** — הָעֵ֣ד הֵעִ֤יד בָּ֙נוּ֙
+*"The man solemnly warned us."*
+→ עוּד Hiphil infinitive absolute + perfect 3ms; the doubled root emphasizes the gravity of Joseph's warning.
+
+> **Note:** No Hiphil imperative of a purely *declarative* root with zero causative overlap exists in the OT. Gen 4:23 (אָזַן "give ear") is the closest Torah example and is representative of this type.
+
+**Participle — Gen 41:24** — אֵ֥ין מַגִּ֖יד לִ֑י
+*"There is no one to tell me."*
+→ נָגַד Hiphil participle ms; Pharaoh laments the absence of an interpreter/announcer.
+
+---
+
+### Factitive
+
+The subject causes a state or condition to come into existence (often from an intransitive stative root).
+
+**Perfect (qatal) — Gen 9:11** — הֲקִמֹתִ֤י אֶת־בְּרִיתִי֙
+*"I have established my covenant."*
+→ קוּם Hiphil perfect 1cs; God causes the covenant to stand/come into existence.
+
+**Wayyiqtol — Exo 40:18** — וַיָּ֨קֶם מֹשֶׁ֤ה אֶת־הַמִּשְׁכָּן֙
 *"And Moses set up the tabernacle."*
-→ קוּם Hiphil wayyiqtol 3ms; Moses causes the tabernacle to stand.
+→ קוּם Hiphil wayyiqtol 3ms; Moses causes the tabernacle to stand upright.
 
-### Multiplication / increase (infinitive absolute + imperfect)
+**Imperfect (yiqtol) — Gen 17:21** — אֲשֶׁ֨ר אָקִ֣ים
+*"which I will establish"*
+→ קוּם Hiphil imperfect 1cs; the covenant God will bring into being with Isaac.
 
-**Gen 3:16** — הַרְבָּ֤ה אַרְבֶּה֙ עִצְּבוֹנֵ֣ךְ
-*"I will surely multiply your pain."*
-→ רָבָה Hiphil infinitive absolute + imperfect 1cs; emphatic construction expressing certainty.
+**Weqatal — Gen 6:18** — וַהֲקִמֹתִ֥י
+*"But I will establish…"*
+→ קוּם Hiphil weqatal 1cs; sequential future: after the flood, God will confirm his covenant with Noah.
+
+**Imperative — Gen 21:18** — הַחֲזִ֥יקִי אֶת־יָדֵ֖ךְ בּ֑וֹ
+*"Hold him up with your hand."*
+→ חָזַק Hiphil imperative 2fs; the angel tells Hagar to strengthen (cause to be firm) her grip on Ishmael.
+
+**Infinitive Construct — Num 7:1** — בְּיוֹם֩ כַּלּ֨וֹת מֹשֶׁ֜ה לְהָקִ֣ים
+*"On the day when Moses finished setting up…"*
+→ קוּם Hiphil infinitive construct with לְ; the action of causing the tabernacle to stand.
+
+**Infinitive Absolute — Deu 22:4** — הָקֵ֥ם תָּקִ֖ים עִמּ֑וֹ
+*"You shall surely raise it up with him."*
+→ קוּם Hiphil infinitive absolute + imperfect; emphatic command to help a neighbor lift a fallen animal.
+
+**Participle — Gen 9:9** — הִנְנִ֕י מֵקִ֛ים אֶת־בְּרִיתִ֖י
+*"Behold, I am about to establish my covenant."*
+→ קוּם Hiphil participle ms; participial predicate with הִנֵּה expressing imminence.
+
+---
+
+### Simple Action (Hiphil-Only / Denominative)
+
+Some roots occur almost exclusively in the Hiphil — the Hiphil form *is* the standard lexical form. There is no separate Qal meaning to contrast.
+
+**Perfect (qatal) — Exo 4:15** — וְאָנֹכִ֕י אֶהְיֶ֥ה עִם־פִּ֖יךָ … וְהוֹרֵיתִ֣י אֶתְכֶ֗ם
+*"I will be with your mouth … and I will teach you."*
+→ יָרָה Hiphil perfect 1cs; God promises to guide both Moses and Aaron (יָרָה Hiphil = "teach, instruct" — a Hiphil-only meaning derived from "to throw/point").
+
+**Wayyiqtol — Gen 2:15** — וַיַּנִּחֵ֛הוּ בְגַן־עֵ֖דֶן
+*"And he placed/set him in the garden of Eden."*
+→ נוּחַ Hiphil wayyiqtol 3ms + 3ms suffix; God causes man to rest/settle in the garden (נוּחַ "to rest" → Hiphil "to set, place").
+
+**Imperfect (yiqtol) — Exo 17:11** — כַּאֲשֶׁ֤ר יָנִ֛יחַ יָד֖וֹ
+*"But whenever he lowered his hand…"*
+→ נוּחַ Hiphil imperfect 3ms; Moses lowers/rests his hand (יָנִ֛יחַ "he set down/rested").
+
+**Weqatal — Gen 19:2** — וְהִשְׁכַּמְתֶּ֖ם
+*"and you will rise early."*
+→ שָׁכַם Hiphil weqatal 2mp; Lot urges the angels to stay the night and resume their journey early. שָׁכַם Hiphil = "to rise early, set out early" — always Hiphil.
+
+**Imperative — Exo 8:16 (Eng. 8:20)** — הַשְׁכֵּ֤ם בַּבֹּ֙קֶר֙
+*"Rise early in the morning."*
+→ שָׁכַם Hiphil imperative 2ms; God tells Moses to confront Pharaoh at dawn.
+
+**Infinitive Construct — Exo 3:6** — כִּ֣י יָרֵ֔א מֵהַבִּ֖יט
+*"for he was afraid to look."*
+→ נָבַט Hiphil infinitive construct with מִ; Moses averts his gaze from God. נָבַט Hiphil = "to look, gaze" — occurs almost exclusively in the Hiphil.
+
+**Infinitive Absolute — 1 Sam 17:16** — וַיַּגֵּ֤שׁ הַפְּלִשְׁתִּי֙ הַשְׁכֵּ֣ם וְהַעֲרֵ֔ב
+*"And the Philistine came forward, morning and evening."*
+→ שָׁכַם Hiphil infinitive absolute used adverbially ("early-rising and late-rising"), a fixed idiom for relentless daily repetition. *(Closest Torah equivalent: Jer 7:13 uses the same idiom; Samuel is the earliest narrative attestation.)*
+
+**Participle — Jos 1:13** — יְהוָ֤ה אֱלֹֽהֵיכֶם֙ מֵנִ֣יחַ לָכֶ֔ם
+*"The LORD your God is giving you rest."*
+→ נוּחַ Hiphil participle ms; Joshua reminds the Transjordan tribes that God is the one causing them to rest/settle.
 
 ---
 
