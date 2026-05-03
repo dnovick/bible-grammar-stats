@@ -37,9 +37,9 @@ The Hiphil is the primary **causative** stem in Biblical Hebrew. A verb that is 
 | Conjugation | 3ms Form | BBH § | Notes | Full Paradigm |
 |---|---|---|---|---|
 | Perfect (qatal) | הִקְטִיל | §26.3 | הִ prefix; *chiriq* vowel | [→](hiphil-paradigms.md#perfect) |
+| Wayyiqtol | וַיַּקְטֵל | — | sequential narrative; doubled prefix + *tsere* | [→](hiphil-paradigms.md#wayyiqtol) |
 | Imperfect (yiqtol) | יַקְטִיל | §26.5 | *patach* under prefix; *chiriq* final | [→](hiphil-paradigms.md#imperfect) |
-| Wayyiqtol | וַיַּקְטֵל | §26.4 | doubled prefix consonant + *tsere* | [→](hiphil-paradigms.md#wayyiqtol) |
-| Weqatal | וְהִקְטִיל | §26.6 | וְ + perfect form | [→](hiphil-paradigms.md#weqatal) |
+| Weqatal | וְהִקְטִיל | — | sequential future; וְ + perfect form | [→](hiphil-paradigms.md#weqatal) |
 | Imperative 2ms | הַקְטֵל | §26.7 | הַ prefix; *tsere* final | [→](hiphil-paradigms.md#imperative) |
 | Infinitive Construct | הַקְטִיל | §26.9 | הַ prefix; *chiriq* | [→](hiphil-paradigms.md#infinitive-construct) |
 | Infinitive Absolute | הַקְטֵל | §26.11 | הַ prefix; *tsere* | [→](hiphil-paradigms.md#infinitive-absolute) |

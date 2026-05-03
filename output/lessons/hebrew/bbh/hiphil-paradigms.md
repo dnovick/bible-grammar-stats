@@ -39,7 +39,7 @@
 
 ## Wayyiqtol {#wayyiqtol}
 
-*BBH §26.4 — Prefix: וַיַּ; final syllable shifts from chiriq to tsere*
+*Sequential narrative form of the imperfect. Prefix: וַיַּ; final syllable shifts from chiriq to tsere.*
 
 | Person | Singular | Plural |
 |---|---|---|
@@ -54,7 +54,7 @@
 
 ## Weqatal {#weqatal}
 
-*BBH §26.6 — וְ + perfect form; used for sequential or consequential future*
+*Sequential future form of the perfect. וְ + perfect form; used for sequential or consequential future.*
 
 | Person | Singular | Plural |
 |---|---|---|
@@ -69,7 +69,7 @@
 
 ## Imperative {#imperative}
 
-*BBH §26.7 — Prefix: הַ; tsere in final syllable (§26.8 discusses the cohortative/jussive)*
+*BBH §26.7 — Prefix: הַ; tsere in final syllable*
 
 | | Singular | Plural |
 |---|---|---|
