@@ -34,16 +34,16 @@ The Hiphil is the primary **causative** stem in Biblical Hebrew. A verb that is 
 
 ### Paradigm — Model Root קטל
 
-| Conjugation | 3ms Form | Notes |
-|---|---|---|
-| Perfect (qatal) | הִקְטִיל | הִ prefix; *chiriq* vowel |
-| Imperfect (yiqtol) | יַקְטִיל | *patach* under prefix; *chiriq* final |
-| Wayyiqtol | וַיַּקְטֵל | doubled prefix consonant + *tsere* |
-| Weqatal | וְהִקְטִיל | וְ + perfect form |
-| Imperative 2ms | הַקְטֵל | הַ prefix; *tsere* final |
-| Infinitive Construct | הַקְטִיל | הַ prefix; *chiriq* |
-| Infinitive Absolute | הַקְטֵל | הַ prefix; *tsere* |
-| Participle ms | מַקְטִיל | מַ prefix; *chiriq* |
+| Conjugation | 3ms Form | BBH § | Notes | Full Paradigm |
+|---|---|---|---|---|
+| Perfect (qatal) | הִקְטִיל | §26.3 | הִ prefix; *chiriq* vowel | [→](hiphil-paradigms.md#perfect) |
+| Imperfect (yiqtol) | יַקְטִיל | §26.4 | *patach* under prefix; *chiriq* final | [→](hiphil-paradigms.md#imperfect) |
+| Wayyiqtol | וַיַּקְטֵל | §26.5 | doubled prefix consonant + *tsere* | [→](hiphil-paradigms.md#wayyiqtol) |
+| Weqatal | וְהִקְטִיל | §26.6 | וְ + perfect form | [→](hiphil-paradigms.md#weqatal) |
+| Imperative 2ms | הַקְטֵל | §26.7 | הַ prefix; *tsere* final | [→](hiphil-paradigms.md#imperative) |
+| Infinitive Construct | הַקְטִיל | §26.8 | הַ prefix; *chiriq* | [→](hiphil-paradigms.md#infinitive-construct) |
+| Infinitive Absolute | הַקְטֵל | §26.9 | הַ prefix; *tsere* | [→](hiphil-paradigms.md#infinitive-absolute) |
+| Participle ms | מַקְטִיל | §26.10 | מַ prefix; *chiriq* | [→](hiphil-paradigms.md#participle) |
 
 ### Real Forms from the Pentateuch — Root בּוֹא ("bring")
 
