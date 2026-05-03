@@ -315,13 +315,12 @@ class ExercisePDF:
                 self._y -= (self.SUBH_SIZE + 2)
             self._y -= 0.08*inch
 
-    def add_verb_table(self, verbs: list[VerbEntry]):
+    def add_verb_table(self, verbs: list[VerbEntry], show_answers: bool = True):
         """Draw the parse table for one or more verbs."""
         cw = self._col_widths()
         x0 = self.MARGIN_L
 
-        # Each verb = input row + answer row; estimate total height
-        needed = self.HEADER_H + len(verbs) * (self.ROW_H + self.ANSWER_H) + 0.08*inch
+        needed = self.HEADER_H + len(verbs) * (self.ROW_H + (self.ANSWER_H if show_answers else 0)) + 0.08*inch
         self._check_space(needed)
 
         c = self._canvas
@@ -342,26 +341,23 @@ class ExercisePDF:
         y -= self.HEADER_H
 
         for verb in verbs:
+            self._check_space(self.ROW_H + (self.ANSWER_H if show_answers else 0))
             # --- input row ---
-            self._check_space(self.ROW_H + self.ANSWER_H)
             c.setStrokeColor(C_RULE)
             c.setLineWidth(0.4)
             c.rect(x0, y - self.ROW_H, sum(cw), self.ROW_H, fill=0, stroke=1)
 
             cx = x0
-            # col 0: number
             c.setFont('Helvetica-Bold', self.LABEL_SIZE)
             c.setFillColor(HexColor('#666666'))
             c.drawCentredString(cx + cw[0]/2, y - self.ROW_H + 8, str(verb.num))
             cx += cw[0]
 
-            # col 1: Hebrew verb (RTL)
             c.setFont('ArialHebrewBold', self.HEB_SIZE - 1)
             c.setFillColor(black)
             c.drawRightString(cx + cw[1] - 3, y - self.ROW_H + 7, _heb(verb.verb))
             cx += cw[1]
 
-            # cols 2-5: AcroForm text fields
             field_cols = [
                 (cw[2], 'conj', verb.conj),
                 (cw[3], 'pgn',  verb.pgn),
@@ -375,14 +371,10 @@ class ExercisePDF:
                 fy = y - self.ROW_H + self.FIELD_PAD
                 fw2 = fw - self.FIELD_PAD * 2
                 fh  = self.ROW_H - self.FIELD_PAD * 2
-
-                # draw field background
                 c.setFillColor(C_FIELD_BG)
                 c.setStrokeColor(HexColor('#bbbbbb'))
                 c.setLineWidth(0.5)
                 c.rect(fx, fy, fw2, fh, fill=1, stroke=1)
-
-                # AcroForm text field
                 c.acroForm.textfield(
                     name=fid,
                     tooltip=f'{verb.num} {fname}',
@@ -398,51 +390,50 @@ class ExercisePDF:
                 )
                 cx += fw
 
-            # col 6: "Ans ▼" label (static — answers shown in answer row below)
-            c.setFont('Helvetica', 7)
-            c.setFillColor(HexColor('#2a6e2a'))
-            c.drawCentredString(cx + cw[6]/2, y - self.ROW_H + 8, 'see ↓')
+            # col 6: hint label only when answers are inline
+            if show_answers:
+                c.setFont('Helvetica', 7)
+                c.setFillColor(HexColor('#2a6e2a'))
+                c.drawCentredString(cx + cw[6]/2, y - self.ROW_H + 8, 'see ↓')
 
             y -= self.ROW_H
 
-            # --- answer row ---
-            c.setFillColor(C_ANSWER_BG)
-            c.setStrokeColor(C_RULE)
-            c.setLineWidth(0.4)
-            c.rect(x0, y - self.ANSWER_H, sum(cw), self.ANSWER_H, fill=1, stroke=1)
+            if show_answers:
+                # --- answer row ---
+                c.setFillColor(C_ANSWER_BG)
+                c.setStrokeColor(C_RULE)
+                c.setLineWidth(0.4)
+                c.rect(x0, y - self.ANSWER_H, sum(cw), self.ANSWER_H, fill=1, stroke=1)
 
-            cx = x0
-            # ✓ label
-            c.setFont('Helvetica-Bold', self.LABEL_SIZE)
-            c.setFillColor(C_ANSWER_FG)
-            c.drawCentredString(cx + cw[0]/2, y - self.ANSWER_H + 6, '✓')
-            cx += cw[0]
+                cx = x0
+                c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+                c.setFillColor(C_ANSWER_FG)
+                c.drawCentredString(cx + cw[0]/2, y - self.ANSWER_H + 6, '✓')
+                cx += cw[0]
 
-            # Hebrew verb
-            c.setFont('ArialHebrew', self.LABEL_SIZE)
-            c.setFillColor(C_ANSWER_FG)
-            c.drawRightString(cx + cw[1] - 3, y - self.ANSWER_H + 6, _heb(verb.verb))
-            cx += cw[1]
+                c.setFont('ArialHebrew', self.LABEL_SIZE)
+                c.setFillColor(C_ANSWER_FG)
+                c.drawRightString(cx + cw[1] - 3, y - self.ANSWER_H + 6, _heb(verb.verb))
+                cx += cw[1]
 
-            answers = [
-                (cw[2], verb.conj, False),
-                (cw[3], verb.pgn,  False),
-                (cw[4], verb.root, True),   # Hebrew root
-                (cw[5], verb.func, False),
-            ]
-            for (aw, atext, is_heb) in answers:
-                if is_heb:
-                    c.setFont('ArialHebrew', self.LABEL_SIZE)
-                    c.drawRightString(cx + aw - 3, y - self.ANSWER_H + 6, _heb(atext))
-                else:
-                    c.setFont('Helvetica', self.LABEL_SIZE)
-                    # truncate if too wide
-                    lines = simpleSplit(atext, 'Helvetica', self.LABEL_SIZE, aw - 6)
-                    c.drawString(cx + 3, y - self.ANSWER_H + 6,
-                                 lines[0] if lines else atext)
-                cx += aw
+                answers = [
+                    (cw[2], verb.conj, False),
+                    (cw[3], verb.pgn,  False),
+                    (cw[4], verb.root, True),
+                    (cw[5], verb.func, False),
+                ]
+                for (aw, atext, is_heb) in answers:
+                    if is_heb:
+                        c.setFont('ArialHebrew', self.LABEL_SIZE)
+                        c.drawRightString(cx + aw - 3, y - self.ANSWER_H + 6, _heb(atext))
+                    else:
+                        c.setFont('Helvetica', self.LABEL_SIZE)
+                        lines = simpleSplit(atext, 'Helvetica', self.LABEL_SIZE, aw - 6)
+                        c.drawString(cx + 3, y - self.ANSWER_H + 6,
+                                     lines[0] if lines else atext)
+                    cx += aw
 
-            y -= self.ANSWER_H
+                y -= self.ANSWER_H
 
         self._y = y - 0.1 * inch
 
@@ -900,14 +891,8 @@ class ExercisePDF:
 # ---------------------------------------------------------------------------
 class Ch26Exercise(ExercisePDF):
 
-    def _build(self):
-        c = self._canvas
-
-        self.add_instructions(
-            'Every highlighted verb is a Hiphil form. For each one: (1) fill in the '
-            'Conjugation, PGN, Root, and Function fields. (2) Check your answer in the '
-            'green row immediately below each verb.'
-        )
+    def _render_passages(self, show_answers: bool):
+        """Render all passages and verb tables; called twice (questions-only, then with answers)."""
 
         # ── Passage A ────────────────────────────────────────────────────────
         self.add_section_heading('Passage A — Genesis 6:12–20')
@@ -916,31 +901,31 @@ class Ch26Exercise(ExercisePDF):
             '6:12',
             'וַיַּרְא אֱלֹהִים אֶת־הָאָרֶץ וְהִנֵּה נִשְׁחָתָה כִּי־הִשְׁחִית כָּל־בָּשָׂר אֶת־דַּרְכּוֹ עַל־הָאָרֶץ',
             '"And God saw the earth, and behold, it was corrupt; for all flesh had [1] ____ its way upon the earth."'))
-        self.add_verb_table([VerbEntry('1','הִשְׁחִית','Perfect (qatal)','3ms','שָׁחַת','Causative — had corrupted')])
+        self.add_verb_table([VerbEntry('1','הִשְׁחִית','Perfect (qatal)','3ms','שָׁחַת','Causative — had corrupted')], show_answers=show_answers)
 
         self.add_passage(PassageBlock(
             '6:13',
             'הִנְנִי מַשְׁחִיתָם עִם־הָאָרֶץ',
             '"Behold, I am [2] ____ them with the earth."'))
-        self.add_verb_table([VerbEntry('2','מַשְׁחִיתָם','Participle + 3mp suffix','ms','שָׁחַת','Causative — destroying them')])
+        self.add_verb_table([VerbEntry('2','מַשְׁחִיתָם','Participle + 3mp suffix','ms','שָׁחַת','Causative — destroying them')], show_answers=show_answers)
 
         self.add_passage(PassageBlock(
             '6:17',
             'וַאֲנִי הִנְנִי מֵבִיא אֶת־הַמַּבּוּל מַיִם עַל־הָאָרֶץ',
             '"As for me, behold, I am [3] ____ the flood of waters upon the earth."'))
-        self.add_verb_table([VerbEntry('3','מֵבִיא','Participle','ms','בּוֹא','Causative — bringing')])
+        self.add_verb_table([VerbEntry('3','מֵבִיא','Participle','ms','בּוֹא','Causative — bringing')], show_answers=show_answers)
 
         self.add_passage(PassageBlock(
             '6:18',
             'וַהֲקִמֹתִי אֶת־בְּרִיתִי אִתָּךְ',
             '"But I will [4] ____ my covenant with you."'))
-        self.add_verb_table([VerbEntry('4','וַהֲקִמֹתִי','Weqatal','1cs','קוּם','Factitive — I will establish')])
+        self.add_verb_table([VerbEntry('4','וַהֲקִמֹתִי','Weqatal','1cs','קוּם','Factitive — I will establish')], show_answers=show_answers)
 
         self.add_passage(PassageBlock(
             '6:19',
             'מִכָּל־בָּשָׂר שְׁנַיִם מִכֹּל תָּבִיא אֶל־הַתֵּבָה',
             '"Of every living thing you shall [5] ____ two of every kind into the ark."'))
-        self.add_verb_table([VerbEntry('5','תָּבִיא','Imperfect','2ms','בּוֹא','Causative — you shall bring')])
+        self.add_verb_table([VerbEntry('5','תָּבִיא','Imperfect','2ms','בּוֹא','Causative — you shall bring')], show_answers=show_answers)
 
         self.add_passage(PassageBlock(
             '6:19–20',
@@ -949,7 +934,7 @@ class Ch26Exercise(ExercisePDF):
         self.add_verb_table([
             VerbEntry('6','לְהַחֲיֹת', 'Inf. Construct','—','חָיָה','Causative — to keep alive'),
             VerbEntry('7','לְהַחֲיוֹת','Inf. Construct','—','חָיָה','Causative — to keep alive'),
-        ])
+        ], show_answers=show_answers)
 
         self.add_section_break()
 
@@ -960,7 +945,7 @@ class Ch26Exercise(ExercisePDF):
             '7:4',
             'כִּי לְיָמִים עוֹד שִׁבְעָה אָנֹכִי מַמְטִיר עַל־הָאָרֶץ אַרְבָּעִים יוֹם',
             '"For in seven days I will [8] ____ rain on the earth forty days."'))
-        self.add_verb_table([VerbEntry('8','מַמְטִיר','Participle','ms','מָטַר','Causative/Denominative — causing rain')])
+        self.add_verb_table([VerbEntry('8','מַמְטִיר','Participle','ms','מָטַר','Causative/Denominative — causing rain')], show_answers=show_answers)
 
         self.add_section_break()
 
@@ -969,27 +954,27 @@ class Ch26Exercise(ExercisePDF):
 
         self.add_passage(PassageBlock('8:1','וַיַּעֲבֵר אֱלֹהִים רוּחַ עַל־הָאָרֶץ',
             '"And God [9] ____ a wind over the earth."'))
-        self.add_verb_table([VerbEntry('9','וַיַּעֲבֵר','Wayyiqtol','3ms','עָבַר','Causative — caused to pass over')])
+        self.add_verb_table([VerbEntry('9','וַיַּעֲבֵר','Wayyiqtol','3ms','עָבַר','Causative — caused to pass over')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('8:9','וַיָּבֵא אֹתָהּ אֵלָיו אֶל־הַתֵּבָה',
             '"And he [10] ____ her back to him into the ark."'))
-        self.add_verb_table([VerbEntry('10','וַיָּבֵא','Wayyiqtol','3ms','בּוֹא','Causative — brought')])
+        self.add_verb_table([VerbEntry('10','וַיָּבֵא','Wayyiqtol','3ms','בּוֹא','Causative — brought')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('8:13','וַיָּסַר נֹחַ אֶת־מִכְסֵה הַתֵּבָה',
             '"And Noah [11] ____ the covering of the ark."'))
-        self.add_verb_table([VerbEntry('11','וַיָּסַר','Wayyiqtol','3ms','סוּר','Causative — removed')])
+        self.add_verb_table([VerbEntry('11','וַיָּסַר','Wayyiqtol','3ms','סוּר','Causative — removed')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('8:17','הַיְצֵא אִתָּךְ כָּל־הַחַיָּה',
             '"[12] ____ with you every living thing."'))
-        self.add_verb_table([VerbEntry('12','הַיְצֵא','Imperative','2ms','יָצָא','Causative — bring out!')])
+        self.add_verb_table([VerbEntry('12','הַיְצֵא','Imperative','2ms','יָצָא','Causative — bring out!')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('8:20','וַיַּעַל עֹלֹת בַּמִּזְבֵּחַ',
             '"And he [13] ____ burnt offerings on the altar."'))
-        self.add_verb_table([VerbEntry('13','וַיַּעַל','Wayyiqtol','3ms','עָלָה','Causative — offered up')])
+        self.add_verb_table([VerbEntry('13','וַיַּעַל','Wayyiqtol','3ms','עָלָה','Causative — offered up')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('8:21','לֹא־אֹסִף לְהַכֹּת אֶת־כָּל־חַי',
             '"I will never again [14] ____ every living thing."'))
-        self.add_verb_table([VerbEntry('14','לְהַכֹּת','Inf. Construct','—','נָכָה','Causative — to strike down')])
+        self.add_verb_table([VerbEntry('14','לְהַכֹּת','Inf. Construct','—','נָכָה','Causative — to strike down')], show_answers=show_answers)
 
         self.add_section_break()
 
@@ -1004,7 +989,7 @@ class Ch26Exercise(ExercisePDF):
         self.add_verb_table([
             VerbEntry('15','וְהַרְבָּה','Inf. Absolute','—','רָבָה','Causative — emphatic modifier (surely/multiplying)'),
             VerbEntry('16','אַרְבֶּה',  'Imperfect',   '1cs','רָבָה','Causative — I will multiply'),
-        ])
+        ], show_answers=show_answers)
 
         self.add_section_break()
 
@@ -1020,7 +1005,7 @@ class Ch26Exercise(ExercisePDF):
             VerbEntry('17','וְהִכִּיתָם','Weqatal',     '2ms','נָכָה','Causative — and you shall strike them'),
             VerbEntry('18','הַכֵּה',    'Inf. Absolute','—',  'נָכָה','Causative — emphatic modifier (certainly)'),
             VerbEntry('19','תַכֶּה',    'Imperfect',   '2ms','נָכָה','Causative — you shall strike'),
-        ])
+        ], show_answers=show_answers)
 
         self.add_section_break()
 
@@ -1032,7 +1017,7 @@ class Ch26Exercise(ExercisePDF):
         self.add_verb_table([
             VerbEntry('B1','הֵחֵל',    'Perfect (qatal)','3ms','חָלַל','Causative — began (Hiphil of חָלַל = to begin)'),
             VerbEntry('B2','וַיּוֹלֶד','Wayyiqtol',      '3ms','יָלַד','Causative — fathered / begat'),
-        ])
+        ], show_answers=show_answers)
 
         self.add_section_break()
 
@@ -1060,18 +1045,46 @@ class Ch26Exercise(ExercisePDF):
             ('Imperative (1)',     '#12'),
         ])
 
-        # ── Reflection ────────────────────────────────────────────────────────
-        self.add_reflection([
-            'Wayyiqtol dominates in Gen 6–8 but is absent from Passages D and E. What does this tell '
-            'you about how genre — narrative vs. divine oracle (Gen 22) vs. legal instruction (Deut 7) '
-            '— shapes conjugation choice in the Hiphil?',
-            'Both Passage D (Gen 22:17) and Passage E (Deut 7:2) use the emphatic inf. absolute + '
-            'imperfect pattern. What does the inf. absolute add beyond a plain imperfect? Are the two '
-            'contexts — promise and command — using the emphasis for the same rhetorical purpose?',
-            'In Gen 6–8, God is the subject of nearly every Hiphil; Noah appears as subject only at '
-            '#11 and #13. What does this distribution of agency tell you about the theological '
-            'architecture of the flood narrative?',
-        ])
+        # ── Reflection (only on question pages, not repeated in key) ──────────
+        if not show_answers:
+            self.add_reflection([
+                'Wayyiqtol dominates in Gen 6–8 but is absent from Passages D and E. What does this tell '
+                'you about how genre — narrative vs. divine oracle (Gen 22) vs. legal instruction (Deut 7) '
+                '— shapes conjugation choice in the Hiphil?',
+                'Both Passage D (Gen 22:17) and Passage E (Deut 7:2) use the emphatic inf. absolute + '
+                'imperfect pattern. What does the inf. absolute add beyond a plain imperfect? Are the two '
+                'contexts — promise and command — using the emphasis for the same rhetorical purpose?',
+                'In Gen 6–8, God is the subject of nearly every Hiphil; Noah appears as subject only at '
+                '#11 and #13. What does this distribution of agency tell you about the theological '
+                'architecture of the flood narrative?',
+            ])
+
+    def _build(self):
+        # ── Part 1: questions only (no answers visible) ───────────────────────
+        self.add_instructions(
+            'Every highlighted verb is a Hiphil form. For each one, fill in the Conjugation, '
+            'PGN, Root, and Function fields. The answer key begins on the page marked "Answer Key".'
+        )
+        self._render_passages(show_answers=False)
+
+        # ── Part 2: answer key (passages repeated with answers visible) ───────
+        self._new_page()
+        c = self._canvas
+        c.setFont('Helvetica-Bold', 14)
+        c.setFillColor(C_HEADING)
+        c.drawString(self.MARGIN_L, self._y, 'Answer Key')
+        self._y -= 0.22 * inch
+        c.setFont('Helvetica-Oblique', 9)
+        c.setFillColor(HexColor('#666666'))
+        c.drawString(self.MARGIN_L, self._y,
+                     'Passages with correct answers shown in the green row below each verb.')
+        self._y -= 0.18 * inch
+        c.setStrokeColor(C_RULE)
+        c.setLineWidth(1)
+        c.line(self.MARGIN_L, self._y, self.PAGE_W - self.MARGIN_R, self._y)
+        self._y -= 0.15 * inch
+
+        self._render_passages(show_answers=True)
 
 
 # ---------------------------------------------------------------------------
