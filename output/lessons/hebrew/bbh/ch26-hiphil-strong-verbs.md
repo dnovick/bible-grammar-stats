@@ -35,16 +35,16 @@ The Hiphil is the primary **causative** stem in Biblical Hebrew. A verb that is 
 
 ### Paradigm — Model Root קטל
 
-| Conjugation | 3ms Form | BBH § | Notes | Full Paradigm |
-|---|---|---|---|---|
-| Perfect (qatal) | הִקְטִיל | §26.3 | הִ prefix; *chiriq* vowel | [→](hiphil-paradigms.md#perfect) |
-| Wayyiqtol | וַיַּקְטֵל | — | sequential narrative; doubled prefix + *tsere* | [→](hiphil-paradigms.md#wayyiqtol) |
-| Imperfect (yiqtol) | יַקְטִיל | §26.5 | *patach* under prefix; *chiriq* final | [→](hiphil-paradigms.md#imperfect) |
-| Weqatal | וְהִקְטִיל | — | sequential future; וְ + perfect form | [→](hiphil-paradigms.md#weqatal) |
-| Imperative 2ms | הַקְטֵל | §26.7 | הַ prefix; *tsere* final | [→](hiphil-paradigms.md#imperative) |
-| Infinitive Construct | הַקְטִיל | §26.9 | הַ prefix; *chiriq* | [→](hiphil-paradigms.md#infinitive-construct) |
-| Infinitive Absolute | הַקְטֵל | §26.11 | הַ prefix; *tsere* | [→](hiphil-paradigms.md#infinitive-absolute) |
-| Participle ms | מַקְטִיל | §26.13 | מַ prefix; *chiriq* | [→](hiphil-paradigms.md#participle) |
+| Conjugation | 3ms Form | BBH § | Notes |
+|---|---|---|---|
+| [Perfect (qatal)](hiphil-paradigms.md#perfect) | הִקְטִיל | §26.3 | הִ prefix; *chiriq* vowel |
+| [Wayyiqtol](hiphil-paradigms.md#wayyiqtol) | וַיַּקְטֵל | — | sequential narrative; doubled prefix + *tsere* |
+| [Imperfect (yiqtol)](hiphil-paradigms.md#imperfect) | יַקְטִיל | §26.5 | *patach* under prefix; *chiriq* final |
+| [Weqatal](hiphil-paradigms.md#weqatal) | וְהִקְטִיל | — | sequential future; וְ + perfect form |
+| [Imperative 2ms](hiphil-paradigms.md#imperative) | הַקְטֵל | §26.7 | הַ prefix; *tsere* final |
+| [Infinitive Construct](hiphil-paradigms.md#infinitive-construct) | הַקְטִיל | §26.9 | הַ prefix; *chiriq* |
+| [Infinitive Absolute](hiphil-paradigms.md#infinitive-absolute) | הַקְטֵל | §26.11 | הַ prefix; *tsere* |
+| [Participle ms](hiphil-paradigms.md#participle) | מַקְטִיל | §26.13 | מַ prefix; *chiriq* |
 
 ### Real Forms from the Pentateuch — Root בּוֹא ("bring")
 
