@@ -281,4 +281,4 @@ Some roots occur almost exclusively in the Hiphil — the Hiphil form *is* the s
 | Resource | URL |
 |---|---|
 | Anki (free flashcard app — Windows, Mac, iOS, Android) | [apps.ankiweb.net](https://apps.ankiweb.net) |
-| Anki import CSV for this chapter | [ch26-anki-deck.csv](ch26-anki-deck.csv) |
+| Anki import file for this chapter | [ch26-anki-deck.txt](ch26-anki-deck.txt) |
