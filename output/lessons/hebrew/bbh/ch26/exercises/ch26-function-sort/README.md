@@ -6,7 +6,7 @@
 
 ## Description
 
-A 24-item classification exercise drawn entirely from Genesis, Exodus, Leviticus, Numbers, and Deuteronomy. Students read a Hiphil form with its reference and contextual gloss, then classify it as Causative (C), Factitive (F), Declarative (D), or Simple Action (SA). Roots span all four function types and include several ambiguous cases (e.g. זָכַר Hiphil as Causative rather than Simple Action) that reward careful reasoning. Three discussion questions connect specific items to the broader grammar.
+A 27-item classification exercise drawn entirely from Genesis, Exodus, Leviticus, Numbers, and Deuteronomy. Students read a Hiphil form with its reference and contextual gloss, then classify it as Causative (C), Factitive (F), Declarative (D), Simple Action (SA), or Denominative (DN). Roots span all five function types and include several ambiguous cases (e.g. זָכַר Hiphil as Causative rather than Simple Action) that reward careful reasoning. Four discussion questions connect specific items to the broader grammar.
 
 ### Function coverage
 
@@ -15,6 +15,7 @@ A 24-item classification exercise drawn entirely from Genesis, Exodus, Leviticus
 | Causative | 1–8, 12–13, 23–24 | 13 |
 | Simple Action | 9–11, 15–17 | 6 |
 | Factitive | 18–20 | 3 |
+| Denominative | 25–27 | 3 |
 | Declarative | 21–22 | 2 |
 
 ---

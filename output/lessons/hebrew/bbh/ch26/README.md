@@ -22,9 +22,9 @@
 
 | Exercise | Description |
 |---|---|
-| [exercises/ch26-passage-exercise/](exercises/ch26-passage-exercise/README.md) | "Spot the Hiphil" — 21-verb parsing exercise from Gen 6–8, Gen 22, and Deu 7; all conjugations covered |
-| [exercises/ch26-qal-hiphil-contrast/](exercises/ch26-qal-hiphil-contrast/README.md) | "Qal–Hiphil Contrast Drill" — 14 roots in 3 parts; translate the Hiphil and identify its semantic function |
-| [exercises/ch26-function-sort/](exercises/ch26-function-sort/README.md) | "Semantic Function Sorting" — classify 24 OT Hiphil forms as Causative / Factitive / Declarative / Simple Action |
+| [exercises/ch26-passage-exercise/README.md](exercises/ch26-passage-exercise/README.md) | "Spot the Hiphil" — 21-verb parsing exercise from Gen 6–8, Gen 22, and Deu 7; all conjugations covered |
+| [exercises/ch26-qal-hiphil-contrast/README.md](exercises/ch26-qal-hiphil-contrast/README.md) | "Qal–Hiphil Contrast Drill" — 14 roots in 3 parts; translate the Hiphil and identify its semantic function |
+| [exercises/ch26-function-sort/README.md](exercises/ch26-function-sort/README.md) | "Semantic Function Sorting" — classify 27 OT Hiphil forms as Causative / Factitive / Declarative / Simple Action / Denominative |
 
 ---
 
