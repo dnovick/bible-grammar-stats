@@ -195,12 +195,12 @@ df['book_pri'] = df['book'].map(book_pri).fillna(99)
 Four sections in order, each with its own `## Heading` and table:
 
 1. **Main Lesson** — single row: the primary `.md` lesson file
-2. **Reference Files** — paradigm file(s), morphology Anki deck (.md + .txt), legacy CSV if present
+2. **Reference Files** — paradigm file(s) only
 3. **Exercises** — one row per exercise; link target is the exercise's own `README.md`, not individual files:
    `| [exercises/ch26-foo/](exercises/ch26-foo/README.md) | one-line description |`
-4. **Vocabulary** — vocab deck (.md + .txt)
+4. **Flashcards** — all Anki decks: morphology deck (.md + .txt + .csv if present) followed by vocab deck (.md + .txt)
 
-Omit sections that have no files yet (e.g. no Vocabulary section until vocab files exist).
+Omit sections that have no files yet (e.g. no Flashcards section until deck files exist).
 
 ### Exercise-level README.md
 
