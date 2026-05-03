@@ -16,6 +16,7 @@ output path, and generates supporting files (paradigm reference, passage exercis
 - `output/lessons/<language>/<textbook>/ch<N>/<stem>-paradigms.md` — full paradigm tables
 - `output/lessons/<language>/<textbook>/ch<N>/exercises/ch<N>-passage-exercise.md` — parsing exercise (Markdown)
 - `output/lessons/<language>/<textbook>/ch<N>/exercises/ch<N>-passage-exercise.html` — interactive version with fillable fields and inline answer reveal
+- `output/lessons/<language>/<textbook>/ch<N>/exercises/ch<N>-passage-exercise.pdf` — fillable PDF with AcroForm text fields and answer rows (generated via `exercise_pdf.py`)
 - `output/lessons/<language>/<textbook>/ch<N>/ch<N>-anki-deck.md` — morphology flashcard list
 - `output/lessons/<language>/<textbook>/ch<N>/ch<N>-anki-deck.txt` — Anki import file (tab-separated)
 - `output/lessons/<language>/<textbook>/ch<N>/README.md` — link index (main lesson listed first)
