@@ -5,16 +5,17 @@
 
 ---
 
-## 1. Function
+## 1. Function (BBH §26.2)
 
 The Hiphil is the primary **causative** stem in Biblical Hebrew. A verb that is intransitive in the Qal becomes transitive in the Hiphil: the subject *causes* someone or something to perform the action.
 
 | Function | Description | Example |
 |---|---|---|
-| **Causative** | Subject causes the action | הֵבִיא "he brought" ← בּוֹא "to come/go" |
-| **Factitive** | Subject causes a state to exist | הֶחֱזִיק "he strengthened" ← חָזַק "to be strong" |
-| **Declarative** | Subject declares or treats as | הִצְדִּיק "he declared righteous" ← צָדַק "to be righteous" |
-| **Denominative** | Action derived from a noun | הִמְטִיר "he caused to rain" ← מָטָר "rain" |
+| **Causative** | Subject causes another to perform the action | הֵבִיא "he brought" ← בּוֹא "to come/go" |
+| **Declarative** | Subject declares or treats the object as something | הִצְדִּיק "he declared righteous" ← צָדַק "to be righteous" |
+| **Factitive** | Subject causes a state to come into existence | הֶחֱזִיק "he strengthened" ← חָזַק "to be strong" |
+| **Simple action** | No causative force; Hiphil is the standard lexical form | הִשְׁתַּחֲוָה "he bowed down / worshiped" |
+| **Denominative** *(not in BBH)* | Action derived from a noun | הִמְטִיר "he caused to rain" ← מָטָר "rain" |
 
 > **Key diagnostic:** Ask, "Is the subject *doing* the action, or *causing* someone else to do it?" If causing — it is likely Hiphil.
 
