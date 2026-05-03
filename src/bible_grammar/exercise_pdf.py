@@ -1189,19 +1189,24 @@ class Ch26FunctionSortExercise(ExercisePDF):
         SortEntry('22', 'יַרְשִׁיעֻ',  'Imperfect 3mp',  'Exo 22:8',  '"the judges shall declare him guilty"',              'D',  'רָשָׁע', 'Same root; judicial pronouncement'),
         SortEntry('23', 'יַּעַל',       'Wayyiqtol 3ms',  'Gen 8:20',  '"Noah offered burnt offerings on the altar"',        'C',  'עָלָה',  'Qal = go up; Hiphil = cause to go up/offer'),
         SortEntry('24', 'הָמִית',        'Inf. Constr.',   'Gen 37:18', '"they conspired against him to kill him"',           'C',  'מוּת',   'Same form as #14; different context'),
+        SortEntry('25', 'מַמְטִיר',    'Participle ms',  'Gen 7:4',   '"I am about to send rain on the earth"',             'DN', 'מָטַר',  'Noun: מָטָר (rain); Hiphil = to cause rain / send rain'),
+        SortEntry('26', 'יַּשְׁכֵּם', 'Wayyiqtol 3ms',  'Gen 22:3',  '"Abraham rose early in the morning"',               'DN', 'שָׁכַם', 'Noun: שְׁכֶם (shoulder); to shoulder up = rise early'),
+        SortEntry('27', 'הַאְזִינוּ', 'Imperative 2mp', 'Deu 32:1',  '"give ear, O heavens, and I will speak"',           'DN', 'אָזַן',  'Noun: אֹזֶן (ear); to ear = give ear / listen'),
     ]
 
     def _build(self):
         self.add_instructions(
-            'Classify each Hiphil verb as C (Causative), F (Factitive), D (Declarative), or '
-            'SA (Simple Action). Write your answer in the Function column. Answer key is on the last page.'
+            'Classify each Hiphil verb as C (Causative), F (Factitive), D (Declarative), '
+            'SA (Simple Action), or DN (Denominative). Write your answer in the Function column. '
+            'Answer key is on the last page.'
         )
 
         self.add_note(
             'C = Causative (subject causes another to act/experience)  |  '
             'F = Factitive (subject causes object to be in a state)  |  '
             'D = Declarative (subject declares something as being in a state)  |  '
-            'SA = Simple Action (Hiphil is the standard form; no common Qal)'
+            'SA = Simple Action (Hiphil is the standard form; no common Qal)  |  '
+            'DN = Denominative (Hiphil derived from a noun; not in BBH)'
         )
 
         self.add_sort_table(self._ENTRIES, show_answers=False)

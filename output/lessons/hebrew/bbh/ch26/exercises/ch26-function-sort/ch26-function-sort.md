@@ -6,9 +6,9 @@
 
 ## Instructions
 
-Below are 24 Hiphil verb forms drawn from the OT. Each item gives you the Hebrew form, its reference, and a contextual gloss.
+Below are 27 Hiphil verb forms drawn from the OT. Each item gives you the Hebrew form, its reference, and a contextual gloss.
 
-**For each item, classify the Hiphil as one of the four semantic functions:**
+**For each item, classify the Hiphil as one of the five semantic functions:**
 
 | Label | Function | Question to ask |
 |---|---|---|
@@ -16,12 +16,11 @@ Below are 24 Hiphil verb forms drawn from the OT. Each item gives you the Hebrew
 | **F** | Factitive | Does the subject *cause* an object to be in a certain state? (Often from a stative root.) |
 | **D** | Declarative | Does the subject *declare or treat* something as being in a state? |
 | **SA** | Simple Action | Is the Hiphil the standard form of the verb with no obvious Qal counterpart? |
+| **DN** | Denominative | Is the Hiphil derived from a **noun**, performing an action related to that noun? *(not in BBH)* |
 
-> **Tip:** When you see a motion verb in the Hiphil (go → bring), think Causative.
-> When you see a stative verb in the Hiphil (be heavy → make heavy), think Factitive.
-> When you see a legal or evaluative declaration, think Declarative.
+> **Tip:** Motion verb (go → bring) → **Causative**. Stative verb (be heavy → make heavy) → **Factitive**. Legal/evaluative declaration → **Declarative**. No common Qal counterpart → **Simple Action**. Hiphil built from a noun → **Denominative**.
 
-Write your answer (C / F / D / SA) in the blank column.
+Write your answer (C / F / D / SA / DN) in the blank column.
 
 ---
 
@@ -53,6 +52,9 @@ Write your answer (C / F / D / SA) in the blank column.
 | 22 | יַרְשִׁיעֻ | Imperfect 3mp | Exo 22:8 | "the judges shall declare him guilty" | |
 | 23 | יַּעַל | Wayyiqtol 3ms | Gen 8:20 | "Noah offered burnt offerings on the altar" | |
 | 24 | הָמִית | Inf. Construct | Gen 37:18 | "they conspired against him to kill him" | |
+| 25 | מַמְטִיר | Participle ms | Gen 7:4 | "I am about to send rain on the earth" | |
+| 26 | יַּשְׁכֵּם | Wayyiqtol 3ms | Gen 22:3 | "Abraham rose early in the morning" | |
+| 27 | הַאְזִינוּ | Imperative 2mp | Deu 32:1 | "give ear, O heavens, and I will speak" | |
 
 ---
 
@@ -60,7 +62,8 @@ Write your answer (C / F / D / SA) in the blank column.
 
 1. Items 18–19 both come from כָּבֵד (Exo 8). The root means "to be heavy." How does the Hiphil meaning connect to that? Is this Factitive or Causative — and why?
 2. Items 21–22 both use רָשָׁע and both classify as Declarative. Compare Deu 25:1 (a judicial verdict) with Exo 22:8 (a court decision). What do they have in common that makes both Declarative rather than Factitive?
-3. Items 12–13 (זָכַר, "to remember") might seem like Simple Action, but they can also be read as Causative. What would that Causative reading be?
+3. Items 12–13 (זָכַר, "to remember") might seem like Simple Action, but they are classified as Causative. What is the Causative reading? Does it change the translation?
+4. Items 25–27 are Denominative. For each one, identify the underlying noun. How does knowing the noun make the Hiphil meaning immediately transparent?
 
 ---
 
@@ -71,7 +74,7 @@ Write your answer (C / F / D / SA) in the blank column.
 | 1  | בּוֹא | **C** | God caused the animals to come to Adam |
 | 2  | יָצָא | **C** | Earth caused vegetation to come out |
 | 3  | שׁוּב | **C** | Abraham caused people/goods to come back |
-| 4  | שָׁקָה | **C** | The stream caused the ground to receive water; Qal = "drink" |
+| 4  | שָׁקָה | **C** | The mist caused the ground to receive water; Qal = "drink" |
 | 5  | יָלַד | **C** | Adam caused a son to be born; Qal = "give birth" |
 | 6  | עָלָה | **C** | Isaac is to be caused to go up (as an offering) |
 | 7  | יָרַד | **C** | Rebekah caused the jar to go down |
@@ -80,7 +83,7 @@ Write your answer (C / F / D / SA) in the blank column.
 | 10 | נָגַד | **SA** | Same root — reporting/declaring is the Hiphil's basic meaning |
 | 11 | שָׁלַךְ | **SA** | To throw/cast; Hiphil is the normal form (no common Qal) |
 | 12 | זָכַר | **C** | Cause Pharaoh to remember me = bring me to his mind |
-| 13 | זָכַר | **C** | I am causing my faults to come to mind |
+| 13 | זָכַר | **C** | Causing something to be remembered |
 | 14 | מוּת | **C** | To cause to die = put to death; Qal = "die" |
 | 15 | נָכָה | **SA** | To strike; Hiphil is the primary form; no functional Qal |
 | 16 | שָׁמַד | **SA** | To destroy; Hiphil is the primary form; Niphal = "be destroyed" |
@@ -92,12 +95,16 @@ Write your answer (C / F / D / SA) in the blank column.
 | 22 | רָשָׁע | **D** | Court declaration, not an act of causing wickedness |
 | 23 | עָלָה | **C** | Noah caused offerings to go up; Qal = "go up" |
 | 24 | מוּת | **C** | Causing death; Qal = "die" |
+| 25 | מָטַר | **DN** | From noun מָטָר "rain" — to perform the action of rain; to send/cause rain |
+| 26 | שָׁכַם | **DN** | From noun שְׁכֶם "shoulder" — to shoulder up early = to rise early / start at dawn |
+| 27 | אָזַן | **DN** | From noun אֹזֶן "ear" — to ear = to give ear / listen attentively |
 
 ### Function summary
 
 | Function | Items | Count |
 |---|---|---|
 | Causative | 1–8, 12–13, 23–24 | 13 |
-| Factitive | 18–20 | 3 |
-| Declarative | 21–22 | 2 |
 | Simple Action | 9–11, 15–17 | 6 |
+| Factitive | 18–20 | 3 |
+| Denominative | 25–27 | 3 |
+| Declarative | 21–22 | 2 |
