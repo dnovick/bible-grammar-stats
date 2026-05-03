@@ -14,9 +14,13 @@ output path, and generates supporting files (paradigm reference, passage exercis
 **Output paths (all files go in the same chapter directory):**
 - `output/lessons/<language>/<textbook>/ch<N>/ch<N>-<slug>.md` — main lesson
 - `output/lessons/<language>/<textbook>/ch<N>/<stem>-paradigms.md` — full paradigm tables
-- `output/lessons/<language>/<textbook>/ch<N>/exercises/ch<N>-passage-exercise.md` — parsing exercise (Markdown)
-- `output/lessons/<language>/<textbook>/ch<N>/exercises/ch<N>-passage-exercise.html` — interactive version with fillable fields and inline answer reveal
-- `output/lessons/<language>/<textbook>/ch<N>/exercises/ch<N>-passage-exercise.pdf` — fillable PDF with AcroForm text fields and answer rows (generated via `exercise_pdf.py`)
+Each exercise gets its own named subdirectory under `exercises/`:
+- `output/lessons/<language>/<textbook>/ch<N>/exercises/<exercise-name>/` — one directory per exercise
+  - `<exercise-name>.md` — Markdown version with answer key
+  - `<exercise-name>.html` — interactive HTML with fillable fields and inline answer reveal
+  - `<exercise-name>.pdf` — fillable PDF with AcroForm text fields (generated via `exercise_pdf.py`)
+
+Example: `exercises/ch26-passage-exercise/ch26-passage-exercise.{md,html,pdf}`
 - `output/lessons/<language>/<textbook>/ch<N>/ch<N>-anki-deck.md` — morphology flashcard list
 - `output/lessons/<language>/<textbook>/ch<N>/ch<N>-anki-deck.txt` — Anki import file (tab-separated)
 - `output/lessons/<language>/<textbook>/ch<N>/README.md` — link index (main lesson listed first)

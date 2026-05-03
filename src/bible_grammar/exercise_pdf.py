@@ -708,7 +708,8 @@ def build_ch26_exercise(out_dir: str = None) -> str:
     if out_dir is None:
         here = os.path.dirname(os.path.abspath(__file__))
         out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch26', 'exercises')
+                               'hebrew', 'bbh', 'ch26', 'exercises',
+                               'ch26-passage-exercise')
     path = os.path.join(out_dir, 'ch26-passage-exercise.pdf')
     ex = Ch26Exercise(
         title='Chapter 26 — "Spot the Hiphil" Passage Exercise',
