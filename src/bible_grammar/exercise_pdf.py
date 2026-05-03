@@ -508,7 +508,7 @@ class ExercisePDF:
             y -= row_h
         self._y = y - 0.1*inch
 
-    def add_contrast_table(self, entries: list['ContrastEntry']):
+    def add_contrast_table(self, entries: list['ContrastEntry'], show_answers: bool = True):
         """Draw a Qal-Hiphil contrast table with fillable Translation and Function columns."""
         c = self._canvas
         w = self._usable_w()
@@ -517,7 +517,8 @@ class ExercisePDF:
         cw = [r * w for r in ratios]
         headers = ['#', 'Root', 'Qal Meaning', 'Hiphil Form', 'Ref', 'Translation', 'Function']
 
-        needed = self.HEADER_H + len(entries) * (self.ROW_H + self.ANSWER_H) + 0.08*inch
+        rows_per_entry = 1 + (1 if show_answers else 0)
+        needed = self.HEADER_H + len(entries) * (self.ROW_H + (self.ANSWER_H if show_answers else 0)) + 0.08*inch
         self._check_space(needed)
         y = self._y
         x0 = self.MARGIN_L
@@ -536,7 +537,7 @@ class ExercisePDF:
         y -= self.HEADER_H
 
         for e in entries:
-            self._check_space(self.ROW_H + self.ANSWER_H)
+            self._check_space(self.ROW_H + (self.ANSWER_H if show_answers else 0))
             # Input row
             c.setStrokeColor(C_RULE)
             c.setLineWidth(0.4)
@@ -558,7 +559,7 @@ class ExercisePDF:
             lines = simpleSplit(e.qal, 'Helvetica', self.LABEL_SIZE, cw[2] - 6)
             c.drawString(cx + 3, y - self.ROW_H + 8, lines[0] if lines else e.qal)
             cx += cw[2]
-            # Hiphil form (Hebrew) + conj
+            # Hiphil form (Hebrew)
             c.setFont('ArialHebrew', self.HEB_SIZE - 2)
             c.drawRightString(cx + cw[3] - 3, y - self.ROW_H + 8, _heb(e.hiphil_form))
             cx += cw[3]
@@ -567,7 +568,7 @@ class ExercisePDF:
             c.setFillColor(HexColor('#555555'))
             c.drawString(cx + 3, y - self.ROW_H + 8, e.ref)
             cx += cw[4]
-            # Translation field
+            # Translation and Function fields
             for fname, fw in [('trans', cw[5]), ('func', cw[6])]:
                 fid = f'ctr-{e.num}-{fname}-{self._field_idx}'
                 self._field_idx += 1
@@ -590,46 +591,164 @@ class ExercisePDF:
                 cx += fw
             y -= self.ROW_H
 
-            # Answer row
-            c.setFillColor(C_ANSWER_BG)
-            c.setStrokeColor(C_RULE)
-            c.setLineWidth(0.4)
-            c.rect(x0, y - self.ANSWER_H, sum(cw), self.ANSWER_H, fill=1, stroke=1)
-            cx = x0
-            c.setFont('Helvetica-Bold', self.LABEL_SIZE)
-            c.setFillColor(C_ANSWER_FG)
-            c.drawCentredString(cx + cw[0]/2, y - self.ANSWER_H + 6, '✓')
-            cx += cw[0]
-            # root
-            c.setFont('ArialHebrew', self.LABEL_SIZE)
-            c.drawRightString(cx + cw[1] - 3, y - self.ANSWER_H + 6, _heb(e.root))
-            cx += cw[1]
-            # qal
-            c.setFont('Helvetica', self.LABEL_SIZE)
-            c.drawString(cx + 3, y - self.ANSWER_H + 6, e.qal[:28])
-            cx += cw[2]
-            # hiphil form
-            c.setFont('ArialHebrew', self.LABEL_SIZE)
-            c.drawRightString(cx + cw[3] - 3, y - self.ANSWER_H + 6, _heb(e.hiphil_form))
-            cx += cw[3]
-            # ref
-            c.setFont('Helvetica', self.LABEL_SIZE)
-            c.setFillColor(C_ANSWER_FG)
-            c.drawString(cx + 3, y - self.ANSWER_H + 6, e.ref)
-            cx += cw[4]
-            # translation answer
-            lines = simpleSplit(e.translation, 'Helvetica', self.LABEL_SIZE, cw[5] - 6)
-            c.drawString(cx + 3, y - self.ANSWER_H + 6, lines[0] if lines else e.translation)
-            cx += cw[5]
-            # function answer
-            lines = simpleSplit(e.function, 'Helvetica-Bold', self.LABEL_SIZE, cw[6] - 6)
-            c.setFont('Helvetica-Bold', self.LABEL_SIZE)
-            c.drawString(cx + 3, y - self.ANSWER_H + 6, lines[0] if lines else e.function)
-            y -= self.ANSWER_H
+            if show_answers:
+                # Answer row immediately below
+                c.setFillColor(C_ANSWER_BG)
+                c.setStrokeColor(C_RULE)
+                c.setLineWidth(0.4)
+                c.rect(x0, y - self.ANSWER_H, sum(cw), self.ANSWER_H, fill=1, stroke=1)
+                cx = x0
+                c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+                c.setFillColor(C_ANSWER_FG)
+                c.drawCentredString(cx + cw[0]/2, y - self.ANSWER_H + 6, '✓')
+                cx += cw[0]
+                c.setFont('ArialHebrew', self.LABEL_SIZE)
+                c.drawRightString(cx + cw[1] - 3, y - self.ANSWER_H + 6, _heb(e.root))
+                cx += cw[1]
+                c.setFont('Helvetica', self.LABEL_SIZE)
+                c.drawString(cx + 3, y - self.ANSWER_H + 6, e.qal[:28])
+                cx += cw[2]
+                c.setFont('ArialHebrew', self.LABEL_SIZE)
+                c.drawRightString(cx + cw[3] - 3, y - self.ANSWER_H + 6, _heb(e.hiphil_form))
+                cx += cw[3]
+                c.setFont('Helvetica', self.LABEL_SIZE)
+                c.setFillColor(C_ANSWER_FG)
+                c.drawString(cx + 3, y - self.ANSWER_H + 6, e.ref)
+                cx += cw[4]
+                lines = simpleSplit(e.translation, 'Helvetica', self.LABEL_SIZE, cw[5] - 6)
+                c.drawString(cx + 3, y - self.ANSWER_H + 6, lines[0] if lines else e.translation)
+                cx += cw[5]
+                lines = simpleSplit(e.function, 'Helvetica-Bold', self.LABEL_SIZE, cw[6] - 6)
+                c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+                c.drawString(cx + 3, y - self.ANSWER_H + 6, lines[0] if lines else e.function)
+                y -= self.ANSWER_H
 
         self._y = y - 0.08 * inch
 
-    def add_sort_table(self, entries: list['SortEntry']):
+    def add_answer_key_contrast(self, entries: list['ContrastEntry']):
+        """Draw a compact answer key page for the contrast drill."""
+        self._new_page()
+        c = self._canvas
+        w = self._usable_w()
+        c.setFont('Helvetica-Bold', self.HEAD_SIZE)
+        c.setFillColor(C_HEADING)
+        c.drawString(self.MARGIN_L, self._y, 'Answer Key')
+        self._y -= (self.HEAD_SIZE + 8)
+        self._hline(self._y + 2, color=HexColor('#aaaaaa'), width=0.75)
+        self._y -= 0.1*inch
+
+        # Compact table: #, Root, Translation, Function, Explanation
+        ratios = [0.05, 0.10, 0.25, 0.16, 0.44]
+        cw = [r * w for r in ratios]
+        headers = ['#', 'Root', 'Translation', 'Function', 'Explanation']
+        row_h = 0.22 * inch
+
+        c.setFillColor(C_HEADER_BG)
+        c.setStrokeColor(C_RULE)
+        c.setLineWidth(0.4)
+        c.rect(self.MARGIN_L, self._y - self.HEADER_H, sum(cw), self.HEADER_H, fill=1, stroke=1)
+        cx = self.MARGIN_L
+        c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+        c.setFillColor(black)
+        for hdr, col_w in zip(headers, cw):
+            c.drawString(cx + 3, self._y - self.HEADER_H + 5, hdr)
+            cx += col_w
+        self._y -= self.HEADER_H
+
+        for i, e in enumerate(entries):
+            self._check_space(row_h)
+            bg = C_ANSWER_BG if i % 2 == 0 else white
+            c.setFillColor(bg)
+            c.setStrokeColor(C_RULE)
+            c.setLineWidth(0.3)
+            c.rect(self.MARGIN_L, self._y - row_h, sum(cw), row_h, fill=1, stroke=1)
+            cx = self.MARGIN_L
+            c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+            c.setFillColor(C_ANSWER_FG)
+            c.drawCentredString(cx + cw[0]/2, self._y - row_h + 6, e.num)
+            cx += cw[0]
+            c.setFont('ArialHebrew', self.LABEL_SIZE)
+            c.drawRightString(cx + cw[1] - 3, self._y - row_h + 6, _heb(e.root))
+            cx += cw[1]
+            c.setFont('Helvetica', self.LABEL_SIZE)
+            c.setFillColor(black)
+            lines = simpleSplit(e.translation, 'Helvetica', self.LABEL_SIZE, cw[2] - 6)
+            c.drawString(cx + 3, self._y - row_h + 6, lines[0] if lines else e.translation)
+            cx += cw[2]
+            c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+            c.setFillColor(C_ANSWER_FG)
+            c.drawString(cx + 3, self._y - row_h + 6, e.function)
+            cx += cw[3]
+            c.setFont('Helvetica', self.LABEL_SIZE)
+            c.setFillColor(HexColor('#444444'))
+            lines = simpleSplit(e.answer_note, 'Helvetica', self.LABEL_SIZE, cw[4] - 6)
+            c.drawString(cx + 3, self._y - row_h + 6, lines[0] if lines else e.answer_note)
+            self._y -= row_h
+
+        self._y -= 0.1 * inch
+
+    def add_answer_key_sort(self, entries: list['SortEntry']):
+        """Draw a compact answer key page for the function-sort exercise."""
+        self._new_page()
+        c = self._canvas
+        w = self._usable_w()
+        c.setFont('Helvetica-Bold', self.HEAD_SIZE)
+        c.setFillColor(C_HEADING)
+        c.drawString(self.MARGIN_L, self._y, 'Answer Key')
+        self._y -= (self.HEAD_SIZE + 8)
+        self._hline(self._y + 2, color=HexColor('#aaaaaa'), width=0.75)
+        self._y -= 0.1*inch
+
+        # Compact table: #, Hebrew, Ref, Function, Explanation
+        ratios = [0.05, 0.12, 0.09, 0.10, 0.64]
+        cw = [r * w for r in ratios]
+        headers = ['#', 'Hebrew', 'Ref', 'Fn', 'Explanation']
+        row_h = 0.20 * inch
+
+        c.setFillColor(C_HEADER_BG)
+        c.setStrokeColor(C_RULE)
+        c.setLineWidth(0.4)
+        c.rect(self.MARGIN_L, self._y - self.HEADER_H, sum(cw), self.HEADER_H, fill=1, stroke=1)
+        cx = self.MARGIN_L
+        c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+        c.setFillColor(black)
+        for hdr, col_w in zip(headers, cw):
+            c.drawString(cx + 3, self._y - self.HEADER_H + 5, hdr)
+            cx += col_w
+        self._y -= self.HEADER_H
+
+        for i, e in enumerate(entries):
+            self._check_space(row_h)
+            bg = C_ANSWER_BG if i % 2 == 0 else white
+            c.setFillColor(bg)
+            c.setStrokeColor(C_RULE)
+            c.setLineWidth(0.3)
+            c.rect(self.MARGIN_L, self._y - row_h, sum(cw), row_h, fill=1, stroke=1)
+            cx = self.MARGIN_L
+            c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+            c.setFillColor(C_ANSWER_FG)
+            c.drawCentredString(cx + cw[0]/2, self._y - row_h + 5, e.num)
+            cx += cw[0]
+            c.setFont('ArialHebrew', self.LABEL_SIZE)
+            c.drawRightString(cx + cw[1] - 3, self._y - row_h + 5, _heb(e.heb))
+            cx += cw[1]
+            c.setFont('Helvetica', self.LABEL_SIZE)
+            c.setFillColor(HexColor('#555555'))
+            c.drawString(cx + 3, self._y - row_h + 5, e.ref)
+            cx += cw[2]
+            c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+            c.setFillColor(C_ANSWER_FG)
+            c.drawCentredString(cx + cw[3]/2, self._y - row_h + 5, e.function)
+            cx += cw[3]
+            c.setFont('Helvetica', self.LABEL_SIZE)
+            c.setFillColor(HexColor('#444444'))
+            lines = simpleSplit(e.explanation, 'Helvetica', self.LABEL_SIZE, cw[4] - 6)
+            c.drawString(cx + 3, self._y - row_h + 5, lines[0] if lines else e.explanation)
+            self._y -= row_h
+
+        self._y -= 0.1 * inch
+
+    def add_sort_table(self, entries: list['SortEntry'], show_answers: bool = True):
         """Draw a semantic-function sorting table with a single fillable Function column."""
         c = self._canvas
         w = self._usable_w()
@@ -638,7 +757,7 @@ class ExercisePDF:
         cw = [r * w for r in ratios]
         headers = ['#', 'Hebrew', 'Conjugation', 'Ref', 'Contextual Gloss', 'Function']
 
-        needed = self.HEADER_H + len(entries) * (self.ROW_H + self.ANSWER_H) + 0.08*inch
+        needed = self.HEADER_H + len(entries) * (self.ROW_H + (self.ANSWER_H if show_answers else 0)) + 0.08*inch
         self._check_space(needed)
         y = self._y
         x0 = self.MARGIN_L
@@ -707,34 +826,32 @@ class ExercisePDF:
             )
             y -= self.ROW_H
 
-            # Answer row
-            c.setFillColor(C_ANSWER_BG)
-            c.setStrokeColor(C_RULE)
-            c.setLineWidth(0.4)
-            c.rect(x0, y - self.ANSWER_H, sum(cw), self.ANSWER_H, fill=1, stroke=1)
-            cx = x0
-            c.setFont('Helvetica-Bold', self.LABEL_SIZE)
-            c.setFillColor(C_ANSWER_FG)
-            c.drawCentredString(cx + cw[0]/2, y - self.ANSWER_H + 6, '✓')
-            cx += cw[0]
-            c.setFont('ArialHebrew', self.LABEL_SIZE)
-            c.drawRightString(cx + cw[1] - 3, y - self.ANSWER_H + 6, _heb(e.heb))
-            cx += cw[1]
-            c.setFont('Helvetica', self.LABEL_SIZE)
-            c.drawString(cx + 3, y - self.ANSWER_H + 6, e.conj[:22])
-            cx += cw[2]
-            c.setFillColor(C_ANSWER_FG)
-            c.drawString(cx + 3, y - self.ANSWER_H + 6, e.ref)
-            cx += cw[3]
-            # explanation
-            lines = simpleSplit(e.explanation, 'Helvetica', self.LABEL_SIZE, cw[4] - 6)
-            c.setFillColor(C_ANSWER_FG)
-            c.drawString(cx + 3, y - self.ANSWER_H + 6, lines[0] if lines else e.explanation)
-            cx += cw[4]
-            # function answer (bold)
-            c.setFont('Helvetica-Bold', self.LABEL_SIZE)
-            c.drawString(cx + 3, y - self.ANSWER_H + 6, e.function)
-            y -= self.ANSWER_H
+            if show_answers:
+                c.setFillColor(C_ANSWER_BG)
+                c.setStrokeColor(C_RULE)
+                c.setLineWidth(0.4)
+                c.rect(x0, y - self.ANSWER_H, sum(cw), self.ANSWER_H, fill=1, stroke=1)
+                cx = x0
+                c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+                c.setFillColor(C_ANSWER_FG)
+                c.drawCentredString(cx + cw[0]/2, y - self.ANSWER_H + 6, '✓')
+                cx += cw[0]
+                c.setFont('ArialHebrew', self.LABEL_SIZE)
+                c.drawRightString(cx + cw[1] - 3, y - self.ANSWER_H + 6, _heb(e.heb))
+                cx += cw[1]
+                c.setFont('Helvetica', self.LABEL_SIZE)
+                c.drawString(cx + 3, y - self.ANSWER_H + 6, e.conj[:22])
+                cx += cw[2]
+                c.setFillColor(C_ANSWER_FG)
+                c.drawString(cx + 3, y - self.ANSWER_H + 6, e.ref)
+                cx += cw[3]
+                lines = simpleSplit(e.explanation, 'Helvetica', self.LABEL_SIZE, cw[4] - 6)
+                c.setFillColor(C_ANSWER_FG)
+                c.drawString(cx + 3, y - self.ANSWER_H + 6, lines[0] if lines else e.explanation)
+                cx += cw[4]
+                c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+                c.drawString(cx + 3, y - self.ANSWER_H + 6, e.function)
+                y -= self.ANSWER_H
 
         self._y = y - 0.08 * inch
 
@@ -962,44 +1079,48 @@ class Ch26Exercise(ExercisePDF):
 # ---------------------------------------------------------------------------
 class Ch26ContrastExercise(ExercisePDF):
 
+    _ENTRIES_A = [
+        ContrastEntry('1', 'בּוֹא', 'to go in, come',   'יָּבֵא',      'Wayyiqtol 3ms', 'Gen 2:19',  'he brought (them)',          'Causative',      'God caused the animals to come to Adam'),
+        ContrastEntry('2', 'יָצָא', 'to go out',        'תּוֹצֵא',     'Wayyiqtol 3fs', 'Gen 1:12',  'it brought forth',           'Causative',      'Earth caused vegetation to come out'),
+        ContrastEntry('3', 'שׁוּב', 'to return',        'הֵשִׁיב',     'Weqatal 3ms',   'Gen 14:16', 'he brought back',            'Causative',      'Abraham caused Lot to return'),
+        ContrastEntry('4', 'עָלָה', 'to go up',         'הַעֲלֵה',     'Imperative 2ms','Gen 22:2',  'offer up! / bring up!',      'Causative',      'Cause Isaac to go up as an offering'),
+        ContrastEntry('5', 'יָרַד', 'to go down',       'תֹּרֶד',      'Wayyiqtol 3fs', 'Gen 24:18', 'she lowered (her jar)',       'Causative',      'Rebekah caused the jar to go down'),
+        ContrastEntry('6', 'מוּת',  'to die',           'הָמִית',      'Inf. Constr.',  'Gen 18:25', 'to put to death / to kill',  'Causative',      'Causing someone to die'),
+        ContrastEntry('7', 'יָלַד', 'to give birth',    'יּוֹלֶד',     'Wayyiqtol 3ms', 'Gen 5:3',   'he fathered / begat',        'Causative',      'Adam caused a son to be born'),
+        ContrastEntry('8', 'שָׁקָה', 'to drink',        'הִשְׁקָה',    'Perfect 3ms',   'Gen 2:6',   'it watered',                 'Causative',      'Mist caused the ground to receive water'),
+    ]
+    _ENTRIES_B = [
+        ContrastEntry('9',  'כָּבֵד', 'to be heavy/honored', 'יַּכְבֵּד',   'Wayyiqtol 3ms', 'Exo 8:28', 'he hardened (his heart)',         'Factitive',   'Caused heart to be in state of stubbornness'),
+        ContrastEntry('10', 'גָּדַל', 'to be great',         'תַּגְדֵּל',   'Wayyiqtol 2ms', 'Gen 19:19','you have made great (your mercy)', 'Factitive',   'Caused kindness to be great'),
+        ContrastEntry('11', 'רָשָׁע', 'to be wicked',        'הִרְשִׁיעוּ','Perfect 3cp',    'Deu 25:1', 'they condemned as guilty',         'Declarative', 'Legal verdict: declaring guilty party as guilty'),
+    ]
+    _ENTRIES_C = [
+        ContrastEntry('12', 'נָכָה', 'no Qal in BH', 'הַכּוֹת',      'Inf. Construct', 'Gen 4:15',  'to strike / smite',  'Simple Action', 'Hiphil is primary form; no causative layer'),
+        ContrastEntry('13', 'שָׁמַד', 'no Qal in BH', 'הִשְׁמַדְתִּי','Perfect 1cs',    'Lev 26:30', 'I will destroy',      'Simple Action', 'Niphal of same root = "to be destroyed"'),
+        ContrastEntry('14', 'נָגַד', 'rare Qal',      'יַּגֵּד',      'Wayyiqtol 3ms', 'Gen 9:22',  'he told / reported', 'Simple Action', 'Root idea = place before someone'),
+    ]
+
     def _build(self):
         self.add_instructions(
             'For each item: (1) write an English translation of the Hiphil form in the Translation '
             'column; (2) write the semantic function (Causative / Factitive / Declarative / Simple '
-            'Action) in the Function column. Check the green answer row immediately below each item.'
+            'Action) in the Function column. Answer key is on the last page.'
         )
 
         self.add_section_heading('Part A — Motion Verbs (Causative)')
         self.add_note('These roots describe motion in the Qal. The Hiphil makes someone else do the moving.')
-        self.add_contrast_table([
-            ContrastEntry('1', 'בּוֹא', 'to go in, come',   'יָּבֵא',      'Wayyiqtol 3ms', 'Gen 2:19',  'he brought (them)',          'Causative',      'God caused the animals to come to Adam'),
-            ContrastEntry('2', 'יָצָא', 'to go out',        'תּוֹצֵא',     'Wayyiqtol 3fs', 'Gen 1:12',  'it brought forth',           'Causative',      'Earth caused vegetation to come out'),
-            ContrastEntry('3', 'שׁוּב', 'to return',        'הֵשִׁיב',     'Weqatal 3ms',   'Gen 14:16', 'he brought back',            'Causative',      'Abraham caused Lot to return'),
-            ContrastEntry('4', 'עָלָה', 'to go up',         'הַעֲלֵה',     'Imperative 2ms','Gen 22:2',  'offer up! / bring up!',      'Causative',      'Cause Isaac to go up as an offering'),
-            ContrastEntry('5', 'יָרַד', 'to go down',       'תֹּרֶד',      'Wayyiqtol 3fs', 'Gen 24:18', 'she lowered (her jar)',       'Causative',      'Rebekah caused the jar to go down'),
-            ContrastEntry('6', 'מוּת',  'to die',           'הָמִית',      'Inf. Constr.',  'Gen 18:25', 'to put to death / to kill',  'Causative',      'Causing someone to die'),
-            ContrastEntry('7', 'יָלַד', 'to give birth',    'יּוֹלֶד',     'Wayyiqtol 3ms', 'Gen 5:3',   'he fathered / begat',        'Causative',      'Adam caused a son to be born'),
-            ContrastEntry('8', 'שָׁקָה', 'to drink',        'הִשְׁקָה',    'Perfect 3ms',   'Gen 2:6',   'it watered',                 'Causative',      'Mist caused the ground to receive water'),
-        ])
+        self.add_contrast_table(self._ENTRIES_A, show_answers=False)
 
         self.add_section_heading('Part B — Stative Verbs (Factitive and Declarative)')
         self.add_note(
             'Factitive: the Hiphil causes an object to be in a state (make heavy, make great). '
             'Declarative: the Hiphil declares/treats something as being in that state (declare guilty).'
         )
-        self.add_contrast_table([
-            ContrastEntry('9',  'כָּבֵד', 'to be heavy/honored', 'יַּכְבֵּד',   'Wayyiqtol 3ms', 'Exo 8:28', 'he hardened (his heart)',         'Factitive',    'Caused heart to be in state of stubbornness'),
-            ContrastEntry('10', 'גָּדַל', 'to be great',         'תַּגְדֵּל',   'Wayyiqtol 2ms', 'Gen 19:19','you have made great (your mercy)','Factitive',    'Caused kindness to be great'),
-            ContrastEntry('11', 'רָשָׁע', 'to be wicked',        'הִרְשִׁיעוּ','Perfect 3cp',    'Deu 25:1', 'they condemned as guilty',        'Declarative',  'Legal verdict: declaring guilty party as guilty'),
-        ])
+        self.add_contrast_table(self._ENTRIES_B, show_answers=False)
 
         self.add_section_heading('Part C — Verbs with No Common Qal')
         self.add_note('Hiphil is the standard/primary form of these roots. No Qal "base" to compare against.')
-        self.add_contrast_table([
-            ContrastEntry('12', 'נָכָה', 'no Qal in BH', 'הַכּוֹת',      'Inf. Construct', 'Gen 4:15',  'to strike / smite',     'Simple Action', 'Hiphil is primary form; no causative layer'),
-            ContrastEntry('13', 'שָׁמַד', 'no Qal in BH', 'הִשְׁמַדְתִּי','Perfect 1cs',    'Lev 26:30', 'I will destroy',         'Simple Action', 'Niphal of same root = "to be destroyed"'),
-            ContrastEntry('14', 'נָגַד', 'rare Qal',      'יַּגֵּד',      'Wayyiqtol 3ms', 'Gen 9:22',  'he told / reported',    'Simple Action', 'Root idea = place before someone'),
-        ])
+        self.add_contrast_table(self._ENTRIES_C, show_answers=False)
 
         self.add_reflection([
             'For the motion verbs in Part A, describe the pattern in one sentence: what does the '
@@ -1007,6 +1128,8 @@ class Ch26ContrastExercise(ExercisePDF):
             'Which of Part B\'s three verbs is Factitive and which is Declarative? How did you decide?',
             'Does the lack of a Qal counterpart (Part C) affect how you translate the Hiphil? Why or why not?',
         ])
+
+        self.add_answer_key_contrast(self._ENTRIES_A + self._ENTRIES_B + self._ENTRIES_C)
 
 
 def build_ch26_contrast_exercise(out_dir: str = None) -> str:
@@ -1028,14 +1151,39 @@ def build_ch26_contrast_exercise(out_dir: str = None) -> str:
 # ---------------------------------------------------------------------------
 class Ch26FunctionSortExercise(ExercisePDF):
 
+    _ENTRIES = [
+        SortEntry('1',  'יָּבֵא',        'Wayyiqtol 3ms',  'Gen 2:19',  '"he brought them to the man"',                     'C',  'בּוֹא',  'Qal = to come; Hiphil = cause to come'),
+        SortEntry('2',  'תּוֹצֵא',       'Wayyiqtol 3fs',  'Gen 1:12',  '"the earth brought forth vegetation"',              'C',  'יָצָא',  'Qal = to go out; Hiphil = cause to come out'),
+        SortEntry('3',  'הֵשִׁיב',       'Weqatal 3ms',    'Gen 14:16', '"he brought back his brother Lot"',                 'C',  'שׁוּב',  'Qal = to return; Hiphil = cause to return'),
+        SortEntry('4',  'הִשְׁקָה',      'Perfect 3ms',    'Gen 2:6',   '"a mist watered the whole surface"',                'C',  'שָׁקָה', 'Qal = to drink; Hiphil = cause to drink/water'),
+        SortEntry('5',  'יּוֹלֶד',       'Wayyiqtol 3ms',  'Gen 5:3',   '"Adam fathered a son"',                            'C',  'יָלַד',  'Qal = to give birth; Hiphil = cause to be born'),
+        SortEntry('6',  'הַעֲלֵה',       'Imperative 2ms', 'Gen 22:2',  '"offer him as a burnt offering"',                   'C',  'עָלָה',  'Qal = to go up; Hiphil = cause to go up/offer'),
+        SortEntry('7',  'תֹּרֶד',        'Wayyiqtol 3fs',  'Gen 24:18', '"she lowered her jar to give him a drink"',         'C',  'יָרַד',  'Qal = to go down; Hiphil = cause to go down'),
+        SortEntry('8',  'הֵסִיר',        'Wayyiqtol 3ms',  'Gen 30:35', '"he removed the streaked goats"',                   'C',  'סוּר',   'Qal = to turn aside; Hiphil = cause to depart'),
+        SortEntry('9',  'יַּגֵּד',       'Wayyiqtol 3ms',  'Gen 9:22',  '"Ham told his two brothers"',                      'SA', 'נָגַד',  'Rare Qal; Hiphil is operative form: to tell'),
+        SortEntry('10', 'הִגִּיד',       'Weqatal 3ms',    'Gen 3:11',  '"who told you that you were naked?"',               'SA', 'נָגַד',  'Same root as #9; Hiphil = standard form'),
+        SortEntry('11', 'תַּשְׁלֵךְ',   'Wayyiqtol 3fs',  'Gen 21:15', '"she threw the child under a bush"',                'SA', 'שָׁלַךְ','No common Qal; Hiphil = to throw/cast'),
+        SortEntry('12', 'הִזְכַּרְתָּ', 'Perfect 2ms',    'Gen 40:14', '"mention me to Pharaoh"',                           'C',  'זָכַר',  'Qal = to remember; Hiphil = cause to remember'),
+        SortEntry('13', 'מַזְכִּיר',    'Participle ms',  'Gen 41:9',  '"I am bringing my faults to mind"',                 'C',  'זָכַר',  'Causing something to be remembered'),
+        SortEntry('14', 'הָמִית',        'Inf. Constr.',   'Gen 18:25', '"far be it from you to put…to death"',              'C',  'מוּת',   'Qal = to die; Hiphil = cause to die'),
+        SortEntry('15', 'הַכּוֹת',       'Inf. Constr.',   'Gen 4:15',  '"lest anyone who found him strike him"',            'SA', 'נָכָה',  'No Qal; Hiphil = primary form: to strike'),
+        SortEntry('16', 'הִשְׁמַדְתִּי', 'Perfect 1cs',   'Lev 26:30', '"I will destroy your high places"',                 'SA', 'שָׁמַד', 'No Qal; Niphal = "be destroyed"'),
+        SortEntry('17', 'תַּשְׁמִידוּ', 'Imperfect 2mp',  'Num 33:52', '"you shall demolish their figured stones"',          'SA', 'שָׁמַד', 'Same root as #16; conquest context'),
+        SortEntry('18', 'יַּכְבֵּד',    'Wayyiqtol 3ms',  'Exo 8:28',  '"Pharaoh hardened his heart this time also"',        'F',  'כָּבֵד', 'Qal = be heavy; Hiphil = make/cause heaviness'),
+        SortEntry('19', 'הַכְבֵּד',     'Inf. Absolute',  'Exo 8:11',  '"he made his heart stubborn" (intensified)',         'F',  'כָּבֵד', 'Inf. Abs. intensifies the factitive action'),
+        SortEntry('20', 'תַּגְדֵּל',    'Wayyiqtol 2ms',  'Gen 19:19', '"you have shown great kindness to me"',             'F',  'גָּדַל', 'Qal = be great; Hiphil = cause greatness'),
+        SortEntry('21', 'הִרְשִׁיעוּ', 'Perfect 3cp',    'Deu 25:1',  '"acquit the innocent and condemn the guilty"',       'D',  'רָשָׁע', 'Legal verdict; declaring — not causing — guilt'),
+        SortEntry('22', 'יַרְשִׁיעֻ',  'Imperfect 3mp',  'Exo 22:8',  '"the judges shall declare him guilty"',              'D',  'רָשָׁע', 'Same root; judicial pronouncement'),
+        SortEntry('23', 'יַּעַל',       'Wayyiqtol 3ms',  'Gen 8:20',  '"Noah offered burnt offerings on the altar"',        'C',  'עָלָה',  'Qal = go up; Hiphil = cause to go up/offer'),
+        SortEntry('24', 'הָמִית',        'Inf. Constr.',   'Gen 37:18', '"they conspired against him to kill him"',           'C',  'מוּת',   'Same form as #14; different context'),
+    ]
+
     def _build(self):
         self.add_instructions(
             'Classify each Hiphil verb as C (Causative), F (Factitive), D (Declarative), or '
-            'SA (Simple Action). Write your answer in the Function column, then check the green '
-            'answer row immediately below.'
+            'SA (Simple Action). Write your answer in the Function column. Answer key is on the last page.'
         )
 
-        # Reference legend
         self.add_note(
             'C = Causative (subject causes another to act/experience)  |  '
             'F = Factitive (subject causes object to be in a state)  |  '
@@ -1043,32 +1191,7 @@ class Ch26FunctionSortExercise(ExercisePDF):
             'SA = Simple Action (Hiphil is the standard form; no common Qal)'
         )
 
-        self.add_sort_table([
-            SortEntry('1',  'יָּבֵא',        'Wayyiqtol 3ms',  'Gen 2:19',  '"he brought them to the man"',                     'C',  'בּוֹא',  'Qal = to come; Hiphil = cause to come'),
-            SortEntry('2',  'תּוֹצֵא',       'Wayyiqtol 3fs',  'Gen 1:12',  '"the earth brought forth vegetation"',              'C',  'יָצָא',  'Qal = to go out; Hiphil = cause to come out'),
-            SortEntry('3',  'הֵשִׁיב',       'Weqatal 3ms',    'Gen 14:16', '"he brought back his brother Lot"',                 'C',  'שׁוּב',  'Qal = to return; Hiphil = cause to return'),
-            SortEntry('4',  'הִשְׁקָה',      'Perfect 3ms',    'Gen 2:6',   '"a mist watered the whole surface"',                'C',  'שָׁקָה', 'Qal = to drink; Hiphil = cause to drink/water'),
-            SortEntry('5',  'יּוֹלֶד',       'Wayyiqtol 3ms',  'Gen 5:3',   '"Adam fathered a son"',                            'C',  'יָלַד',  'Qal = to give birth; Hiphil = cause to be born'),
-            SortEntry('6',  'הַעֲלֵה',       'Imperative 2ms', 'Gen 22:2',  '"offer him as a burnt offering"',                   'C',  'עָלָה',  'Qal = to go up; Hiphil = cause to go up/offer'),
-            SortEntry('7',  'תֹּרֶד',        'Wayyiqtol 3fs',  'Gen 24:18', '"she lowered her jar to give him a drink"',         'C',  'יָרַד',  'Qal = to go down; Hiphil = cause to go down'),
-            SortEntry('8',  'הֵסִיר',        'Wayyiqtol 3ms',  'Gen 30:35', '"he removed the streaked goats"',                   'C',  'סוּר',   'Qal = to turn aside; Hiphil = cause to depart'),
-            SortEntry('9',  'יַּגֵּד',       'Wayyiqtol 3ms',  'Gen 9:22',  '"Ham told his two brothers"',                      'SA', 'נָגַד',  'Rare Qal; Hiphil is operative form: to tell'),
-            SortEntry('10', 'הִגִּיד',       'Weqatal 3ms',    'Gen 3:11',  '"who told you that you were naked?"',               'SA', 'נָגַד',  'Same root as #9; Hiphil = standard form'),
-            SortEntry('11', 'תַּשְׁלֵךְ',   'Wayyiqtol 3fs',  'Gen 21:15', '"she threw the child under a bush"',                'SA', 'שָׁלַךְ','No common Qal; Hiphil = to throw/cast'),
-            SortEntry('12', 'הִזְכַּרְתָּ', 'Perfect 2ms',    'Gen 40:14', '"mention me to Pharaoh"',                           'C',  'זָכַר',  'Qal = to remember; Hiphil = cause to remember'),
-            SortEntry('13', 'מַזְכִּיר',    'Participle ms',  'Gen 41:9',  '"I am bringing my faults to mind"',                 'C',  'זָכַר',  'Causing something to be remembered'),
-            SortEntry('14', 'הָמִית',        'Inf. Constr.',   'Gen 18:25', '"far be it from you to put…to death"',              'C',  'מוּת',   'Qal = to die; Hiphil = cause to die'),
-            SortEntry('15', 'הַכּוֹת',       'Inf. Constr.',   'Gen 4:15',  '"lest anyone who found him strike him"',            'SA', 'נָכָה',  'No Qal; Hiphil = primary form: to strike'),
-            SortEntry('16', 'הִשְׁמַדְתִּי', 'Perfect 1cs',   'Lev 26:30', '"I will destroy your high places"',                 'SA', 'שָׁמַד', 'No Qal; Niphal = "be destroyed"'),
-            SortEntry('17', 'תַּשְׁמִידוּ', 'Imperfect 2mp',  'Num 33:52', '"you shall demolish their figured stones"',          'SA', 'שָׁמַד', 'Same root as #16; conquest context'),
-            SortEntry('18', 'יַּכְבֵּד',    'Wayyiqtol 3ms',  'Exo 8:28',  '"Pharaoh hardened his heart this time also"',        'F',  'כָּבֵד', 'Qal = be heavy; Hiphil = make/cause heaviness'),
-            SortEntry('19', 'הַכְבֵּד',     'Inf. Absolute',  'Exo 8:11',  '"he made his heart stubborn" (intensified)',         'F',  'כָּבֵד', 'Inf. Abs. intensifies the factitive action'),
-            SortEntry('20', 'תַּגְדֵּל',    'Wayyiqtol 2ms',  'Gen 19:19', '"you have shown great kindness to me"',             'F',  'גָּדַל', 'Qal = be great; Hiphil = cause greatness'),
-            SortEntry('21', 'הִרְשִׁיעוּ', 'Perfect 3cp',    'Deu 25:1',  '"acquit the innocent and condemn the guilty"',       'D',  'רָשָׁע', 'Legal verdict; declaring — not causing — guilt'),
-            SortEntry('22', 'יַרְשִׁיעֻ',  'Imperfect 3mp',  'Exo 22:8',  '"the judges shall declare him guilty"',              'D',  'רָשָׁע', 'Same root; judicial pronouncement'),
-            SortEntry('23', 'יַּעַל',       'Wayyiqtol 3ms',  'Gen 8:20',  '"Noah offered burnt offerings on the altar"',        'C',  'עָלָה',  'Qal = go up; Hiphil = cause to go up/offer'),
-            SortEntry('24', 'הָמִית',        'Inf. Constr.',   'Gen 37:18', '"they conspired against him to kill him"',           'C',  'מוּת',   'Same form as #14; different context'),
-        ])
+        self.add_sort_table(self._ENTRIES, show_answers=False)
 
         self.add_reflection([
             'Items 18–19 both come from the root for "be heavy" (Exo 8). How does the Hiphil meaning '
@@ -1079,6 +1202,8 @@ class Ch26FunctionSortExercise(ExercisePDF):
             'Items 12–13 (זָכַר, "to remember") are classified as Causative. How does "mention me to '
             'Pharaoh" (Gen 40:14) fit the Causative definition? Does that reading change the translation?',
         ])
+
+        self.add_answer_key_sort(self._ENTRIES)
 
 
 def build_ch26_function_sort_exercise(out_dir: str = None) -> str:
