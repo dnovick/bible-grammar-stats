@@ -190,16 +190,28 @@ df['book_pri'] = df['book'].map(book_pri).fillna(99)
 
 ## README structure
 
-Every chapter directory must have a `README.md` link index in this order:
-1. Main lesson file
-2. Paradigm file(s)
-3. Passage exercise
-4. Morphology Anki deck (.md)
-5. Morphology Anki import (.txt)
-6. Vocabulary Anki deck (.md) — if present
-7. Vocabulary Anki import (.txt) — if present
+### Chapter-level README.md
 
-Format: `| [filename](filename) | one-line description |`
+Four sections in order, each with its own `## Heading` and table:
+
+1. **Main Lesson** — single row: the primary `.md` lesson file
+2. **Reference Files** — paradigm file(s), morphology Anki deck (.md + .txt), legacy CSV if present
+3. **Exercises** — one row per exercise; link target is the exercise's own `README.md`, not individual files:
+   `| [exercises/ch26-foo/](exercises/ch26-foo/README.md) | one-line description |`
+4. **Vocabulary** — vocab deck (.md + .txt)
+
+Omit sections that have no files yet (e.g. no Vocabulary section until vocab files exist).
+
+### Exercise-level README.md
+
+Every exercise subdirectory (`exercises/<name>/`) must have its own `README.md` containing:
+- `# "<Exercise Title>" — <subtitle>`
+- `## Description` — 2–3 sentences on what the exercise covers, passages used, and what students parse
+- `### Conjugation coverage` table (Conjugation | Count | Verbs)
+- `## Files` table with three rows: `.md` / `.html` / `.pdf`, each with a one-line use description:
+  - `.md` — "Reference copy — static answer key at bottom"
+  - `.html` — "Classroom use — fillable fields, per-verb ▶ Answer reveal, Show/Hide/Clear All controls"
+  - `.pdf` — "Print or tablet use — AcroForm text fields, answer rows always visible"
 
 ---
 
