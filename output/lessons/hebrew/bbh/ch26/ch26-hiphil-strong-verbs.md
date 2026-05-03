@@ -3,6 +3,8 @@
 *Basics of Biblical Hebrew, Pratico & Van Pelt*
 *Data: MACULA Hebrew WLC (9,409 OT Hiphil tokens)*
 
+> **Context:** The Hiphil is the second most productive derived stem in Biblical Hebrew (12.9% of all OT verb tokens). See [OT Verb Stems Overview](../../../../reports/ot/verbs/ot-verb-stems-pie.md) for how it compares to the Qal, Niphal, Piel, and other stems.
+
 ---
 
 ## 1. Function (BBH §26.2)
@@ -262,3 +264,12 @@ Some roots occur almost exclusively in the Hiphil — the Hiphil form *is* the s
 *Total OT Hiphil tokens: 9,409 across 39 books.*
 
 > The yiqtol and wayyiqtol together account for over 40% of all Hiphil tokens — reflecting heavy use in narrative action sequences. The high imperative count (7.8%) reflects Hiphil commands to bring, deliver, or act on behalf of others.
+
+---
+
+## 6. Practice
+
+| Resource | Description |
+|---|---|
+| [Anki Flashcard Deck](ch26-anki-deck.md) | 32 cards covering all 8 conjugation forms across the top Hiphil roots. Import CSV into Anki for spaced-repetition drilling. |
+| [Passage Exercise — Gen 6–8](ch26-passage-exercise.md) | "Spot the Hiphil" — 16 verbs from the flood narrative to parse and classify by function type. Answer key included. |
