@@ -37,14 +37,14 @@ The Hiphil is the primary **causative** stem in Biblical Hebrew. A verb that is 
 
 | Conjugation | 3ms Form | BBH § | Notes |
 |---|---|---|---|
-| [Perfect (qatal)](hiphil-paradigms.md#perfect) | הִקְטִיל | §26.3 | הִ prefix; *chiriq* vowel |
+| [Perfect (qatal)](hiphil-paradigms.md#perfect-qatal) | הִקְטִיל | §26.3 | הִ prefix; *chiriq* vowel |
 | [Wayyiqtol](hiphil-paradigms.md#wayyiqtol) | וַיַּקְטֵל | — | sequential narrative; doubled prefix + *tsere* |
-| [Imperfect (yiqtol)](hiphil-paradigms.md#imperfect) | יַקְטִיל | §26.5 | *patach* under prefix; *chiriq* final |
+| [Imperfect (yiqtol)](hiphil-paradigms.md#imperfect-yiqtol) | יַקְטִיל | §26.5 | *patach* under prefix; *chiriq* final |
 | [Weqatal](hiphil-paradigms.md#weqatal) | וְהִקְטִיל | — | sequential future; וְ + perfect form |
 | [Imperative 2ms](hiphil-paradigms.md#imperative) | הַקְטֵל | §26.7 | הַ prefix; *tsere* final |
 | [Infinitive Construct](hiphil-paradigms.md#infinitive-construct) | הַקְטִיל | §26.9 | הַ prefix; *chiriq* |
 | [Infinitive Absolute](hiphil-paradigms.md#infinitive-absolute) | הַקְטֵל | §26.11 | הַ prefix; *tsere* |
-| [Participle ms](hiphil-paradigms.md#participle) | מַקְטִיל | §26.13 | מַ prefix; *chiriq* |
+| [Participle ms](hiphil-paradigms.md#participle-active) | מַקְטִיל | §26.13 | מַ prefix; *chiriq* |
 
 ### Real Forms from the Pentateuch — Root בּוֹא ("bring")
 

@@ -5,7 +5,7 @@
 
 ---
 
-## Perfect (Qatal) {#perfect}
+## Perfect (Qatal)
 
 *BBH §26.3 — Prefix: הִ; characteristic vowel: chiriq under first root letter*
 
@@ -21,7 +21,7 @@
 
 ---
 
-## Imperfect (Yiqtol) {#imperfect}
+## Imperfect (Yiqtol)
 
 *BBH §26.5 — Prefix vowel: patach (יַ); characteristic: chiriq in final syllable*
 
@@ -37,7 +37,7 @@
 
 ---
 
-## Wayyiqtol {#wayyiqtol}
+## Wayyiqtol
 
 *Sequential narrative form of the imperfect. Prefix: וַיַּ; final syllable shifts from chiriq to tsere.*
 
@@ -52,7 +52,7 @@
 
 ---
 
-## Weqatal {#weqatal}
+## Weqatal
 
 *Sequential future form of the perfect. וְ + perfect form; used for sequential or consequential future.*
 
@@ -67,7 +67,7 @@
 
 ---
 
-## Imperative {#imperative}
+## Imperative
 
 *BBH §26.7 — Prefix: הַ; tsere in final syllable*
 
@@ -80,7 +80,7 @@
 
 ---
 
-## Infinitive Construct {#infinitive-construct}
+## Infinitive Construct
 
 *BBH §26.9 — Prefix: הַ; chiriq in final syllable*
 
@@ -95,7 +95,7 @@
 
 ---
 
-## Infinitive Absolute {#infinitive-absolute}
+## Infinitive Absolute
 
 *BBH §26.11 — Prefix: הַ; tsere in final syllable*
 
@@ -107,7 +107,7 @@
 
 ---
 
-## Participle (Active) {#participle}
+## Participle (Active)
 
 *BBH §26.13 — Prefix: מַ; chiriq in final syllable*
 
