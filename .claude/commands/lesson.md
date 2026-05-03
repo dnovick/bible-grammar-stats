@@ -14,7 +14,8 @@ output path, and generates supporting files (paradigm reference, passage exercis
 **Output paths (all files go in the same chapter directory):**
 - `output/lessons/<language>/<textbook>/ch<N>/ch<N>-<slug>.md` — main lesson
 - `output/lessons/<language>/<textbook>/ch<N>/<stem>-paradigms.md` — full paradigm tables
-- `output/lessons/<language>/<textbook>/ch<N>/ch<N>-passage-exercise.md` — parsing exercise
+- `output/lessons/<language>/<textbook>/ch<N>/ch<N>-passage-exercise.md` — parsing exercise (Markdown)
+- `output/lessons/<language>/<textbook>/ch<N>/ch<N>-passage-exercise.html` — interactive version with fillable fields and inline answer reveal
 - `output/lessons/<language>/<textbook>/ch<N>/ch<N>-anki-deck.md` — morphology flashcard list
 - `output/lessons/<language>/<textbook>/ch<N>/ch<N>-anki-deck.txt` — Anki import file (tab-separated)
 - `output/lessons/<language>/<textbook>/ch<N>/README.md` — link index (main lesson listed first)
@@ -84,6 +85,19 @@ Close with a **Summary** table: Conjugation | Prefix | Final vowel | Quick ID.
 ---
 
 ## Passage exercise file structure
+
+Always generate **both** a `.md` and a `.html` version of every passage exercise.
+
+### HTML exercise format
+
+The `.html` file is self-contained (no external dependencies) and is the primary classroom tool. Structure:
+
+- `<input class="parse-field">` in every parse cell (Conjugation, PGN, Root, Function)
+- A `▶ Answer` button on each verb row — clicking reveals a green `<tr class="answer-row">` inline with the correct parsing; clicking again hides it and toggles to `▼ Hide`
+- Three global controls at the top: **Show All Answers**, **Hide All Answers**, **Clear All Inputs**
+- Hebrew text in `<div class="hebrew">` with `direction:rtl; unicode-bidi:embed` — no bidi issues
+- A `@media print` block that hides buttons and makes input fields show as underlines
+- All answers, styles, and scripts are embedded inline — file opens with a double-click in any browser
 
 Title: `Chapter N — "Spot the [Stem]" Passage Exercise`
 
