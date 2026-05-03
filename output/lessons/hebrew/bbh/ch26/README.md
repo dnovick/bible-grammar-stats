@@ -30,10 +30,9 @@
 
 ## Flashcards
 
-| File | Description |
-|---|---|
-| [ch26-anki-deck.md](ch26-anki-deck.md) | Morphology flashcard list — 32 cards across 4 roots and 8 conjugations with tag reference table |
-| [ch26-anki-deck.txt](ch26-anki-deck.txt) | Morphology Anki import file — tab-separated, ready for File → Import |
-| [ch26-anki-deck.csv](ch26-anki-deck.csv) | Legacy CSV format (use the .txt file for import) |
-| [ch26-vocab-deck.md](ch26-vocab-deck.md) | Vocabulary flashcard list — 15 words (11 verbs, 1 noun, 3 adjectives) with POS tags and frequency |
-| [ch26-vocab-deck.txt](ch26-vocab-deck.txt) | Vocabulary Anki import file — tab-separated, ready for File → Import |
+| File | Format | Description |
+|---|---|---|
+| [ch26-anki-deck.md](ch26-anki-deck.md) | Markdown | Morphology deck — 32 cards across 4 roots and 8 conjugations; tag reference table included |
+| [ch26-anki-deck.txt](ch26-anki-deck.txt) | Anki import | Morphology deck — tab-separated, ready for File → Import |
+| [ch26-vocab-deck.md](ch26-vocab-deck.md) | Markdown | Vocabulary deck — 15 words (11 verbs, 1 noun, 3 adjectives) with POS tags and frequency |
+| [ch26-vocab-deck.txt](ch26-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for File → Import |
