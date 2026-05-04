@@ -21,9 +21,9 @@
 
 ## Exercises
 
-| Exercise | Description |
+| File | Description |
 |---|---|
-| [exercises/ch25-passage-exercise/README.md](exercises/ch25-passage-exercise/README.md) | "Spot the Niphal" — 15-verb parsing exercise from Gen 3, 6, and 21; all conjugations covered |
+| [exercises/](exercises/README.md) | Index of all ch25 exercises |
 
 ---
 
