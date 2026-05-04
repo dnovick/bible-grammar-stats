@@ -271,7 +271,7 @@ Some roots occur almost exclusively in the Hiphil — the Hiphil form *is* the s
 
 | Resource | Description |
 |---|---|
-| [Anki Flashcard Deck](ch26-anki-deck.md) | 32 cards covering all 8 conjugation forms across the top Hiphil roots. Import CSV into Anki for spaced-repetition drilling. |
+| [Morphology Flashcard Deck](ch26-morphology-deck.md) | 32 cards covering all 8 conjugation forms across the top Hiphil roots. Import into Anki for spaced-repetition drilling. |
 | [Passage Exercise — Gen 6–8](ch26-passage-exercise.md) | "Spot the Hiphil" — 16 verbs from the flood narrative to parse and classify by function type. Answer key included. |
 
 ---
@@ -281,4 +281,4 @@ Some roots occur almost exclusively in the Hiphil — the Hiphil form *is* the s
 | Resource | URL |
 |---|---|
 | Anki (free flashcard app — Windows, Mac, iOS, Android) | [apps.ankiweb.net](https://apps.ankiweb.net) |
-| Anki import file for this chapter | [ch26-anki-deck.txt](ch26-anki-deck.txt) |
+| Morphology import file for this chapter | [ch26-morphology-deck.txt](ch26-morphology-deck.txt) |
