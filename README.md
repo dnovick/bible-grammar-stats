@@ -1894,50 +1894,50 @@ Notebooks are organized under `notebooks/` into subdirectories by testament and 
 
 | Notebook | Purpose |
 |---|---|
-| `01_data_exploration.ipynb` | Raw data inspection, word counts, Gen 1:1 and Matt 1:1 spot-checks |
-| `02_query_demo.ipynb` | End-to-end walkthrough: Niphal perfects, Torah verb stems, Greek tense/voice, CSV export |
-| `10_advanced_analysis.ipynb` | Divine names, genre comparison, intertextuality networks, HTML/CSV export |
+| [`01_data_exploration.ipynb`](notebooks/both/survey/01_data_exploration.ipynb) | Raw data inspection, word counts, Gen 1:1 and Matt 1:1 spot-checks |
+| [`02_query_demo.ipynb`](notebooks/both/survey/02_query_demo.ipynb) | End-to-end walkthrough: Niphal perfects, Torah verb stems, Greek tense/voice, CSV export |
+| [`10_advanced_analysis.ipynb`](notebooks/both/survey/10_advanced_analysis.ipynb) | Divine names, genre comparison, intertextuality networks, HTML/CSV export |
 
 **`notebooks/both/verbs/`** — verb morphology (both testaments)
 
 | Notebook | Purpose |
 |---|---|
-| `03_statistics.ipynb` | Full showcase — OT verb stems, Torah comparison, Greek NT heatmaps, aorist passives by book |
+| [`03_statistics.ipynb`](notebooks/both/verbs/03_statistics.ipynb) | Full showcase — OT verb stems, Torah comparison, Greek NT heatmaps, aorist passives by book |
 
 **`notebooks/both/intertextuality/`** — quotation and parallel studies
 
 | Notebook | Purpose |
 |---|---|
-| `04_nt_quotations.ipynb` | NT→OT quotation database, three-way text comparison, LXX vs MT alignment |
-| `08_parallel_passage.ipynb` | Parallel passage comparison (Synoptics, Samuel/Psalms) |
+| [`04_nt_quotations.ipynb`](notebooks/both/intertextuality/04_nt_quotations.ipynb) | NT→OT quotation database, three-way text comparison, LXX vs MT alignment |
+| [`08_parallel_passage.ipynb`](notebooks/both/intertextuality/08_parallel_passage.ipynb) | Parallel passage comparison (Synoptics, Samuel/Psalms) |
 
 **`notebooks/both/lexicon/`** — lexicon and word study
 
 | Notebook | Purpose |
 |---|---|
-| `05_concordance.ipynb` | Concordance, lemma frequency, top lemmas by book |
-| `07_word_study.ipynb` | Word study API, LXX equivalents, OT→LXX→NT trajectory |
-| `09_language_analysis.ipynb` | LXX consistency, collocations, morphological distribution, semantic profiles, theological term maps |
+| [`05_concordance.ipynb`](notebooks/both/lexicon/05_concordance.ipynb) | Concordance, lemma frequency, top lemmas by book |
+| [`07_word_study.ipynb`](notebooks/both/lexicon/07_word_study.ipynb) | Word study API, LXX equivalents, OT→LXX→NT trajectory |
+| [`09_language_analysis.ipynb`](notebooks/both/lexicon/09_language_analysis.ipynb) | LXX consistency, collocations, morphological distribution, semantic profiles, theological term maps |
 
 **`notebooks/both/syntax/`** — syntax, roles, poetry
 
 | Notebook | Purpose |
 |---|---|
-| `11_syntax_and_roles.ipynb` | NT/OT MACULA syntax trees, speaker attribution, lexicon API, christological titles, syntactic role/object search, LXX corpus query, cross-testament trajectory, theological term reports, Hebrew poetry analysis (cola/parallelism/chiasm/acrostic/meter), Hebrew verbal syntax (verb form profiles, wayyiqtol chains, infinitive usage, clause types, stem distribution, disjunctive clauses, conditional clauses, relative clauses, aspect comparison, discourse particles) |
-| `12_preposition_analysis.ipynb` | Biblical Hebrew preposition frequency, book distribution, collocate analysis, object types, cross-group comparison (OT, 64k tokens) |
-| `13_greek_preposition_analysis.ipynb` | Greek preposition frequency, case-binding profiles, NT vs. LXX comparison, collocates by case, side-by-side prep comparison (NT + LXX) |
+| [`11_syntax_and_roles.ipynb`](notebooks/both/syntax/11_syntax_and_roles.ipynb) | NT/OT MACULA syntax trees, speaker attribution, lexicon API, christological titles, syntactic role/object search, LXX corpus query, cross-testament trajectory, theological term reports, Hebrew poetry analysis (cola/parallelism/chiasm/acrostic/meter), Hebrew verbal syntax (verb form profiles, wayyiqtol chains, infinitive usage, clause types, stem distribution, disjunctive clauses, conditional clauses, relative clauses, aspect comparison, discourse particles) |
+| [`12_preposition_analysis.ipynb`](notebooks/both/syntax/12_preposition_analysis.ipynb) | Biblical Hebrew preposition frequency, book distribution, collocate analysis, object types, cross-group comparison (OT, 64k tokens) |
+| [`13_greek_preposition_analysis.ipynb`](notebooks/both/syntax/13_greek_preposition_analysis.ipynb) | Greek preposition frequency, case-binding profiles, NT vs. LXX comparison, collocates by case, side-by-side prep comparison (NT + LXX) |
 
 **`notebooks/ot/survey/`** — OT survey
 
 | Notebook | Purpose |
 |---|---|
-| `06_book_profiles.ipynb` | Per-book morphological fingerprints, cross-book comparison |
+| [`06_book_profiles.ipynb`](notebooks/ot/survey/06_book_profiles.ipynb) | Per-book morphological fingerprints, cross-book comparison |
 
 **`notebooks/ot/verbs/`** — OT verb morphology
 
 | Notebook | Purpose |
 |---|---|
-| `12_hiphil_morphology.ipynb` | Hiphil (הִפְעִיל) verb morphology: conjugation distribution, top roots, root × conjugation heatmap, book distribution, Hiphil-dominant roots, semantic function categories, full report generation |
+| [`12_hiphil_morphology.ipynb`](notebooks/ot/verbs/12_hiphil_morphology.ipynb) | Hiphil (הִפְעִיל) verb morphology: conjugation distribution, top roots, root × conjugation heatmap, book distribution, Hiphil-dominant roots, semantic function categories, full report generation |
 
 Export a notebook as a shareable HTML file:
 
