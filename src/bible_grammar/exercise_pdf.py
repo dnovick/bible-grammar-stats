@@ -1381,9 +1381,9 @@ class Ch25Exercise(ExercisePDF):
 
     def _build(self):
         self.add_instructions(
-            'Every highlighted verb is a Niphal form. For each one: (1) mark Niphal Y/N; '
-            '(2) parse conjugation, PGN, and root; (3) state the semantic function '
-            '(Passive / Reflexive / Middle / Simple Action). '
+            'Every highlighted verb is a Niphal form. For each one: '
+            '(1) parse conjugation, PGN, and root; '
+            '(2) state the semantic function (Passive / Reflexive / Middle / Simple Action). '
             'Answer key begins on the page marked "Answer Key".'
         )
         self._render_passages(show_answers=False)
