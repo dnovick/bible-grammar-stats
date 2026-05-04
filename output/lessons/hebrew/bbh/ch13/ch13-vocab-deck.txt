@@ -1,0 +1,6 @@
+#separator:tab
+#html:false
+#notetype:Basic
+#deck:BBH Chapter 13 — Vocabulary
+#tags column:3
+# Vocabulary content to be added when user provides the BBH Ch13 word list
