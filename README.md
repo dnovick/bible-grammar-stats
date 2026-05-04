@@ -68,6 +68,9 @@ Built to answer questions like:
   - [Parallel Passages](#parallel-passages)
   - [HTML & CSV Export](#html--csv-export)
   - [Charts](#charts)
+  - [Hiphil (הִפְעִיל) Verb Morphology](#hiphil-הפעיל-verb-morphology)
+  - [Hebrew Preposition Analysis](#hebrew-preposition-analysis)
+  - [Greek Preposition Analysis](#greek-preposition-analysis)
   - [Slash Commands (Claude Code skills)](#slash-commands-claude-code-skills)
 - [Notebooks](#notebooks)
 - [Data Notes](#data-notes)
@@ -173,6 +176,8 @@ bible-grammar-stats/
 │   ├── speaker.py              # NT speaker attribution (allowlists + MACULA subjref)
 │   ├── lexicon.py              # TBESH/TBESG public API (lookup, search_gloss, lex_entry)
 │   ├── christological_titles.py # Christological title frequency with speaker filter
+│   ├── prepositions.py         # Hebrew preposition frequency, collocates, object types
+│   ├── greek_prepositions.py   # Greek preposition frequency, case binding, collocates (NT + LXX)
 │   ├── alignment.py            # Verse-level Hebrew↔Greek alignment
 │   ├── morphology.py           # Decode Hebrew/Greek morphology codes
 │   ├── reference.py            # Book metadata: names, testament, order
@@ -1683,6 +1688,109 @@ path = hiphil_report()
 
 ---
 
+### Hebrew Preposition Analysis
+
+`prepositions.py` provides frequency, collocate, and object-type analysis for
+Biblical Hebrew prepositions using the MACULA OT syntax data (~64,000 prep tokens,
+46 unique lemmas). Inseparable prepositions (בְּ, לְ, כְּ) are tokenized as
+separate rows with clean pointed lemmas.
+
+```python
+from bible_grammar import (prep_frequency, prep_by_book, prep_distribution_table,
+                            prep_collocates, prep_object_types, compare_preps,
+                            MAJOR_PREPS, PREP_GLOSS, BOOK_GROUPS)
+
+# OT-wide frequency table
+prep_frequency(top_n=15)
+# → לְ 31.4% · בְּ 24.7% · מִן 12.3% · עַל 9.0% · אֶל 8.9% …
+
+# Torah subset
+prep_frequency(book_group='Torah', top_n=10)
+
+# Distribution of לְ across all OT books
+prep_by_book('לְ')
+
+# Side-by-side count of major prepositions by book group
+prep_distribution_table()
+
+# Top noun collocates of לְ (purpose / indirect object)
+prep_collocates('לְ', pos='noun', top_n=20)
+
+# Top noun collocates of בְּ in Genesis
+prep_collocates('בְּ', pos='noun', top_n=15, book='Gen')
+
+# Grammatical types of what follows מִן
+prep_object_types('מִן')
+
+# Side-by-side collocate comparison: לְ vs אֶל (both mark direction)
+compare_preps('לְ', 'אֶל', pos='noun', top_n=20)
+```
+
+**Book groups:** Torah · Former Prophets · Writings · Latter Prophets
+
+**Notebook:** `notebooks/both/syntax/12_preposition_analysis.ipynb`
+
+---
+
+### Greek Preposition Analysis
+
+`greek_prepositions.py` provides frequency, case-binding, and collocate analysis for
+Greek prepositions in both the NT (MACULA Nestle1904, ~10,900 tokens) and the LXX
+(CenterBLC Rahlfs 1935, ~55,000 tokens).
+
+**Case binding** — Greek prepositions govern one or more cases depending on meaning.
+Case is not stored on the preposition token; it is determined by an adjacency join
+to the immediately following word (`word_num + 1`), normalized to Title case
+(Accusative, Genitive, Dative).
+
+```python
+from bible_grammar import (
+    greek_prep_frequency, greek_prep_by_book, greek_prep_distribution_table,
+    greek_prep_cases, greek_prep_collocates, compare_greek_preps, nt_lxx_compare,
+    NT_MAJOR_PREPS, LXX_MAJOR_PREPS, PREP_GLOSS,
+)
+
+# Frequency tables
+greek_prep_frequency(corpus='nt', top_n=15)    # NT: ἐν 22%, εἰς 14%, ἐπί 8%…
+greek_prep_frequency(corpus='lxx', top_n=15)   # LXX: ἐν 24%, εἰς 13%, ἐπί 13%…
+
+# Distribution by book group
+greek_prep_distribution_table(corpus='nt')   # Gospels / Acts / Pauline / …
+greek_prep_distribution_table(corpus='lxx')  # Torah / Historical / Wisdom / …
+
+# Case-binding profiles
+greek_prep_cases('ἐν', corpus='nt')    # 98.6% Dative (monocase)
+greek_prep_cases('εἰς', corpus='nt')   # 99.5% Accusative (monocase)
+greek_prep_cases('διά', corpus='nt')   # 57.3% Genitive (through) · 41.2% Accusative (because of)
+greek_prep_cases('ἐπί', corpus='nt')   # tricase: Accusative / Genitive / Dative
+
+# NT vs. LXX case-binding comparison
+nt_lxx_compare('ἐπί')   # Does ἐπί shift between LXX (translated from Hebrew) and NT?
+nt_lxx_compare('διά')
+
+# Collocates — filtered by case
+greek_prep_collocates('ἐν', corpus='nt', case='Dative', top_n=15)
+greek_prep_collocates('διά', corpus='nt', case='Genitive', top_n=15)   # through/by means of
+greek_prep_collocates('διά', corpus='nt', case='Accusative', top_n=15) # because of
+
+# Side-by-side comparison of two prepositions sharing semantic space
+compare_greek_preps('εἰς', 'πρός', corpus='nt', top_n=20)   # both mark direction/goal
+compare_greek_preps('ἀπό', 'ἐκ', corpus='nt', top_n=20)     # both mark separation/source
+
+# Book-scoped queries
+greek_prep_frequency(corpus='nt', book='Rom', top_n=12)
+greek_prep_cases('διά', corpus='nt', book='Rom')
+greek_prep_collocates('διά', corpus='nt', case='Genitive', book_group='Pauline', top_n=10)
+
+# Distribution across all books
+greek_prep_by_book('ἐν', corpus='nt')
+greek_prep_by_book('ἐν', corpus='lxx')
+```
+
+**Notebook:** `notebooks/both/syntax/13_greek_preposition_analysis.ipynb`
+
+---
+
 ### Slash Commands (Claude Code skills)
 
 When using this project with [Claude Code](https://claude.ai/code), the following
@@ -1816,6 +1924,8 @@ Notebooks are organized under `notebooks/` into subdirectories by testament and 
 | Notebook | Purpose |
 |---|---|
 | `11_syntax_and_roles.ipynb` | NT/OT MACULA syntax trees, speaker attribution, lexicon API, christological titles, syntactic role/object search, LXX corpus query, cross-testament trajectory, theological term reports, Hebrew poetry analysis (cola/parallelism/chiasm/acrostic/meter), Hebrew verbal syntax (verb form profiles, wayyiqtol chains, infinitive usage, clause types, stem distribution, disjunctive clauses, conditional clauses, relative clauses, aspect comparison, discourse particles) |
+| `12_preposition_analysis.ipynb` | Biblical Hebrew preposition frequency, book distribution, collocate analysis, object types, cross-group comparison (OT, 64k tokens) |
+| `13_greek_preposition_analysis.ipynb` | Greek preposition frequency, case-binding profiles, NT vs. LXX comparison, collocates by case, side-by-side prep comparison (NT + LXX) |
 
 **`notebooks/ot/survey/`** — OT survey
 
