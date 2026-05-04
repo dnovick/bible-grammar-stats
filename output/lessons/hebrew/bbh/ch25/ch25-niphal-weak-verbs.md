@@ -242,6 +242,8 @@ These roots have no active Qal meaning; the Niphal form is the standard lexical 
 *"for the LORD is fighting for them"*
 → לָחַם Niphal participle ms; the Egyptians' terrified recognition at the Red Sea — a participial predicate.
 
+---
+
 ### Middle / Tolerative *(not in BBH)*
 
 The subject allows the action to happen, or undergoes it with some degree of volition.
