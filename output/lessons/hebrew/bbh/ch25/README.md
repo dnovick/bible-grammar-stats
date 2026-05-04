@@ -23,7 +23,7 @@
 
 | Exercise | Description |
 |---|---|
-| [ch25-passage-exercise.md](ch25-passage-exercise.md) | "Spot the Niphal" — 15-verb parsing exercise from Gen 3, 6, and 21; answer key included |
+| [exercises/ch25-passage-exercise/README.md](exercises/ch25-passage-exercise/README.md) | "Spot the Niphal" — 15-verb parsing exercise from Gen 3, 6, and 21; all conjugations covered |
 
 ---
 

@@ -271,7 +271,7 @@ These roots have no active Qal meaning; the Niphal form is the standard lexical 
 | Resource | Description |
 |---|---|
 | [Morphology Flashcard Deck](ch25-morphology-deck.md) | 32 cards covering all 8 conjugation forms across the top Niphal roots. Import the `.txt` file into Anki for spaced-repetition drilling. |
-| [Passage Exercise — Gen 3, 6](ch25-passage-exercise.md) | "Spot the Niphal" — parsing exercise from the Garden and Flood narratives. Answer key included. |
+| [Passage Exercise — Gen 3, 6, 21](exercises/ch25-passage-exercise/ch25-passage-exercise.md) | "Spot the Niphal" — parsing exercise from the Garden, Flood, and Beersheba narratives. Answer key included. |
 
 ---
 

@@ -1252,7 +1252,177 @@ def build_ch26_exercise(out_dir: str = None) -> str:
     return ex.save(path)
 
 
+# ---------------------------------------------------------------------------
+# Chapter 25 — "Spot the Niphal" Passage Exercise
+# ---------------------------------------------------------------------------
+class Ch25Exercise(ExercisePDF):
+
+    def _render_passages(self, show_answers: bool):
+
+        # ── Passage A ─────────────────────────────────────────────────────────
+        self.add_section_heading('Passage A — Genesis 3:5–10')
+
+        self.add_passage(PassageBlock('3:5',
+            'וִֽהְיִיתֶם֙ כֵּֽאלֹהִ֔ים יֹדְעֵ֖י טוֹב וָרָ֑ע כִּ֣י יֹדֵ֔עַ אֱלֹהִ֕ים כִּ֗י בְּיֹ֛ום אֲכָלְכֶ֥ם מִמֶּ֖נּוּ וְנִפְקְח֖וּ עֵינֵיכֶ֑ם',
+            '"…for God knows that in the day you eat of it your eyes will [1] ____."'))
+        self.add_verb_table([VerbEntry('1','וְנִפְקְחוּ','Weqatal','3cp','פָּקַח','Middle — will be opened')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('3:6',
+            'וְנֶחְמָ֤ד הָעֵץ֙ לְהַשְׂכִּ֔יל',
+            '"…and that the tree was desirable to make one wise."'))
+        self.add_verb_table([VerbEntry('2','וְנֶחְמָד','Participle ms','ms','חָמַד','Passive — desirable (substantival ptc.)')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('3:7',
+            'וַתִּפָּקַ֙חְנָה֙ עֵינֵ֣י שְׁנֵיהֶ֔ם',
+            '"Then the eyes of both of them [3] ____."'))
+        self.add_verb_table([VerbEntry('3','וַתִּפָּקַחְנָה','Wayyiqtol','3fp','פָּקַח','Middle — they were opened')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('3:10',
+            'וָאִירָ֛א כִּֽי־עֵירֹ֥ם אָנֹ֖כִי וָאֵחָבֵֽא',
+            '"I was afraid, because I was naked, and [4] ____."'))
+        self.add_verb_table([VerbEntry('4','וָאֵחָבֵא','Wayyiqtol','1cs','חָבָא','Reflexive — I hid myself')], show_answers=show_answers)
+
+        self.add_section_break()
+
+        # ── Passage B ─────────────────────────────────────────────────────────
+        self.add_section_heading('Passage B — Genesis 6:6–12')
+
+        self.add_passage(PassageBlock('6:6',
+            'וַיִּנָּ֣חֶם יְהוָ֔ה כִּֽי־עָשָׂ֥ה אֶת־הָאָדָ֖ם בָּאָ֑רֶץ',
+            '"And the LORD [5] ____ that he had made man on the earth."'))
+        self.add_verb_table([VerbEntry('5','וַיִּנָּחֶם','Wayyiqtol','3ms','נָחַם','Simple Action (Niphal-only) — relented')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('6:7',
+            'נִחַ֖מְתִּי כִּ֥י עֲשִׂיתִֽם',
+            '"I [6] ____ that I made them."'))
+        self.add_verb_table([VerbEntry('6','נִחַמְתִּי','Weqatal','1cs','נָחַם','Simple Action (Niphal-only) — I regret')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('6:11',
+            'וַתִּשָּׁחֵ֥ת הָאָ֖רֶץ … וַתִּמָּלֵ֥א הָאָ֖רֶץ חָמָֽס',
+            '"The earth [7] ____ … and the earth [8] ____ with violence."'))
+        self.add_verb_table([
+            VerbEntry('7','וַתִּשָּׁחֵת','Wayyiqtol','3fs','שָׁחַת','Passive — it was corrupted'),
+            VerbEntry('8','וַתִּמָּלֵא','Wayyiqtol','3fs','מָלֵא','Passive — it was filled'),
+        ], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('6:12',
+            'וְהִנֵּ֥ה נִשְׁחָ֑תָה כִּֽי־הִשְׁחִ֧ית כָּל־בָּשָׂ֛ר',
+            '"and behold, it [9] ____, for all flesh had corrupted its way."'))
+        self.add_verb_table([VerbEntry('9','נִשְׁחָתָה','Weqatal','3fs','שָׁחַת','Passive — it was corrupt')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('6:21',
+            'וְהָיָ֥ה לְךָ֖ וְלָהֶ֥ם לְאָכְלָֽה יֵֽאָכֵ֔ל',
+            '"it shall be food for you and for them — it shall [10] ____."'))
+        self.add_verb_table([VerbEntry('10','יֵאָכֵל','Imperfect','3ms','אָכַל','Passive — it shall be eaten')], show_answers=show_answers)
+
+        self.add_section_break()
+
+        # ── Passage C ─────────────────────────────────────────────────────────
+        self.add_section_heading('Passage C — Genesis 21:23–31')
+
+        self.add_passage(PassageBlock('21:23',
+            'הִשָּׁ֨בְעָ֜ה לִּ֗י בֵּאלֹהִ֛ים הֵ֖נָּה',
+            '"[11] ____ to me by God here."'))
+        self.add_verb_table([VerbEntry('11','הִשָּׁבְעָה','Imperative','2ms','שָׁבַע','Reflexive — Swear! (bind yourself by oath)')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('21:24',
+            'וַיֹּ֙אמֶר֙ אַבְרָהָ֔ם אָנֹכִ֖י אִשָּׁבֵֽעַ',
+            '"And Abraham said, \'I [12] ____.\'"'))
+        self.add_verb_table([VerbEntry('12','אִשָּׁבֵעַ','Imperfect','1cs','שָׁבַע','Reflexive — I will swear')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('21:31',
+            'כִּ֛י שָׁ֥ם נִשְׁבְּע֖וּ שְׁנֵיהֶֽם',
+            '"For there [13] ____ both of them."'))
+        self.add_verb_table([VerbEntry('13','נִשְׁבְּעוּ','Weqatal','3mp','שָׁבַע','Reflexive — they swore (bound themselves by oath)')], show_answers=show_answers)
+
+        self.add_section_break()
+
+        # ── Bonus ─────────────────────────────────────────────────────────────
+        self.add_section_heading('Bonus — Genesis 21:3, 21:8')
+
+        self.add_passage(PassageBlock('21:3', 'אֲשֶׁר־נּֽוֹלַד־לֹ֛ו', '"who had been born to him"'))
+        self.add_passage(PassageBlock('21:8', 'וַיִּגְדַּ֤ל הַיֶּ֙לֶד֙ וַיִּגָּמַ֑ל', '"And the child grew and was weaned."'))
+        self.add_verb_table([
+            VerbEntry('B1','נּוֹלַד',  'Weqatal',   '3ms','יָלַד','Passive — who had been born'),
+            VerbEntry('B2','וַיִּגָּמַל','Wayyiqtol','3ms','גָּמַל','Passive — was weaned'),
+        ], show_answers=show_answers)
+
+        self.add_section_break()
+
+        self.add_note(
+            'Items 5–6 (וַיִּנָּחֶם / נִחַמְתִּי) are both from נָחַם, a verb that occurs almost exclusively '
+            'in the Niphal. Items 11–13 all parse as Reflexive from שָׁבַע — '
+            'notice how Imperative, Imperfect, and Weqatal all express the same oath-swearing action.'
+        )
+        self.add_score(
+            'Score: 13 main + 2 bonus = 15 total.  '
+            '13–15 = excellent  |  9–12 = review the paradigm  |  below 9 = revisit §23.3–23.13'
+        )
+
+        self.add_section_heading('Conjugation Coverage')
+        self.add_coverage_table([
+            ('Wayyiqtol (5)', '#3, #5, #7, #8, B2'),
+            ('Weqatal (5)',   '#1, #6, #9, #13, B1'),
+            ('Imperfect (2)', '#10, #12'),
+            ('Participle (1)','#2'),
+            ('Imperative (1)','#11'),
+        ])
+
+        if not show_answers:
+            self.add_reflection([
+                'Every Niphal in Passage A (Gen 3) involves eyes, hiding, or desire. What does the '
+                'Niphal contribute to the theological message of the Fall narrative?',
+                'In Gen 6:6–7, God is the subject of a Niphal-only verb (נָחַם). What does this choice '
+                'tell us about how the narrator portrays God\'s emotional response?',
+                'Compare Gen 3:5 (וְנִפְקְחוּ — "will be opened," Middle/Tolerative) with Gen 3:7 '
+                '(וַתִּפָּקַחְנָה — "were opened," Middle). Is the function identical in both? '
+                'What difference in nuance, if any, does the shift from weqatal to wayyiqtol suggest?',
+            ])
+
+    def _build(self):
+        self.add_instructions(
+            'Every highlighted verb is a Niphal form. For each one: (1) mark Niphal Y/N; '
+            '(2) parse conjugation, PGN, and root; (3) state the semantic function '
+            '(Passive / Reflexive / Middle / Simple Action). '
+            'Answer key begins on the page marked "Answer Key".'
+        )
+        self._render_passages(show_answers=False)
+
+        self._new_page()
+        c = self._canvas
+        c.setFont('Helvetica-Bold', 14)
+        c.setFillColor(C_HEADING)
+        c.drawString(self.MARGIN_L, self._y, 'Answer Key')
+        self._y -= 0.22 * inch
+        c.setFont('Helvetica-Oblique', 9)
+        c.setFillColor(HexColor('#666666'))
+        c.drawString(self.MARGIN_L, self._y,
+                     'Passages with correct answers shown in the green row below each verb.')
+        self._y -= 0.18 * inch
+        c.setStrokeColor(C_RULE)
+        c.setLineWidth(1)
+        c.line(self.MARGIN_L, self._y, self.PAGE_W - self.MARGIN_R, self._y)
+        self._y -= 0.15 * inch
+        self._render_passages(show_answers=True)
+
+
+def build_ch25_exercise(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'hebrew', 'bbh', 'ch25', 'exercises',
+                               'ch25-passage-exercise')
+    path = os.path.join(out_dir, 'ch25-passage-exercise.pdf')
+    ex = Ch25Exercise(
+        title='Chapter 25 — "Spot the Niphal" Passage Exercise',
+        subtitle='Genesis 3, 6, and 21  ·  The Garden, the Flood Prelude, and Beersheba',
+    )
+    return ex.save(path)
+
+
 if __name__ == '__main__':
+    p0 = build_ch25_exercise()
+    print(f'Saved: {p0}')
     p1 = build_ch26_exercise()
     print(f'Saved: {p1}')
     p2 = build_ch26_contrast_exercise()
