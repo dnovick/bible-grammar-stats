@@ -1,0 +1,22 @@
+#separator:tab
+#html:false
+#notetype:Basic
+#deck:BBH Chapter 17 — Vocabulary
+#tags column:3
+
+אָמַר	to say, speak (~5,300×) · most frequent verb in the OT	bbh-ch17 vocab-hebrew
+הָיָה	to be, become (~3,600×) · III-ה	bbh-ch17 vocab-hebrew
+הָלַךְ	to go, walk (~1,500×) · I-י in wayyiqtol	bbh-ch17 vocab-hebrew
+רָאָה	to see (~1,300×) · III-ה	bbh-ch17 vocab-hebrew
+עָשָׂה	to do, make (~2,600×) · III-ה + I-gutt.	bbh-ch17 vocab-hebrew
+נָתַן	to give (~2,000×) · I-נ; nun assimilates	bbh-ch17 vocab-hebrew
+יָדַע	to know (~950×) · I-י	bbh-ch17 vocab-hebrew
+קוּם	to arise, stand up (~630×) · biconsonantal	bbh-ch17 vocab-hebrew
+בּוֹא	to come, go in (~2,600×) · biconsonantal	bbh-ch17 vocab-hebrew
+שׁוּב	to return, turn back (~1,060×) · biconsonantal	bbh-ch17 vocab-hebrew
+יָשַׁב	to sit, dwell (~1,100×) · I-י	bbh-ch17 vocab-hebrew
+יָצָא	to go out (~1,070×) · I-י + III-א	bbh-ch17 vocab-hebrew
+שָׁמַר	to keep, guard, observe (~470×) · strong root	bbh-ch17 vocab-hebrew
+אָהַב	to love (~210×) · Deu 6:5 weqatal	bbh-ch17 vocab-hebrew
+בָּנָה	to build (~380×) · III-ה	bbh-ch17 vocab-hebrew
+דִּבֵּר	to speak (~1,140×) · Piel primary stem	bbh-ch17 vocab-hebrew
