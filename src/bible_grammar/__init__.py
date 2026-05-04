@@ -1,4 +1,11 @@
 from .query import query, translation_query, lxx_query
+from .prepositions import (
+    prep_frequency, prep_by_book, prep_distribution_table,
+    prep_collocates, prep_object_types, compare_preps,
+    print_prep_frequency, print_prep_by_book, print_prep_distribution,
+    print_prep_collocates, print_compare_preps,
+    MAJOR_PREPS, PREP_GLOSS, BOOK_GROUPS,
+)
 from .stats import freq_table
 from .alignment import translation_equivalents, hebrew_sources
 from .ibm_align import translation_equivalents_w, hebrew_sources_w
