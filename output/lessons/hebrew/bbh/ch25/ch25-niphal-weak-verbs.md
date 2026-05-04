@@ -242,6 +242,42 @@ These roots have no active Qal meaning; the Niphal form is the standard lexical 
 *"for the LORD is fighting for them"*
 → לָחַם Niphal participle ms; the Egyptians' terrified recognition at the Red Sea — a participial predicate.
 
+### Middle / Tolerative *(not in BBH)*
+
+The subject allows the action to happen, or undergoes it with some degree of volition.
+
+**Perfect (qatal) — Gen 3:5** — נִפְקְח֖וּ עֵינֵיכֶ֑ם
+*"your eyes will be opened"*
+→ פָּקַח Niphal perfect 3cp; the serpent's promise — eyes that will open (allow themselves to open) to knowledge.
+
+**Wayyiqtol — Gen 3:7** — וַתִּפָּקַ֙חְנָה֙ עֵינֵ֣י שְׁנֵיהֶ֔ם
+*"Then the eyes of both of them were opened."*
+→ פָּקַח Niphal wayyiqtol 3fp; the fulfillment of the serpent's words — the eyes opened (underwent opening).
+
+**Imperfect (yiqtol) — Gen 1:9** — תֵרָאֶ֖ה הַיַּבָּשָׁ֑ה
+*"Let the dry land appear."*
+→ רָאָה Niphal imperfect/jussive 3fs; God commands the land to allow itself to be seen — the tolerative sense is clear.
+
+**Weqatal — Gen 8:5** — וְנִרְא֖וּ רָאשֵׁ֥י הֶהָרִֽים
+*"and the tops of the mountains were seen."*
+→ רָאָה Niphal weqatal 3mp; as the waters receded, the mountaintops allowed themselves to become visible.
+
+**Imperative — 1 Kgs 18:1** — הֵרָאֵ֣ה אֶל־אַחְאָ֑ב
+*"Go, present yourself to Ahab."*
+→ רָאָה Niphal imperative 2ms; Elijah is commanded to allow himself to be seen. *(No Torah imperative for this root; 1 Kings is earliest attestation.)*
+
+**Infinitive Construct — Exo 34:24** — לְהֵרָאוֹת֙ אֶת־פְּנֵ֣י
+*"to appear before the face of…"*
+→ רָאָה Niphal infinitive construct; the male Israelites shall present themselves (allow themselves to be seen) before God three times a year.
+
+**Infinitive Absolute — 2 Sam 1:6** — נִקְרֹ֤א נִקְרֵ֙יתִי֙
+*"I happened to be…"*
+→ קָרָא Niphal infinitive absolute + perfect; the young man describes finding himself in a certain place — the middle force ("I found myself there").
+
+**Participle — Gen 12:7** — וַיֵּרָ֤א יְהוָה֙ אֶל־אַבְרָ֔ם … הַנִּרְאֶ֥ה אֵלָֽיו
+*"The LORD appeared to Abram… who had appeared to him."*
+→ רָאָה Niphal participle ms; God as the one who presents himself to be seen — the participial form substantivizes the appearance.
+
 ---
 
 ## 5. Conjugation Distribution (OT-wide)
