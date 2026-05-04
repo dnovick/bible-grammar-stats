@@ -1,0 +1,31 @@
+#separator:tab
+#html:false
+#tags column:10
+נִשְׁמַע (Gen 45:16)	שָׁמַע — Niphal Perfect 3ms — "it was heard" — Function: Passive	bbh-ch24 niphal-perfect niphal-passive
+וַיִּמָּצֵא (Gen 44:12)	מָצָא — Niphal Wayyiqtol 3ms — "it was found" — Function: Passive	bbh-ch24 niphal-wayyiqtol niphal-passive
+יִמָּצֵא (Gen 44:10)	מָצָא — Niphal Imperfect 3ms — "let it be found" — Function: Passive	bbh-ch24 niphal-imperfect niphal-passive
+וְנִכְרְתָה (Exo 12:15)	כָּרַת — Niphal Weqatal 3fs — "he will be cut off" — Function: Passive	bbh-ch24 niphal-weqatal niphal-passive
+הֵאָסְפוּ (Gen 49:1)	אָסַף — Niphal Imperative 2mp — "gather yourselves!" — Function: Passive	bbh-ch24 niphal-imperative niphal-passive
+בְּהִוָּלֶד (Gen 21:5)	יָלַד — Niphal Infinitive Construct — "when being born" — Function: Passive	bbh-ch24 niphal-inf-construct niphal-passive
+הִמָּצֵא (Exo 22:3)	מָצָא — Niphal Infinitive Absolute — "certainly be found" — Function: Passive	bbh-ch24 niphal-inf-absolute niphal-passive
+הַנִּמְצָא (Gen 47:14)	מָצָא — Niphal Participle ms — "that which was found" — Function: Passive	bbh-ch24 niphal-participle niphal-passive
+נִשְׁבַּע (Exo 13:5)	שָׁבַע — Niphal Perfect 3ms — "he swore" — Function: Reflexive	bbh-ch24 niphal-perfect niphal-reflexive
+וַיִּשָּׁבַע (Gen 47:31)	שָׁבַע — Niphal Wayyiqtol 3ms — "he swore an oath" — Function: Reflexive	bbh-ch24 niphal-wayyiqtol niphal-reflexive
+אִשָּׁבֵעַ (Gen 21:24)	שָׁבַע — Niphal Imperfect 1cs — "I will swear" — Function: Reflexive	bbh-ch24 niphal-imperfect niphal-reflexive
+נִשְׁבְּעוּ (Gen 21:31)	שָׁבַע — Niphal Weqatal 3mp — "they swore" — Function: Reflexive	bbh-ch24 niphal-weqatal niphal-reflexive
+הִשָּׁבְעָה (Gen 21:23)	שָׁבַע — Niphal Imperative 2ms — "swear!" — Function: Reflexive	bbh-ch24 niphal-imperative niphal-reflexive
+הִשָּׁבַע (Num 30:3)	שָׁבַע — Niphal Infinitive Absolute — "certainly swear (emphatic)" — Function: Reflexive	bbh-ch24 niphal-inf-absolute niphal-reflexive
+נִצָּבִים (Gen 18:2)	נָצַב — Niphal Participle mp — "standing (having stationed themselves)" — Function: Reflexive	bbh-ch24 niphal-participle niphal-reflexive
+נִלְחַם (Exo 1:10)	לָחַם — Niphal Perfect 3ms — "(they) will fight" — Function: Simple action	bbh-ch24 niphal-perfect niphal-simple
+וַיִּלָּחֶם (Exo 17:8)	לָחַם — Niphal Wayyiqtol 3ms — "it joined battle" — Function: Simple action	bbh-ch24 niphal-wayyiqtol niphal-simple
+יִלָּחֵם (Exo 14:14)	לָחַם — Niphal Imperfect 3ms — "he will fight" — Function: Simple action	bbh-ch24 niphal-imperfect niphal-simple
+וְנִלְחַם (Exo 1:10)	לָחַם — Niphal Weqatal 3ms — "and (they) will fight" — Function: Simple action	bbh-ch24 niphal-weqatal niphal-simple
+הִלָּחֵם (Exo 17:9)	לָחַם — Niphal Imperative 2ms — "fight!" — Function: Simple action	bbh-ch24 niphal-imperative niphal-simple
+לְהִלָּחֵם (Exo 17:10)	לָחַם — Niphal Infinitive Construct — "to fight" — Function: Simple action	bbh-ch24 niphal-inf-construct niphal-simple
+נִלְחֹם (Jdg 11:25)	לָחַם — Niphal Infinitive Absolute — "certainly wage war" — Function: Simple action	bbh-ch24 niphal-inf-absolute niphal-simple
+נִלְחָם (Exo 14:25)	לָחַם — Niphal Participle ms — "(one who is) fighting" — Function: Simple action	bbh-ch24 niphal-participle niphal-simple
+נִכְרְתָה (Gen 17:14)	כָּרַת — Niphal Perfect 3fs — "it will be cut off" — Function: Passive	bbh-ch24 niphal-perfect niphal-passive
+יִכָּרֵת (Gen 9:11)	כָּרַת — Niphal Imperfect 3ms — "it will be cut off" — Function: Passive	bbh-ch24 niphal-imperfect niphal-passive
+הִכָּרֵת (Psa 37:34)	כָּרַת — Niphal Infinitive Construct — "to be cut off" — Function: Passive	bbh-ch24 niphal-inf-construct niphal-passive
+הִכָּרֵת (Num 15:31)	כָּרַת — Niphal Infinitive Absolute — "certainly be cut off" — Function: Passive	bbh-ch24 niphal-inf-absolute niphal-passive
+הִשָּׁמְרוּ (Exo 19:12)	שָׁמַר — Niphal Imperative 2mp — "take heed!" — Function: Reflexive	bbh-ch24 niphal-imperative niphal-reflexive

@@ -1420,12 +1420,345 @@ def build_ch25_exercise(out_dir: str = None) -> str:
     return ex.save(path)
 
 
+# ---------------------------------------------------------------------------
+# Chapter 24 — "Spot the Niphal" Passage Exercise
+# ---------------------------------------------------------------------------
+class Ch24Exercise(ExercisePDF):
+
+    def _render_passages(self, show_answers: bool):
+
+        # ── Passage A ─────────────────────────────────────────────────────────
+        self.add_section_heading('Passage A — Genesis 37:7, 36')
+
+        self.add_passage(PassageBlock('37:7',
+            'וְהִנֵּה קָמָה אֲלֻמָּתִי וְגַם נִצָּבָה',
+            '"and behold, my sheaf arose and [1] ____."'))
+        self.add_verb_table([VerbEntry('1','נִצָּבָה','Perfect','3fs','נָצַב','Reflexive — it stood upright (stationed itself)')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('37:36',
+            'וְהַמְּדָנִים מָכְרוּ אֹתוֹ … וַיִּמָּכֵר יוֹסֵף אֶל־מִצְרָיִם',
+            '"Now the Midianites had sold him … and Joseph [2] ____ into Egypt."'))
+        self.add_verb_table([VerbEntry('2','וַיִּמָּכֵר','Wayyiqtol','3ms','מָכַר','Passive — he was sold')], show_answers=show_answers)
+
+        self.add_section_break()
+
+        # ── Passage B ─────────────────────────────────────────────────────────
+        self.add_section_heading('Passage B — Genesis 44:9–20')
+
+        self.add_passage(PassageBlock('44:9',
+            'אֲשֶׁר יִמָּצֵא אִתּוֹ מֵעֲבָדֶיךָ וָמֵת',
+            '"With whichever of your servants [3] ____ [the cup] shall die."'))
+        self.add_verb_table([VerbEntry('3','יִמָּצֵא','Imperfect','3ms','מָצָא','Passive — is found')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('44:12',
+            'וַיִּמָּצֵא הַגָּבִיעַ בְּאַמְתַּחַת בִּנְיָמִן',
+            '"And the cup [4] ____ in Benjamin\'s sack."'))
+        self.add_verb_table([VerbEntry('4','וַיִּמָּצֵא','Wayyiqtol','3ms','מָצָא','Passive — was found')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('44:20',
+            'יֶשׁ לָנוּ אָב זָקֵן וְיֶלֶד זְקֻנִים קָטָן וְאָחִיו מֵת וַיִּוָּתֵר הוּא',
+            '"We have an aged father … his brother is dead, and he alone [5] ____."'))
+        self.add_verb_table([VerbEntry('5','וַיִּוָּתֵר','Wayyiqtol','3ms','יָתַר','Passive/Middle — was left, remained')], show_answers=show_answers)
+
+        self.add_section_break()
+
+        # ── Passage C ─────────────────────────────────────────────────────────
+        self.add_section_heading('Passage C — Genesis 45:1, 16')
+
+        self.add_passage(PassageBlock('45:1',
+            'וְלֹא־יָכֹל יוֹסֵף לְהִתְאַפֵּק לְכֹל הַנִּצָּבִים עָלָיו',
+            '"Joseph could no longer control himself before all those [6] ____ near him."'))
+        self.add_verb_table([VerbEntry('6','הַנִּצָּבִים','Participle','mp','נָצַב','Reflexive — those standing (stationed themselves)')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('45:16',
+            'וְהַקֹּל נִשְׁמַע בֵּית פַּרְעֹה לֵאמֹר בָּאוּ אֲחֵי־יוֹסֵף',
+            '"And the report [7] ____ in Pharaoh\'s household, \'Joseph\'s brothers have come.\'"'))
+        self.add_verb_table([VerbEntry('7','נִשְׁמַע','Perfect','3ms','שָׁמַע','Passive — was heard')], show_answers=show_answers)
+
+        self.add_section_break()
+
+        # ── Passage D ─────────────────────────────────────────────────────────
+        self.add_section_heading('Passage D — Genesis 47:14, 31')
+
+        self.add_passage(PassageBlock('47:14',
+            'וַיְלַקֵּט יוֹסֵף אֶת־כָּל־הַכֶּסֶף הַנִּמְצָא בְאֶרֶץ־מִצְרַיִם',
+            '"And Joseph collected all the silver [8] ____ in the land of Egypt."'))
+        self.add_verb_table([VerbEntry('8','הַנִּמְצָא','Participle','ms','מָצָא','Passive — that was found')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('47:31',
+            'הִשָּׁבְעָה לִי וַיִּשָּׁבַע לוֹ',
+            '"[9] ____ to me." And he [10] ____ to him."'))
+        self.add_verb_table([
+            VerbEntry('9', 'הִשָּׁבְעָה','Imperative','2ms','שָׁבַע','Reflexive — swear! (bind yourself by oath)'),
+            VerbEntry('10','וַיִּשָּׁבַע','Wayyiqtol', '3ms','שָׁבַע','Reflexive — he swore (bound himself by oath)'),
+        ], show_answers=show_answers)
+
+        self.add_section_break()
+
+        # ── Passage E ─────────────────────────────────────────────────────────
+        self.add_section_heading('Passage E — Genesis 49:1, 29, 33')
+
+        self.add_passage(PassageBlock('49:1',
+            'הֵאָסְפוּ וְאַגִּידָה לָכֶם',
+            '"[11] ____ and I will tell you."'))
+        self.add_verb_table([VerbEntry('11','הֵאָסְפוּ','Imperative','2mp','אָסַף','Passive — gather yourselves!')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('49:29',
+            'אֲנִי נֶאֱסָף אֶל־עַמִּי',
+            '"I am [12] ____ to my people."'))
+        self.add_verb_table([VerbEntry('12','נֶאֱסָף','Participle','ms','אָסַף','Passive — am about to be gathered (die)')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('49:33',
+            'וַיֵּאָסֶף אֶל־עַמָּיו',
+            '"and he was [13] ____ to his people."'))
+        self.add_verb_table([VerbEntry('13','וַיֵּאָסֶף','Wayyiqtol','3ms','אָסַף','Passive — was gathered (died)')], show_answers=show_answers)
+
+        self.add_section_break()
+
+        # ── Bonus ─────────────────────────────────────────────────────────────
+        self.add_section_heading('Bonus — Exodus 19:12')
+
+        self.add_passage(PassageBlock('19:12',
+            'וְהִשָּׁמַרְתֶּם … הִשָּׁמְרוּ לָכֶם',
+            '"And you shall [B1] ____ … [B2] ____ for yourselves."'))
+        self.add_verb_table([
+            VerbEntry('B1','וְהִשָּׁמַרְתֶּם','Weqatal',   '2mp','שָׁמַר','Reflexive — take heed for yourselves'),
+            VerbEntry('B2','הִשָּׁמְרוּ',      'Imperative','2mp','שָׁמַר','Reflexive — take heed! (guard yourselves)'),
+        ], show_answers=show_answers)
+
+        self.add_section_break()
+
+        self.add_note(
+            'Items 12–13 (נֶאֱסָף / וַיֵּאָסֶף) are both from אָסַף — the euphemism "gathered to '
+            'one\'s people" means death. Items 9–10 both parse as Reflexive from שָׁבַע — '
+            'notice Imperative followed by Wayyiqtol in the same verse (Gen 47:31).'
+        )
+        self.add_score(
+            'Score: 13 main + 2 bonus = 15 total.  '
+            '13–15 = excellent  |  9–12 = review the paradigm  |  below 9 = revisit §24.3–24.13'
+        )
+
+        self.add_section_heading('Conjugation Coverage')
+        self.add_coverage_table([
+            ('Wayyiqtol (5)',  '#2, #4, #5, #10, #13'),
+            ('Participle (3)', '#6, #8, #12'),
+            ('Imperfect (1)',  '#3'),
+            ('Perfect (2)',    '#1, #7'),
+            ('Imperative (3)', '#9, #11, B2'),
+            ('Weqatal (1)',    'B1'),
+        ])
+
+        if not show_answers:
+            self.add_reflection([
+                'Several Niphal forms of אָסַף in this passage describe Jacob\'s death (Gen 49:29, 33). '
+                'What does the passive "to be gathered to one\'s people" suggest about ancient Israelite '
+                'views of death?',
+                'In Gen 47:31, both הִשָּׁ֣בְעָה (imperative) and וַיִּשָּׁבַע (wayyiqtol) appear together. '
+                'How does the narrative sequence reinforce the solemnity of Jacob\'s deathbed request?',
+                'Compare נִצָּבָה in Gen 37:7 (Reflexive — sheaf stands itself upright) with הַנִּצָּבִים '
+                'in Gen 45:1 (Reflexive participle — servants stationed before Joseph). Is the reflexive '
+                'force the same in both? What does each communicate about agency?',
+            ])
+
+    def _build(self):
+        self.add_instructions(
+            'Every highlighted verb is a Niphal form. For each one: '
+            '(1) parse conjugation, PGN, and root; '
+            '(2) state the semantic function (Passive / Reflexive / Simple Action). '
+            'Answer key begins on the page marked "Answer Key".'
+        )
+        self._render_passages(show_answers=False)
+
+        self._new_page()
+        c = self._canvas
+        c.setFont('Helvetica-Bold', 14)
+        c.setFillColor(C_HEADING)
+        c.drawString(self.MARGIN_L, self._y, 'Answer Key')
+        self._y -= 0.22 * inch
+        c.setFont('Helvetica-Oblique', 9)
+        c.setFillColor(HexColor('#666666'))
+        c.drawString(self.MARGIN_L, self._y,
+                     'Passages with correct answers shown in the green row below each verb.')
+        self._y -= 0.18 * inch
+        c.setStrokeColor(C_RULE)
+        c.setLineWidth(1)
+        c.line(self.MARGIN_L, self._y, self.PAGE_W - self.MARGIN_R, self._y)
+        self._y -= 0.15 * inch
+        self._render_passages(show_answers=True)
+
+
+def build_ch24_exercise(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'hebrew', 'bbh', 'ch24', 'exercises',
+                               'ch24-passage-exercise')
+    path = os.path.join(out_dir, 'ch24-passage-exercise.pdf')
+    ex = Ch24Exercise(
+        title='Chapter 24 — "Spot the Niphal" Passage Exercise',
+        subtitle='Genesis 37, 44, 45, 47, 49  ·  The Joseph Narrative',
+    )
+    return ex.save(path)
+
+
+# ---------------------------------------------------------------------------
+# Chapter 24 — Qal–Niphal Contrast Drill
+# ---------------------------------------------------------------------------
+class Ch24ContrastExercise(ExercisePDF):
+
+    _ENTRIES_A = [
+        ContrastEntry('1',  'מָכַר', 'to sell',            'וַיִּמָּכֵר',      'Wayyiqtol 3ms',  'Gen 37:36', 'he was sold into Egypt',         'Passive',       'The object of selling (Joseph) becomes the subject'),
+        ContrastEntry('2',  'מָצָא', 'to find',            'יִמָּצֵא',         'Imperfect 3ms',  'Gen 44:9',  'is found (with the cup)',         'Passive',       'The thing found becomes the subject; finder absent'),
+        ContrastEntry('3',  'שָׁמַע', 'to hear',           'נִשְׁמַע',         'Perfect 3ms',    'Gen 45:16', 'was heard (in Pharaoh\'s house)', 'Passive',       'The report receives the hearing — it becomes audible'),
+        ContrastEntry('4',  'אָסַף', 'to gather',          'וַיֵּאָסֶף',       'Wayyiqtol 3ms',  'Gen 49:33', 'was gathered to his people',      'Passive',       'Jacob receives the action of being gathered in (die)'),
+        ContrastEntry('5',  'כָּרַת', 'to cut off',        'וְנִכְרְתָה',      'Weqatal 3fs',    'Exo 12:15', 'will be cut off from Israel',     'Passive',       'The person receives covenant-exclusion penalty'),
+        ContrastEntry('6',  'נָתַן', 'to give',            'נִתְּנוּ',         'Perfect 3mp',    'Gen 9:2',   'they are given into your hand',   'Passive',       'Animals receive the action of being given/placed'),
+        ContrastEntry('7',  'אָכַל', 'to eat',             'יֵאָכֵל',          'Imperfect 3ms',  'Exo 12:46', 'it shall be eaten',               'Passive',       'Passover lamb receives the action of eating'),
+        ContrastEntry('8',  'שָׁמַר', 'to keep / guard',  'הִשָּׁמְרוּ',      'Imperative 2mp', 'Exo 19:12', 'take heed for yourselves!',       'Reflexive',     'Guard yourself — subject directs action back on itself'),
+    ]
+    _ENTRIES_B = [
+        ContrastEntry('9',  'נָצַב', 'to be stationed',    'נִצָּבָה',         'Perfect 3fs',    'Gen 37:7',  'it stood upright',                'Reflexive',     'The sheaf stations itself in the standing position'),
+        ContrastEntry('10', 'יָתַר', 'to remain',          'וַיִּוָּתֵר',      'Wayyiqtol 3ms',  'Gen 44:20', 'he alone was left',               'Passive/Middle','State of being-left fell upon him; middle nuance'),
+        ContrastEntry('11', 'שָׁאַר', 'to remain',         'נִשְׁאַר',         'Perfect 3ms',    'Exo 14:28', 'not one of them remained',        'Middle',        'Soldiers were in the state of having been left'),
+    ]
+    _ENTRIES_C = [
+        ContrastEntry('12', 'לָחַם', 'no standard Qal',    'הִלָּחֵם',         'Imperative 2ms', 'Exo 17:9',  'fight against Amalek!',           'Simple action', 'Niphal is the base form; no causative layer'),
+        ContrastEntry('13', 'נָחַם', 'no standard Qal',    'וַיִּנָּחֶם',      'Wayyiqtol 3ms',  'Gen 6:6',   'the LORD regretted / relented',   'Simple action', 'Niphal is the base form; to regret/relent/be comforted'),
+        ContrastEntry('14', 'שָׁבַע', 'to seven/complete', 'הִשָּׁבְעָה',      'Imperative 2ms', 'Gen 47:31', 'swear to me!',                    'Reflexive',     'Bind yourself by oath; reflexive oath-taking'),
+    ]
+
+    def _build(self):
+        self.add_instructions(
+            'For each item: (1) write an English translation of the Niphal form in the Translation '
+            'column; (2) write the semantic function (Passive / Reflexive / Simple Action) in the '
+            'Function column. Answer key is on the last page.'
+        )
+
+        self.add_section_heading('Part A — Transitive Roots (Qal acts on an object)')
+        self.add_note('These roots take a direct object in the Qal. The Niphal turns the object into the subject — the classic passive pattern.')
+        self.add_contrast_table(self._ENTRIES_A, show_answers=False)
+
+        self.add_section_heading('Part B — Stative / Intransitive Roots')
+        self.add_note('These roots describe states. Their Niphal expresses the subject coming into or remaining in a state.')
+        self.add_contrast_table(self._ENTRIES_B, show_answers=False)
+
+        self.add_section_heading('Part C — Roots with No Standard Qal')
+        self.add_note('These roots occur almost exclusively in the Niphal. The Niphal form is the standard lexical entry.')
+        self.add_contrast_table(self._ENTRIES_C, show_answers=False)
+
+        self.add_reflection([
+            'For the transitive roots in Part A, describe the pattern in one sentence: what does the '
+            'Niphal consistently do to the Qal meaning?',
+            'Items 9–11 all involve verbs of position or remaining (נָצַב, יָתַר, שָׁאַר). How does '
+            '"reflexive" vs. "middle" vs. "passive" help explain the subtle difference in agency?',
+            'לָחַם (item 12) and נָחַם (item 13) are both "lexical Niphal" roots. How does a student '
+            'recognize this? What should they look for in a dictionary entry?',
+        ])
+
+        self.add_answer_key_contrast(self._ENTRIES_A + self._ENTRIES_B + self._ENTRIES_C)
+
+
+def build_ch24_contrast_exercise(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'hebrew', 'bbh', 'ch24', 'exercises',
+                               'ch24-qal-niphal-contrast')
+    path = os.path.join(out_dir, 'ch24-qal-niphal-contrast.pdf')
+    ex = Ch24ContrastExercise(
+        title='Chapter 24 — Qal–Niphal Contrast Drill',
+        subtitle='BBH Chapter 24 · Niphal Strong Verbs',
+    )
+    return ex.save(path)
+
+
+# ---------------------------------------------------------------------------
+# Chapter 24 — Semantic Function Sorting
+# ---------------------------------------------------------------------------
+class Ch24FunctionSortExercise(ExercisePDF):
+
+    _ENTRIES = [
+        SortEntry('1',  'וַיִּמָּכֵר',      'Wayyiqtol 3ms',  'Gen 37:36', '"and Joseph was sold into Egypt"',              'P',  'מָכַר',  'Joseph receives the action of being sold'),
+        SortEntry('2',  'נִצָּבָה',         'Perfect 3fs',    'Gen 37:7',  '"my sheaf stood upright"',                      'R',  'נָצַב',  'Sheaf stations itself (acts on itself)'),
+        SortEntry('3',  'וַיִּנָּחֶם',      'Wayyiqtol 3ms',  'Gen 6:6',   '"the LORD regretted"',                          'SA', 'נָחַם',  'Niphal-only: no standard Qal; to regret/relent'),
+        SortEntry('4',  'יֵאָכֵל',          'Imperfect 3ms',  'Exo 12:46', '"it shall be eaten"',                           'P',  'אָכַל',  'Passover lamb receives the action of eating'),
+        SortEntry('5',  'הִשָּׁמְרוּ',      'Imperative 2mp', 'Exo 19:12', '"take heed for yourselves!"',                   'R',  'שָׁמַר', 'Guard yourself — subject directs action back on self'),
+        SortEntry('6',  'נִשְׁמַע',         'Perfect 3ms',    'Gen 45:16', '"the report was heard"',                        'P',  'שָׁמַע', 'Report receives the hearing — it becomes audible'),
+        SortEntry('7',  'הִשָּׁבְעָה',      'Imperative 2ms', 'Gen 47:31', '"swear to me!"',                                'R',  'שָׁבַע', 'Bind yourself by oath (reflexive oath-taking)'),
+        SortEntry('8',  'הַנִּמְצָא',       'Participle ms',  'Gen 47:14', '"the silver that was found"',                   'P',  'מָצָא',  'Silver was discovered (received the finding action)'),
+        SortEntry('9',  'וְנִכְרְתָה',      'Weqatal 3fs',    'Exo 12:15', '"that person will be cut off"',                 'P',  'כָּרַת', 'Person receives covenant-exclusion penalty'),
+        SortEntry('10', 'נִצָּבִים',        'Participle mp',  'Exo 5:20',  '"standing before Pharaoh"',                     'R',  'נָצַב',  'Overseers have stationed themselves before Pharaoh'),
+        SortEntry('11', 'אִוָּעֵד',         'Imperfect 1cs',  'Exo 29:42', '"I will meet with you there"',                  'RC', 'יָעַד',  'God and Israel meet one another at the tent'),
+        SortEntry('12', 'וַיִּשָּׁבַע',     'Wayyiqtol 3ms',  'Gen 47:31', '"and he swore to him"',                         'R',  'שָׁבַע', 'Jacob binds himself by oath at Joseph\'s request'),
+        SortEntry('13', 'וַיֵּאָסֶף',       'Wayyiqtol 3ms',  'Gen 49:33', '"and he was gathered to his people"',           'P',  'אָסַף',  'Jacob is gathered in (brought to ancestors — die)'),
+        SortEntry('14', 'יִלָּחֵם',         'Imperfect 3ms',  'Exo 14:14', '"the LORD will fight for you"',                 'SA', 'לָחַם',  'Niphal-only: to fight is the base meaning'),
+        SortEntry('15', 'נִשְׁבְּעוּ',      'Weqatal 3mp',    'Gen 21:31', '"both of them swore"',                          'R',  'שָׁבַע', 'Each binds himself individually — reflexive, not reciprocal'),
+        SortEntry('16', 'תִּכָּרֵת',        'Imperfect 3fs',  'Gen 41:36', '"the land will not be cut off"',                'P',  'כָּרַת', 'Land receives the action of being cut off (depleted)'),
+        SortEntry('17', 'נִלְחָם',          'Participle ms',  'Exo 14:25', '"the LORD is fighting for them"',               'SA', 'לָחַם',  'Niphal-only: the LORD fights (no Qal to contrast)'),
+        SortEntry('18', 'הֵאָסְפוּ',        'Imperative 2mp', 'Gen 49:1',  '"gather yourselves!"',                          'P',  'אָסַף',  'Passive imperative: be gathered (assemble)'),
+        SortEntry('19', 'וְנוֹעֲדוּ',       'Weqatal 3mp',    'Num 10:3',  '"all the congregation shall assemble"',         'RC', 'יָעַד',  'Congregation assembles mutually together'),
+        SortEntry('20', 'נִחַמְתִּי',       'Weqatal 1cs',    'Gen 6:7',   '"I regret that I made them"',                   'SA', 'נָחַם',  'Niphal-only: I regret is the base meaning'),
+        SortEntry('21', 'נְמַלְתֶּם',       'Weqatal 2mp',    'Gen 17:11', '"you shall be circumcised"',                    'P',  'מוּל',   'Males receive the action of circumcision'),
+        SortEntry('22', 'נִצַּבְתָּ',       'Perfect 2ms',    'Exo 7:15',  '"station yourself to meet him"',                'R',  'נָצַב',  'Moses positions himself at the Nile'),
+        SortEntry('23', 'לְהִלָּחֵם',       'Inf. Construct', 'Exo 17:10', '"to fight against Amalek"',                     'SA', 'לָחַם',  'Niphal-only: to fight — the inf. construct form'),
+        SortEntry('24', 'יִמָּצֵא',         'Imperfect 3ms',  'Gen 44:9',  '"whoever is found [with the cup]"',             'P',  'מָצָא',  'Person discovered with cup — receives the finding'),
+        SortEntry('25', 'הִמָּצֵא יִמָּצֵא','Inf. Abs. + Impl','Exo 22:3', '"if it is actually found in his possession"',  'P',  'מָצָא',  'Emphatic passive; doubling stresses the discovery'),
+    ]
+
+    def _build(self):
+        self.add_instructions(
+            'Classify each Niphal verb as P (Passive), R (Reflexive), RC (Reciprocal), '
+            'or SA (Simple Action). Write your answer in the Function column. '
+            'Answer key is on the last page.'
+        )
+
+        self.add_note(
+            'P = Passive (subject receives the action)  |  '
+            'R = Reflexive (subject acts on/for itself)  |  '
+            'RC = Reciprocal (subjects act on one another)  |  '
+            'SA = Simple Action (Niphal-only root; no distinct Qal meaning)'
+        )
+
+        self.add_sort_table(self._ENTRIES, show_answers=False)
+
+        self.add_reflection([
+            'Items 3, 14, 17, 20, and 23 are all Simple Action (לָחַם and נָחַם). What is the practical '
+            'difference between a Niphal-only root and a root that simply lacks a Qal in the OT corpus?',
+            'Compare items 7 and 12 (both שָׁבַע). The imperative and wayyiqtol appear in the same verse '
+            '(Gen 47:31). How does the sequential narrative create a scene of formal oath-taking?',
+            'Item 18 (הֵאָסְפוּ) is Passive, yet it is an imperative. Explain how a Niphal imperative '
+            'can be both a command and passive in force.',
+        ])
+
+        self.add_answer_key_sort(self._ENTRIES)
+
+
+def build_ch24_function_sort_exercise(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'hebrew', 'bbh', 'ch24', 'exercises',
+                               'ch24-function-sort')
+    path = os.path.join(out_dir, 'ch24-function-sort.pdf')
+    ex = Ch24FunctionSortExercise(
+        title='Chapter 24 — Semantic Function Sorting',
+        subtitle='BBH Chapter 24 · Niphal Strong Verbs',
+    )
+    return ex.save(path)
+
+
 if __name__ == '__main__':
-    p0 = build_ch25_exercise()
+    p0 = build_ch24_exercise()
     print(f'Saved: {p0}')
-    p1 = build_ch26_exercise()
+    p1 = build_ch24_contrast_exercise()
     print(f'Saved: {p1}')
-    p2 = build_ch26_contrast_exercise()
+    p2 = build_ch24_function_sort_exercise()
     print(f'Saved: {p2}')
-    p3 = build_ch26_function_sort_exercise()
+    p3 = build_ch25_exercise()
     print(f'Saved: {p3}')
+    p4 = build_ch26_exercise()
+    print(f'Saved: {p4}')
+    p5 = build_ch26_contrast_exercise()
+    print(f'Saved: {p5}')
+    p6 = build_ch26_function_sort_exercise()
+    print(f'Saved: {p6}')

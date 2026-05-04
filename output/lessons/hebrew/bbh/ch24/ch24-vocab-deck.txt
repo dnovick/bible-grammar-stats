@@ -1,0 +1,18 @@
+#separator:tab
+#html:false
+#tags column:4
+אָסַף	verb — to gather, collect; be gathered, die — Stems: Q / Ni / Pi — Freq: 200	bbh-ch24-vocab bbh-ch24-verb
+כָּרַת	verb — to cut off, cut down; make a covenant — Stems: Q / Ni / Hi — Freq: 289	bbh-ch24-vocab bbh-ch24-verb
+לָחַם	verb — to fight, do battle — Stems: Ni only — Freq: 171	bbh-ch24-vocab bbh-ch24-verb
+מָכַר	verb — to sell; be sold — Stems: Q / Ni — Freq: 80	bbh-ch24-vocab bbh-ch24-verb
+מָצָא	verb — to find; be found — Stems: Q / Ni — Freq: 457	bbh-ch24-vocab bbh-ch24-verb
+נָצַב	verb — to stand, take one's stand; be stationed — Stems: Ni / Hi — Freq: 74	bbh-ch24-vocab bbh-ch24-verb
+שָׁמַר	verb — to keep, watch, guard; take heed — Stems: Q / Ni / Pi — Freq: 469	bbh-ch24-vocab bbh-ch24-verb
+שָׁבַע	verb — to swear an oath; bind oneself — Stems: Ni / Hi — Freq: 186	bbh-ch24-vocab bbh-ch24-verb
+אֹהֶל	noun (ms) — tent — Freq: 348	bbh-ch24-vocab bbh-ch24-noun
+אֲרוֹן	noun (ms) — ark, chest — Freq: 202	bbh-ch24-vocab bbh-ch24-noun
+בְּרִית	noun (fs) — covenant — Freq: 287	bbh-ch24-vocab bbh-ch24-noun
+זֶ֫רַע	noun (ms) — seed, offspring, descendants — Freq: 229	bbh-ch24-vocab bbh-ch24-noun
+מִשְׁכָּן	noun (ms) — tabernacle, dwelling place — Freq: 139	bbh-ch24-vocab bbh-ch24-noun
+עֵדָה	noun (fs) — congregation, assembly — Freq: 149	bbh-ch24-vocab bbh-ch24-noun
+קָהָל	noun (ms) — assembly, congregation — Freq: 123	bbh-ch24-vocab bbh-ch24-noun
