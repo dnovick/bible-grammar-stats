@@ -14,7 +14,7 @@
 
 | File | Description |
 |---|---|
-| [niphal-paradigms.md](niphal-paradigms.md) | Full conjugation paradigms (Perfect through Participle) with PGN tables, Qal comparison column, and key-marker notes |
+| [niphal-paradigms.md](niphal-paradigms.md) | Full conjugation paradigms (Perfect through Participle) with PGN tables and key-marker notes |
 
 ---
 
