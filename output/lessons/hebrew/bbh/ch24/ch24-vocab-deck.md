@@ -1,6 +1,6 @@
 # Chapter 24 — Vocabulary Flashcard Deck
 
-*15 words from BBH Chapter 24. Frequency counts are OT-wide occurrences.*
+*14 words from BBH Chapter 24. Frequency counts are OT-wide occurrences.*
 *Import `ch24-vocab-deck.txt` directly into Anki (File → Import).*
 
 ---
@@ -17,21 +17,20 @@
 
 | # | Front — Hebrew Form | POS | Gloss | Freq |
 |---|---|---|---|---|
-| 1 | אָסַף | verb | (Q) to gather, collect; (Ni) be gathered, die; (Pi) gather up | 200 |
-| 2 | כָּרַת | verb | (Q) to cut off, cut down; make a covenant; (Ni) be cut off; (Hi) cut down | 289 |
-| 3 | לָחַם | verb | (Ni) to fight, do battle [Niphal-only root] | 171 |
-| 4 | מָכַר | verb | (Q) to sell; (Ni) be sold | 80 |
-| 5 | מָצָא | verb | (Q) to find; (Ni) be found | 457 |
-| 6 | נָצַב | verb | (Ni) to stand, take one's stand, be stationed; (Hi) set up, station | 74 |
-| 7 | שָׁמַר | verb | (Q) to keep, watch, guard; (Ni) take heed, be on guard; (Pi) keep carefully | 469 |
-| 8 | שָׁבַע | verb | (Ni) to swear an oath, bind oneself; (Hi) cause to swear, adjure | 186 |
-| 9 | אֹהֶל | noun (ms) | tent | 348 |
-| 10 | אֲרוֹן | noun (ms) | ark, chest | 202 |
-| 11 | בְּרִית | noun (fs) | covenant | 287 |
-| 12 | זֶ֫רַע | noun (ms) | seed, offspring, descendants | 229 |
-| 13 | מִשְׁכָּן | noun (ms) | tabernacle, dwelling place | 139 |
-| 14 | עֵדָה | noun (fs) | congregation, assembly | 149 |
-| 15 | קָהָל | noun (ms) | assembly, congregation | 123 |
+| 1 | אָמַן | verb | (Ni) to be reliable, faithful or trustworthy; (Hi) believe (in), trust, have trust in, put trust in | 97 |
+| 2 | יָשַׁע | verb | (Ni) to be delivered, victorious, receive help; (Hi) help, save, deliver, rescue, come to the aid of | 205 |
+| 3 | יָתַר | verb | (Ni) to be left over, remain; (Hi) have (something) left over or remaining | 106 |
+| 4 | כּוּן | verb | (Ni) to be established, steadfast, ready, arranged, stand firm; (Hi) establish, set up, prepare, make ready, make firm | 219 |
+| 5 | לָחַם | verb | (Q, Ni) to fight, do battle with (rare in Q) | 171 |
+| 6 | מָלַט | verb | (Ni) to escape, flee to safety, slip away; (Pi) let someone escape, save someone, leave undisturbed | 94 |
+| 7 | נָחַם | verb | (Ni) to be sorry, regret, have compassion (on or for); (Pi) comfort, console | 108 |
+| 8 | נָכָה | verb | (Hi) to strike, smite, beat, strike dead, destroy; (Hoph) be struck down dead, beaten | 501 |
+| 9 | נָצַב | verb | (Ni) to stand (firm), take one's stand, station oneself, be positioned; (Hi) station, set (up), place, establish | 74 |
+| 10 | נָצַל | verb | (Ni) to be rescued, delivered, saved; (Hi) tear from, take away, deliver from | 213 |
+| 11 | סָתַר | verb | (Ni) to be hidden, hide oneself; (Hi) hide | 82 |
+| 12 | רוּץ | verb | (Q) to run | 104 |
+| 13 | שָׁחַת | verb | (Pi, Hi) to ruin, destroy, spoil, annihilate | 152 |
+| 14 | שָׁמַד | verb | (Ni) to be exterminated, destroyed or annihilated; (Hi) exterminate, annihilate, destroy | 90 |
 
 ---
 
@@ -40,5 +39,4 @@
 | Tag | Cards |
 |---|---|
 | `bbh-ch24-vocab` | all |
-| `bbh-ch24-verb` | 1–8 |
-| `bbh-ch24-noun` | 9–15 |
+| `bbh-ch24-verb` | 1–14 |

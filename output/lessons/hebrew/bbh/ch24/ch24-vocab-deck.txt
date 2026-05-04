@@ -3,18 +3,17 @@
 #notetype:Basic
 #deck:BBH Chapter 24 — Vocabulary
 #tags column:3
-אָסַף	verb — (Q) to gather, collect; (Ni) be gathered, die; (Pi) gather up — 200×	bbh-ch24-vocab bbh-ch24-verb
-כָּרַת	verb — (Q) to cut off, cut down; make a covenant; (Ni) be cut off; (Hi) cut down — 289×	bbh-ch24-vocab bbh-ch24-verb
-לָחַם	verb — (Ni) to fight, do battle [Niphal-only root] — 171×	bbh-ch24-vocab bbh-ch24-verb
-מָכַר	verb — (Q) to sell; (Ni) be sold — 80×	bbh-ch24-vocab bbh-ch24-verb
-מָצָא	verb — (Q) to find; (Ni) be found — 457×	bbh-ch24-vocab bbh-ch24-verb
-נָצַב	verb — (Ni) to stand, take one's stand, be stationed; (Hi) set up, station — 74×	bbh-ch24-vocab bbh-ch24-verb
-שָׁמַר	verb — (Q) to keep, watch, guard; (Ni) take heed, be on guard; (Pi) keep carefully — 469×	bbh-ch24-vocab bbh-ch24-verb
-שָׁבַע	verb — (Ni) to swear an oath, bind oneself; (Hi) cause to swear, adjure — 186×	bbh-ch24-vocab bbh-ch24-verb
-אֹהֶל	noun (ms) — tent — 348×	bbh-ch24-vocab bbh-ch24-noun
-אֲרוֹן	noun (ms) — ark, chest — 202×	bbh-ch24-vocab bbh-ch24-noun
-בְּרִית	noun (fs) — covenant — 287×	bbh-ch24-vocab bbh-ch24-noun
-זֶ֫רַע	noun (ms) — seed, offspring, descendants — 229×	bbh-ch24-vocab bbh-ch24-noun
-מִשְׁכָּן	noun (ms) — tabernacle, dwelling place — 139×	bbh-ch24-vocab bbh-ch24-noun
-עֵדָה	noun (fs) — congregation, assembly — 149×	bbh-ch24-vocab bbh-ch24-noun
-קָהָל	noun (ms) — assembly, congregation — 123×	bbh-ch24-vocab bbh-ch24-noun
+אָמַן	verb — (Ni) to be reliable, faithful or trustworthy; (Hi) believe (in), trust, have trust in, put trust in — 97×	bbh-ch24-vocab bbh-ch24-verb
+יָשַׁע	verb — (Ni) to be delivered, victorious, receive help; (Hi) help, save, deliver, rescue, come to the aid of — 205×	bbh-ch24-vocab bbh-ch24-verb
+יָתַר	verb — (Ni) to be left over, remain; (Hi) have (something) left over or remaining — 106×	bbh-ch24-vocab bbh-ch24-verb
+כּוּן	verb — (Ni) to be established, steadfast, ready, arranged, stand firm; (Hi) establish, set up, prepare, make ready, make firm — 219×	bbh-ch24-vocab bbh-ch24-verb
+לָחַם	verb — (Q, Ni) to fight, do battle with (rare in Q) — 171×	bbh-ch24-vocab bbh-ch24-verb
+מָלַט	verb — (Ni) to escape, flee to safety, slip away; (Pi) let someone escape, save someone, leave undisturbed — 94×	bbh-ch24-vocab bbh-ch24-verb
+נָחַם	verb — (Ni) to be sorry, regret, have compassion (on or for); (Pi) comfort, console — 108×	bbh-ch24-vocab bbh-ch24-verb
+נָכָה	verb — (Hi) to strike, smite, beat, strike dead, destroy; (Hoph) be struck down dead, beaten — 501×	bbh-ch24-vocab bbh-ch24-verb
+נָצַב	verb — (Ni) to stand (firm), take one's stand, station oneself, be positioned; (Hi) station, set (up), place, establish — 74×	bbh-ch24-vocab bbh-ch24-verb
+נָצַל	verb — (Ni) to be rescued, delivered, saved; (Hi) tear from, take away, deliver from — 213×	bbh-ch24-vocab bbh-ch24-verb
+סָתַר	verb — (Ni) to be hidden, hide oneself; (Hi) hide — 82×	bbh-ch24-vocab bbh-ch24-verb
+רוּץ	verb — (Q) to run — 104×	bbh-ch24-vocab bbh-ch24-verb
+שָׁחַת	verb — (Pi, Hi) to ruin, destroy, spoil, annihilate — 152×	bbh-ch24-vocab bbh-ch24-verb
+שָׁמַד	verb — (Ni) to be exterminated, destroyed or annihilated; (Hi) exterminate, annihilate, destroy — 90×	bbh-ch24-vocab bbh-ch24-verb
