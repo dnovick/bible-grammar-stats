@@ -6,7 +6,7 @@
 
 ## Description
 
-A 15-verb parsing exercise drawn from Genesis 3, 6, and 21. Students read each highlighted Niphal form with its passage context, then identify whether it is Niphal (Y/N), parse conjugation, PGN, and root, and classify the semantic function (Passive / Reflexive / Middle / Simple Action). Genesis 3 has reflexive and middle uses; Genesis 6 has Niphal-only forms plus passive; Genesis 21 has reflexive oath-swearing and passive birth notices. Two bonus verbs from Gen 21:3 and 21:8 are included.
+A 15-verb parsing exercise drawn from Genesis 3, 6, and 21. Students read each highlighted Niphal form with its passage context, then parse conjugation, PGN, root, weak class (III-א / III-ה / I-guttural / I-נ / I-י / strong), and semantic function (Passive / Reflexive / Middle / Simple Action). Genesis 3 has reflexive and middle uses (III-ה and I-guttural roots); Genesis 6 has Niphal-only forms and passive (I-guttural); Genesis 21 has reflexive oath-swearing (I-י) and passive birth notices. Two bonus verbs from Gen 21:3 and 21:8 are included.
 
 ### Conjugation coverage
 

@@ -1,33 +1,30 @@
 #separator:tab
 #html:false
 #notetype:Basic
-#deck:BBH Chapter 25 — Niphal
+#deck:BBH Chapter 25 — Niphal Weak
 #tags column:3
-נִרְאֲתָה (Gen 9:14)	Root: רָאָה | Perfect 3fs | it appeared / was seen | Middle/Tolerative	niphal-perfect niphal-middle bbh-ch25
-וַיֵּרָא (Gen 12:7)	Root: רָאָה | Wayyiqtol 3ms | he appeared | Middle/Tolerative	niphal-wayyiqtol niphal-middle bbh-ch25
-תֵרָאֶה (Gen 1:9)	Root: רָאָה | Imperfect 3fs | let it appear | Middle/Tolerative	niphal-imperfect niphal-middle bbh-ch25
-וְנִרְאוּ (Gen 8:5)	Root: רָאָה | Weqatal 3mp | they were seen | Middle/Tolerative	niphal-weqatal niphal-middle bbh-ch25
-הֵרָאֵה (1 Kgs 18:1)	Root: רָאָה | Imperative 2ms | present yourself! | Middle/Tolerative	niphal-imperative niphal-middle bbh-ch25
-לְהֵרָאוֹת (Exo 34:24)	Root: רָאָה | Inf. Construct | to appear / present oneself | Middle/Tolerative	niphal-inf-construct niphal-middle bbh-ch25
-נִרְאֶה (Gen 12:7)	Root: רָאָה | Participle ms | the one who appeared | Middle/Tolerative	niphal-participle niphal-middle bbh-ch25
-נִשְׁבַּע (Lev 5:22)	Root: שָׁבַע | Perfect 3ms | he swore an oath | Reflexive	niphal-perfect niphal-reflexive bbh-ch25
-וַיִּשָּׁבַע (Gen 24:9)	Root: שָׁבַע | Wayyiqtol 3ms | he swore an oath | Reflexive	niphal-wayyiqtol niphal-reflexive bbh-ch25
-אִשָּׁבֵעַ (Gen 21:24)	Root: שָׁבַע | Imperfect 1cs | I will swear | Reflexive	niphal-imperfect niphal-reflexive bbh-ch25
-וְנִשְׁבְּעוּ (Gen 21:31)	Root: שָׁבַע | Weqatal 3mp | they swore an oath | Reflexive	niphal-weqatal niphal-reflexive bbh-ch25
-הִשָּׁבְעָה (Gen 21:23)	Root: שָׁבַע | Imperative 2ms | swear! | Reflexive	niphal-imperative niphal-reflexive bbh-ch25
-הִשָּׁבֵעַ (Jer 12:16)	Root: שָׁבַע | Inf. Construct | to swear an oath | Reflexive	niphal-inf-construct niphal-reflexive bbh-ch25
-הִשָּׁבַע (Num 30:3)	Root: שָׁבַע | Inf. Absolute | certainly swear (emphatic) | Reflexive	niphal-inf-absolute niphal-reflexive bbh-ch25
-נִשְׁבָּע (Psa 63:12)	Root: שָׁבַע | Participle ms | one who swears | Reflexive	niphal-participle niphal-reflexive bbh-ch25
-נִלְחַם (Exo 1:10)	Root: לָחַם | Perfect 3ms | it will fight | Simple (Niphal-only)	niphal-perfect niphal-simple bbh-ch25
-וַיִּלָּחֶם (Exo 17:8)	Root: לָחַם | Wayyiqtol 3ms | it joined battle | Simple (Niphal-only)	niphal-wayyiqtol niphal-simple bbh-ch25
-יִלָּחֵם (Exo 14:14)	Root: לָחַם | Imperfect 3ms | he will fight | Simple (Niphal-only)	niphal-imperfect niphal-simple bbh-ch25
-וְנִלְחַם (Num 21:26)	Root: לָחַם | Weqatal 3ms | he had waged war | Simple (Niphal-only)	niphal-weqatal niphal-simple bbh-ch25
-הִלָּחֵם (Exo 17:9)	Root: לָחַם | Imperative 2ms | fight! | Simple (Niphal-only)	niphal-imperative niphal-simple bbh-ch25
-לְהִלָּחֵם (Exo 17:10)	Root: לָחַם | Inf. Construct | to fight | Simple (Niphal-only)	niphal-inf-construct niphal-simple bbh-ch25
-נִלְחֹם (Jdg 11:25)	Root: לָחַם | Inf. Absolute | certainly wage war (emphatic) | Simple (Niphal-only)	niphal-inf-absolute niphal-simple bbh-ch25
-נִלְחָם (Exo 14:25)	Root: לָחַם | Participle ms | the one who is fighting | Simple (Niphal-only)	niphal-participle niphal-simple bbh-ch25
-נִכְרְתָה (Gen 17:14)	Root: כָּרַת | Perfect 3fs | it will be cut off | Passive	niphal-perfect niphal-passive bbh-ch25
-יִכָּרֵת (Gen 9:11)	Root: כָּרַת | Imperfect 3ms | it will be cut off | Passive	niphal-imperfect niphal-passive bbh-ch25
-וְנִכְרְתוּ (Lev 20:18)	Root: כָּרַת | Weqatal 3mp | they will be cut off | Passive	niphal-weqatal niphal-passive bbh-ch25
-הִכָּרֵת (Psa 37:34)	Root: כָּרַת | Inf. Construct | to be cut off | Passive	niphal-inf-construct niphal-passive bbh-ch25
-הִכָּרֵת (Num 15:31)	Root: כָּרַת | Inf. Absolute | certainly be cut off (emphatic) | Passive	niphal-inf-absolute niphal-passive bbh-ch25
+נִמְצָא (Gen 44:12)	Root: מָצָא | III-א | Perfect 3ms | it was found	niphal-perfect niphal-lamed-aleph bbh-ch25
+וַיִּמָּצֵא (Gen 44:12)	Root: מָצָא | III-א | Wayyiqtol 3ms | and it was found	niphal-wayyiqtol niphal-lamed-aleph bbh-ch25
+יִמָּצֵא (Gen 44:10)	Root: מָצָא | III-א | Imperfect 3ms | let it be found	niphal-imperfect niphal-lamed-aleph bbh-ch25
+הִמָּצֵא יִמָּצֵא (Exo 22:3)	Root: מָצָא | III-א | Inf. Abs. + Impf. | is actually found (emphatic)	niphal-inf-absolute niphal-lamed-aleph bbh-ch25
+הַנִּמְצָא (Gen 47:14)	Root: מָצָא | III-א | Participle ms | that which was found	niphal-participle niphal-lamed-aleph bbh-ch25
+נִגְלָה (Isa 40:5)	Root: גָּלָה | III-ה | Perfect 3ms | it was revealed	niphal-perfect niphal-lamed-he bbh-ch25
+וַיִּגָּל (Isa 53:1)	Root: גָּלָה | III-ה | Wayyiqtol 3ms | and it was revealed	niphal-wayyiqtol niphal-lamed-he bbh-ch25
+יִגָּלֶה (Isa 53:1)	Root: גָּלָה | III-ה | Imperfect 3ms | it will be revealed	niphal-imperfect niphal-lamed-he bbh-ch25
+וַיֵּרָא (Gen 12:7)	Root: רָאָה | III-ה | Wayyiqtol 3ms | and he appeared	niphal-wayyiqtol niphal-lamed-he bbh-ch25
+תֵרָאֶה (Gen 1:9)	Root: רָאָה | III-ה | Imperfect 3fs | let it appear	niphal-imperfect niphal-lamed-he bbh-ch25
+לְהֵרָאוֹת (Exo 34:24)	Root: רָאָה | III-ה | Inf. Construct | to appear	niphal-inf-construct niphal-lamed-he bbh-ch25
+נִרְאֶה (Gen 12:7)	Root: רָאָה | III-ה | Participle ms | the one who appeared	niphal-participle niphal-lamed-he bbh-ch25
+נֶאֱמַר (Exo 5:13)	Root: אָמַר | I-guttural | Perfect 3ms | it was said	niphal-perfect niphal-pe-guttural bbh-ch25
+וַיֵּאָמֵר (Gen 10:9)	Root: אָמַר | I-guttural | Wayyiqtol 3ms | and it was said	niphal-wayyiqtol niphal-pe-guttural bbh-ch25
+יֵאָמֵר (Num 21:14)	Root: אָמַר | I-guttural | Imperfect 3ms | it is said	niphal-imperfect niphal-pe-guttural bbh-ch25
+נֶאֱמָן (Deu 7:9)	Root: אָמַן | I-guttural | Participle ms | faithful, trustworthy	niphal-participle niphal-pe-guttural bbh-ch25
+נִגַּשׁ (Gen 44:18)	Root: נָגַשׁ | I-נ | Perfect 3ms | he drew near	niphal-perfect niphal-pe-nun bbh-ch25
+וַיִּגַּשׁ (Gen 44:18)	Root: נָגַשׁ | I-נ | Wayyiqtol 3ms | and he drew near	niphal-wayyiqtol niphal-pe-nun bbh-ch25
+נִצַּלְתֶּם (Exo 12:27)	Root: נָצַל | I-נ | Perfect 2mp | you were delivered	niphal-perfect niphal-pe-nun bbh-ch25
+הִנָּצֵל (Prov 6:3)	Root: נָצַל | I-נ | Imperative 2ms | deliver yourself!	niphal-imperative niphal-pe-nun bbh-ch25
+נוֹלַד (Gen 21:3)	Root: יָלַד | I-י | Perfect 3ms | he was born	niphal-perfect niphal-pe-yod bbh-ch25
+וַיִּוָּלֵד (Gen 4:18)	Root: יָלַד | I-י | Wayyiqtol 3ms | and he was born	niphal-wayyiqtol niphal-pe-yod bbh-ch25
+יִוָּלֵד (Gen 17:17)	Root: יָלַד | I-י | Imperfect 3ms | shall a child be born	niphal-imperfect niphal-pe-yod bbh-ch25
+בְּהִוָּלֶד (Gen 21:5)	Root: יָלַד | I-י | Inf. Construct | when he was born	niphal-inf-construct niphal-pe-yod bbh-ch25
+נוֹלָד (1 Kgs 13:2)	Root: יָלַד | I-י | Participle ms | one who will be born	niphal-participle niphal-pe-yod bbh-ch25
