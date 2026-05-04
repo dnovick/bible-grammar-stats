@@ -48,7 +48,7 @@ The Niphal expresses **passive, reflexive, or middle** action. Unlike the Hiphil
 | [Imperative 2ms](niphal-paradigms.md#imperative) | הִקָּטֵל | §24.8 | הִ prefix; dagesh in R1; *tsere* |
 | [Infinitive Construct](niphal-paradigms.md#infinitive-construct) | הִקָּטֵל | §24.10 | הִ prefix; identical to imperative |
 | [Infinitive Absolute](niphal-paradigms.md#infinitive-absolute) | נִקְטֹל | §24.12 | נִ prefix; *holem* |
-| [Participle ms](niphal-paradigms.md#participle-passive) | נִקְטָל | — | נִ prefix; *qamets* |
+| [Participle ms](niphal-paradigms.md#participle-passive) | נִקְטָל | §24.13 | נִ prefix; *qamets* |
 
 ### Real Forms from the Pentateuch — Root רָאָה ("appear / be seen")
 
