@@ -15,23 +15,23 @@
 
 ## Card List
 
-| # | Front — Hebrew Form | POS | Gloss | Stems | Freq |
-|---|---|---|---|---|---|
-| 1 | אָסַף | verb | to gather, collect; be gathered, die | Q / Ni / Pi | 200 |
-| 2 | כָּרַת | verb | to cut off, cut down; make a covenant | Q / Ni / Hi | 289 |
-| 3 | לָחַם | verb | to fight, do battle | Ni only | 171 |
-| 4 | מָכַר | verb | to sell; be sold | Q / Ni | 80 |
-| 5 | מָצָא | verb | to find; be found | Q / Ni | 457 |
-| 6 | נָצַב | verb | to stand, take one's stand; be stationed | Ni / Hi | 74 |
-| 7 | שָׁמַר | verb | to keep, watch, guard; take heed | Q / Ni / Pi | 469 |
-| 8 | שָׁבַע | verb | to swear an oath; bind oneself | Ni / Hi | 186 |
-| 9 | אֹהֶל | noun (ms) | tent | — | 348 |
-| 10 | אֲרוֹן | noun (ms) | ark, chest | — | 202 |
-| 11 | בְּרִית | noun (fs) | covenant | — | 287 |
-| 12 | זֶ֫רַע | noun (ms) | seed, offspring, descendants | — | 229 |
-| 13 | מִשְׁכָּן | noun (ms) | tabernacle, dwelling place | — | 139 |
-| 14 | עֵדָה | noun (fs) | congregation, assembly | — | 149 |
-| 15 | קָהָל | noun (ms) | assembly, congregation | — | 123 |
+| # | Front — Hebrew Form | POS | Gloss | Freq |
+|---|---|---|---|---|
+| 1 | אָסַף | verb | (Q) to gather, collect; (Ni) be gathered, die; (Pi) gather up | 200 |
+| 2 | כָּרַת | verb | (Q) to cut off, cut down; make a covenant; (Ni) be cut off; (Hi) cut down | 289 |
+| 3 | לָחַם | verb | (Ni) to fight, do battle [Niphal-only root] | 171 |
+| 4 | מָכַר | verb | (Q) to sell; (Ni) be sold | 80 |
+| 5 | מָצָא | verb | (Q) to find; (Ni) be found | 457 |
+| 6 | נָצַב | verb | (Ni) to stand, take one's stand, be stationed; (Hi) set up, station | 74 |
+| 7 | שָׁמַר | verb | (Q) to keep, watch, guard; (Ni) take heed, be on guard; (Pi) keep carefully | 469 |
+| 8 | שָׁבַע | verb | (Ni) to swear an oath, bind oneself; (Hi) cause to swear, adjure | 186 |
+| 9 | אֹהֶל | noun (ms) | tent | 348 |
+| 10 | אֲרוֹן | noun (ms) | ark, chest | 202 |
+| 11 | בְּרִית | noun (fs) | covenant | 287 |
+| 12 | זֶ֫רַע | noun (ms) | seed, offspring, descendants | 229 |
+| 13 | מִשְׁכָּן | noun (ms) | tabernacle, dwelling place | 139 |
+| 14 | עֵדָה | noun (fs) | congregation, assembly | 149 |
+| 15 | קָהָל | noun (ms) | assembly, congregation | 123 |
 
 ---
 
