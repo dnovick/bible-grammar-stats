@@ -15,9 +15,9 @@ The Niphal expresses **passive, reflexive, or middle** action. Unlike the Hiphil
 |---|---|---|
 | **Passive** | Subject receives the action of the Qal verb | נִמְכַּר "he was sold" ← מָכַר "to sell" |
 | **Reflexive** | Subject performs the action on or for itself | נִשְׁבַּע "he swore" ← שָׁבַע "to bind by oath" |
-| **Middle/Tolerative** | Subject allows or permits the action to happen | נִרְאָה "he appeared" ← רָאָה "to see" (lit. "he allowed himself to be seen") |
+| **Reciprocal** | Subjects act on one another | נִוָּעֲדוּ "they met together" ← יָעַד |
 | **Simple action** | Niphal is the standard lexical form; no Qal counterpart | נִלְחַם "he fought" |
-| **Reciprocal** *(not in BBH)* | Subjects act on one another | נִוָּעֲדוּ "they met together" ← יָעַד |
+| **Middle/Tolerative** *(not in BBH)* | Subject allows or permits the action to happen | נִרְאָה "he appeared" ← רָאָה "to see" (lit. "he allowed himself to be seen") |
 
 > **Key diagnostic:** Ask, "Is the subject *receiving* the action, *doing it to itself*, or *allowing it to happen to itself*?" The answer identifies the Niphal function type.
 
