@@ -1,6 +1,6 @@
 # Chapter 27 — Hiphil Weak Verbs Anki Flashcard Deck
 
-*35 cards covering all seven weak classes (I-guttural, III-ח/ע, III-א, III-ה, I-נ, I-י, Biconsonantal) across key conjugations.*
+*40 cards covering all eight weak classes (I-guttural, III-ח/ע, III-א, III-ה, I-נ, I-י, Biconsonantal, Geminate) across key conjugations.*
 *Import `ch27-morphology-deck.txt` directly into Anki (File → Import).*
 
 ---
@@ -54,6 +54,11 @@ Study tip: drill by weak class first — master the I-guttural cards before mixi
 | 33 | יָקִים | Deu 18:15 | קוּם | Biconsonantal | Imperfect | 3ms | he will raise up |
 | 34 | הָקֵם | Exo 40:2 | קוּם | Biconsonantal | Imperative | 2ms | set up |
 | 35 | מֵקִים | 1 Sam 2:8 | קוּם | Biconsonantal | Participle | ms | one who raises up |
+| 36 | הֵסֵב | 1 Kgs 21:4 | סָבַב | Geminate | Perfect | 3ms | he turned his face |
+| 37 | וַיָּסֶב | Josh 6:14 | סָבַב | Geminate | Wayyiqtol | 3ms | and they marched around |
+| 38 | יָסֵב | Isa 44:20 | סָבַב | Geminate | Imperfect | 3ms | it leads astray |
+| 39 | הָסֵב | 2 Sam 2:22 | סָבַב | Geminate | Imperative | 2ms | turn aside! |
+| 40 | מֵסֵב | (expected) | סָבַב | Geminate | Participle | ms | one who turns/surrounds |
 
 ---
 
@@ -68,11 +73,12 @@ Study tip: drill by weak class first — master the I-guttural cards before mixi
 | `hiphil-pe-nun` | 21–25 |
 | `hiphil-pe-yod` | 26–30 |
 | `hiphil-biconsonantal` | 31–35 |
-| `hiphil-perfect` | 1, 6, 11, 14†, 16, 21, 26, 29, 31 |
-| `hiphil-wayyiqtol` | 2, 7, 12, 14, 17, 22, 27, 29†, 32 |
-| `hiphil-imperfect` | 3, 8, 13, 18, 23, 28, 33 |
-| `hiphil-imperative` | 4, 9, 19, 24, 34 |
-| `hiphil-participle` | 5, 10, 15, 20, 25, 30, 35 |
+| `hiphil-geminate` | 36–40 |
+| `hiphil-perfect` | 1, 6, 11, 14†, 16, 21, 26, 29, 31, 36 |
+| `hiphil-wayyiqtol` | 2, 7, 12, 14, 17, 22, 27, 29†, 32, 37 |
+| `hiphil-imperfect` | 3, 8, 13, 18, 23, 28, 33, 38 |
+| `hiphil-imperative` | 4, 9, 19, 24, 34, 39 |
+| `hiphil-participle` | 5, 10, 15, 20, 25, 30, 35, 40 |
 | `bbh-ch27` | all |
 
 *(† card 14 וַיַּקְרֵא is wayyiqtol; card 29 הוֹרִיד is perfect — tags reflect actual conjugation)*
@@ -120,4 +126,9 @@ Front,Back,Tags
 "יָקִים (Deu 18:15)","Root: קוּם | Biconsonantal | Imperfect 3ms | he will raise up","hiphil-imperfect hiphil-biconsonantal bbh-ch27"
 "הָקֵם (Exo 40:2)","Root: קוּם | Biconsonantal | Imperative 2ms | set up","hiphil-imperative hiphil-biconsonantal bbh-ch27"
 "מֵקִים (1 Sam 2:8)","Root: קוּם | Biconsonantal | Participle ms | one who raises up","hiphil-participle hiphil-biconsonantal bbh-ch27"
+"הֵסֵב (1 Kgs 21:4)","Root: סָבַב | Geminate | Perfect 3ms | he turned his face","hiphil-perfect hiphil-geminate bbh-ch27"
+"וַיָּסֶב (Josh 6:14)","Root: סָבַב | Geminate | Wayyiqtol 3ms | and they marched around","hiphil-wayyiqtol hiphil-geminate bbh-ch27"
+"יָסֵב (Isa 44:20)","Root: סָבַב | Geminate | Imperfect 3ms | it leads astray","hiphil-imperfect hiphil-geminate bbh-ch27"
+"הָסֵב (2 Sam 2:22)","Root: סָבַב | Geminate | Imperative 2ms | turn aside!","hiphil-imperative hiphil-geminate bbh-ch27"
+"מֵסֵב (expected form)","Root: סָבַב | Geminate | Participle ms | one who turns/surrounds","hiphil-participle hiphil-geminate bbh-ch27"
 ```

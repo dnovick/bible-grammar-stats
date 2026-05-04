@@ -7,7 +7,7 @@
 
 ## Purpose
 
-This plan describes the complete file set for a chapter that extends a previously taught derived stem to its weak-root patterns. The strong forms (functions, diagnostic markers, full paradigm) were covered in the preceding chapter; this lesson focuses exclusively on seven weak classes and how they modify the strong paradigm:
+This plan describes the complete file set for a chapter that extends a previously taught derived stem to its weak-root patterns. The strong forms (functions, diagnostic markers, full paradigm) were covered in the preceding chapter; this lesson focuses exclusively on eight weak classes and how they modify the strong paradigm:
 
 | Class | Label | Representative roots |
 |---|---|---|
@@ -18,8 +18,9 @@ This plan describes the complete file set for a chapter that extends a previousl
 | I-נ (Pe-Nun) | `pe-nun` | נָפַל, נָגַשׁ |
 | I-י (Pe-Yod) | `pe-yod` | יָלַד, יָדַע |
 | Biconsonantal (II-י/ו) | `biconsonantal` | קוּם, שׁוּב |
+| Geminate (Ayin-Doubled, II=III) | `geminate` | סָבַב, תָּמַם |
 
-> **Not every textbook covers all seven classes in a single chapter.** BBH Ch25 (Niphal) covers 5 classes (omits III-ח/ע and Biconsonantal); BBH Ch27 (Hiphil) covers all 7. Use the class list appropriate to the actual textbook chapter, and note any omissions in the lesson file's scope callout.
+> **Not every textbook covers all eight classes in a single chapter.** BBH Ch25 (Niphal) covers all 8 classes; BBH Ch27 (Hiphil) covers all 8. Use the class list appropriate to the actual textbook chapter, and note any omissions in the lesson file's scope callout.
 
 > **Scope distinction:** This plan does NOT re-teach semantic functions, real-forms tables, lemma frequency, or conjugation distribution — those belong to the strong-verb plan. The weak lesson is narrower: phonological patterns, paradigm tables, recognition markers, and corpus examples.
 
@@ -38,6 +39,7 @@ output/lessons/<language>/<textbook>/ch<N>/
   <stem>-weak-pe-guttural-paradigms.md        # I-guttural paradigms (all 8 conjugations)
   <stem>-weak-pe-paradigms.md                 # I-נ and I-י paradigms combined (all 8 conjugations each)
   <stem>-weak-biconsonantal-paradigms.md      # Biconsonantal (II-י/ו) paradigms (all 8 conjugations)
+  <stem>-weak-geminate-paradigms.md           # Geminate (II=III) paradigms (all 8 conjugations)
   ch<N>-morphology-deck.md                    # Morphology flashcard deck (Markdown)
   ch<N>-morphology-deck.txt                   # Morphology flashcard deck (Anki import)
   ch<N>-vocab-deck.md                         # Vocabulary flashcard deck (Markdown)
@@ -80,10 +82,11 @@ Same four-section structure as the strong-verb plan, but the **Reference Files**
 | [<stem>-weak-pe-guttural-paradigms.md](...) | I-guttural weak paradigms with strong comparison |
 | [<stem>-weak-pe-paradigms.md](...) | I-נ and I-י weak paradigms with strong comparison |
 | [<stem>-weak-biconsonantal-paradigms.md](...) | Biconsonantal (II-י/ו) weak paradigms with strong comparison |
+| [<stem>-weak-geminate-paradigms.md](...) | Geminate (II=III) weak paradigms with Biconsonantal comparison |
 ```
 
 Include only the lines for classes actually covered in the chapter. The flashcard deck description should note the specific weak classes covered, e.g.:
-`Morphology deck — 35 cards across 7 weak classes (III-א, III-ה, III-ח/ע, I-gutt., I-נ, I-י, Biconsonantal)`
+`Morphology deck — 40 cards across 8 weak classes (III-א, III-ה, III-ח/ע, I-gutt., I-נ, I-י, Biconsonantal, Geminate)`
 
 ---
 
@@ -100,12 +103,12 @@ Include only the lines for classes actually covered in the chapter. The flashcar
 > modifies the strong pattern in a predictable, phonologically motivated way.
 ```
 
-### Section 1 — The [Five/Seven] Weak Classes: Overview Table
+### Section 1 — The [Five/Seven/Eight] Weak Classes: Overview Table
 
 A single orientation table before the per-class sections. Columns:
 **Class | Label | Representative roots | What changes | Affected conjugations**
 
-One row per weak class covered in the chapter. Recommended order: III-א, III-ה, III-ח/ע, I-guttural, I-נ, I-י, Biconsonantal. This gives the student a map before diving into the paradigm details.
+One row per weak class covered in the chapter. Recommended order: III-א, III-ה, III-ח/ע, I-guttural, I-נ, I-י, Biconsonantal, Geminate. This gives the student a map before diving into the paradigm details.
 
 Include a `> **Key principle:**` callout: all classes are predictable from phonological rules (quiescence, assimilation, compensatory lengthening, patach furtive, etc.); none requires memorizing a new stem.
 
@@ -130,6 +133,7 @@ For each class, in the order listed above:
 | I-נ | 6 | `<stem>-weak-pe-paradigms.md` (Part 1) |
 | I-י | 7 | `<stem>-weak-pe-paradigms.md` (Part 2) |
 | Biconsonantal | 8 | `<stem>-weak-biconsonantal-paradigms.md` |
+| Geminate | 9 | `<stem>-weak-geminate-paradigms.md` |
 
 Renumber as needed when classes are omitted.
 
@@ -145,7 +149,7 @@ Table linking to the morphology flashcard deck `.md` and both exercises. Update 
 
 ## Paradigm Files
 
-There are up to six paradigm files for a full 7-class weak lesson (plus the strong paradigm file inherited from the prior chapter). Each class except I-נ+I-י gets its own file.
+There are up to seven paradigm files for a full 8-class weak lesson (plus the strong paradigm file inherited from the prior chapter). Each class except I-נ+I-י gets its own file.
 
 ### Structure of each weak paradigm file
 
@@ -198,6 +202,15 @@ Table: `Conjugation | Strong (קטל) | <Class> form | Key feature`
 - In the Hiphil imperfect, the biconsonantal marker is *qamets* under the prefix consonant (יָ/תָּ instead of יַ/תַּ)
 - Perfect 3ms and participle ms of the Niphal biconsonantal are vocally identical (both נָ prefix) — context distinguishes them
 
+**Geminate (Ayin-Doubled, II=III):**
+- The defining characteristic is R2 = R3 (e.g., ס-ב-ב, ת-מ-מ). The doubled consonant is written with *dagesh forte* in R2/R3.
+- **Critical confusable pair — Biconsonantal:** Geminate and Biconsonantal forms are nearly or entirely identical in vocalization across all conjugations in both Niphal and Hiphil. The only reliable distinguisher is root knowledge: Biconsonantal roots contain a hollow vowel letter (ו/י) as the medial; Geminate roots have the same consonant as R2 and R3.
+- **Niphal Geminate:** Perfect 3ms נָסַב (*qamets* under נָ — same as Biconsonantal). Imperfect 3ms יִסֹּב (*dagesh forte* in R2=R3 + *holem*). Perfect 3ms = Participle ms (identical form, same ambiguity as Biconsonantal).
+- **Hiphil Geminate:** Perfect 3ms הֵסֵב (*tsere* under הֵ — same as Biconsonantal הֵקִים). Imperfect 3ms יָסֵב (*qamets* — same as Biconsonantal יָקִים). Imperative הָסֵב. Participle מֵסֵב.
+- The Geminate paradigm file should always include a side-by-side comparison table with the Biconsonantal class and a callout making the diagnostic challenge explicit.
+- Discussion questions in the weak-form-id exercise **must** include at least one question asking students to work through the Geminate/Biconsonantal ambiguity.
+- Representative roots: סָבַב (to go around; well-attested in Niphal and Hiphil) and תָּמַם (to be complete/finished; Niphal-only, good for Niphal chapters). For Hiphil chapters, שָׁלַל (to plunder) or הֵמַּם (from הָמַם) may supplement.
+
 ---
 
 ## Exercises
@@ -212,13 +225,13 @@ Same format as the strong-verb plan:
 - Exercise README: description, class-coverage table, conjugation-coverage table, files table
 
 ### Weak-Form Identification Drill (`ch<N>-weak-form-id`)
-- 35–47 pointed Hebrew forms, drawn from all covered weak classes
+- 40–52 pointed Hebrew forms, drawn from all covered weak classes
 - Organized in two parts:
-  - **Part A — By Class (5–7 groups of 5):** student sees forms from a single class and identifies conjugation + parses root. Five items per class is the target.
+  - **Part A — By Class (5–8 groups of 5):** student sees forms from a single class and identifies conjugation + parses root. Five items per class is the target.
   - **Part B — Mixed (10–12 items):** forms from any class, randomly ordered; student identifies class first, then parses. Tests discrimination between classes.
 - Answer key includes: weak class, conjugation, PGN, root, brief explanation of the diagnostic marker
-- 4–6 discussion questions at the end, each comparing two classes or forms that could be confused
-  - Required pairings to discuss: III-א perfect vs. participle (identical forms), I-נ vs. I-guttural in wayyiqtol, III-ה apocopation vs. I-נ short forms, Biconsonantal perfect vs. participle (also identical)
+- 5–7 discussion questions at the end, each comparing two classes or forms that could be confused
+  - Required pairings to discuss: III-א perfect vs. participle (identical forms), I-נ vs. I-guttural in wayyiqtol, III-ה apocopation vs. I-נ short forms, Biconsonantal perfect vs. participle (also identical), **Geminate vs. Biconsonantal (required when both classes are covered — vocalization alone cannot distinguish them)**
 - Exercise README: description, class-distribution table, files table
 
 > **Note:** The Qal–[Stem] Contrast Drill and Semantic Function Sorting exercises from the strong-verb plan are **omitted** for weak lessons. Functions were taught in the preceding chapter and do not change for weak roots.
@@ -228,7 +241,7 @@ Same format as the strong-verb plan:
 ## Flashcard Decks
 
 ### Morphology Deck
-- 5 cards per covered weak class × representative conjugations (target: 25–35 total)
+- 5 cards per covered weak class × representative conjugations (target: 25–40 total; 40 for a full 8-class lesson)
 - Choose 1–2 representative roots per class; prioritize conjugations where the weak class is most distinctive
 - **Front:** pointed Hebrew form + reference
 - **Back:** root + weak class + conjugation + PGN + gloss

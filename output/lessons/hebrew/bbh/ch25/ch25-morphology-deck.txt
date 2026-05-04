@@ -38,3 +38,8 @@
 יִכּוֹן (Psa 93:2)	Root: כּוּן | Biconsonantal | Imperfect 3ms | it is established	niphal-imperfect niphal-biconsonantal bbh-ch25
 נָשׁוּב (expected form)	Root: שׁוּב | Biconsonantal | Perfect 3ms | it was turned / restored	niphal-perfect niphal-biconsonantal bbh-ch25
 וַיִּקּוֹם (expected form)	Root: קוּם | Biconsonantal | Wayyiqtol 3ms | and it was established	niphal-wayyiqtol niphal-biconsonantal bbh-ch25
+נָסַב (Josh 15:3)	Root: סָבַב | Geminate | Perfect 3ms | it went around	niphal-perfect niphal-geminate bbh-ch25
+וַיִּסֹּב (1 Sam 7:16)	Root: סָבַב | Geminate | Wayyiqtol 3ms | and he went on circuit	niphal-wayyiqtol niphal-geminate bbh-ch25
+יִסֹּב (Josh 19:34)	Root: סָבַב | Geminate | Imperfect 3ms | it turns/goes around	niphal-imperfect niphal-geminate bbh-ch25
+הִסֹּב (2 Sam 18:30)	Root: סָבַב | Geminate | Imperative 2ms | turn aside!	niphal-imperative niphal-geminate bbh-ch25
+נָסַב (Psa 26:6)	Root: סָבַב | Geminate | Participle ms | going around (identical to perfect 3ms)	niphal-participle niphal-geminate bbh-ch25

@@ -38,3 +38,8 @@
 יָקִים (Deu 18:15)	Root: קוּם | Biconsonantal | Imperfect 3ms | he will raise up	hiphil-imperfect hiphil-biconsonantal bbh-ch27
 הָקֵם (Exo 40:2)	Root: קוּם | Biconsonantal | Imperative 2ms | set up	hiphil-imperative hiphil-biconsonantal bbh-ch27
 מֵקִים (1 Sam 2:8)	Root: קוּם | Biconsonantal | Participle ms | one who raises up	hiphil-participle hiphil-biconsonantal bbh-ch27
+הֵסֵב (1 Kgs 21:4)	Root: סָבַב | Geminate | Perfect 3ms | he turned his face	hiphil-perfect hiphil-geminate bbh-ch27
+וַיָּסֶב (Josh 6:14)	Root: סָבַב | Geminate | Wayyiqtol 3ms | and they marched around	hiphil-wayyiqtol hiphil-geminate bbh-ch27
+יָסֵב (Isa 44:20)	Root: סָבַב | Geminate | Imperfect 3ms | it leads astray	hiphil-imperfect hiphil-geminate bbh-ch27
+הָסֵב (2 Sam 2:22)	Root: סָבַב | Geminate | Imperative 2ms | turn aside!	hiphil-imperative hiphil-geminate bbh-ch27
+מֵסֵב (expected form)	Root: סָבַב | Geminate | Participle ms | one who turns/surrounds	hiphil-participle hiphil-geminate bbh-ch27

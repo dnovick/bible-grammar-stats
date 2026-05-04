@@ -9,7 +9,7 @@
 
 ---
 
-## 1. The Seven Weak Classes — Overview
+## 1. The Eight Weak Classes — Overview
 
 | Class | Label | Representative roots | What changes | Affected conjugations |
 |---|---|---|---|---|
@@ -20,6 +20,7 @@
 | I-נ (Pe-Nun) | `pe-nun` | נָגַשׁ, נָפַל | Root נ assimilates into R2 with dagesh forte | Imperfect, wayyiqtol, imperative, inf. construct |
 | I-י (Pe-Yod) | `pe-yod` | יָרַד, יָצָא | I-י/ו roots: הוֹרִיד sub-pattern; prefix vowel *tsere* | All conjugations |
 | Biconsonantal (II-י/ו) | `biconsonantal` | קוּם, שִׂים | Two-consonant root with medial vowel letter; prefix pattern הֵקִים / הֵשִׂים | All conjugations |
+| Geminate (II=III, Ayin-Doubled) | `geminate` | סָבַב, שָׁלַל | R2 = R3; forms nearly identical to Biconsonantal: הֵסֵב / יָסֵב / וַיָּסֶב | All conjugations |
 
 > **Key principle:** None of these classes requires learning a new stem. Every change follows from
 > a standard phonological rule — quiescence, compensatory lengthening, assimilation, or patach
@@ -293,7 +294,46 @@ The key to identifying this class: the expected *chiriq-yod* of the Hiphil is **
 
 ---
 
-## 9. High-Frequency Weak Hiphil Lemmas
+---
+
+## 9. Geminate (Ayin-Doubled, II=III) Verbs
+
+### Pattern
+
+Geminate roots (R2 = R3) in the Hiphil produce forms that are nearly **identical** to the Biconsonantal (Hollow) Hiphil. The הֵ prefix (*tsere*) in the perfect, *qamets* under the imperfect prefix, and מֵ prefix in the participle are all shared. The only reliable distinguisher is knowing the root: Biconsonantal roots contain a hollow vowel letter (ו/י) as the medial consonant, while Geminate roots have an identical repeated R2/R3 consonant.
+
+**Diagnostic markers:**
+- **Perfect 3ms:** הֵסֵב — *tsere* under הֵ; same as Biconsonantal הֵקִים. Root examination required.
+- **Imperfect 3ms:** יָסֵב — *qamets* under prefix consonant (יָ); same as Biconsonantal יָקִים
+- **Wayyiqtol 3ms:** וַיָּסֶב — *qamets* + contracted root + *seghol*; same as Biconsonantal וַיָּקֶם
+- **Imperative 2ms:** הָסֵב — *qamets* under הָ; same as Biconsonantal הָקֵם
+- **Participle ms:** מֵסֵב — *tsere* under מֵ; same as Biconsonantal מֵקִים
+
+### Paradigm Summary (3ms per conjugation)
+
+| Conjugation | Strong (קטל) | Geminate (סבב) | Biconsonantal (קום) — for comparison |
+|---|---|---|---|
+| Perfect | הִקְטִיל | הֵסֵב | הֵקִים |
+| Imperfect | יַקְטִיל | יָסֵב | יָקִים |
+| Wayyiqtol | וַיַּקְטֵל | וַיָּסֶב | וַיָּקֶם |
+| Weqatal | וְהִקְטִיל | וְהֵסֵב | וְהֵקִים |
+| Imperative | הַקְטֵל | הָסֵב | הָקֵם |
+| Inf. Construct | הַקְטִיל | הָסֵב | הָקִים |
+| Inf. Absolute | הַקְטֵל | הָסֵב † | הָקֵם |
+| Participle | מַקְטִיל | מֵסֵב | מֵקִים |
+
+→ Full PGN tables: [hiphil-weak-geminate-paradigms.md](hiphil-weak-geminate-paradigms.md)
+
+### Key Corpus Examples
+
+- הֵסֵב (1 Kgs 21:4) — "he turned his face toward the wall" — perfect 3ms Hiphil from סָבַב (causative: "turned"); הֵ prefix unmistakable
+- וַיָּסֶב (Josh 6:14) — "they marched around the city" — wayyiqtol 3ms; the Jericho narrative uses this root repeatedly
+- הָסֵב (2 Sam 2:22) — "turn aside from following me" — imperative 2ms; *qamets* under הָ; Abner commands Asahel
+- יָסֵב (Isa 44:20) — "a deluded heart has led him astray" — imperfect 3ms; *qamets* prefix; Hiphil of causation
+
+---
+
+## 10. High-Frequency Weak Hiphil Lemmas
 
 The following roots are among the most common weak-class Hiphil lemmas in the OT. Frequency counts represent Hiphil tokens only.
 
@@ -314,12 +354,14 @@ The following roots are among the most common weak-class Hiphil lemmas in the OT
 | נָגַשׁ | I-נ | 190+ | bring near, present, offer |
 | שִׂים / קָרָא | Biconsonantal / III-א | 180+ | place, set / call out, read aloud |
 | עָזַר | I-guttural | 80+ | come to the aid of (Hiphil = Qal-equivalent) |
+| סָבַב | Geminate | 60+ | cause to go around, surround, bring around |
+| שָׁלַל | Geminate | 30+ | cause to plunder, despoil |
 
 ---
 
-## 10. Practice
+## 11. Practice
 
 | Resource | Format | Description |
 |---|---|---|
-| [ch27-morphology-deck.md](ch27-morphology-deck.md) | Markdown | 35 morphology cards across all seven weak classes |
+| [ch27-morphology-deck.md](ch27-morphology-deck.md) | Markdown | 40 morphology cards across all eight weak classes |
 | [exercises/](exercises/README.md) | — | Passage exercise and weak-form identification drill |

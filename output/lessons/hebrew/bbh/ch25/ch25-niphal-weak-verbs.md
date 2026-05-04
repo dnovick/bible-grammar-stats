@@ -7,7 +7,7 @@
 
 ---
 
-## 1. The Seven Weak Classes — Overview
+## 1. The Eight Weak Classes — Overview
 
 | Class | Label | Representative roots | What changes | Affected conjugations |
 |---|---|---|---|---|
@@ -18,6 +18,7 @@
 | I-נ (Pe-Nun) | `pe-nun` | נָגַשׁ, נָצַל | Root's own נ assimilates into R2 | All conjugations |
 | I-י (Pe-Yod) | `pe-yod` | יָלַד, יָדַע | Splits into two sub-patterns: נוֹ- vs. יִוָּ- | All conjugations |
 | Biconsonantal (II-י/ו) | `biconsonantal` | קוּם, שׁוּב | נָ prefix (*qamets*) in perfect/participle; dagesh in R1 elsewhere | All conjugations |
+| Geminate (II=III, Ayin-Doubled) | `geminate` | סָבַב, תָּמַם | R2 = R3; doubled consonant may collapse; נָ prefix in perfect/participle (like Biconsonantal) | All conjugations |
 
 > **Key principle:** None of these classes requires learning a new stem. Every change follows from a standard phonological rule — quiescence, compensatory lengthening, patach furtive, or assimilation — applied to the strong Niphal pattern. Learn the rule; the form follows.
 
@@ -295,9 +296,46 @@ In the imperfect, wayyiqtol, and imperative, the Niphal's prefix נ assimilates 
 
 ---
 
-## 9. High-Frequency Weak Niphal Lemmas
+## 9. Geminate (Ayin-Doubled, II=III) Verbs
 
-Torah-frequency counts (Genesis–Deuteronomy) for the most common Niphal lemmas belonging to one of the seven weak classes.
+### Pattern
+
+Geminate roots have R2 = R3 (e.g., סָבַב: ס-ב-ב; תָּמַם: ת-מ-מ). The doubled consonant can appear as *dagesh forte* in the doubled R2/R3 (the "heavy" form), or it may collapse with a long compensatory vowel (the "light" form). In the **Niphal**, the most important pattern is the perfect/participle, which shows the distinctive **נָ prefix** (*qamets* under נ) — the same marker as the Biconsonantal class.
+
+**Diagnostic markers:**
+- **Perfect 3ms:** נָסַב — *qamets* under נָ; resembles Biconsonantal (e.g., נָכוֹן from כּוּן), but the root has three consonants with R2=R3 instead of a hollow vowel letter
+- **Imperfect 3ms:** יִסֹּב — *dagesh forte* in R2/R3 (ב written once but doubled) + *holem*
+- **Wayyiqtol 3ms:** וַיִּסֹּב — וַיִּ prefix + *dagesh* in R2/R3
+- **Participle ms:** נָסַב — **identical to perfect 3ms**; context is the only distinguisher (parallels Biconsonantal and III-א ambiguity)
+
+### Paradigm Summary (3ms per conjugation)
+
+| Conjugation | Strong (קטל) | Geminate (סבב) | Geminate (תמם) |
+|---|---|---|---|
+| Perfect | נִקְטַל | נָסַב | נָתַם |
+| Imperfect | יִקָּטֵל | יִסֹּב | יִתֹּם |
+| Wayyiqtol | וַיִּקָּטֵל | וַיִּסֹּב | וַיִּתֹּם |
+| Weqatal | וְנִקְטַל | וְנָסַב | וְנָתַם |
+| Imperative | הִקָּטֵל | הִסֹּב | הִתֹּם |
+| Inf. Construct | הִקָּטֵל | הִסֹּב | הִתֹּם |
+| Inf. Absolute | נִקְטֹל | נִסֹּב † | נִתֹּם † |
+| Participle | נִקְטָל | נָסַב | נָתַם |
+
+→ Full PGN tables: [niphal-weak-geminate-paradigms.md](niphal-weak-geminate-paradigms.md)
+
+### Key Corpus Examples
+
+- נָסַב (Josh 15:3) — "the border went around toward Azmon" — perfect 3ms; *qamets* under נָ is the primary diagnostic
+- וַיִּסֹּב (1 Sam 7:16) — "and he went on circuit" — wayyiqtol 3ms; Samuel's annual judicial circuit; *dagesh* in ב marks the doubled root
+- הִסֹּב (2 Sam 18:30) — "turn aside, stand here" — imperative 2ms; הִ prefix + *dagesh* in ב
+- תִּתַּמָּה (†) — theoretically: "it shall be completed" — imperfect 3fs from תָּמַם; *dagesh* in מ marks R2=R3
+- נָסַבּוּ (Josh 6:3) — "march around the city" — perfect 3cp; *dagesh* visible in ב with 3cp suffix
+
+---
+
+## 10. High-Frequency Weak Niphal Lemmas
+
+Torah-frequency counts (Genesis–Deuteronomy) for the most common Niphal lemmas belonging to one of the eight weak classes.
 
 | Root | Class | Torah Niphal (×) | Niphal Gloss |
 |---|---|---|---|
@@ -319,20 +357,22 @@ Torah-frequency counts (Genesis–Deuteronomy) for the most common Niphal lemmas
 | כּוּן | Biconsonantal | 9 | be established, be firm (stative) |
 | חָבָא | III-א | 8 | hide oneself (reflexive) |
 | שָׁלַח | III-ח/ע | 7 | be sent, be let go (passive) |
+| סָבַב | Geminate | 6 | be surrounded, go around (reflexive/passive) |
+| תָּמַם | Geminate | 5 | be finished, be complete (stative/passive) |
 
 ---
 
-## 10. Practice
+## 11. Practice
 
 | Resource | Description |
 |---|---|
-| [Morphology Flashcard Deck](ch25-morphology-deck.md) | 35 cards across all seven weak classes. Import the `.txt` file into Anki for spaced-repetition drilling. |
+| [Morphology Flashcard Deck](ch25-morphology-deck.md) | 40 cards across all eight weak classes. Import the `.txt` file into Anki for spaced-repetition drilling. |
 | [Passage Exercise](exercises/ch25-passage-exercise/ch25-passage-exercise.md) | "Spot the Niphal" — parsing exercise from Gen 3, 6, and 21 with weak-root emphasis. Includes weak-class identification column. |
-| [Weak-Form Identification Drill](exercises/ch25-weak-form-id/ch25-weak-form-id.md) | 35 forms across all seven classes in two parts: by class, then mixed. |
+| [Weak-Form Identification Drill](exercises/ch25-weak-form-id/ch25-weak-form-id.md) | 40 forms across all eight classes in two parts: by class, then mixed. |
 
 ---
 
-## 9. Links
+## 12. Links
 
 | Resource | URL |
 |---|---|

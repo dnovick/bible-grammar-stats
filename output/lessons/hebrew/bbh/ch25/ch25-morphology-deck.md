@@ -1,6 +1,6 @@
 # Chapter 25 — Niphal Weak Verbs Anki Flashcard Deck
 
-*35 cards covering all seven weak classes (III-א, III-ה, III-ח/ע, I-guttural, I-נ, I-י, Biconsonantal) across key conjugations.*
+*40 cards covering all eight weak classes (III-א, III-ה, III-ח/ע, I-guttural, I-נ, I-י, Biconsonantal, Geminate) across key conjugations.*
 *Import `ch25-morphology-deck.txt` directly into Anki (File → Import).*
 
 ---
@@ -54,6 +54,11 @@ Study tip: drill by weak class first — master the III-ה cards before mixing i
 | 33 | יִכּוֹן | Psa 93:2 | כּוּן | Biconsonantal | Imperfect | 3ms | it is established |
 | 34 | נָשׁוּב | (expected form) | שׁוּב | Biconsonantal | Perfect | 3ms | it was turned / restored |
 | 35 | וַיִּקּוֹם | (expected form) | קוּם | Biconsonantal | Wayyiqtol | 3ms | and it was established |
+| 36 | נָסַב | Josh 15:3 | סָבַב | Geminate | Perfect | 3ms | it went around |
+| 37 | וַיִּסֹּב | 1 Sam 7:16 | סָבַב | Geminate | Wayyiqtol | 3ms | and he went on circuit |
+| 38 | יִסֹּב | Josh 19:34 | סָבַב | Geminate | Imperfect | 3ms | it turns/goes around |
+| 39 | הִסֹּב | 2 Sam 18:30 | סָבַב | Geminate | Imperative | 2ms | turn aside! |
+| 40 | נָסַב | Psa 26:6 | סָבַב | Geminate | Participle | ms | going around (identical to perfect) |
 
 ---
 
@@ -68,13 +73,14 @@ Study tip: drill by weak class first — master the III-ה cards before mixing i
 | `niphal-pe-yod` | 21–25 |
 | `niphal-lamed-guttural` | 26–30 |
 | `niphal-biconsonantal` | 31–35 |
-| `niphal-perfect` | 1, 6, 13, 17, 19, 21, 26, 31, 34 |
-| `niphal-wayyiqtol` | 2, 7, 9, 14, 18, 22, 27, 35 |
-| `niphal-imperfect` | 3, 8, 10, 15, 23, 28, 33 |
-| `niphal-imperative` | 20, 29 |
+| `niphal-geminate` | 36–40 |
+| `niphal-perfect` | 1, 6, 13, 17, 19, 21, 26, 31, 34, 36 |
+| `niphal-wayyiqtol` | 2, 7, 9, 14, 18, 22, 27, 35, 37 |
+| `niphal-imperfect` | 3, 8, 10, 15, 23, 28, 33, 38 |
+| `niphal-imperative` | 20, 29, 39 |
 | `niphal-inf-construct` | 11, 24, 29 |
 | `niphal-inf-absolute` | 4 |
-| `niphal-participle` | 5, 12, 16, 25, 30, 32 |
+| `niphal-participle` | 5, 12, 16, 25, 30, 32, 40 |
 | `bbh-ch25` | all |
 
 ---
@@ -120,4 +126,9 @@ Front,Back,Tags
 "יִכּוֹן (Psa 93:2)","Root: כּוּן | Biconsonantal | Imperfect 3ms | it is established","niphal-imperfect niphal-biconsonantal bbh-ch25"
 "נָשׁוּב (expected form)","Root: שׁוּב | Biconsonantal | Perfect 3ms | it was turned / restored","niphal-perfect niphal-biconsonantal bbh-ch25"
 "וַיִּקּוֹם (expected form)","Root: קוּם | Biconsonantal | Wayyiqtol 3ms | and it was established","niphal-wayyiqtol niphal-biconsonantal bbh-ch25"
+"נָסַב (Josh 15:3)","Root: סָבַב | Geminate | Perfect 3ms | it went around","niphal-perfect niphal-geminate bbh-ch25"
+"וַיִּסֹּב (1 Sam 7:16)","Root: סָבַב | Geminate | Wayyiqtol 3ms | and he went on circuit","niphal-wayyiqtol niphal-geminate bbh-ch25"
+"יִסֹּב (Josh 19:34)","Root: סָבַב | Geminate | Imperfect 3ms | it turns/goes around","niphal-imperfect niphal-geminate bbh-ch25"
+"הִסֹּב (2 Sam 18:30)","Root: סָבַב | Geminate | Imperative 2ms | turn aside!","niphal-imperative niphal-geminate bbh-ch25"
+"נָסַב (Psa 26:6)","Root: סָבַב | Geminate | Participle ms | going around (identical to perfect 3ms)","niphal-participle niphal-geminate bbh-ch25"
 ```

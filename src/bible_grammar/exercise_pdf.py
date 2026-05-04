@@ -1748,7 +1748,7 @@ def build_ch24_function_sort_exercise(out_dir: str = None) -> str:
 
 
 class Ch25WeakFormIdExercise(ExercisePDF):
-    """Weak-Form Identification Drill — 47 items across 7 weak classes."""
+    """Weak-Form Identification Drill — 52 items across 8 weak classes."""
 
     # (num, hebrew, conjugation, pgn, ref, gloss, class_label, root, note)
     _PART_A = [
@@ -1794,28 +1794,34 @@ class Ch25WeakFormIdExercise(ExercisePDF):
         SortEntry('33', 'נָכוֹן',           'Participle ms',    'Psa 57:8',  '"steadfast, firm"',                      'Biconsonantal', 'כּוּן', 'Participle ms — נָ prefix + vocalic structure = identical to perfect'),
         SortEntry('34', 'וַיִּקּוֹם',       'Wayyiqtol',        '(expected)', '"and it was established"',              'Biconsonantal', 'קוּם', 'Wayyiqtol 3ms — וַיִּ + dagesh in R1 + contracted root'),
         SortEntry('35', 'הִקּוֹם',          'Imperative',       '(expected)', '"be established!"',                     'Biconsonantal', 'קוּם', 'Imperative 2ms — הִ + dagesh in R1 + contracted root'),
+        # Group 8 — Geminate
+        SortEntry('36', 'נָסַב',            'Perfect',          'Josh 15:3', '"it went around"',                       'Geminate', 'סָבַב', 'Perfect 3ms — נָ prefix (qamets), same as Biconsonantal; root ס-ב-ב has R2=R3'),
+        SortEntry('37', 'וַיִּסֹּב',        'Wayyiqtol',        '1 Sam 7:16','"and he went on circuit"',               'Geminate', 'סָבַב', 'Wayyiqtol 3ms — dagesh forte in ב (R2=R3 doubled)'),
+        SortEntry('38', 'יִסֹּב',           'Imperfect',        'Josh 19:34','"it turns around"',                      'Geminate', 'סָבַב', 'Imperfect 3ms — dagesh forte in ב; holem in contracted root'),
+        SortEntry('39', 'הִסֹּב',           'Imperative',       '2 Sam 18:30','"turn aside!"',                         'Geminate', 'סָבַב', 'Imperative 2ms — הִ + dagesh forte in ב'),
+        SortEntry('40', 'נָסַב',            'Participle ms',    'Psa 26:6',  '"going around" (participial)',            'Geminate', 'סָבַב', 'Participle ms — נָ prefix, identical to perfect 3ms; context determines'),
     ]
 
     _PART_B = [
-        SortEntry('36', 'תֵרָאֶה',          'Imperfect/Jussive','Gen 1:9',   '"let it appear"',                        'III-ה',         'רָאָה', '3fs — ר compensatory + final ֶה'),
-        SortEntry('37', 'וַיִּוָּדַע',      'Wayyiqtol',        'Est 2:22',  '"the matter became known"',             'I-י',           'יָדַע', '3ms — וַיִּוָּ; patach under R2 (יָדַע class)'),
-        SortEntry('38', 'נֶעֱמַד',          'Perfect',          '1 Sam 17:16','"he took his stand"',                  'I-guttural',    'עָמַד', '3ms — נֶ prefix + composite shewa under ע'),
-        SortEntry('39', 'וַיִּמָּצְאוּ',    'Wayyiqtol',        'Gen 47:14', '"all the silver was gathered"',          'III-א',         'מָצָא', '3mp — dagesh + 3mp ending + silent א'),
-        SortEntry('40', 'נוֹדַע',           'Perfect',          'Gen 41:21', '"it was not known"',                     'I-י',           'יָדַע', '3ms — נוֹ prefix + patach (perfect, not participle)'),
-        SortEntry('41', 'וַיִּגַּשׁ',       'Wayyiqtol',        'Gen 44:18', '"Judah drew near"',                      'I-נ',           'נָגַשׁ', '3ms — dagesh in ג (R2); root נ invisible'),
-        SortEntry('42', 'הֵרָאֵה',          'Imperative',       '1 Kgs 18:1','"show yourself!"',                       'III-ה',         'רָאָה', '2ms — הֵ compensatory + final ֵה (imperative)'),
-        SortEntry('43', 'נִשְׁלַח',         'Perfect',          'Est 3:13',  '"letters were sent"',                    'III-ch/ayin',   'שָׁלַח', '3ms — patach furtive before final ח'),
-        SortEntry('44', 'נָכוֹן',           'Perfect/Participle','Exo 34:2', '"be ready"',                             'Biconsonantal', 'כּוּן', 'נָ prefix (qamets) is the biconsonantal Niphal marker'),
-        SortEntry('45', 'וַיִּשָּׁלַח',     'Wayyiqtol',        '(expected)', '"and he was sent away"',               'III-ch/ayin',   'שָׁלַח', '3ms — dagesh in שׁ (R1) + patach before final ח'),
-        SortEntry('46', 'נִמְצְאוּ',        'Perfect',          'Exo 12:19', '"whoever is found"',                     'III-א',         'מָצָא', '3cp — 3cp ending + final silent א'),
-        SortEntry('47', 'יֵעָמְדוּ',        'Imperfect',        'Num 27:22', '"they shall stand before"',              'I-guttural',    'עָמַד', '3mp — יֵ prefix; no dagesh in ע; 3mp ending'),
+        SortEntry('41', 'תֵרָאֶה',          'Imperfect/Jussive','Gen 1:9',   '"let it appear"',                        'III-ה',         'רָאָה', '3fs — ר compensatory + final ֶה'),
+        SortEntry('42', 'וַיִּוָּדַע',      'Wayyiqtol',        'Est 2:22',  '"the matter became known"',             'I-י',           'יָדַע', '3ms — וַיִּוָּ; patach under R2 (יָדַע class)'),
+        SortEntry('43', 'נֶעֱמַד',          'Perfect',          '1 Sam 17:16','"he took his stand"',                  'I-guttural',    'עָמַד', '3ms — נֶ prefix + composite shewa under ע'),
+        SortEntry('44', 'וַיִּמָּצְאוּ',    'Wayyiqtol',        'Gen 47:14', '"all the silver was gathered"',          'III-א',         'מָצָא', '3mp — dagesh + 3mp ending + silent א'),
+        SortEntry('45', 'נוֹדַע',           'Perfect',          'Gen 41:21', '"it was not known"',                     'I-י',           'יָדַע', '3ms — נוֹ prefix + patach (perfect, not participle)'),
+        SortEntry('46', 'וַיִּגַּשׁ',       'Wayyiqtol',        'Gen 44:18', '"Judah drew near"',                      'I-נ',           'נָגַשׁ', '3ms — dagesh in ג (R2); root נ invisible'),
+        SortEntry('47', 'הֵרָאֵה',          'Imperative',       '1 Kgs 18:1','"show yourself!"',                       'III-ה',         'רָאָה', '2ms — הֵ compensatory + final ֵה (imperative)'),
+        SortEntry('48', 'נִשְׁלַח',         'Perfect',          'Est 3:13',  '"letters were sent"',                    'III-ch/ayin',   'שָׁלַח', '3ms — patach furtive before final ח'),
+        SortEntry('49', 'נָכוֹן',           'Perfect/Participle','Exo 34:2', '"be ready"',                             'Biconsonantal', 'כּוּן', 'נָ prefix (qamets) is the biconsonantal Niphal marker'),
+        SortEntry('50', 'וַיִּסֹּב',        'Wayyiqtol',        '2 Sam 5:23', '"and he circled behind them"',          'Geminate',      'סָבַב', '3ms — וַיִּ + dagesh forte in ב (R2=R3); root ס-ב-ב is Geminate, not hollow'),
+        SortEntry('51', 'נִמְצְאוּ',        'Perfect',          'Exo 12:19', '"whoever is found"',                     'III-א',         'מָצָא', '3cp — 3cp ending + final silent א'),
+        SortEntry('52', 'יֵעָמְדוּ',        'Imperfect',        'Num 27:22', '"they shall stand before"',              'I-guttural',    'עָמַד', '3mp — יֵ prefix; no dagesh in ע; 3mp ending'),
     ]
 
     def _build(self):
         self.add_instructions(
-            'Part A (1–35): forms are grouped by weak class. Identify class, parse conjugation + PGN, '
+            'Part A (1–40): forms are grouped by weak class. Identify class, parse conjugation + PGN, '
             'and give the root. '
-            'Part B (36–47): mixed classes — identify the class first, then parse. '
+            'Part B (41–52): mixed classes — identify the class first, then parse. '
             'Answer key is on the last page.'
         )
 
@@ -1825,7 +1831,8 @@ class Ch25WeakFormIdExercise(ExercisePDF):
             'I-guttural (נֶ / יֵ / הֵ prefix; no dagesh in R1)  |  '
             'I-נ (dagesh forte in R2; root נ invisible)  |  '
             'I-י (נוֹ prefix in perfect/ptc; יִוָּ / הִוָּ in impf/wayyiqtol/imv/inf)  |  '
-            'Biconsonantal (נָ prefix in perfect/ptc; dagesh in R1 elsewhere)'
+            'Biconsonantal (נָ prefix in perfect/ptc; dagesh in R1 elsewhere)  |  '
+            'Geminate (נָ prefix in perfect/ptc — same as Biconsonantal!; dagesh forte in R2/R3 elsewhere; R2=R3 is the class marker)'
         )
 
         self.add_section_heading('Part A — By Class')
@@ -1848,6 +1855,10 @@ class Ch25WeakFormIdExercise(ExercisePDF):
             'Items 31 and 33 both show נָכוֹן (Biconsonantal). How does this perfect/participle ambiguity '
             'parallel the III-א problem in question 1, and what does it reveal about the general challenge '
             'of Niphal weak forms?',
+            'Items 36 and 40 (Geminate) are both pointed נָסַב — perfect 3ms and participle ms are '
+            'identical in the Geminate class, just like the Biconsonantal class (items 31/33). '
+            'Given a form like נָסַב, how do you even know whether the root is Geminate (ס-ב-ב) '
+            'or Biconsonantal (a hollow root)? What information outside the vocalization must you use?',
         ])
 
         self.add_answer_key_sort(self._PART_A + self._PART_B)
@@ -1998,7 +2009,7 @@ def build_ch27_exercise(out_dir: str = None) -> str:
 
 
 class Ch27WeakFormIdExercise(ExercisePDF):
-    """Weak-Form Identification Drill — 45 items across 7 weak classes."""
+    """Weak-Form Identification Drill — 50 items across 8 weak classes."""
 
     _PART_A = [
         # Group 1 — I-guttural
@@ -2043,26 +2054,32 @@ class Ch27WeakFormIdExercise(ExercisePDF):
         SortEntry('33', 'יָקִים',        'Imperfect',    'Deu 18:15',  '"he will raise up"',        'Biconsonantal', 'קוּם', 'qamets under prefix consonant (יָ)'),
         SortEntry('34', 'הָקֵם',         'Imperative',   'Exo 40:2',   '"set up"',                  'Biconsonantal', 'קוּם', 'הָ prefix (qamets) + tsere'),
         SortEntry('35', 'מֵקִים',        'Participle',   '1 Sam 2:8',  '"one who raises up"',       'Biconsonantal', 'קוּם', 'מֵ prefix (tsere) — not מַ'),
+        # Group 8 — Geminate
+        SortEntry('36', 'הֵסֵב',         'Perfect',      '1 Kgs 21:4', '"he turned his face"',      'Geminate', 'סָבַב', 'הֵ prefix (tsere) — same as Biconsonantal הֵקִים; root ס-ב-ב has R2=R3'),
+        SortEntry('37', 'וַיָּסֶב',      'Wayyiqtol',    'Josh 6:14',  '"and they marched around"', 'Geminate', 'סָבַב', 'qamets prefix + apocopated seghol — same pattern as Biconsonantal וַיָּקֶם'),
+        SortEntry('38', 'יָסֵב',         'Imperfect',    'Isa 44:20',  '"it leads astray"',         'Geminate', 'סָבַב', 'qamets under prefix (יָ) — same as Biconsonantal יָקִים; root knowledge required'),
+        SortEntry('39', 'הָסֵב',         'Imperative',   '2 Sam 2:22', '"turn aside!"',             'Geminate', 'סָבַב', 'הָ prefix (qamets) — same as Biconsonantal הָקֵם; only root distinguishes'),
+        SortEntry('40', 'מֵסֵב',         'Participle',   '(expected)', '"one who surrounds"',       'Geminate', 'סָבַב', 'מֵ prefix (tsere) — same as Biconsonantal מֵקִים; Geminate class requires root knowledge'),
     ]
 
     _PART_B = [
-        SortEntry('36', 'וַיַּשְׁמַע',   'Wayyiqtol',    '1 Sam 15:14', '"and he made heard"',       'III-ch/ayin',   'שָׁמַע', 'patach before final ע (not tsere) — guttural forces lowering'),
-        SortEntry('37', 'הֵשִׂים',        'Perfect',       'Gen 45:9',    '"he made / placed"',        'Biconsonantal', 'שִׂים',  'הֵ prefix (tsere) — biconsonantal perfect'),
-        SortEntry('38', 'וַיַּעַל',       'Wayyiqtol',     'Gen 22:2',    '"and he went up"',          'III-he',        'עָלָה', 'apocopated: ה dropped'),
-        SortEntry('39', 'הִגִּישׁ',       'Perfect',       'Amos 9:13',   '"he brought near"',         'I-nun',         'נָגַשׁ', 'dagesh forte in R2 (ג)'),
-        SortEntry('40', 'יָשִׂים',        'Imperfect',     'Gen 3:15',    '"he will place"',           'Biconsonantal', 'שִׂים',  'qamets under prefix (יָ)'),
-        SortEntry('41', 'הֶרְאָה',        'Perfect',       'Exo 25:9',    '"he showed"',               'III-he',        'רָאָה', 'qamets + ה ending; seghol under הֶ'),
-        SortEntry('42', 'וַיּוֹרֶד',      'Wayyiqtol',     'Gen 42:38',   '"and he brought down"',     'I-yod',         'יָרַד', 'וַיּוֹ prefix uniquely identifies I-yod Hiphil'),
-        SortEntry('43', 'מַעֲמִידִים',    'Participle mp', 'Neh 4:7',     '"those who station"',       'I-guttural',    'עָמַד', 'מַ + composite shewa under ע + chiriq + ים'),
-        SortEntry('44', 'הַמְצֵא',        'Imperative',    '(expected)',  '"cause to find"',           'III-aleph',     'מָצָא', 'tsere + silent final א; הַ prefix (patach)'),
-        SortEntry('45', 'וָאָקִים',       'Wayyiqtol',     'Exo 6:4',     '"and I established"',       'Biconsonantal', 'קוּם', 'וָאָ (1cs wayyiqtol) + qamets + chiriq-yod'),
+        SortEntry('41', 'וַיַּשְׁמַע',   'Wayyiqtol',    '1 Sam 15:14', '"and he made heard"',       'III-ch/ayin',   'שָׁמַע', 'patach before final ע (not tsere) — guttural forces lowering'),
+        SortEntry('42', 'הֵשִׂים',        'Perfect',       'Gen 45:9',    '"he made / placed"',        'Biconsonantal', 'שִׂים',  'הֵ prefix (tsere); root שׂ-י-מ contains medial hireq-yod vowel letter = Biconsonantal'),
+        SortEntry('43', 'וַיַּעַל',       'Wayyiqtol',     'Gen 22:2',    '"and he went up"',          'III-he',        'עָלָה', 'apocopated: ה dropped'),
+        SortEntry('44', 'הִגִּישׁ',       'Perfect',       'Amos 9:13',   '"he brought near"',         'I-nun',         'נָגַשׁ', 'dagesh forte in R2 (ג)'),
+        SortEntry('45', 'הָסֵב',          'Imperative',    '2 Sam 5:23',  '"circle around behind them"','Geminate',     'סָבַב', 'הָ prefix (qamets) — looks exactly like Biconsonantal הָקֵם; root ס-ב-ב has R2=R3 = Geminate'),
+        SortEntry('46', 'הֶרְאָה',        'Perfect',       'Exo 25:9',    '"he showed"',               'III-he',        'רָאָה', 'qamets + ה ending; seghol under הֶ'),
+        SortEntry('47', 'וַיּוֹרֶד',      'Wayyiqtol',     'Gen 42:38',   '"and he brought down"',     'I-yod',         'יָרַד', 'וַיּוֹ prefix uniquely identifies I-yod Hiphil'),
+        SortEntry('48', 'מַעֲמִידִים',    'Participle mp', 'Neh 4:7',     '"those who station"',       'I-guttural',    'עָמַד', 'מַ + composite shewa under ע + chiriq + ים'),
+        SortEntry('49', 'הַמְצֵא',        'Imperative',    '(expected)',  '"cause to find"',           'III-aleph',     'מָצָא', 'tsere + silent final א; הַ prefix (patach)'),
+        SortEntry('50', 'וָאָקִים',       'Wayyiqtol',     'Exo 6:4',     '"and I established"',       'Biconsonantal', 'קוּם', 'וָאָ (1cs wayyiqtol) + qamets + chiriq-yod medial vowel letter = Biconsonantal'),
     ]
 
     def _build(self):
         self.add_instructions(
-            'Part A (1–35): forms are grouped by weak class (5 per class). '
+            'Part A (1–40): forms are grouped by weak class (5 per class). '
             'Identify conjugation + PGN, and give the root. '
-            'Part B (36–45): mixed classes — identify the class first, then parse. '
+            'Part B (41–50): mixed classes — identify the class first, then parse. '
             'Answer key is on the last page.'
         )
 
@@ -2073,7 +2090,8 @@ class Ch27WeakFormIdExercise(ExercisePDF):
             'III-he (qamets+he perfect; seghol+he impf/ptc; apocopated wayyiqtol; vot inf.cstr)  |  '
             'I-nun (dagesh forte in R2 throughout)  |  '
             'I-yod (ho/yo/mo prefix pattern)  |  '
-            'Biconsonantal (he+tsere perfect; qamets impf/wayyiqtol; ha+qamets imv/inf; me+tsere ptc)'
+            'Biconsonantal (he+tsere perfect; qamets impf/wayyiqtol; ha+qamets imv/inf; me+tsere ptc)  |  '
+            'Geminate (same prefixes as Biconsonantal! R2=R3 is the only distinguishing feature; requires root knowledge)'
         )
 
         self.add_section_heading('Part A — By Class')
@@ -2094,6 +2112,11 @@ class Ch27WeakFormIdExercise(ExercisePDF):
             'Compare הוֹרֵד (I-yod imperative 2ms) and הָקֵם (Biconsonantal imperative 2ms). '
             'Both have a long prefix vowel rather than the patach of the strong Hiphil imperative. '
             'What prefix vowel does each use, and how can you tell them apart?',
+            'Items 36-40 (Geminate) and items 31-35 (Biconsonantal) share nearly identical vowel '
+            'patterns in every conjugation: he+tsere perfect, qamets imperfect/wayyiqtol, '
+            'ha+qamets imperative, me+tsere participle. What is the only reliable way to determine '
+            'whether a Hiphil form belongs to the Geminate class or the Biconsonantal class? '
+            'Why can the vocalization alone not always resolve this question?',
         ])
 
         self.add_answer_key_sort(self._PART_A + self._PART_B)

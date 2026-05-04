@@ -6,7 +6,7 @@
 
 ## Instructions
 
-**Part A:** Forms are grouped by weak class (5 per class). For each, identify: conjugation, PGN, root.
+**Part A:** Forms are grouped by weak class (5 per class, 8 groups = 40 items total). For each, identify: conjugation, PGN, root.
 **Part B:** Forms are mixed. Identify: weak class first, then conjugation, PGN, root.
 
 ---
@@ -83,22 +83,32 @@
 | 34 | הָקֵם | Exo 40:2 | | | |
 | 35 | מֵקִים | 1 Sam 2:8 | | | |
 
+### Group 8: Geminate (Ayin-Doubled)
+
+| # | Form | Reference | Conjugation | PGN | Root |
+|---|---|---|---|---|---|
+| 36 | הֵסֵב | 1 Kgs 21:4 | | | |
+| 37 | וַיָּסֶב | Josh 6:14 | | | |
+| 38 | יָסֵב | Isa 44:20 | | | |
+| 39 | הָסֵב | 2 Sam 2:22 | | | |
+| 40 | מֵסֵב | (expected) | | | |
+
 ---
 
 ## Part B — Mixed (identify weak class first)
 
 | # | Form | Reference | Weak class | Conjugation | PGN | Root |
 |---|---|---|---|---|---|---|
-| 36 | וַיַּשְׁמַע | 1 Sam 15:14 | | | | |
-| 37 | הֵשִׂים | Gen 45:9 | | | | |
-| 38 | וַיַּעַל | Gen 22:2 | | | | |
-| 39 | הִגִּישׁ | Amos 9:13 | | | | |
-| 40 | יָשִׂים | Gen 3:15 | | | | |
-| 41 | הֶרְאָה | Exo 25:9 | | | | |
-| 42 | וַיּוֹרֶד | Gen 42:38 | | | | |
-| 43 | מַעֲמִידִים | Neh 4:7 | | | | |
-| 44 | הַמְצֵא | (†) | | | | |
-| 45 | וָאָקִים | Exo 6:4 | | | | |
+| 41 | וַיַּשְׁמַע | 1 Sam 15:14 | | | | |
+| 42 | הֵשִׂים | Gen 45:9 | | | | |
+| 43 | וַיַּעַל | Gen 22:2 | | | | |
+| 44 | הִגִּישׁ | Amos 9:13 | | | | |
+| 45 | הָסֵב | 2 Sam 5:23 | | | | |
+| 46 | הֶרְאָה | Exo 25:9 | | | | |
+| 47 | וַיּוֹרֶד | Gen 42:38 | | | | |
+| 48 | מַעֲמִידִים | Neh 4:7 | | | | |
+| 49 | הַמְצֵא | (†) | | | | |
+| 50 | וָאָקִים | Exo 6:4 | | | | |
 
 ---
 
@@ -141,6 +151,11 @@
 | 33 | יָקִים | Imperfect | 3ms | קוּם | *Qamets* under prefix (not *patach*) |
 | 34 | הָקֵם | Imperative | 2ms | קוּם | הָ prefix (*qamets*) + *tsere* |
 | 35 | מֵקִים | Participle | ms | קוּם | מֵ prefix (*tsere*) — not מַ |
+| 36 | הֵסֵב | Perfect | 3ms | סָבַב | הֵ prefix (*tsere*) — same as Biconsonantal הֵקִים; root is ס-ב-ב (Geminate) |
+| 37 | וַיָּסֶב | Wayyiqtol | 3ms | סָבַב | *Qamets* prefix + contracted root + *seghol* — same pattern as Biconsonantal וַיָּקֶם |
+| 38 | יָסֵב | Imperfect | 3ms | סָבַב | *Qamets* under prefix (יָ) — same as Biconsonantal יָקִים |
+| 39 | הָסֵב | Imperative | 2ms | סָבַב | הָ prefix (*qamets*) — same as Biconsonantal הָקֵם |
+| 40 | מֵסֵב | Participle | ms | סָבַב | מֵ prefix (*tsere*) — same as Biconsonantal מֵקִים |
 
 ---
 
@@ -148,16 +163,16 @@
 
 | # | Form | Weak class | Conjugation | PGN | Root | Note |
 |---|---|---|---|---|---|---|
-| 36 | וַיַּשְׁמַע | III-ח/ע | Wayyiqtol | 3ms | שָׁמַע | *Patach* before final ע (not *tsere*) |
-| 37 | הֵשִׂים | Biconsonantal | Perfect | 3ms | שִׂים | הֵ prefix (*tsere*) |
-| 38 | וַיַּעַל | III-ה | Wayyiqtol | 3ms | עָלָה | Apocopated — ה dropped |
-| 39 | הִגִּישׁ | I-נ | Perfect | 3ms | נָגַשׁ | *Dagesh* in R2 (ג); root נגשׁ |
-| 40 | יָשִׂים | Biconsonantal | Imperfect | 3ms | שִׂים | *Qamets* under prefix (יָ) |
-| 41 | הֶרְאָה | III-ה | Perfect | 3ms | רָאָה | *Qamets* + ה ending; *seghol* under הֶ |
-| 42 | וַיּוֹרֶד | I-י | Wayyiqtol | 3ms | יָרַד | וַיּוֹ prefix |
-| 43 | מַעֲמִידִים | I-guttural | Participle | mp | עָמַד | מַ + composite shewa under ע; plural |
-| 44 | הַמְצֵא | III-א | Imperative | 2ms | מָצָא | *Tsere* + silent final א |
-| 45 | וָאָקִים | Biconsonantal | Wayyiqtol | 1cs | קוּם | וָאָ prefix + *chiriq-yod* medial |
+| 41 | וַיַּשְׁמַע | III-ח/ע | Wayyiqtol | 3ms | שָׁמַע | *Patach* before final ע (not *tsere*) |
+| 42 | הֵשִׂים | Biconsonantal | Perfect | 3ms | שִׂים | הֵ prefix (*tsere*); root has medial *hireq-yod* vowel letter |
+| 43 | וַיַּעַל | III-ה | Wayyiqtol | 3ms | עָלָה | Apocopated — ה dropped |
+| 44 | הִגִּישׁ | I-נ | Perfect | 3ms | נָגַשׁ | *Dagesh* in R2 (ג); root נגשׁ |
+| 45 | הָסֵב | Geminate | Imperative | 2ms | סָבַב | הָ prefix (*qamets*) — looks like Biconsonantal; root ס-ב-ב has R2=R3 (Geminate) |
+| 46 | הֶרְאָה | III-ה | Perfect | 3ms | רָאָה | *Qamets* + ה ending; *seghol* under הֶ |
+| 47 | וַיּוֹרֶד | I-י | Wayyiqtol | 3ms | יָרַד | וַיּוֹ prefix |
+| 48 | מַעֲמִידִים | I-guttural | Participle | mp | עָמַד | מַ + composite shewa under ע; plural |
+| 49 | הַמְצֵא | III-א | Imperative | 2ms | מָצָא | *Tsere* + silent final א |
+| 50 | וָאָקִים | Biconsonantal | Wayyiqtol | 1cs | קוּם | וָאָ prefix + *chiriq-yod* medial; medial ו/י vowel letter = Biconsonantal |
 
 ---
 
@@ -170,3 +185,5 @@
 **3.** וַיַּשְׁלַח (III-ח/ע wayyiqtol) and וַיַּקְרֵא (III-א wayyiqtol) both have *patach* under וַיַּ. The difference is in the final vowel. Explain what happens to the Hiphil *tsere* in each case and why.
 
 **4.** Compare הוֹרֵד (I-י imperative 2ms) and הָקֵם (Biconsonantal imperative 2ms). Both have a *long* prefix vowel rather than the *patach* (הַ) of the strong Hiphil imperative. What prefix vowel does each use, and how can you tell them apart?
+
+**5.** Items 36–40 (Geminate) and items 31–35 (Biconsonantal) share nearly identical vowel patterns in every conjugation: הֵ perfect, יָ/תָּ imperfect, הָ imperative, מֵ participle. What is the **only** reliable way to determine whether a Hiphil form belongs to the Geminate class or the Biconsonantal class? Why can the vocalization alone not always resolve this question?

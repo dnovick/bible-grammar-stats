@@ -6,7 +6,7 @@
 
 ## Description
 
-A 45-item identification and parsing exercise covering all seven Hiphil weak classes (I-guttural, III-ח/ע, III-א, III-ה, I-נ, I-י, Biconsonantal). Part A (items 1–35) groups forms by class — five items per class — so students can build class-by-class recognition before mixing. Part B (items 36–45) presents forms from multiple classes in random order; students must identify the weak class first, then parse. Answer keys for both parts include the diagnostic marker that reveals the weak class. Four discussion questions focus on pairs of forms that could be confused.
+A 50-item identification and parsing exercise covering all eight Hiphil weak classes (I-guttural, III-ח/ע, III-א, III-ה, I-נ, I-י, Biconsonantal, Geminate). Part A (items 1–40) groups forms by class — five items per class — so students can build class-by-class recognition before mixing. Part B (items 41–50) presents forms from multiple classes in random order; students must identify the weak class first, then parse. Answer keys for both parts include the diagnostic marker that reveals the weak class. Five discussion questions focus on pairs of forms that could be confused.
 
 ### Class distribution
 
@@ -18,8 +18,9 @@ A 45-item identification and parsing exercise covering all seven Hiphil weak cla
 | III-ה | 5 | 2 | 7 |
 | I-נ | 5 | 1 | 6 |
 | I-י | 5 | 1 | 6 |
-| Biconsonantal | 5 | 3 | 8 |
-| **Total** | **35** | **10** | **45** |
+| Biconsonantal | 5 | 2 | 7 |
+| Geminate | 5 | 1 | 6 |
+| **Total** | **40** | **10** | **50** |
 
 ---
 
