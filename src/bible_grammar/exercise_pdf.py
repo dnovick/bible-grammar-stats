@@ -1846,6 +1846,252 @@ def build_ch25_weak_form_id_exercise(out_dir: str = None) -> str:
     return ex.save(path)
 
 
+# ---------------------------------------------------------------------------
+# Chapter 27 — Hiphil Weak Verbs
+# ---------------------------------------------------------------------------
+
+class Ch27Exercise(ExercisePDF):
+    """Passage exercise — 18 Hiphil weak verbs from Gen, Exo, Num, Deu."""
+
+    def _render_passages(self, show_answers: bool):
+
+        self.add_section_heading('Part A — Genesis and Exodus (items 1–10)')
+
+        self.add_passage(PassageBlock('Gen 1:5',
+            'וַיִּקְרָא אֱלֹהִים לָאוֹר יוֹם וַיַּקְרֵא לַחֹשֶׁךְ לָיְלָה',
+            '"and he [1] ____ the darkness Night"'))
+        self.add_verb_table([VerbEntry('1', 'וַיַּקְרֵא', 'Wayyiqtol', '3ms', 'קָרָא', 'III-א — he called / proclaimed')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('Gen 6:18',
+            'וַהֲקִמֹתִי אֶת־בְּרִיתִי אִתְּךָ',
+            '"but I [2] ____ my covenant with you"'))
+        self.add_verb_table([VerbEntry('2', 'וַהֲקִמֹתִי', 'Weqatal', '1cs', 'קוּם', 'Biconsonantal — I will establish')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('Gen 8:20',
+            'הֶעֱלָה נֹחַ עֹלֹת עַל הַמִּזְבֵּחַ',
+            '"Noah [3] ____ burnt offerings on the altar"'))
+        self.add_verb_table([VerbEntry('3', 'הֶעֱלָה', 'Perfect', '3ms', 'עָלָה', 'III-ה + I-guttural — he offered up')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('Gen 15:7',
+            'אֲנִי יְהוָה אֲשֶׁר הוֹצֵאתִיךָ מֵאוּר כַּשְׂדִּים',
+            '"I am the LORD who [4] ____ from Ur of the Chaldeans"'))
+        self.add_verb_table([VerbEntry('4', 'הוֹצֵאתִיךָ', 'Perfect', '1cs + 2ms', 'יָצָא', 'I-י — I brought you out')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('Gen 22:2',
+            'וַיַּעַל שָׁם עֹלָה',
+            '"and he [5] ____ a burnt offering there"'))
+        self.add_verb_table([VerbEntry('5', 'וַיַּעַל', 'Wayyiqtol', '3ms', 'עָלָה', 'III-ה — he offered up (apocopated)')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('Gen 2:21',
+            'וַיַּפֵּל יְהוָה אֱלֹהִים תַּרְדֵּמָה עַל הָאָדָם',
+            '"the LORD God [6] ____ a deep sleep upon the man"'))
+        self.add_verb_table([VerbEntry('6', 'וַיַּפֵּל', 'Wayyiqtol', '3ms', 'נָפַל', 'I-נ — he caused to fall / cast')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('Exo 9:16',
+            'וְאוּלָם בַּעֲבוּר זֹאת הֶעֱמַדְתִּיךָ',
+            '"but for this purpose I [7] ____ you"'))
+        self.add_verb_table([VerbEntry('7', 'הֶעֱמַדְתִּיךָ', 'Perfect', '1cs + 2ms', 'עָמַד', 'I-guttural — I raised you up / stationed you')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('Exo 20:2',
+            'אָנֹכִי יְהוָה אֱלֹהֶיךָ אֲשֶׁר הוֹצֵאתִיךָ מֵאֶרֶץ מִצְרַיִם',
+            '"I am the LORD your God, who [8] ____ of the land of Egypt"'))
+        self.add_verb_table([VerbEntry('8', 'הוֹצֵאתִיךָ', 'Perfect', '1cs + 2ms', 'יָצָא', 'I-י — I brought you out')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('Exo 33:18',
+            'וַיֹּאמַר הַרְאֵנִי נָא אֶת־כְּבֹדֶךָ',
+            '"and he said, [9] ____ your glory, please"'))
+        self.add_verb_table([VerbEntry('9', 'הַרְאֵנִי', 'Imperative', '2ms + 1cs', 'רָאָה', 'III-ה — show me')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('Exo 40:2',
+            'הָקֵם אֶת־מִשְׁכַּן אֹהֶל מוֹעֵד',
+            '"[10] ____ the tabernacle of the tent of meeting"'))
+        self.add_verb_table([VerbEntry('10', 'הָקֵם', 'Imperative', '2ms', 'קוּם', 'Biconsonantal — set up / erect')], show_answers=show_answers)
+
+        self.add_section_break()
+        self.add_section_heading('Part B — Numbers and Deuteronomy (items 11–18)')
+
+        self.add_passage(PassageBlock('Num 27:19',
+            'הַעֲמֵד אֹתוֹ לִפְנֵי אֶלְעָזָר הַכֹּהֵן',
+            '"[11] ____ him before Eleazar the priest"'))
+        self.add_verb_table([VerbEntry('11', 'הַעֲמֵד', 'Imperative', '2ms', 'עָמַד', 'I-guttural — set him / station him')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('Deu 18:15',
+            'נָבִיא מִקִּרְבְּךָ יָקִים לְךָ יְהוָה אֱלֹהֶיךָ',
+            '"a prophet like me the LORD [12] ____ for you"'))
+        self.add_verb_table([VerbEntry('12', 'יָקִים', 'Imperfect', '3ms', 'קוּם', 'Biconsonantal — will raise up')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('Deu 4:10',
+            'הַשְׁמַע אֶת־הָעָם אֶת־דִּבְרֵי',
+            '"[13] ____ the people these words"'))
+        self.add_verb_table([VerbEntry('13', 'הַשְׁמַע', 'Imperative', '2ms', 'שָׁמַע', 'III-ח/ע — make them hear')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('Deu 8:14',
+            'אֲשֶׁר הוֹצִיאֲךָ מֵאֶרֶץ מִצְרַיִם',
+            '"who [14] ____ of the land of Egypt"'))
+        self.add_verb_table([VerbEntry('14', 'הוֹצִיאֲךָ', 'Perfect', '3ms + 2ms', 'יָצָא', 'I-י — he brought you out')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('Deu 8:14',
+            'הַמּוֹצִיאֲךָ מֵאֶרֶץ מִצְרַיִם',
+            '"[15] ____ of the land of Egypt (substantival participle)"'))
+        self.add_verb_table([VerbEntry('15', 'הַמּוֹצִיאֲךָ', 'Participle', 'ms', 'יָצָא', 'I-י — the one who brought you out')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('Num 1:51',
+            'וְהֵקִים אֶת־הַמִּשְׁכָּן',
+            '"and [16] ____ the tabernacle"'))
+        self.add_verb_table([VerbEntry('16', 'וְהֵקִים', 'Weqatal', '3ms', 'קוּם', 'Biconsonantal — he shall set up')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('Exo 3:17',
+            'לְהַעֲלוֹת אֶתְכֶם מֵעֳנִי מִצְרַיִם',
+            '"[17] ____ you out of the affliction of Egypt"'))
+        self.add_verb_table([VerbEntry('17', 'לְהַעֲלוֹת', 'Inf. Construct', '—', 'עָלָה', 'III-ה + I-guttural — to bring up')], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('Isa 48:6',
+            'מֵעַתָּה אַשְׁמִיעֲכֶם חֲדָשׁוֹת',
+            '"from now on [18] ____ new things"'))
+        self.add_verb_table([VerbEntry('18', 'אַשְׁמִיעֲכֶם', 'Imperfect', '1cs + 2mp', 'שָׁמַע', 'III-ח/ע — I announce to you')], show_answers=show_answers)
+
+    def _build(self):
+        self.add_instructions(
+            'Every highlighted verb is a Hiphil form. For each: (1) parse — conjugation, '
+            'person-gender-number, root; (2) state the weak class '
+            '(I-guttural / III-ch/ayin / III-aleph / III-he / Pe-Nun / Pe-Yod / Biconsonantal); '
+            '(3) give a brief causative gloss in context.'
+        )
+        self._render_passages(show_answers=False)
+        self.add_section_heading('Answer Key')
+        self._render_passages(show_answers=True)
+
+
+def build_ch27_exercise(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'hebrew', 'bbh', 'ch27', 'exercises',
+                               'ch27-passage-exercise')
+    path = os.path.join(out_dir, 'ch27-passage-exercise.pdf')
+    ex = Ch27Exercise(
+        title='Chapter 27 — "Spot the Hiphil" Passage Exercise',
+        subtitle='BBH Chapter 27 · Hiphil Weak Verbs',
+    )
+    return ex.save(path)
+
+
+class Ch27WeakFormIdExercise(ExercisePDF):
+    """Weak-Form Identification Drill — 45 items across 7 weak classes."""
+
+    _PART_A = [
+        # Group 1 — I-guttural
+        SortEntry('1',  'הֶעֱמִיד',      'Perfect',      '1 Kgs 7:21', '"he set up"',              'I-guttural',    'עָמַד', 'seghol under הֶ + hateph-seghol under ע'),
+        SortEntry('2',  'וַיַּעֲמֵד',    'Wayyiqtol',    '2 Chr 4:4',  '"and he set it"',           'I-guttural',    'עָמַד', 'patach prefix + composite shewa under ע'),
+        SortEntry('3',  'יַעֲמִיד',      'Imperfect',    'Psa 107:29', '"he causes to stand"',      'I-guttural',    'עָמַד', 'patach prefix + composite shewa; no dagesh'),
+        SortEntry('4',  'הַעֲמֵד',       'Imperative',   'Num 27:19',  '"set him before"',          'I-guttural',    'עָמַד', 'הַ + composite shewa under ע + tsere'),
+        SortEntry('5',  'מַעֲמִיד',      'Participle',   'Neh 4:7',    '"one who stations"',        'I-guttural',    'עָמַד', 'מַ + composite shewa under ע + chiriq'),
+        # Group 2 — III-ח/ע
+        SortEntry('6',  'הִשְׁמִיעַ',    'Perfect',      'Isa 48:6',   '"he caused to hear"',       'III-ch/ayin',   'שָׁמַע', 'patach furtive before final ע in 3ms'),
+        SortEntry('7',  'וַיַּשְׁלַח',   'Wayyiqtol',    'Gen 3:23',   '"and he sent out"',         'III-ch/ayin',   'שָׁלַח', 'patach (not tsere) before final ח'),
+        SortEntry('8',  'יַשְׁמִיעַ',    'Imperfect',    'Isa 42:2',   '"he will cause to hear"',   'III-ch/ayin',   'שָׁמַע', 'patach furtive before final ע'),
+        SortEntry('9',  'הַשְׁמַע',      'Imperative',   'Deu 4:10',   '"make them hear"',          'III-ch/ayin',   'שָׁמַע', 'patach before final ע (not tsere)'),
+        SortEntry('10', 'מַשְׁמִיעַ',    'Participle',   'Isa 41:26',  '"one who announces"',       'III-ch/ayin',   'שָׁמַע', 'מַ + chiriq-yod + patach furtive before ע'),
+        # Group 3 — III-א
+        SortEntry('11', 'הִמְצִיא',      'Perfect',      'Neh 9:15',   '"he provided"',             'III-aleph',     'מָצָא', 'chiriq-yod + silent final א'),
+        SortEntry('12', 'וַיַּמְצֵא',    'Wayyiqtol',    '2 Chr 2:13', '"and he provided"',         'III-aleph',     'מָצָא', 'tsere + silent final א'),
+        SortEntry('13', 'יַמְצִיא',      'Imperfect',    'Pro 8:35',   '"he will cause to find"',   'III-aleph',     'מָצָא', 'chiriq-yod + silent final א'),
+        SortEntry('14', 'וַיַּקְרֵא',    'Wayyiqtol',    'Gen 1:5',    '"and he called"',           'III-aleph',     'קָרָא', 'tsere + silent final א'),
+        SortEntry('15', 'מַקְרִיא',      'Participle',   'Neh 8:3',    '"one who reads aloud"',     'III-aleph',     'קָרָא', 'מַ + chiriq-yod + silent final א'),
+        # Group 4 — III-ה
+        SortEntry('16', 'הֶעֱלָה',       'Perfect',      'Gen 8:20',   '"he offered up"',           'III-he',        'עָלָה', 'qamets + ה ending; seghol under הֶ'),
+        SortEntry('17', 'וַיַּעַל',      'Wayyiqtol',    'Gen 22:2',   '"and he went up"',          'III-he',        'עָלָה', 'apocopated — ה dropped; short patach under R2'),
+        SortEntry('18', 'יַעֲלֶה',       'Imperfect',    'Lev 14:20',  '"he shall offer up"',       'III-he',        'עָלָה', 'seghol + ה ending'),
+        SortEntry('19', 'הַרְאֵה',       'Imperative',   'Exo 33:18',  '"show me"',                 'III-he',        'רָאָה', 'tsere + ה retained (not apocopated)'),
+        SortEntry('20', 'לְהַעֲלוֹת',   'Inf. Construct','Exo 3:17',  '"to bring up"',             'III-he',        'עָלָה', 'ends in וֹת — strong III-ה marker'),
+        # Group 5 — I-נ
+        SortEntry('21', 'הִפִּיל',       'Perfect',      'Gen 2:21',   '"he caused to fall"',       'I-nun',         'נָפַל', 'dagesh forte in R2 (פ); נ assimilated'),
+        SortEntry('22', 'וַיַּפֵּל',     'Wayyiqtol',    'Gen 2:21',   '"and he cast"',             'I-nun',         'נָפַל', 'patach prefix + dagesh in R2 + tsere'),
+        SortEntry('23', 'יַפִּיל',       'Imperfect',    'Pro 19:15',  '"causes to fall"',          'I-nun',         'נָפַל', 'patach prefix + dagesh in R2 + chiriq'),
+        SortEntry('24', 'הַגֵּשׁ',       'Imperative',   'Gen 27:25',  '"bring near"',              'I-nun',         'נָגַשׁ', 'הַ + dagesh forte in R2 (ג) + tsere'),
+        SortEntry('25', 'מַגִּישׁ',      'Participle',   'Mal 1:7',    '"one who brings near"',     'I-nun',         'נָגַשׁ', 'מַ + dagesh in R2 + chiriq'),
+        # Group 6 — I-י
+        SortEntry('26', 'הוֹצִיא',       'Perfect',      'Gen 15:7',   '"he brought out"',          'I-yod',         'יָצָא', 'הוֹ prefix (holem-vav) — I-yod/vav signature'),
+        SortEntry('27', 'וַיּוֹצֵא',     'Wayyiqtol',    'Gen 1:12',   '"and it brought forth"',    'I-yod',         'יָצָא', 'וַיּוֹ prefix — dagesh in יּ + holem-vav'),
+        SortEntry('28', 'יוֹרִיד',       'Imperfect',    '1 Sam 2:6',  '"he brings down"',          'I-yod',         'יָרַד', 'יוֹ prefix (holem-vav)'),
+        SortEntry('29', 'הוֹרֵד',        'Imperative',   'Gen 42:38',  '"bring down"',              'I-yod',         'יָרַד', 'הוֹ prefix (not הַ) + tsere'),
+        SortEntry('30', 'מוֹצִיא',       'Participle',   'Deu 8:14',   '"the one who brings out"',  'I-yod',         'יָצָא', 'מוֹ prefix (holem-vav) — not מַ'),
+        # Group 7 — Biconsonantal
+        SortEntry('31', 'הֵקִים',        'Perfect',      'Gen 6:18',   '"he established"',          'Biconsonantal', 'קוּם', 'הֵ prefix (tsere) — not הִ (hiriq)'),
+        SortEntry('32', 'וַיָּקֶם',      'Wayyiqtol',    'Gen 23:20',  '"and it was confirmed"',    'Biconsonantal', 'קוּם', 'qamets prefix + apocopated seghol final'),
+        SortEntry('33', 'יָקִים',        'Imperfect',    'Deu 18:15',  '"he will raise up"',        'Biconsonantal', 'קוּם', 'qamets under prefix consonant (יָ)'),
+        SortEntry('34', 'הָקֵם',         'Imperative',   'Exo 40:2',   '"set up"',                  'Biconsonantal', 'קוּם', 'הָ prefix (qamets) + tsere'),
+        SortEntry('35', 'מֵקִים',        'Participle',   '1 Sam 2:8',  '"one who raises up"',       'Biconsonantal', 'קוּם', 'מֵ prefix (tsere) — not מַ'),
+    ]
+
+    _PART_B = [
+        SortEntry('36', 'וַיַּשְׁמַע',   'Wayyiqtol',    '1 Sam 15:14', '"and he made heard"',       'III-ch/ayin',   'שָׁמַע', 'patach before final ע (not tsere) — guttural forces lowering'),
+        SortEntry('37', 'הֵשִׂים',        'Perfect',       'Gen 45:9',    '"he made / placed"',        'Biconsonantal', 'שִׂים',  'הֵ prefix (tsere) — biconsonantal perfect'),
+        SortEntry('38', 'וַיַּעַל',       'Wayyiqtol',     'Gen 22:2',    '"and he went up"',          'III-he',        'עָלָה', 'apocopated: ה dropped'),
+        SortEntry('39', 'הִגִּישׁ',       'Perfect',       'Amos 9:13',   '"he brought near"',         'I-nun',         'נָגַשׁ', 'dagesh forte in R2 (ג)'),
+        SortEntry('40', 'יָשִׂים',        'Imperfect',     'Gen 3:15',    '"he will place"',           'Biconsonantal', 'שִׂים',  'qamets under prefix (יָ)'),
+        SortEntry('41', 'הֶרְאָה',        'Perfect',       'Exo 25:9',    '"he showed"',               'III-he',        'רָאָה', 'qamets + ה ending; seghol under הֶ'),
+        SortEntry('42', 'וַיּוֹרֶד',      'Wayyiqtol',     'Gen 42:38',   '"and he brought down"',     'I-yod',         'יָרַד', 'וַיּוֹ prefix uniquely identifies I-yod Hiphil'),
+        SortEntry('43', 'מַעֲמִידִים',    'Participle mp', 'Neh 4:7',     '"those who station"',       'I-guttural',    'עָמַד', 'מַ + composite shewa under ע + chiriq + ים'),
+        SortEntry('44', 'הַמְצֵא',        'Imperative',    '(expected)',  '"cause to find"',           'III-aleph',     'מָצָא', 'tsere + silent final א; הַ prefix (patach)'),
+        SortEntry('45', 'וָאָקִים',       'Wayyiqtol',     'Exo 6:4',     '"and I established"',       'Biconsonantal', 'קוּם', 'וָאָ (1cs wayyiqtol) + qamets + chiriq-yod'),
+    ]
+
+    def _build(self):
+        self.add_instructions(
+            'Part A (1–35): forms are grouped by weak class (5 per class). '
+            'Identify conjugation + PGN, and give the root. '
+            'Part B (36–45): mixed classes — identify the class first, then parse. '
+            'Answer key is on the last page.'
+        )
+
+        self.add_note(
+            'Classes: I-guttural (he prefix seghol; composite shewa under R1)  |  '
+            'III-ch/ayin (patach furtive before final guttural)  |  '
+            'III-aleph (silent final aleph; chiriq-yod or tsere before it)  |  '
+            'III-he (qamets+he perfect; seghol+he impf/ptc; apocopated wayyiqtol; vot inf.cstr)  |  '
+            'I-nun (dagesh forte in R2 throughout)  |  '
+            'I-yod (ho/yo/mo prefix pattern)  |  '
+            'Biconsonantal (he+tsere perfect; qamets impf/wayyiqtol; ha+qamets imv/inf; me+tsere ptc)'
+        )
+
+        self.add_section_heading('Part A — By Class')
+        self.add_sort_table(self._PART_A, show_answers=False)
+
+        self.add_section_heading('Part B — Mixed')
+        self.add_sort_table(self._PART_B, show_answers=False)
+
+        self.add_reflection([
+            'Compare הִמְצִיא (III-aleph perfect 3ms) and הַמְצֵא (III-aleph imperative 2ms). '
+            'Both end with silent final aleph. How do you distinguish them? '
+            'What is the key difference in the prefix vowel?',
+            'הַשְׁמַע (III-ch/ayin imperative) and הַעֲמֵד (I-guttural imperative) both begin '
+            'with the ha- prefix. How does the vowel under R1 differ? What does that tell you about the class?',
+            'וַיַּשְׁלַח (III-ch/ayin wayyiqtol) and וַיַּקְרֵא (III-aleph wayyiqtol) both have '
+            'patach under the wayyiqtol prefix. The difference is in the final vowel. '
+            'Explain what happens to the Hiphil tsere in each case and why.',
+            'Compare הוֹרֵד (I-yod imperative 2ms) and הָקֵם (Biconsonantal imperative 2ms). '
+            'Both have a long prefix vowel rather than the patach of the strong Hiphil imperative. '
+            'What prefix vowel does each use, and how can you tell them apart?',
+        ])
+
+        self.add_answer_key_sort(self._PART_A + self._PART_B)
+
+
+def build_ch27_weak_form_id_exercise(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'hebrew', 'bbh', 'ch27', 'exercises',
+                               'ch27-weak-form-id')
+    path = os.path.join(out_dir, 'ch27-weak-form-id.pdf')
+    ex = Ch27WeakFormIdExercise(
+        title='Chapter 27 — Hiphil Weak-Form Identification Drill',
+        subtitle='BBH Chapter 27 · Hiphil Weak Verbs',
+    )
+    return ex.save(path)
+
+
 if __name__ == '__main__':
     p0 = build_ch24_exercise()
     print(f'Saved: {p0}')
@@ -1863,3 +2109,7 @@ if __name__ == '__main__':
     print(f'Saved: {p6}')
     p7 = build_ch26_function_sort_exercise()
     print(f'Saved: {p7}')
+    p8 = build_ch27_exercise()
+    print(f'Saved: {p8}')
+    p9 = build_ch27_weak_form_id_exercise()
+    print(f'Saved: {p9}')
