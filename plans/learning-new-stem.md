@@ -18,7 +18,6 @@ output/lessons/<language>/<textbook>/ch<N>/
   README.md                              # Chapter index (see §README below)
   ch<N>-<stem>-<type>-verbs.md           # Main lesson file
   <stem>-paradigms.md                    # Full conjugation paradigm reference
-  [<stem>-weak-<class>-paradigms.md]     # Weak verb paradigm file(s) if applicable
   ch<N>-morphology-deck.md               # Morphology flashcard deck (Markdown)
   ch<N>-morphology-deck.txt              # Morphology flashcard deck (Anki import)
   ch<N>-vocab-deck.md                    # Vocabulary flashcard deck (Markdown)
