@@ -29,9 +29,9 @@
 
 ## Flashcards
 
-| File | Description |
-|---|---|
-| [ch25-morphology-deck.md](ch25-morphology-deck.md) | Morphology flashcard list — 28 cards across 4 roots and 8 conjugations with tag reference table |
-| [ch25-morphology-deck.txt](ch25-morphology-deck.txt) | Morphology Anki import file — tab-separated, ready for File → Import |
-| [ch25-vocab-deck.md](ch25-vocab-deck.md) | Vocabulary flashcard list — 14 words (6 verbs, 8 nouns) with POS tags and frequency |
-| [ch25-vocab-deck.txt](ch25-vocab-deck.txt) | Vocabulary Anki import file — tab-separated, ready for File → Import |
+| File | Format | Description |
+|---|---|---|
+| [ch25-morphology-deck.md](ch25-morphology-deck.md) | Markdown | Morphology deck — 28 cards across 4 roots and 8 conjugations; tag reference table included |
+| [ch25-morphology-deck.txt](ch25-morphology-deck.txt) | Anki import | Morphology deck — tab-separated, ready for File → Import |
+| [ch25-vocab-deck.md](ch25-vocab-deck.md) | Markdown | Vocabulary deck — 14 words (6 verbs, 8 nouns) with POS tags and frequency |
+| [ch25-vocab-deck.txt](ch25-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for File → Import |
