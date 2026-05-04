@@ -100,6 +100,19 @@ class ContrastEntry:
     answer_note: str   # one-line explanation
 
 @dataclass
+class NHEntry:
+    num:         str   # item number
+    heb:         str   # Hebrew form
+    ref:         str   # reference
+    context:     str   # fill-in-blank sentence
+    stem:        str   # Niphal / Hiphil (answer)
+    conj:        str   # conjugation (answer)
+    pgn:         str   # person-gender-number (answer)
+    root_class:  str   # "root · weak class" (answer)
+    translation: str   # English translation (answer)
+    note:        str   # one-line diagnostic note (answer)
+
+@dataclass
 class SortEntry:
     num:         str   # "1"–"24"
     heb:         str   # Hebrew form
@@ -842,6 +855,96 @@ class ExercisePDF:
                 cx += cw[4]
                 c.setFont('Helvetica-Bold', self.LABEL_SIZE)
                 c.drawString(cx + 3, y - self.ANSWER_H + 6, e.function)
+                y -= self.ANSWER_H
+
+        self._y = y - 0.08 * inch
+
+    def add_nh_table(self, entries: list['NHEntry'], show_answers: bool = True):
+        """Draw a Niphal-Hiphil contrast table with fillable Stem/Conjugation/PGN/Root columns."""
+        c = self._canvas
+        w = self._usable_w()
+        ratios = [0.04, 0.10, 0.08, 0.28, 0.10, 0.14, 0.08, 0.18]
+        cw = [r * w for r in ratios]
+        headers = ['#', 'Form', 'Ref', 'Context', 'Stem', 'Conjugation', 'PGN', 'Root / Class']
+
+        needed = self.HEADER_H + len(entries) * (self.ROW_H + (self.ANSWER_H if show_answers else 0)) + 0.08*inch
+        self._check_space(needed)
+        y = self._y
+        x0 = self.MARGIN_L
+
+        c.setFillColor(C_HEADER_BG)
+        c.setStrokeColor(C_RULE)
+        c.setLineWidth(0.4)
+        c.rect(x0, y - self.HEADER_H, sum(cw), self.HEADER_H, fill=1, stroke=1)
+        cx = x0
+        c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+        c.setFillColor(black)
+        for hdr, col_w in zip(headers, cw):
+            c.drawString(cx + 3, y - self.HEADER_H + 5, hdr)
+            cx += col_w
+        y -= self.HEADER_H
+
+        for e in entries:
+            self._check_space(self.ROW_H + (self.ANSWER_H if show_answers else 0))
+            c.setStrokeColor(C_RULE)
+            c.setLineWidth(0.4)
+            c.rect(x0, y - self.ROW_H, sum(cw), self.ROW_H, fill=0, stroke=1)
+            cx = x0
+            c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+            c.setFillColor(HexColor('#666666'))
+            c.drawCentredString(cx + cw[0]/2, y - self.ROW_H + 8, e.num)
+            cx += cw[0]
+            c.setFont('ArialHebrewBold', self.HEB_SIZE - 2)
+            c.setFillColor(black)
+            c.drawRightString(cx + cw[1] - 3, y - self.ROW_H + 7, _heb(e.heb))
+            cx += cw[1]
+            c.setFont('Helvetica', self.LABEL_SIZE)
+            c.setFillColor(HexColor('#555555'))
+            c.drawString(cx + 3, y - self.ROW_H + 8, e.ref)
+            cx += cw[2]
+            c.setFillColor(black)
+            lines = simpleSplit(e.context, 'Helvetica', self.LABEL_SIZE, cw[3] - 6)
+            c.drawString(cx + 3, y - self.ROW_H + 8, lines[0] if lines else e.context)
+            cx += cw[3]
+            for col_w in cw[4:]:
+                fid = f'nh-{e.num}-{self._field_idx}'
+                self._field_idx += 1
+                fx = cx + self.FIELD_PAD
+                fy = y - self.ROW_H + self.FIELD_PAD
+                fw2 = col_w - self.FIELD_PAD * 2
+                fh = self.ROW_H - self.FIELD_PAD * 2
+                c.setFillColor(C_FIELD_BG)
+                c.setStrokeColor(HexColor('#bbbbbb'))
+                c.setLineWidth(0.5)
+                c.rect(fx, fy, fw2, fh, fill=1, stroke=1)
+                c.acroForm.textfield(
+                    name=fid, tooltip=fid,
+                    x=fx, y=fy, width=fw2, height=fh,
+                    borderStyle='underlined', borderColor=HexColor('#bbbbbb'),
+                    fillColor=C_FIELD_BG, textColor=black,
+                    fontSize=self.LABEL_SIZE, fontName='Helvetica',
+                    value='', fieldFlags='',
+                )
+                cx += col_w
+            y -= self.ROW_H
+
+            if show_answers:
+                c.setFillColor(C_ANSWER_BG)
+                c.setStrokeColor(C_RULE)
+                c.setLineWidth(0.4)
+                c.rect(x0, y - self.ANSWER_H, sum(cw), self.ANSWER_H, fill=1, stroke=1)
+                cx = x0
+                c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+                c.setFillColor(C_ANSWER_FG)
+                c.drawCentredString(cx + cw[0]/2, y - self.ANSWER_H + 6, '✓')
+                cx += cw[0]
+                c.setFont('ArialHebrew', self.LABEL_SIZE)
+                c.drawRightString(cx + cw[1] - 3, y - self.ANSWER_H + 6, _heb(e.heb))
+                cx += cw[1] + cw[2]
+                c.setFont('Helvetica', self.LABEL_SIZE)
+                answer_text = f'{e.stem} · {e.conj} · {e.pgn} · {e.root_class} — {e.translation}'
+                lines = simpleSplit(answer_text, 'Helvetica', self.LABEL_SIZE, sum(cw[3:]) - 6)
+                c.drawString(cx + 3, y - self.ANSWER_H + 6, lines[0] if lines else answer_text)
                 y -= self.ANSWER_H
 
         self._y = y - 0.08 * inch
@@ -2132,6 +2235,149 @@ def build_ch27_weak_form_id_exercise(out_dir: str = None) -> str:
     ex = Ch27WeakFormIdExercise(
         title='Chapter 27 — Hiphil Weak-Form Identification Drill',
         subtitle='BBH Chapter 27 · Hiphil Weak Verbs',
+    )
+    return ex.save(path)
+
+
+# ---------------------------------------------------------------------------
+# Chapter 27 — Niphal–Hiphil Contrast Drill
+# ---------------------------------------------------------------------------
+
+class Ch27NHContrastExercise(ExercisePDF):
+    """Niphal–Hiphil Contrast Drill — 20 items across both stems."""
+
+    _PART_A = [
+        NHEntry('1',  'נִשְׁמַע',     'Est 1:20',  '"the decree ___ throughout the kingdom"',   'Niphal', 'Perfect',    '3ms', 'שָׁמַע · III-ח/ע',         'was heard',              'נִ prefix + patach furtive before ע = Niphal III-ח/ע perfect'),
+        NHEntry('2',  'הִשְׁמִיעַ',   'Isa 48:6',  '"I ___ you new things"',                    'Hiphil', 'Perfect',    '3ms', 'שָׁמַע · III-ח/ע',         'caused to hear / announced', 'הִ + chiriq-yod + patach furtive before ע = Hiphil III-ח/ע perfect'),
+        NHEntry('3',  'יִמָּצֵא',     'Gen 44:10', '"he with whom it is ___ shall be my servant"','Niphal','Imperfect', '3ms', 'מָצָא · III-א',            'is found',               'יִמָּ (dagesh in מ = Niphal assimilation) + tsere + silent א'),
+        NHEntry('4',  'הִמְצִיא',     'Neh 9:15',  '"You ___ them bread from heaven"',           'Hiphil', 'Perfect',    '3ms', 'מָצָא · III-א',            'provided / caused to find', 'הִ + chiriq-yod + silent final א = Hiphil III-א perfect'),
+        NHEntry('5',  'נִגְלָה',      'Isa 40:5',  '"the glory of the LORD shall ___"',          'Niphal', 'Perfect',    '3ms', 'גָּלָה · III-ה',           'was revealed',           'נִ prefix + final ָה = Niphal III-ה perfect'),
+        NHEntry('6',  'הֶעֱלָה',      'Gen 8:20',  '"Noah ___ burnt offerings on the altar"',    'Hiphil', 'Perfect',    '3ms', 'עָלָה · III-ה + I-gutt.', 'offered up',             'הֶ prefix + hateph-seghol under ע + qamets + ה = Hiphil III-ה perfect'),
+        NHEntry('7',  'וַיִּגַּשׁ',   'Gen 44:18', '"Judah ___ him and said"',                  'Niphal', 'Wayyiqtol',  '3ms', 'נָגַשׁ · I-נ',             'drew near (reflexive)',   'וַיִּ + dagesh in ג (Niphal I-נ assimilation) without הִ prefix'),
+        NHEntry('8',  'הִגִּישׁ',     'Amos 9:13', '"the one who ___ grain offering"',           'Hiphil', 'Perfect',    '3ms', 'נָגַשׁ · I-נ',             'brought near',           'הִ prefix + dagesh in ג (R2); contrast Niphal וַיִּגַּשׁ'),
+    ]
+
+    _PART_B = [
+        NHEntry('9',  'נוֹלַד',       'Gen 21:3',  '"a son ___ to Abraham"',                    'Niphal', 'Perfect',    '3ms', 'יָלַד · I-י',              'was born',               'נוֹ prefix = Niphal I-י perfect; patach under R2 (not qamets of participle)'),
+        NHEntry('10', 'יּוֹלֶד',      'Gen 5:3',   '"Adam ___ a son in his own likeness"',      'Hiphil', 'Wayyiqtol',  '3ms', 'יָלַד · I-י',              'fathered / begat',       'וַיּוֹ prefix (dagesh in יּ + holem-vav) = Hiphil I-י wayyiqtol'),
+        NHEntry('11', 'יִוָּלֵד',     'Gen 17:17', '"shall a child ___ to a man of 100 years?"','Niphal', 'Imperfect',  '3ms', 'יָלַד · I-י',              'shall be born',          'יִוָּ cluster (dagesh in ו) = Niphal I-י imperfect; contrast Hiphil יוֹ'),
+        NHEntry('12', 'יוֹרִיד',      '1 Sam 2:6', '"the LORD ___ to Sheol and raises up"',     'Hiphil', 'Imperfect',  '3ms', 'יָרַד · I-י',              'brings down',            'יוֹ prefix (holem-vav, no dagesh in ו) = Hiphil I-י imperfect'),
+        NHEntry('13', 'וַיִּוָּדַע',  'Est 2:22',  '"the matter ___ to Mordecai"',              'Niphal', 'Wayyiqtol',  '3ms', 'יָדַע · I-י',              'became known',           'וַיִּוָּ cluster = Niphal I-י wayyiqtol'),
+        NHEntry('14', 'הֵקִים',       'Gen 6:18',  '"I will ___ my covenant with you"',         'Hiphil', 'Perfect',    '3ms', 'קוּם · Biconsonantal',     'established',            'הֵ prefix (tsere) = Hiphil Biconsonantal perfect; contrast Niphal נָ (qamets)'),
+        NHEntry('15', 'נָכוֹן',       'Gen 41:32', '"the thing is ___ by God"',                 'Niphal', 'Perfect',    '3ms', 'כּוּן · Biconsonantal',    'is established / firm',  'נָ prefix (qamets) = Niphal Biconsonantal perfect; context confirms passive sense'),
+    ]
+
+    _PART_C = [
+        NHEntry('16', 'וַיַּעַל',     'Gen 22:2',  '"and he ___ him as a burnt offering"',      'Hiphil', 'Wayyiqtol',  '3ms', 'עָלָה · III-ה + I-gutt.', 'offered up (apocopated)', 'patach prefix (יַ) + composite shewa + apocopated = Hiphil; contrast Niphal וַיֵּ'),
+        NHEntry('17', 'וַיִּגָּל',    'Num 24:4',  '"who sees the vision, ___ eyes"',           'Niphal', 'Wayyiqtol',  '3ms', 'גָּלָה · III-ה',           'were uncovered (apocopated)', 'וַיִּ + dagesh in ג (Niphal assimilation) + apocopated = Niphal'),
+        NHEntry('18', 'הָסֵב',        '2 Sam 2:22','"___ from following me"',                   'Hiphil', 'Imperative', '2ms', 'סָבַב · Geminate',         'turn aside!',            'הָ prefix (qamets) = Hiphil Biconsonantal/Geminate imperative; root R2=R3'),
+        NHEntry('19', 'מַעֲמִידִים',  'Neh 4:7',   '"we who were ___ guard over them"',         'Hiphil', 'Participle', 'mp',  'עָמַד · I-guttural',       'stationing / standing guard', 'מַ + composite shewa under ע = Hiphil I-guttural participle; contrast Niphal נֶ'),
+        NHEntry('20', 'הֵרָאֵה',      '1 Kgs 18:1','"Go, ___ yourself to Ahab"',                'Niphal', 'Imperative', '2ms', 'רָאָה · III-ה',            'show yourself!',         'הֵ prefix (ר compensatory) + final ֵה retained = Niphal III-ה imperative'),
+    ]
+
+    def _build(self):
+        self.add_instructions(
+            'For each form: (1) identify the stem (Niphal or Hiphil); (2) parse — conjugation, PGN; '
+            '(3) give the root and weak class; (4) translate in context. '
+            'Answer key is on the last page.'
+        )
+
+        self.add_note(
+            'Niphal markers: נִ prefix (perfect/participle); יִמָּ / וַיִּמָּ (imperfect/wayyiqtol — assimilation); '
+            'נוֹ (I-י perfect/ptc); יִוָּ (I-י imperfect); נָ (Biconsonantal perfect/ptc).  '
+            'Hiphil markers: הִ prefix (perfect); יַ (imperfect); הַ (imperative/inf.); מַ (participle) — '
+            'modified for weak classes: הֶ (I-gutt.), הוֹ / יוֹ / מוֹ (I-י), הֵ / יָ / הָ / מֵ (Biconsonantal/Geminate).'
+        )
+
+        self.add_section_heading('Part A — Contrasting Niphal and Hiphil (same root)')
+        self.add_note('Niphal = passive/reflexive. Hiphil = causative. Same root, opposite semantic direction.')
+        self.add_nh_table(self._PART_A, show_answers=False)
+
+        self.add_section_heading('Part B — Weak-Class Focus (I-י and Biconsonantal)')
+        self.add_note(
+            'I-י: Niphal perfect/ptc = נוֹ; imperfect = יִוָּ (dagesh in ו). '
+            'Hiphil perfect = הוֹ; imperfect = יוֹ (no dagesh in ו). '
+            'Biconsonantal: Niphal perfect/ptc = נָ (qamets); Hiphil perfect = הֵ (tsere).'
+        )
+        self.add_nh_table(self._PART_B, show_answers=False)
+
+        self.add_section_heading('Part C — Mixed Review')
+        self.add_nh_table(self._PART_C, show_answers=False)
+
+        self.add_reflection([
+            'Items 1–2 (שָׁמַע) and 3–4 (מָצָא): pick one pair and explain in one sentence '
+            'what the Niphal adds and what the Hiphil adds to the basic Qal meaning.',
+            'Items 9–11 are all from יָלַד (I-י). Both stems use a holem-vav cluster. '
+            'What is the precise difference between Niphal perfect נוֹלַד and Hiphil wayyiqtol וַיּוֹלֶד?',
+            'Items 16 and 17 are both apocopated III-ה wayyiqtol forms. '
+            'What vowel under the prefix consonant is decisive in distinguishing Niphal from Hiphil?',
+            'Items 18 (הָסֵב, Hiphil Geminate imperative) and 20 (הֵרָאֵה, Niphal III-ה imperative) '
+            'both have a long prefix vowel rather than the expected strong הַ/הִ. '
+            'Explain the phonological reason for the long vowel in each case.',
+        ])
+
+        self.add_answer_key_nh(self._PART_A + self._PART_B + self._PART_C)
+
+    def add_answer_key_nh(self, entries: list['NHEntry']):
+        self.add_section_heading('Answer Key')
+        c = self._canvas
+        w = self._usable_w()
+        ratios = [0.04, 0.10, 0.10, 0.76]
+        cw = [r * w for r in ratios]
+        headers = ['#', 'Form', 'Stem', 'Answer']
+
+        self._check_space(self.HEADER_H + len(entries) * self.ANSWER_H + 0.1*inch)
+        y = self._y
+        x0 = self.MARGIN_L
+
+        c.setFillColor(C_HEADER_BG)
+        c.setStrokeColor(C_RULE)
+        c.setLineWidth(0.4)
+        c.rect(x0, y - self.HEADER_H, sum(cw), self.HEADER_H, fill=1, stroke=1)
+        cx = x0
+        c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+        c.setFillColor(black)
+        for hdr, col_w in zip(headers, cw):
+            c.drawString(cx + 3, y - self.HEADER_H + 5, hdr)
+            cx += col_w
+        y -= self.HEADER_H
+
+        for e in entries:
+            self._check_space(self.ANSWER_H)
+            c.setFillColor(C_ANSWER_BG)
+            c.setStrokeColor(C_RULE)
+            c.setLineWidth(0.4)
+            c.rect(x0, y - self.ANSWER_H, sum(cw), self.ANSWER_H, fill=1, stroke=1)
+            cx = x0
+            c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+            c.setFillColor(C_ANSWER_FG)
+            c.drawCentredString(cx + cw[0]/2, y - self.ANSWER_H + 6, e.num)
+            cx += cw[0]
+            c.setFont('ArialHebrew', self.LABEL_SIZE)
+            c.drawRightString(cx + cw[1] - 3, y - self.ANSWER_H + 6, _heb(e.heb))
+            cx += cw[1]
+            c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+            c.drawString(cx + 3, y - self.ANSWER_H + 6, e.stem)
+            cx += cw[2]
+            c.setFont('Helvetica', self.LABEL_SIZE)
+            answer = f'{e.conj} · {e.pgn} · {e.root_class} — "{e.translation}" — {e.note}'
+            lines = simpleSplit(answer, 'Helvetica', self.LABEL_SIZE, cw[3] - 6)
+            c.drawString(cx + 3, y - self.ANSWER_H + 6, lines[0] if lines else answer)
+            y -= self.ANSWER_H
+
+        self._y = y - 0.08 * inch
+
+
+def build_ch27_nh_contrast_exercise(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'hebrew', 'bbh', 'ch27', 'exercises',
+                               'ch27-niphal-hiphil-contrast')
+    path = os.path.join(out_dir, 'ch27-niphal-hiphil-contrast.pdf')
+    ex = Ch27NHContrastExercise(
+        title='Chapter 27 — Niphal–Hiphil Contrast Drill',
+        subtitle='BBH Chapters 25 & 27 · Niphal and Hiphil Weak Verbs',
     )
     return ex.save(path)
 
