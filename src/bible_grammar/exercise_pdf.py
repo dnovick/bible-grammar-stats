@@ -113,6 +113,20 @@ class NHEntry:
     note:        str   # one-line diagnostic note (answer)
 
 @dataclass
+class BGEntry:
+    num:         str   # item number
+    heb:         str   # Hebrew form
+    ref:         str   # reference
+    context:     str   # fill-in-blank sentence
+    stem:        str   # Niphal / Hiphil (answer)
+    conj:        str   # conjugation (answer)
+    pgn:         str   # person-gender-number (answer)
+    bg_class:    str   # Biconsonantal / Geminate (answer)
+    root:        str   # root (answer)
+    translation: str   # English translation (answer)
+    note:        str   # one-line diagnostic note (answer)
+
+@dataclass
 class SortEntry:
     num:         str   # "1"–"24"
     heb:         str   # Hebrew form
@@ -943,6 +957,96 @@ class ExercisePDF:
                 cx += cw[1] + cw[2]
                 c.setFont('Helvetica', self.LABEL_SIZE)
                 answer_text = f'{e.stem} · {e.conj} · {e.pgn} · {e.root_class} — {e.translation}'
+                lines = simpleSplit(answer_text, 'Helvetica', self.LABEL_SIZE, sum(cw[3:]) - 6)
+                c.drawString(cx + 3, y - self.ANSWER_H + 6, lines[0] if lines else answer_text)
+                y -= self.ANSWER_H
+
+        self._y = y - 0.08 * inch
+
+    def add_bg_table(self, entries: list['BGEntry'], show_answers: bool = True):
+        """Draw a Biconsonantal/Geminate drill table with 5 fillable fields per row."""
+        c = self._canvas
+        w = self._usable_w()
+        ratios = [0.04, 0.10, 0.08, 0.24, 0.10, 0.12, 0.08, 0.12, 0.12]
+        cw = [r * w for r in ratios]
+        headers = ['#', 'Form', 'Ref', 'Context', 'Stem', 'Conjugation', 'PGN', 'Class', 'Root']
+
+        needed = self.HEADER_H + len(entries) * (self.ROW_H + (self.ANSWER_H if show_answers else 0)) + 0.08*inch
+        self._check_space(needed)
+        y = self._y
+        x0 = self.MARGIN_L
+
+        c.setFillColor(C_HEADER_BG)
+        c.setStrokeColor(C_RULE)
+        c.setLineWidth(0.4)
+        c.rect(x0, y - self.HEADER_H, sum(cw), self.HEADER_H, fill=1, stroke=1)
+        cx = x0
+        c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+        c.setFillColor(black)
+        for hdr, col_w in zip(headers, cw):
+            c.drawString(cx + 3, y - self.HEADER_H + 5, hdr)
+            cx += col_w
+        y -= self.HEADER_H
+
+        for e in entries:
+            self._check_space(self.ROW_H + (self.ANSWER_H if show_answers else 0))
+            c.setStrokeColor(C_RULE)
+            c.setLineWidth(0.4)
+            c.rect(x0, y - self.ROW_H, sum(cw), self.ROW_H, fill=0, stroke=1)
+            cx = x0
+            c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+            c.setFillColor(HexColor('#666666'))
+            c.drawCentredString(cx + cw[0]/2, y - self.ROW_H + 8, e.num)
+            cx += cw[0]
+            c.setFont('ArialHebrewBold', self.HEB_SIZE - 2)
+            c.setFillColor(black)
+            c.drawRightString(cx + cw[1] - 3, y - self.ROW_H + 7, _heb(e.heb))
+            cx += cw[1]
+            c.setFont('Helvetica', self.LABEL_SIZE)
+            c.setFillColor(HexColor('#555555'))
+            c.drawString(cx + 3, y - self.ROW_H + 8, e.ref)
+            cx += cw[2]
+            c.setFillColor(black)
+            lines = simpleSplit(e.context, 'Helvetica', self.LABEL_SIZE, cw[3] - 6)
+            c.drawString(cx + 3, y - self.ROW_H + 8, lines[0] if lines else e.context)
+            cx += cw[3]
+            for col_w in cw[4:]:
+                fid = f'bg-{e.num}-{self._field_idx}'
+                self._field_idx += 1
+                fx = cx + self.FIELD_PAD
+                fy = y - self.ROW_H + self.FIELD_PAD
+                fw2 = col_w - self.FIELD_PAD * 2
+                fh = self.ROW_H - self.FIELD_PAD * 2
+                c.setFillColor(C_FIELD_BG)
+                c.setStrokeColor(HexColor('#bbbbbb'))
+                c.setLineWidth(0.5)
+                c.rect(fx, fy, fw2, fh, fill=1, stroke=1)
+                c.acroForm.textfield(
+                    name=fid, tooltip=fid,
+                    x=fx, y=fy, width=fw2, height=fh,
+                    borderStyle='underlined', borderColor=HexColor('#bbbbbb'),
+                    fillColor=C_FIELD_BG, textColor=black,
+                    fontSize=self.LABEL_SIZE, fontName='Helvetica',
+                    value='', fieldFlags='',
+                )
+                cx += col_w
+            y -= self.ROW_H
+
+            if show_answers:
+                c.setFillColor(C_ANSWER_BG)
+                c.setStrokeColor(C_RULE)
+                c.setLineWidth(0.4)
+                c.rect(x0, y - self.ANSWER_H, sum(cw), self.ANSWER_H, fill=1, stroke=1)
+                cx = x0
+                c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+                c.setFillColor(C_ANSWER_FG)
+                c.drawCentredString(cx + cw[0]/2, y - self.ANSWER_H + 6, '✓')
+                cx += cw[0]
+                c.setFont('ArialHebrew', self.LABEL_SIZE)
+                c.drawRightString(cx + cw[1] - 3, y - self.ANSWER_H + 6, _heb(e.heb))
+                cx += cw[1] + cw[2]
+                c.setFont('Helvetica', self.LABEL_SIZE)
+                answer_text = f'{e.stem} · {e.conj} · {e.pgn} · {e.bg_class} · {e.root} — {e.translation}'
                 lines = simpleSplit(answer_text, 'Helvetica', self.LABEL_SIZE, sum(cw[3:]) - 6)
                 c.drawString(cx + 3, y - self.ANSWER_H + 6, lines[0] if lines else answer_text)
                 y -= self.ANSWER_H
@@ -2377,6 +2481,158 @@ def build_ch27_nh_contrast_exercise(out_dir: str = None) -> str:
     path = os.path.join(out_dir, 'ch27-niphal-hiphil-contrast.pdf')
     ex = Ch27NHContrastExercise(
         title='Chapter 27 — Niphal–Hiphil Contrast Drill',
+        subtitle='BBH Chapters 25 & 27 · Niphal and Hiphil Weak Verbs',
+    )
+    return ex.save(path)
+
+
+class Ch27BGDrillExercise(ExercisePDF):
+    """Biconsonantal / Geminate Disambiguation Drill — 24 items in Niphal and Hiphil."""
+
+    _PART_A = [
+        BGEntry('1',  'נָכוֹן',    'Gen 41:32',  '"the thing is ___ by God"',                    'Niphal', 'Perfect/Ptc', '3ms/ms', 'Biconsonantal', 'כּוּן',  'is established / firm',       'נָ prefix (qamets); medial ו vowel letter = Biconsonantal'),
+        BGEntry('2',  'נָסַב',     '1 Kgs 7:24', '"the gourds ___ it, ten to a cubit"',          'Niphal', 'Perfect',     '3ms',    'Geminate',      'סָבַב',  'encircled / went around',     'נָ prefix (qamets); R2=R3=ב = Geminate; no medial vowel letter'),
+        BGEntry('3',  'יִכּוֹן',   'Psa 93:2',   '"your throne ___ from of old"',                'Niphal', 'Imperfect',   '3ms',    'Biconsonantal', 'כּוּן',  'is established',              'יִ + dagesh in כּ + holem-vav = Niphal Biconsonantal imperfect'),
+        BGEntry('4',  'יִסֹּב',    'Num 21:4',   '"they traveled ___ Mount Edom"',               'Niphal', 'Imperfect',   '3ms',    'Geminate',      'סָבַב',  'went around',                 'יִ + dagesh in סּ (R2=R3 doubled) + holem = Niphal Geminate imperfect'),
+        BGEntry('5',  'הֵכּוֹן',   'Psa 57:8',   '"my heart is ___, O God"',                     'Niphal', 'Perfect',     '3ms',    'Biconsonantal', 'כּוּן',  'is ready / prepared',         'הֵ + dagesh + holem-vav = Niphal Biconsonantal; context confirms passive sense'),
+        BGEntry('6',  'הֵסֹּב',    'Num 34:4',   '"your border ___ from the south"',             'Niphal', 'Perfect',     '3ms',    'Geminate',      'סָבַב',  'turned / went around',        'הֵ + dagesh in סּ (R2=R3) + holem = Niphal Geminate perfect'),
+        BGEntry('7',  'נָשׁוּב',   'Lam 3:40',   '"let us examine and ___ to the LORD"',         'Niphal', 'Cohortative', '1cp',    'Biconsonantal', 'שׁוּב',  'let us return',               'נָ prefix + medial ו = Niphal Biconsonantal; cohortative force from context'),
+        BGEntry('8',  'נָתֹם',     '1 Sam 3:12', '"when I ___ what I have spoken"',              'Niphal', 'Inf. Const.', '—',      'Geminate',      'תָּמַם', 'to be completed / finished',  'נָ prefix + holem = Niphal Geminate inf. construct; root R2=R3=מ'),
+    ]
+
+    _PART_B = [
+        BGEntry('9',  'הֵקִים',    'Gen 6:18',   '"I will ___ my covenant with you"',            'Hiphil', 'Perfect',     '3ms',    'Biconsonantal', 'קוּם',  'established / raised up',     'הֵ prefix (tsere) = Hiphil; medial ו vowel letter = Biconsonantal'),
+        BGEntry('10', 'הֵסֵב',     '2 Sam 2:22', '"___ from following me"',                      'Hiphil', 'Perfect',     '3ms',    'Geminate',      'סָבַב', 'turned aside',                'הֵ prefix (tsere) = Hiphil; no medial vowel letter, R2=R3=ב = Geminate'),
+        BGEntry('11', 'יָקִים',    'Deut 18:15', '"the LORD will ___ a prophet"',                'Hiphil', 'Imperfect',   '3ms',    'Biconsonantal', 'קוּם',  'will raise up',               'יָ prefix (qamets) = Hiphil Biconsonantal imperfect; medial ו retained'),
+        BGEntry('12', 'יָסֵב',     'Eccl 1:6',   '"the wind ___ to the south"',                  'Hiphil', 'Imperfect',   '3ms',    'Geminate',      'סָבַב', 'causes to go around / turns', 'יָ prefix (qamets) = Hiphil; no medial vowel letter = Geminate'),
+        BGEntry('13', 'הָקֵם',     'Deut 27:26', '"\'___ the words of this law\'"',              'Hiphil', 'Imperative',  '2ms',    'Biconsonantal', 'קוּם',  'raise up! / confirm!',        'הָ prefix (qamets) = Hiphil imperative; Biconsonantal: no R2=R3 doubling'),
+        BGEntry('14', 'הָסֵב',     '2 Sam 2:22', '"___ from following me"',                      'Hiphil', 'Imperative',  '2ms',    'Geminate',      'סָבַב', 'turn aside!',                 'הָ prefix (qamets) = Hiphil imperative; same vowels as Biconsonantal; root R2=R3=ב'),
+        BGEntry('15', 'מֵקִים',    '1 Sam 2:8',  '"He ___ the poor from the dust"',              'Hiphil', 'Participle',  'ms',     'Biconsonantal', 'קוּם',  'one who raises up',           'מֵ prefix (tsere) = Hiphil participle; medial ו retained = Biconsonantal'),
+        BGEntry('16', 'מֵסֵב',     'Ezek 41:7',  '"the structure ___ upward"',                   'Hiphil', 'Participle',  'ms',     'Geminate',      'סָבַב', 'going around / surrounding',  'מֵ prefix (tsere) = Hiphil participle; no medial vowel letter = Geminate'),
+    ]
+
+    _PART_C = [
+        BGEntry('17', 'נָמֹוג',    'Isa 14:31',  '"all Philistia ___"',                          'Niphal', 'Perfect',     '3ms',    'Biconsonantal', 'מוּג',  'melted / dissolved',          'נָ prefix + medial ו = Niphal Biconsonantal; root מוּג = to melt'),
+        BGEntry('18', 'הֵמַס',     'Josh 2:11',  '"the LORD ___ our hearts"',                    'Hiphil', 'Perfect',     '3ms',    'Geminate',      'מסס',   'caused to melt',              'הֵ prefix (tsere) = Hiphil; R2=R3=ס = Geminate; patach under contracted stem'),
+        BGEntry('19', 'יָרֻם',     'Isa 52:13',  '"my servant shall be high and ___ up"',        'Niphal', 'Imperfect',   '3ms',    'Biconsonantal', 'רוּם',  'will be exalted / lifted up', 'יָ prefix + qibbutz under R2 (passive) = Niphal Biconsonantal; contrast Hiphil יָרִים'),
+        BGEntry('20', 'יָרֹם',     'Psa 99:2',   '"great is the LORD, ___ above all peoples"',   'Niphal', 'Imperfect',   '3ms',    'Biconsonantal', 'רוּם',  'is exalted / high',           'יָ prefix + holem under R2 = Niphal Biconsonantal; compare Hiphil יָרִים (chiriq)'),
+        BGEntry('21', 'הֵרִים',    'Gen 14:22',  '"I have ___ my hand to the LORD"',             'Hiphil', 'Perfect',     '3ms',    'Biconsonantal', 'רוּם',  'lifted up / swore an oath',   'הֵ prefix (tsere) + chiriq-yod = Hiphil Biconsonantal perfect; causative sense'),
+        BGEntry('22', 'הוּרַם',    'Lev 4:10',   '"just as it is ___ from the peace offerings"', 'Hophal', 'Perfect',     '3ms',    'Biconsonantal', 'רוּם',  'was lifted off / removed',    'הוּ prefix (holem-vav) = Hophal (passive of Hiphil), not Niphal or Hiphil'),
+        BGEntry('23', 'יָשׁוּב',   'Hos 14:8',   '"they ___ in the shade"',                      'Qal',    'Imperfect',   '3ms',    'Biconsonantal', 'שׁוּב', 'will dwell / return',         'Qal Biconsonantal — no Niphal נ or Hiphil הֵ/מֵ marker; medial ו retained'),
+        BGEntry('24', 'יָשֹׁב',    'Lam 1:11',   '"all her people ___ to find bread"',           'Qal',    'Imperfect',   '3ms',    'Biconsonantal', 'שׁוּב', 'returned / went around',      'Qal Biconsonantal; holem vowel grade vs. shureq in יָשׁוּב — both Qal, not Niphal/Hiphil'),
+    ]
+
+    def _build(self):
+        self.add_instructions(
+            'For each form: (1) identify the stem (Niphal or Hiphil); (2) parse — conjugation, PGN; '
+            '(3) identify the weak class (Biconsonantal or Geminate); (4) give the root and translate. '
+            'Biconsonantal and Geminate forms are vocally identical — root knowledge is required. '
+            'Answer key is on the last page.'
+        )
+
+        self.add_note(
+            'Biconsonantal (II-י/ו): medial vowel letter ו or י retained in stem (e.g. קוּם, שׁוּב, כּוּן). '
+            'Geminate (R2=R3): same consonant at R2 and R3; no medial vowel letter (e.g. סָבַב, תָּמַם). '
+            'Both classes share: Niphal perfect נָ (qamets); Hiphil perfect הֵ (tsere); '
+            'Hiphil imperfect יָ (qamets); Hiphil imperative הָ (qamets); Hiphil participle מֵ (tsere).'
+        )
+
+        self.add_section_heading('Part A — Niphal: Biconsonantal vs. Geminate')
+        self.add_note(
+            'All forms are Niphal. Identify whether each is Biconsonantal (medial ו/י) or Geminate (R2=R3). '
+            'The prefix vowel pattern (נָ in perfect; יִ in imperfect) is identical for both classes.'
+        )
+        self.add_bg_table(self._PART_A, show_answers=False)
+
+        self.add_section_heading('Part B — Hiphil: Biconsonantal vs. Geminate')
+        self.add_note(
+            'All forms are Hiphil. Hiphil prefix patterns: הֵ (perfect) · יָ (imperfect) · הָ (imperative) · מֵ (participle). '
+            'These are identical for Biconsonantal and Geminate — root knowledge is the only distinguisher.'
+        )
+        self.add_bg_table(self._PART_B, show_answers=False)
+
+        self.add_section_heading('Part C — Mixed: Stem and Class Both Unknown')
+        self.add_note(
+            'Identify both the stem (Niphal/Hiphil/Qal/Hophal) and the class. '
+            'Part C includes Qal and Hophal forms as distractors — not every Biconsonantal form is Niphal or Hiphil.'
+        )
+        self.add_bg_table(self._PART_C, show_answers=False)
+
+        self.add_reflection([
+            'Items 1 (נָכוֹן) and 2 (נָסַב) have the same נָ prefix. What is the only reliable way '
+            'to identify נָכוֹן as Biconsonantal (root כּוּן) and נָסַב as Geminate (root סָבַב)?',
+            'Items 9 (הֵקִים) and 10 (הֵסֵב) both have הֵ prefix (tsere). One retains a medial vowel '
+            'letter; the other shows a contracted stem. Describe precisely what the medial position '
+            'of each form looks like and how that reflects the root structure.',
+            'Items 11 (יָקִים) and 12 (יָסֵב) are both Hiphil imperfect 3ms. You encounter an unknown '
+            'form יָדֵל. What question must you ask to determine if it is Biconsonantal or Geminate?',
+            'Items 19 (יָרֻם) and 21 (הֵרִים) come from the same root (רוּם) but differ in stem. '
+            'What vowel under R2 distinguishes the Niphal imperfect from the Hiphil perfect?',
+            'Item 22 (הוּרַם) was classified as Hophal. How does the Hophal Biconsonantal prefix (הוּ) '
+            'differ from Niphal (נָ) and Hiphil (הֵ), and what does it tell you about the semantics?',
+        ])
+
+        self.add_answer_key_bg(self._PART_A + self._PART_B + self._PART_C)
+
+    def add_answer_key_bg(self, entries: list['BGEntry']):
+        self.add_section_heading('Answer Key')
+        c = self._canvas
+        w = self._usable_w()
+        ratios = [0.04, 0.10, 0.10, 0.76]
+        cw = [r * w for r in ratios]
+        headers = ['#', 'Form', 'Stem', 'Answer']
+
+        self._check_space(self.HEADER_H + len(entries) * self.ANSWER_H + 0.1*inch)
+        y = self._y
+        x0 = self.MARGIN_L
+
+        c.setFillColor(C_HEADER_BG)
+        c.setStrokeColor(C_RULE)
+        c.setLineWidth(0.4)
+        c.rect(x0, y - self.HEADER_H, sum(cw), self.HEADER_H, fill=1, stroke=1)
+        cx = x0
+        c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+        c.setFillColor(black)
+        for hdr, col_w in zip(headers, cw):
+            c.drawString(cx + 3, y - self.HEADER_H + 5, hdr)
+            cx += col_w
+        y -= self.HEADER_H
+
+        for e in entries:
+            self._check_space(self.ANSWER_H)
+            c.setFillColor(C_ANSWER_BG)
+            c.setStrokeColor(C_RULE)
+            c.setLineWidth(0.4)
+            c.rect(x0, y - self.ANSWER_H, sum(cw), self.ANSWER_H, fill=1, stroke=1)
+            cx = x0
+            c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+            c.setFillColor(C_ANSWER_FG)
+            c.drawCentredString(cx + cw[0]/2, y - self.ANSWER_H + 6, e.num)
+            cx += cw[0]
+            c.setFont('ArialHebrew', self.LABEL_SIZE)
+            c.drawRightString(cx + cw[1] - 3, y - self.ANSWER_H + 6, _heb(e.heb))
+            cx += cw[1]
+            c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+            c.drawString(cx + 3, y - self.ANSWER_H + 6, e.stem)
+            cx += cw[2]
+            c.setFont('Helvetica', self.LABEL_SIZE)
+            answer = f'{e.conj} · {e.pgn} · {e.bg_class} · {e.root} — "{e.translation}" — {e.note}'
+            lines = simpleSplit(answer, 'Helvetica', self.LABEL_SIZE, cw[3] - 6)
+            c.drawString(cx + 3, y - self.ANSWER_H + 6, lines[0] if lines else answer)
+            y -= self.ANSWER_H
+
+        self._y = y - 0.08 * inch
+
+
+def build_ch27_bg_drill_exercise(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'hebrew', 'bbh', 'ch27', 'exercises',
+                               'ch27-biconsig-drill')
+    path = os.path.join(out_dir, 'ch27-biconsig-drill.pdf')
+    ex = Ch27BGDrillExercise(
+        title='Chapter 27 — Biconsonantal / Geminate Disambiguation Drill',
         subtitle='BBH Chapters 25 & 27 · Niphal and Hiphil Weak Verbs',
     )
     return ex.save(path)
