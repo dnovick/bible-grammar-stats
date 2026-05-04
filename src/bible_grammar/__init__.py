@@ -1,4 +1,12 @@
 from .query import query, translation_query, lxx_query
+from .greek_prepositions import (
+    greek_prep_frequency, greek_prep_by_book, greek_prep_distribution_table,
+    greek_prep_cases, greek_prep_collocates, compare_greek_preps, nt_lxx_compare,
+    print_greek_prep_frequency, print_greek_prep_by_book, print_greek_prep_distribution,
+    print_greek_prep_cases, print_greek_prep_collocates,
+    print_compare_greek_preps, print_nt_lxx_compare,
+    NT_MAJOR_PREPS, LXX_MAJOR_PREPS, NT_BOOK_GROUPS, LXX_BOOK_GROUPS,
+)
 from .prepositions import (
     prep_frequency, prep_by_book, prep_distribution_table,
     prep_collocates, prep_object_types, compare_preps,
