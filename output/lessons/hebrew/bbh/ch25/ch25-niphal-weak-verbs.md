@@ -7,7 +7,7 @@
 
 ---
 
-## 1. Function (BBH §23.2)
+## 1. Function (BBH §24.2)
 
 The Niphal expresses **passive, reflexive, or middle** action. Unlike the Hiphil (which is consistently causative), the Niphal's function varies by root and context.
 
@@ -41,14 +41,14 @@ The Niphal expresses **passive, reflexive, or middle** action. Unlike the Hiphil
 
 | Conjugation | 3ms Form | BBH § | Notes |
 |---|---|---|---|
-| [Perfect (qatal)](niphal-paradigms.md#perfect-qatal) | נִקְטַל | §23.3 | נִ prefix; *patach* vowel |
+| [Perfect (qatal)](niphal-paradigms.md#perfect-qatal) | נִקְטַל | §24.4 | נִ prefix; *patach* vowel |
 | [Wayyiqtol](niphal-paradigms.md#wayyiqtol) | וַיִּקָּטֵל | — | sequential narrative; dagesh in R1 + *tsere* |
-| [Imperfect (yiqtol)](niphal-paradigms.md#imperfect-yiqtol) | יִקָּטֵל | §23.5 | dagesh forte in R1; *tsere* final |
+| [Imperfect (yiqtol)](niphal-paradigms.md#imperfect-yiqtol) | יִקָּטֵל | §24.6 | dagesh forte in R1; *tsere* final |
 | [Weqatal](niphal-paradigms.md#weqatal) | וְנִקְטַל | — | sequential future; וְ + perfect form |
-| [Imperative 2ms](niphal-paradigms.md#imperative) | הִקָּטֵל | §23.7 | הִ prefix; dagesh in R1; *tsere* |
-| [Infinitive Construct](niphal-paradigms.md#infinitive-construct) | הִקָּטֵל | §23.9 | הִ prefix; identical to imperative |
-| [Infinitive Absolute](niphal-paradigms.md#infinitive-absolute) | נִקְטֹל | §23.11 | נִ prefix; *holem* |
-| [Participle ms](niphal-paradigms.md#participle-passive) | נִקְטָל | §23.13 | נִ prefix; *qamets* |
+| [Imperative 2ms](niphal-paradigms.md#imperative) | הִקָּטֵל | §24.8 | הִ prefix; dagesh in R1; *tsere* |
+| [Infinitive Construct](niphal-paradigms.md#infinitive-construct) | הִקָּטֵל | §24.10 | הִ prefix; identical to imperative |
+| [Infinitive Absolute](niphal-paradigms.md#infinitive-absolute) | נִקְטֹל | §24.12 | נִ prefix; *holem* |
+| [Participle ms](niphal-paradigms.md#participle-passive) | נִקְטָל | — | נִ prefix; *qamets* |
 
 ### Real Forms from the Pentateuch — Root רָאָה ("appear / be seen")
 
