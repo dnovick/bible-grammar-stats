@@ -28,3 +28,13 @@
 יִוָּלֵד (Gen 17:17)	Root: יָלַד | I-י | Imperfect 3ms | shall a child be born	niphal-imperfect niphal-pe-yod bbh-ch25
 בְּהִוָּלֶד (Gen 21:5)	Root: יָלַד | I-י | Inf. Construct | when he was born	niphal-inf-construct niphal-pe-yod bbh-ch25
 נוֹלָד (1 Kgs 13:2)	Root: יָלַד | I-י | Participle ms | one who will be born	niphal-participle niphal-pe-yod bbh-ch25
+נִשְׁמַע (Est 1:20)	Root: שָׁמַע | III-ח/ע | Perfect 3ms | it was heard	niphal-perfect niphal-lamed-guttural bbh-ch25
+וַיִּשָּׁמַע (Gen 45:2)	Root: שָׁמַע | III-ח/ע | Wayyiqtol 3ms | and it was heard	niphal-wayyiqtol niphal-lamed-guttural bbh-ch25
+יִשָּׁמַע (Exo 28:35)	Root: שָׁמַע | III-ח/ע | Imperfect 3ms | it shall be heard	niphal-imperfect niphal-lamed-guttural bbh-ch25
+הִשָּׁמַע (Deu 4:32)	Root: שָׁמַע | III-ח/ע | Imperative/Inf. Construct | hear / to be heard	niphal-imperative niphal-inf-construct niphal-lamed-guttural bbh-ch25
+נִשְׁמָע (Ecc 12:13)	Root: שָׁמַע | III-ח/ע | Participle ms | that which is heard	niphal-participle niphal-lamed-guttural bbh-ch25
+נָכוֹן (Gen 41:32)	Root: כּוּן | Biconsonantal | Perfect 3ms | it is established / certain	niphal-perfect niphal-biconsonantal bbh-ch25
+נָכוֹן (Psa 57:8)	Root: כּוּן | Biconsonantal | Participle ms | steadfast, firm	niphal-participle niphal-biconsonantal bbh-ch25
+יִכּוֹן (Psa 93:2)	Root: כּוּן | Biconsonantal | Imperfect 3ms | it is established	niphal-imperfect niphal-biconsonantal bbh-ch25
+נָשׁוּב (expected form)	Root: שׁוּב | Biconsonantal | Perfect 3ms | it was turned / restored	niphal-perfect niphal-biconsonantal bbh-ch25
+וַיִּקּוֹם (expected form)	Root: קוּם | Biconsonantal | Wayyiqtol 3ms | and it was established	niphal-wayyiqtol niphal-biconsonantal bbh-ch25

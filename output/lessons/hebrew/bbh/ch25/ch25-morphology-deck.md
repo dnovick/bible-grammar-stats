@@ -1,6 +1,6 @@
 # Chapter 25 — Niphal Weak Verbs Anki Flashcard Deck
 
-*25 cards covering all five weak classes (III-א, III-ה, I-guttural, I-נ, I-י) across key conjugations.*
+*35 cards covering all seven weak classes (III-א, III-ה, III-ח/ע, I-guttural, I-נ, I-י, Biconsonantal) across key conjugations.*
 *Import `ch25-morphology-deck.txt` directly into Anki (File → Import).*
 
 ---
@@ -11,7 +11,7 @@
 - **Back of card:** root + weak class + conjugation + person-gender-number + gloss
 - **Tags** let you filter by weak class or conjugation in Anki
 
-Study tip: drill by weak class first — master the III-ה cards before mixing in I-guttural, etc.
+Study tip: drill by weak class first — master the III-ה cards before mixing in I-guttural, III-ח/ע, etc.
 
 ---
 
@@ -44,6 +44,16 @@ Study tip: drill by weak class first — master the III-ה cards before mixing i
 | 23 | יִוָּלֵד | Gen 17:17 | יָלַד | I-י | Imperfect | 3ms | shall a child be born |
 | 24 | בְּהִוָּלֶד | Gen 21:5 | יָלַד | I-י | Inf. Construct | — | when he was born |
 | 25 | נוֹלָד | 1 Kgs 13:2 | יָלַד | I-י | Participle | ms | one who will be born |
+| 26 | נִשְׁמַע | Est 1:20 | שָׁמַע | III-ח/ע | Perfect | 3ms | it was heard |
+| 27 | וַיִּשָּׁמַע | Gen 45:2 | שָׁמַע | III-ח/ע | Wayyiqtol | 3ms | and it was heard |
+| 28 | יִשָּׁמַע | Exo 28:35 | שָׁמַע | III-ח/ע | Imperfect | 3ms | it shall be heard |
+| 29 | הִשָּׁמַע | Deu 4:32 | שָׁמַע | III-ח/ע | Imperative / Inf. Construct | 2ms / — | hear / to be heard |
+| 30 | נִשְׁמָע | Ecc 12:13 | שָׁמַע | III-ח/ע | Participle | ms | that which is heard |
+| 31 | נָכוֹן | Gen 41:32 | כּוּן | Biconsonantal | Perfect | 3ms | it is established / certain |
+| 32 | נָכוֹן | Psa 57:8 | כּוּן | Biconsonantal | Participle | ms | steadfast, firm |
+| 33 | יִכּוֹן | Psa 93:2 | כּוּן | Biconsonantal | Imperfect | 3ms | it is established |
+| 34 | נָשׁוּב | (expected form) | שׁוּב | Biconsonantal | Perfect | 3ms | it was turned / restored |
+| 35 | וַיִּקּוֹם | (expected form) | קוּם | Biconsonantal | Wayyiqtol | 3ms | and it was established |
 
 ---
 
@@ -56,13 +66,15 @@ Study tip: drill by weak class first — master the III-ה cards before mixing i
 | `niphal-pe-guttural` | 13–16 |
 | `niphal-pe-nun` | 17–20 |
 | `niphal-pe-yod` | 21–25 |
-| `niphal-perfect` | 1, 6, 13, 17, 19, 21 |
-| `niphal-wayyiqtol` | 2, 7, 9, 14, 18, 22 |
-| `niphal-imperfect` | 3, 8, 10, 15, 23 |
-| `niphal-imperative` | 20 |
-| `niphal-inf-construct` | 11, 24 |
+| `niphal-lamed-guttural` | 26–30 |
+| `niphal-biconsonantal` | 31–35 |
+| `niphal-perfect` | 1, 6, 13, 17, 19, 21, 26, 31, 34 |
+| `niphal-wayyiqtol` | 2, 7, 9, 14, 18, 22, 27, 35 |
+| `niphal-imperfect` | 3, 8, 10, 15, 23, 28, 33 |
+| `niphal-imperative` | 20, 29 |
+| `niphal-inf-construct` | 11, 24, 29 |
 | `niphal-inf-absolute` | 4 |
-| `niphal-participle` | 5, 12, 16, 25 |
+| `niphal-participle` | 5, 12, 16, 25, 30, 32 |
 | `bbh-ch25` | all |
 
 ---
@@ -98,4 +110,14 @@ Front,Back,Tags
 "יִוָּלֵד (Gen 17:17)","Root: יָלַד | I-י | Imperfect 3ms | shall a child be born","niphal-imperfect niphal-pe-yod bbh-ch25"
 "בְּהִוָּלֶד (Gen 21:5)","Root: יָלַד | I-י | Inf. Construct | when he was born","niphal-inf-construct niphal-pe-yod bbh-ch25"
 "נוֹלָד (1 Kgs 13:2)","Root: יָלַד | I-י | Participle ms | one who will be born","niphal-participle niphal-pe-yod bbh-ch25"
+"נִשְׁמַע (Est 1:20)","Root: שָׁמַע | III-ח/ע | Perfect 3ms | it was heard","niphal-perfect niphal-lamed-guttural bbh-ch25"
+"וַיִּשָּׁמַע (Gen 45:2)","Root: שָׁמַע | III-ח/ע | Wayyiqtol 3ms | and it was heard","niphal-wayyiqtol niphal-lamed-guttural bbh-ch25"
+"יִשָּׁמַע (Exo 28:35)","Root: שָׁמַע | III-ח/ע | Imperfect 3ms | it shall be heard","niphal-imperfect niphal-lamed-guttural bbh-ch25"
+"הִשָּׁמַע (Deu 4:32)","Root: שָׁמַע | III-ח/ע | Imperative/Inf. Construct | hear / to be heard","niphal-imperative niphal-inf-construct niphal-lamed-guttural bbh-ch25"
+"נִשְׁמָע (Ecc 12:13)","Root: שָׁמַע | III-ח/ע | Participle ms | that which is heard","niphal-participle niphal-lamed-guttural bbh-ch25"
+"נָכוֹן (Gen 41:32)","Root: כּוּן | Biconsonantal | Perfect 3ms | it is established / certain","niphal-perfect niphal-biconsonantal bbh-ch25"
+"נָכוֹן (Psa 57:8)","Root: כּוּן | Biconsonantal | Participle ms | steadfast, firm","niphal-participle niphal-biconsonantal bbh-ch25"
+"יִכּוֹן (Psa 93:2)","Root: כּוּן | Biconsonantal | Imperfect 3ms | it is established","niphal-imperfect niphal-biconsonantal bbh-ch25"
+"נָשׁוּב (expected form)","Root: שׁוּב | Biconsonantal | Perfect 3ms | it was turned / restored","niphal-perfect niphal-biconsonantal bbh-ch25"
+"וַיִּקּוֹם (expected form)","Root: קוּם | Biconsonantal | Wayyiqtol 3ms | and it was established","niphal-wayyiqtol niphal-biconsonantal bbh-ch25"
 ```

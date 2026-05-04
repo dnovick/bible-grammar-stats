@@ -1748,7 +1748,7 @@ def build_ch24_function_sort_exercise(out_dir: str = None) -> str:
 
 
 class Ch25WeakFormIdExercise(ExercisePDF):
-    """Weak-Form Identification Drill — 35 items across 5 weak classes."""
+    """Weak-Form Identification Drill — 47 items across 7 weak classes."""
 
     # (num, hebrew, conjugation, pgn, ref, gloss, class_label, root, note)
     _PART_A = [
@@ -1777,39 +1777,55 @@ class Ch25WeakFormIdExercise(ExercisePDF):
         SortEntry('19', 'הִנָּצֵל',         'Imperative',       'Prov 6:3',  '"deliver yourself!"',                    'I-נ', 'נָצַל', 'Imperative 2ms — dagesh in נּ (R2)'),
         SortEntry('20', 'וַיִּנָּצֵל',      'Wayyiqtol',        'Gen 32:31', '"and Jacob was delivered"',              'I-נ', 'נָצַל', 'Wayyiqtol 3ms — dagesh in נּ (R2)'),
         # Group 5 — I-י
-        SortEntry('21', 'נוֹלַד',           'Perfect',          'Gen 21:3',  '"he was born"',                          'I-י', 'יָלַד', 'Perfect 3ms — נוֹ prefix + patah under R2'),
+        SortEntry('21', 'נוֹלַד',           'Perfect',          'Gen 21:3',  '"he was born"',                          'I-י', 'יָלַד', 'Perfect 3ms — נוֹ prefix + patach under R2'),
         SortEntry('22', 'וַיִּוָּלֵד',      'Wayyiqtol',        'Gen 4:18',  '"and he was born"',                      'I-י', 'יָלַד', 'Wayyiqtol 3ms — וַיִּוָּ cluster'),
         SortEntry('23', 'יִוָּלֵד',         'Imperfect',        'Gen 17:17', '"shall a child be born?"',               'I-י', 'יָלַד', 'Imperfect 3ms — יִוָּ cluster + tsere'),
         SortEntry('24', 'בְּהִוָּלֶד',      'Inf. Construct',   'Gen 21:5',  '"when he was born"',                     'I-י', 'יָלַד', 'Inf. Construct — הִוָּ prefix + בְּ'),
-        SortEntry('25', 'נוֹלָד',           'Participle ms',    '1 Kgs 13:2','"one who will be born"',                 'I-י', 'יָלַד', 'Participle ms — נוֹ prefix + qamets (vs. patah in perfect)'),
+        SortEntry('25', 'נוֹלָד',           'Participle ms',    '1 Kgs 13:2','"one who will be born"',                 'I-י', 'יָלַד', 'Participle ms — נוֹ prefix + qamets (vs. patach in perfect)'),
+        # Group 6 — III-ח/ע
+        SortEntry('26', 'נִשְׁמַע',         'Perfect',          'Est 1:20',  '"it was heard"',                         'III-ch/ayin', 'שָׁמַע', 'Perfect 3ms — patach furtive before final ע'),
+        SortEntry('27', 'יִשָּׁמַע',        'Imperfect',        'Exo 28:35', '"it shall be heard"',                    'III-ch/ayin', 'שָׁמַע', 'Imperfect 3ms — patach (not tsere) before ע; dagesh in R1'),
+        SortEntry('28', 'וַיִּשָּׁמַע',     'Wayyiqtol',        'Gen 45:2',  '"and it was heard"',                     'III-ch/ayin', 'שָׁמַע', 'Wayyiqtol 3ms — patach before ע; no furtive'),
+        SortEntry('29', 'הִשָּׁמַע',        'Inf. Construct',   'Deu 4:32',  '"to be heard"',                          'III-ch/ayin', 'שָׁמַע', 'Inf. Construct (= Imperative form) — patach before ע'),
+        SortEntry('30', 'נִשְׁמָע',         'Participle ms',    'Ecc 12:13', '"that which is heard"',                  'III-ch/ayin', 'שָׁמַע', 'Participle ms — qamets + patach furtive before ע'),
+        # Group 7 — Biconsonantal
+        SortEntry('31', 'נָכוֹן',           'Perfect',          'Gen 41:32', '"it is established"',                    'Biconsonantal', 'כּוּן', 'Perfect 3ms — נָ prefix (qamets) + medial וֹ'),
+        SortEntry('32', 'יִכּוֹן',          'Imperfect',        'Psa 93:2',  '"it is established"',                    'Biconsonantal', 'כּוּן', 'Imperfect 3ms — dagesh in R1 (Niphal assimilation) + contracted root'),
+        SortEntry('33', 'נָכוֹן',           'Participle ms',    'Psa 57:8',  '"steadfast, firm"',                      'Biconsonantal', 'כּוּן', 'Participle ms — נָ prefix + vocalic structure = identical to perfect'),
+        SortEntry('34', 'וַיִּקּוֹם',       'Wayyiqtol',        '(expected)', '"and it was established"',              'Biconsonantal', 'קוּם', 'Wayyiqtol 3ms — וַיִּ + dagesh in R1 + contracted root'),
+        SortEntry('35', 'הִקּוֹם',          'Imperative',       '(expected)', '"be established!"',                     'Biconsonantal', 'קוּם', 'Imperative 2ms — הִ + dagesh in R1 + contracted root'),
     ]
 
     _PART_B = [
-        SortEntry('26', 'תֵרָאֶה',          'Imperfect/Jussive','Gen 1:9',   '"let it appear"',                        'III-ה',      'רָאָה', '3fs — ר compensatory + final ֶה'),
-        SortEntry('27', 'וַיִּוָּדַע',      'Wayyiqtol',        'Est 2:22',  '"the matter became known"',             'I-י',        'יָדַע', '3ms — וַיִּוָּ; patah under R2 (יָדַע class)'),
-        SortEntry('28', 'נֶעֱמַד',          'Perfect',          '1 Sam 17:16','"he took his stand"',                  'I-guttural', 'עָמַד', '3ms — נֶ prefix + composite shewa under ע'),
-        SortEntry('29', 'וַיִּמָּצְאוּ',    'Wayyiqtol',        'Gen 47:14', '"all the silver was gathered"',          'III-א',      'מָצָא', '3mp — dagesh + 3mp ending + silent א'),
-        SortEntry('30', 'נוֹדַע',           'Perfect',          'Gen 41:21', '"it was not known"',                     'I-י',        'יָדַע', '3ms — נוֹ prefix + patah (perfect, not participle)'),
-        SortEntry('31', 'וַיִּגַּשׁ',       'Wayyiqtol',        'Gen 44:18', '"Judah drew near"',                      'I-נ',        'נָגַשׁ', '3ms — dagesh in ג (R2); root נ invisible'),
-        SortEntry('32', 'הֵרָאֵה',          'Imperative',       '1 Kgs 18:1','"show yourself!"',                       'III-ה',      'רָאָה', '2ms — הֵ compensatory + final ֵה (imperative)'),
-        SortEntry('33', 'נִמְצְאוּ',        'Perfect',          'Exo 12:19', '"whoever is found"',                     'III-א',      'מָצָא', '3cp — 3cp ending + final silent א'),
-        SortEntry('34', 'יֵעָמְדוּ',        'Imperfect',        'Num 27:22', '"they shall stand before"',              'I-guttural', 'עָמַד', '3mp — יֵ prefix; no dagesh in ע; 3mp ending'),
-        SortEntry('35', 'וְנִגְלָה',        'Weqatal',          'Isa 40:5',  '"the glory will be revealed"',           'III-ה',      'גָּלָה', '3ms — וְנִ weqatal prefix + final ָה'),
+        SortEntry('36', 'תֵרָאֶה',          'Imperfect/Jussive','Gen 1:9',   '"let it appear"',                        'III-ה',         'רָאָה', '3fs — ר compensatory + final ֶה'),
+        SortEntry('37', 'וַיִּוָּדַע',      'Wayyiqtol',        'Est 2:22',  '"the matter became known"',             'I-י',           'יָדַע', '3ms — וַיִּוָּ; patach under R2 (יָדַע class)'),
+        SortEntry('38', 'נֶעֱמַד',          'Perfect',          '1 Sam 17:16','"he took his stand"',                  'I-guttural',    'עָמַד', '3ms — נֶ prefix + composite shewa under ע'),
+        SortEntry('39', 'וַיִּמָּצְאוּ',    'Wayyiqtol',        'Gen 47:14', '"all the silver was gathered"',          'III-א',         'מָצָא', '3mp — dagesh + 3mp ending + silent א'),
+        SortEntry('40', 'נוֹדַע',           'Perfect',          'Gen 41:21', '"it was not known"',                     'I-י',           'יָדַע', '3ms — נוֹ prefix + patach (perfect, not participle)'),
+        SortEntry('41', 'וַיִּגַּשׁ',       'Wayyiqtol',        'Gen 44:18', '"Judah drew near"',                      'I-נ',           'נָגַשׁ', '3ms — dagesh in ג (R2); root נ invisible'),
+        SortEntry('42', 'הֵרָאֵה',          'Imperative',       '1 Kgs 18:1','"show yourself!"',                       'III-ה',         'רָאָה', '2ms — הֵ compensatory + final ֵה (imperative)'),
+        SortEntry('43', 'נִשְׁלַח',         'Perfect',          'Est 3:13',  '"letters were sent"',                    'III-ch/ayin',   'שָׁלַח', '3ms — patach furtive before final ח'),
+        SortEntry('44', 'נָכוֹן',           'Perfect/Participle','Exo 34:2', '"be ready"',                             'Biconsonantal', 'כּוּן', 'נָ prefix (qamets) is the biconsonantal Niphal marker'),
+        SortEntry('45', 'וַיִּשָּׁלַח',     'Wayyiqtol',        '(expected)', '"and he was sent away"',               'III-ch/ayin',   'שָׁלַח', '3ms — dagesh in שׁ (R1) + patach before final ח'),
+        SortEntry('46', 'נִמְצְאוּ',        'Perfect',          'Exo 12:19', '"whoever is found"',                     'III-א',         'מָצָא', '3cp — 3cp ending + final silent א'),
+        SortEntry('47', 'יֵעָמְדוּ',        'Imperfect',        'Num 27:22', '"they shall stand before"',              'I-guttural',    'עָמַד', '3mp — יֵ prefix; no dagesh in ע; 3mp ending'),
     ]
 
     def _build(self):
         self.add_instructions(
-            'Part A (1–25): forms are grouped by weak class. Identify class, parse conjugation + PGN, '
+            'Part A (1–35): forms are grouped by weak class. Identify class, parse conjugation + PGN, '
             'and give the root. '
-            'Part B (26–35): mixed classes — identify the class first, then parse. '
+            'Part B (36–47): mixed classes — identify the class first, then parse. '
             'Answer key is on the last page.'
         )
 
         self.add_note(
             'Classes: III-א (silent final א)  |  III-ה (final ָה / ֶה / וֹת / apocopated)  |  '
+            'III-ch/ayin (patach furtive before ח/ע; patach in short forms)  |  '
             'I-guttural (נֶ / יֵ / הֵ prefix; no dagesh in R1)  |  '
             'I-נ (dagesh forte in R2; root נ invisible)  |  '
-            'I-י (נוֹ prefix in perfect/ptc; יִוָּ / הִוָּ in impf/wayyiqtol/imv/inf)'
+            'I-י (נוֹ prefix in perfect/ptc; יִוָּ / הִוָּ in impf/wayyiqtol/imv/inf)  |  '
+            'Biconsonantal (נָ prefix in perfect/ptc; dagesh in R1 elsewhere)'
         )
 
         self.add_section_heading('Part A — By Class')
@@ -1827,6 +1843,11 @@ class Ch25WeakFormIdExercise(ExercisePDF):
             'וַיִּ. Is this the same phonological rule in both cases?',
             'Items 21 (נוֹלַד) and 25 (נוֹלָד) differ only in the vowel under R2. Which is the perfect '
             'and which is the participle, and how would each behave differently in a clause?',
+            'Items 26 (נִשְׁמַע, III-ח/ע) and item 1 (נִמְצָא, III-א) both begin with נִ. What '
+            'distinguishes them visually, and why does the patach furtive appear before שָׁמַע but not מָצָא?',
+            'Items 31 and 33 both show נָכוֹן (Biconsonantal). How does this perfect/participle ambiguity '
+            'parallel the III-א problem in question 1, and what does it reveal about the general challenge '
+            'of Niphal weak forms?',
         ])
 
         self.add_answer_key_sort(self._PART_A + self._PART_B)
