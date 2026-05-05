@@ -78,13 +78,16 @@ Function: [one line]
 
 These rules prevent display problems when pasting into Messages or other SMS apps:
 
-- **Strip cantillation marks** from the Hebrew verse snippet before writing it anywhere
-  (Unicode U+0591–U+05AF). Keep vowel points (U+05B0–U+05BD) — they are fine.
+- **Use bare consonantal Hebrew only in SMS output** — strip ALL diacritics: both
+  cantillation marks (U+0591–U+05AF) and vowel points (U+05B0–U+05BD). Combining
+  characters cause extra spacing in SMS renderers even when individually invisible.
+- The markdown file (appended to `output/nuggets/`) **may retain full pointing**
+  (vowels only, no cantillation) so students have the correct reading form on file.
 - **Never mix Hebrew characters inline with Latin prose.** The Unicode bidi algorithm
   reorders the line — "הִ prefix" renders as "tprefix הִ". Instead write the Latin
   equivalent: "hi-prefix", "dagesh in dalet", etc.
 - **Hebrew appears only on its own dedicated lines**: the bold heading form+reference,
-  and the blockquote verse lines. Nowhere else.
+  and the verse lines. Nowhere else.
 - When naming diagnostics in the Form/Function/Why prose, spell out all morphological
   terms in Latin (e.g. "patah under he", "dagesh forte in tav", "tsere holem").
 

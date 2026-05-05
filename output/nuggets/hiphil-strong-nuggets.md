@@ -12,6 +12,8 @@
 > אָז הִבְדִּיל מֹשֶׁה אֶת־שֵׁבֶט הַלֵּוִי
 > *"At that time Moses set apart the tribe of Levi"*
 
+*SMS version (consonants only):* אז הבדיל משה את־שבט הלוי
+
 **Form:** Hiphil Perfect 3ms of בָּדַל
 Diagnostic: hi-prefix + patah + dagesh in dalet
 
