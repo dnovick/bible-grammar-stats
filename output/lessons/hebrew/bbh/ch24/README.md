@@ -6,7 +6,8 @@
 
 | File | Description |
 |---|---|
-| [ch24-niphal-strong-verbs.md](ch24-niphal-strong-verbs.md) | Function, form, paradigm table, lemma frequency, example passages, conjugation distribution |
+| [ch24-niphal.md](ch24-niphal.md) | Function, form, diagnostic markers, paradigm table, Torah lemma frequency, OT example passages, conjugation distribution, dominant roots |
+| [ch24-niphal-strong-verbs.md](ch24-niphal-strong-verbs.md) | Earlier lesson version — function table, form overview, example passages |
 
 ---
 
@@ -22,7 +23,9 @@
 
 | File | Description |
 |---|---|
-| [exercises/](exercises/README.md) | Index of all ch24 exercises |
+| [exercises/ch24-passage-exercise/](exercises/ch24-passage-exercise/README.md) | "Spot the Niphal" — Joseph narrative (Gen 37, 44–45, 47, 49); 14 verbs to parse |
+| [exercises/ch24-function-sort/](exercises/ch24-function-sort/README.md) | Semantic function sorting — classify 12 Niphal verbs by function type |
+| [exercises/ch24-qal-niphal-contrast/](exercises/ch24-qal-niphal-contrast/README.md) | Qal vs. Niphal contrast — spot the difference in form and meaning |
 
 ---
 
