@@ -80,7 +80,7 @@ def lxx_query(
     # Deuterocanonical books only
     lxx_query(include_deuterocanon=True, lxx_book='Sir')
     """
-    from .reference import TORAH, PROPHETS, WRITINGS, GOSPELS, PAULINE, all_book_ids
+    from .reference import all_book_ids, book_ids_for_group
 
     df = _lxx_df()
     mask = pd.Series(True, index=df.index)
@@ -97,14 +97,7 @@ def lxx_query(
         ids = all_book_ids(testament.upper())
         mask &= df["book_id"].isin(ids)
     if book_group is not None:
-        groups = {
-            "torah": TORAH, "prophets": PROPHETS, "writings": WRITINGS,
-            "gospels": GOSPELS, "pauline": PAULINE,
-        }
-        grp = groups.get(book_group.lower())
-        if grp is None:
-            raise ValueError(f"Unknown book_group {book_group!r}")
-        mask &= df["book_id"].isin(grp)
+        mask &= df["book_id"].isin(book_ids_for_group(book_group))
     if chapter is not None:
         mask &= df["chapter"] == chapter
     if verse is not None:
@@ -169,7 +162,7 @@ def translation_query(
     translation_query(book_group='pauline', search='grace')
     translation_query(translation=['KJV','VulgClementine'], book='Jhn', chapter=3, verse=16)
     """
-    from .reference import TORAH, PROPHETS, WRITINGS, GOSPELS, PAULINE, all_book_ids
+    from .reference import all_book_ids, book_ids_for_group
 
     df = _tr_df()
     mask = pd.Series(True, index=df.index)
@@ -181,14 +174,7 @@ def translation_query(
         ids = all_book_ids(testament.upper())
         mask &= df["book_id"].isin(ids)
     if book_group is not None:
-        groups = {
-            "torah": TORAH, "prophets": PROPHETS, "writings": WRITINGS,
-            "gospels": GOSPELS, "pauline": PAULINE,
-        }
-        grp = groups.get(book_group.lower())
-        if grp is None:
-            raise ValueError(f"Unknown book_group {book_group!r}")
-        mask &= df["book_id"].isin(grp)
+        mask &= df["book_id"].isin(book_ids_for_group(book_group))
     if book is not None:
         vals = [book] if isinstance(book, str) else book
         mask &= df["book_id"].isin(vals)
@@ -240,7 +226,7 @@ def query(
     # Greek aorist passive indicatives in Paul
     query(book_group='pauline', tense='Aorist', voice='Passive', mood='Indicative')
     """
-    from .reference import TORAH, PROPHETS, WRITINGS, GOSPELS, PAULINE
+    from .reference import all_book_ids, book_ids_for_group
 
     df = _df()
     mask = pd.Series(True, index=df.index)
@@ -256,20 +242,10 @@ def query(
     if source is not None:
         mask &= _isin("source", source)
     if testament is not None:
-        # derive from book list via reference
-        from .reference import all_book_ids
         ids = all_book_ids(testament.upper())
         mask &= df["book_id"].isin(ids)
     if book_group is not None:
-        groups = {
-            "torah": TORAH, "prophets": PROPHETS, "writings": WRITINGS,
-            "gospels": GOSPELS, "pauline": PAULINE,
-        }
-        grp = groups.get(book_group.lower())
-        if grp is None:
-            raise ValueError(f"Unknown book_group {book_group!r}. "
-                             f"Choose from: {list(groups)}")
-        mask &= df["book_id"].isin(grp)
+        mask &= df["book_id"].isin(book_ids_for_group(book_group))
     if book is not None:
         if isinstance(book, str):
             book = [book]

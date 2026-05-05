@@ -77,9 +77,9 @@ _CONJ_ORDER = [
 
 # Genre groupings for stem comparison
 _GENRE_BOOKS = {
-    'Narrative': ['Gen', 'Exo', 'Num', 'Josh', 'Judg', '1Sam', '2Sam', '1Kgs', '2Kgs'],
+    'Narrative': ['Gen', 'Exo', 'Num', 'Jos', 'Jdg', '1Sa', '2Sa', '1Ki', '2Ki'],
     'Law':       ['Lev', 'Deu'],
-    'Prophecy':  ['Isa', 'Jer', 'Eze'],
+    'Prophecy':  ['Isa', 'Jer', 'Ezk'],
     'Poetry':    ['Psa', 'Pro', 'Job'],
 }
 

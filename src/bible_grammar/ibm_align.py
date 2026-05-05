@@ -283,7 +283,7 @@ def translation_equivalents_w(
 
     Parameters match translation_equivalents() in alignment.py.
     """
-    from .reference import TORAH, PROPHETS, WRITINGS
+    from .reference import book_ids_for_group
     import re as _re
 
     df = load_word_alignment()
@@ -309,11 +309,7 @@ def translation_equivalents_w(
         vals = [book] if isinstance(book, str) else book
         mask &= df["book_id"].isin(vals)
     if book_group is not None:
-        groups = {"torah": TORAH, "prophets": PROPHETS, "writings": WRITINGS}
-        grp = groups.get(book_group.lower())
-        if grp is None:
-            raise ValueError(f"Unknown book_group {book_group!r}")
-        mask &= df["book_id"].isin(grp)
+        mask &= df["book_id"].isin(book_ids_for_group(book_group))
 
     filtered = df[mask]
     if filtered.empty:

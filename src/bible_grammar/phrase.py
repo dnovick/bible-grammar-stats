@@ -233,7 +233,7 @@ def phrase_search(
     # Wildcard: H1697 + anything + H3068
     phrase_search(['H1697', '*', 'H3068'])
     """
-    from .reference import TORAH, PROPHETS, WRITINGS, GOSPELS, PAULINE
+    from .reference import book_ids_for_group
 
     corpus = corpus.upper()
     is_lxx = (corpus == _LXX)
@@ -251,12 +251,7 @@ def phrase_search(
 
     # Book / group filters
     if book_group is not None:
-        groups = {'torah': TORAH, 'prophets': PROPHETS, 'writings': WRITINGS,
-                  'gospels': GOSPELS, 'pauline': PAULINE}
-        grp = groups.get(book_group.lower())
-        if grp is None:
-            raise ValueError(f"Unknown book_group {book_group!r}")
-        df = df[df['book_id'].isin(grp)]
+        df = df[df['book_id'].isin(book_ids_for_group(book_group))]
     if book is not None:
         vals = [book] if isinstance(book, str) else book
         df = df[df['book_id'].isin(vals)]
@@ -387,7 +382,7 @@ def proximity_search(
     # Ordered: H6944 (holy) before H2617 (kindness) within 10 words
     proximity_search(['H6944', 'H2617'], within=10, ordered=True)
     """
-    from .reference import TORAH, PROPHETS, WRITINGS, GOSPELS, PAULINE
+    from .reference import book_ids_for_group
     from .wordstudy import _BOOK_ORDER
 
     corpus = corpus.upper()
@@ -402,12 +397,7 @@ def proximity_search(
         df = df[df['source'] == ('TAHOT' if corpus == _OT else 'TAGNT')].copy()
 
     if book_group is not None:
-        groups = {'torah': TORAH, 'prophets': PROPHETS, 'writings': WRITINGS,
-                  'gospels': GOSPELS, 'pauline': PAULINE}
-        grp = groups.get(book_group.lower())
-        if grp is None:
-            raise ValueError(f"Unknown book_group {book_group!r}")
-        df = df[df['book_id'].isin(grp)]
+        df = df[df['book_id'].isin(book_ids_for_group(book_group))]
     if book is not None:
         vals = [book] if isinstance(book, str) else book
         df = df[df['book_id'].isin(vals)]

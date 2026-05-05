@@ -29,7 +29,7 @@ lemma_frequency(strongs='H5414', corpus='OT')
 from __future__ import annotations
 import pandas as pd
 from . import db as _db
-from .reference import BOOKS, TORAH, PROPHETS, WRITINGS, GOSPELS, PAULINE
+from .reference import BOOKS, book_ids_for_group
 
 _BOOK_ORDER = {b[0]: b[3] for b in BOOKS}
 
@@ -156,18 +156,13 @@ def concordance(
       word, strongs, [stem, part_of_speech, ...morphology...],
       context_text
     """
-    groups = {
-        "torah": TORAH, "prophets": PROPHETS, "writings": WRITINGS,
-        "gospels": GOSPELS, "pauline": PAULINE,
-    }
-
     if corpus.upper() == "LXX":
         return _concordance_lxx(
             strongs=strongs, word=word, lemma=lemma,
             lemma_translit=lemma_translit,
             part_of_speech=part_of_speech,
             book=book, book_group=book_group,
-            context=context, groups=groups, sort_by=sort_by,
+            context=context, sort_by=sort_by,
         )
 
     source = "TAHOT" if corpus.upper() == "OT" else "TAGNT"
@@ -188,10 +183,7 @@ def concordance(
         vals = [book] if isinstance(book, str) else book
         mask &= df["book_id"].isin(vals)
     if book_group is not None:
-        grp = groups.get(book_group.lower())
-        if grp is None:
-            raise ValueError(f"Unknown book_group {book_group!r}")
-        mask &= df["book_id"].isin(grp)
+        mask &= df["book_id"].isin(book_ids_for_group(book_group))
 
     hits = df[mask].copy()
     if hits.empty:
@@ -243,7 +235,6 @@ def _concordance_lxx(
     book: str | list[str] | None,
     book_group: str | None,
     context: str | None,
-    groups: dict[str, set[str]],
     sort_by: str,
 ) -> pd.DataFrame:
     df = _lxx()
@@ -266,10 +257,7 @@ def _concordance_lxx(
         vals = [book] if isinstance(book, str) else book
         mask &= df["book_id"].isin(vals)
     if book_group is not None:
-        grp = groups.get(book_group.lower())
-        if grp is None:
-            raise ValueError(f"Unknown book_group {book_group!r}")
-        mask &= df["book_id"].isin(grp)
+        mask &= df["book_id"].isin(book_ids_for_group(book_group))
 
     # Exclude deuterocanon by default unless explicitly requested
     mask &= ~df["is_deuterocanon"]
@@ -367,11 +355,6 @@ def top_lemmas(
 
     Returns a DataFrame: strongs, count, pct
     """
-    groups = {
-        "torah": TORAH, "prophets": PROPHETS, "writings": WRITINGS,
-        "gospels": GOSPELS, "pauline": PAULINE,
-    }
-
     if corpus.upper() == "LXX":
         df = _lxx()
         mask = ~df["is_deuterocanon"]
@@ -389,10 +372,7 @@ def top_lemmas(
         vals = [book] if isinstance(book, str) else book
         mask &= df["book_id"].isin(vals)
     if book_group is not None:
-        grp = groups.get(book_group.lower())
-        if grp is None:
-            raise ValueError(f"Unknown book_group {book_group!r}")
-        mask &= df["book_id"].isin(grp)
+        mask &= df["book_id"].isin(book_ids_for_group(book_group))
 
     counts = (
         df[mask]
