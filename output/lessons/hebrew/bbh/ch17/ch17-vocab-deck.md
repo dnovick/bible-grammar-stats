@@ -1,38 +1,43 @@
-# Ch17 Vocabulary Deck — Wayyiqtol and Weqatal
+# Chapter 17 — Vocabulary Flashcard Deck
 
-*BBH Chapter 17 — vocabulary list pending*
-
-> **Note:** BBH Chapter 17 does not introduce a new vocabulary list of its own; it focuses entirely on the waw-consecutive conjugations (Wayyiqtol and Weqatal) as grammatical forms. The vocabulary for this chapter consists of high-frequency verbs that appear prominently in wayyiqtol and weqatal constructions throughout the OT narrative and legal texts.
-
----
-
-## High-Frequency Roots Encountered in Ch17 Forms
-
-The following roots appear in the morphology deck and passage exercise for this chapter. Students should be familiar with their Qal Perfect meanings before encountering the waw-consecutive forms.
-
-| Root | Meaning | Frequency (OT) | Notes |
-|---|---|---|---|
-| אמר | to say, speak | ~5,300 | Most frequent verb in OT; וַיֹּאמֶר is single most frequent verb form |
-| היה | to be, become | ~3,600 | III-ה; וַיְהִי is the standard episode-opener |
-| הלך | to go, walk | ~1,500 | I-י; treated as I-י in wayyiqtol: וַיֵּלֶךְ |
-| ראה | to see | ~1,300 | III-ה; wayyiqtol: וַיַּרְא |
-| עשה | to do, make | ~2,600 | III-ה + I-gutt.; wayyiqtol: וַיַּעַשׂ |
-| נתן | to give | ~2,000 | I-נ; nun assimilates in wayyiqtol: וַיִּתֵּן |
-| ידע | to know | ~950 | I-י; wayyiqtol: וַיֵּדַע |
-| קום | to arise, stand up | ~630 | Biconsonantal; wayyiqtol: וַיָּקׇם |
-| בוא | to come, go in | ~2,600 | Biconsonantal; wayyiqtol: וַיָּבֹא |
-| שוב | to return, turn back | ~1,060 | Biconsonantal; wayyiqtol: וַיָּשׇׁב |
-| ישב | to sit, dwell | ~1,100 | I-י; wayyiqtol: וַיֵּשֶׁב |
-| יצא | to go out | ~1,070 | I-י + III-א; wayyiqtol: וַיֵּצֵא |
-| כתב | to write | ~220 | Strong root; wayyiqtol paradigm |
-| שמר | to keep, guard | ~470 | Strong root; weqatal chain in Deu 6 |
-| אהב | to love | ~210 | Deu 6:5; paradigmatic weqatal |
-| בנה | to build | ~380 | III-ה; wayyiqtol: וַיִּבֶן |
-| פנה | to turn | ~130 | III-ה; wayyiqtol: וַיֵּפֶן |
-| סבב | to surround, go around | ~160 | Geminate; wayyiqtol: וַיָּסׇּב |
-| דבר | to speak | ~1,140 | Piel is primary; weqatal: וְדִבַּרְתָּ |
-| שנן | to sharpen; Piel: teach diligently | ~4 (Piel) | Deu 6:7; Piel weqatal only |
+*14 words from BBH Chapter 17. Frequency counts are OT-wide occurrences.*
+*Import `ch17-vocab-deck.txt` directly into Anki (File → Import).*
 
 ---
 
-*When BBH provides a formal Ch17 vocabulary list, replace this stub with the assigned words in the standard deck format.*
+## How to Use
+
+- **Front of card:** pointed Hebrew form
+- **Back of card:** part of speech + gloss + stems listed + OT frequency
+- **Tags** allow filtering by part of speech in Anki
+
+---
+
+## Card List
+
+| # | Front — Hebrew Form | POS | Gloss | Freq |
+|---|---|---|---|---|
+| 1 | אָבַד | verb | (Q) to perish, vanish, be(come) lost, go astray; (Pi) cause to perish, destroy; (Hi) exterminate | 185 |
+| 2 | אָהַב | verb | (Q) to love (of human and divine love); (Pi ptc) lover | 217 |
+| 3 | אָסַף | verb | (Q) to gather (in), take in, take away, destroy; (Ni) be gathered, taken away, assemble | 200 |
+| 4 | גָּלָה | verb | (Q) to uncover, reveal, disclose; (Ni) uncover, reveal oneself, be revealed, exposed; (Pi) uncover, reveal, disclose; (Hi) take (carry away) into exile | 187 |
+| 5 | טָהֵר | verb | (Q) to be clean (ceremonially), pure (morally); (Pi) cleanse, purify, pronounce clean; (Hith) purify or cleanse oneself | 94 |
+| 6 | כָּלָה | verb | (Q) to be complete, finished, at an end, accomplished, spent, exhausted, come to an end; (Pi) complete, finish, bring to an end | 207 |
+| 7 | רוּם | verb | (Q) to be high, exalted, rise, arise; (Hi) raise, lift up, exalt, take away; (Hoph) be exalted; (Polel) exalt, bring up, extol, raise (children) | 197 |
+| 8 | שָׁפַט | verb | (Q) to judge, make a judgment, decide (between), settle (a dispute or controversy); (Ni) go to court, plead, dispute | 204 |
+| 9 | אֹהֶל | noun (ms) | tent | 348 |
+| 10 | אֱמֶת | noun (fs) | truth, fidelity; (with 2ms suff) אֲמִתֶּ֫ךָ | 127 |
+| 11 | דָּם | noun (ms) | blood; bloodshed | 361 |
+| 12 | כִּסֵּא | noun (ms) | seat, chair, throne | 135 |
+| 13 | מִסְפָּר | noun (ms) | number | 134 |
+| 14 | שֶׁמֶשׁ | noun (cs) | sun | 134 |
+
+---
+
+## Tags for Import
+
+| Tag | Cards |
+|---|---|
+| `bbh-ch17-vocab` | all |
+| `bbh-ch17-verb` | 1–8 |
+| `bbh-ch17-noun` | 9–14 |
