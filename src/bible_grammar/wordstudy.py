@@ -29,31 +29,17 @@ from .lexicon import lookup as _lex_lookup, lemma_index as _lemma_index
 
 _BOOK_ORDER = {b[0]: b[3] for b in BOOKS}
 
-# Module-level caches
-_words_cache: pd.DataFrame | None = None
-_lxx_cache: pd.DataFrame | None = None
-_tr_cache: pd.DataFrame | None = None
-
 
 def _words() -> pd.DataFrame:
-    global _words_cache
-    if _words_cache is None:
-        _words_cache = _db.load()
-    return _words_cache
+    return _db.load()
 
 
 def _lxx() -> pd.DataFrame:
-    global _lxx_cache
-    if _lxx_cache is None:
-        _lxx_cache = _db.load_lxx()
-    return _lxx_cache
+    return _db.load_lxx()
 
 
 def _translations() -> pd.DataFrame:
-    global _tr_cache
-    if _tr_cache is None:
-        _tr_cache = _db.load_translations()
-    return _tr_cache
+    return _db.load_translations()
 
 
 def _build_lemma_index() -> tuple[dict, dict]:

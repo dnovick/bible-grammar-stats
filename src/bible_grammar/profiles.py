@@ -38,22 +38,13 @@ _PROFILES_DIR = _REPO_ROOT / "output" / "reports" / "ot" / "survey"
 
 _BOOK_ORDER = {b[0]: b[3] for b in BOOKS}
 
-_words_cache: pd.DataFrame | None = None
-_lxx_cache: pd.DataFrame | None = None
-
 
 def _words() -> pd.DataFrame:
-    global _words_cache
-    if _words_cache is None:
-        _words_cache = _db.load()
-    return _words_cache
+    return _db.load()
 
 
 def _lxx() -> pd.DataFrame:
-    global _lxx_cache
-    if _lxx_cache is None:
-        _lxx_cache = _db.load_lxx()
-    return _lxx_cache
+    return _db.load_lxx()
 
 
 # --- Corpus-level baselines (computed once, cached) ---

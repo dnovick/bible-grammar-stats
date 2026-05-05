@@ -58,10 +58,11 @@ print_particle_summary(book)                    → None
 """
 
 from __future__ import annotations
-import unicodedata
 from pathlib import Path
 
 import pandas as pd
+
+from ._utils import strip_diacritics as _strip_diacritics
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -113,13 +114,6 @@ _PREP_DISPLAY = {
 def _load_macula() -> pd.DataFrame:
     from .syntax_ot import load_syntax_ot
     return load_syntax_ot()
-
-
-def _strip_diacritics(text: str) -> str:
-    return ''.join(
-        c for c in unicodedata.normalize('NFD', str(text))
-        if unicodedata.category(c) != 'Mn'
-    )
 
 
 def _filter_book(df: pd.DataFrame, book: str, chapter: int | None = None) -> pd.DataFrame:

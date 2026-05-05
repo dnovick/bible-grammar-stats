@@ -87,7 +87,7 @@ class TestBookIdsForGroup:
         assert len(ids) == 13
 
     def test_unknown_raises(self) -> None:
-        with pytest.raises(KeyError):
+        with pytest.raises(ValueError):
             book_ids_for_group("deuterocanon")
 
     def test_case_insensitive(self) -> None:

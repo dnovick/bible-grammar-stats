@@ -38,6 +38,7 @@ import re
 import unicodedata
 import pandas as pd
 from . import db as _db
+from ._utils import norm_strongs as _norm_strongs, norm_strongs_user as _query_strongs
 
 # Corpus identifiers
 _OT = "OT"
@@ -65,45 +66,6 @@ def _nt_book_ids() -> set:
 
 
 # ── strongs normalisation ─────────────────────────────────────────────────────
-
-def _norm_strongs(s: str) -> str:
-    """Normalise a stored strongs value to H/G + unpadded number + optional letter.
-    e.g. '{H0430G}' → 'H430G',  'H9003/{H1697I}' → 'H1697I' (content word),
-         'G2316' → 'G2316'
-    """
-    # Hebrew: extract content word from curly braces, skip H9xxx grammatical tags
-    braced = re.findall(r'\{([HG]\d+[A-Z]?)\}', s)
-    for m in braced:
-        if not re.match(r'H9\d+', m):
-            # Strip leading zeros from numeric part
-            pfx = m[0]
-            rest = m[1:]
-            num = re.match(r'0*(\d+)([A-Z]?)$', rest)
-            if num:
-                return pfx + num.group(1) + num.group(2)
-            return m
-    if braced:
-        # All were H9xxx — return first anyway (shouldn't happen for content)
-        m = braced[0]
-        pfx = m[0]
-        rest = m[1:]
-        num = re.match(r'0*(\d+)([A-Z]?)$', rest)
-        return pfx + (num.group(1) + num.group(2) if num else rest)
-
-    # Greek (plain, no braces): strip leading zeros
-    m2 = re.match(r'^([HG])0*(\d+)([A-Z]?)$', s.strip().upper())
-    if m2:
-        return m2.group(1) + m2.group(2) + m2.group(3)
-    return s.strip().upper()
-
-
-def _query_strongs(s: str) -> str:
-    """Normalise a user-supplied strongs for comparison against _norm_strongs output."""
-    m = re.match(r'^([HG])0*(\d+)([A-Z]?)$', s.strip().upper())
-    if m:
-        return m.group(1) + m.group(2) + m.group(3)
-    return s.strip().upper()
-
 
 # ── token matching ────────────────────────────────────────────────────────────
 

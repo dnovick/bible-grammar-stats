@@ -32,33 +32,20 @@ from .reference import book_info, BOOKS
 
 _BOOK_ORDER = {b[0]: b[3] for b in BOOKS}
 
-_words_cache: pd.DataFrame | None = None
-_lxx_cache: pd.DataFrame | None = None
-_tr_cache: pd.DataFrame | None = None
-
 _OT_IDS = {b[0] for b in BOOKS if b[2] == "OT"}
 _NT_IDS = {b[0] for b in BOOKS if b[2] == "NT"}
 
 
 def _words() -> pd.DataFrame:
-    global _words_cache
-    if _words_cache is None:
-        _words_cache = _db.load()
-    return _words_cache
+    return _db.load()
 
 
 def _lxx() -> pd.DataFrame:
-    global _lxx_cache
-    if _lxx_cache is None:
-        _lxx_cache = _db.load_lxx()
-    return _lxx_cache
+    return _db.load_lxx()
 
 
 def _translations() -> pd.DataFrame:
-    global _tr_cache
-    if _tr_cache is None:
-        _tr_cache = _db.load_translations()
-    return _tr_cache
+    return _db.load_translations()
 
 
 def _verse_text(df: pd.DataFrame, source: str,

@@ -39,21 +39,15 @@ hiphil_report(output_dir=None)         → Path   (full Markdown report)
 """
 
 from __future__ import annotations
-import unicodedata
 from pathlib import Path
 from typing import Any
 
 import pandas as pd
 
+from ._utils import strip_diacritics as _strip
+
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
-
-def _strip(text: str) -> str:
-    return ''.join(
-        c for c in unicodedata.normalize('NFD', str(text))
-        if unicodedata.category(c) != 'Mn'
-    )
-
 
 def _load() -> pd.DataFrame:
     from .syntax_ot import load_syntax_ot

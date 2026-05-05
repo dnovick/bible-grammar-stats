@@ -94,10 +94,12 @@ _GROUPS: dict[str, set[str]] = {
 
 
 def book_ids_for_group(group: str) -> list[str]:
-    """Return sorted list of book IDs for a named group (e.g. 'torah', 'pauline')."""
+    """Return book IDs in canonical order for a named group (e.g. 'torah', 'pauline')."""
     key = group.lower()
     if key not in _GROUPS:
-        raise KeyError(f"Unknown book group {group!r}. Valid: {sorted(_GROUPS)}")
+        raise ValueError(
+            f"Unknown book_group {group!r}. Valid: {sorted(_GROUPS)}"
+        )
     ids = _GROUPS[key]
     return [b[0] for b in BOOKS if b[0] in ids]
 

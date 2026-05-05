@@ -26,18 +26,13 @@ import math
 import pandas as pd
 from . import db as _db
 from .reference import BOOKS
+from ._utils import norm_strongs as _norm_strongs
 
 _BOOK_ORDER = {b[0]: b[3] for b in BOOKS}
 
 # Strong's numbers that are function words / grammatical particles to exclude
 # from collocation results (they co-occur with everything)
 _STOP_PREFIXES = {'H9', 'H5', 'H1'}  # H9xxx = grammatical particles in TAHOT
-
-
-def _norm_strongs(s: str) -> str:
-    """Strip variant letter and leading zeros: H0001G → H1, H1697I → H1697."""
-    m = re.match(r'^([HG])0*(\d+)[A-Z]?$', str(s).strip().upper())
-    return f"{m.group(1)}{m.group(2)}" if m else str(s).strip().upper()
 
 
 def _extract_root(strongs_cell: str, is_hebrew: bool) -> str:

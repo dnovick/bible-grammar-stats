@@ -41,22 +41,13 @@ _BOOK_ORDER = {b[0]: b[3] for b in BOOKS}
 _OT_IDS = {b[0] for b in BOOKS if b[2] == "OT"}
 _NT_IDS = {b[0] for b in BOOKS if b[2] == "NT"}
 
-_words_cache: pd.DataFrame | None = None
-_tr_cache: pd.DataFrame | None = None
-
 
 def _words() -> pd.DataFrame:
-    global _words_cache
-    if _words_cache is None:
-        _words_cache = _db.load()
-    return _words_cache
+    return _db.load()
 
 
 def _translations() -> pd.DataFrame:
-    global _tr_cache
-    if _tr_cache is None:
-        _tr_cache = _db.load_translations()
-    return _tr_cache
+    return _db.load_translations()
 
 
 def _lookup_gloss(strongs: str) -> tuple[str, str]:

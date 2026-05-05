@@ -4,31 +4,18 @@ from __future__ import annotations
 import pandas as pd
 from . import db as _db
 
-_cache: pd.DataFrame | None = None
-_tr_cache: pd.DataFrame | None = None
-_lxx_cache: pd.DataFrame | None = None
-
 
 def _df() -> pd.DataFrame:
-    global _cache
-    if _cache is None:
-        _cache = _db.load()
-    return _cache
+    return _db.load()
 
 
 def reload() -> None:
     """Force reload from disk (useful after rebuilding the database)."""
-    global _cache, _tr_cache, _lxx_cache
-    _cache = None
-    _tr_cache = None
-    _lxx_cache = None
+    _db.invalidate_cache()
 
 
 def _lxx_df() -> pd.DataFrame:
-    global _lxx_cache
-    if _lxx_cache is None:
-        _lxx_cache = _db.load_lxx()
-    return _lxx_cache
+    return _db.load_lxx()
 
 
 def lxx_query(
@@ -127,10 +114,7 @@ def lxx_query(
 
 
 def _tr_df() -> pd.DataFrame:
-    global _tr_cache
-    if _tr_cache is None:
-        _tr_cache = _db.load_translations()
-    return _tr_cache
+    return _db.load_translations()
 
 
 def translation_query(
