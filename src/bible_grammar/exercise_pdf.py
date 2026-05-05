@@ -2648,6 +2648,126 @@ def build_ch27_bg_drill_exercise(out_dir: str = None) -> str:
     return ex.save(path)
 
 
+# ---------------------------------------------------------------------------
+# Chapter 28 — "Spot the Piel/Pual" Passage Exercise
+# ---------------------------------------------------------------------------
+class Ch28Exercise(ExercisePDF):
+
+    def _render_passages(self, show_answers: bool):
+
+        # ── Passage A ─────────────────────────────────────────────────────────
+        self.add_section_heading('Passage A — Genesis 1:22, 28')
+
+        self.add_passage(PassageBlock('1:22',
+            'וַיְבָ֧רֶךְ אֹתָ֛ם אֱלֹהִ֖ים לֵאמֹ֑ר פְּר֥וּ וּרְב֛וּ',
+            '"And God blessed them, saying, \'Be fruitful and multiply…\'"'))
+        self.add_verb_table([
+            VerbEntry('1', 'וַיְבָרֶךְ', 'Wayyiqtol', '3ms', 'בָּרַךְ', 'Intensive — God\'s blessing; Piel Wayyiqtol וַיְ prefix'),
+        ], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('1:28',
+            'וַיְבָ֣רֶךְ אֹתָ֖ם אֱלֹהִ֑ים',
+            '"And God blessed them."'))
+        self.add_verb_table([
+            VerbEntry('2', 'וַיְבָרֶךְ', 'Wayyiqtol', '3ms', 'בָּרַךְ', 'Intensive — same form; R2=ר rejects dagesh; Piel marked by vowel pattern'),
+        ], show_answers=show_answers)
+
+        self.add_section_break()
+
+        # ── Passage B ─────────────────────────────────────────────────────────
+        self.add_section_heading('Passage B — Exodus 19:10–14')
+
+        self.add_passage(PassageBlock('19:10',
+            'וְקִדַּשְׁתָּ֥ אֹתָ֛ם הַיּ֥וֹם וּמָחָ֑ר וְכִבְּס֖וּ שִׂמְלֹתָֽם',
+            '"…consecrate them today and tomorrow, and let them wash their garments."'))
+        self.add_verb_table([
+            VerbEntry('3', 'וְקִדַּשְׁתָּ', 'Weqatal', '2ms', 'קָדַשׁ', 'Factitive — cause to become holy; Weqatal = consequential command'),
+            VerbEntry('4', 'וְכִבְּסוּ', 'Weqatal', '3cp', 'כָּבַס', 'Intensive — wash/launder; roots almost exclusively Piel OT-wide'),
+        ], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('19:14',
+            'וַיְקַדֵּ֖שׁ אֶת־הָעָ֑ם וַיְכַבְּס֖וּ שִׂמְלֹתָֽם',
+            '"…and he consecrated the people, and they washed their garments."'))
+        self.add_verb_table([
+            VerbEntry('5', 'וַיְקַדֵּשׁ', 'Wayyiqtol', '3ms', 'קָדַשׁ', 'Factitive — narrative fulfillment of command (v.10); same root'),
+            VerbEntry('6', 'וַיְכַבְּסוּ', 'Wayyiqtol', '3mp', 'כָּבַס', 'Intensive — Wayyiqtol 3mp; contrast with Weqatal 3cp above'),
+        ], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('19:25',
+            'וַיְדַבֵּ֥ר מֹשֶׁ֖ה אֶל־הָעָ֑ם',
+            '"And Moses spoke to the people."'))
+        self.add_verb_table([
+            VerbEntry('7', 'וַיְדַבֵּר', 'Wayyiqtol', '3ms', 'דָּבַר', 'Denominative — from דָּבָר (word); 1,090x in OT; Piel is the standard form'),
+        ], show_answers=show_answers)
+
+        self.add_section_break()
+
+        # ── Passage C ─────────────────────────────────────────────────────────
+        self.add_section_heading('Passage C — Numbers 22:6–8, 17 (with Qal distractors)')
+
+        self.add_passage(PassageBlock('22:6',
+            'כִּ֣י יָדַ֗עְתִּי אֵ֤ת אֲשֶׁר־תְּבָרֵךְ֙ מְבֹרָ֔ךְ',
+            '"…I know that he whom you bless is blessed."'))
+        self.add_verb_table([
+            VerbEntry('8', 'אָרָה', 'Qal Jussive', '1cs', 'אָרַר', 'NOT Piel — Qal jussive (curse); no dagesh in R2'),
+            VerbEntry('9', 'תְּבָרֵךְ', 'Imperfect', '2ms', 'בָּרַךְ', 'Intensive — Piel Imperfect; שְׁ prefix + Patach + tsere; R2=ר'),
+            VerbEntry('10', 'מְבֹרָךְ', 'Participle ms', 'ms', 'בָּרַךְ', 'Passive (Pual) — "blessed one"; מְ prefix + qibbuts/qamets under R1'),
+        ], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('22:8',
+            'יְדַבֵּ֥ר יְהוָ֖ה אֵלָ֑י וְדִבַּרְתִּ֖י אֲלֵיכֶֽם',
+            '"The LORD will speak to me, and I will speak to you."'))
+        self.add_verb_table([
+            VerbEntry('11', 'יְדַבֵּר', 'Imperfect', '3ms', 'דָּבַר', 'Denominative — יְ prefix + dagesh in בּ; standard Piel Imperfect'),
+            VerbEntry('12', 'וְדִבַּרְתִּי', 'Weqatal', '1cs', 'דָּבַר', 'Denominative — Weqatal; Hireq under R1 + dagesh + 1cs suffix תִּי'),
+        ], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('22:17',
+            'כִּֽי כַבֵּד֙ אֲכַבֶּדְךָ֣ מְאֹד',
+            '"For I will surely honor you greatly."'))
+        self.add_verb_table([
+            VerbEntry('13', 'כַּבֵּד', 'Inf. Absolute', '—', 'כָּבֵד', 'Intensive (Piel Inf.Abs.) — cognate construction כַּבֵּד אֲכַבֶּד'),
+            VerbEntry('14', 'אֲכַבֶּדְךָ', 'Imperfect', '1cs', 'כָּבֵד', 'Factitive — אֲ prefix + dagesh in בּ; Piel of "heavy" = to honor'),
+            VerbEntry('15', 'קָבָה', 'Qal Impv.', '2ms', 'קָבַב', 'NOT Piel — Qal imperative (curse); no dagesh in R2'),
+        ], show_answers=show_answers)
+
+
+    def _build(self):
+        self.add_instructions(
+            'Each numbered verb is either Piel, Pual, or a Qal distractor. '
+            'For each one, fill in: Piel/Pual/No, Conjugation, PGN, Root, and Function. '
+            'The answer key begins on the page marked "Answer Key".'
+        )
+        self._render_passages(show_answers=False)
+
+        self._new_page()
+        c = self._canvas
+        c.setFont('Helvetica-Bold', 14)
+        c.setFillColor(C_HEADING)
+        c.drawString(self.MARGIN_L, self._y, 'Answer Key')
+        self._y -= 0.22 * inch
+        c.setFont('Helvetica-Oblique', 9)
+        c.setFillColor(HexColor('#666666'))
+        c.drawString(self.MARGIN_L, self._y,
+                     'Passages with correct answers shown in the green row below each verb.')
+        self._y -= 0.18 * inch
+        self._render_passages(show_answers=True)
+
+
+def build_ch28_exercise(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'hebrew', 'bbh', 'ch28', 'exercises',
+                               'ch28-passage-exercise')
+    path = os.path.join(out_dir, 'ch28-passage-exercise.pdf')
+    ex = Ch28Exercise(
+        title='Chapter 28 — "Spot the Piel/Pual" Passage Exercise',
+        subtitle='Genesis 1  ·  Exodus 19  ·  Numbers 22',
+    )
+    return ex.save(path)
+
+
 if __name__ == '__main__':
     p0 = build_ch24_exercise()
     print(f'Saved: {p0}')
@@ -2669,3 +2789,5 @@ if __name__ == '__main__':
     print(f'Saved: {p8}')
     p9 = build_ch27_weak_form_id_exercise()
     print(f'Saved: {p9}')
+    p10 = build_ch28_exercise()
+    print(f'Saved: {p10}')

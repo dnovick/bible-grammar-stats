@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch28 — Spot the Piel/Pual Passage Exercise</title>
+<style>
+  body { font-family: Georgia, serif; max-width: 900px; margin: 2em auto; padding: 0 1.5em; color: #222; line-height: 1.6; }
+  h1 { font-size: 1.4em; border-bottom: 2px solid #444; padding-bottom: 0.3em; }
+  h2 { font-size: 1.15em; margin-top: 1.8em; color: #333; }
+  h3 { font-size: 1em; margin-top: 1.2em; color: #555; font-style: italic; }
+  .hebrew { font-size: 1.4em; direction: rtl; unicode-bidi: embed; line-height: 2; margin: 0.6em 0; padding: 0.5em 0.8em; background: #f9f6ef; border-left: 3px solid #c8a84b; border-radius: 3px; }
+  .translation { font-style: italic; color: #444; margin: 0.3em 0 0.8em; }
+  table { border-collapse: collapse; width: 100%; margin: 0.8em 0 1.2em; font-size: 0.92em; }
+  th { background: #eee; border: 1px solid #ccc; padding: 6px 10px; text-align: left; }
+  td { border: 1px solid #ccc; padding: 5px 9px; vertical-align: middle; }
+  td:first-child { font-size: 1.1em; direction: rtl; unicode-bidi: embed; width: 14%; }
+  input.parse-field { width: 95%; border: none; border-bottom: 1px solid #aaa; background: transparent; font-size: 0.9em; padding: 1px 2px; font-family: inherit; }
+  input.parse-field:focus { outline: none; border-bottom: 2px solid #5b7dc8; }
+  .answer-row { display: none; background: #eaf5ea; }
+  .answer-row td { border-top: none; color: #2a6b2a; font-size: 0.88em; }
+  .answer-row.visible { display: table-row; }
+  .reveal-btn { font-size: 0.78em; padding: 2px 7px; background: #ddeeff; border: 1px solid #99b; border-radius: 3px; cursor: pointer; white-space: nowrap; }
+  .reveal-btn:hover { background: #c5deff; }
+  .controls { margin: 1em 0 1.5em; display: flex; gap: 0.6em; flex-wrap: wrap; }
+  .controls button { padding: 5px 14px; border: 1px solid #aaa; border-radius: 4px; background: #f0f0f0; cursor: pointer; font-size: 0.9em; }
+  .controls button:hover { background: #ddd; }
+  .note-box { background: #fffbe6; border: 1px solid #e0c84b; border-radius: 4px; padding: 0.7em 1em; margin: 1em 0; font-size: 0.9em; }
+  .answer-key { background: #f5f5f5; border: 1px solid #ccc; border-radius: 4px; padding: 1em 1.2em; margin-top: 2em; }
+  .answer-key h2 { margin-top: 0.3em; }
+  .answer-key table td:first-child { direction: rtl; unicode-bidi: embed; }
+  .reflection { margin-top: 1.5em; padding: 0.8em 1.2em; background: #f0f5ff; border-radius: 4px; border: 1px solid #b0c4e8; }
+  .reflection ol { margin: 0.4em 0; padding-left: 1.4em; }
+  .reflection li { margin-bottom: 0.5em; }
+  @media print {
+    .controls, .reveal-btn { display: none !important; }
+    .answer-row { display: none !important; }
+    input.parse-field { border: none; border-bottom: 1px solid #999; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Chapter 28 — "Spot the Piel/Pual" Passage Exercise</h1>
+<p><strong>Stems:</strong> Piel (פִּעֵל) and Pual (פֻּעַל) &nbsp;|&nbsp; <strong>Passages:</strong> Gen 1:22, 28 · Exo 19:10–14 · Num 22:6–8, 17–18</p>
+
+<p><strong>Instructions:</strong> For each bolded/numbered verb, fill in: (1) Is it Piel/Pual? (2) Conjugation (3) PGN (4) Root (5) Function. Click <strong>▶ Answer</strong> to reveal the key for that row.</p>
+
+<div class="controls">
+  <button onclick="showAll()">Show All Answers</button>
+  <button onclick="hideAll()">Hide All Answers</button>
+  <button onclick="clearAll()">Clear All Inputs</button>
+</div>
+
+<h2>Passage A — Genesis 1:22, 28</h2>
+<h3>Context: God blesses the creatures he has made.</h3>
+
+<div class="hebrew">וַיְבָ֧רֶךְ <strong>[1]</strong> אֹתָ֛ם אֱלֹהִ֖ים לֵאמֹ֑ר פְּר֥וּ וּרְב֛וּ וּמִלְא֥וּ אֶת־הַמַּ֖יִם בַּיַּמִּ֑ים</div>
+<p class="translation">"And God blessed them, saying, 'Be fruitful and multiply and fill the waters in the seas…'" (Gen 1:22)</p>
+
+<table>
+  <tr>
+    <th>#</th><th>Verb</th><th>Piel/Pual?</th><th>Conjugation</th><th>PGN</th><th>Root</th><th>Function</th><th></th>
+  </tr>
+  <tr id="r1">
+    <td>1</td><td>וַיְבָרֶךְ</td>
+    <td><input class="parse-field" placeholder="Piel / Pual / No"></td>
+    <td><input class="parse-field" placeholder="conjugation"></td>
+    <td><input class="parse-field" placeholder="PGN"></td>
+    <td><input class="parse-field" placeholder="root"></td>
+    <td><input class="parse-field" placeholder="function"></td>
+    <td><button class="reveal-btn" onclick="toggle('a1',this)">▶ Answer</button></td>
+  </tr>
+  <tr class="answer-row" id="a1">
+    <td colspan="8">✓ <strong>Piel</strong> | Wayyiqtol | 3ms | ברך | <em>Intensive</em> — God's powerful blessing on the creatures; וַיְ prefix (patach + shewa) is the Piel/Pual Wayyiqtol marker.</td>
+  </tr>
+</table>
+
+<div class="hebrew">וַיְבָ֣רֶךְ <strong>[2]</strong> אֹתָ֖ם אֱלֹהִ֑ים וַיֹּ֨אמֶר לָהֶ֜ם אֱלֹהִ֗ים פְּר֥וּ וּרְב֛וּ</div>
+<p class="translation">"And God blessed them. And God said to them, 'Be fruitful and multiply…'" (Gen 1:28)</p>
+
+<table>
+  <tr>
+    <th>#</th><th>Verb</th><th>Piel/Pual?</th><th>Conjugation</th><th>PGN</th><th>Root</th><th>Function</th><th></th>
+  </tr>
+  <tr id="r2">
+    <td>2</td><td>וַיְבָרֶךְ</td>
+    <td><input class="parse-field" placeholder="Piel / Pual / No"></td>
+    <td><input class="parse-field" placeholder="conjugation"></td>
+    <td><input class="parse-field" placeholder="PGN"></td>
+    <td><input class="parse-field" placeholder="root"></td>
+    <td><input class="parse-field" placeholder="function"></td>
+    <td><button class="reveal-btn" onclick="toggle('a2',this)">▶ Answer</button></td>
+  </tr>
+  <tr class="answer-row" id="a2">
+    <td colspan="8">✓ <strong>Piel</strong> | Wayyiqtol | 3ms | ברך | <em>Intensive</em> — Same form as verb 1; God's intensive blessing on humanity. Note the dagesh in the ב of וַיְבָרֶךְ — this is the dagesh forte in R1 (ב) after the vav prefix? No — ב is R1 here: the root is ב-ר-כ, dagesh in ב is due to the אֱ + vav contraction. The R2 dagesh forte is in the ר? No — ר cannot take dagesh. This root is exceptional: because R2 is ר (gutturals/resh resist dagesh), the Piel is marked by the characteristic vowel pattern alone.</td>
+  </tr>
+</table>
+
+<div class="note-box"><strong>Note on ברך:</strong> The root ב-ר-כ has ר as R2. Since ר rejects Dagesh Forte, the Piel is not marked by dagesh in R2 — this is a weak (middle-resh) root. The stem is identified instead by the characteristic vowel pattern: Tsere under the prefix-less prefix consonant + the overall pattern. In the Wayyiqtol, the וַיְ prefix (contrast Qal וַיִּ) still marks the Piel.</div>
+
+<h2>Passage B — Exodus 19:10–14</h2>
+<h3>Context: The LORD prepares Israel for the theophany at Sinai.</h3>
+
+<div class="hebrew" style="direction:rtl; unicode-bidi:embed">וַיֹּ֨אמֶר יְהוָ֤ה אֶל־מֹשֶׁה֙ לֵ֣ךְ אֶל־הָעָ֔ם <strong>וְקִדַּשְׁתָּ֥ [3]</strong> אֹתָ֛ם הַיּ֥וֹם וּמָחָ֑ר <strong>וְכִבְּס֖וּ [4]</strong> שִׂמְלֹתָֽם׃</div>
+<p class="translation">"And the LORD said to Moses, 'Go to the people and consecrate them today and tomorrow, and let them wash their garments.'" (Exo 19:10)</p>
+
+<table>
+  <tr>
+    <th>#</th><th>Verb</th><th>Piel/Pual?</th><th>Conjugation</th><th>PGN</th><th>Root</th><th>Function</th><th></th>
+  </tr>
+  <tr id="r3">
+    <td>3</td><td>וְקִדַּשְׁתָּ</td>
+    <td><input class="parse-field" placeholder="Piel / Pual / No"></td>
+    <td><input class="parse-field" placeholder="conjugation"></td>
+    <td><input class="parse-field" placeholder="PGN"></td>
+    <td><input class="parse-field" placeholder="root"></td>
+    <td><input class="parse-field" placeholder="function"></td>
+    <td><button class="reveal-btn" onclick="toggle('a3',this)">▶ Answer</button></td>
+  </tr>
+  <tr class="answer-row" id="a3">
+    <td colspan="8">✓ <strong>Piel</strong> | Weqatal | 2ms | קדש | <em>Factitive</em> — "you shall consecrate them" = cause them to become holy (prepared for encounter with God). Weqatal carries consequential/instructional modal force here.</td>
+  </tr>
+  <tr id="r4">
+    <td>4</td><td>וְכִבְּסוּ</td>
+    <td><input class="parse-field" placeholder="Piel / Pual / No"></td>
+    <td><input class="parse-field" placeholder="conjugation"></td>
+    <td><input class="parse-field" placeholder="PGN"></td>
+    <td><input class="parse-field" placeholder="root"></td>
+    <td><input class="parse-field" placeholder="function"></td>
+    <td><button class="reveal-btn" onclick="toggle('a4',this)">▶ Answer</button></td>
+  </tr>
+  <tr class="answer-row" id="a4">
+    <td colspan="8">✓ <strong>Piel</strong> | Weqatal | 3cp | כבס | <em>Intensive</em> — "they shall wash [their garments]." The root כבס (laundering) appears almost exclusively in the Piel in the OT — the Qal is rare. Dagesh forte in the ב (R2) confirms the Piel.</td>
+  </tr>
+</table>
+
+<div class="hebrew" style="direction:rtl; unicode-bidi:embed">וַיֵּ֤רֶד מֹשֶׁה֙ מִן־הָהָ֔ר אֶל־הָעָ֑ם <strong>וַיְקַדֵּ֖שׁ [5]</strong> אֶת־הָעָ֑ם <strong>וַיְכַבְּס֖וּ [6]</strong> שִׂמְלֹתָֽם׃</div>
+<p class="translation">"And Moses went down from the mountain to the people and consecrated the people, and they washed their garments." (Exo 19:14)</p>
+
+<table>
+  <tr>
+    <th>#</th><th>Verb</th><th>Piel/Pual?</th><th>Conjugation</th><th>PGN</th><th>Root</th><th>Function</th><th></th>
+  </tr>
+  <tr id="r5">
+    <td>5</td><td>וַיְקַדֵּשׁ</td>
+    <td><input class="parse-field" placeholder="Piel / Pual / No"></td>
+    <td><input class="parse-field" placeholder="conjugation"></td>
+    <td><input class="parse-field" placeholder="PGN"></td>
+    <td><input class="parse-field" placeholder="root"></td>
+    <td><input class="parse-field" placeholder="function"></td>
+    <td><button class="reveal-btn" onclick="toggle('a5',this)">▶ Answer</button></td>
+  </tr>
+  <tr class="answer-row" id="a5">
+    <td colspan="8">✓ <strong>Piel</strong> | Wayyiqtol | 3ms | קדש | <em>Factitive</em> — Moses executes the LORD's command (verb 3). Compare verb 3 (weqatal = instruction) → verb 5 (wayyiqtol = narrative fulfillment): same root, same function, different conjugation marking the shift from command to action.</td>
+  </tr>
+  <tr id="r6">
+    <td>6</td><td>וַיְכַבְּסוּ</td>
+    <td><input class="parse-field" placeholder="Piel / Pual / No"></td>
+    <td><input class="parse-field" placeholder="conjugation"></td>
+    <td><input class="parse-field" placeholder="PGN"></td>
+    <td><input class="parse-field" placeholder="root"></td>
+    <td><input class="parse-field" placeholder="function"></td>
+    <td><button class="reveal-btn" onclick="toggle('a6',this)">▶ Answer</button></td>
+  </tr>
+  <tr class="answer-row" id="a6">
+    <td colspan="8">✓ <strong>Piel</strong> | Wayyiqtol | 3mp | כבס | <em>Intensive</em> — The people execute the command (verb 4). The Piel Wayyiqtol 3mp form is וַיְ + Piel imperfect stem.</td>
+  </tr>
+</table>
+
+<div class="hebrew" style="direction:rtl; unicode-bidi:embed"><strong>וַיְדַבֵּ֥ר [7]</strong> מֹשֶׁ֖ה אֶל־הָעָ֑ם</div>
+<p class="translation">"And Moses spoke to the people." (Exo 19:25)</p>
+
+<table>
+  <tr>
+    <th>#</th><th>Verb</th><th>Piel/Pual?</th><th>Conjugation</th><th>PGN</th><th>Root</th><th>Function</th><th></th>
+  </tr>
+  <tr id="r7">
+    <td>7</td><td>וַיְדַבֵּר</td>
+    <td><input class="parse-field" placeholder="Piel / Pual / No"></td>
+    <td><input class="parse-field" placeholder="conjugation"></td>
+    <td><input class="parse-field" placeholder="PGN"></td>
+    <td><input class="parse-field" placeholder="root"></td>
+    <td><input class="parse-field" placeholder="function"></td>
+    <td><button class="reveal-btn" onclick="toggle('a7',this)">▶ Answer</button></td>
+  </tr>
+  <tr class="answer-row" id="a7">
+    <td colspan="8">✓ <strong>Piel</strong> | Wayyiqtol | 3ms | דבר | <em>Denominative</em> — "spoke" from the noun דָּבָר (word). This root appears 1,090× in the Piel OT-wide and is the paradigm Piel Wayyiqtol form. The Piel of דבר is so dominant that it effectively *is* the word for "to speak" in Biblical Hebrew.</td>
+  </tr>
+</table>
+
+<h2>Passage C — Numbers 22:6–8, 17–18</h2>
+<h3>Context: Balak asks Balaam to curse Israel; Balaam refuses.</h3>
+
+<div class="note-box"><strong>Parsing challenge:</strong> This passage contains both Piel/Pual forms AND similar-looking Qal forms. Use the Dagesh Forte in R2 test to distinguish.</div>
+
+<div class="hebrew" style="direction:rtl; unicode-bidi:embed">לְכָה־נָּ֣א <strong>אָרָה [8]</strong>־לִּי֮ אֶת־הָעָ֣ם הַזֶּה֒ כִּ֤י עָצוּם֙ הוּא֙ מִמֶּ֔נִּי אוּלַ֤י אוּכַל֙ נַכֶּה־בּ֔וֹ וַאֲגָרְשֶׁ֖נּוּ מִן־הָאָ֑רֶץ כִּ֣י יָדַ֗עְתִּי אֵ֤ת אֲשֶׁר־<strong>תְּבָרֵךְ֙ [9]</strong> <strong>מְבֹרָ֔ךְ [10]</strong> וַאֲשֶׁ֥ר <strong>תָּאֹ֖ר [11]</strong> יוּאָֽר׃</div>
+<p class="translation">"Come now, curse this people for me… I know that he whom you bless is blessed, and he whom you curse is cursed." (Num 22:6)</p>
+
+<table>
+  <tr>
+    <th>#</th><th>Verb</th><th>Piel/Pual?</th><th>Conjugation</th><th>PGN</th><th>Root</th><th>Function</th><th></th>
+  </tr>
+  <tr id="r8">
+    <td>8</td><td>אָרָה</td>
+    <td><input class="parse-field" placeholder="Piel / Pual / No"></td>
+    <td><input class="parse-field" placeholder="conjugation"></td>
+    <td><input class="parse-field" placeholder="PGN"></td>
+    <td><input class="parse-field" placeholder="root"></td>
+    <td><input class="parse-field" placeholder="function"></td>
+    <td><button class="reveal-btn" onclick="toggle('a8',this)">▶ Answer</button></td>
+  </tr>
+  <tr class="answer-row" id="a8">
+    <td colspan="8">✗ <strong>No</strong> — this is a Qal jussive (אָרָה from ארר, "to curse"). No dagesh forte in R2. The Piel of cursing (when present) is קִלֵּל — not the same root. A good Piel/Pual diagnostic: check for dagesh in R2 before committing.</td>
+  </tr>
+  <tr id="r9">
+    <td>9</td><td>תְּבָרֵךְ</td>
+    <td><input class="parse-field" placeholder="Piel / Pual / No"></td>
+    <td><input class="parse-field" placeholder="conjugation"></td>
+    <td><input class="parse-field" placeholder="PGN"></td>
+    <td><input class="parse-field" placeholder="root"></td>
+    <td><input class="parse-field" placeholder="function"></td>
+    <td><button class="reveal-btn" onclick="toggle('a9',this)">▶ Answer</button></td>
+  </tr>
+  <tr class="answer-row" id="a9">
+    <td colspan="8">✓ <strong>Piel</strong> | Imperfect | 2ms | ברך | <em>Intensive</em> — Shewa under prefix (תְּ) + patach-class vowel under R1 (בָ) + R2 (ר cannot take dagesh — see note) + tsere. The Piel Imperfect pattern is visible in the prefix vowel sequence and tsere under R2.</td>
+  </tr>
+  <tr id="r10">
+    <td>10</td><td>מְבֹרָךְ</td>
+    <td><input class="parse-field" placeholder="Piel / Pual / No"></td>
+    <td><input class="parse-field" placeholder="conjugation"></td>
+    <td><input class="parse-field" placeholder="PGN"></td>
+    <td><input class="parse-field" placeholder="root"></td>
+    <td><input class="parse-field" placeholder="function"></td>
+    <td><button class="reveal-btn" onclick="toggle('a10',this)">▶ Answer</button></td>
+  </tr>
+  <tr class="answer-row" id="a10">
+    <td colspan="8">✓ <strong>Pual</strong> | Participle | ms | ברך | <em>Passive</em> — מְבֹרָךְ "blessed one" (one who is blessed). Pual Participle ms: מְ prefix + qibbuts/qamets under R1 + dagesh if possible. Because ר rejects dagesh, the Pual here is marked by the מְ + u-class vowel pattern + the overall passive sense. This is the Pual passive of the Piel intensive "bless."</td>
+  </tr>
+  <tr id="r11">
+    <td>11</td><td>תָּאֹר</td>
+    <td><input class="parse-field" placeholder="Piel / Pual / No"></td>
+    <td><input class="parse-field" placeholder="conjugation"></td>
+    <td><input class="parse-field" placeholder="PGN"></td>
+    <td><input class="parse-field" placeholder="root"></td>
+    <td><input class="parse-field" placeholder="function"></td>
+    <td><button class="reveal-btn" onclick="toggle('a11',this)">▶ Answer</button></td>
+  </tr>
+  <tr class="answer-row" id="a11">
+    <td colspan="8">✗ <strong>No</strong> — this is a Qal imperfect 2ms from ארר "to curse." No dagesh forte in R2 (א is a guttural and cannot take dagesh). The parallel structure תְּבָרֵךְ / תָּאֹר contrasts the two stems: Piel ברך (bless) with Qal ארר (curse).</td>
+  </tr>
+</table>
+
+<div class="hebrew" style="direction:rtl; unicode-bidi:embed">וַיֹּ֤אמֶר <strong>יְדַבֵּ֥ר [12]</strong> יְהוָ֖ה אֵלָ֑י <strong>וְדִבַּרְתִּ֖י [13]</strong> אֲלֵיכֶֽם׃</div>
+<p class="translation">"And he said, 'The LORD will speak to me, and I will speak to you.'" (Num 22:8)</p>
+
+<table>
+  <tr>
+    <th>#</th><th>Verb</th><th>Piel/Pual?</th><th>Conjugation</th><th>PGN</th><th>Root</th><th>Function</th><th></th>
+  </tr>
+  <tr id="r12">
+    <td>12</td><td>יְדַבֵּר</td>
+    <td><input class="parse-field" placeholder="Piel / Pual / No"></td>
+    <td><input class="parse-field" placeholder="conjugation"></td>
+    <td><input class="parse-field" placeholder="PGN"></td>
+    <td><input class="parse-field" placeholder="root"></td>
+    <td><input class="parse-field" placeholder="function"></td>
+    <td><button class="reveal-btn" onclick="toggle('a12',this)">▶ Answer</button></td>
+  </tr>
+  <tr class="answer-row" id="a12">
+    <td colspan="8">✓ <strong>Piel</strong> | Imperfect | 3ms | דבר | <em>Denominative</em> — יְ prefix (shewa) + patach under R1 + dagesh in R2 (בּ) + tsere. The standard Piel Imperfect pattern for a strong root. "The LORD will speak to me."</td>
+  </tr>
+  <tr id="r13">
+    <td>13</td><td>וְדִבַּרְתִּי</td>
+    <td><input class="parse-field" placeholder="Piel / Pual / No"></td>
+    <td><input class="parse-field" placeholder="conjugation"></td>
+    <td><input class="parse-field" placeholder="PGN"></td>
+    <td><input class="parse-field" placeholder="root"></td>
+    <td><input class="parse-field" placeholder="function"></td>
+    <td><button class="reveal-btn" onclick="toggle('a13',this)">▶ Answer</button></td>
+  </tr>
+  <tr class="answer-row" id="a13">
+    <td colspan="8">✓ <strong>Piel</strong> | Weqatal | 1cs | דבר | <em>Denominative</em> — וְ + Perfect form: Hireq under R1 + dagesh in R2 (בּ) + 1cs perfect suffix תִּי. Weqatal with future/consequential force: "and I will speak to you."</td>
+  </tr>
+</table>
+
+<div class="hebrew" style="direction:rtl; unicode-bidi:embed">כִּֽי <strong>כַבֵּד֙ [14]</strong> <strong>אֲכַבֶּדְךָ֣ [15]</strong> מְאֹ֔ד וְכֹ֛ל אֲשֶׁר־תֹּאמַ֥ר אֵלַ֖י אֶעֱשֶׂ֑ה וּלְכָ֣ה נָּ֗א <strong>קָֽבָה [16]</strong>־לִ֖י אֵ֥ת הָעָ֛ם הַזֶּֽה׃</div>
+<p class="translation">"'For I will surely honor you greatly, and whatever you say to me I will do; come now, curse this people for me.'" (Num 22:17)</p>
+
+<table>
+  <tr>
+    <th>#</th><th>Verb</th><th>Piel/Pual?</th><th>Conjugation</th><th>PGN</th><th>Root</th><th>Function</th><th></th>
+  </tr>
+  <tr id="r14">
+    <td>14</td><td>כַבֵּד</td>
+    <td><input class="parse-field" placeholder="Piel / Pual / No"></td>
+    <td><input class="parse-field" placeholder="conjugation"></td>
+    <td><input class="parse-field" placeholder="PGN"></td>
+    <td><input class="parse-field" placeholder="root"></td>
+    <td><input class="parse-field" placeholder="function"></td>
+    <td><button class="reveal-btn" onclick="toggle('a14',this)">▶ Answer</button></td>
+  </tr>
+  <tr class="answer-row" id="a14">
+    <td colspan="8">✓ <strong>Piel</strong> | Inf. Absolute | — | כבד | <em>Intensive</em> — כַּבֵּד אֲכַבֶּדְךָ is a <em>cognate absolute construction</em>: the Piel Inf. Absolute intensifies the finite Piel Imperfect that follows. The pattern: Patach under R1 (כַ) + Dagesh forte in R2 (בּ) + Tsere. "I will certainly greatly honor you."</td>
+  </tr>
+  <tr id="r15">
+    <td>15</td><td>אֲכַבֶּדְךָ</td>
+    <td><input class="parse-field" placeholder="Piel / Pual / No"></td>
+    <td><input class="parse-field" placeholder="conjugation"></td>
+    <td><input class="parse-field" placeholder="PGN"></td>
+    <td><input class="parse-field" placeholder="root"></td>
+    <td><input class="parse-field" placeholder="function"></td>
+    <td><button class="reveal-btn" onclick="toggle('a15',this)">▶ Answer</button></td>
+  </tr>
+  <tr class="answer-row" id="a15">
+    <td colspan="8">✓ <strong>Piel</strong> | Imperfect | 1cs | כבד | <em>Factitive/Intensive</em> — אֲ prefix (1cs) + shewa under prefix + patach under R1 (כַ) + dagesh forte in R2 (בּ) + tsere. The 2ms suffix ךָ is attached. Piel כבד = "to honor, give weight to" (from the adjective כָּבֵד "heavy"). Balak promises great honor.</td>
+  </tr>
+  <tr id="r16">
+    <td>16</td><td>קָבָה</td>
+    <td><input class="parse-field" placeholder="Piel / Pual / No"></td>
+    <td><input class="parse-field" placeholder="conjugation"></td>
+    <td><input class="parse-field" placeholder="PGN"></td>
+    <td><input class="parse-field" placeholder="root"></td>
+    <td><input class="parse-field" placeholder="function"></td>
+    <td><button class="reveal-btn" onclick="toggle('a16',this)">▶ Answer</button></td>
+  </tr>
+  <tr class="answer-row" id="a16">
+    <td colspan="8">✗ <strong>No</strong> — this is a Qal imperative 2ms from קבב "to curse." No dagesh in R2 (ב is R2 but note it is also final — root is ק-ב-ב, a geminate). This is another distractor alongside verb 8 and verb 11 — Balak's cursing vocabulary is Qal, not Piel.</td>
+  </tr>
+</table>
+
+<div class="reflection">
+  <strong>Reflection Questions</strong>
+  <ol>
+    <li>In Exo 19:10–14, the same two actions (קדש and כבס) appear in v.10 as Weqatal and in v.14 as Wayyiqtol. What is the difference in the narrative function of these two conjugations? What does the shift from Weqatal (command) to Wayyiqtol (narrative) signal?</li>
+    <li>In Num 22:6, Balak uses Piel תְּבָרֵךְ ("you bless") and Pual מְבֹרָךְ ("he is blessed") of the same root ברך in the same sentence. What does this pairing show about the Piel/Pual relationship? What is the theological weight of using the passive (Pual) form?</li>
+    <li>The Piel of דבר (to speak) appears in verbs 7, 12, and 13. This root derives from the noun דָּבָר (word). What does this denominative origin suggest about the nature of "speaking" in Biblical Hebrew thought? How does this compare to other denominative Piels like כהן (to serve as priest, from כֹּהֵן)?</li>
+  </ol>
+</div>
+
+<div class="answer-key">
+  <h2>Quick Answer Key</h2>
+  <table>
+    <tr><th>#</th><th>Verb</th><th>Piel/Pual?</th><th>Conjugation</th><th>PGN</th><th>Root</th><th>Function</th></tr>
+    <tr><td>1</td><td>וַיְבָרֶךְ</td><td>Piel</td><td>Wayyiqtol</td><td>3ms</td><td>ברך</td><td>Intensive</td></tr>
+    <tr><td>2</td><td>וַיְבָרֶךְ</td><td>Piel</td><td>Wayyiqtol</td><td>3ms</td><td>ברך</td><td>Intensive</td></tr>
+    <tr><td>3</td><td>וְקִדַּשְׁתָּ</td><td>Piel</td><td>Weqatal</td><td>2ms</td><td>קדש</td><td>Factitive</td></tr>
+    <tr><td>4</td><td>וְכִבְּסוּ</td><td>Piel</td><td>Weqatal</td><td>3cp</td><td>כבס</td><td>Intensive</td></tr>
+    <tr><td>5</td><td>וַיְקַדֵּשׁ</td><td>Piel</td><td>Wayyiqtol</td><td>3ms</td><td>קדש</td><td>Factitive</td></tr>
+    <tr><td>6</td><td>וַיְכַבְּסוּ</td><td>Piel</td><td>Wayyiqtol</td><td>3mp</td><td>כבס</td><td>Intensive</td></tr>
+    <tr><td>7</td><td>וַיְדַבֵּר</td><td>Piel</td><td>Wayyiqtol</td><td>3ms</td><td>דבר</td><td>Denominative</td></tr>
+    <tr><td>8</td><td>אָרָה</td><td>No (Qal)</td><td>Jussive</td><td>1cs</td><td>ארר</td><td>—</td></tr>
+    <tr><td>9</td><td>תְּבָרֵךְ</td><td>Piel</td><td>Imperfect</td><td>2ms</td><td>ברך</td><td>Intensive</td></tr>
+    <tr><td>10</td><td>מְבֹרָךְ</td><td>Pual</td><td>Participle</td><td>ms</td><td>ברך</td><td>Passive</td></tr>
+    <tr><td>11</td><td>תָּאֹר</td><td>No (Qal)</td><td>Imperfect</td><td>2ms</td><td>ארר</td><td>—</td></tr>
+    <tr><td>12</td><td>יְדַבֵּר</td><td>Piel</td><td>Imperfect</td><td>3ms</td><td>דבר</td><td>Denominative</td></tr>
+    <tr><td>13</td><td>וְדִבַּרְתִּי</td><td>Piel</td><td>Weqatal</td><td>1cs</td><td>דבר</td><td>Denominative</td></tr>
+    <tr><td>14</td><td>כַּבֵּד</td><td>Piel</td><td>Inf. Absolute</td><td>—</td><td>כבד</td><td>Intensive</td></tr>
+    <tr><td>15</td><td>אֲכַבֶּדְךָ</td><td>Piel</td><td>Imperfect</td><td>1cs</td><td>כבד</td><td>Intensive</td></tr>
+    <tr><td>16</td><td>קָבָה</td><td>No (Qal)</td><td>Imperative</td><td>2ms</td><td>קבב</td><td>—</td></tr>
+  </table>
+</div>
+
+<script>
+function toggle(answerId, btn) {
+  var row = document.getElementById(answerId);
+  if (row.classList.contains('visible')) {
+    row.classList.remove('visible');
+    btn.textContent = '▶ Answer';
+  } else {
+    row.classList.add('visible');
+    btn.textContent = '▼ Hide';
+  }
+}
+function showAll() {
+  document.querySelectorAll('.answer-row').forEach(function(r) { r.classList.add('visible'); });
+  document.querySelectorAll('.reveal-btn').forEach(function(b) { b.textContent = '▼ Hide'; });
+}
+function hideAll() {
+  document.querySelectorAll('.answer-row').forEach(function(r) { r.classList.remove('visible'); });
+  document.querySelectorAll('.reveal-btn').forEach(function(b) { b.textContent = '▶ Answer'; });
+}
+function clearAll() {
+  document.querySelectorAll('input.parse-field').forEach(function(i) { i.value = ''; });
+}
+</script>
+</body>
+</html>
