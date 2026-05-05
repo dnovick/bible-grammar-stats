@@ -195,7 +195,7 @@ def collocations(
         E21 = f_collocate - expected
         E22 = N - f_target - f_collocate + expected
 
-        def _ll(o, e):
+        def _ll(o: float, e: float) -> float:
             return o * math.log(o / e) if o > 0 and e > 0 else 0.0
 
         g2 = 2 * (_ll(O11, E11) + _ll(O12, max(E12, 1e-10))

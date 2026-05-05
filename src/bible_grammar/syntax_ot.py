@@ -56,6 +56,7 @@ lxx_paieo = query_syntax_ot(greekstrong='4160') # OT words translated as ποι�
 
 from __future__ import annotations
 from pathlib import Path
+from typing import Any
 import pandas as pd
 
 _REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -95,7 +96,7 @@ def _parse_ref(ref: str) -> tuple[str, int, int, int]:
         return ('', 0, 0, 0)
 
 
-def _xml_id(elem) -> str:
+def _xml_id(elem: Any) -> str:
     return (elem.get('{http://www.w3.org/XML/1998/namespace}id') or
             elem.get('xml:id') or '')
 

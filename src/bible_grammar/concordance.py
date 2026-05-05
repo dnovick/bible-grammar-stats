@@ -234,8 +234,17 @@ def concordance(
 
 
 def _concordance_lxx(
-    *, strongs, word, lemma, lemma_translit, part_of_speech,
-    book, book_group, context, groups, sort_by,
+    *,
+    strongs: str | None,
+    word: str | None,
+    lemma: str | None,
+    lemma_translit: str | None,
+    part_of_speech: str | None,
+    book: str | list[str] | None,
+    book_group: str | None,
+    context: str | None,
+    groups: dict[str, set[str]],
+    sort_by: str,
 ) -> pd.DataFrame:
     df = _lxx()
     mask = pd.Series(True, index=df.index)

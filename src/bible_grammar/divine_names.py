@@ -89,9 +89,8 @@ NT_SECTIONS = {
 
 # ── Core helpers ─────────────────────────────────────────────────────────────
 
-def _load_corpus(corpus: str):
+def _load_corpus(corpus: str) -> pd.DataFrame:
     """Return the words DataFrame for 'OT', 'NT', or 'LXX'."""
-    import pandas as pd
     from .query import query
     if corpus == 'LXX':
         df = pd.read_parquet('data/processed/lxx.parquet')
@@ -100,7 +99,7 @@ def _load_corpus(corpus: str):
     return query(testament=corpus)
 
 
-def _count_by_book(df, strongs_key: str) -> 'pd.Series':
+def _count_by_book(df: pd.DataFrame, strongs_key: str) -> pd.Series:
     """Count rows matching strongs_key in each book, return Series indexed by book_id."""
     mask = df['strongs'].str.contains(strongs_key, na=False, regex=False)
     return df[mask].groupby('book_id').size()

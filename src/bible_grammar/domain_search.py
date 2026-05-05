@@ -149,7 +149,7 @@ THEOLOGY_DOMAINS: dict[str, list[int]] = {
 }
 
 
-def _load_nt():
+def _load_nt() -> pd.DataFrame:
     from .syntax import load_syntax
     return load_syntax()
 

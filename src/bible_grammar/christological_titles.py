@@ -257,13 +257,13 @@ _CONFIDENCE_LABELS = {
 
 # ── Core computation ──────────────────────────────────────────────────────────
 
-def _load_nt():
+def _load_nt() -> pd.DataFrame:
     from . import db as _db
     df = _db.load()
     return df[df['source'] == 'TAGNT'].copy()
 
 
-def _count_title(nt_df, title: dict,
+def _count_title(nt_df: pd.DataFrame, title: dict,
                  speaking_verses: set | None = None) -> dict[str, int]:
     """
     Return {book_id: verse_count} for a given title entry.

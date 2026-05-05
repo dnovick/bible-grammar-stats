@@ -65,12 +65,12 @@ _CORPUS_MAP = {
 
 # ── Internal helpers ──────────────────────────────────────────────────────────
 
-def _load_ot():
+def _load_ot() -> pd.DataFrame:
     from .syntax_ot import load_syntax_ot
     return load_syntax_ot()
 
 
-def _load_nt():
+def _load_nt() -> pd.DataFrame:
     from .syntax import load_syntax
     return load_syntax()
 

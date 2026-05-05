@@ -29,6 +29,7 @@ save_semantic_profile('G3056', output_dir='output/reports')
 
 from __future__ import annotations
 from pathlib import Path
+from typing import Any
 
 
 def semantic_profile(strongs: str, *, collocate_window: int = 5,
@@ -75,7 +76,7 @@ def semantic_profile(strongs: str, *, collocate_window: int = 5,
     }
 
 
-def print_semantic_profile(strongs: str, **kwargs) -> None:
+def print_semantic_profile(strongs: str, **kwargs: Any) -> None:
     """Print a formatted semantic profile to stdout."""
 
     p = semantic_profile(strongs, **kwargs)

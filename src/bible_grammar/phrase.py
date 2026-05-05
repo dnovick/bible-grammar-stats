@@ -107,7 +107,7 @@ def _query_strongs(s: str) -> str:
 
 # ── token matching ────────────────────────────────────────────────────────────
 
-def _resolve_token(token) -> dict:
+def _resolve_token(token: str | dict | None) -> dict:
     """
     Convert a user token to a canonical constraint dict with key 'strongs',
     'lemma', or morphology keys.

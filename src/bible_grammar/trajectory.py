@@ -66,7 +66,7 @@ def _nt_by_book_g(strongs_int: int) -> pd.DataFrame:
     nt = df[df['source'] == 'TAGNT']
     # Extract numeric portion from strongs: 'G0040' → 40, 'G4151G' → 4151
 
-    def _extract_num(s):
+    def _extract_num(s: str) -> int:
         if not s or not isinstance(s, str):
             return -1
         m = _re.match(r'[Gg](\d+)', s)
@@ -174,7 +174,7 @@ def word_trajectory(
             primary_g = result['lxx_primary_g']
             # by_strongs uses greek_g which may be zero-padded; normalise for comparison
 
-            def _norm_g(s):
+            def _norm_g(s: object) -> str:
                 s = str(s).strip().upper()
                 if s.startswith('G'):
                     try:
@@ -240,7 +240,7 @@ def word_trajectory(
         nt_equivs = ws.get('nt_lxx_equiv', [])
         lxx_g_norm = result.get('lxx_primary_g', '')
 
-        def _g_int(s):
+        def _g_int(s: object) -> int:
             """Normalise G#### to int for comparison."""
             try:
                 return int(str(s).strip().upper().lstrip('G'))
@@ -299,7 +299,7 @@ def _assess_continuity(r: dict) -> tuple[str, str]:
         return 'none', 'Insufficient data for continuity assessment.'
 
     # Normalise both to 'G<int>' (unpadded) for comparison
-    def _norm(s):
+    def _norm(s: str) -> str:
         s = s.strip().upper()
         if s.startswith('G'):
             try:
@@ -430,7 +430,8 @@ def trajectory_chart(
         out_dir.mkdir(parents=True, exist_ok=True)
         output_path = str(out_dir / f'trajectory-{slug}.png')
 
-    def _prep(df, book_col, count_col, order, top_n=15):
+    def _prep(df: pd.DataFrame | None, book_col: str, count_col: str,
+              order: list[str], top_n: int = 15) -> tuple[list, list]:
         if df is None or (isinstance(df, pd.DataFrame) and df.empty):
             return [], []
         if not isinstance(df, pd.DataFrame):

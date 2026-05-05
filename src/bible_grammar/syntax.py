@@ -106,7 +106,7 @@ def _build_parquet() -> pd.DataFrame:
     coords = _parse_ref(raw['ref'])
     df = pd.concat([raw, coords], axis=1)
 
-    def _to_strong_g(s):
+    def _to_strong_g(s: object) -> str | None:
         if not pd.notna(s) or not str(s).strip():
             return None
         # Some entries are compound like '1537+4053' — use the first number

@@ -49,7 +49,7 @@ SPEECH_VERB_STRONGS: set[str] = {
 GOD_OT_SPEECH = {'H0430', 'H3068', 'H0136', 'H0410'}   # Elohim, YHWH, Adonai, El
 
 
-def _load_ot():
+def _load_ot() -> pd.DataFrame:
     from .syntax_ot import load_syntax_ot
     return load_syntax_ot()
 

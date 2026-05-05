@@ -143,7 +143,7 @@ def morph_distribution(strongs: str, *, min_book_count: int = 3) -> dict:
 
     # Sort columns by canonical form order
     if is_hebrew and 'Verb' in pos_vals:
-        def _stem_conj_key(c):
+        def _stem_conj_key(c: str) -> tuple[int, int]:
             parts = c.split(' ', 1)
             stem = parts[0] if parts else ''
             conj = parts[1] if len(parts) > 1 else ''
