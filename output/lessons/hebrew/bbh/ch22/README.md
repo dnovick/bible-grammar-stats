@@ -21,7 +21,11 @@
 
 ## Flashcards
 
-| File | Description |
-|---|---|
-| [ch22-morphology-deck.md](ch22-morphology-deck.md) | 32-card morphology deck — human-readable with root class and function groupings |
-| [ch22-morphology-deck.txt](ch22-morphology-deck.txt) | Anki import file (tab-separated) |
+| File | Format | Description |
+|---|---|---|
+| [ch22-morphology-deck.md](ch22-morphology-deck.md) | Markdown | 32-card morphology deck — Qal Participle (Active and Passive) with root class groupings |
+| [ch22-morphology-deck.txt](ch22-morphology-deck.txt) | Anki import | Morphology deck — tab-separated, ready for Anki File → Import (32 cards) |
+| [ch22-morphology-deck-fd.txt](ch22-morphology-deck-fd.txt) | Flashcards Deluxe | Morphology deck — tab-separated, ready for Flashcards Deluxe import (32 cards) |
+| [ch22-vocab-deck.md](ch22-vocab-deck.md) | Markdown | Vocabulary deck — 13 words (9 verbs, 4 nouns) with POS tags and frequency |
+| [ch22-vocab-deck.txt](ch22-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (13 cards) |
+| [ch22-vocab-deck-fd.txt](ch22-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (13 cards) |

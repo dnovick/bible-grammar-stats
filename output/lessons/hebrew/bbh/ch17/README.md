@@ -21,9 +21,11 @@
 
 ## Flashcards
 
-| File | Description |
-|---|---|
-| [ch17-morphology-deck.md](ch17-morphology-deck.md) | 32-card morphology deck — human-readable with groupings |
-| [ch17-morphology-deck.txt](ch17-morphology-deck.txt) | Anki import file (tab-separated) |
-| [ch17-vocab-deck.md](ch17-vocab-deck.md) | Vocabulary deck — high-frequency roots in Ch17 forms |
-| [ch17-vocab-deck.txt](ch17-vocab-deck.txt) | Anki import file (tab-separated) |
+| File | Format | Description |
+|---|---|---|
+| [ch17-morphology-deck.md](ch17-morphology-deck.md) | Markdown | 32-card morphology deck — Wayyiqtol and Weqatal forms with root class groupings |
+| [ch17-morphology-deck.txt](ch17-morphology-deck.txt) | Anki import | Morphology deck — tab-separated, ready for Anki File → Import (32 cards) |
+| [ch17-morphology-deck-fd.txt](ch17-morphology-deck-fd.txt) | Flashcards Deluxe | Morphology deck — tab-separated, ready for Flashcards Deluxe import (32 cards) |
+| [ch17-vocab-deck.md](ch17-vocab-deck.md) | Markdown | Vocabulary deck — 14 words (8 verbs, 6 nouns) with POS tags and frequency |
+| [ch17-vocab-deck.txt](ch17-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (14 cards) |
+| [ch17-vocab-deck-fd.txt](ch17-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (14 cards) |

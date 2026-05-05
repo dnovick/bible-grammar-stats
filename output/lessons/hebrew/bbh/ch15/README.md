@@ -30,7 +30,9 @@
 
 | File | Format | Description |
 |---|---|---|
-| [ch15-morphology-deck.md](ch15-morphology-deck.md) | Markdown | Morphology deck — Qal Imperfect across all 14 PGN cells for 3 high-frequency roots |
-| [ch15-morphology-deck.txt](ch15-morphology-deck.txt) | Anki import | Morphology deck — tab-separated, ready for File → Import |
-| [ch15-vocab-deck.md](ch15-vocab-deck.md) | Markdown | Vocabulary deck — Ch15 BBH vocabulary (to be populated) |
-| [ch15-vocab-deck.txt](ch15-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for File → Import |
+| [ch15-morphology-deck.md](ch15-morphology-deck.md) | Markdown | 25-card morphology deck — Qal Imperfect Strong forms across all 14 PGN cells |
+| [ch15-morphology-deck.txt](ch15-morphology-deck.txt) | Anki import | Morphology deck — tab-separated, ready for Anki File → Import (25 cards) |
+| [ch15-morphology-deck-fd.txt](ch15-morphology-deck-fd.txt) | Flashcards Deluxe | Morphology deck — tab-separated, ready for Flashcards Deluxe import (25 cards) |
+| [ch15-vocab-deck.md](ch15-vocab-deck.md) | Markdown | Vocabulary deck — 16 words (6 verbs, 6 nouns, 4 other) with POS tags and frequency |
+| [ch15-vocab-deck.txt](ch15-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (16 cards) |
+| [ch15-vocab-deck-fd.txt](ch15-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (16 cards) |

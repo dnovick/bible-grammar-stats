@@ -21,7 +21,11 @@
 
 ## Flashcards
 
-| File | Description |
-|---|---|
-| [ch20-morphology-deck.md](ch20-morphology-deck.md) | 32-card morphology deck — human-readable with root class groupings |
-| [ch20-morphology-deck.txt](ch20-morphology-deck.txt) | Anki import file (tab-separated) |
+| File | Format | Description |
+|---|---|---|
+| [ch20-morphology-deck.md](ch20-morphology-deck.md) | Markdown | 32-card morphology deck — Qal Infinitive Construct with root class groupings |
+| [ch20-morphology-deck.txt](ch20-morphology-deck.txt) | Anki import | Morphology deck — tab-separated, ready for Anki File → Import (32 cards) |
+| [ch20-morphology-deck-fd.txt](ch20-morphology-deck-fd.txt) | Flashcards Deluxe | Morphology deck — tab-separated, ready for Flashcards Deluxe import (32 cards) |
+| [ch20-vocab-deck.md](ch20-vocab-deck.md) | Markdown | Vocabulary deck — 15 words (8 verbs, 5 nouns, 2 other) with POS tags and frequency |
+| [ch20-vocab-deck.txt](ch20-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (15 cards) |
+| [ch20-vocab-deck-fd.txt](ch20-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (15 cards) |

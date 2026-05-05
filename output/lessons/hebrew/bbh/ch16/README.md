@@ -37,7 +37,9 @@
 
 | File | Format | Description |
 |---|---|---|
-| [ch16-morphology-deck.md](ch16-morphology-deck.md) | Markdown | Morphology deck — ~40 cards across all eight weak classes in the Imperfect |
-| [ch16-morphology-deck.txt](ch16-morphology-deck.txt) | Anki import | Morphology deck — tab-separated, ready for File → Import |
-| [ch16-vocab-deck.md](ch16-vocab-deck.md) | Markdown | Vocabulary deck — Ch16 BBH vocabulary (to be populated) |
-| [ch16-vocab-deck.txt](ch16-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for File → Import |
+| [ch16-morphology-deck.md](ch16-morphology-deck.md) | Markdown | 40-card morphology deck — Qal Imperfect Weak forms across all eight weak root classes |
+| [ch16-morphology-deck.txt](ch16-morphology-deck.txt) | Anki import | Morphology deck — tab-separated, ready for Anki File → Import (40 cards) |
+| [ch16-morphology-deck-fd.txt](ch16-morphology-deck-fd.txt) | Flashcards Deluxe | Morphology deck — tab-separated, ready for Flashcards Deluxe import (40 cards) |
+| [ch16-vocab-deck.md](ch16-vocab-deck.md) | Markdown | Vocabulary deck — 15 words (10 verbs, 3 nouns, 2 other) with POS tags and frequency |
+| [ch16-vocab-deck.txt](ch16-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (15 cards) |
+| [ch16-vocab-deck-fd.txt](ch16-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (15 cards) |

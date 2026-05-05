@@ -21,7 +21,11 @@
 
 ## Flashcards
 
-| File | Description |
-|---|---|
-| [ch19-morphology-deck.md](ch19-morphology-deck.md) | 32-card morphology deck — human-readable with groupings |
-| [ch19-morphology-deck.txt](ch19-morphology-deck.txt) | Anki import file (tab-separated) |
+| File | Format | Description |
+|---|---|---|
+| [ch19-morphology-deck.md](ch19-morphology-deck.md) | Markdown | 32-card morphology deck — Pronominal Suffixes on Verbs with root class groupings |
+| [ch19-morphology-deck.txt](ch19-morphology-deck.txt) | Anki import | Morphology deck — tab-separated, ready for Anki File → Import (32 cards) |
+| [ch19-morphology-deck-fd.txt](ch19-morphology-deck-fd.txt) | Flashcards Deluxe | Morphology deck — tab-separated, ready for Flashcards Deluxe import (32 cards) |
+| [ch19-vocab-deck.md](ch19-vocab-deck.md) | Markdown | Vocabulary deck — 14 words (5 verbs, 9 nouns) with POS tags and frequency |
+| [ch19-vocab-deck.txt](ch19-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (14 cards) |
+| [ch19-vocab-deck-fd.txt](ch19-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (14 cards) |

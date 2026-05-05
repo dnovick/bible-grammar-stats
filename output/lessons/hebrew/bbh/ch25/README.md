@@ -37,7 +37,9 @@
 
 | File | Format | Description |
 |---|---|---|
-| [ch25-morphology-deck.md](ch25-morphology-deck.md) | Markdown | Morphology deck — 40 cards across all eight weak classes; tag reference table included |
-| [ch25-morphology-deck.txt](ch25-morphology-deck.txt) | Anki import | Morphology deck — tab-separated, ready for File → Import (40 cards) |
+| [ch25-morphology-deck.md](ch25-morphology-deck.md) | Markdown | 40-card morphology deck — Niphal Weak forms across all eight weak root classes |
+| [ch25-morphology-deck.txt](ch25-morphology-deck.txt) | Anki import | Morphology deck — tab-separated, ready for Anki File → Import (40 cards) |
+| [ch25-morphology-deck-fd.txt](ch25-morphology-deck-fd.txt) | Flashcards Deluxe | Morphology deck — tab-separated, ready for Flashcards Deluxe import (40 cards) |
 | [ch25-vocab-deck.md](ch25-vocab-deck.md) | Markdown | Vocabulary deck — 14 words (6 verbs, 8 nouns) with POS tags and frequency |
-| [ch25-vocab-deck.txt](ch25-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for File → Import |
+| [ch25-vocab-deck.txt](ch25-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (14 cards) |
+| [ch25-vocab-deck-fd.txt](ch25-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (14 cards) |
