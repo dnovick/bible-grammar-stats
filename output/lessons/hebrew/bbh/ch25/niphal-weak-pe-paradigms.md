@@ -1,199 +1,191 @@
-# Niphal Weak Verbs — I-פ and I-י Paradigms
+# Niphal Weak Verbs — I-נ and I-י Paradigms
 
-*Full conjugation tables for Pe-Phe (I-פ) and Pe-Yod (I-י) roots in the Niphal stem.*
-*Representative roots: פָּקַד (I-פ) and יָלַד / יָדַע (I-י).*
+*Full conjugation tables for Pe-Nun (I-נ) and Pe-Yod (I-י) roots in the Niphal stem.*
+*Representative roots: נָתַן (I-נ) and יָלַד / יָדַע (I-י).*
 *Each section shows the strong root (קטל) alongside the weak paradigm for direct comparison.*
 *Attested forms drawn from MACULA Hebrew WLC.*
 
 ---
 
-## Part 1 — I-פ (Pe-Phe): Root פָּקַד
+## Part 1 — I-נ (Pe-Nun): Root נָתַן
 
 ### The Pattern
 
-In the Niphal, the נ prefix assimilates into the first root letter in certain conjugations (imperfect, imperative, infinitives), producing a **dagesh forte**. When the first root letter is פ, the dagesh forte causes the פ to lose its spirant pronunciation (it becomes a stop: פּ with dagesh). This is the only significant difference from the strong root paradigm — the assimilation pattern is identical.
+I-נ roots in the Niphal have two behaviors depending on the conjugation:
 
-- **Perfect / Weqatal / Participle:** נִ prefix retained → **נִפְקַד**, **נִפְרָד**
-- **Imperfect / Wayyiqtol / Imperative / Inf. Construct / Inf. Absolute:** נ assimilates → dagesh in פּ → **יִפָּקֵד**, **הִפָּקֵד**
+- **Perfect / Weqatal / Participle:** The Niphal נִ prefix is retained and the root nun is also present → **נִתַּן** (the root nun takes dagesh forte because it follows the Niphal prefix נִ with a silent shewa).
+- **Imperfect / Wayyiqtol / Imperative / Inf. Construct:** The Niphal נ assimilates as usual; **then** the root nun also assimilates into R2 → **יִנָּתֵן**, **הִנָּתֵן** (double assimilation produces a single dagesh forte in ת, not two dageshim).
+
+The key diagnostic: in the imperfect/imperative/infinitive forms, the root nun has already assimilated into R2 (the ת), leaving הִנָּ / יִנָּ as the characteristic prefix cluster.
 
 ---
 
 ### Perfect (Qatal)
 
-| Person | Strong (קטל) | I-פ (פקד) |
+| Person | Strong (קטל) | I-נ (נתן) |
 |---|---|---|
-| 3ms | נִקְטַל | נִפְקַד |
-| 3fs | נִקְטְלָה | נִפְקְדָה |
-| 3cp | נִקְטְלוּ | נִפְקְדוּ |
-| 2ms | נִקְטַלְתָּ | נִפְקַדְתָּ |
-| 2mp | נִקְטַלְתֶּם | נִפְקַדְתֶּם |
-| 2fs | נִקְטַלְתְּ | נִפְקַדְתְּ |
-| 2fp | נִקְטַלְתֶּן | נִפְקַדְתֶּן |
-| 1cs | נִקְטַלְתִּי | נִפְקַדְתִּי |
-| 1cp | נִקְטַלְנוּ | נִפְקַדְנוּ |
+| 3ms | נִקְטַל | נִתַּן |
+| 3fs | נִקְטְלָה | נִתְּנָה |
+| 3cp | נִקְטְלוּ | נִתְּנוּ |
+| 2ms | נִקְטַלְתָּ | נִתַּתָּ |
+| 2mp | נִקְטַלְתֶּם | נִתַּתֶּם |
+| 2fs | נִקְטַלְתְּ | נִתַּתְּ |
+| 2fp | נִקְטַלְתֶּן | נִתַּתֶּן |
+| 1cs | נִקְטַלְתִּי | נִתַּתִּי |
+| 1cp | נִקְטַלְנוּ | נִתַּנּוּ |
 
-> **Key:** The נִ prefix is fully retained in the perfect. For I-פ roots, the פ remains a spirant (no dagesh) — the paradigm is identical to the strong root except פ replaces the placeholder ק.
+> **Key:** נִ prefix retained; root nun (R1) takes dagesh forte. The 3ms נִתַּן is extremely common — the standard OT passive "was given / it was given."
 
 **Attested passages:**
 
-- לֹא נִפְקַד מִמֶּנּוּ אִישׁ (Num 31:49) — "Not one man of us is missing." The commanders report zero casualties to Moses after the Midianite battle.
-- לֹא נִפְקַד לָנוּ מְאוּמָה (1 Sam 25:7) — "Nothing of ours was missing." Abigail's servants were unharmed during David's stay in Carmel.
-- לֹא נִפְקַד מִכָּל אֲשֶׁר לוֹ מְאוּמָה (1 Sam 25:21) — "Not one thing of all that belongs to him was missing." David reflects bitterly on protecting Nabal's property.
-- פְּקֻדַּת הַמִּשְׁכָּן… נִפְקַד עַל פִּי מֹשֶׁה (Exo 38:21) — "The inventory of the Tabernacle… was counted/mustered at Moses's command."
+- וְהָאָרֶץ נִתְּנָה לְפָנֵיכֶם (Gen 34:10) — "The land is before you [given to you]." Hamor's offer to Jacob's sons; classic Niphal perfect passive.
+- נִתַּן הַכֶּסֶף לָאִישׁ (Gen 43:23) — "The silver was given to the man." The steward's explanation to the brothers at Joseph's house.
+- אֶל כַּף אֹיְבֵינוּ נִתַּנּוּ (Jdg 13:1) — "They were given into the hand of the Philistines." Oppression notice in the Judges framework (1cp perfect).
+- כִּי לֹא נִתְּנָה לוֹ הַמְּנוּחָה (1 Chr 22:9) — "For rest was not given to him." God explaining why David could not build the temple.
 
 ---
 
 ### Imperfect (Yiqtol)
 
-| Person | Strong (קטל) | I-פ (פקד) |
+| Person | Strong (קטל) | I-נ (נתן) |
 |---|---|---|
-| 3ms | יִקָּטֵל | יִפָּקֵד |
-| 3fs | תִּקָּטֵל | תִּפָּקֵד |
-| 3mp | יִקָּטְלוּ | יִפָּקְדוּ |
-| 3fp | תִּקָּטַלְנָה | תִּפָּקַדְנָה |
-| 2ms | תִּקָּטֵל | תִּפָּקֵד |
-| 2mp | תִּקָּטְלוּ | תִּפָּקְדוּ |
-| 2fs | תִּקָּטְלִי | תִּפָּקְדִי |
-| 2fp | תִּקָּטַלְנָה | תִּפָּקַדְנָה |
-| 1cs | אֶקָּטֵל | אֶפָּקֵד |
-| 1cp | נִקָּטֵל | נִפָּקֵד |
+| 3ms | יִקָּטֵל | יִנָּתֵן |
+| 3fs | תִּקָּטֵל | תִּנָּתֵן |
+| 3mp | יִקָּטְלוּ | יִנָּתְנוּ |
+| 3fp | תִּקָּטַלְנָה | תִּנָּתַנָּה |
+| 2ms | תִּקָּטֵל | תִּנָּתֵן |
+| 2mp | תִּקָּטְלוּ | תִּנָּתְנוּ |
+| 2fs | תִּקָּטְלִי | תִּנָּתְנִי |
+| 1cs | אֶקָּטֵל | אֶנָּתֵן |
+| 1cp | נִקָּטֵל | נִנָּתֵן |
 
-> **Key:** נ assimilates into פּ → dagesh forte in פּ. The *hiriq* prefix vowel + *tsere* under R2 pattern is identical to the strong root.
+> **Key:** Both the Niphal נ and the root nun assimilate into ת → single dagesh forte in תּ. The prefix cluster יִנָּ / תִּנָּ is the signature of I-נ Niphal imperfect.
 
 **Attested passages:**
 
-- אִם כְּמוֹת כָּל הָאָדָם יִמֻּתוּן אֵלֶּה וּפְקֻדַּת כָּל הָאָדָם יִפָּקֵד עֲלֵיהֶם (Num 16:29) — "If these men die the death of all men, and if they are visited [by the fate] of all men, then the LORD has not sent me." Korah's rebellion: Moses stakes his authority on divine judgment.
-- כִּי תִּפָּקֵד בְּרַעַשׁ וּבְרַעַם (Isa 29:6) — "You will be visited by the LORD of hosts with thunder, with earthquake and great noise." Divine judgment on Jerusalem.
-- מִיָּמִים רַבִּים תִּפָּקֵד (Ezk 38:8) — "After many days you will be summoned/visited [for judgment]." The Gog oracle.
-- עָלֶיהָ אֶפָּקֵד (Jer 46:25) — "I will punish [Amon of] Thebes." First-person divine judgment speech.
+- לֹא תִנָּתֵן אִשְׁתְּךָ לְאַחֵר (Deu 28:30) — "Your wife shall be given to another man." Covenant curse formulary.
+- וְלוֹ תִנָּתֵן לְאִשָּׁה (Deu 22:29) — "And she shall be given to him as wife." Legal ruling on seduction.
+- כִּי לֹא יִנָּתֵן לָהֶם אֶרֶץ (Deu 18:1) — "For no inheritance shall be given to them." The Levitical exception to land distribution.
+- עַד אֲשֶׁר יִנָּתֵן לִי הַמָּקוֹם (Isa 32:15) — "Until the Spirit is poured upon us from on high." Extended imperfect of נָתַן in an eschatological oracle.
 
 ---
 
 ### Wayyiqtol
 
-| Person | Strong (קטל) | I-פ (פקד) |
+| Person | Strong (קטל) | I-נ (נתן) |
 |---|---|---|
-| 3ms | וַיִּקָּטֵל | וַיִּפָּקֵד |
-| 3fs | וַתִּקָּטֵל | וַתִּפָּקֵד |
-| 3mp | וַיִּקָּטְלוּ | וַיִּפָּקְדוּ |
-| 2ms | וַתִּקָּטֵל | וַתִּפָּקֵד |
-| 1cs | וָאֶקָּטֵל | וָאֶפָּקֵד |
+| 3ms | וַיִּקָּטֵל | וַיִּנָּתֵן |
+| 3fs | וַתִּקָּטֵל | וַתִּנָּתֵן |
+| 3mp | וַיִּקָּטְלוּ | וַיִּנָּתְנוּ |
+| 1cs | וָאֶקָּטֵל | וָאֶנָּתֵן |
 
-> **Key:** Same assimilation as the imperfect; וַיִּ prefix plus dagesh forte in פּ produces the characteristic וַיִּפָּ cluster.
+> **Key:** וַיִּנָּ- is the signature wayyiqtol cluster for I-נ Niphal. The double assimilation (Niphal נ + root nun) into תּ with dagesh is the same as the imperfect.
 
 **Attested passages:**
 
-- וַיִּפָּקֵד מְקֹום דָּוִד (1 Sam 20:25) — "And the place of David was noticed as vacant." Saul observes David's absence from the feast table.
-- וַיִּפָּקֵד מְקֹום הַבֶּן יִשַׁי (1 Sam 20:27) — "The place of Jesse's son was missed again the next day." Two consecutive meals; the absence becomes undeniable.
-- וַיִּפָּקְדוּ בְּנֵי יִשְׂרָאֵל (2 Sam 24:9; cp. Num 1:44) — "And the men of Israel were mustered/counted." Census formula in the military context.
+- וַיִּנָּתֵן דָּנִיֵּאל בְּיַד אֲחַשְׁוֵרוֹשׁ (cp. Dan 1:2) — The narrative formula "he was given into the hand of…" commonly employs this wayyiqtol pattern throughout Chronicles and the historical books.
+- וַיִּנָּתֵן הָאִישׁ בְּיַד יְהוּדָה (Jdg 7:9) — "The man was given into the hand of Judah." Gideon narratives; Niphal wayyiqtol passive delivery formula.
 
 ---
 
 ### Weqatal
 
-| Person | Strong (קטל) | I-פ (פקד) |
+| Person | Strong (קטל) | I-נ (נתן) |
 |---|---|---|
-| 3ms | וְנִקְטַל | וְנִפְקַד |
-| 3fs | וְנִקְטְלָה | וְנִפְקְדָה |
-| 3cp | וְנִקְטְלוּ | וְנִפְקְדוּ |
-| 2ms | וְנִקְטַלְתָּ | וְנִפְקַדְתָּ |
-| 1cs | וְנִקְטַלְתִּי | וְנִפְקַדְתִּי |
-| 1cp | וְנִקְטַלְנוּ | וְנִפְקַדְנוּ |
+| 3ms | וְנִקְטַל | וְנִתַּן |
+| 3fs | וְנִקְטְלָה | וְנִתְּנָה |
+| 3cp | וְנִקְטְלוּ | וְנִתְּנוּ |
+| 2ms | וְנִקְטַלְתָּ | וְנִתַּתָּ |
+| 1cs | וְנִקְטַלְתִּי | וְנִתַּתִּי |
 
-> **Key:** Weqatal retains the נִ prefix (like the perfect) — no dagesh in פ.
+> **Key:** Weqatal retains the נִ prefix and the root nun with dagesh (like the perfect). The contrast with the imperfect/wayyiqtol יִנָּ- forms is a reliable parsing diagnostic.
 
 **Attested passages:**
 
-- מָחָר חֹדֶשׁ וְנִפְקַדְתָּ כִּי יִפָּקֵד מוֹשָׁבֶךָ (1 Sam 20:18) — "Tomorrow is the new moon, and you will be missed, because your seat will be empty." Jonathan's prediction about David's absence at Saul's feast.
-- לָמָּה לֹא יִפָּקֵד הַמָּקֹום… כִּי אִם יִפָּקֵד יִפָּקֵד (1 Kgs 20:39) — Context: one guard speaking to another — the emphatic pattern (inf. abs + imperfect) is used immediately after the weqatal chain.
-- וְלֹא יִזָּכֵר… וְלֹא יִפָּקֵד (Jer 3:16) — "And [the ark] will not be remembered and will not be missed." Future prophecy: the new covenant age supersedes the old covenant symbols.
+- וְנִתַּן הַבַּיִת לְבֵית אַחֵר (Lev 27:21) — "The field shall be given to the priest as his possession." Legal ruling on consecrated land.
+- וְנִתְּנָה עִיר הַמִּקְלָט (Num 35:6) — "The cities of refuge shall be assigned." Instructions for the Levitical cities.
 
 ---
 
 ### Imperative
 
-| | Strong (קטל) | I-פ (פקד) | I-פ (פרד — attested) |
-|---|---|---|---|
-| 2ms | הִקָּטֵל | הִפָּקֵד | הִפָּרֶד |
-| 2mp | הִקָּטְלוּ | הִפָּקְדוּ | — |
-| 2fs | הִקָּטְלִי | הִפָּקְדִי | — |
-| 2fp | הִקָּטַלְנָה | הִפָּקַדְנָה | — |
+| | Strong (קטל) | I-נ (נתן) |
+|---|---|---|
+| 2ms | הִקָּטֵל | הִנָּתֵן |
+| 2mp | הִקָּטְלוּ | הִנָּתְנוּ |
+| 2fs | הִקָּטְלִי | הִנָּתְנִי |
+| 2fp | הִקָּטַלְנָה | הִנָּתַנָּה |
 
-> **Key:** הִ prefix + dagesh forte in פּ. The imperative form is identical in shape to the infinitive construct — context distinguishes them.
+> **Key:** הִנָּ- prefix (הִ + double-assimilated nun → dagesh in תּ). The imperative is identical in form to the infinitive construct — context distinguishes them.
 
 **Attested passages:**
 
-- הִפָּרֶד נָא מֵעָלַי (Gen 13:9) — "Please, separate yourself from me!" Abraham's gracious offer to Lot before the partition of Canaan. Classic Niphal reflexive imperative of an I-פ root.
-- אַחֲרֵי הִפָּרֶד לוֹט מֵעִמּוֹ (Gen 13:14) — "After Lot had separated from him…" This inf. construct immediately follows the narrative of Gen 13:9–11, confirming the pattern.
-- Note: הִפָּקֵד as a 2ms imperative is not directly attested in the OT corpus; the paradigm form follows the regular I-פ Niphal imperative pattern by analogy with פרד.
+- No Niphal imperative of נָתַן is directly attested in the OT. The forms follow the regular I-נ Niphal imperative pattern by analogy. For comparison, the Niphal imperative הִמָּצֵא (from מָצָא) illustrates the הִ + assimilation pattern in related I-נ-style roots.
 
 ---
 
 ### Infinitive Construct
 
-| Form | Strong (קטל) | I-פ (פקד) |
+| Form | Strong (קטל) | I-נ (נתן) |
 |---|---|---|
-| Base | הִקָּטֵל | הִפָּקֵד |
-| With לְ | לְהִקָּטֵל | לְהִפָּקֵד |
-| With בְּ | בְּהִקָּטֵל | בְּהִפָּקֵד |
+| Base | הִקָּטֵל | הִנָּתֵן |
+| With לְ | לְהִקָּטֵל | לְהִנָּתֵן |
+| With בְּ | בְּהִקָּטֵל | בְּהִנָּתֵן |
 
-> **Key:** הִ prefix + dagesh forte in פּ. The infinitive construct is identical in form to the imperative.
+> **Key:** הִנָּ- prefix (same as imperative); dagesh forte in תּ. Identical in form to the imperative.
 
 **Attested passages:**
 
-- לָמָּה נִפְקַד שֵׁבֶט אֶחָד מִיִּשְׂרָאֵל (Jdg 21:3) — "Why has one tribe of Israel been missing today?" The congregation laments the near-extinction of Benjamin. The noun phrase *hipp̄āqēd* would function as a verbal noun here.
-- אַחֲרֵי הִפָּרֶד לוֹט מֵעִמּוֹ (Gen 13:14) — "After Lot separated from him." Temporal infinitive construct with *min* of separation; archetypal inf. construct of an I-פ Niphal root.
-- לְהִפָּקֵד עַל צְבָאֹות (Num 1:3; cp. 26:2) — "…to be mustered for the army." The standard formula for military census; the inf. construct governs the entire muster procedure in the Sinai and plains of Moab censuses.
+- לְהִנָּתֵן בְּיַד מֶלֶךְ בָּבֶל (Jer 32:4) — "…to be given into the hand of the king of Babylon." Jeremiah's prophecy regarding Zedekiah; the inf. construct functions as a purpose/result clause.
+- עַד הִנָּתֵן אֵלַיו (cp. Est 9:13) — Temporal inf. construct: "until it was given to him." The inf. construct of I-נ Niphal functions as a gerund in narrative contexts.
 
 ---
 
 ### Infinitive Absolute
 
-| Form | Strong (קטל) | I-פ (פקד) |
+| Form | Strong (קטל) | I-נ (נתן) |
 |---|---|---|
-| Standard | נִקְטֹל | הִפָּקֵד |
+| Standard | נִקְטֹל | נִתּוֹן |
 
-> **Key:** The strong root uses *holem* under R1 (נִקְטֹל). Most I-פ Niphal roots use the same form as the infinitive construct (הִפָּקֵד) rather than a distinct *holem* form.
-
-**Attested passages:**
-
-- אִם הִפָּקֵד יִפָּקֵד הָאִישׁ (1 Kgs 20:39) — "If the man is at all missed [is certainly found missing]…" The guard's plea to Ahab. The emphatic cognate construction (inf. abs + imperfect) underscores the guaranteed consequence of the man's absence.
-- By contrast, the strong root inf. absolute (נִקְטֹל type) is illustrated by כָּרֹת יִכָּרֵת (Niphal inf. abs of כָּרַת): "he shall certainly be cut off" — showing the contrast between the *holem* form and the הִפָּ- form.
-
----
-
-### Participle (Passive)
-
-| | Strong (קטל) | I-פ (פקד) | I-פ (פרד — attested) |
-|---|---|---|---|
-| ms | נִקְטָל | נִפְקָד | נִפְרָד |
-| mp | נִקְטָלִים | נִפְקָדִים | נִפְרָדִים |
-| fs | נִקְטֶלֶת | נִפְקֶדֶת | נִפְרֶדֶת |
-| fp | נִקְטָלוֹת | נִפְקָדוֹת | נִפְרָדוֹת |
-
-> **Key:** נִ prefix retained (like the perfect); *qamets* under R2. I-פ behaves exactly like the strong root — the only difference is spirant פ vs. stop ק.
+> **Key:** The I-נ Niphal inf. absolute is נִתּוֹן — the נִ prefix is retained (like the perfect), and the root nun takes dagesh; *holem-vav* under R2. This form is rare.
 
 **Attested passages:**
 
-- וְחֶבֶר הַקֵּינִי נִפְרָד מִקַּיִן (Jdg 4:11) — "Now Heber the Kenite had separated himself from the Kenites." Participial predicate; sets up the narrative of Jael.
-- לְתַאֲוָה יְבַקֵּשׁ נִפְרָד (Prov 18:1) — "One who separates himself seeks his own desire." Wisdom saying; the participle functions as a substantive ("a separating one" = "the one who isolates himself").
-- בְּחַיֵּיהֶם וּבְמֹותָם לֹא נִפְרָדוּ (2 Sam 1:23) — "In life and in death they were not divided." David's lament for Saul and Jonathan. The plural pointing (נִפְרָדוּ, perfect) follows immediately after the participial use.
-- וָאַעֲמִיד… נִפְרָדִים בַּמָּקֹום (Neh 4:13[7]) — "I stationed the people at… exposed places, separated by families, with swords, spears, and bows." Nehemiah's emergency defensive deployment — the plural participle denotes individually posted positions.
+- נִתּוֹן תִּנָּתֵן לָהֶם (Num 26:54; cp. 27:7) — "It shall certainly be given to them." The emphatic cognate construction (inf. abs + imperfect); the inheritance rights of Zelophehad's daughters.
 
 ---
 
-### Summary — I-פ Niphal at a Glance
+### Participle
 
-| Conjugation | Strong (קטל) | I-פ (פקד) | Key feature |
+| | Strong (קטל) | I-נ (נתן) |
+|---|---|---|
+| ms | נִקְטָל | נִתָּן |
+| mp | נִקְטָלִים | נִתָּנִים |
+| fs | נִקְטֶלֶת | נִתֶּנֶת |
+| fp | נִקְטָלוֹת | נִתָּנוֹת |
+
+> **Key:** נִ prefix retained; root nun takes dagesh forte → נִתָּ-. *Qamets* under R2 for ms/mp/fp; *seghol* for the fs. The ms נִתָּן is identical in form to the perfect 3ms — context (especially verbal vs. attributive use) distinguishes them.
+
+**Attested passages:**
+
+- הֶעָרִים הַנִּתָּנוֹת לַלְוִיִּם (Num 35:8) — "The cities given to the Levites." Attributive participle (fp); the standard formula for the Levitical city allotments.
+- כָּל הַכֶּסֶף הַנִּתָּן לְבֵית יְהוָה (2 Kgs 12:5) — "All the silver given to the house of the LORD." Temple treasury formula; attributive ms participle.
+- הָאָרֶץ הַנִּתֶּנֶת לָכֶם (Ezk 11:15) — "The land that is given to you." Attributive fs participle in a divine oracle.
+
+---
+
+### Summary — I-נ Niphal at a Glance
+
+| Conjugation | Strong (קטל) | I-נ (נתן) | Key feature |
 |---|---|---|---|
-| Perfect | נִקְטַל | נִפְקַד | נִ prefix retained; פ spirant (no dagesh) |
-| Imperfect | יִקָּטֵל | יִפָּקֵד | נ assimilated → dagesh forte in פּ |
-| Wayyiqtol | וַיִּקָּטֵל | וַיִּפָּקֵד | dagesh in פּ; וַיִּ prefix |
-| Weqatal | וְנִקְטַל | וְנִפְקַד | נִ prefix retained |
-| Imperative | הִקָּטֵל | הִפָּקֵד | הִ + dagesh in פּ |
-| Inf. Construct | הִקָּטֵל | הִפָּקֵד | הִ + dagesh in פּ |
-| Inf. Absolute | נִקְטֹל | הִפָּקֵד | I-פ uses inf. construct form |
-| Participle | נִקְטָל | נִפְקָד | נִ retained; *qamets* under R2 |
+| Perfect | נִקְטַל | נִתַּן | נִ prefix retained; root נ takes dagesh forte |
+| Imperfect | יִקָּטֵל | יִנָּתֵן | both נ's assimilate → dagesh in תּ; יִנָּ- prefix |
+| Wayyiqtol | וַיִּקָּטֵל | וַיִּנָּתֵן | וַיִּנָּ- signature cluster |
+| Weqatal | וְנִקְטַל | וְנִתַּן | נִ prefix retained; root נ with dagesh |
+| Imperative | הִקָּטֵל | הִנָּתֵן | הִנָּ- prefix; dagesh in תּ |
+| Inf. Construct | הִקָּטֵל | הִנָּתֵן | הִנָּ- prefix; identical to imperative |
+| Inf. Absolute | נִקְטֹל | נִתּוֹן | נִ prefix + dagesh; *holem-vav* under R2 |
+| Participle | נִקְטָל | נִתָּן | נִ prefix; root נ with dagesh; *qamets* under R2 |
 
 ---
 ---
@@ -426,19 +418,19 @@ The result is two distinct vowel patterns within the same paradigm:
 
 ---
 
-## Comparison: Strong vs. I-פ vs. I-י Niphal
+## Comparison: Strong vs. I-נ vs. I-י Niphal
 
-| Conjugation | Strong (קטל) | I-פ (פקד) | I-י (ילד) | I-י (ידע) |
+| Conjugation | Strong (קטל) | I-נ (נתן) | I-י (ילד) | I-י (ידע) |
 |---|---|---|---|---|
-| Perfect 3ms | נִקְטַל | נִפְקַד | נוֹלַד | נוֹדַע |
-| Imperfect 3ms | יִקָּטֵל | יִפָּקֵד | יִוָּלֵד | יִוָּדַע |
-| Wayyiqtol 3ms | וַיִּקָּטֵל | וַיִּפָּקֵד | וַיִּוָּלֵד | וַיִּוָּדַע |
-| Imperative 2ms | הִקָּטֵל | הִפָּקֵד | הִוָּלֵד | הִוָּדַע |
-| Inf. Construct | הִקָּטֵל | הִפָּקֵד | הִוָּלֵד | הִוָּדַע |
-| Inf. Absolute | נִקְטֹל | הִפָּקֵד | הִוָּלֵד | הִוָּדַע |
-| Participle ms | נִקְטָל | נִפְקָד | נוֹלָד | נוֹדָע |
+| Perfect 3ms | נִקְטַל | נִתַּן | נוֹלַד | נוֹדַע |
+| Imperfect 3ms | יִקָּטֵל | יִנָּתֵן | יִוָּלֵד | יִוָּדַע |
+| Wayyiqtol 3ms | וַיִּקָּטֵל | וַיִּנָּתֵן | וַיִּוָּלֵד | וַיִּוָּדַע |
+| Imperative 2ms | הִקָּטֵל | הִנָּתֵן | הִוָּלֵד | הִוָּדַע |
+| Inf. Construct | הִקָּטֵל | הִנָּתֵן | הִוָּלֵד | הִוָּדַע |
+| Inf. Absolute | נִקְטֹל | נִתּוֹן | הִוָּלֵד | הִוָּדַע |
+| Participle ms | נִקְטָל | נִתָּן | נוֹלָד | נוֹדָע |
 
 **Key takeaways:**
-- I-פ behaves like the strong root — the only change is dagesh forte in פּ where the נ assimilates (imperfect, wayyiqtol, imperative, and infinitives).
+- I-נ: the root nun takes dagesh in the perfect/weqatal/participle (נִתַּן, נִתָּן); in the imperfect/wayyiqtol/imperative/infinitives both nuns assimilate into R2 → יִנָּ-/הִנָּ- prefix cluster with dagesh forte in תּ.
 - I-י splits into two distinct sub-paradigms: **perfect / weqatal / participle** use נוֹ-; **imperfect / wayyiqtol / imperative / infinitives** use יִוָּ-/הִוָּ-.
 - The נוֹ- forms can look like the Qal active participle of I-י roots (e.g. נוֹלֵד "one who bears" vs. נוֹלַד "was born") — vowel under the last root letter (tsere vs. patah) and context distinguish them.
