@@ -436,7 +436,7 @@ def print_domain_summary(
     print(f"  {'-'*17} {'-'*29} {'-'*9} -----")
     for _, row in df.iterrows():
         print(f"  {str(row['lemma']):<18} {str(row['gloss']):<30} "
-              f"{str(row.get('ln','')):<10} {row['count']:>5}")
+              f"{str(row.get('ln', '')):<10} {row['count']:>5}")
 
     print(f"\n  Total tokens in domain: {df['count'].sum():,}")
     print()
@@ -479,5 +479,5 @@ def print_domain_role(
     print(f"  {'-'*17} {'-'*31} {'-'*9} -----")
     for _, row in df.iterrows():
         print(f"  {str(row['lemma']):<18} {str(row['gloss']):<32} "
-              f"{str(row.get('ln','')):<10} {row['count']:>5}")
+              f"{str(row.get('ln', '')):<10} {row['count']:>5}")
     print()

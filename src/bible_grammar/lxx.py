@@ -10,7 +10,6 @@ deuterocanonical.  Both are stored; callers can filter on is_deuterocanon.
 """
 
 from __future__ import annotations
-from pathlib import Path
 import pandas as pd
 
 # Map CenterBLC/LXX book names -> our book_id codes (canonical OT books)
@@ -42,18 +41,18 @@ _TENSE_MAP = {
     "Imperf": "Imperfect", "Perf": "Perfect", "Pluperf": "Pluperfect",
 }
 _VOICE_MAP = {"Act": "Active", "Mid": "Middle", "Pass": "Passive", "Plur": "Plural"}
-_MOOD_MAP  = {
+_MOOD_MAP = {
     "Ind": "Indicative", "Subj": "Subjunctive", "Opt": "Optative",
     "Imperative": "Imperative", "Infin": "Infinitive", "Part": "Participle",
     "Neut": "Neuter",
 }
-_CASE_MAP  = {
+_CASE_MAP = {
     "Nom": "Nominative", "Gen": "Genitive", "Dat": "Dative",
     "Acc": "Accusative", "Voc": "Vocative", "Gen/Dat": "Genitive/Dative",
 }
-_NUM_MAP   = {"Sing": "Singular", "Plur": "Plural", "Dual": "Dual"}
-_GEN_MAP   = {"Masc": "Masculine", "Fem": "Feminine", "Neut": "Neuter"}
-_PER_MAP   = {"1st": "1st", "2nd": "2nd", "3rd": "3rd"}
+_NUM_MAP = {"Sing": "Singular", "Plur": "Plural", "Dual": "Dual"}
+_GEN_MAP = {"Masc": "Masculine", "Fem": "Feminine", "Neut": "Neuter"}
+_PER_MAP = {"1st": "1st", "2nd": "2nd", "3rd": "3rd"}
 
 # sp values often contain extra description after a comma — normalise to first token
 _SP_NORMALISE = {
@@ -112,23 +111,23 @@ def load_lxx() -> pd.DataFrame:
     rows: list[dict] = []
     for book_node in F.otype.s("book"):
         lxx_book = F.book.v(book_node)
-        book_id  = _LXX_TO_BOOK_ID.get(lxx_book, lxx_book)
-        is_deut  = lxx_book in _DEUTEROCANON
+        book_id = _LXX_TO_BOOK_ID.get(lxx_book, lxx_book)
+        is_deut = lxx_book in _DEUTEROCANON
 
         for verse_node in L.d(book_node, "verse"):
             section = T.sectionFromNode(verse_node)
             chapter = int(section[1]) if section and section[1] else 0
-            verse   = int(section[2]) if section and section[2] else 0
+            verse = int(section[2]) if section and section[2] else 0
 
             for word_num, word_node in enumerate(L.d(verse_node, "word"), start=1):
-                sp_raw  = F.sp.v(word_node) or ""
+                sp_raw = F.sp.v(word_node) or ""
                 tns_raw = F.tense.v(word_node) or ""
                 vce_raw = F.voice.v(word_node) or ""
                 mod_raw = F.mood.v(word_node) or ""
                 cas_raw = F.case.v(word_node) or ""
-                nu_raw  = F.nu.v(word_node) or ""
-                gn_raw  = F.gn.v(word_node) or ""
-                ps_raw  = F.ps.v(word_node) or ""
+                nu_raw = F.nu.v(word_node) or ""
+                gn_raw = F.gn.v(word_node) or ""
+                ps_raw = F.ps.v(word_node) or ""
 
                 rows.append({
                     "source":           "LXX",

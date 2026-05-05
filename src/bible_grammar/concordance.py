@@ -27,7 +27,6 @@ lemma_frequency(strongs='H5414', corpus='OT')
 """
 
 from __future__ import annotations
-from pathlib import Path
 import pandas as pd
 from . import db as _db
 from .reference import BOOKS, TORAH, PROPHETS, WRITINGS, GOSPELS, PAULINE

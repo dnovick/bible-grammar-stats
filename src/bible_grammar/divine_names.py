@@ -43,14 +43,14 @@ divine_names_report(output_dir='output/reports')
 """
 
 from __future__ import annotations
+import pandas as pd
 from pathlib import Path
-import re
 
 # ── Name registry ────────────────────────────────────────────────────────────
 
 OT_DIVINE_NAMES: dict[str, dict] = {
     'H3068G': {'label': 'YHWH',       'hebrew': 'יהוה',  'gloss': 'the LORD (Tetragrammaton)'},
-    'H0430':  {'label': 'Elohim',     'hebrew': 'אֱלֹהִים','gloss': 'God'},
+    'H0430':  {'label': 'Elohim',     'hebrew': 'אֱלֹהִים', 'gloss': 'God'},
     'H0136':  {'label': 'Adonai',     'hebrew': 'אֲדֹנָי', 'gloss': 'Lord (title)'},
     'H3050':  {'label': 'Yah',        'hebrew': 'יָהּ',   'gloss': 'Yah (short form of YHWH)'},
     'H7706':  {'label': 'Shaddai',    'hebrew': 'שַׁדַּי', 'gloss': 'Almighty'},
@@ -73,17 +73,17 @@ LXX_DIVINE_NAMES: dict[str, dict] = {
 
 # Canonical section groupings
 OT_SECTIONS = {
-    'Torah':      ['Gen','Exo','Lev','Num','Deu'],
-    'Historical': ['Jos','Jdg','Rut','1Sa','2Sa','1Ki','2Ki','1Ch','2Ch','Ezr','Neh','Est'],
-    'Wisdom':     ['Job','Psa','Pro','Ecc','Sng'],
-    'Prophets':   ['Isa','Jer','Lam','Ezk','Dan','Hos','Jol','Amo','Oba','Jon','Mic',
-                   'Nah','Hab','Zep','Hag','Zec','Mal'],
+    'Torah':      ['Gen', 'Exo', 'Lev', 'Num', 'Deu'],
+    'Historical': ['Jos', 'Jdg', 'Rut', '1Sa', '2Sa', '1Ki', '2Ki', '1Ch', '2Ch', 'Ezr', 'Neh', 'Est'],  # noqa: E501
+    'Wisdom':     ['Job', 'Psa', 'Pro', 'Ecc', 'Sng'],
+    'Prophets':   ['Isa', 'Jer', 'Lam', 'Ezk', 'Dan', 'Hos', 'Jol', 'Amo', 'Oba', 'Jon', 'Mic',
+                   'Nah', 'Hab', 'Zep', 'Hag', 'Zec', 'Mal'],
 }
 
 NT_SECTIONS = {
-    'Gospels & Acts': ['Mat','Mrk','Luk','Jhn','Act'],
-    'Pauline':        ['Rom','1Co','2Co','Gal','Eph','Php','Col','1Th','2Th','1Ti','2Ti','Tit','Phm'],
-    'General & Rev':  ['Heb','Jas','1Pe','2Pe','1Jn','2Jn','3Jn','Jud','Rev'],
+    'Gospels & Acts': ['Mat', 'Mrk', 'Luk', 'Jhn', 'Act'],
+    'Pauline':        ['Rom', '1Co', '2Co', 'Gal', 'Eph', 'Php', 'Col', '1Th', '2Th', '1Ti', '2Ti', 'Tit', 'Phm'],  # noqa: E501
+    'General & Rev':  ['Heb', 'Jas', '1Pe', '2Pe', '1Jn', '2Jn', '3Jn', 'Jud', 'Rev'],
 }
 
 
@@ -127,10 +127,10 @@ def divine_name_table(corpus: str = 'OT') -> 'pd.DataFrame':
     corpus: 'OT', 'NT', or 'LXX'
     """
     import pandas as pd
-    from .reference import book_info
 
     df = _load_corpus(corpus)
-    names = OT_DIVINE_NAMES if corpus == 'OT' else (LXX_DIVINE_NAMES if corpus == 'LXX' else NT_DIVINE_NAMES)
+    names = OT_DIVINE_NAMES if corpus == 'OT' else (
+        LXX_DIVINE_NAMES if corpus == 'LXX' else NT_DIVINE_NAMES)
 
     # Build counts
     records = {}
@@ -161,7 +161,8 @@ def divine_name_summary(corpus: str = 'OT') -> 'pd.DataFrame':
     import pandas as pd
 
     df = _load_corpus(corpus)
-    names = OT_DIVINE_NAMES if corpus == 'OT' else (LXX_DIVINE_NAMES if corpus == 'LXX' else NT_DIVINE_NAMES)
+    names = OT_DIVINE_NAMES if corpus == 'OT' else (
+        LXX_DIVINE_NAMES if corpus == 'LXX' else NT_DIVINE_NAMES)
 
     rows = []
     for strongs, meta in names.items():
@@ -193,7 +194,8 @@ def divine_name_by_section(corpus: str = 'OT') -> 'pd.DataFrame':
     import pandas as pd
 
     df = _load_corpus(corpus)
-    names = OT_DIVINE_NAMES if corpus == 'OT' else (LXX_DIVINE_NAMES if corpus == 'LXX' else NT_DIVINE_NAMES)
+    names = OT_DIVINE_NAMES if corpus == 'OT' else (
+        LXX_DIVINE_NAMES if corpus == 'LXX' else NT_DIVINE_NAMES)
     sections = OT_SECTIONS if corpus in ('OT', 'LXX') else NT_SECTIONS
 
     rows = []
@@ -211,9 +213,9 @@ def divine_name_by_section(corpus: str = 'OT') -> 'pd.DataFrame':
 
 def print_divine_names(corpus: str = 'OT') -> None:
     """Print a formatted summary report to stdout."""
-    import pandas as pd
 
-    label = {'OT': 'Old Testament (Hebrew)', 'NT': 'New Testament (Greek)', 'LXX': 'Septuagint (LXX)'}[corpus]
+    label = {'OT': 'Old Testament (Hebrew)', 'NT': 'New Testament (Greek)',
+             'LXX': 'Septuagint (LXX)'}[corpus]
     summary = divine_name_summary(corpus)
     by_section = divine_name_by_section(corpus)
 
@@ -222,7 +224,7 @@ def print_divine_names(corpus: str = 'OT') -> None:
     print(f"  Divine Names Analysis — {label}")
     print(f"{'═'*w}\n")
 
-    print(f"  Overview")
+    print("  Overview")
     print(f"  {'-'*w}")
     print(f"  {'Name':<14} {'Script':<12} {'Strongs':<10} {'Total':>7}  {'%':>6}  Top Books")
     print(f"  {'-'*13} {'-'*11} {'-'*9} {'-'*7}  {'-'*6}  {'-'*30}")
@@ -231,9 +233,9 @@ def print_divine_names(corpus: str = 'OT') -> None:
               f"{row['total']:>7,}  {row['pct']:>5.1f}%  {row['top_books']}")
     print()
 
-    sections = OT_SECTIONS if corpus in ('OT','LXX') else NT_SECTIONS
+    sections = OT_SECTIONS if corpus in ('OT', 'LXX') else NT_SECTIONS
     sec_names = list(sections.keys())
-    print(f"  By Section")
+    print("  By Section")
     print(f"  {'-'*w}")
     header = f"  {'Name':<14} " + "".join(f"{s[:14]:<16}" for s in sec_names) + f"{'Total':>7}"
     print(header)
@@ -269,10 +271,10 @@ def divine_names_chart(
     import matplotlib.pyplot as plt
     import matplotlib.patches as mpatches
     import numpy as np
-    import pandas as pd
 
     corpus_label = {'OT': 'Old Testament', 'NT': 'New Testament', 'LXX': 'LXX (Canonical)'}[corpus]
-    names = OT_DIVINE_NAMES if corpus == 'OT' else (LXX_DIVINE_NAMES if corpus == 'LXX' else NT_DIVINE_NAMES)
+    names = OT_DIVINE_NAMES if corpus == 'OT' else (
+        LXX_DIVINE_NAMES if corpus == 'LXX' else NT_DIVINE_NAMES)
     name_labels = [meta['label'] for meta in names.values()]
 
     if output_path is None:
@@ -292,21 +294,21 @@ def divine_names_chart(
         x = range(len(tbl_sorted))
         bottom = np.zeros(len(tbl_sorted))
 
-        colors = plt.get_cmap('tab10').colors
+        colors = [plt.get_cmap('tab10')(i) for i in range(10)]
         patches = []
         for i, lbl in enumerate(name_labels):
             if lbl not in tbl_sorted.columns:
                 continue
             vals = tbl_sorted[lbl].values
-            bars = ax.bar(x, vals, bottom=bottom, color=colors[i % len(colors)],
-                          label=lbl, edgecolor='white', linewidth=0.3)
+            ax.bar(x, vals, bottom=bottom, color=colors[i % len(colors)],
+                   label=lbl, edgecolor='white', linewidth=0.3)
             bottom += vals
             patches.append(mpatches.Patch(color=colors[i % len(colors)], label=lbl))
 
         ax.set_xticks(list(x))
         ax.set_xticklabels(tbl_sorted['book_name'], rotation=45, ha='right', fontsize=8)
         ax.set_ylabel('Occurrences', fontsize=9)
-        ax.set_title(f'Divine Name Distribution — {corpus_label}\n(top {top_n_books} books by total)',
+        ax.set_title(f'Divine Name Distribution — {corpus_label}\n(top {top_n_books} books by total)',  # noqa: E501
                      fontsize=11, fontweight='bold', pad=10)
         ax.yaxis.grid(True, linestyle='--', alpha=0.4)
         ax.set_axisbelow(True)
@@ -314,7 +316,7 @@ def divine_names_chart(
 
     elif chart_type == 'heatmap':
         sec_df = divine_name_by_section(corpus)
-        sections = OT_SECTIONS if corpus in ('OT','LXX') else NT_SECTIONS
+        sections = OT_SECTIONS if corpus in ('OT', 'LXX') else NT_SECTIONS
         sec_cols = list(sections.keys())
         matrix = sec_df[sec_cols].values.astype(float)
 
@@ -360,7 +362,6 @@ def divine_names_report(
 
     Returns the path to the saved Markdown file.
     """
-    import pandas as pd
     from pathlib import Path
 
     if corpora is None:
@@ -386,25 +387,26 @@ def divine_names_report(
 
     for corpus in corpora:
         # Generate chart
-        chart_bar  = divine_names_chart(corpus, chart_type='stacked_bar',
-                                        output_path=str(out_dir / f'{corpus.lower()}-divine-names-bar.png'))
+        chart_bar = divine_names_chart(corpus, chart_type='stacked_bar',
+                                       output_path=str(out_dir / f'{corpus.lower()}-divine-names-bar.png'))  # noqa: E501
         chart_heat = divine_names_chart(corpus, chart_type='heatmap',
-                                        output_path=str(out_dir / f'{corpus.lower()}-divine-names-heatmap.png'))
+                                        output_path=str(out_dir / f'{corpus.lower()}-divine-names-heatmap.png'))  # noqa: E501
 
-        summary    = divine_name_summary(corpus)
+        summary = divine_name_summary(corpus)
         by_section = divine_name_by_section(corpus)
-        by_book    = divine_name_table(corpus)
+        by_book = divine_name_table(corpus)
 
-        names = OT_DIVINE_NAMES if corpus == 'OT' else (LXX_DIVINE_NAMES if corpus == 'LXX' else NT_DIVINE_NAMES)
-        sections   = OT_SECTIONS if corpus in ('OT','LXX') else NT_SECTIONS
-        sec_cols   = list(sections.keys())
+        names = OT_DIVINE_NAMES if corpus == 'OT' else (
+            LXX_DIVINE_NAMES if corpus == 'LXX' else NT_DIVINE_NAMES)
+        sections = OT_SECTIONS if corpus in ('OT', 'LXX') else NT_SECTIONS
+        sec_cols = list(sections.keys())
         name_labels = [meta['label'] for meta in names.values()]
 
         lines += [
-            f"---",
-            f"",
+            "---",
+            "",
             f"## {corpus_labels[corpus]}",
-            f"",
+            "",
         ]
 
         # Summary table

@@ -30,7 +30,7 @@ from pathlib import Path
 from .reference import BOOKS
 
 _BOOK_ORDER = {b[0]: b[3] for b in BOOKS}
-_BOOK_NAME  = {b[0]: b[1] for b in BOOKS}
+_BOOK_NAME = {b[0]: b[1] for b in BOOKS}
 
 # Canonical sort orders for display
 _STEM_ORDER = ['Qal', 'Niphal', 'Piel', 'Pual', 'Hithpael',
@@ -42,7 +42,7 @@ _CONJ_ORDER = ['Perfect', 'Consecutive Perfect', 'Imperfect',
 _TENSE_ORDER = ['Present', 'Imperfect', 'Future', 'Aorist', 'Perfect',
                 'Pluperfect', 'Second Aorist', 'Second Perfect']
 _VOICE_ORDER = ['Active', 'Middle', 'Passive', 'Middle/Passive']
-_CASE_ORDER  = ['Nominative', 'Vocative', 'Accusative', 'Genitive', 'Dative']
+_CASE_ORDER = ['Nominative', 'Vocative', 'Accusative', 'Genitive', 'Dative']
 
 
 def _norm_strongs(s: str) -> str:
@@ -129,8 +129,8 @@ def morph_distribution(strongs: str, *, min_book_count: int = 3) -> dict:
     hits = hits[hits['book_id'].isin(valid_books)]
 
     if hits.empty:
-        return {'strongs': strongs, 'lemma': lex.get('lemma',''),
-                'gloss': lex.get('gloss',''), 'pivot': pd.DataFrame()}
+        return {'strongs': strongs, 'lemma': lex.get('lemma', ''),
+                'gloss': lex.get('gloss', ''), 'pivot': pd.DataFrame()}
 
     # Build pivot
     pivot = (hits.groupby(['book_id', '_cat'])
@@ -239,17 +239,21 @@ def morph_chart(
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
-    import numpy as np
 
     result = morph_distribution(strongs, min_book_count=min_book_count)
-    pivot   = result.get('pivot')
+    pivot = result.get('pivot')
     pivot_pct = result.get('pivot_pct')
 
     if pivot is None or pivot.empty:
         print("  No data to chart.")
         return
 
+    if pct and pivot_pct is None:
+        print("  No percentage data to chart.")
+        return
+
     data = pivot_pct if pct else pivot
+    assert data is not None
     cols = data.columns.tolist()
     books = data.index.tolist()
 
@@ -276,7 +280,8 @@ def morph_chart(
             for j, col in enumerate(cols):
                 val = data.loc[book, col]
                 if val > 0:
-                    text_color = 'white' if val > (50 if pct else data.values.max()*0.6) else 'black'
+                    text_color = 'white' if val > (
+                        50 if pct else data.values.max()*0.6) else 'black'
                     label = f"{val:.0f}%" if pct else str(int(val))
                     ax.text(i, j, label, ha='center', va='center',
                             fontsize=6, color=text_color)

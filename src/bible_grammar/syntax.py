@@ -277,7 +277,7 @@ def jesus_speaking_verses(books: list[str] | None = None) -> set[tuple[str, int,
     This is the core of speaker attribution for christological titles.
     """
     df = load_syntax()
-    id_to_strong = df.set_index('xml_id')['strong'].to_dict()
+    df.set_index('xml_id')['strong'].to_dict()
 
     gospel_books = {'Mat', 'Mrk', 'Luk', 'Jhn'}
     target_books = set(books) if books else gospel_books

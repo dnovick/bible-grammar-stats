@@ -39,8 +39,8 @@ intertextuality_report('Isa', chapter=53, output_dir='output/reports')
 """
 
 from __future__ import annotations
+import pandas as pd
 from pathlib import Path
-import re
 
 
 # ── Reference helpers ─────────────────────────────────────────────────────────
@@ -68,7 +68,6 @@ def _nt_book_order(book_id: str) -> int:
 def _get_kjv_verse(book_id: str, chapter: int, verse: int) -> str:
     """Fetch a KJV verse text, returning empty string if unavailable."""
     try:
-        import pandas as pd
         from . import db as _db
         df = _db.load()
         rows = df[(df['book_id'] == book_id) & (df['chapter'] == chapter) &
@@ -113,7 +112,7 @@ def intertextuality(
     from .quotations import nt_quotations
 
     df = nt_quotations()
-    q  = df[df['ot_book'] == ot_book]
+    q = df[df['ot_book'] == ot_book]
     if chapter is not None:
         q = q[q['ot_chapter'] == chapter]
     if verse is not None:
@@ -121,27 +120,29 @@ def intertextuality(
     q = q[q['votes'] >= min_votes].copy()
 
     if q.empty:
-        return pd.DataFrame(columns=['ot_ref','ot_book','ot_chapter','ot_verse',
-                                     'nt_ref','nt_book','nt_chapter','nt_verse',
-                                     'votes','ot_text','nt_text'])
+        return pd.DataFrame(columns=['ot_ref', 'ot_book', 'ot_chapter', 'ot_verse',
+                                     'nt_ref', 'nt_book', 'nt_chapter', 'nt_verse',
+                                     'votes', 'ot_text', 'nt_text'])
 
     q = q.sort_values('votes', ascending=False).reset_index(drop=True)
 
-    q['ot_ref'] = q.apply(lambda r: f"{_book_name(r['ot_book'])} {r['ot_chapter']}:{r['ot_verse']}", axis=1)
-    q['nt_ref'] = q.apply(lambda r: f"{_book_name(r['nt_book'])} {r['nt_chapter']}:{r['nt_verse']}", axis=1)
+    q['ot_ref'] = q.apply(
+        lambda r: f"{_book_name(r['ot_book'])} {r['ot_chapter']}:{r['ot_verse']}", axis=1)
+    q['nt_ref'] = q.apply(
+        lambda r: f"{_book_name(r['nt_book'])} {r['nt_chapter']}:{r['nt_verse']}", axis=1)
 
     if include_kjv:
         q['ot_text'] = q.apply(
-            lambda r: _get_kjv_verse(r['ot_book'], int(r['ot_chapter']), int(r['ot_verse'])), axis=1)
+            lambda r: _get_kjv_verse(r['ot_book'], int(r['ot_chapter']), int(r['ot_verse'])), axis=1)  # noqa: E501
         q['nt_text'] = q.apply(
-            lambda r: _get_kjv_verse(r['nt_book'], int(r['nt_chapter']), int(r['nt_verse'])), axis=1)
+            lambda r: _get_kjv_verse(r['nt_book'], int(r['nt_chapter']), int(r['nt_verse'])), axis=1)  # noqa: E501
     else:
         q['ot_text'] = ''
         q['nt_text'] = ''
 
-    return q[['ot_ref','ot_book','ot_chapter','ot_verse',
-              'nt_ref','nt_book','nt_chapter','nt_verse',
-              'votes','ot_text','nt_text']]
+    return q[['ot_ref', 'ot_book', 'ot_chapter', 'ot_verse',
+              'nt_ref', 'nt_book', 'nt_chapter', 'nt_verse',
+              'votes', 'ot_text', 'nt_text']]
 
 
 # ── Terminal output ───────────────────────────────────────────────────────────
@@ -154,12 +155,11 @@ def print_intertextuality(
     min_votes: int = 20,
 ) -> None:
     """Print a formatted intertextuality table to stdout."""
-    import pandas as pd
 
     df = intertextuality(ot_book, chapter=chapter, verse=verse,
                          min_votes=min_votes, include_kjv=True)
 
-    anchor = _ref_str(ot_book, chapter, verse)
+    _ref_str(ot_book, chapter, verse)
     full_anchor = _ref_str(_book_name(ot_book), chapter, verse)
     w = 72
 
@@ -170,7 +170,7 @@ def print_intertextuality(
 
     if df.empty:
         print(f"  No citations found at votes >= {min_votes}.")
-        print(f"  Try lowering min_votes (e.g. min_votes=10).\n")
+        print("  Try lowering min_votes (e.g. min_votes=10).\n")
         return
 
     # Summary: NT book coverage
@@ -179,13 +179,13 @@ def print_intertextuality(
     print(f"  {'-'*w}")
     for bk, cnt in nt_counts.items():
         bar = '█' * min(cnt, 20)
-        print(f"    {_book_name(bk):<22} {cnt:>3} citation{'s' if cnt>1 else ''}  {bar}")
+        print(f"    {_book_name(bk):<22} {cnt:>3} citation{'s' if cnt > 1 else ''}  {bar}")
     print()
 
     # Per-OT-verse grouping (useful when chapter or book scope)
     if verse is None:
         ot_verses = df['ot_ref'].unique()
-        print(f"  Citations by OT Verse")
+        print("  Citations by OT Verse")
         print(f"  {'-'*w}")
         for ov in ot_verses:
             sub = df[df['ot_ref'] == ov]
@@ -245,8 +245,6 @@ def intertextuality_graph(
     import matplotlib.pyplot as plt
     import matplotlib.patches as mpatches
     import networkx as nx
-    import numpy as np
-    import pandas as pd
 
     df = intertextuality(ot_book, chapter=chapter, verse=verse,
                          min_votes=min_votes, include_kjv=False)
@@ -277,9 +275,9 @@ def intertextuality_graph(
     # Decide granularity: verse-level nodes for chapter/verse scope,
     # chapter-level for book scope
     book_scope = (chapter is None and verse is None)
-    chapter_scope = (chapter is not None and verse is None)
+    (chapter is not None and verse is None)
 
-    max_votes = df['votes'].max()
+    df['votes'].max()
 
     for _, row in df.iterrows():
         ot_node = row['ot_ref']
@@ -298,7 +296,7 @@ def intertextuality_graph(
         # Accumulate weight for multi-verse book-scope
         if G.has_edge(ot_node, nt_node):
             G[ot_node][nt_node]['weight'] += row['votes']
-            G[ot_node][nt_node]['count']  += 1
+            G[ot_node][nt_node]['count'] += 1
         else:
             G.add_edge(ot_node, nt_node, weight=row['votes'], count=1)
 
@@ -323,11 +321,11 @@ def intertextuality_graph(
     fig, ax = plt.subplots(figsize=figsize)
 
     # Edge widths and colours
-    edges      = list(G.edges(data=True))
-    weights    = [d['weight'] for _, _, d in edges]
-    max_w      = max(weights) if weights else 1
+    edges = list(G.edges(data=True))
+    weights = [d['weight'] for _, _, d in edges]
+    max_w = max(weights) if weights else 1
     edge_widths = [0.5 + 3.5 * (w / max_w) for w in weights]
-    edge_alpha  = [0.3 + 0.5 * (w / max_w) for w in weights]
+    edge_alpha = [0.3 + 0.5 * (w / max_w) for w in weights]
 
     for (u, v, d), lw, alpha in zip(edges, edge_widths, edge_alpha):
         nx.draw_networkx_edges(G, pos, edgelist=[(u, v)], ax=ax,
@@ -364,14 +362,15 @@ def intertextuality_graph(
 
     # Legend
     ot_patch = mpatches.Patch(color='#4C72B0', label='OT verse (■)')
-    nt_patch = mpatches.Patch(color='#DD6B48', label='NT ' + ('book' if book_scope else 'verse') + ' (●)')
+    nt_patch = mpatches.Patch(color='#DD6B48', label='NT ' +
+                              ('book' if book_scope else 'verse') + ' (●)')
     ax.legend(handles=[ot_patch, nt_patch], loc='lower right', fontsize=9)
 
     total_links = len(df)
     ax.set_title(
         f'Intertextuality Network: {anchor_label}\n'
         f'{total_links} citation{"s" if total_links != 1 else ""}  ·  '
-        f'{len(ot_nodes)} OT verse{"s" if len(ot_nodes)!=1 else ""}  →  '
+        f'{len(ot_nodes)} OT verse{"s" if len(ot_nodes) != 1 else ""}  →  '
         f'{len(nt_nodes)} NT {"books" if book_scope else "verses"}  '
         f'(min votes: {min_votes})',
         fontsize=10, fontweight='bold', pad=12,
@@ -398,7 +397,6 @@ def intertextuality_report(
 
     Returns path to the saved Markdown (HTML) file.
     """
-    import pandas as pd
     from pathlib import Path
 
     out_dir = Path(output_dir)
@@ -425,18 +423,18 @@ def intertextuality_report(
     # CSV
     csv_path = out_dir / f'{slug}.csv'
     if not df.empty:
-        df[['ot_ref','nt_ref','votes','ot_text','nt_text']].to_csv(csv_path, index=False)
+        df[['ot_ref', 'nt_ref', 'votes', 'ot_text', 'nt_text']].to_csv(csv_path, index=False)
         print(f'  CSV:  {csv_path}')
 
     # Markdown report
     lines = [
         f"# Intertextuality Network: {anchor_full}",
-        f"",
+        "",
         f"**OT anchor:** {anchor_full}  ",
         f"**NT citations:** {len(df):,}  ",
         f"**Min confidence votes:** {min_votes}  ",
         f"**NT books covered:** {df['nt_book'].nunique() if not df.empty else 0}  ",
-        f"",
+        "",
     ]
 
     if df.empty:
@@ -456,7 +454,7 @@ def intertextuality_report(
 
         # NT book summary
         nt_counts = (df.groupby('nt_book')
-                       .agg(citations=('votes','count'), total_votes=('votes','sum'))
+                       .agg(citations=('votes', 'count'), total_votes=('votes', 'sum'))
                        .sort_values('total_votes', ascending=False)
                        .reset_index())
         nt_counts['nt_book_name'] = nt_counts['nt_book'].apply(_book_name)
@@ -495,7 +493,7 @@ def intertextuality_report(
                 ot_txt = sub.iloc[0]['ot_text']
                 lines += [
                     f"### {ot_ref}",
-                    f"",
+                    "",
                     f"> {ot_txt}" if ot_txt else "",
                     "",
                 ]

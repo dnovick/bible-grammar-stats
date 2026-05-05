@@ -38,6 +38,7 @@ from typing import Optional, Literal
 def _nfc(s: str) -> str:
     return unicodedata.normalize('NFC', s)
 
+
 Corpus = Literal['nt', 'lxx', 'both']
 
 # ---------------------------------------------------------------------------
@@ -86,8 +87,8 @@ LXX_BOOK_GROUPS = {
 }
 
 # Major prepositions by corpus
-NT_MAJOR_PREPS  = [unicodedata.normalize('NFC', x) for x in
-                   ['ἐν', 'εἰς', 'ἐκ', 'ἐπί', 'πρός', 'διά', 'ἀπό', 'κατά', 'μετά', 'περί']]
+NT_MAJOR_PREPS = [unicodedata.normalize('NFC', x) for x in
+                  ['ἐν', 'εἰς', 'ἐκ', 'ἐπί', 'πρός', 'διά', 'ἀπό', 'κατά', 'μετά', 'περί']]
 LXX_MAJOR_PREPS = [unicodedata.normalize('NFC', x) for x in
                    ['ἐν', 'εἰς', 'ἐπί', 'πρός', 'ἀπό', 'ἐκ', 'μετά', 'κατά', 'διά', 'ἕως']]
 
@@ -172,7 +173,7 @@ def _build_lxx() -> pd.DataFrame:
     ].copy().rename(columns={'book_id': 'book'})
     preps['next_wn'] = preps['word_num'] + 1
 
-    next_words = df[['book_id', 'chapter', 'verse', 'word_num', 'case_', 'part_of_speech', 'lemma']].rename(
+    next_words = df[['book_id', 'chapter', 'verse', 'word_num', 'case_', 'part_of_speech', 'lemma']].rename(  # noqa: E501
         columns={'book_id': 'book', 'lemma': 'obj_lemma',
                  'part_of_speech': 'obj_class', 'case_': 'raw_case'}
     )
@@ -420,10 +421,10 @@ def compare_greek_preps(
     DataFrame: collocate, count_<lemma1>, count_<lemma2>  (sorted by lemma1)
     """
     c1 = greek_prep_collocates(lemma1, corpus=corpus, case=case, top_n=top_n,
-                                book_group=book_group)[['collocate', 'count']].rename(
+                               book_group=book_group)[['collocate', 'count']].rename(
         columns={'count': f'count_{lemma1}'})
     c2 = greek_prep_collocates(lemma2, corpus=corpus, case=case, top_n=top_n,
-                                book_group=book_group)[['collocate', 'count']].rename(
+                               book_group=book_group)[['collocate', 'count']].rename(
         columns={'count': f'count_{lemma2}'})
 
     merged = c1.merge(c2, on='collocate', how='outer').fillna(0)
@@ -445,7 +446,7 @@ def nt_lxx_compare(lemma: str) -> pd.DataFrame:
     lxx = greek_prep_cases(lemma, corpus='lxx').rename(
         columns={'count': 'count_lxx', 'pct': 'pct_lxx'})
     merged = nt.merge(lxx, on='case_binding', how='outer').fillna(0)
-    merged['count_nt']  = merged['count_nt'].astype(int)
+    merged['count_nt'] = merged['count_nt'].astype(int)
     merged['count_lxx'] = merged['count_lxx'].astype(int)
     return merged.sort_values('count_nt', ascending=False).reset_index(drop=True)
 
@@ -462,7 +463,8 @@ def print_greek_prep_frequency(
 ) -> None:
     scope = book or book_group or corpus.upper()
     print(f'\n=== Greek Preposition Frequency ({scope}) ===')
-    print(greek_prep_frequency(corpus=corpus, book=book, book_group=book_group, top_n=top_n).to_string(index=False))
+    print(greek_prep_frequency(corpus=corpus, book=book,
+          book_group=book_group, top_n=top_n).to_string(index=False))
 
 
 def print_greek_prep_by_book(lemma: str, corpus: Corpus = 'nt') -> None:
@@ -471,7 +473,7 @@ def print_greek_prep_by_book(lemma: str, corpus: Corpus = 'nt') -> None:
     print(greek_prep_by_book(lemma, corpus=corpus).to_string(index=False))
 
 
-def print_greek_prep_distribution(corpus: Corpus = 'nt', lemmas: Optional[list[str]] = None) -> None:
+def print_greek_prep_distribution(corpus: Corpus = 'nt', lemmas: Optional[list[str]] = None) -> None:  # noqa: E501
     print(f'\n=== Major Preposition Distribution by Book Group [{corpus.upper()}] ===')
     print(greek_prep_distribution_table(corpus=corpus, lemmas=lemmas).to_string())
 
@@ -485,7 +487,8 @@ def print_greek_prep_cases(
     gloss = PREP_GLOSS.get(lemma, lemma)
     scope = book or book_group or corpus.upper()
     print(f'\n=== Case bindings of {lemma} ({gloss}) [{scope}] ===')
-    print(greek_prep_cases(lemma, corpus=corpus, book=book, book_group=book_group).to_string(index=False))
+    print(greek_prep_cases(lemma, corpus=corpus, book=book,
+          book_group=book_group).to_string(index=False))
 
 
 def print_greek_prep_collocates(
@@ -503,7 +506,7 @@ def print_greek_prep_collocates(
     pos_note = f', pos={obj_pos!r}' if obj_pos else ''
     print(f'\n=== Collocates of {lemma} ({gloss}){case_note}{pos_note} [{scope}] ===')
     print(greek_prep_collocates(lemma, corpus=corpus, case=case, obj_pos=obj_pos,
-                                 top_n=top_n, book=book, book_group=book_group).to_string(index=False))
+                                top_n=top_n, book=book, book_group=book_group).to_string(index=False))  # noqa: E501
 
 
 def print_compare_greek_preps(
@@ -518,7 +521,7 @@ def print_compare_greek_preps(
     g2 = PREP_GLOSS.get(lemma2, lemma2)
     print(f'\n=== Collocate comparison: {lemma1} ({g1}) vs. {lemma2} ({g2}) [{corpus.upper()}] ===')
     print(compare_greek_preps(lemma1, lemma2, corpus=corpus, case=case,
-                               top_n=top_n, book_group=book_group).to_string(index=False))
+                              top_n=top_n, book_group=book_group).to_string(index=False))
 
 
 def print_nt_lxx_compare(lemma: str) -> None:

@@ -32,10 +32,9 @@ hapax_summary(corpus='OT')
 
 from __future__ import annotations
 import re
-from pathlib import Path
 import pandas as pd
 from . import db as _db
-from .reference import BOOKS, book_info, TORAH, PROPHETS, WRITINGS, GOSPELS, PAULINE
+from .reference import BOOKS, book_info
 from .lexicon import lookup as _lex_lookup
 
 _BOOK_ORDER = {b[0]: b[3] for b in BOOKS}
@@ -298,7 +297,7 @@ def hapax_table(
         print("No hapax legomena found.")
         return
 
-    title = f"Hapax Legomena"
+    title = "Hapax Legomena"
     if book:
         title += f" — {book_info(book)['name']}"
     else:

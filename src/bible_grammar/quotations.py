@@ -190,8 +190,8 @@ def verse_comparison(
       'nt'  : list of word dicts (word, lemma, strongs, pos, tense, voice, mood)
       'refs': list of {ot_ref, ot_words, lxx_words, votes} dicts, one per OT target
     """
-    words_df  = _db.load()
-    lxx_df    = _db.load_lxx()
+    words_df = _db.load()
+    lxx_df = _db.load_lxx()
 
     # NT words for this verse
     nt_words = words_df[
@@ -259,8 +259,8 @@ def quotation_table(
     nt_text = " ".join(w["word"] for w in cmp["nt"]) if cmp["nt"] else "(no data)"
     rows = []
     for ref in cmp["refs"]:
-        ot_text  = " ".join(w["word"]  for w in ref["ot_words"])  or "(no data)"
-        lxx_text = " ".join(w["word"]  for w in ref["lxx_words"]) or "(no data)"
+        ot_text = " ".join(w["word"] for w in ref["ot_words"]) or "(no data)"
+        lxx_text = " ".join(w["word"] for w in ref["lxx_words"]) or "(no data)"
         rows.append({
             "nt_ref":    cmp["nt_ref"],
             "ot_ref":    ref["ot_ref"],

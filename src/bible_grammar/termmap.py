@@ -27,9 +27,7 @@ term_map(['H1285', 'H2617', 'H571'])
 from __future__ import annotations
 import re
 import pandas as pd
-from pathlib import Path
 from . import db as _db
-from .wordstudy import _BOOK_ORDER
 from .lexicon import _heb as _load_heb_lex, _grk as _load_grk_lex
 from .reference import BOOKS
 
@@ -63,7 +61,7 @@ _BOOK_IDS = {b[0] for b in BOOKS}
 
 
 def _normalize_strongs_pat(strongs: str) -> str:
-    """Build a regex pattern that matches strongs with or without leading zeros / variant suffixes."""
+    """Build a regex pattern that matches strongs with or without leading zeros / variant suffixes."""  # noqa: E501
     m = re.match(r'^([HG])0*(\d+)([A-Z]?)$', strongs.upper())
     if m:
         prefix, num, suffix = m.groups()
@@ -99,7 +97,7 @@ def term_map(
       lxx_lemma_2, lxx_strongs_2, lxx_pct_2, lxx_nt_count_2,
       lxx_lemma_3, lxx_strongs_3, lxx_pct_3, lxx_nt_count_3
     """
-    from .ibm_align import translation_equivalents_w, load_word_alignment
+    from .ibm_align import translation_equivalents_w
 
     if strongs is None:
         strongs = THEOLOGICAL_TERMS
@@ -122,7 +120,7 @@ def term_map(
             base = re.sub(r'[A-Z]$', '', clean)
 
             # OT count
-            ot_pat = _normalize_strongs_pat(base)
+            _normalize_strongs_pat(base)
             ot_count = int(ot_df["strongs"].str.upper().str.contains(base, na=False).sum())
 
             # Lexicon — try clean, zero-padded, and base forms
@@ -155,14 +153,14 @@ def term_map(
                         g_lemma = (grk_lex.get(g_strongs) or {}).get("lemma", "")
                     pct = te_row.get("pct", 0.0)
                     nt_cnt = _nt_count_for_strongs(g_strongs, nt_df) if g_strongs else 0
-                    row[f"lxx_lemma_{i}"]    = g_lemma
-                    row[f"lxx_strongs_{i}"]  = g_strongs
-                    row[f"lxx_pct_{i}"]      = pct
+                    row[f"lxx_lemma_{i}"] = g_lemma
+                    row[f"lxx_strongs_{i}"] = g_strongs
+                    row[f"lxx_pct_{i}"] = pct
                     row[f"lxx_nt_count_{i}"] = nt_cnt
                 else:
-                    row[f"lxx_lemma_{i}"]    = ""
-                    row[f"lxx_strongs_{i}"]  = ""
-                    row[f"lxx_pct_{i}"]      = 0.0
+                    row[f"lxx_lemma_{i}"] = ""
+                    row[f"lxx_strongs_{i}"] = ""
+                    row[f"lxx_pct_{i}"] = 0.0
                     row[f"lxx_nt_count_{i}"] = 0
 
             rows.append(row)
@@ -196,20 +194,22 @@ def print_term_map(
             print(f"\n{'─'*70}")
             print(f"  {current_theme}")
             print(f"{'─'*70}")
-            print(f"  {'Root':<10} {'Lemma':<14} {'Gloss':<28} {'OT':>5}  {'LXX equivalents (word-level alignment)'}")
+            print(
+                f"  {'Root':<10} {'Lemma':<14} {'Gloss':<28} {'OT':>5}  {'LXX equivalents (word-level alignment)'}")  # noqa: E501
             print(f"  {'-'*9} {'-'*13} {'-'*27} {'-'*5}  {'-'*38}")
 
         lxx_parts = []
         for i in range(1, 4):
             lemma = row.get(f"lxx_lemma_{i}", "")
-            pct   = row.get(f"lxx_pct_{i}", 0.0)
-            nt    = row.get(f"lxx_nt_count_{i}", 0)
+            pct = row.get(f"lxx_pct_{i}", 0.0)
+            nt = row.get(f"lxx_nt_count_{i}", 0)
             if lemma:
                 lxx_parts.append(f"{lemma} {pct:.0f}% [NT:{nt}]")
         lxx_str = "  |  ".join(lxx_parts) if lxx_parts else "(no word-level alignment)"
 
         gloss = str(row["heb_gloss"])[:27]
-        print(f"  {row['heb_strongs']:<10} {str(row['heb_lemma']):<14} {gloss:<28} {row['ot_count']:>5}  {lxx_str}")
+        print(
+            f"  {row['heb_strongs']:<10} {str(row['heb_lemma']):<14} {gloss:<28} {row['ot_count']:>5}  {lxx_str}")  # noqa: E501
 
     print()
 
@@ -230,10 +230,10 @@ def term_map_table(
     out_rows = []
     for _, row in raw.iterrows():
         for i in range(1, 4):
-            g_lemma   = row.get(f"lxx_lemma_{i}", "")
+            g_lemma = row.get(f"lxx_lemma_{i}", "")
             g_strongs = row.get(f"lxx_strongs_{i}", "")
-            pct       = row.get(f"lxx_pct_{i}", 0.0)
-            nt_cnt    = row.get(f"lxx_nt_count_{i}", 0)
+            pct = row.get(f"lxx_pct_{i}", 0.0)
+            nt_cnt = row.get(f"lxx_nt_count_{i}", 0)
             if not g_lemma:
                 continue
             g_gloss = (grk_lex.get(g_strongs) or {}).get("gloss", "")

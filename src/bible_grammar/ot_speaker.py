@@ -176,10 +176,10 @@ def divine_speech_by_book(
 
     if count_mode == 'verses':
         divine_counts = divine_sv.groupby('book')['ref'].nunique().reset_index(name='count')
-        total_counts  = all_sv.groupby('book')['ref'].nunique().reset_index(name='total')
+        total_counts = all_sv.groupby('book')['ref'].nunique().reset_index(name='total')
     else:
         divine_counts = divine_sv.groupby('book').size().reset_index(name='count')
-        total_counts  = all_sv.groupby('book').size().reset_index(name='total')
+        total_counts = all_sv.groupby('book').size().reset_index(name='total')
 
     result = divine_counts.merge(total_counts, on='book', how='left')
     result['pct'] = (result['count'] / result['total'] * 100).round(1)
@@ -325,7 +325,7 @@ def print_divine_speech_by_book(
     print(f"  {'Book':<8} {'Verses':>8} {'Of Total':>10}  {'Pct':>6}")
     print(f"  {'-'*7} {'-'*8} {'-'*10}  {'-'*6}")
     for _, row in df.iterrows():
-        print(f"  {row['book']:<8} {int(row['count']):>8} {int(row['total']):>10}  {row['pct']:>5.1f}%")
+        print(f"  {row['book']:<8} {int(row['count']):>8} {int(row['total']):>10}  {row['pct']:>5.1f}%")  # noqa: E501
     print()
 
 

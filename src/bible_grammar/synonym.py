@@ -24,11 +24,9 @@ compare_synonyms(['ἀγάπη', 'φιλία'], corpus='NT')
 """
 
 from __future__ import annotations
-import re
 import pandas as pd
-from . import db as _db
-from .wordstudy import _lookup_lex, _BOOK_ORDER, word_study
-from .reference import BOOKS, book_info
+from .wordstudy import _lookup_lex, word_study
+from .reference import BOOKS
 
 _BOOK_IDS = {b[0] for b in BOOKS}
 
@@ -143,9 +141,9 @@ def print_synonym_comparison(
 
     # Frequency comparison
     print(f"  {'─'*70}")
-    print(f"  FREQUENCY COMPARISON")
+    print("  FREQUENCY COMPARISON")
     print(f"  {'─'*70}")
-    labels = [f"{p['strongs']} ({p['lemma'] or p['gloss']})" for p in profiles]
+    [f"{p['strongs']} ({p['lemma'] or p['gloss']})" for p in profiles]
     max_total = max(p['total'] for p in profiles) or 1
     for p in profiles:
         bar_len = int(p['total'] / max_total * 30)
@@ -157,7 +155,7 @@ def print_synonym_comparison(
     # LXX translation equivalents (Hebrew only)
     if any(p['strongs'].startswith('H') for p in profiles):
         print(f"  {'─'*70}")
-        print(f"  LXX TRANSLATION EQUIVALENTS  (word-level alignment)")
+        print("  LXX TRANSLATION EQUIVALENTS  (word-level alignment)")
         print(f"  {'─'*70}")
         for p in profiles:
             if not p['strongs'].startswith('H'):
@@ -175,13 +173,13 @@ def print_synonym_comparison(
                     parts.append(f"{g}{shared} {pct:.0f}%")
                 print(f"{label}: {' | '.join(parts)}")
         if any(any(p['shared_lxx']) for p in profiles):
-            print(f"\n  † = LXX rendering shared with another term in this comparison")
+            print("\n  † = LXX rendering shared with another term in this comparison")
         print()
 
     # NT trajectory (Hebrew only)
     if any(p.get('nt_trajectory') for p in profiles):
         print(f"  {'─'*70}")
-        print(f"  OT → LXX → NT TRAJECTORY")
+        print("  OT → LXX → NT TRAJECTORY")
         print(f"  {'─'*70}")
         for p in profiles:
             traj = p.get('nt_trajectory', [])
@@ -190,7 +188,8 @@ def print_synonym_comparison(
                 print(f"{label}: (no NT trajectory)")
             else:
                 for eq in traj:
-                    print(f"{label} → {eq['lemma']} ({eq['strongs']})  NT: {eq['nt_total']:,} occurrences")
+                    print(
+                        f"{label} → {eq['lemma']} ({eq['strongs']})  NT: {eq['nt_total']:,} occurrences")  # noqa: E501
         print()
 
     # Distribution by book

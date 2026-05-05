@@ -51,11 +51,11 @@ import re
 import pandas as pd
 
 # Strong's numbers for divine / key figures — convenience constants
-GOD_OT    = {'H0430', 'H3068', 'H0136', 'H0410'}   # Elohim, YHWH, Adonai, El
-GOD_NT    = {'G2316'}                                # Theos
-JESUS_NT  = {'G2424'}                                # Iesous
+GOD_OT = {'H0430', 'H3068', 'H0136', 'H0410'}   # Elohim, YHWH, Adonai, El
+GOD_NT = {'G2316'}                                # Theos
+JESUS_NT = {'G2424'}                                # Iesous
 SPIRIT_NT = {'G4151'}                                # Pneuma
-HUMAN_OT  = {'H0120', 'H0376', 'H0582'}             # adam, ish, enosh
+HUMAN_OT = {'H0120', 'H0376', 'H0582'}             # adam, ish, enosh
 
 _CORPUS_MAP = {
     'OT': 'ot',
@@ -222,7 +222,8 @@ def verb_subjects(
 
     if corpus == 'OT':
         df = _load_ot()
-        id_map = df.set_index(df['xml_id'].str.lstrip('o'))[['strongnumberx', 'lemma', 'gloss']].to_dict('index')
+        id_map = df.set_index(df['xml_id'].str.lstrip('o'))[
+                              ['strongnumberx', 'lemma', 'gloss']].to_dict('index')
         verbs = df[df['pos'] == 'verb']
         if books:
             verbs = verbs[verbs['book'].isin(books)]
@@ -463,7 +464,7 @@ def object_verbs(
     if corpus == 'OT':
         df = _load_ot()
         id_map = _ot_id_to_strong()
-        id_to_row = df.set_index(df['xml_id'].str.lstrip('o'))
+        df.set_index(df['xml_id'].str.lstrip('o'))
 
         verbs = df[(df['pos'] == 'verb') & df['frame'].notna() & (df['frame'] != '')].copy()
         if books:
@@ -556,7 +557,8 @@ def print_role_summary(
         for _, row in df.iterrows():
             lxx = row.get('greek', '')[:15] if row.get('greek') else ''
             stem = row.get('stem', '')[:11] if row.get('stem') else ''
-            print(f"  {str(row['lemma']):<16} {str(row['gloss']):<24} {stem:<12} {lxx:<16} {row['count']:>5}")
+            print(
+                f"  {str(row['lemma']):<16} {str(row['gloss']):<24} {stem:<12} {lxx:<16} {row['count']:>5}")  # noqa: E501
     else:
         print(f"  {'Lemma':<20} {'Gloss':<30} Count")
         print(f"  {'-'*19} {'-'*29} -----")
@@ -691,7 +693,6 @@ def divine_action_comparison(
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
-    import numpy as np
 
     if ot_strongs is None:
         ot_strongs = ['H3068', 'H0430', 'H0136', 'H0410']
@@ -712,7 +713,8 @@ def divine_action_comparison(
     if not ot_df.empty:
         ot_labels = [f"{r['lemma']}  \"{r['gloss'][:16]}\"" for _, r in ot_df.iterrows()]
         ax1.barh(ot_labels[::-1], ot_df['count'][::-1], color='#2c5f8a', alpha=0.85)
-        ax1.set_title('OT: God (YHWH/Elohim)\nas grammatical subject', fontsize=9, fontweight='bold')
+        ax1.set_title('OT: God (YHWH/Elohim)\nas grammatical subject',
+                      fontsize=9, fontweight='bold')
         ax1.xaxis.grid(True, linestyle='--', alpha=0.4)
         ax1.set_axisbelow(True)
 
@@ -796,8 +798,8 @@ def role_report(
                   "|---|---|---|---|---|---:|"]
         for _, row in df.iterrows():
             lines.append(
-                f"| {row['lemma']} | {row['gloss']} | {row.get('stem','')} "
-                f"| {row.get('greek','')} | {row.get('greek_g','')} | {row['count']} |"
+                f"| {row['lemma']} | {row['gloss']} | {row.get('stem', '')} "
+                f"| {row.get('greek', '')} | {row.get('greek_g', '')} | {row['count']} |"
             )
     else:
         lines += ["| Lemma | Gloss | Strong | Count |",
@@ -805,7 +807,7 @@ def role_report(
         for _, row in df.iterrows():
             lines.append(
                 f"| {row['lemma']} | {row['gloss']} "
-                f"| {row.get('strong_g','')} | {row['count']} |"
+                f"| {row.get('strong_g', '')} | {row['count']} |"
             )
 
     lines.append("")
@@ -827,7 +829,7 @@ def role_report(
             lines += ["| Book | " + " | ".join(top5_lemmas) + " |",
                       "|---|" + "---:|" * len(top5_lemmas)]
             for book, row in by_book.iterrows():
-                vals = " | ".join(str(row.get(l, 0)) for l in top5_lemmas)
+                vals = " | ".join(str(row.get(lem, 0)) for lem in top5_lemmas)
                 lines.append(f"| {book} | {vals} |")
             lines.append("")
 

@@ -13,6 +13,7 @@ THEOLOGICAL_TRAJECTORIES                → dict of term entries
 """
 
 from __future__ import annotations
+import pandas as pd
 from pathlib import Path
 
 
@@ -259,19 +260,19 @@ def print_theological_summary() -> None:
     df = theological_summary_table()
     w = 100
     print(f"\n{'═'*w}")
-    print(f"  Theological Term Trajectories — Summary")
+    print("  Theological Term Trajectories — Summary")
     print(f"{'═'*w}")
-    print(f"  {'Term':<14} {'Theme':<14} {'OT':>6} {'LXX':>6} {'NT':>6}  {'NT Word':<14} {'LXX%':>5}  {'Continuity'}")
+    print(f"  {'Term':<14} {'Theme':<14} {'OT':>6} {'LXX':>6} {'NT':>6}  {'NT Word':<14} {'LXX%':>5}  {'Continuity'}")  # noqa: E501
     print(f"  {'-'*13} {'-'*13} {'-'*6} {'-'*6} {'-'*6}  {'-'*13} {'-'*5}  {'-'*10}")
     for _, r in df.iterrows():
         if 'error' in r and pd.notna(r.get('error', None)):
             print(f"  {str(r['term_key']):<14}  ERROR: {r.get('error', '')}")
             continue
         print(
-            f"  {str(r['term_key']):<14} {str(r.get('theme','')):<14} "
-            f"{int(r.get('ot_total',0)):>6} {int(r.get('lxx_total',0)):>6} "
-            f"{int(r.get('nt_total',0)):>6}  {str(r.get('nt_lemma','')):<14} "
-            f"{float(r.get('lxx_pct',0)):>5.0f}%  {str(r.get('continuity',''))}"
+            f"  {str(r['term_key']):<14} {str(r.get('theme', '')):<14} "
+            f"{int(r.get('ot_total', 0)):>6} {int(r.get('lxx_total', 0)):>6} "
+            f"{int(r.get('nt_total', 0)):>6}  {str(r.get('nt_lemma', '')):<14} "
+            f"{float(r.get('lxx_pct', 0)):>5.0f}%  {str(r.get('continuity', ''))}"
         )
     print()
 
@@ -280,7 +281,6 @@ def print_theological_summary() -> None:
 
 def _write_index(paths: list[str], output_dir: str) -> None:
     """Write a README.md index linking all generated reports."""
-    import pandas as pd
     out = Path(output_dir)
     lines = [
         "# Theological Term Trajectories",

@@ -207,7 +207,7 @@ def verb_form_chart(
     scope = f"{book} ch.{chapter}" if chapter else book
 
     fig, ax = plt.subplots(figsize=(10, 5))
-    colors = plt.cm.tab20.colors[:len(df)]
+    colors = [plt.cm.get_cmap('tab20')(i / 20) for i in range(len(df))]
     ax.bar([VERB_FORM_LABELS.get(f, f) for f in df['form']], df['count'],
            color=colors, edgecolor='white', linewidth=0.5)
     ax.set_title(f"Hebrew Verb Form Distribution — {scope}", fontsize=13)
@@ -512,9 +512,9 @@ _NEGATION_LEMMAS = {'לֹא', 'אַל', 'בַּל', 'לְבַלְתִּי', 'א�
 _CONDITIONAL_LEMMAS = {'אִם', 'לוּ', 'לוּלֵא', 'לוּלֵי', 'הֵן', 'הִן'}
 _RELATIVE_LEMMAS = {'אֲשֶׁר', 'שֶׁ'}
 
-_NEG_STRIPPED = {_strip_diacritics(l) for l in _NEGATION_LEMMAS}
-_COND_STRIPPED = {_strip_diacritics(l) for l in _CONDITIONAL_LEMMAS}
-_REL_STRIPPED  = {_strip_diacritics(l) for l in _RELATIVE_LEMMAS}
+_NEG_STRIPPED = {_strip_diacritics(lem) for lem in _NEGATION_LEMMAS}
+_COND_STRIPPED = {_strip_diacritics(lem) for lem in _CONDITIONAL_LEMMAS}
+_REL_STRIPPED = {_strip_diacritics(lem) for lem in _RELATIVE_LEMMAS}
 
 
 def clause_type_profile(book: str) -> pd.DataFrame:
@@ -652,7 +652,7 @@ def stem_chart(
     df = df[df['count'] >= 2]
 
     fig, ax = plt.subplots(figsize=(8, max(4, len(df) * 0.4)))
-    colors = plt.cm.tab20.colors[:len(df)]
+    colors = [plt.cm.get_cmap('tab20')(i / 20) for i in range(len(df))]
     ax.barh(df['stem'][::-1], df['count'][::-1],
             color=colors[::-1], edgecolor='white', linewidth=0.5)
     ax.set_title(f"Verb Stem Distribution — {book}", fontsize=12)
@@ -683,10 +683,10 @@ def verbal_syntax_report(book: str, *, output_dir: str = 'output/reports/ot/verb
     out.mkdir(parents=True, exist_ok=True)
     md_path = out / f'verbal-syntax-{book.lower()}.md'
 
-    vfp  = verb_form_profile(book)
+    vfp = verb_form_profile(book)
     stems = stem_distribution(book)
-    ctp  = clause_type_profile(book)
-    inf  = infinitive_usage(book)
+    ctp = clause_type_profile(book)
+    inf = infinitive_usage(book)
 
     lines = [
         f"# Hebrew Verbal Syntax Report: {book}",
@@ -802,11 +802,13 @@ _CONJ_LABELS = {
     'רַק':   'raq (only/however)',
     'אַךְ':  'akh (surely/however)',
     'אֶפֶס': 'efes (nevertheless)',
-    'אוּלָם':'ulam (but)',
+    'אוּלָם': 'ulam (but)',
 }
 
 # Discourse function heuristics — based on the verb form that follows the
 # subject-first opening.  These are approximations; context always wins.
+
+
 def _discourse_function(verb_form: str, opener_class: str) -> str:
     if not verb_form:
         return 'nominal clause'
@@ -940,7 +942,8 @@ def print_disjunctive_clauses(
               f"{row['verb_form']:<22} {row['discourse_function']}")
 
     if len(df) > max_rows:
-        print(f"  … ({len(df) - max_rows} more rows — use disjunctive_clauses() for full DataFrame)")
+        print(f"  … ({len(df) - max_rows} more rows"
+              f" — use disjunctive_clauses() for full DataFrame)")
     print()
 
 
@@ -1028,7 +1031,7 @@ def print_disjunctive_in_chains(book: str, chapter: int) -> None:
     # Summary stats
     clean = sum(1 for c in annotated if c['interruption_type'] == 'clean')
     inter = sum(1 for c in annotated if c['interruption_type'] == 'interrupted')
-    term  = sum(1 for c in annotated if c['interruption_type'] == 'terminated-by-disj')
+    term = sum(1 for c in annotated if c['interruption_type'] == 'terminated-by-disj')
     print(f"\n  Summary: {len(annotated)} chains — "
           f"{clean} clean · {inter} interrupted · {term} terminated-by-disjunctive")
     print()
@@ -1071,6 +1074,8 @@ _COND_PARTICLE_LABELS = {
 }
 
 # Condition type based on particle + protasis verb form
+
+
 def _condition_type(particle: str, verb_form: str) -> str:
     if particle == 'אם':
         if verb_form == 'yiqtol':
@@ -1304,14 +1309,14 @@ _ANT_PLACE_LEMMAS = {
 
 def _antecedent_class(lemma_stripped: str, cls: str, noun_type: str) -> str:
     """Rough semantic class of antecedent head noun."""
-    l = lemma_stripped.lower()
+    lem = lemma_stripped.lower()
     if cls == 'noun' and noun_type == 'proper':
         return 'person/place (proper)'
-    if l in _ANT_PERSON_LEMMAS:
+    if lem in _ANT_PERSON_LEMMAS:
         return 'person'
-    if l in _ANT_TIME_LEMMAS:
+    if lem in _ANT_TIME_LEMMAS:
         return 'time'
-    if l in _ANT_PLACE_LEMMAS:
+    if lem in _ANT_PLACE_LEMMAS:
         return 'place'
     return 'thing'
 
@@ -1500,7 +1505,8 @@ def print_relative_clauses(
     print()
 
     # Per-verse listing
-    print(f"  {'Ref':<10} {'Marker':<10} {'Antecedent':<18} {'Role':<12} {'Verb form':<22} {'Rel verb'}")
+    print(f"  {'Ref':<10} {'Marker':<10} {'Antecedent':<18} "
+          f"{'Role':<12} {'Verb form':<22} {'Rel verb'}")
     print('  ' + '─' * 78)
     for _, row in df.head(max_rows).iterrows():
         ref = f"{book} {row['chapter']}:{row['verse']}"

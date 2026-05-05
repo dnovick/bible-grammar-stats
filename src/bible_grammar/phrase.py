@@ -37,16 +37,15 @@ from __future__ import annotations
 import re
 import unicodedata
 import pandas as pd
-from pathlib import Path
 from . import db as _db
 
 # Corpus identifiers
-_OT  = "OT"
-_NT  = "NT"
+_OT = "OT"
+_NT = "NT"
 _LXX = "LXX"
 
-_OT_BOOKS  = None
-_NT_BOOKS  = None
+_OT_BOOKS = None
+_NT_BOOKS = None
 
 
 def _ot_book_ids() -> set:
@@ -86,7 +85,8 @@ def _norm_strongs(s: str) -> str:
     if braced:
         # All were H9xxx — return first anyway (shouldn't happen for content)
         m = braced[0]
-        pfx = m[0]; rest = m[1:]
+        pfx = m[0]
+        rest = m[1:]
         num = re.match(r'0*(\d+)([A-Z]?)$', rest)
         return pfx + (num.group(1) + num.group(2) if num else rest)
 
@@ -144,14 +144,14 @@ def _matches_row(row: pd.Series, constraint: dict, is_lxx: bool = False) -> bool
         norm = _norm_strongs(str(row.get('strongs', '')))
         target = constraint['strongs']
         # Strip trailing variant letter from both sides for root comparison
-        norm_root   = re.sub(r'[A-Z]$', '', norm)
+        norm_root = re.sub(r'[A-Z]$', '', norm)
         target_root = re.sub(r'[A-Z]$', '', target)
         if norm_root != target_root:
             return False
 
     if 'lemma' in constraint:
         stored = unicodedata.normalize('NFC',
-                     str(row.get('lemma', '')).strip().lower())
+                                       str(row.get('lemma', '')).strip().lower())
         if constraint['lemma'] not in stored:
             return False
 
@@ -278,13 +278,13 @@ def phrase_search(
 
     # Build a set of candidate starting rows for position 0
     # For efficiency, pre-filter on the first non-wildcard constraint
-    first_real = next((i for i, c in enumerate(constraints) if not c.get('wildcard')), None)
+    next((i for i, c in enumerate(constraints) if not c.get('wildcard')), None)
 
     rows_out = []
 
     # Group by verse for efficient consecutive-word checking
     for (book_id, ch, vs), verse_df in df.groupby(['book_id', 'chapter', 'verse'],
-                                                    sort=False):
+                                                  sort=False):
         verse_df = verse_df.sort_values('word_num').reset_index(drop=True)
         words = verse_df.to_dict('records')
         nw = len(words)
@@ -307,7 +307,7 @@ def phrase_search(
                 }
                 for offset in range(n):
                     w = words[start + offset]
-                    row[f'word_{offset+1}']    = w.get('word', '')
+                    row[f'word_{offset+1}'] = w.get('word', '')
                     row[f'strongs_{offset+1}'] = _norm_strongs(str(w.get('strongs', '')))
                     if is_lxx:
                         row[f'lemma_{offset+1}'] = w.get('lemma', '')
@@ -430,7 +430,6 @@ def proximity_search(
     # For each constraint, find all matching row indices (global positions)
     match_sets: list[pd.Index] = []
     for constraint in constraints:
-        mask = pd.Series(True, index=df.index)
         if constraint.get('wildcard'):
             match_sets.append(df.index)
             continue
@@ -452,7 +451,7 @@ def proximity_search(
     # Iterate over positions of the anchor (first token)
     for anchor_idx, anchor_pos in zip(idx_arrays[0], pos_arrays[0]):
         candidate_idxs = [anchor_idx]
-        candidate_pos  = [anchor_pos]
+        candidate_pos = [anchor_pos]
         ok = True
 
         for ti in range(1, n):
@@ -498,12 +497,12 @@ def proximity_search(
         for ti, (ridx, rpos) in enumerate(zip(candidate_idxs, candidate_pos)):
             w = df.loc[ridx]
             suffix = f'_{ti+1}'
-            row_out[f'book_id{suffix}']   = w['book_id']
-            row_out[f'chapter{suffix}']   = int(w['chapter'])
-            row_out[f'verse{suffix}']     = int(w['verse'])
-            row_out[f'word_num{suffix}']  = int(w['word_num'])
-            row_out[f'word{suffix}']      = w['word']
-            row_out[f'strongs{suffix}']   = _norm_strongs(str(w.get('strongs', '')))
+            row_out[f'book_id{suffix}'] = w['book_id']
+            row_out[f'chapter{suffix}'] = int(w['chapter'])
+            row_out[f'verse{suffix}'] = int(w['verse'])
+            row_out[f'word_num{suffix}'] = int(w['word_num'])
+            row_out[f'word{suffix}'] = w['word']
+            row_out[f'strongs{suffix}'] = _norm_strongs(str(w.get('strongs', '')))
             if is_lxx:
                 row_out[f'lemma{suffix}'] = w.get('lemma', '')
 
@@ -557,12 +556,13 @@ def print_proximity_results(
         dist = int(row['distance'])
         parts = []
         for i in range(1, n_tokens + 1):
-            w   = row.get(f'word_{i}', '')
-            ref_i = f"{row.get(f'book_id_{i}','')} {row.get(f'chapter_{i}','')}:{row.get(f'verse_{i}','')}"
+            w = row.get(f'word_{i}', '')
+            ref_i = f"{row.get(f'book_id_{i}', '')} {row.get(
+                f'chapter_{i}', '')}:{row.get(f'verse_{i}', '')}"
             same_verse = all(
                 row.get(f'book_id_{j}') == row.get('book_id_1') and
                 row.get(f'chapter_{j}') == row.get('chapter_1') and
-                row.get(f'verse_{j}')   == row.get('verse_1')
+                row.get(f'verse_{j}') == row.get('verse_1')
                 for j in range(1, n_tokens + 1)
             )
             if same_verse:
@@ -597,7 +597,7 @@ def print_phrase_results(
 
     word_cols = [c for c in df.columns if c.startswith('word_')]
     strongs_cols = [c for c in df.columns if c.startswith('strongs_')]
-    lemma_cols = [c for c in df.columns if c.startswith('lemma_')]
+    [c for c in df.columns if c.startswith('lemma_')]
 
     for _, row in df.head(max_rows).iterrows():
         words = '  '.join(str(row[c]) for c in word_cols)

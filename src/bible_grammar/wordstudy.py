@@ -22,10 +22,9 @@ print_word_study('G4160')
 
 from __future__ import annotations
 import re
-from pathlib import Path
 import pandas as pd
 from . import db as _db
-from .reference import BOOKS, book_info, all_book_ids
+from .reference import BOOKS, book_info
 from .lexicon import lookup as _lex_lookup, lemma_index as _lemma_index
 
 _BOOK_ORDER = {b[0]: b[3] for b in BOOKS}
@@ -177,7 +176,7 @@ def word_study(strongs: str, *, example_verses: int = 5) -> dict:
     else:
         pat = re.escape(clean)
     mask = corpus["strongs"].str.upper().str.contains(pat, regex=True, na=False)
-    base = re.sub(r'[A-Z]$', '', clean)
+    re.sub(r'[A-Z]$', '', clean)
 
     hits = corpus[mask].copy()
     result["total_occurrences"] = len(hits)
@@ -364,13 +363,14 @@ def print_word_study(strongs: str, *, example_verses: int = 5) -> None:
         print()
         print("  OT → LXX → NT Trajectory:")
         for equiv in ws["nt_lxx_equiv"]:
-            print(f"    {equiv['lemma']} ({equiv['strongs']})  —  {equiv['nt_total']:,} NT occurrences")
+            print(f"    {equiv['lemma']} ({equiv['strongs']})"
+                  f"  —  {equiv['nt_total']:,} NT occurrences")
             nt_bb = equiv["nt_by_book"].head(8)
             for _, row in nt_bb.iterrows():
                 print(f"      {row['book_id']:<10} {row['count']:4d}")
 
     print()
-    print(f"  Example Verses:")
+    print("  Example Verses:")
     for ex in ws["examples"]:
         print(f"    [{ex['reference']}]  {ex['word']}")
         if ex["context"]:

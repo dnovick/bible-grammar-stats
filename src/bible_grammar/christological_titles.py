@@ -43,6 +43,7 @@ title_report(output_dir='output/reports')
 """
 
 from __future__ import annotations
+import pandas as pd
 from pathlib import Path
 
 # ── Title registry ────────────────────────────────────────────────────────────
@@ -243,9 +244,9 @@ TITLE_REGISTRY: list[dict] = [
 
 # Canonical Gospel + Acts book order for display
 _GOSPEL_BOOKS = ['Mat', 'Mrk', 'Luk', 'Jhn']
-_NT_BOOKS     = ['Mat', 'Mrk', 'Luk', 'Jhn', 'Act', 'Rom', '1Co', '2Co', 'Gal',
-                 'Eph', 'Php', 'Col', '1Th', '2Th', '1Ti', '2Ti', 'Tit', 'Phm',
-                 'Heb', 'Jas', '1Pe', '2Pe', '1Jn', '2Jn', '3Jn', 'Jud', 'Rev']
+_NT_BOOKS = ['Mat', 'Mrk', 'Luk', 'Jhn', 'Act', 'Rom', '1Co', '2Co', 'Gal',
+             'Eph', 'Php', 'Col', '1Th', '2Th', '1Ti', '2Ti', 'Tit', 'Phm',
+             'Heb', 'Jas', '1Pe', '2Pe', '1Jn', '2Jn', '3Jn', 'Jud', 'Rev']
 
 _CONFIDENCE_LABELS = {
     'high':   '✓ High — almost exclusively Jesus self-reference',
@@ -381,7 +382,7 @@ def print_title_counts(scope: str = 'gospels', *,
     print(f"\n{'═'*w}")
     scope_label = 'Gospels' if scope == 'gospels' else 'New Testament'
     print(f"  Christological Titles — {scope_label}")
-    print(f"  Counts are verse-level co-occurrences (see confidence column)")
+    print("  Counts are verse-level co-occurrences (see confidence column)")
     print(f"{'═'*w}\n")
 
     # Print by group
@@ -403,7 +404,7 @@ def print_title_counts(scope: str = 'gospels', *,
             print(f"  {row['title']:<28} {bk_vals}  {row['Total']:>5}  {conf} {row['confidence']}")
         print()
 
-    print(f"  Confidence key:")
+    print("  Confidence key:")
     for k, v in _CONFIDENCE_LABELS.items():
         print(f"    {v}")
     print()
@@ -442,16 +443,16 @@ def title_chart(
     x = np.arange(len(df))
     n_books = len(active_books)
     width = 0.8 / n_books
-    colors = plt.get_cmap('tab10').colors
+    colors = [plt.get_cmap('tab10')(i) for i in range(10)]
 
     fig, ax = plt.subplots(figsize=figsize)
 
     for i, book in enumerate(active_books):
         offset = (i - n_books / 2 + 0.5) * width
-        bars = ax.bar(x + offset, df[book], width,
-                      label=_book_name(book),
-                      color=colors[i % len(colors)],
-                      edgecolor='white', linewidth=0.4, alpha=0.9)
+        ax.bar(x + offset, df[book], width,
+               label=_book_name(book),
+               color=colors[i % len(colors)],
+               edgecolor='white', linewidth=0.4, alpha=0.9)
 
     ax.set_xticks(x)
     ax.set_xticklabels(df['title'], rotation=35, ha='right', fontsize=8)
@@ -530,7 +531,6 @@ def title_report(
     Generate a Markdown report with frequency table, chart, and verse listings.
     Returns the path to the saved file.
     """
-    import pandas as pd
     from pathlib import Path
 
     out_dir = Path(output_dir)

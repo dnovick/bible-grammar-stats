@@ -29,7 +29,7 @@ from __future__ import annotations
 import re
 import pandas as pd
 from . import db as _db
-from .quotations import nt_quotations, verse_comparison, _NT_IDS, _OT_IDS
+from .quotations import nt_quotations
 
 _CONTENT_POS = {'Noun', 'Verb', 'Adjective', 'Adverb'}
 
@@ -103,15 +103,15 @@ def quotation_align(
     from .ibm_align import load_word_alignment
 
     words_df = _db.load()
-    lxx_df   = _db.load_lxx()
+    lxx_df = _db.load_lxx()
     align_df = load_word_alignment()
 
     # NT verse
     nt_rows = words_df[
-        (words_df['source']   == 'TAGNT') &
-        (words_df['book_id']  == nt_book) &
-        (words_df['chapter']  == nt_chapter) &
-        (words_df['verse']    == nt_verse)
+        (words_df['source'] == 'TAGNT') &
+        (words_df['book_id'] == nt_book) &
+        (words_df['chapter'] == nt_chapter) &
+        (words_df['verse'] == nt_verse)
     ].sort_values('word_num')
 
     if nt_rows.empty:
@@ -121,7 +121,7 @@ def quotation_align(
     xrefs = nt_quotations(nt_book=nt_book, min_votes=min_votes)
     xrefs = xrefs[
         (xrefs['nt_chapter'] == nt_chapter) &
-        (xrefs['nt_verse']   == nt_verse)
+        (xrefs['nt_verse'] == nt_verse)
     ]
 
     if xrefs.empty:
@@ -129,7 +129,7 @@ def quotation_align(
 
     results = []
     for _, xref in xrefs.iterrows():
-        ot_b  = xref['ot_book']
+        ot_b = xref['ot_book']
         ot_ch = xref['ot_chapter']
         ot_vs = xref['ot_verse']
         ot_ref = f"{ot_b} {ot_ch}:{ot_vs}"
@@ -138,7 +138,7 @@ def quotation_align(
         lxx_verse = lxx_df[
             (lxx_df['book_id'] == ot_b) &
             (lxx_df['chapter'] == ot_ch) &
-            (lxx_df['verse']   == ot_vs)
+            (lxx_df['verse'] == ot_vs)
         ]
         lxx_strongs_set = {
             _norm_g(s)
@@ -148,10 +148,10 @@ def quotation_align(
 
         # OT Hebrew verse — set of normalised content strongs
         ot_verse = words_df[
-            (words_df['source']  == 'TAHOT') &
+            (words_df['source'] == 'TAHOT') &
             (words_df['book_id'] == ot_b) &
             (words_df['chapter'] == ot_ch) &
-            (words_df['verse']   == ot_vs)
+            (words_df['verse'] == ot_vs)
         ]
         ot_heb_strongs = {_norm_h(s) for s in ot_verse['strongs'].dropna() if _norm_h(s)}
 
@@ -159,7 +159,7 @@ def quotation_align(
         verse_align = align_df[
             (align_df['book_id'] == ot_b) &
             (align_df['chapter'] == ot_ch) &
-            (align_df['verse']   == ot_vs)
+            (align_df['verse'] == ot_vs)
         ]
         # Map lxx_strongs → (heb_strongs, heb_word) for this verse
         lxx_to_heb: dict[str, tuple[str, str]] = {}
@@ -182,10 +182,10 @@ def quotation_align(
                 continue
 
             g_strongs = _norm_g(str(nrow.get('strongs', '')))
-            nt_word   = str(nrow.get('word', ''))
-            nt_lemma  = str(nrow.get('lemma', nrow.get('word', '')))
+            nt_word = str(nrow.get('word', ''))
+            nt_lemma = str(nrow.get('lemma', nrow.get('word', '')))
 
-            in_lxx  = g_strongs in lxx_strongs_set
+            in_lxx = g_strongs in lxx_strongs_set
             heb_root, heb_word = lxx_to_heb.get(g_strongs, ('', ''))
 
             # Determine verdict
@@ -255,7 +255,7 @@ def print_quotation_align(
     print(f"\n{'═'*70}")
     print(f"  NT Quotation Alignment: {nt_ref}")
     if kjv:
-        print(f"  \"{kjv[:90]}{'...' if len(kjv)>90 else ''}\"")
+        print(f"  \"{kjv[:90]}{'...' if len(kjv) > 90 else ''}\"")
     print(f"{'═'*70}\n")
 
     if not results:
@@ -266,13 +266,13 @@ def print_quotation_align(
         print(f"  ┌─ OT source: {res['ot_ref']}  (confidence votes: {res['votes']})")
         print(f"  │  Text alignment: {res['summary'].upper()}"
               f"  ({res['lxx_following_pct']:.0f}% follows LXX"
-              f"{', ' + str(res['mt_diverge_count']) + ' MT-diverge' if res['mt_diverge_count'] else ''})")
+              f"{', ' + str(res['mt_diverge_count']) + ' MT-diverge' if res['mt_diverge_count'] else ''})")  # noqa: E501
         print(f"  └{'─'*60}")
         print()
 
         # Verdict legend
         _V = {'LXX': '✓ LXX', 'LXX+MT': '✓ LXX+MT', 'MT-diverge': '≠ MT', 'neutral': '·'}
-        print(f"  {'NT word':<22} {'Strongs':<9} {'Verdict':<12} {'Hebrew root':<10} {'Hebrew word'}")
+        print(f"  {'NT word':<22} {'Strongs':<9} {'Verdict':<12} {'Hebrew root':<10} {'Hebrew word'}")  # noqa: E501
         print(f"  {'-'*21} {'-'*8} {'-'*11} {'-'*9} {'-'*20}")
 
         for w in res['words']:
@@ -290,7 +290,8 @@ def print_quotation_align(
             if len(ch_vs) == 2:
                 ot_kjv = _kjv(ot_book, int(ch_vs[0]), int(ch_vs[1]))
                 if ot_kjv:
-                    print(f"  OT ({res['ot_ref']}): \"{ot_kjv[:95]}{'...' if len(ot_kjv)>95 else ''}\"")
+                    print(
+                        f"  OT ({res['ot_ref']}): \"{ot_kjv[:95]}{'...' if len(ot_kjv) > 95 else ''}\"")  # noqa: E501
                     print()
 
 
@@ -315,7 +316,9 @@ def batch_align(
     rows = []
 
     for _, xref in xrefs.iterrows():
-        nb = xref['nt_book']; nch = xref['nt_chapter']; nvs = xref['nt_verse']
+        nb = xref['nt_book']
+        nch = xref['nt_chapter']
+        nvs = xref['nt_verse']
         key = (nb, nch, nvs)
         if key in seen:
             continue
@@ -333,7 +336,7 @@ def batch_align(
                 'votes':              res['votes'],
                 'lxx_following_pct':  res['lxx_following_pct'],
                 'mt_diverge_count':   res['mt_diverge_count'],
-                'total_content_words':len(res['words']),
+                'total_content_words': len(res['words']),
                 'summary':            res['summary'],
             })
 

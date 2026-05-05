@@ -18,7 +18,7 @@ from .stats import freq_table
 from .alignment import translation_equivalents, hebrew_sources
 from .ibm_align import translation_equivalents_w, hebrew_sources_w
 from .quotations import nt_quotations, verse_comparison, quotation_table, quotation_summary
-from .lxx_consistency import lxx_consistency, print_lxx_consistency, consistency_heatmap, batch_consistency
+from .lxx_consistency import lxx_consistency, print_lxx_consistency, consistency_heatmap, batch_consistency  # noqa: E501
 from .concordance import concordance, lemma_frequency, top_lemmas
 from .profiles import book_profile, print_profile, save_profile_report, batch_profiles
 from .wordstudy import word_study, print_word_study, word_study_table, resolve_strongs
@@ -32,15 +32,15 @@ from .semantic_profile import semantic_profile, print_semantic_profile, save_sem
 from .synonym import compare_synonyms, print_synonym_comparison, synonym_table
 from .quotation_align import quotation_align, print_quotation_align, batch_align
 from .divine_names import (divine_name_table, divine_name_summary, divine_name_by_section,
-                            print_divine_names, divine_names_chart, divine_names_report,
-                            OT_DIVINE_NAMES, NT_DIVINE_NAMES, LXX_DIVINE_NAMES)
+                           print_divine_names, divine_names_chart, divine_names_report,
+                           OT_DIVINE_NAMES, NT_DIVINE_NAMES, LXX_DIVINE_NAMES)
 from .genre_compare import (genre_compare, print_genre_compare, genre_heatmap, genre_report,
-                             OT_GENRES, NT_GENRES)
+                            OT_GENRES, NT_GENRES)
 from .intertextuality import (intertextuality, print_intertextuality,
                               intertextuality_graph, intertextuality_report)
 from .christological_titles import (title_counts, print_title_counts,
-                                     title_chart, title_verses, title_report,
-                                     TITLE_REGISTRY)
+                                    title_chart, title_verses, title_report,
+                                    TITLE_REGISTRY)
 from .syntax import (load_syntax, query_syntax, speech_verbs, referent_chain,
                      clause_roles, jesus_speaking_verses, MACULA_BOOK_MAP)
 from .syntax_ot import (load_syntax_ot, query_syntax_ot, lxx_alignment,
@@ -57,16 +57,16 @@ from .ot_speaker import (speaker_verses, divine_speech_by_book, who_speaks,
                          print_divine_speech_by_book, speaker_report,
                          GOD_OT_SPEECH, SPEECH_VERB_STRONGS)
 from .domain_search import (query_domain, top_domain_words, domain_profile,
-                             domain_role_search, domain_comparison,
-                             print_domain_summary, print_domain_role,
-                             DOMAIN_NAMES, THEOLOGY_DOMAINS)
+                            domain_role_search, domain_comparison,
+                            print_domain_summary, print_domain_role,
+                            DOMAIN_NAMES, THEOLOGY_DOMAINS)
 from .trajectory import (word_trajectory, print_trajectory,
                          trajectory_chart, save_trajectory_report,
                          batch_trajectories)
 from .theological_reports import (run_theological_report, run_all_theological_reports,
-                                   print_all_trajectories, theological_summary_table,
-                                   print_theological_summary,
-                                   THEOLOGICAL_TRAJECTORIES)
+                                  print_all_trajectories, theological_summary_table,
+                                  print_theological_summary,
+                                  THEOLOGICAL_TRAJECTORIES)
 from .poetry import (split_cola, verse_cola, verse_parallel_pairs,
                      book_word_pairs, parallelism_type,
                      book_parallelism_stats, compare_poetry_books,

@@ -67,15 +67,15 @@ def _parse_tbesh() -> dict[str, dict]:
             parts = line.split('\t')
             if len(parts) < 7:
                 continue
-            ext_id   = parts[2].strip()
+            ext_id = parts[2].strip()
             if not ext_id or not ext_id.startswith('H'):
                 continue
-            base     = re.sub(r'[A-Z]$', '', ext_id)
-            lemma    = parts[3].strip()
+            base = re.sub(r'[A-Z]$', '', ext_id)
+            lemma = parts[3].strip()
             translit = parts[4].strip()
             pos_code = parts[5].strip()
-            gloss    = parts[6].strip()
-            defn     = _clean_def(parts[7]) if len(parts) > 7 else ''
+            gloss = parts[6].strip()
+            defn = _clean_def(parts[7]) if len(parts) > 7 else ''
             entry = {
                 'strongs': ext_id, 'lemma': lemma,
                 'translit': translit, 'pos_code': pos_code,
@@ -102,12 +102,12 @@ def _parse_tbesg() -> dict[str, dict]:
             ext_id = parts[2].strip()
             if not ext_id or not ext_id.startswith('G'):
                 continue
-            base     = re.sub(r'[A-Z]$', '', ext_id)
-            lemma    = parts[3].strip()
+            base = re.sub(r'[A-Z]$', '', ext_id)
+            lemma = parts[3].strip()
             translit = parts[4].strip()
             pos_code = parts[5].strip()
-            gloss    = parts[6].strip()
-            defn     = _clean_def(parts[7]) if len(parts) > 7 else ''
+            gloss = parts[6].strip()
+            defn = _clean_def(parts[7]) if len(parts) > 7 else ''
             entry = {
                 'strongs': ext_id, 'lemma': lemma,
                 'translit': translit, 'pos_code': pos_code,

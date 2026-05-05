@@ -83,6 +83,25 @@ WRITINGS = {"Job", "Psa", "Pro", "Ecc", "Sng", "Rut", "Est",
 GOSPELS = {"Mat", "Mrk", "Luk", "Jhn"}
 
 
+_GROUPS: dict[str, set[str]] = {
+    'torah': TORAH,
+    'pentateuch': TORAH,
+    'prophets': PROPHETS,
+    'writings': WRITINGS,
+    'gospels': GOSPELS,
+    'pauline': PAULINE,
+}
+
+
+def book_ids_for_group(group: str) -> list[str]:
+    """Return sorted list of book IDs for a named group (e.g. 'torah', 'pauline')."""
+    key = group.lower()
+    if key not in _GROUPS:
+        raise KeyError(f"Unknown book group {group!r}. Valid: {sorted(_GROUPS)}")
+    ids = _GROUPS[key]
+    return [b[0] for b in BOOKS if b[0] in ids]
+
+
 def book_info(book_id: str) -> dict:
     row = _by_id.get(book_id)
     if row is None:

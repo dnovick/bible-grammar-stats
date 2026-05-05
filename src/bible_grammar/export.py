@@ -43,13 +43,15 @@ export_all()
 """
 
 from __future__ import annotations
+import pandas as pd
 from pathlib import Path
+from typing import Any
 import base64
 import re
 
 # ── Directory constants ───────────────────────────────────────────────────────
 
-CSV_DIR  = Path('output/exports/csv')
+CSV_DIR = Path('output/exports/csv')
 HTML_DIR = Path('output/exports/html')
 
 for _d in (CSV_DIR, HTML_DIR):
@@ -70,7 +72,7 @@ body {
   margin: 0 auto;
 }
 h1 { font-size: 1.8rem; margin-bottom: 0.25rem; color: #1a1a2e; }
-h2 { font-size: 1.25rem; margin: 2rem 0 0.5rem; color: #16213e; border-bottom: 2px solid #0f3460; padding-bottom: 0.25rem; }
+h2 { font-size: 1.25rem; margin: 2rem 0 0.5rem; color: #16213e; border-bottom: 2px solid #0f3460; padding-bottom: 0.25rem; }  # noqa: E501
 h3 { font-size: 1rem; margin: 1.5rem 0 0.4rem; color: #0f3460; }
 p  { margin: 0.5rem 0; line-height: 1.6; color: #444; }
 .meta { font-size: 0.85rem; color: #666; margin-bottom: 1.5rem; }
@@ -93,7 +95,7 @@ table {
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 thead tr { background: #0f3460; color: white; }
-th { padding: 0.55rem 0.75rem; text-align: left; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.03em; }
+th { padding: 0.55rem 0.75rem; text-align: left; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.03em; }  # noqa: E501
 th.num { text-align: right; }
 td { padding: 0.45rem 0.75rem; border-bottom: 1px solid #eef0f4; font-size: 0.85rem; }
 td.num { text-align: right; font-variant-numeric: tabular-nums; }
@@ -102,9 +104,9 @@ tr:nth-child(even) { background: #f4f6fb; }
 tr:hover { background: #e8eef8; }
 .chart-wrap { text-align: center; margin: 1rem 0 1.5rem; }
 .chart-wrap img { max-width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
-blockquote { border-left: 3px solid #0f3460; padding: 0.4rem 1rem; color: #444; background: #f0f4fa; border-radius: 0 4px 4px 0; margin: 0.5rem 0 1rem; font-style: italic; }
-.note { font-size: 0.8rem; color: #777; margin-top: 2rem; border-top: 1px solid #ddd; padding-top: 0.75rem; }
-.toc { background: white; border-radius: 6px; padding: 1rem 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+blockquote { border-left: 3px solid #0f3460; padding: 0.4rem 1rem; color: #444; background: #f0f4fa; border-radius: 0 4px 4px 0; margin: 0.5rem 0 1rem; font-style: italic; }  # noqa: E501
+.note { font-size: 0.8rem; color: #777; margin-top: 2rem; border-top: 1px solid #ddd; padding-top: 0.75rem; }  # noqa: E501
+.toc { background: white; border-radius: 6px; padding: 1rem 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }  # noqa: E501
 .toc ul { list-style: disc; padding-left: 1.5rem; }
 .toc li { margin: 0.2rem 0; }
 .toc a { color: #0f3460; text-decoration: none; }
@@ -139,10 +141,10 @@ def _df_to_html_table(df: 'pd.DataFrame', *, numeric_cols: list[str] | None = No
     import pandas as pd
 
     numeric_cols = numeric_cols or []
-    pct_cols     = pct_cols or []
-    auto_num     = {c for c in df.columns
-                    if pd.api.types.is_numeric_dtype(df[c]) and c not in pct_cols}
-    num_set      = set(numeric_cols) | auto_num
+    pct_cols = pct_cols or []
+    auto_num = {c for c in df.columns
+                if pd.api.types.is_numeric_dtype(df[c]) and c not in pct_cols}
+    num_set = set(numeric_cols) | auto_num
 
     rows_html = []
     for idx, row in df.iterrows():
@@ -181,7 +183,7 @@ def _df_to_html_table(df: 'pd.DataFrame', *, numeric_cols: list[str] | None = No
 def _img_to_data_uri(path: str | Path) -> str:
     """Return a data: URI for a PNG file (for inline embedding)."""
     data = Path(path).read_bytes()
-    b64  = base64.b64encode(data).decode()
+    b64 = base64.b64encode(data).decode()
     return f'data:image/png;base64,{b64}'
 
 
@@ -232,9 +234,9 @@ def export_html_page(
         heading = sec.get('heading', '')
         subheading = sec.get('subheading', '')
         text = sec.get('text', '')
-        df   = sec.get('df')
+        df = sec.get('df')
         chart = sec.get('chart')
-        raw  = sec.get('html', '')
+        raw = sec.get('html', '')
         pct_cols = sec.get('pct_cols', [])
 
         if heading:
@@ -279,13 +281,13 @@ def export_html_page(
 
 # ── Analysis exporters ────────────────────────────────────────────────────────
 
-def export_word_study(strongs: str, *, example_verses: int = 5) -> dict[str, Path]:
+def export_word_study(strongs: str, *, example_verses: int = 5) -> dict[str, Path | None]:
     """
     Export a word study to CSV + HTML.
 
     Returns dict with keys 'html', 'csv_by_book', 'csv_morphology', 'csv_collocates'.
     """
-    from .wordstudy import word_study, _lookup_lex
+    from .wordstudy import word_study
     from .collocation import collocations
     from .morph_chart import morph_distribution
     import pandas as pd
@@ -323,7 +325,7 @@ def export_word_study(strongs: str, *, example_verses: int = 5) -> dict[str, Pat
     gloss = ws.get('gloss', '')
     translit = ws.get('translit', '')
 
-    sections = []
+    sections: list[dict[str, Any]] = []
 
     # Header meta as HTML fragment
     badges = (f'<span class="badge">{clean}</span>'
@@ -357,7 +359,8 @@ def export_word_study(strongs: str, *, example_verses: int = 5) -> dict[str, Pat
     if is_heb and te is not None and not te.empty:
         te_disp = te.rename(columns={'lxx_lemma': 'Greek Lemma', 'lxx_strongs': 'Strongs',
                                      'count': 'Count', 'pct': '%'}).head(10)
-        sections.append({'heading': 'LXX Translation Equivalents', 'df': te_disp, 'pct_cols': ['%']})
+        sections.append({'heading': 'LXX Translation Equivalents',
+                        'df': te_disp, 'pct_cols': ['%']})
 
     # OT→LXX→NT trajectory
     traj = ws.get('nt_lxx_equiv', [])
@@ -365,15 +368,15 @@ def export_word_study(strongs: str, *, example_verses: int = 5) -> dict[str, Pat
         traj_rows = []
         for eq in traj[:5]:
             traj_rows.append({'Greek Lemma': eq['lemma'], 'Strongs': eq['strongs'],
-                               'NT Occurrences': eq['nt_total']})
-        import pandas as pd
+                              'NT Occurrences': eq['nt_total']})
         sections.append({'heading': 'OT → LXX → NT Trajectory',
                          'df': pd.DataFrame(traj_rows)})
 
     # Collocations
     if co is not None and not co.empty:
-        co_disp = co[['lemma','strongs','gloss','co_count','expected','pmi','log_likelihood']].copy()
-        co_disp.columns = ['Lemma','Strongs','Gloss','Observed','Expected','PMI','G²']
+        co_disp = co[['lemma', 'strongs', 'gloss', 'co_count',
+                      'expected', 'pmi', 'log_likelihood']].copy()
+        co_disp.columns = ['Lemma', 'Strongs', 'Gloss', 'Observed', 'Expected', 'PMI', 'G²']
         sections.append({'heading': 'Top Collocates', 'df': co_disp})
 
     # Example verses
@@ -383,7 +386,7 @@ def export_word_study(strongs: str, *, example_verses: int = 5) -> dict[str, Pat
         for ex in examples:
             ctx = ex['context']
             # Bold the target word in context
-            word_plain = re.sub(r'[֑-ׇ̀-ͯ]', '', ex['word'])
+            re.sub(r'[֑-ׇ̀-ͯ]', '', ex['word'])
             highlighted = ctx.replace(ex['word'], f'<strong>{ex["word"]}</strong>', 1)
             ex_html += (f'<li style="margin:0.75rem 0">'
                         f'<strong>[{ex["reference"]}]</strong> '
@@ -424,12 +427,12 @@ def export_genre_compare(corpus: str = 'OT') -> dict[str, Path]:
     }
     FEATURE_NOTES = {
         'verb_stem': ('Hebrew verb stems (binyanim) encode voice and action intensity. '
-                      'Qal is simple active; Piel intensifies; Hiphil is causative; Niphal is passive/reflexive.'),
+                      'Qal is simple active; Piel intensifies; Hiphil is causative; Niphal is passive/reflexive.'),  # noqa: E501
         'verb_conjugation': ('Consecutive Perfect (wayyiqtol) drives OT narrative prose. '
                              'Imperfect and Participle dominate poetry and prophecy.'),
         'pos': ('The ratio of verbs to nouns shifts across genres: '
                 'narrative prose is verb-heavy, poetry and law are noun-heavy.'),
-        'verb_tense': ('Aorist (punctiliar past) dominates narrative; Present dominates epistolary writing. '
+        'verb_tense': ('Aorist (punctiliar past) dominates narrative; Present dominates epistolary writing. '  # noqa: E501
                        'Perfect marks completed action with ongoing relevance.'),
         'verb_voice': ('Passive constructions increase in epistolary literature, '
                        'reflecting theological passives.'),
@@ -437,7 +440,7 @@ def export_genre_compare(corpus: str = 'OT') -> dict[str, Path]:
                       'Subjunctive marks contingency and hortatory purpose clauses.'),
     }
 
-    sections = []
+    sections: list[dict[str, Any]] = []
     csv_paths = {}
 
     # Token count summary
@@ -470,7 +473,7 @@ def export_genre_compare(corpus: str = 'OT') -> dict[str, Path]:
         pct_cols = cats
 
         title = FEATURE_TITLES.get(feat, feat)
-        note  = FEATURE_NOTES.get(feat, '')
+        note = FEATURE_NOTES.get(feat, '')
         sections.append({
             'heading': title,
             'text': note,
@@ -493,9 +496,7 @@ def export_genre_compare(corpus: str = 'OT') -> dict[str, Path]:
 def export_divine_names(corpora: list[str] | None = None) -> dict[str, Path]:
     """Export divine names analysis to CSV + HTML."""
     from .divine_names import (divine_name_summary, divine_name_by_section,
-                                divine_name_table, divine_names_chart)
-    from .genre_compare import OT_GENRES, NT_GENRES
-    import pandas as pd
+                               divine_name_table, divine_names_chart)
 
     if corpora is None:
         corpora = ['OT', 'LXX', 'NT']
@@ -506,13 +507,13 @@ def export_divine_names(corpora: list[str] | None = None) -> dict[str, Path]:
         'NT':  'New Testament Greek',
     }
 
-    sections = []
+    sections: list[dict[str, Any]] = []
     csv_paths = {}
 
     for corpus in corpora:
-        summary    = divine_name_summary(corpus)
+        summary = divine_name_summary(corpus)
         by_section = divine_name_by_section(corpus)
-        by_book    = divine_name_table(corpus)
+        by_book = divine_name_table(corpus)
 
         # CSV
         export_csv(summary,    f'{corpus.lower()}-divine-names-summary',    subdir='divine-names')
@@ -521,18 +522,18 @@ def export_divine_names(corpora: list[str] | None = None) -> dict[str, Path]:
         csv_paths[corpus] = csv_p
 
         # Charts
-        bar_p  = divine_names_chart(corpus, chart_type='stacked_bar',
-                                    output_path=str(HTML_DIR / f'{corpus.lower()}-divine-names-bar.png'))
+        bar_p = divine_names_chart(corpus, chart_type='stacked_bar',
+                                   output_path=str(HTML_DIR / f'{corpus.lower()}-divine-names-bar.png'))  # noqa: E501
         heat_p = divine_names_chart(corpus, chart_type='heatmap',
-                                    output_path=str(HTML_DIR / f'{corpus.lower()}-divine-names-heatmap.png'))
+                                    output_path=str(HTML_DIR / f'{corpus.lower()}-divine-names-heatmap.png'))  # noqa: E501
 
         label = CORPUS_LABELS[corpus]
         sections += [
             {'heading': label},
             {'subheading': 'Overview',
-             'df': summary[['label','script','strongs','total','pct','top_books']].rename(
-                 columns={'label':'Name','script':'Script','strongs':'Strongs',
-                          'total':'Total','pct':'%','top_books':'Top Books'}),
+             'df': summary[['label', 'script', 'strongs', 'total', 'pct', 'top_books']].rename(
+                 columns={'label': 'Name', 'script': 'Script', 'strongs': 'Strongs',
+                          'total': 'Total', 'pct': '%', 'top_books': 'Top Books'}),
              'pct_cols': ['%']},
             {'subheading': 'Distribution by Section',
              'df': by_section.drop(columns=['strongs'])},
@@ -554,7 +555,6 @@ def export_divine_names(corpora: list[str] | None = None) -> dict[str, Path]:
 def export_semantic_profile(strongs: str) -> dict[str, Path]:
     """Export a semantic profile to HTML + CSV."""
     from .semantic_profile import semantic_profile
-    from .morph_chart import morph_distribution
     import pandas as pd
 
     clean = strongs.strip('{}').upper()
@@ -568,10 +568,9 @@ def export_semantic_profile(strongs: str) -> dict[str, Path]:
     slug = clean.lower()
     lemma = ws.get('lemma', clean)
     gloss = ws.get('gloss', '')
-    lang  = 'Hebrew' if is_heb else 'Greek'
+    lang = 'Hebrew' if is_heb else 'Greek'
 
     # Distribution chart (reuse existing generator)
-    from .semantic_profile import save_semantic_profile
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
@@ -597,7 +596,7 @@ def export_semantic_profile(strongs: str) -> dict[str, Path]:
         export_csv(co, f'{slug}-collocates', subdir='semantic-profiles')
 
     # Sections
-    sections = []
+    sections: list[dict[str, Any]] = []
     badges = (f'<span class="badge">{clean}</span>'
               f'<span class="badge">{lang}</span>'
               f'<span class="badge">{ws["total_occurrences"]:,} occurrences</span>')
@@ -612,7 +611,7 @@ def export_semantic_profile(strongs: str) -> dict[str, Path]:
 
     sections.append({
         'heading': 'Distribution by Book', 'chart': str(chart_p),
-        'df': ws['by_book'].rename(columns={'book_name':'Book','count':'Count','pct':'%'}),
+        'df': ws['by_book'].rename(columns={'book_name': 'Book', 'count': 'Count', 'pct': '%'}),
         'pct_cols': ['%'],
     })
 
@@ -626,26 +625,27 @@ def export_semantic_profile(strongs: str) -> dict[str, Path]:
     if is_heb:
         te = ws.get('translation_equivalents')
         if te is not None and not te.empty:
-            te_disp = te.rename(columns={'lxx_lemma':'Greek Lemma','lxx_strongs':'Strongs',
-                                         'count':'Count','pct':'%'}).head(10)
-            sections.append({'heading': 'LXX Translation Equivalents', 'df': te_disp, 'pct_cols': ['%']})
+            te_disp = te.rename(columns={'lxx_lemma': 'Greek Lemma', 'lxx_strongs': 'Strongs',
+                                         'count': 'Count', 'pct': '%'}).head(10)
+            sections.append({'heading': 'LXX Translation Equivalents',
+                            'df': te_disp, 'pct_cols': ['%']})
 
         if lc and lc.get('total_aligned', 0) > 0:
             book_rows = []
             for b in lc.get('books', []):
                 alts = {k: v for k, v in b['rendering_profile'].items() if k != b['primary_lemma']}
-                alt_str = '  '.join(f"{k}×{v}" for k, v in sorted(alts.items(), key=lambda x: -x[1]))[:40]
+                alt_str = '  '.join(f"{k}×{v}" for k, v in sorted(
+                    alts.items(), key=lambda x: -x[1]))[:40]
                 book_rows.append({
                     'Book': b['book_name'], 'Tokens': b['total'],
                     'Primary': b['primary_lemma'], 'Consistency': b['consistency'],
                     'Alt Renderings': alt_str,
                 })
-            import pandas as pd
-            cons_html = (f'<p><strong>Overall consistency:</strong> {lc["overall_consistency"]:.0f}% &nbsp; '
+            cons_html = (f'<p><strong>Overall consistency:</strong> {lc["overall_consistency"]:.0f}% &nbsp; '  # noqa: E501
                          f'<strong>Corpus-wide primary:</strong> {lc["corpus_primary"]} '
                          f'({lc["corpus_primary_pct"]:.0f}%)</p>')
             sections.append({'heading': 'LXX Translation Consistency', 'html': cons_html,
-                              'df': pd.DataFrame(book_rows), 'pct_cols': ['Consistency']})
+                             'df': pd.DataFrame(book_rows), 'pct_cols': ['Consistency']})
 
         traj = ws.get('nt_lxx_equiv', [])
         if traj:
@@ -655,8 +655,9 @@ def export_semantic_profile(strongs: str) -> dict[str, Path]:
                              'df': pd.DataFrame(traj_rows)})
 
     if co is not None and not co.empty:
-        co_disp = co[['lemma','strongs','gloss','co_count','expected','pmi','log_likelihood']].copy()
-        co_disp.columns = ['Lemma','Strongs','Gloss','Observed','Expected','PMI','G²']
+        co_disp = co[['lemma', 'strongs', 'gloss', 'co_count',
+                      'expected', 'pmi', 'log_likelihood']].copy()
+        co_disp.columns = ['Lemma', 'Strongs', 'Gloss', 'Observed', 'Expected', 'PMI', 'G²']
         sections.append({'heading': 'Top Collocates', 'df': co_disp})
 
     examples = ws.get('examples', [])
@@ -707,7 +708,7 @@ def export_all(*, word_studies: list[str] | None = None) -> dict[str, list[Path]
         r = export_semantic_profile(s)
         results.setdefault('semantic_profiles', []).append(r['html'])
 
-    print(f'\nAll exports written to:')
+    print('\nAll exports written to:')
     print(f'  HTML → {HTML_DIR}')
     print(f'  CSV  → {CSV_DIR}')
     return results

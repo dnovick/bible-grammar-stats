@@ -136,7 +136,7 @@ def translation_equivalents(
     # What Greek verbs translate Qal verbs in Isaiah?
     translation_equivalents(heb_pos='Verb', heb_stem='Qal', book='Isa')
     """
-    from .reference import TORAH, PROPHETS, WRITINGS, GOSPELS, PAULINE
+    from .reference import TORAH, PROPHETS, WRITINGS
 
     df = load_alignment()
 

@@ -36,22 +36,23 @@ genre_report(output_dir='output/reports')
 """
 
 from __future__ import annotations
+import pandas as pd
 from pathlib import Path
 
 # ── Genre / section definitions ──────────────────────────────────────────────
 
 OT_GENRES: dict[str, list[str]] = {
-    'Torah':      ['Gen','Exo','Lev','Num','Deu'],
-    'Historical': ['Jos','Jdg','Rut','1Sa','2Sa','1Ki','2Ki','1Ch','2Ch','Ezr','Neh','Est'],
-    'Wisdom':     ['Job','Psa','Pro','Ecc','Sng'],
-    'Prophets':   ['Isa','Jer','Lam','Ezk','Dan','Hos','Jol','Amo','Oba','Jon','Mic',
-                   'Nah','Hab','Zep','Hag','Zec','Mal'],
+    'Torah':      ['Gen', 'Exo', 'Lev', 'Num', 'Deu'],
+    'Historical': ['Jos', 'Jdg', 'Rut', '1Sa', '2Sa', '1Ki', '2Ki', '1Ch', '2Ch', 'Ezr', 'Neh', 'Est'],  # noqa: E501
+    'Wisdom':     ['Job', 'Psa', 'Pro', 'Ecc', 'Sng'],
+    'Prophets':   ['Isa', 'Jer', 'Lam', 'Ezk', 'Dan', 'Hos', 'Jol', 'Amo', 'Oba', 'Jon', 'Mic',
+                   'Nah', 'Hab', 'Zep', 'Hag', 'Zec', 'Mal'],
 }
 
 NT_GENRES: dict[str, list[str]] = {
-    'Gospels & Acts': ['Mat','Mrk','Luk','Jhn','Act'],
-    'Pauline':        ['Rom','1Co','2Co','Gal','Eph','Php','Col','1Th','2Th','1Ti','2Ti','Tit','Phm'],
-    'General & Rev':  ['Heb','Jas','1Pe','2Pe','1Jn','2Jn','3Jn','Jud','Rev'],
+    'Gospels & Acts': ['Mat', 'Mrk', 'Luk', 'Jhn', 'Act'],
+    'Pauline':        ['Rom', '1Co', '2Co', 'Gal', 'Eph', 'Php', 'Col', '1Th', '2Th', '1Ti', '2Ti', 'Tit', 'Phm'],  # noqa: E501
+    'General & Rev':  ['Heb', 'Jas', '1Pe', '2Pe', '1Jn', '2Jn', '3Jn', 'Jud', 'Rev'],
 }
 
 # ── Normalization maps ────────────────────────────────────────────────────────
@@ -76,21 +77,21 @@ _VOICE_NORM = {
     'Passive':          'Passive',
     'Deponent':         'Deponent',
     'Middle Deponent':  'Deponent',
-    'Middle or Passive':'Middle',
+    'Middle or Passive': 'Middle',
     'N':                'Other',
 }
 
 # Display order for each feature
 _ORDERS = {
-    'verb_stem':        ['Qal','Niphal','Piel','Pual','Hithpael','Hiphil','Hophal'],
-    'verb_conjugation': ['Perfect','Consecutive Perfect','Imperfect','Consecutive Imperfect',
-                         'Imperative','Infinitive construct','Infinitive absolute',
-                         'Participle','Participle passive','Jussive'],
-    'pos':              ['Noun','Verb','Adjective','Pronoun','Preposition','Adverb','Particle'],
-    'noun_state':       ['Absolute','Construct'],
-    'verb_tense':       ['Present','Imperfect','Future','Aorist','Perfect','Pluperfect'],
-    'verb_voice':       ['Active','Middle','Passive','Deponent'],
-    'verb_mood':        ['Indicative','Participle','Infinitive','Subjunctive','Imperative','Optative'],
+    'verb_stem':        ['Qal', 'Niphal', 'Piel', 'Pual', 'Hithpael', 'Hiphil', 'Hophal'],
+    'verb_conjugation': ['Perfect', 'Consecutive Perfect', 'Imperfect', 'Consecutive Imperfect',
+                         'Imperative', 'Infinitive construct', 'Infinitive absolute',
+                         'Participle', 'Participle passive', 'Jussive'],
+    'pos':              ['Noun', 'Verb', 'Adjective', 'Pronoun', 'Preposition', 'Adverb', 'Particle'],  # noqa: E501
+    'noun_state':       ['Absolute', 'Construct'],
+    'verb_tense':       ['Present', 'Imperfect', 'Future', 'Aorist', 'Perfect', 'Pluperfect'],
+    'verb_voice':       ['Active', 'Middle', 'Passive', 'Deponent'],
+    'verb_mood':        ['Indicative', 'Participle', 'Infinitive', 'Subjunctive', 'Imperative', 'Optative'],  # noqa: E501
 }
 
 
@@ -135,7 +136,7 @@ def genre_compare(
     import pandas as pd
 
     genres = OT_GENRES if corpus == 'OT' else NT_GENRES
-    df     = _load_ot() if corpus == 'OT' else _load_nt()
+    df = _load_ot() if corpus == 'OT' else _load_nt()
 
     order = _ORDERS.get(feature, [])
 
@@ -199,7 +200,6 @@ def print_genre_compare(
     feature: str = 'verb_stem',
 ) -> None:
     """Print a formatted genre comparison table to stdout."""
-    import pandas as pd
 
     FEATURE_LABELS = {
         'verb_stem':        'Hebrew Verb Stem Distribution by Genre',
@@ -213,9 +213,9 @@ def print_genre_compare(
     corpus_label = 'Old Testament' if corpus == 'OT' else 'New Testament'
     title = FEATURE_LABELS.get(feature, f'{feature} by Genre')
 
-    df_pct  = genre_compare(corpus, feature, normalize=True)
-    df_cnt  = genre_compare(corpus, feature, normalize=False)
-    cats    = [c for c in df_pct.columns if c != 'total']
+    df_pct = genre_compare(corpus, feature, normalize=True)
+    df_cnt = genre_compare(corpus, feature, normalize=False)
+    cats = [c for c in df_pct.columns if c != 'total']
 
     w = 70
     print(f"\n{'═'*w}")
@@ -232,7 +232,7 @@ def print_genre_compare(
 
     for genre in df_pct.index:
         total = int(df_cnt.loc[genre, 'total'])
-        line  = f"  {genre:<14} {total:>8,}  "
+        line = f"  {genre:<14} {total:>8,}  "
         for cat in cats:
             pct = df_pct.loc[genre, cat]
             bar = '█' * min(int(pct / 5), 12)
@@ -260,30 +260,29 @@ def genre_heatmap(
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
-    import numpy as np
 
     df = genre_compare(corpus, feature, normalize=pct)
     cats = [c for c in df.columns if c != 'total']
     matrix = df[cats].values.astype(float)
 
     TITLES = {
-        ('OT','verb_stem'):        'Hebrew Verb Stem Distribution by Genre',
-        ('OT','verb_conjugation'): 'Hebrew Verb Conjugation Distribution by Genre',
-        ('OT','pos'):              'OT Part-of-Speech Distribution by Genre',
-        ('OT','noun_state'):       'Hebrew Noun State (Absolute / Construct) by Genre',
-        ('NT','verb_tense'):       'Greek Verb Tense Distribution by Genre',
-        ('NT','verb_voice'):       'Greek Verb Voice Distribution by Genre',
-        ('NT','verb_mood'):        'Greek Verb Mood Distribution by Genre',
-        ('NT','pos'):              'NT Part-of-Speech Distribution by Genre',
+        ('OT', 'verb_stem'):        'Hebrew Verb Stem Distribution by Genre',
+        ('OT', 'verb_conjugation'): 'Hebrew Verb Conjugation Distribution by Genre',
+        ('OT', 'pos'):              'OT Part-of-Speech Distribution by Genre',
+        ('OT', 'noun_state'):       'Hebrew Noun State (Absolute / Construct) by Genre',
+        ('NT', 'verb_tense'):       'Greek Verb Tense Distribution by Genre',
+        ('NT', 'verb_voice'):       'Greek Verb Voice Distribution by Genre',
+        ('NT', 'verb_mood'):        'Greek Verb Mood Distribution by Genre',
+        ('NT', 'pos'):              'NT Part-of-Speech Distribution by Genre',
     }
 
     chart_title = title or TITLES.get((corpus, feature), f'{corpus} {feature} by Genre')
-    value_fmt   = '{:.1f}%' if pct else '{:,.0f}'
+    value_fmt = '{:.1f}%' if pct else '{:,.0f}'
 
     if output_path is None:
         out_dir = Path('output') / 'charts' / 'both' / 'genre'
         out_dir.mkdir(parents=True, exist_ok=True)
-        output_path = str(out_dir / f"{corpus.lower()}-genre-{feature.replace('_','-')}.png")
+        output_path = str(out_dir / f"{corpus.lower()}-genre-{feature.replace('_', '-')}.png")
 
     n_genres, n_cats = matrix.shape
     fw = max(10, n_cats * 1.6)
@@ -302,7 +301,7 @@ def genre_heatmap(
     ax.set_xticks(range(n_cats))
     ax.set_xticklabels(cats, rotation=35, ha='right', fontsize=9)
     ax.set_yticks(range(n_genres))
-    row_labels = [f"{g}  (n={int(df.loc[g,'total']):,})" for g in df.index]
+    row_labels = [f"{g}  (n={int(df.loc[g, 'total']):,})" for g in df.index]
     ax.set_yticklabels(row_labels, fontsize=9)
 
     # Annotate cells
@@ -334,7 +333,6 @@ def genre_report(
 
     Returns path to the saved Markdown file.
     """
-    import pandas as pd
     from pathlib import Path
 
     if ot_features is None:
@@ -423,13 +421,13 @@ def genre_report(
 
     for feature in ot_features:
         chart_path = genre_heatmap('OT', feature,
-                                   output_path=str(out_dir / f'ot-genre-{feature.replace("_","-")}.png'))
+                                   output_path=str(out_dir / f'ot-genre-{feature.replace("_", "-")}.png'))  # noqa: E501
         df_pct = genre_compare('OT', feature, normalize=True)
         df_cnt = genre_compare('OT', feature, normalize=False)
-        cats   = [c for c in df_pct.columns if c != 'total']
+        cats = [c for c in df_pct.columns if c != 'total']
 
         title = FEATURE_TITLES.get(feature, feature)
-        note  = FEATURE_NOTES.get(feature, '')
+        note = FEATURE_NOTES.get(feature, '')
         lines += [f"### {title}", ""]
         if note:
             lines += [f"_{note}_", ""]
@@ -443,7 +441,7 @@ def genre_report(
         ]
         for genre in df_pct.index:
             total = int(df_cnt.loc[genre, 'total'])
-            vals  = " | ".join(f"{df_pct.loc[genre, c]:.1f}%" for c in cats)
+            vals = " | ".join(f"{df_pct.loc[genre, c]:.1f}%" for c in cats)
             lines.append(f"| {genre} | {total:,} | {vals} |")
         lines.append("")
 
@@ -467,13 +465,13 @@ def genre_report(
 
     for feature in nt_features:
         chart_path = genre_heatmap('NT', feature,
-                                   output_path=str(out_dir / f'nt-genre-{feature.replace("_","-")}.png'))
+                                   output_path=str(out_dir / f'nt-genre-{feature.replace("_", "-")}.png'))  # noqa: E501
         df_pct = genre_compare('NT', feature, normalize=True)
         df_cnt = genre_compare('NT', feature, normalize=False)
-        cats   = [c for c in df_pct.columns if c != 'total']
+        cats = [c for c in df_pct.columns if c != 'total']
 
         title = FEATURE_TITLES.get(feature, feature)
-        note  = FEATURE_NOTES.get(feature, '')
+        note = FEATURE_NOTES.get(feature, '')
         lines += [f"### {title}", ""]
         if note:
             lines += [f"_{note}_", ""]
@@ -486,7 +484,7 @@ def genre_report(
         ]
         for genre in df_pct.index:
             total = int(df_cnt.loc[genre, 'total'])
-            vals  = " | ".join(f"{df_pct.loc[genre, c]:.1f}%" for c in cats)
+            vals = " | ".join(f"{df_pct.loc[genre, c]:.1f}%" for c in cats)
             lines.append(f"| {genre} | {total:,} | {vals} |")
         lines.append("")
 

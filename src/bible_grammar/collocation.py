@@ -24,7 +24,6 @@ from __future__ import annotations
 import re
 import math
 import pandas as pd
-import numpy as np
 from . import db as _db
 from .reference import BOOKS
 
@@ -69,7 +68,7 @@ def _build_gpos(df: pd.DataFrame) -> pd.Series:
     order = df['book_id'].map(_BOOK_ORDER).fillna(999)
     sort_key = (order * 1_000_000_000
                 + df['chapter'] * 1_000_000
-                + df['verse']   * 1_000
+                + df['verse'] * 1_000
                 + df['word_num'])
     return sort_key.rank(method='first').astype(int)
 
@@ -255,7 +254,7 @@ def print_collocations(
         return
 
     target_count = df['target_count'].iloc[0]
-    corpus_size  = df['corpus_size'].iloc[0]
+    corpus_size = df['corpus_size'].iloc[0]
     print(f"  Target frequency : {target_count:,} / {corpus_size:,} tokens\n")
 
     print(f"  {'Strongs':<9} {'Lemma':<22} {'Gloss':<25} "
@@ -311,7 +310,6 @@ def collocation_network(
     for df in all_dfs.values():
         all_collocates.extend(df['strongs'].tolist())
     # Rank by total log-likelihood across all targets
-    from collections import Counter
     col_ll: dict[str, float] = {}
     for df in all_dfs.values():
         for _, row in df.iterrows():

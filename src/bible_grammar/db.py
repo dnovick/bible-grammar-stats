@@ -68,7 +68,7 @@ def load_translations(parquet_path: Path = TRANSLATIONS_PARQUET) -> pd.DataFrame
         with sqlite3.connect(DB_PATH) as con:
             return pd.read_sql("SELECT * FROM translations", con)
     raise FileNotFoundError(
-        f"No translations data found. Run: python scripts/build_db.py"
+        "No translations data found. Run: python scripts/build_db.py"
     )
 
 

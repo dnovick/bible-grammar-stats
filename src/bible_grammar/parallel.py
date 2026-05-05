@@ -26,7 +26,6 @@ parallel_words('Gen', 1, 1)
 """
 
 from __future__ import annotations
-from pathlib import Path
 import pandas as pd
 from . import db as _db
 from .reference import book_info, BOOKS
@@ -109,7 +108,7 @@ def _verse_range(
     end_chapter: int, end_verse: int,
 ) -> list[tuple[int, int]]:
     """Return list of (chapter, verse) pairs for a range."""
-    info = book_info(book_id)
+    book_info(book_id)
     # For simplicity, fetch all data and filter — handles cross-chapter ranges
     df = _words()
     source = "TAHOT" if book_id in _OT_IDS else "TAGNT"
@@ -188,8 +187,8 @@ def parallel_passage(
     for ch, vs in verses:
         ref = f"{book_id} {ch}:{vs}"
         orig = _verse_text(df, source, book_id, ch, vs)
-        kjv  = _kjv_verse(tr_df, book_id, ch, vs)
-        row  = {"reference": ref, "hebrew" if is_ot else "greek_nt": orig, "kjv": kjv}
+        kjv = _kjv_verse(tr_df, book_id, ch, vs)
+        row = {"reference": ref, "hebrew" if is_ot else "greek_nt": orig, "kjv": kjv}
         if is_ot and include_lxx:
             row["lxx"] = _lxx_verse(lxx_df, book_id, ch, vs)
         if include_vulgate:
@@ -238,7 +237,8 @@ def print_parallel(
     is_ot = book_id in _OT_IDS
     info = book_info(book_id)
 
-    end_ref = f"{end_chapter}:{end_verse}" if (end_chapter != start_chapter or end_verse != start_verse) else ""
+    end_ref = f"{end_chapter}:{end_verse}" if (
+        end_chapter != start_chapter or end_verse != start_verse) else ""
     title = f"{info['name']} {start_chapter}:{start_verse}"
     if end_ref:
         title += f"–{end_ref}"

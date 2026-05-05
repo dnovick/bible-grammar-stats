@@ -134,8 +134,8 @@ def load_tagnt(data_dir: Path = _DATA_DIR) -> pd.DataFrame:
                 morph = decode_greek(grammar_code)
 
                 gloss_parts = dict_gloss.split("=", 1)
-                dict_form = gloss_parts[0].strip() if gloss_parts else ""
-                gloss = gloss_parts[1].strip() if len(gloss_parts) > 1 else ""
+                gloss_parts[0].strip() if gloss_parts else ""
+                gloss_parts[1].strip() if len(gloss_parts) > 1 else ""
 
                 rows.append({
                     "source": "TAGNT",

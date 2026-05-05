@@ -28,7 +28,6 @@ POETRY_BOOKS                       → list of primary Hebrew poetry books
 """
 
 from __future__ import annotations
-import re
 import unicodedata
 from pathlib import Path
 
@@ -177,10 +176,10 @@ _SUPERSCRIPTION_LEMMAS = {
     'נָצַח',     # lamnatstseak — to the choirmaster
     'מִזְמוֹר',  # mizmor — psalm
     'שִׁיר',     # shir — song
-    'מַשְׂכִּיל', # maskil
+    'מַשְׂכִּיל',  # maskil
     'מִכְתָּם',  # miktam
-    'תְּפִלָּה', # tefillah — prayer
-    'תְּהִלָּה', # tehillah — praise
+    'תְּפִלָּה',  # tefillah — prayer
+    'תְּהִלָּה',  # tehillah — praise
     'לְדָוִד',   # of David (used as marker)
     'דָּוִד',    # David
     'שְׁלֹמֹה',  # Solomon
@@ -385,7 +384,7 @@ def parallelism_type(
     dom = _domain_overlap(a_cw, b_cw)
 
     # Antithetic markers: look for negation or antithetical conjunctions in B-colon
-    b_text = ' '.join(cola[1]['text'].tolist())
+    ' '.join(cola[1]['text'].tolist())
     b_gloss = ' '.join(cola[1]['gloss'].fillna('').tolist()).lower()
     has_negation = any(neg in cola[1]['lemma'].tolist()
                        for neg in ['לֹא', 'אַל', 'בַּל'])
@@ -462,8 +461,8 @@ def print_verse_analysis(
     if is_superscription(book, chapter, verse):
         print(f"\n  Note: {book} {chapter}:{verse} appears to be a superscription "
               f"(liturgical heading), not a poetic bicolon.")
-        print(f"  Hebrew versification counts superscriptions as verse 1; "
-              f"English Bibles fold them into the heading.")
+        print("  Hebrew versification counts superscriptions as verse 1; "
+              "English Bibles fold them into the heading.")
         print(f"  Try verse {verse + 1} for the first line of actual poetry.\n")
 
     cola = verse_cola(book, chapter, verse)
@@ -487,7 +486,7 @@ def print_verse_analysis(
         print(f"  {'Word':<25} {'Lemma':<18} {'Gloss'}")
         print(f"  {'─'*24} {'─'*17} {'─'*20}")
         for word, lemma, gloss in zip(words, lemmas, glosses):
-            clean = _strip_cantillation(word)
+            _strip_cantillation(word)
             print(f"  {word:<25} {lemma:<18} {gloss}")
         cw = _content_words(colon)
         if not cw.empty:
@@ -644,7 +643,7 @@ def _verse_lemma_set(macula: pd.DataFrame, book: str, ch: int, vs: int) -> set[s
     return out
 
 
-def _jaccard(a: set, b: set) -> float:
+def _jaccard(a: set | frozenset, b: set | frozenset) -> float:
     if not a or not b:
         return 0.0
     return len(a & b) / len(a | b)
@@ -752,7 +751,7 @@ def print_chiasm(
             (macula['verse'] == vs)
         ]
         words = ' '.join(str(r.get('text', '')) for _, r in rows.iterrows())
-        ls = result['lemma_sets'][(ch, vs)]
+        result['lemma_sets'][(ch, vs)]
         shared = ''
         # find which pair this verse belongs to for overlap hint
         mirror_idx = n - 1 - i
@@ -927,9 +926,9 @@ def print_acrostic(
     print()
 
 
-def acrostic_known(book: str) -> list:
+def acrostic_known(book: str) -> list[int | str]:
     """Return list of known acrostic chapters/ranges for a book."""
-    return KNOWN_ACROSTICS.get(book, [])
+    return KNOWN_ACROSTICS.get(book, [])  # type: ignore[return-value]
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

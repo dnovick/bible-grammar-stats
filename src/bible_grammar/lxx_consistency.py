@@ -38,12 +38,11 @@ consistency_heatmap('H7307', output_path='output/charts/ruach-lxx-consistency.pn
 from __future__ import annotations
 import re
 import pandas as pd
-import numpy as np
 from pathlib import Path
 from .reference import BOOKS
 
 _BOOK_ORDER = {b[0]: b[3] for b in BOOKS}
-_BOOK_NAME  = {b[0]: b[1] for b in BOOKS}
+_BOOK_NAME = {b[0]: b[1] for b in BOOKS}
 
 
 def _norm_root(strongs: str) -> str:
@@ -100,8 +99,8 @@ def lxx_consistency(
 
     if hits.empty:
         return {
-            'strongs': heb_strongs, 'lemma': lex.get('lemma',''),
-            'gloss': lex.get('gloss',''), 'total_aligned': 0,
+            'strongs': heb_strongs, 'lemma': lex.get('lemma', ''),
+            'gloss': lex.get('gloss', ''), 'total_aligned': 0,
             'corpus_primary': '', 'corpus_primary_pct': 0.0,
             'overall_consistency': 0.0, 'books': [], 'divergent_books': [],
         }
@@ -128,7 +127,7 @@ def lxx_consistency(
             'primary_pct':      primary_pct,
             'consistency':      primary_pct,
             'diverges':         primary_lemma != corpus_primary,
-            'rendering_profile':profile,
+            'rendering_profile': profile,
         })
 
     if len(books_out) < min_book_count:
@@ -236,7 +235,6 @@ def consistency_heatmap(
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
-    import matplotlib.colors as mcolors
     from .ibm_align import load_word_alignment
 
     if isinstance(roots, str):
@@ -254,7 +252,7 @@ def consistency_heatmap(
             continue
         from .wordstudy import _lookup_lex
         lex = _lookup_lex(strongs) or {}
-        label = f"{lex.get('lemma','')}\n({strongs})" if lex.get('lemma') else strongs
+        label = f"{lex.get('lemma', '')}\n({strongs})" if lex.get('lemma') else strongs
         root_labels.append(label)
         all_rows.append(hits)
 
@@ -287,11 +285,10 @@ def consistency_heatmap(
 
     # Draw heatmap
     fig_w = max(10, len(pivot_pct.columns) * 0.55)
-    fig_h = max(3,  len(pivot_pct.index)   * 0.55 + 1.5)
+    fig_h = max(3,  len(pivot_pct.index) * 0.55 + 1.5)
     fig, ax = plt.subplots(figsize=(fig_w, fig_h))
 
-    cmap = plt.cm.YlOrRd
-    im = ax.imshow(pivot_pct.values, cmap=cmap, vmin=0, vmax=100, aspect='auto')
+    im = ax.imshow(pivot_pct.values, cmap='YlOrRd', vmin=0, vmax=100, aspect='auto')
 
     ax.set_xticks(range(len(pivot_pct.columns)))
     ax.set_xticklabels(pivot_pct.columns, rotation=45, ha='right', fontsize=8)

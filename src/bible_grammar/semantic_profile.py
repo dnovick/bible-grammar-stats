@@ -28,7 +28,6 @@ save_semantic_profile('G3056', output_dir='output/reports')
 """
 
 from __future__ import annotations
-import re
 from pathlib import Path
 
 
@@ -41,7 +40,7 @@ def semantic_profile(strongs: str, *, collocate_window: int = 5,
 
     Returns a dict combining all available analyses.
     """
-    from .wordstudy import word_study, _lookup_lex
+    from .wordstudy import word_study
     from .lxx_consistency import lxx_consistency
     from .collocation import collocations
     from .morph_chart import morph_distribution
@@ -78,8 +77,6 @@ def semantic_profile(strongs: str, *, collocate_window: int = 5,
 
 def print_semantic_profile(strongs: str, **kwargs) -> None:
     """Print a formatted semantic profile to stdout."""
-    import pandas as pd
-    from .wordstudy import _lookup_lex
 
     p = semantic_profile(strongs, **kwargs)
     ws = p['word_study']
@@ -128,10 +125,10 @@ def print_semantic_profile(strongs: str, **kwargs) -> None:
     # Morphological forms
     pivot = morph.get('pivot')
     if pivot is not None and not pivot.empty:
-        print(f"  Morphological Distribution")
+        print("  Morphological Distribution")
         print(f"  {'-'*w}")
         cols = pivot.columns.tolist()
-        pivot_pct = morph['pivot_pct']
+        morph['pivot_pct']
         # Show top 6 forms by total count
         col_totals = pivot.sum(axis=0).sort_values(ascending=False)
         top_cols = col_totals.head(6).index.tolist()
@@ -149,7 +146,7 @@ def print_semantic_profile(strongs: str, **kwargs) -> None:
     if is_heb:
         te = ws.get('translation_equivalents')
         if te is not None and not te.empty:
-            print(f"  LXX Translation Equivalents")
+            print("  LXX Translation Equivalents")
             print(f"  {'-'*w}")
             for _, row in te.head(6).iterrows():
                 lemma = row.get('lxx_lemma', '')
@@ -170,10 +167,10 @@ def print_semantic_profile(strongs: str, **kwargs) -> None:
         # OT → LXX → NT trajectory
         traj = ws.get('nt_lxx_equiv', [])
         if traj:
-            print(f"  OT → LXX → NT Trajectory")
+            print("  OT → LXX → NT Trajectory")
             print(f"  {'-'*w}")
             for eq in traj[:3]:
-                print(f"    {eq['lemma']:<20} ({eq['strongs']})  →  {eq['nt_total']:,} NT occurrences")
+                print(f"    {eq['lemma']:<20} ({eq['strongs']})  →  {eq['nt_total']:,} NT occurrences")  # noqa: E501
                 for _, row in eq['nt_by_book'].head(6).iterrows():
                     print(f"      {row['book_id']:<12} {row['count']:>4}")
             print()
@@ -192,7 +189,7 @@ def print_semantic_profile(strongs: str, **kwargs) -> None:
     # Example verses
     examples = ws.get('examples', [])
     if examples:
-        print(f"  Example Verses")
+        print("  Example Verses")
         print(f"  {'-'*w}")
         for ex in examples:
             print(f"    [{ex['reference']}]  {ex['word']}")
@@ -221,9 +218,6 @@ def save_semantic_profile(
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
-    import matplotlib.patches as mpatches
-    import numpy as np
-    import pandas as pd
 
     p = semantic_profile(strongs,
                          collocate_window=collocate_window,
@@ -231,12 +225,12 @@ def save_semantic_profile(
                          top_collocates=top_collocates,
                          example_verses=example_verses)
 
-    ws    = p['word_study']
-    lc    = p['lxx_consistency']
-    co    = p['collocations']
+    ws = p['word_study']
+    lc = p['lxx_consistency']
+    co = p['collocations']
     morph = p['morph']
     is_heb = p['is_hebrew']
-    clean  = p['strongs']
+    clean = p['strongs']
 
     if output_dir is None:
         sub = 'ot' if is_heb else 'nt'
@@ -246,7 +240,7 @@ def save_semantic_profile(
     out_dir.mkdir(parents=True, exist_ok=True)
     slug = clean.lower()
     chart_path = out_dir / f"{slug}-distribution.png"
-    md_path    = out_dir / f"{slug}-semantic-profile.md"
+    md_path = out_dir / f"{slug}-semantic-profile.md"
 
     # ── Chart: book distribution bar ──────────────────────────────────────
     bb = ws['by_book'].head(20)
@@ -278,14 +272,14 @@ def save_semantic_profile(
 
     lines += [
         f"# Semantic Profile: {clean} — {ws.get('lemma', '')}",
-        f"",
+        "",
         f"**Language:** {lang_label}  ",
         f"**Lemma:** {ws.get('lemma', '')}  ",
         f"**Transliteration:** {ws.get('translit', '')}  ",
         f"**Gloss:** {ws.get('gloss', '')}  ",
         f"**POS:** {ws.get('pos_code', '')}  ",
         f"**Total occurrences:** {ws['total_occurrences']:,}  ",
-        f"",
+        "",
     ]
 
     if ws.get('definition'):
@@ -299,7 +293,7 @@ def save_semantic_profile(
     lines += [
         "## Distribution by Book",
         "",
-        f"![{ws.get('lemma',clean)} distribution]({chart_path.name})",
+        f"![{ws.get('lemma', clean)} distribution]({chart_path.name})",
         "",
     ]
 
@@ -337,8 +331,8 @@ def save_semantic_profile(
             ]
             for _, row in te.head(10).iterrows():
                 lines.append(
-                    f"| {row.get('lxx_lemma','')} | {row.get('lxx_strongs','')} "
-                    f"| {int(row.get('count',0)):,} | {float(row.get('pct',0)):.1f}% |"
+                    f"| {row.get('lxx_lemma', '')} | {row.get('lxx_strongs', '')} "
+                    f"| {int(row.get('count', 0)):,} | {float(row.get('pct', 0)):.1f}% |"
                 )
             lines.append("")
 

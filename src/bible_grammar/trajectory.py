@@ -65,6 +65,7 @@ def _nt_by_book_g(strongs_int: int) -> pd.DataFrame:
     df = pd.read_parquet('data/processed/words.parquet')
     nt = df[df['source'] == 'TAGNT']
     # Extract numeric portion from strongs: 'G0040' → 40, 'G4151G' → 4151
+
     def _extract_num(s):
         if not s or not isinstance(s, str):
             return -1
@@ -140,7 +141,7 @@ def word_trajectory(
         'is_hebrew':  is_heb,
         'ot_total':   ws.get('total_occurrences', 0) if is_heb else 0,
         'ot_by_book': ws.get('by_book', pd.DataFrame()) if is_heb else pd.DataFrame(),
-        'morph_forms':ws.get('morphological_forms', pd.DataFrame()),
+        'morph_forms': ws.get('morphological_forms', pd.DataFrame()),
     }
 
     # ── Stage 2: Hebrew → LXX alignment ──────────────────────────────────────
@@ -154,7 +155,8 @@ def word_trajectory(
             by_strongs = align_df.groupby('greek_g', as_index=False)['count'].sum()
             by_strongs = by_strongs.sort_values('count', ascending=False).reset_index(drop=True)
             total_count = by_strongs['count'].sum()
-            by_strongs['pct'] = (by_strongs['count'] / total_count * 100).round(1) if total_count else 0.0
+            by_strongs['pct'] = (by_strongs['count'] / total_count *
+                                 100).round(1) if total_count else 0.0
             top_row = align_df.iloc[0]
             g_num = str(top_row.get('greekstrong', top_row.get('greek_g', '')))
             # Store as unpadded G# (matching LXX parquet format, e.g. 'G25' not 'G0025')
@@ -171,6 +173,7 @@ def word_trajectory(
             # Consistency = % of tokens using the primary Strong's number
             primary_g = result['lxx_primary_g']
             # by_strongs uses greek_g which may be zero-padded; normalise for comparison
+
             def _norm_g(s):
                 s = str(s).strip().upper()
                 if s.startswith('G'):
@@ -181,7 +184,8 @@ def word_trajectory(
                 return s
             by_strongs['greek_g_norm'] = by_strongs['greek_g'].map(_norm_g)
             primary_rows = by_strongs[by_strongs['greek_g_norm'] == primary_g]
-            result['lxx_consistency_pct'] = float(primary_rows.iloc[0]['pct']) if not primary_rows.empty else 0.0
+            result['lxx_consistency_pct'] = float(
+                primary_rows.iloc[0]['pct']) if not primary_rows.empty else 0.0
         else:
             result['lxx_primary'] = ''
             result['lxx_primary_g'] = ''
@@ -227,8 +231,8 @@ def word_trajectory(
         # Greek input: NT usage is the word itself
         nt_df = _nt_by_book(strongs)
         result['nt_strongs'] = strongs
-        result['nt_lemma']   = ws.get('lemma', '')
-        result['nt_total']   = int(nt_df['count'].sum()) if not nt_df.empty else 0
+        result['nt_lemma'] = ws.get('lemma', '')
+        result['nt_total'] = int(nt_df['count'].sum()) if not nt_df.empty else 0
         result['nt_by_book'] = nt_df
     else:
         # For Hebrew words: prefer the nt_lxx_equiv entry that matches the LXX primary word;
@@ -259,19 +263,20 @@ def word_trajectory(
             nt_df = _nt_by_book_g(lxx_g_int)
             lxx_lemma = result.get('lxx_lemma', '')
             result['nt_strongs'] = lxx_g_norm
-            result['nt_lemma']   = lxx_lemma
-            result['nt_total']   = int(nt_df['count'].sum()) if not nt_df.empty else 0
+            result['nt_lemma'] = lxx_lemma
+            result['nt_total'] = int(nt_df['count'].sum()) if not nt_df.empty else 0
             result['nt_by_book'] = nt_df
         elif matched_equiv:
             result['nt_strongs'] = matched_equiv.get('strongs', '')
-            result['nt_lemma']   = matched_equiv.get('lemma', '')
-            result['nt_total']   = matched_equiv.get('nt_total', 0)
+            result['nt_lemma'] = matched_equiv.get('lemma', '')
+            result['nt_total'] = matched_equiv.get('nt_total', 0)
             nt_by_book = matched_equiv.get('nt_by_book', pd.DataFrame())
-            result['nt_by_book'] = nt_by_book if isinstance(nt_by_book, pd.DataFrame) else pd.DataFrame()
+            result['nt_by_book'] = nt_by_book if isinstance(
+                nt_by_book, pd.DataFrame) else pd.DataFrame()
         else:
             result['nt_strongs'] = ''
-            result['nt_lemma']   = ''
-            result['nt_total']   = 0
+            result['nt_lemma'] = ''
+            result['nt_total'] = 0
             result['nt_by_book'] = pd.DataFrame()
 
     # ── Stage 5: Continuity assessment ───────────────────────────────────────
@@ -285,8 +290,8 @@ def _assess_continuity(r: dict) -> tuple[str, str]:
     Compare LXX primary rendering with NT word choice.
     Returns (level, note) where level is 'high'|'medium'|'low'|'none'.
     """
-    lxx_g  = r.get('lxx_primary_g', '')
-    nt_g   = r.get('nt_strongs', '')
+    lxx_g = r.get('lxx_primary_g', '')
+    nt_g = r.get('nt_strongs', '')
     lxx_pct = r.get('lxx_consistency_pct', 0.0)
     nt_total = r.get('nt_total', 0)
 
@@ -307,23 +312,23 @@ def _assess_continuity(r: dict) -> tuple[str, str]:
             return s
 
     lxx_norm = _norm(lxx_g)
-    nt_norm  = _norm(nt_g)
+    nt_norm = _norm(nt_g)
 
     if lxx_norm == nt_norm:
         if lxx_pct >= 80:
             return ('high',
-                    f"NT adopts the dominant LXX word ({r.get('lxx_lemma','')}, "
+                    f"NT adopts the dominant LXX word ({r.get('lxx_lemma', '')}, "
                     f"{lxx_pct:.0f}% consistent in LXX). Strong lexical continuity.")
         else:
             return ('medium',
-                    f"NT uses the same Greek word as LXX ({r.get('lxx_lemma','')}), "
+                    f"NT uses the same Greek word as LXX ({r.get('lxx_lemma', '')}), "
                     f"but LXX rendering is only {lxx_pct:.0f}% consistent — "
                     f"multiple Greek words compete in the LXX.")
     else:
         if nt_total > 0:
             return ('low',
-                    f"NT uses {r.get('nt_lemma','')} ({nt_norm}) while the LXX "
-                    f"primarily uses {r.get('lxx_lemma','')} ({lxx_norm}). "
+                    f"NT uses {r.get('nt_lemma', '')} ({nt_norm}) while the LXX "
+                    f"primarily uses {r.get('lxx_lemma', '')} ({lxx_norm}). "
                     f"The NT draws on different vocabulary for this concept.")
         return ('none', 'No NT counterpart identified.')
 
@@ -342,7 +347,7 @@ def print_trajectory(strongs: str, *, top_n: int = 10) -> None:
     print()
 
     if t['is_hebrew']:
-        print(f"  ── OT Hebrew ──────────────────────────────────────────────────")
+        print("  ── OT Hebrew ──────────────────────────────────────────────────")
         print(f"  Total occurrences: {t['ot_total']:,}")
         ob = t['ot_by_book']
         if not ob.empty:
@@ -351,7 +356,7 @@ def print_trajectory(strongs: str, *, top_n: int = 10) -> None:
             print(f"  Top books: {books_str}")
         print()
 
-        print(f"  ── OT → LXX Alignment ─────────────────────────────────────────")
+        print("  ── OT → LXX Alignment ─────────────────────────────────────────")
         align = t['lxx_alignment']
         if not align.empty:
             # Collapse inflected forms → by Strong's number for display
@@ -372,7 +377,7 @@ def print_trajectory(strongs: str, *, top_n: int = 10) -> None:
         print(f"  LXX consistency: {t['lxx_consistency_pct']:.0f}%")
         print()
 
-    print(f"  ── LXX Corpus ─────────────────────────────────────────────────")
+    print("  ── LXX Corpus ─────────────────────────────────────────────────")
     lxx_word = t.get('lxx_lemma', '') or t.get('lxx_primary', '')
     lxx_g = t.get('lxx_primary_g', '')
     print(f"  {lxx_g}  {lxx_word}  —  {t['lxx_total']:,} tokens in LXX")
@@ -383,7 +388,7 @@ def print_trajectory(strongs: str, *, top_n: int = 10) -> None:
         print(f"  Top books: {books_str}")
     print()
 
-    print(f"  ── NT Greek ────────────────────────────────────────────────────")
+    print("  ── NT Greek ────────────────────────────────────────────────────")
     print(f"  {t['nt_strongs']}  {t['nt_lemma']}  —  {t['nt_total']:,} tokens in NT")
     nb = t['nt_by_book']
     if isinstance(nb, pd.DataFrame) and not nb.empty:
@@ -395,7 +400,8 @@ def print_trajectory(strongs: str, *, top_n: int = 10) -> None:
     print()
 
     cont_symbol = {'high': '✓✓', 'medium': '✓', 'low': '△', 'none': '—'}.get(t['continuity'], '—')
-    print(f"  ── Continuity: {t['continuity'].upper()} {cont_symbol} ─────────────────────────────────")
+    print(
+        f"  ── Continuity: {t['continuity'].upper()} {cont_symbol} ─────────────────────────────────")  # noqa: E501
     print(f"  {t['continuity_note']}")
     print()
 
@@ -415,7 +421,6 @@ def trajectory_chart(
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
-    import numpy as np
 
     t = word_trajectory(strongs)
 
@@ -467,9 +472,9 @@ def trajectory_chart(
         (axes[0], ot_books,  ot_counts,  '#2c5f8a',
          f"OT Hebrew\n{t['strongs']} {t['lemma']} ({t['ot_total']:,} total)"),
         (axes[1], lxx_books, lxx_counts, '#5a8a2c',
-         f"LXX Greek\n{t.get('lxx_primary_g','')} {t.get('lxx_lemma','')} ({t['lxx_total']:,} total)"),
+         f"LXX Greek\n{t.get('lxx_primary_g', '')} {t.get('lxx_lemma', '')} ({t['lxx_total']:,} total)"),  # noqa: E501
         (axes[2], nt_books,  nt_counts,  '#8a2c2c',
-         f"NT Greek\n{t.get('nt_strongs','')} {t.get('nt_lemma','')} ({t['nt_total']:,} total)"),
+         f"NT Greek\n{t.get('nt_strongs', '')} {t.get('nt_lemma', '')} ({t['nt_total']:,} total)"),
     ]
 
     for ax, books, counts, color, title in panels:
@@ -515,7 +520,7 @@ def save_trajectory_report(
     out_dir.mkdir(parents=True, exist_ok=True)
 
     slug = strongs.lower().replace(' ', '')
-    md_path  = out_dir / f'trajectory-{slug}.md'
+    md_path = out_dir / f'trajectory-{slug}.md'
     chart_path = trajectory_chart(
         strongs,
         output_path=str(out_dir / f'trajectory-{slug}.png'),
@@ -530,12 +535,13 @@ def save_trajectory_report(
         "",
         "| Corpus | Strong's | Lemma | Total |",
         "|---|---|---|---:|",
-        f"| OT Hebrew | {t['strongs']} | {t['lemma']} | {t['ot_total']:,} |" if t['is_hebrew'] else "",
-        f"| LXX Greek | {t.get('lxx_primary_g','')} | {t.get('lxx_lemma','')} | {t['lxx_total']:,} |",
-        f"| NT Greek  | {t.get('nt_strongs','')} | {t.get('nt_lemma','')} | {t['nt_total']:,} |",
+        f"| OT Hebrew | {t['strongs']} | {t['lemma']} | {t['ot_total']:,} |" if t['is_hebrew'] else "",  # noqa: E501
+        f"| LXX Greek | {t.get('lxx_primary_g', '')} | {t.get('lxx_lemma', '')} "
+        f"| {t['lxx_total']:,} |",
+        f"| NT Greek  | {t.get('nt_strongs', '')} | {t.get('nt_lemma', '')} | {t['nt_total']:,} |",
         "",
     ]
-    lines = [l for l in lines if l is not None]
+    lines = [ln for ln in lines if ln is not None]
 
     # Continuity
     cont_emoji = {'high': '🟢', 'medium': '🟡', 'low': '🟠', 'none': '⚪'}.get(t['continuity'], '⚪')

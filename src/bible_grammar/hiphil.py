@@ -41,6 +41,7 @@ hiphil_report(output_dir=None)         → Path   (full Markdown report)
 from __future__ import annotations
 import unicodedata
 from pathlib import Path
+from typing import Any
 
 import pandas as pd
 
@@ -123,17 +124,18 @@ _CAUSATIVE_KEYWORDS = (
     'had', 'crown', 'made ~ king', 'installed',
 )
 
+
 def _semantic_function(gloss: str) -> str:
     g = str(gloss).strip().lower()
-    if g in _LETHAL_GLOSSES or any(w in g for w in ('kill', 'slay', 'destroy', 'smite', 'struck', 'defeat', 'attacked', 'cut off')):
+    if g in _LETHAL_GLOSSES or any(w in g for w in ('kill', 'slay', 'destroy', 'smite', 'struck', 'defeat', 'attacked', 'cut off')):  # noqa: E501
         return 'violent / lethal action'
     if g in _SAVE_DELIVER_GLOSSES or any(w in g for w in ('save', 'deliver', 'rescue')):
         return 'salvation / deliverance'
     if g in _RESTORE_GLOSSES or any(w in g for w in ('restore', 'return', 'bring back')):
         return 'restoration / return'
-    if g in _DECLARATIVE_GLOSSES or any(w in g for w in ('declare', 'proclaim', 'teach', 'tell', 'known', 'listen', 'understand', 'believe', 'warn', 'rebuke', 'look', 'wail')):
+    if g in _DECLARATIVE_GLOSSES or any(w in g for w in ('declare', 'proclaim', 'teach', 'tell', 'known', 'listen', 'understand', 'believe', 'warn', 'rebuke', 'look', 'wail')):  # noqa: E501
         return 'declaration / communication'
-    if g in _WORSHIP_GLOSSES or any(w in g for w in ('offer', 'praise', 'thanks', 'worship', 'burn', 'sacrifice')):
+    if g in _WORSHIP_GLOSSES or any(w in g for w in ('offer', 'praise', 'thanks', 'worship', 'burn', 'sacrifice')):  # noqa: E501
         return 'worship / ritual'
     if any(w in g for w in _CAUSATIVE_KEYWORDS):
         return 'causative motion / transfer'
@@ -261,7 +263,7 @@ def hiphil_stem_comparison(
     for b in books:
         bv = df[(df['class_'] == 'verb') & (df['book'] == b)]
         tot = len(bv)
-        row = {'book': b}
+        row: dict[str, Any] = {'book': b}
         for s in stems:
             cnt = (bv['stem'] == s).sum()
             row[s] = round(cnt / tot * 100, 1) if tot else 0.0
@@ -403,7 +405,7 @@ def print_hiphil_top_roots(n: int = 25, book: str | None = None) -> None:
     print(f"  {'#':<4} {'Root':<10} {'Lemma':<14} {'Count':>6} {'%':>6}  Gloss")
     print('  ' + '─' * 68)
     for i, row in df.iterrows():
-        bar = '█' * int(row['pct'] / 1.5)
+        '█' * int(row['pct'] / 1.5)
         print(f"  {i+1:<4} {row['root']:<10} {row['lemma']:<14} {row['count']:>6} "
               f"{row['pct']:>5.1f}%  {row['top_gloss']}")
     print()
@@ -450,7 +452,7 @@ def print_hiphil_root_conjugation(roots: list[str] | None = None, top_n: int = 1
 def print_hiphil_book_distribution(top_n: int = 25) -> None:
     """Print Hiphil distribution across books."""
     df = hiphil_book_distribution().head(top_n)
-    total = df['count'].sum()
+    df['count'].sum()
 
     print()
     print('═' * 76)
@@ -477,7 +479,7 @@ def print_hiphil_dominant_roots(top_n: int = 25) -> None:
     print(f"  {'Root':<10} {'Lemma':<14} {'Hiphil':>7} {'Total':>7} {'%':>7}  Gloss")
     print('  ' + '─' * 72)
     for _, row in df.iterrows():
-        bar = '█' * int(row['hif_pct'] / 5)
+        '█' * int(row['hif_pct'] / 5)
         print(f"  {row['root']:<10} {row['lemma']:<14} {row['hiphil_count']:>7} "
               f"{row['total']:>7} {row['hif_pct']:>6.1f}%  {row['top_gloss']}")
     print()
@@ -514,7 +516,6 @@ def hiphil_conjugation_chart(book: str | None = None) -> Path | None:
     """Save a horizontal bar chart of Hiphil conjugation distribution."""
     try:
         import matplotlib.pyplot as plt
-        import matplotlib.colors as mcolors
     except ImportError:
         return None
 
@@ -549,7 +550,6 @@ def hiphil_book_chart(top_n: int = 20) -> Path | None:
     """Save a bar chart of top books by Hiphil count."""
     try:
         import matplotlib.pyplot as plt
-        import numpy as np
     except ImportError:
         return None
 
@@ -557,7 +557,7 @@ def hiphil_book_chart(top_n: int = 20) -> Path | None:
     fig, ax1 = plt.subplots(figsize=(13, 5))
 
     x = range(len(df))
-    bars = ax1.bar(x, df['count'], color='steelblue', alpha=0.8, label='Hiphil count')
+    ax1.bar(x, df['count'], color='steelblue', alpha=0.8, label='Hiphil count')
     ax1.set_ylabel('Token count', color='steelblue')
     ax1.tick_params(axis='y', labelcolor='steelblue')
 
@@ -589,7 +589,6 @@ def hiphil_stem_chart(books: list[str] | None = None) -> Path | None:
     """
     try:
         import matplotlib.pyplot as plt
-        import numpy as np
     except ImportError:
         return None
 
@@ -652,7 +651,6 @@ def hiphil_root_heatmap(top_n: int = 15) -> Path | None:
     """
     try:
         import matplotlib.pyplot as plt
-        import numpy as np
     except ImportError:
         return None
 
@@ -723,7 +721,7 @@ def hiphil_semantic_chart() -> Path | None:
     ]
 
     fig, ax = plt.subplots(figsize=(9, 7))
-    wedges, texts, autotexts = ax.pie(
+    wedges, texts, autotexts = ax.pie(  # type: ignore[misc]
         df['count'],
         labels=[f"{r['category']}\n({r['count']:,})" for _, r in df.iterrows()],
         autopct='%1.1f%%',
@@ -846,18 +844,20 @@ def hiphil_report(output_dir: str | None = None) -> Path:
         'conjugations. The Hiphil is the **second most productive** derived stem after '
         'the Piel.\n\n'
     )
-    lines.append(f'| Statistic | Value |\n|---|---|\n')
+    lines.append('| Statistic | Value |\n|---|---|\n')
     lines.append(f'| Total Hiphil tokens (OT) | {total_tokens:,} |\n')
     lines.append(f'| % of all OT verb tokens  | {total_tokens/total_verbs*100:.1f}% |\n')
     lines.append(f'| Unique roots in Hiphil   | {unique_roots} |\n')
-    lines.append(f'| Books containing Hiphil  | 39 of 39 |\n\n')
+    lines.append('| Books containing Hiphil  | 39 of 39 |\n\n')
 
     lines.append('### Semantic functions of the Hiphil\n\n')
     lines.append('| Function | Description | Example |\n|---|---|---|\n')
-    lines.append('| **Causative** | Cause someone to do X | הֵבִיא "he brought" (← בּוֹא "to come") |\n')
-    lines.append('| **Factitive** | Cause a state | הֶחֱזִיק "he strengthened" (← חָזַק "to be strong") |\n')
-    lines.append('| **Declarative** | Declare X to be Y | הִצְדִּיק "declared righteous" (← צָדַק) |\n')
-    lines.append('| **Denominative** | Action from a noun | הִמְטִיר "caused to rain" (← מָטָר "rain") |\n\n')
+    lines.append('| **Causative** | Cause someone to do X | הֵבִיא "he brought" (← בּוֹא "to come") |\n')  # noqa: E501
+    lines.append(
+        '| **Factitive** | Cause a state | הֶחֱזִיק "he strengthened" (← חָזַק "to be strong") |\n')
+    lines.append('| **Declarative** | Declare X to be Y | הִצְדִּיק "declared righteous" (← צָדַק) |\n')  # noqa: E501
+    lines.append(
+        '| **Denominative** | Action from a noun | הִמְטִיר "caused to rain" (← מָטָר "rain") |\n\n')  # noqa: E501
 
     # 2. Conjugation
     lines.append('## 2. Conjugation (Tense/Aspect) Distribution\n\n')
@@ -883,7 +883,8 @@ def hiphil_report(output_dir: str | None = None) -> Path:
         lines.append(f'![Hiphil book distribution]({rel})\n\n')
     lines.append('| Book | Count | % of OT Hiphil | % of book verbs |\n|---|---|---|---|\n')
     for _, row in book_df.iterrows():
-        lines.append(f"| {row['book']} | {row['count']:,} | {row['pct']}% | {row['pct_of_book_verbs']}% |\n")
+        lines.append(
+            f"| {row['book']} | {row['count']:,} | {row['pct']}% | {row['pct_of_book_verbs']}% |\n")
     lines.append('\n')
 
     # 4. Stem comparison
@@ -904,7 +905,8 @@ def hiphil_report(output_dir: str | None = None) -> Path:
         lines.append(f'![Top roots chart]({rel})\n\n')
     lines.append('| # | Root | Lemma | Count | % | Primary meaning |\n|---|---|---|---|---|---|\n')
     for i, row in top_roots_df.iterrows():
-        lines.append(f"| {i+1} | {row['root']} | {row['lemma']} | {row['count']:,} | {row['pct']}% | {row['top_gloss']} |\n")
+        lines.append(
+            f"| {i+1} | {row['root']} | {row['lemma']} | {row['count']:,} | {row['pct']}% | {row['top_gloss']} |\n")  # noqa: E501
     lines.append('\n')
 
     # 6. Root × conjugation heatmap
@@ -930,7 +932,8 @@ def hiphil_report(output_dir: str | None = None) -> Path:
     )
     lines.append('| Root | Lemma | Hiphil | Total | % | Gloss |\n|---|---|---|---|---|---|\n')
     for _, row in dom_df.iterrows():
-        lines.append(f"| {row['root']} | {row['lemma']} | {row['hiphil_count']} | {row['total']} | {row['hif_pct']}% | {row['top_gloss']} |\n")
+        lines.append(
+            f"| {row['root']} | {row['lemma']} | {row['hiphil_count']} | {row['total']} | {row['hif_pct']}% | {row['top_gloss']} |\n")  # noqa: E501
     lines.append('\n')
 
     # 8. Semantic categories

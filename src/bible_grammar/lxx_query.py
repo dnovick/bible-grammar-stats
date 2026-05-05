@@ -39,11 +39,11 @@ LXX_BOOK_ORDER = [
 ]
 
 _BOOK_GROUP: dict[str, list[str]] = {
-    'torah':     ['Gen','Exo','Lev','Num','Deu'],
-    'historical':['Jos','Jdg','Rut','1Sa','2Sa','1Ki','2Ki','1Ch','2Ch','Ezr','Neh','Est'],
-    'wisdom':    ['Job','Psa','Pro','Ecc','Sng'],
-    'prophets':  ['Isa','Jer','Lam','Ezk','Dan','Hos','Jol','Amo','Oba','Jon',
-                  'Mic','Nah','Hab','Zep','Hag','Zec','Mal'],
+    'torah':     ['Gen', 'Exo', 'Lev', 'Num', 'Deu'],
+    'historical': ['Jos', 'Jdg', 'Rut', '1Sa', '2Sa', '1Ki', '2Ki', '1Ch', '2Ch', 'Ezr', 'Neh', 'Est'],  # noqa: E501
+    'wisdom':    ['Job', 'Psa', 'Pro', 'Ecc', 'Sng'],
+    'prophets':  ['Isa', 'Jer', 'Lam', 'Ezk', 'Dan', 'Hos', 'Jol', 'Amo', 'Oba', 'Jon',
+                  'Mic', 'Nah', 'Hab', 'Zep', 'Hag', 'Zec', 'Mal'],
 }
 
 _df_cache: pd.DataFrame | None = None
@@ -287,8 +287,8 @@ def print_lxx_query(
     display_id = strongs or lemma
     w = 72
     print(f"\n{'═'*w}")
-    print(f"  LXX: {display_id}  ({sample.get('lemma','')})  "
-          f"[{sample.get('translation','')}]")
+    print(f"  LXX: {display_id}  ({sample.get('lemma', '')})  "
+          f"[{sample.get('translation', '')}]")
     print(f"  Total occurrences: {len(df):,}  "
           f"(canonical OT only: {len(df[~df['is_deuterocanon']]):,})")
     print(f"{'═'*w}")
@@ -309,10 +309,10 @@ def print_lxx_query(
         print(f"\n  Verb forms ({len(verbs)} tokens):")
         print(f"  {'Tense':<14} {'Voice':<12} {'Mood':<14} Count")
         print(f"  {'-'*13} {'-'*11} {'-'*13} -----")
-        breakdown = (verbs.groupby(['tense','voice','mood'])
+        breakdown = (verbs.groupby(['tense', 'voice', 'mood'])
                      .size().reset_index(name='count')
                      .sort_values('count', ascending=False)
                      .head(top_n))
         for _, r in breakdown.iterrows():
-            print(f"  {str(r['tense']):<14} {str(r['voice']):<12} {str(r['mood']):<14} {r['count']:>5}")
+            print(f"  {str(r['tense']):<14} {str(r['voice']):<12} {str(r['mood']):<14} {r['count']:>5}")  # noqa: E501
     print()

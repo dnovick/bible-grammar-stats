@@ -47,9 +47,9 @@ _HEB_FORM = {
 _HEB_PERSON = {"1": "1st", "2": "2nd", "3": "3rd"}
 _HEB_GENDER = {"m": "Masculine", "f": "Feminine", "c": "Common", "b": "Both"}
 _HEB_NUMBER = {"s": "Singular", "p": "Plural", "d": "Dual"}
-_HEB_STATE  = {"a": "Absolute", "c": "Construct", "d": "Definite"}
+_HEB_STATE = {"a": "Absolute", "c": "Construct", "d": "Definite"}
 _HEB_NOUN_GENDER = {"m": "Masculine", "f": "Feminine", "c": "Common", "b": "Both"}
-_HEB_NOUN_TYPE   = {"c": "Common", "p": "Proper", "g": "Gentilic"}
+_HEB_NOUN_TYPE = {"c": "Common", "p": "Proper", "g": "Gentilic"}
 
 
 def _decode_hebrew_token(code: str) -> dict:
@@ -208,7 +208,7 @@ def decode_greek(grammar_field: str) -> dict:
                 tvm_rest = tvm[1:]
             result["tense"] = _GRK_TENSE.get(tense_key, tense_key)
             result["voice"] = _GRK_VOICE.get(tvm_rest[0], tvm_rest[0]) if tvm_rest else ""
-            result["mood"]  = _GRK_MOOD.get(tvm_rest[1], tvm_rest[1]) if len(tvm_rest) > 1 else ""
+            result["mood"] = _GRK_MOOD.get(tvm_rest[1], tvm_rest[1]) if len(tvm_rest) > 1 else ""
         if len(parts) >= 3:
             pn = parts[2]  # e.g. "3S", "DPM"
             if pn and pn[0].isdigit():
@@ -233,11 +233,11 @@ def decode_greek(grammar_field: str) -> dict:
             cng = parts[1].split(" + ")[0]  # strip compound tokens like "1NS + G2532=CONJ"
             if cng and cng[0] in ("1", "2"):
                 result["person"] = _GRK_PERSON.get(cng[0], cng[0])
-                result["case_"]  = _GRK_CASE.get(cng[1], cng[1]) if len(cng) > 1 else ""
+                result["case_"] = _GRK_CASE.get(cng[1], cng[1]) if len(cng) > 1 else ""
                 result["number"] = _GRK_NUMBER.get(cng[2], cng[2]) if len(cng) > 2 else ""
             else:
                 result["person"] = "3rd"
-                result["case_"]  = _GRK_CASE.get(cng[0], cng[0]) if cng else ""
+                result["case_"] = _GRK_CASE.get(cng[0], cng[0]) if cng else ""
                 result["number"] = _GRK_NUMBER.get(cng[1], cng[1]) if len(cng) > 1 else ""
                 result["gender"] = _GRK_GENDER.get(cng[2], cng[2]) if len(cng) > 2 else ""
 
