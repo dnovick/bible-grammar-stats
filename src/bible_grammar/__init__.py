@@ -111,6 +111,20 @@ from .hiphil import (
     hiphil_semantic_chart, hiphil_top_roots_chart,
     hiphil_report,
 )
+from .niphal import (
+    niphal_data, niphal_conjugation_profile, niphal_top_roots,
+    niphal_root_conjugation, niphal_book_distribution,
+    niphal_stem_comparison, niphal_dominant_roots,
+    niphal_semantic_categories,
+    print_niphal_overview, print_niphal_conjugation,
+    print_niphal_top_roots, print_niphal_root_conjugation,
+    print_niphal_book_distribution, print_niphal_dominant_roots,
+    print_niphal_semantic_categories,
+    niphal_conjugation_chart, niphal_book_chart,
+    niphal_stem_chart, niphal_root_heatmap,
+    niphal_semantic_chart, niphal_top_roots_chart,
+    niphal_report,
+)
 from .speaker import (is_jesus_speaking, jesus_speaking_verse_set,
                       filter_to_jesus_speech, ALLOWLIST_VERSES)
 from .lexicon import lookup, search_gloss, lex_entry, lemma_index
