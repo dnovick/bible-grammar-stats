@@ -125,6 +125,48 @@ from .niphal import (
     niphal_semantic_chart, niphal_top_roots_chart,
     niphal_report,
 )
+from .piel import (
+    piel_data, piel_conjugation_profile, piel_top_roots,
+    piel_root_conjugation, piel_book_distribution,
+    piel_stem_comparison, piel_dominant_roots,
+    piel_semantic_categories,
+    print_piel_overview, print_piel_conjugation,
+    print_piel_top_roots, print_piel_root_conjugation,
+    print_piel_book_distribution, print_piel_dominant_roots,
+    print_piel_semantic_categories,
+    piel_conjugation_chart, piel_book_chart,
+    piel_stem_chart, piel_root_heatmap,
+    piel_semantic_chart, piel_top_roots_chart,
+    piel_report,
+)
+from .pual import (
+    pual_data, pual_conjugation_profile, pual_top_roots,
+    pual_root_conjugation, pual_book_distribution,
+    pual_stem_comparison, pual_dominant_roots,
+    pual_semantic_categories,
+    print_pual_overview, print_pual_conjugation,
+    print_pual_top_roots, print_pual_root_conjugation,
+    print_pual_book_distribution, print_pual_dominant_roots,
+    print_pual_semantic_categories,
+    pual_conjugation_chart, pual_book_chart,
+    pual_stem_chart, pual_root_heatmap,
+    pual_semantic_chart, pual_top_roots_chart,
+    pual_report,
+)
+from .hithpael import (
+    hithpael_data, hithpael_conjugation_profile, hithpael_top_roots,
+    hithpael_root_conjugation, hithpael_book_distribution,
+    hithpael_stem_comparison, hithpael_dominant_roots,
+    hithpael_semantic_categories,
+    print_hithpael_overview, print_hithpael_conjugation,
+    print_hithpael_top_roots, print_hithpael_root_conjugation,
+    print_hithpael_book_distribution, print_hithpael_dominant_roots,
+    print_hithpael_semantic_categories,
+    hithpael_conjugation_chart, hithpael_book_chart,
+    hithpael_stem_chart, hithpael_root_heatmap,
+    hithpael_semantic_chart, hithpael_top_roots_chart,
+    hithpael_report,
+)
 from .speaker import (is_jesus_speaking, jesus_speaking_verse_set,
                       filter_to_jesus_speech, ALLOWLIST_VERSES)
 from .lexicon import lookup, search_gloss, lex_entry, lemma_index
