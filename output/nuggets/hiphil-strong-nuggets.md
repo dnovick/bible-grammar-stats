@@ -7,13 +7,16 @@
 
 ## Nugget 1 — 2026-05-05
 
-**הִבְדִּיל** (Deu 10:8)
+**הִבְדִּיל** — Deu 10:8
 
-> אָ֣ז הִבְדִּ֤יל מֹשֶׁה֙ אֶת־שֵׁ֣בֶט הַלֵּוִ֔י
-> *"At that time the LORD set apart the tribe of Levi…"*
+> אָז הִבְדִּיל מֹשֶׁה אֶת־שֵׁבֶט הַלֵּוִי
+> *"At that time Moses set apart the tribe of Levi"*
 
-**Form:** Hiphil Perfect 3ms of בָּדַל — הִ prefix + patah, dagesh in ד
-**Function:** Causative — God *caused* a separation to happen
-**Why it matters:** The same root appears in Gen 1 where God *separates* light from darkness (וַיַּבְדֵּל). Here in Deu 10 it's Perfect — a completed, historical act of divine appointment. The Hiphil prefix הִ + the a-class vowel pattern (הִבְדִּיל) is your diagnostic.
+**Form:** Hiphil Perfect 3ms of בָּדַל
+Diagnostic: hi-prefix + patah + dagesh in dalet
+
+**Function:** Causative — Moses caused a deliberate separation
+
+**Why it matters:** The same root appears in Gen 1 where God separates light from darkness. Here in Deu 10 the Perfect marks a completed, historical act of divine appointment. Look for the hi-prefix as your Hiphil signal.
 
 ---
