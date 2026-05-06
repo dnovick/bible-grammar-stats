@@ -2762,8 +2762,110 @@ def build_ch28_exercise(out_dir: str = None) -> str:
                                'ch28-passage-exercise')
     path = os.path.join(out_dir, 'ch28-passage-exercise.pdf')
     ex = Ch28Exercise(
-        title='Chapter 28 — "Spot the Piel/Pual" Passage Exercise',
-        subtitle='Genesis 1  ·  Exodus 19  ·  Numbers 22',
+        title='Chapter 28 — "Spot the Hophal" Passage Exercise',
+        subtitle='Genesis 22  ·  Exodus 5  ·  Numbers 35',
+    )
+    return ex.save(path)
+
+
+# ---------------------------------------------------------------------------
+# Chapter 28 — "Spot the Hophal" Passage Exercise (correct: Hophal Strong)
+# ---------------------------------------------------------------------------
+class Ch28HophalExercise(ExercisePDF):
+
+    def _render_passages(self, show_answers: bool):
+
+        # ── Passage A ─────────────────────────────────────────────────────────
+        self.add_section_heading('Passage A — Genesis 22:20')
+
+        self.add_passage(PassageBlock('22:20',
+            'וַיְהִ֗י אַֽחֲרֵי֙ הַדְּבָרִ֣ים הָאֵ֔לֶּה וַיֻּגַּ֥ד לְאַבְרָהָ֖ם לֵאמֹֽר',
+            '"Now after these things it was told to Abraham, saying…"'))
+        self.add_verb_table([
+            VerbEntry('1', 'וַיֻּגַּד', 'Wayyiqtol', '3ms', 'נָגַד', 'Hiphil הִגִּיד = to tell/declare → Hophal = it was reported'),
+        ], show_answers=show_answers)
+
+        self.add_section_break()
+
+        # ── Passage B ─────────────────────────────────────────────────────────
+        self.add_section_heading('Passage B — Exodus 5:14–16 (with Niphal distractor)')
+
+        self.add_passage(PassageBlock('5:14',
+            'וַיֻּכּ֗וּ שֹׁטְרֵי֙ בְּנֵ֣י יִשְׂרָאֵ֔ל אֲשֶׁר־שָׂ֣מוּ עֲלֵהֶ֔ם נֹגְשֵׂ֥י פַרְעֹ֖ה',
+            '"And the overseers of the people of Israel were beaten…"'))
+        self.add_verb_table([
+            VerbEntry('2', 'וַיֻּכּוּ', 'Wayyiqtol', '3mp', 'נָכָה', 'Hiphil הִכָּה = to strike/kill → Hophal = were beaten'),
+        ], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('5:16',
+            'תֶּ֗בֶן אֵ֤ין נִתָּן֙ לַעֲבָדֶ֔יךָ וְהִנֵּ֧ה עֲבָדֶ֛יךָ מֻכִּ֖ים',
+            '"No straw is given to your servants, and behold, your servants are being beaten…"'))
+        self.add_verb_table([
+            VerbEntry('3', 'נִתָּן', 'Niphal Ptc.', 'ms', 'נָתַן', 'NOT Hophal — Niphal passive of Qal נָתַן (given); נ prefix'),
+            VerbEntry('4', 'מֻכִּים', 'Participle', 'mp', 'נָכָה', 'Hophal — מֻ prefix (Qibbuts) = u-class vowel; passive of Hiphil הִכָּה'),
+        ], show_answers=show_answers)
+
+        self.add_section_break()
+
+        # ── Passage C ─────────────────────────────────────────────────────────
+        self.add_section_heading('Passage C — Numbers 35:16–18, 30–31 (Qal distractors)')
+
+        self.add_passage(PassageBlock('35:16',
+            'וְאִם בִּכְלִי בַרְזֶל הִכָּהוּ וַיָּמֹת מוֹת־יוּמַת הָרֹצֵֽחַ',
+            '"If he struck him with iron and he died — the murderer shall surely be put to death."'))
+        self.add_verb_table([
+            VerbEntry('5', 'יוּמַת', 'Imperfect', '3ms', 'מוּת', 'Hophal — יוּ prefix (Shureq); Hiphil הֵמִית = to put to death'),
+        ], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('35:17',
+            'וְאִם בְּאֶבֶן יָד אֲשֶׁר־יָמוּת בָּהּ הִכָּהוּ וַיָּמֹת מוֹת־יוּמַת הָרֹצֵֽחַ',
+            '"If with a stone that could kill he struck him and he died — the murderer shall be put to death."'))
+        self.add_verb_table([
+            VerbEntry('6', 'יָמוּת', 'Qal Impf.', '3ms', 'מוּת', 'NOT Hophal — Qal intransitive "to die"; יָ prefix (Patach) ≠ Hophal'),
+            VerbEntry('7', 'יוּמַת', 'Imperfect', '3ms', 'מוּת', 'Hophal — יוּ prefix (Shureq); same formula as verb 5'),
+        ], show_answers=show_answers)
+
+        self.add_passage(PassageBlock('35:30–31',
+            'עַל־פִּי עֵדִים יֵרָצֵחַ הָרֹצֵחַ … כִּי־מוֹת יוּמָת',
+            '"On the testimony of witnesses the murderer shall be put to death… for he shall surely be put to death."'))
+        self.add_verb_table([
+            VerbEntry('8', 'יֵרָצֵחַ', 'Niphal Impf.', '3ms', 'רָצַח', 'NOT Hophal — Niphal (passive of Qal murder); יֵ prefix, no u-vowel'),
+            VerbEntry('9', 'יוּמַת', 'Imperfect', '3ms', 'מוּת', 'Hophal — יוּ prefix (Shureq); death penalty formula'),
+        ], show_answers=show_answers)
+
+    def _build(self):
+        self.add_instructions(
+            'Each numbered verb is either Hophal, Niphal, or Qal. '
+            'For Hophal forms, identify: Conjugation, PGN, Root, and the Hiphil meaning '
+            '(since Hophal = passive of Hiphil). '
+            'The answer key begins on the page marked "Answer Key".'
+        )
+        self._render_passages(show_answers=False)
+
+        self._new_page()
+        c = self._canvas
+        c.setFont('Helvetica-Bold', 14)
+        c.setFillColor(C_HEADING)
+        c.drawString(self.MARGIN_L, self._y, 'Answer Key')
+        self._y -= 0.22 * inch
+        c.setFont('Helvetica-Oblique', 9)
+        c.setFillColor(HexColor('#666666'))
+        c.drawString(self.MARGIN_L, self._y,
+                     'Passages with correct answers shown in the green row below each verb.')
+        self._y -= 0.18 * inch
+        self._render_passages(show_answers=True)
+
+
+def build_ch28_hophal_exercise(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'hebrew', 'bbh', 'ch28', 'exercises',
+                               'ch28-passage-exercise')
+    path = os.path.join(out_dir, 'ch28-passage-exercise.pdf')
+    ex = Ch28HophalExercise(
+        title='Chapter 28 — "Spot the Hophal" Passage Exercise',
+        subtitle='Genesis 22  ·  Exodus 5  ·  Numbers 35',
     )
     return ex.save(path)
 

@@ -1,7 +1,7 @@
-# Chapter 28 — "Spot the Piel/Pual" Passage Exercise
+# Chapter 28 — "Spot the Hophal" Passage Exercise
 
-**Stems:** Piel (פִּעֵל) and Pual (פֻּעַל)
-**Passages:** Gen 1:22 · Exo 19:10–14 · Num 22:6–8, 17–18
+**Stem:** Hophal (הֻפְעַל) — passive of the Hiphil causative
+**Passages:** Gen 22:20 · Exo 5:14–16 · Num 35:16–18, 30–31
 
 ---
 
@@ -9,147 +9,118 @@
 
 For each bolded verb, indicate:
 
-1. **Piel or Pual?** (Yes / No — is it one of these stems?)
-2. **Conjugation** (Perfect, Imperfect, Wayyiqtol, Weqatal, Imperative, Inf. Const., Inf. Abs., Participle)
-3. **PGN** (Person–Gender–Number, e.g., 3ms, 2mp, 1cs)
+1. **Hophal?** (Yes / No — is it the Hophal stem?)
+2. **Conjugation** (Perfect, Imperfect, Wayyiqtol, Weqatal, Participle, Inf. Construct)
+3. **PGN** (Person–Gender–Number)
 4. **Root** (3-letter root, unvoweled)
-5. **Function** (Intensive, Factitive, Declarative, Denominative, Simple action, Passive)
+5. **Corresponding Hiphil meaning** (what does the Hiphil of this root mean? → the Hophal passivizes it)
 
 ---
 
-## Passage A — Genesis 1:22, 28
+## Passage A — Genesis 22:20–22
 
-*Context: God blesses the creatures he has made.*
+*Context: After the Akedah, Abraham receives news about his relatives.*
 
-> וַיְבָ֧רֶךְ **(1)** אֹתָ֛ם אֱלֹהִ֖ים לֵאמֹ֑ר פְּר֥וּ וּרְב֛וּ וּמִלְא֥וּ אֶת־הַמַּ֖יִם בַּיַּמִּ֑ים
+> וַיְהִ֗י אַֽחֲרֵי֙ הַדְּבָרִ֣ים הָאֵ֔לֶּה **וַיֻּגַּ֥ד (1)** לְאַבְרָהָ֖ם לֵאמֹ֑ר הִנֵּ֤ה יָלְדָה֙ מִלְכָּ֔ה גַם־הִ֖וא בָּנִ֥ים לְנָחֽוֹר׃
 
-"And God blessed them, saying, 'Be fruitful and multiply and fill the waters in the seas…'"
+"Now after these things **it was told** to Abraham, saying, 'Behold, Milcah also has borne children to Nahor.'"
 
-| # | Verb | Piel/Pual? | Conjugation | PGN | Root | Function |
+| # | Verb | Hophal? | Conjugation | PGN | Root | Hiphil meaning |
 |---|---|---|---|---|---|---|
-| 1 | וַיְבָרֶךְ | | | | | |
+| 1 | וַיֻּגַּד | | | | | |
 
 ---
 
-> וַיְבָ֣רֶךְ **(2)** אֹתָ֖ם אֱלֹהִ֑ים וַיֹּ֨אמֶר לָהֶ֜ם אֱלֹהִ֗ים פְּר֥וּ וּרְב֛וּ
+## Passage B — Exodus 5:14–16
 
-"And God blessed them. And God said to them, 'Be fruitful and multiply…'" (Gen 1:28)
+*Context: Pharaoh's taskmasters beat the Israelite foremen for not meeting brick quotas.*
 
-| # | Verb | Piel/Pual? | Conjugation | PGN | Root | Function |
+> **וַיֻּכּ֗וּ (2)** שֹׁטְרֵי֙ בְּנֵ֣י יִשְׂרָאֵ֔ל אֲשֶׁר־שָׂ֣מוּ עֲלֵהֶ֔ם נֹגְשֵׂ֥י פַרְעֹ֖ה לֵאמֹ֑ר מַדּ֡וּעַ לֹא֩ כִלִּיתֶ֨ם חָקְכֶ֤ם לִלְבֹּן֙ כִּתְמ֣וֹל שִׁלְשֹׁ֔ם
+
+"And **the overseers of the people of Israel were beaten**, whom Pharaoh's taskmasters had set over them, saying, 'Why have you not done all your task of making bricks today and yesterday?'"
+
+| # | Verb | Hophal? | Conjugation | PGN | Root | Hiphil meaning |
 |---|---|---|---|---|---|---|
-| 2 | וַיְבָרֶךְ | | | | | |
+| 2 | וַיֻּכּוּ | | | | | |
 
 ---
 
-## Passage B — Exodus 19:10–14
+> וַיָּבֹ֙אוּ֙ שֹׁטְרֵ֣י בְנֵי־יִשְׂרָאֵ֔ל וַיִּצְעֲק֖וּ אֶל־פַּרְעֹ֑ה לֵאמֹ֗ר לָ֚מָּה תַעֲשֶׂ֣ה כֹ֔ה לַעֲבָדֶ֑יךָ׃ תֶּ֗בֶן אֵ֤ין **נִתָּן֙ (3)** לַעֲבָדֶ֔יךָ וּלְבֵנִ֛ים אֹמְרִ֥ים לָ֖נוּ עֲשׂ֑וּ וְהִנֵּ֧ה **עֲבָדֶ֛יךָ מֻכִּ֖ים (4)**
 
-*Context: The LORD instructs Moses to prepare Israel for the covenant theophany at Sinai.*
+"'Why do you treat your servants this way? No straw **is given** to your servants, yet they say to us, "Make bricks!" And behold, **your servants are being beaten**…'"
 
-> וַיֹּ֨אמֶר יְהוָ֤ה אֶל־מֹשֶׁה֙ לֵ֣ךְ אֶל־הָעָ֔ם **וְקִדַּשְׁתָּ֥ (3)** אֹתָ֛ם הַיּ֥וֹם וּמָחָ֑ר **וְכִבְּס֖וּ (4)** שִׂמְלֹתָֽם׃
-
-"And the LORD said to Moses, 'Go to the people and consecrate them today and tomorrow, and let them wash their garments.'"
-
-| # | Verb | Piel/Pual? | Conjugation | PGN | Root | Function |
+| # | Verb | Hophal? | Conjugation | PGN | Root | Hiphil meaning |
 |---|---|---|---|---|---|---|
-| 3 | וְקִדַּשְׁתָּ | | | | | |
-| 4 | וְכִבְּסוּ | | | | | |
+| 3 | נִתָּן | | | | | |
+| 4 | מֻכִּים | | | | | |
 
 ---
 
-> וַיֵּ֤רֶד מֹשֶׁה֙ מִן־הָהָ֔ר אֶל־הָעָ֑ם **וַיְקַדֵּ֖שׁ (5)** אֶת־הָעָ֑ם **וַיְכַבְּס֖וּ (6)** שִׂמְלֹתָֽם׃
+## Passage C — Numbers 35:16–18, 30–31
 
-"And Moses went down from the mountain to the people and **consecrated** the people, and they **washed** their garments." (Exo 19:14)
+*Context: Laws concerning murder and the death penalty.*
 
-| # | Verb | Piel/Pual? | Conjugation | PGN | Root | Function |
+> וְאִם֩ בִּכְלִ֨י בַרְזֶ֧ל הִכָּ֛הוּ וַיָּמֹ֖ת מֽוֹת־**יוּמַ֖ת (5)** הָרֹצֵֽחַ׃
+
+"If he struck him with an iron object, so that he died — the murderer **shall surely be put to death**."
+
+| # | Verb | Hophal? | Conjugation | PGN | Root | Hiphil meaning |
 |---|---|---|---|---|---|---|
-| 5 | וַיְקַדֵּשׁ | | | | | |
-| 6 | וַיְכַבְּסוּ | | | | | |
+| 5 | יוּמַת | | | | | |
 
 ---
 
-> וַיֹּ֤אמֶר יְהוָה֙ אֶל־מֹשֶׁ֔ה רֵ֥ד הָעֵ֖ד בָּעָ֑ם פֶּן־יֶהֶרְס֤וּ אֶל־יְהוָה֙ **לִרְא֔וֹת** וְנָפַ֥ל מִמֶּ֖נּוּ רָֽב׃ … וַיֹּ֥אמֶר אֵלָ֖יו יְהוָ֑ה לֶֽךְ־רֵ֗ד **וְעָלִ֤יתָ** אַתָּה֙ וְאַהֲרֹ֣ן עִמָּ֔ךְ … **וַיְדַבֵּ֥ר (7)** מֹשֶׁ֖ה אֶל־הָעָ֑ם
+> וְאִם֩ בְּאֶ֨בֶן יָ֜ד אֲשֶׁר־**יָמ֤וּת (6)** בָּהּ֙ הִכָּ֔הוּ וַיָּמֹ֖ת מֽוֹת־**יוּמַ֖ת (7)** הָרֹצֵֽחַ׃ וְאִ֨ם בִּכְלִי֩ עֵ֨ץ יָ֜ד אֲשֶׁר־**יָמ֤וּת (8)** בָּהּ֙ הִכָּ֔הוּ וַיָּמֹ֖ת מֽוֹת־**יוּמַ֖ת (9)** הָרֹצֵֽחַ׃
 
-"The LORD said to Moses … and Moses **spoke** to the people." (Exo 19:19–25, condensed)
+"If with a stone in the hand that could cause death he struck him and he died — the murderer **shall be put to death** (7). And if with a wooden instrument that could cause death he struck him and he died — the murderer **shall be put to death** (9)."
 
-| # | Verb | Piel/Pual? | Conjugation | PGN | Root | Function |
+| # | Verb | Hophal? | Conjugation | PGN | Root | Hiphil meaning |
 |---|---|---|---|---|---|---|
-| 7 | וַיְדַבֵּר | | | | | |
+| 6 | יָמוּת | | | | | |
+| 7 | יוּמַת | | | | | |
+| 8 | יָמוּת | | | | | |
+| 9 | יוּמַת | | | | | |
 
 ---
 
-## Passage C — Numbers 22:6–8, 17–18
+> עַל־פִּ֣י עֵדִים֮ **יֵרָצֵ֣חַ (10)** הָרֹצֵחַ֒ … וְלֹֽא־תִקְח֣וּ כֹ֔פֶר לְנֶ֖פֶשׁ רֹצֵ֑חַ אֲשֶׁר־ה֥וּא רָשָׁ֖ע לָמ֑וּת כִּי־מ֖וֹת **יוּמָֽת (11)**׃
 
-*Context: Balak asks Balaam to curse Israel; Balaam responds.*
+"On the testimony of witnesses the murderer **shall be put to death** (10)… and you shall not accept ransom for the life of a murderer who is guilty of death, for **he shall surely be put to death** (11)."
 
-> לְכָה־נָּ֣א **אָרָה־לִּי֮ (8)** אֶת־הָעָ֣ם הַזֶּה֒ כִּ֤י עָצוּם֙ הוּא֙ מִמֶּ֔נִּי אוּלַ֤י **אוּכַל֙ נַכֶּה־בּ֔וֹ** וַאֲגָרְשֶׁ֖נּוּ מִן־הָאָ֑רֶץ כִּ֣י יָדַ֗עְתִּי אֵ֤ת אֲשֶׁר־**תְּבָרֵךְ֙ (9)** מְבֹרָ֔ךְ **(10)** וַאֲשֶׁ֥ר **תָּאֹ֖ר (11)** יוּאָֽר׃
-
-"Come now, **curse** this people for me … I know that he whom you **bless** is **blessed**, and he whom you **curse** is cursed." (Num 22:6)
-
-| # | Verb | Piel/Pual? | Conjugation | PGN | Root | Function |
+| # | Verb | Hophal? | Conjugation | PGN | Root | Hiphil meaning |
 |---|---|---|---|---|---|---|
-| 8 | אָרָה | | | | | |
-| 9 | תְּבָרֵךְ | | | | | |
-| 10 | מְבֹרָךְ | | | | | |
-| 11 | תָּאֹר | | | | | |
-
----
-
-> וַיֹּ֤אמֶר **יְדַבֵּ֥ר (12)** יְהוָ֖ה אֵלָ֑י **וְדִבַּרְתִּ֖י (13)** אֲלֵיכֶֽם׃
-
-"And he said, 'The LORD will **speak** to me, and I will **speak** to you what the LORD speaks.'" (Num 22:8, condensed)
-
-| # | Verb | Piel/Pual? | Conjugation | PGN | Root | Function |
-|---|---|---|---|---|---|---|
-| 12 | יְדַבֵּר | | | | | |
-| 13 | וְדִבַּרְתִּי | | | | | |
-
----
-
-> כִּֽי **כַבֵּד֙ (14)** **אֲכַבֶּדְךָ֣ (15)** מְאֹ֔ד וְכֹ֛ל אֲשֶׁר־תֹּאמַ֥ר אֵלַ֖י אֶעֱשֶׂ֑ה וּלְכָ֣ה נָּ֗א **קָֽבָה (16)**־לִ֖י אֵ֥ת הָעָ֛ם הַזֶּֽה׃ וַיַּ֖עַן בִּלְעָ֑ם … לֹ֤א **אוּכַל֙ לַעֲבֹ֣ר** אֶת־פִּ֣י יְהוָ֔ה **לַעֲשׂ֥וֹת** טוֹבָ֛ה א֥וֹ רָעָ֖ה מִלִּבִּ֑י
-
-"'I will certainly honor you greatly, and whatever you say I will do; come, **curse** this people for me.' And Balaam answered … 'I cannot go beyond the word of the LORD to do good or bad of my own accord.'" (Num 22:17–18)
-
-| # | Verb | Piel/Pual? | Conjugation | PGN | Root | Function |
-|---|---|---|---|---|---|---|
-| 14 | כַבֵּד | | | | | |
-| 15 | אֲכַבֶּדְךָ | | | | | |
-| 16 | קָבָה | | | | | |
+| 10 | יֵרָצֵחַ | | | | | |
+| 11 | יוּמַת | | | | | |
 
 ---
 
 ## Reflection Questions
 
-1. In Exo 19:10–14, Moses performs the same actions as verbs 3–6. What is the difference in conjugation between verses 10 (weqatal) and 14 (wayyiqtol)? What does the use of weqatal in the LORD's command suggest about the modal force?
+1. Verbs 5, 7, 9, 11 all use the formula מוֹת יוּמַת. What two verb forms make up this formula (מוֹת and יוּמַת)? One is the Qal Inf. Absolute and one is the Hophal Imperfect — which is which, and what is the intensifying effect of this construction?
 
-2. In Num 22:6, Balak uses both Piel and Pual forms of the same root ברך. What is the relationship between verbs 9 and 10 structurally? What does the Pual add theologically?
+2. In Passage B, verbs 3 (נִתָּן) and 4 (מֻכִּים) are both passive forms, but from different stems. Verb 3 is Niphal (נ prefix in the Perfect) and verb 4 is Hophal (מֻ prefix). What does this difference in stem tell you about the *type* of passive? (Hint: what does the Hiphil of נכה mean?)
 
-3. The Piel of דבר (verbs 7, 12, 13) is a classic denominative derived from the noun דָּבָר (word). How does this origin explain why this root has almost no Qal forms in the OT?
+3. Verb 10 (יֵרָצֵחַ) is a Niphal Imperfect 3ms of רצח (to murder). It is NOT a Hophal. What formal feature tells you it is Niphal rather than Hophal? What does the use of passive voice here accomplish theologically — why say "he shall be put to death by witnesses" rather than "witnesses shall kill him"?
 
 ---
 
 ## Answer Key
 
-| # | Verb | Piel/Pual? | Conjugation | PGN | Root | Function |
+| # | Verb | Hophal? | Conjugation | PGN | Root | Hiphil meaning |
 |---|---|---|---|---|---|---|
-| 1 | וַיְבָרֶךְ | Piel | Wayyiqtol | 3ms | ברך | Intensive |
-| 2 | וַיְבָרֶךְ | Piel | Wayyiqtol | 3ms | ברך | Intensive |
-| 3 | וְקִדַּשְׁתָּ | Piel | Weqatal | 2ms | קדש | Factitive |
-| 4 | וְכִבְּסוּ | Piel | Weqatal | 3cp | כבס | Intensive |
-| 5 | וַיְקַדֵּשׁ | Piel | Wayyiqtol | 3ms | קדש | Factitive |
-| 6 | וַיְכַבְּסוּ | Piel | Wayyiqtol | 3mp | כבס | Intensive |
-| 7 | וַיְדַבֵּר | Piel | Wayyiqtol | 3ms | דבר | Denominative |
-| 8 | אָרָה | No (Qal jussive) | Jussive | 1cs | ארר | — |
-| 9 | תְּבָרֵךְ | Piel | Imperfect | 2ms | ברך | Intensive |
-| 10 | מְבֹרָךְ | Pual | Participle | ms | ברך | Passive |
-| 11 | תָּאֹר | No (Qal imperfect) | Imperfect | 2ms | ארר | — |
-| 12 | יְדַבֵּר | Piel | Imperfect | 3ms | דבר | Denominative |
-| 13 | וְדִבַּרְתִּי | Piel | Weqatal | 1cs | דבר | Denominative |
-| 14 | כַבֵּד | Piel | Inf. Absolute | — | כבד | Intensive |
-| 15 | אֲכַבֶּדְךָ | Piel | Imperfect | 1cs | כבד | Intensive |
-| 16 | קָבָה | No (Qal imperative) | Imperative | 2ms | קבב | — |
+| 1 | וַיֻּגַּד | Yes | Wayyiqtol | 3ms | נגד | to tell, declare, report |
+| 2 | וַיֻּכּוּ | Yes | Wayyiqtol | 3mp | נכה | to strike, beat, kill |
+| 3 | נִתָּן | No (Niphal) | Participle ms | ms | נתן | — (Niphal passive of Qal) |
+| 4 | מֻכִּים | Yes | Participle | mp | נכה | to strike, beat (Hiphil הִכָּה) |
+| 5 | יוּמַת | Yes | Imperfect | 3ms | מות | to put to death (Hiphil הֵמִית) |
+| 6 | יָמוּת | No (Qal) | Imperfect | 3ms | מות | — (Qal: to die) |
+| 7 | יוּמַת | Yes | Imperfect | 3ms | מות | to put to death |
+| 8 | יָמוּת | No (Qal) | Imperfect | 3ms | מות | — (Qal: to die) |
+| 9 | יוּמַת | Yes | Imperfect | 3ms | מות | to put to death |
+| 10 | יֵרָצֵחַ | No (Niphal) | Imperfect | 3ms | רצח | — (Niphal passive) |
+| 11 | יוּמַת | Yes | Imperfect | 3ms | מות | to put to death |
 
-> **Notes on tricky items:**
-> - **#8, 11, 16** are Qal forms included as distractors — they lack Dagesh Forte in R2.
-> - **#10 מְבֹרָךְ** is a Pual Participle ms (Qamets under R1 in Pual ptc because of the open syllable): the passive of Piel "bless."
-> - **#14 כַבֵּד** is a Piel Inf. Absolute in the cognate construction כַּבֵּד אֲכַבֶּדְךָ ("I will surely honor you greatly").
-> - The Piel of **כבד** means "to honor, give weight to" (factitive/intensive from the adjective כָּבֵד "heavy, weighty").
+> **Key teaching points:**
+> - **#1** וַיֻּגַּד: Qibbuts under prefix (alternate Hophal form) + Dagesh in R2 (from Hiphil הִגִּיד, which has dagesh in gimel due to intensive doubling).
+> - **#3 vs. #4**: Both passive, but נִתָּן is Niphal Participle (passivizes the Qal נָתַן); מֻכִּים is Hophal Participle (passivizes the Hiphil הִכָּה "to cause to be struck"). The Hophal specifically signals "caused to undergo" rather than a simple passive state.
+> - **#5, 7, 9, 11 vs. #6, 8, 10**: Root מות in the Qal means "to die" (intransitive — יָמוּת). The Hophal יוּמַת = "to be put to death" (passive causative). The prefix vowel distinguishes them: יָ (Qal) vs. יוּ (Hophal).

@@ -1,32 +1,24 @@
-דִּבֵּר (Gen 8:15)	Root: דָּבַר | Piel | Perfect 3ms | he spoke — denominative (from דָּבָר word)	BBH Chapter 28 — Piel and Pual
-דִּבְּרָה (Gen 39:19)	Root: דָּבַר | Piel | Perfect 3fs | she spoke — Weqatal form in context	BBH Chapter 28 — Piel and Pual
-דִּבַּרְתָּ (Exo 4:15)	Root: דָּבַר | Piel | Perfect 2ms | you spoke — 2ms suffix תָּ	BBH Chapter 28 — Piel and Pual
-יְדַבֵּר (Num 22:8)	Root: דָּבַר | Piel | Imperfect 3ms | he will speak — יְ prefix + dagesh in R2	BBH Chapter 28 — Piel and Pual
-תְּדַבֵּר (Gen 31:24)	Root: דָּבַר | Piel | Imperfect 2ms | you shall speak — תְּ prefix	BBH Chapter 28 — Piel and Pual
-וַיְדַבֵּר (Gen 8:15)	Root: דָּבַר | Piel | Wayyiqtol 3ms | and he spoke — וַיְ prefix (contrast Qal וַיִּ)	BBH Chapter 28 — Piel and Pual
-וְדִבַּרְתִּי (Num 22:8)	Root: דָּבַר | Piel | Weqatal 1cs | and I will speak — וְ + Perfect form	BBH Chapter 28 — Piel and Pual
-דַּבֵּר (Gen 24:33)	Root: דָּבַר | Piel | Imperative 2ms | speak! — patach+dagesh+tsere; identical to Inf. Construct	BBH Chapter 28 — Piel and Pual
-דַּבֵּר (Gen 17:22)	Root: דָּבַר | Piel | Infinitive Construct | to speak / when he finished speaking	BBH Chapter 28 — Piel and Pual
-מְדַבֵּר (Gen 27:6)	Root: דָּבַר | Piel | Participle ms | speaking — מְ prefix marks Piel/Pual ptc.	BBH Chapter 28 — Piel and Pual
-קִדֵּשׁ (Exo 29:27)	Root: קָדַשׁ | Piel | Perfect 3ms | he consecrated — factitive: made holy	BBH Chapter 28 — Piel and Pual
-קִדַּשְׁתָּ (Exo 19:10)	Root: קָדַשׁ | Piel | Perfect 2ms | you consecrated — Weqatal in context	BBH Chapter 28 — Piel and Pual
-יְקַדֵּשׁ (Exo 29:44)	Root: קָדַשׁ | Piel | Imperfect 3ms | he will consecrate — command to Moses	BBH Chapter 28 — Piel and Pual
-אֲקַדֵּשׁ (Exo 29:44)	Root: קָדַשׁ | Piel | Imperfect 1cs | I will consecrate — God speaking; אֲ prefix	BBH Chapter 28 — Piel and Pual
-וַיְקַדֵּשׁ (Gen 2:3)	Root: קָדַשׁ | Piel | Wayyiqtol 3ms | and he set apart as holy — Gen 2:3	BBH Chapter 28 — Piel and Pual
-קַדֵּשׁ (Exo 13:2)	Root: קָדַשׁ | Piel | Imperative 2ms | consecrate! — God's command to Moses	BBH Chapter 28 — Piel and Pual
-מְקַדֵּשׁ (Exo 31:13)	Root: קָדַשׁ | Piel | Participle ms | [the LORD] who consecrates — predicate	BBH Chapter 28 — Piel and Pual
-קֻדַּשׁ	Root: קָדַשׁ | Pual | Perfect 3ms | he was consecrated — Qibbuts + dagesh = Pual signature	BBH Chapter 28 — Piel and Pual
-יְקֻדַּשׁ	Root: קָדַשׁ | Pual | Imperfect 3ms | he will be consecrated — u-vowel under R1	BBH Chapter 28 — Piel and Pual
-מְקֻדָּשִׁים (2Ch 26:18)	Root: קָדַשׁ | Pual | Participle mp | [priests] who are consecrated — passive of Piel factitive	BBH Chapter 28 — Piel and Pual
-בֵּרַכְתִּי (Gen 17:16)	Root: בָּרַךְ | Piel | Perfect 1cs | I will bless — R2=ר rejects dagesh; Tsere marks Piel	BBH Chapter 28 — Piel and Pual
-יְבָרֵךְ (Gen 1:22)	Root: בָּרַךְ | Piel | Imperfect 3ms | he will bless — יְ prefix; tsere under ר	BBH Chapter 28 — Piel and Pual
-וַיְבָרֶךְ (Gen 1:22)	Root: בָּרַךְ | Piel | Wayyiqtol 3ms | and he blessed — Gen 1:22; וַיְ prefix	BBH Chapter 28 — Piel and Pual
-בָּרֵךְ (Gen 22:17)	Root: בָּרַךְ | Piel | Infinitive Absolute | blessing — cognate: בָּרֵךְ אֲבָרֶכְךָ	BBH Chapter 28 — Piel and Pual
-מְבֹרָךְ (Num 22:6)	Root: בָּרַךְ | Pual | Participle ms | blessed (one) — passive; used by Balak of Balaam's power	BBH Chapter 28 — Piel and Pual
-צִוָּה (Gen 3:11)	Root: צָוָה | Piel | Perfect 3ms | he commanded — simple action; 485× in OT	BBH Chapter 28 — Piel and Pual
-צִוִּיתִי (Gen 3:11)	Root: צָוָה | Piel | Perfect 1cs | I commanded — God speaking	BBH Chapter 28 — Piel and Pual
-יְצַוֶּה	Root: צָוָה | Piel | Imperfect 3ms | he will command	BBH Chapter 28 — Piel and Pual
-וַיְצַו (Gen 2:16)	Root: צָוָה | Piel | Wayyiqtol 3ms | and he commanded — apocopated III-ה Wayyiqtol	BBH Chapter 28 — Piel and Pual
-צֻוֵּה (Lev 8:35)	Root: צָוָה | Pual | Perfect 3ms | he was commanded — Qibbuts + dagesh forte in R2	BBH Chapter 28 — Piel and Pual
-יְצֻוֶּה (Exo 34:34)	Root: צָוָה | Pual | Imperfect 3ms | he was commanded — passive of Piel צִוָּה	BBH Chapter 28 — Piel and Pual
-כַּבֵּד אֲכַבֶּדְךָ (Num 22:17)	Root: כָּבֵד | Piel | Inf.Abs. + Impf.1cs | I will surely honor you — cognate absolute construction	BBH Chapter 28 — Piel and Pual
+יוּמַת (Gen 26:11)	Root: מוּת | Hophal | Imperfect 3ms | shall be put to death — most common Hophal form; יוּ prefix (Shureq)	BBH Chapter 28 — Hophal Strong
+יוּמַת (Num 35:16)	Root: מוּת | Hophal | Imperfect 3ms | capital punishment formula; מוֹת יוּמַת = "shall surely be put to death"	BBH Chapter 28 — Hophal Strong
+הוּמַת (Deu 21:22)	Root: מוּת | Hophal | Perfect 3ms | he has been put to death — הוּ prefix (he + Shureq) marks Hophal Perfect	BBH Chapter 28 — Hophal Strong
+הוּמְתָה	Root: מוּת | Hophal | Perfect 3fs | she was put to death — 3fs suffix ָה	BBH Chapter 28 — Hophal Strong
+וַתּוּמַת (2Ki 11:16)	Root: מוּת | Hophal | Wayyiqtol 3fs | and she was put to death — Athaliah executed; וַתּ + Shureq prefix	BBH Chapter 28 — Hophal Strong
+מוּמָת (1Sa 19:11)	Root: מוּת | Hophal | Participle ms | one who is to be put to death — מוּ prefix + Qamets under R2	BBH Chapter 28 — Hophal Strong
+הוּמֵת	Root: מוּת | Hophal | Inf. Absolute | Tsere under R2 distinguishes from Perfect Patach (הוּמַת); rare (6× OT)	BBH Chapter 28 — Hophal Strong
+הֻגַּד (Deu 17:4)	Root: נָגַד | Hophal | Perfect 3ms | it was told — הֻ prefix (Qibbuts) = alternate Hophal prefix; Hiphil הִגִּיד → Hophal הֻגַּד	BBH Chapter 28 — Hophal Strong
+וַיֻּגַּד (Gen 22:20)	Root: נָגַד | Hophal | Wayyiqtol 3ms | and it was told — standard narrative report formula after major events	BBH Chapter 28 — Hophal Strong
+וַיֻּגַּד (Gen 27:42)	Root: נָגַד | Hophal | Wayyiqtol 3ms | and it was told [to Rebekah] — same formula; repeated in patriarchal narratives	BBH Chapter 28 — Hophal Strong
+יֻגַּד	Root: נָגַד | Hophal | Imperfect 3ms | it will be told — Qibbuts (ֻ) under prefix; alternate Hophal Imperfect vowel	BBH Chapter 28 — Hophal Strong
+הוּבָא (Exo 27:7)	Root: בּוֹא | Hophal | Perfect 3ms | it was brought/put — הוּ prefix; tabernacle instructions	BBH Chapter 28 — Hophal Strong
+יוּבָא (Lev 6:23)	Root: בּוֹא | Hophal | Imperfect 3ms | it shall be brought in — grain offering law; יוּ prefix	BBH Chapter 28 — Hophal Strong
+הֻבָּאת (Gen 33:11)	Root: בּוֹא | Hophal | Weqatal 3fs | it was brought — Jacob's gift to Esau; הֻ prefix (Qibbuts variant)	BBH Chapter 28 — Hophal Strong
+מוּבָאִים (Gen 43:18)	Root: בּוֹא | Hophal | Participle mp | [are.being] brought — brothers fear being brought to Joseph; מוּ prefix	BBH Chapter 28 — Hophal Strong
+וַיֻּכּוּ (Exo 5:14)	Root: נָכָה | Hophal | Wayyiqtol 3mp | and they were beaten — Israelite foremen; Pe-Nun assimilation: נ→כּ (dagesh)	BBH Chapter 28 — Hophal Strong
+מֻכִּים (Exo 5:16)	Root: נָכָה | Hophal | Participle mp | being beaten/struck — מֻ prefix + assimilation dagesh; Hiphil הִכָּה = to strike	BBH Chapter 28 — Hophal Strong
+הֵמִית vs. יוּמַת	Hiphil הֵמִית = "put to death" (active causative) · Hophal יוּמַת = "was put to death" (passive causative) — prefix Hireq→Shureq shift	BBH Chapter 28 — Hophal Strong
+הִגִּיד vs. וַיֻּגַּד	Hiphil הִגִּיד = "he told/declared" · Hophal וַיֻּגַּד = "it was told" — active Hiphil passivized by Hophal; הִ→ יֻ in Wayyiqtol	BBH Chapter 28 — Hophal Strong
+הֵבִיא vs. הוּבָא	Hiphil הֵבִיא = "he brought" · Hophal הוּבָא = "it was brought" — biconsonantal root בוא; prefix הֵ→הוּ	BBH Chapter 28 — Hophal Strong
+הִכָּה vs. מֻכִּים	Hiphil הִכָּה = "he struck/killed" · Hophal מֻכִּים = "those being struck" — Participle mp; מֻ prefix	BBH Chapter 28 — Hophal Strong
+Hophal Participle vs. Pual Participle	Both: מ prefix + u-class vowel. KEY DIFFERENCE: Pual has DAGESH in R2 (passive of Piel) · Hophal has NO dagesh (passive of Hiphil). Ex: מְקֻדָּשׁ (Pual) vs. מוּמָת (Hophal)	BBH Chapter 28 — Hophal Strong
+Why no Hophal Imperative?	Passive verbs cannot be commanded. The Hophal = passive causative; one cannot command someone to "be caused to do something."	BBH Chapter 28 — Hophal Strong
+Most common single Hophal form?	יוּמַת (99 tokens) — Hophal Imperfect 3ms of מות — capital punishment formula; in every OT death-penalty law	BBH Chapter 28 — Hophal Strong

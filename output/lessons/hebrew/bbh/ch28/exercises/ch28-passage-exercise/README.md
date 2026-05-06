@@ -1,21 +1,20 @@
-# "Spot the Piel/Pual" — Chapter 28 Passage Exercise
+# "Spot the Hophal" — Chapter 28 Passage Exercise
 
 ## Description
 
-Students identify and parse Piel and Pual verbs across three Torah passages: Genesis 1:22, 28 (the creation blessing), Exodus 19:10–14 (Sinai preparation), and Numbers 22:6–8, 17 (Balaam's encounter with Balak). The exercise includes 12 Piel/Pual verbs and 3 Qal distractors (verbs 8, 11, 16) that resemble Piel forms but lack Dagesh Forte in R2. Students parse Conjugation, PGN, Root, and Function for each numbered verb.
+Students identify and parse Hophal (passive causative) verbs across three passages: Genesis 22:20 (narrative report formula), Exodus 5:14–16 (oppression of Israel), and Numbers 35:16–18, 30–31 (death penalty statutes). The exercise includes 7 Hophal verbs and 4 distractors (2 Niphal, 2 Qal) that resemble Hophal forms. Students identify the stem, parse Conjugation/PGN/Root, and supply the corresponding Hiphil meaning (since Hophal = passive of Hiphil).
 
 ### Conjugation coverage
 
 | Conjugation | Count | Verbs |
 |---|---|---|
-| Wayyiqtol | 5 | 1, 2, 5, 6, 7 |
-| Weqatal | 4 | 3, 4, 12, 13 |
-| Imperfect | 3 | 9, 11*, 14 |
-| Inf. Absolute | 1 | 13 |
-| Participle | 1 | 10 |
-| Qal distractors | 3 | 8, 11, 16 |
+| Imperfect (יוּמַת formula) | 5 | 5, 7, 9, 11* |
+| Wayyiqtol | 2 | 1, 2 |
+| Participle | 1 | 4 |
+| Qal distractors | 2 | 6, 8 |
+| Niphal distractors | 2 | 3, 10 |
 
-*Verb 11 (תָּאֹר) is a Qal distractor
+*Includes verb 11 (יוּמַת) from the full .md exercise
 
 ## Files
 
