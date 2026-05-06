@@ -1104,9 +1104,50 @@ class ExercisePDF:
 
 
 # ---------------------------------------------------------------------------
+# PassageExercise — shared "Spot the Stem" exercise scaffold
+#
+# Subclasses must:
+#   • set  _instructions: str  (class attribute)
+#   • implement  _render_passages(self, show_answers: bool)
+#
+# _build() is final: instructions → question pass → answer-key page → answer pass.
+# ---------------------------------------------------------------------------
+class PassageExercise(ExercisePDF):
+    _instructions: str = ''
+
+    def _render_passages(self, show_answers: bool):
+        raise NotImplementedError('Subclass must implement _render_passages()')
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        self._render_passages(show_answers=False)
+
+        self._new_page()
+        c = self._canvas
+        c.setFont('Helvetica-Bold', 14)
+        c.setFillColor(C_HEADING)
+        c.drawString(self.MARGIN_L, self._y, 'Answer Key')
+        self._y -= 0.22 * inch
+        c.setFont('Helvetica-Oblique', 9)
+        c.setFillColor(HexColor('#666666'))
+        c.drawString(self.MARGIN_L, self._y,
+                     'Passages with correct answers shown in the green row below each verb.')
+        self._y -= 0.18 * inch
+        c.setStrokeColor(C_RULE)
+        c.setLineWidth(1)
+        c.line(self.MARGIN_L, self._y, self.PAGE_W - self.MARGIN_R, self._y)
+        self._y -= 0.15 * inch
+        self._render_passages(show_answers=True)
+
+
+# ---------------------------------------------------------------------------
 # Chapter 26 exercise
 # ---------------------------------------------------------------------------
-class Ch26Exercise(ExercisePDF):
+class Ch26Exercise(PassageExercise):
+    _instructions = (
+        'Every highlighted verb is a Hiphil form. For each one, fill in the Conjugation, '
+        'PGN, Root, and Function fields. The answer key begins on the page marked "Answer Key".'
+    )
 
     def _render_passages(self, show_answers: bool):
         """Render all passages and verb tables; called twice (questions-only, then with answers)."""
@@ -1275,33 +1316,6 @@ class Ch26Exercise(ExercisePDF):
                 '#11 and #13. What does this distribution of agency tell you about the theological '
                 'architecture of the flood narrative?',
             ])
-
-    def _build(self):
-        # ── Part 1: questions only (no answers visible) ───────────────────────
-        self.add_instructions(
-            'Every highlighted verb is a Hiphil form. For each one, fill in the Conjugation, '
-            'PGN, Root, and Function fields. The answer key begins on the page marked "Answer Key".'
-        )
-        self._render_passages(show_answers=False)
-
-        # ── Part 2: answer key (passages repeated with answers visible) ───────
-        self._new_page()
-        c = self._canvas
-        c.setFont('Helvetica-Bold', 14)
-        c.setFillColor(C_HEADING)
-        c.drawString(self.MARGIN_L, self._y, 'Answer Key')
-        self._y -= 0.22 * inch
-        c.setFont('Helvetica-Oblique', 9)
-        c.setFillColor(HexColor('#666666'))
-        c.drawString(self.MARGIN_L, self._y,
-                     'Passages with correct answers shown in the green row below each verb.')
-        self._y -= 0.18 * inch
-        c.setStrokeColor(C_RULE)
-        c.setLineWidth(1)
-        c.line(self.MARGIN_L, self._y, self.PAGE_W - self.MARGIN_R, self._y)
-        self._y -= 0.15 * inch
-
-        self._render_passages(show_answers=True)
 
 
 # ---------------------------------------------------------------------------
@@ -1472,7 +1486,13 @@ def build_ch26_exercise(out_dir: str = None) -> str:
 # ---------------------------------------------------------------------------
 # Chapter 25 — "Spot the Niphal" Passage Exercise
 # ---------------------------------------------------------------------------
-class Ch25Exercise(ExercisePDF):
+class Ch25Exercise(PassageExercise):
+    _instructions = (
+        'Every highlighted verb is a Niphal form. For each one: '
+        '(1) parse conjugation, PGN, and root; '
+        '(2) state the semantic function (Passive / Reflexive / Middle / Simple Action). '
+        'Answer key begins on the page marked "Answer Key".'
+    )
 
     def _render_passages(self, show_answers: bool):
 
@@ -1596,32 +1616,6 @@ class Ch25Exercise(ExercisePDF):
                 'What difference in nuance, if any, does the shift from weqatal to wayyiqtol suggest?',
             ])
 
-    def _build(self):
-        self.add_instructions(
-            'Every highlighted verb is a Niphal form. For each one: '
-            '(1) parse conjugation, PGN, and root; '
-            '(2) state the semantic function (Passive / Reflexive / Middle / Simple Action). '
-            'Answer key begins on the page marked "Answer Key".'
-        )
-        self._render_passages(show_answers=False)
-
-        self._new_page()
-        c = self._canvas
-        c.setFont('Helvetica-Bold', 14)
-        c.setFillColor(C_HEADING)
-        c.drawString(self.MARGIN_L, self._y, 'Answer Key')
-        self._y -= 0.22 * inch
-        c.setFont('Helvetica-Oblique', 9)
-        c.setFillColor(HexColor('#666666'))
-        c.drawString(self.MARGIN_L, self._y,
-                     'Passages with correct answers shown in the green row below each verb.')
-        self._y -= 0.18 * inch
-        c.setStrokeColor(C_RULE)
-        c.setLineWidth(1)
-        c.line(self.MARGIN_L, self._y, self.PAGE_W - self.MARGIN_R, self._y)
-        self._y -= 0.15 * inch
-        self._render_passages(show_answers=True)
-
 
 def build_ch25_exercise(out_dir: str = None) -> str:
     if out_dir is None:
@@ -1640,7 +1634,13 @@ def build_ch25_exercise(out_dir: str = None) -> str:
 # ---------------------------------------------------------------------------
 # Chapter 24 — "Spot the Niphal" Passage Exercise
 # ---------------------------------------------------------------------------
-class Ch24Exercise(ExercisePDF):
+class Ch24Exercise(PassageExercise):
+    _instructions = (
+        'Every highlighted verb is a Niphal form. For each one: '
+        '(1) parse conjugation, PGN, and root; '
+        '(2) state the semantic function (Passive / Reflexive / Simple Action). '
+        'Answer key begins on the page marked "Answer Key".'
+    )
 
     def _render_passages(self, show_answers: bool):
 
@@ -1776,32 +1776,6 @@ class Ch24Exercise(ExercisePDF):
                 'in Gen 45:1 (Reflexive participle — servants stationed before Joseph). Is the reflexive '
                 'force the same in both? What does each communicate about agency?',
             ])
-
-    def _build(self):
-        self.add_instructions(
-            'Every highlighted verb is a Niphal form. For each one: '
-            '(1) parse conjugation, PGN, and root; '
-            '(2) state the semantic function (Passive / Reflexive / Simple Action). '
-            'Answer key begins on the page marked "Answer Key".'
-        )
-        self._render_passages(show_answers=False)
-
-        self._new_page()
-        c = self._canvas
-        c.setFont('Helvetica-Bold', 14)
-        c.setFillColor(C_HEADING)
-        c.drawString(self.MARGIN_L, self._y, 'Answer Key')
-        self._y -= 0.22 * inch
-        c.setFont('Helvetica-Oblique', 9)
-        c.setFillColor(HexColor('#666666'))
-        c.drawString(self.MARGIN_L, self._y,
-                     'Passages with correct answers shown in the green row below each verb.')
-        self._y -= 0.18 * inch
-        c.setStrokeColor(C_RULE)
-        c.setLineWidth(1)
-        c.line(self.MARGIN_L, self._y, self.PAGE_W - self.MARGIN_R, self._y)
-        self._y -= 0.15 * inch
-        self._render_passages(show_answers=True)
 
 
 def build_ch24_exercise(out_dir: str = None) -> str:
@@ -2651,7 +2625,13 @@ def build_ch27_bg_drill_exercise(out_dir: str = None) -> str:
 # ---------------------------------------------------------------------------
 # Chapter 30 — "Spot the Piel" Passage Exercise (Piel Strong)
 # ---------------------------------------------------------------------------
-class Ch30PielExercise(ExercisePDF):
+class Ch30PielExercise(PassageExercise):
+    _instructions = (
+        'Each numbered verb belongs to one of the stems you have already studied '
+        '(Qal, Niphal, Hiphil, Hophal, or Piel). '
+        'For each one, fill in: Piel? (Yes/No), Conjugation, PGN, Root, and Stem/Function. '
+        'The answer key begins on the page marked "Answer Key".'
+    )
 
     def _render_passages(self, show_answers: bool):
 
@@ -2702,17 +2682,26 @@ class Ch30PielExercise(ExercisePDF):
 
         self.add_section_break()
 
+        # ── Passage B insert — Exo 19:13 (Hophal distractor) ─────────────────
+        self.add_passage(PassageBlock('19:13',
+            'סָקוֹל יִסָּקֵל אוֹ יָרֹה יִיָּרֶה אִם בְּהֵמָה אִם אִישׁ לֹא יִחְיֶה',
+            '"Whether beast or man, he shall not live — he shall be stoned or shot."'))
+        self.add_verb_table([
+            VerbEntry('8', 'יִסָּקֵל', 'Niphal Impf.', '3ms', 'סָקַל', 'NOT Piel — Niphal passive: "shall be stoned"; נִ-prefix contracts to יִ + dagesh; passive of Qal'),
+        ], show_answers=show_answers)
+
+        self.add_section_break()
+
         # ── Passage C ─────────────────────────────────────────────────────────
-        self.add_section_heading('Passage C — Numbers 22:6–8, 17 (with Qal distractors)')
+        self.add_section_heading('Passage C — Numbers 22:6–8, 17 (with Qal/Hophal distractors)')
 
         self.add_passage(PassageBlock('22:6',
-            'לְכָה נָּא אָרָה לִּי אֶת הָעָם הַזֶּה כִּי יָדַעְתִּי אֵת אֲשֶׁר תְּבָרֵךְ מְבֹרָךְ וַאֲשֶׁר תָּאֹר יוּאָר',
-            '"Come now, curse this people for me… he whom you bless is blessed, and he whom you curse is cursed."'))
+            'לְכָה נָּא אָרָה לִּי אֶת הָעָם הַזֶּה כִּי יָדַעְתִּי אֵת אֲשֶׁר תְּבָרֵךְ מְבֹרָךְ [not numbered — Ch32] וַאֲשֶׁר תָּאֹר יוּאָר',
+            '"Come now, curse this people for me… he whom you bless is blessed [Ch32 Pual — not numbered], and he whom you curse is cursed."'))
         self.add_verb_table([
-            VerbEntry('8',  'אָרָה',    'Qal Jussive', '1cs', 'אָרַר', 'NOT Piel — Qal jussive (curse); no dagesh in R2'),
-            VerbEntry('9',  'תְּבָרֵךְ', 'Imperfect',  '2ms', 'בָּרַךְ', 'Intensive (Piel) — שְׁ prefix + Patach + tsere; R2=ר rejects dagesh'),
-            VerbEntry('10', 'מְבֹרָךְ',  'Participle',  'ms',  'בָּרַךְ', 'Passive (Pual) — "blessed one"; מְ + qamets under R1; Pual of Piel bless (preview of Ch32)'),
-            VerbEntry('11', 'תָּאֹר',   'Qal Impf.',  '2ms', 'אָרַר', 'NOT Piel — Qal imperfect (curse); א is guttural, cannot take dagesh'),
+            VerbEntry('9',  'אָרָה',     'Qal Jussive',  '1cs', 'אָרַר', 'NOT Piel — Qal jussive (curse); no dagesh in R2'),
+            VerbEntry('10', 'תְּבָרֵךְ', 'Imperfect',    '2ms', 'בָּרַךְ', 'Intensive (Piel) — תְּ prefix + patach + tsere; R2=ר rejects dagesh'),
+            VerbEntry('11', 'יוּאָר',   'Hophal Impf.', '3ms', 'אָרַר', 'NOT Piel — Hophal (shall be cursed); יוּ prefix = u-class vowel under prefix = Hophal marker'),
         ], show_answers=show_answers)
 
         self.add_passage(PassageBlock('22:8',
@@ -2733,27 +2722,6 @@ class Ch30PielExercise(ExercisePDF):
         ], show_answers=show_answers)
 
 
-    def _build(self):
-        self.add_instructions(
-            'Each numbered verb is either Piel, Pual (distractor), or a Qal distractor. '
-            'For each one, fill in: Piel? (Yes/No), Conjugation, PGN, Root, and Function. '
-            'The answer key begins on the page marked "Answer Key".'
-        )
-        self._render_passages(show_answers=False)
-
-        self._new_page()
-        c = self._canvas
-        c.setFont('Helvetica-Bold', 14)
-        c.setFillColor(C_HEADING)
-        c.drawString(self.MARGIN_L, self._y, 'Answer Key')
-        self._y -= 0.22 * inch
-        c.setFont('Helvetica-Oblique', 9)
-        c.setFillColor(HexColor('#666666'))
-        c.drawString(self.MARGIN_L, self._y,
-                     'Passages with correct answers shown in the green row below each verb.')
-        self._y -= 0.18 * inch
-        self._render_passages(show_answers=True)
-
 
 def build_ch30_exercise(out_dir: str = None) -> str:
     if out_dir is None:
@@ -2772,7 +2740,13 @@ def build_ch30_exercise(out_dir: str = None) -> str:
 # ---------------------------------------------------------------------------
 # Chapter 28 — "Spot the Hophal" Passage Exercise (correct: Hophal Strong)
 # ---------------------------------------------------------------------------
-class Ch28HophalExercise(ExercisePDF):
+class Ch28HophalExercise(PassageExercise):
+    _instructions = (
+        'Each numbered verb belongs to one of the stems you have already studied '
+        '(Qal, Niphal, Hiphil, or Hophal). '
+        'For each one, fill in: Hophal? (Yes/No), Conjugation, PGN, Root, and Stem/Function. '
+        'The answer key begins on the page marked "Answer Key".'
+    )
 
     def _render_passages(self, show_answers: bool):
 
@@ -2833,28 +2807,6 @@ class Ch28HophalExercise(ExercisePDF):
             VerbEntry('8', 'יֵרָצֵחַ', 'Niphal Impf.', '3ms', 'רָצַח', 'NOT Hophal — Niphal (passive of Qal murder); יֵ prefix, no u-vowel'),
             VerbEntry('9', 'יוּמַת', 'Imperfect', '3ms', 'מוּת', 'Hophal — יוּ prefix (Shureq); death penalty formula'),
         ], show_answers=show_answers)
-
-    def _build(self):
-        self.add_instructions(
-            'Each numbered verb is either Hophal, Niphal, or Qal. '
-            'For Hophal forms, identify: Conjugation, PGN, Root, and the Hiphil meaning '
-            '(since Hophal = passive of Hiphil). '
-            'The answer key begins on the page marked "Answer Key".'
-        )
-        self._render_passages(show_answers=False)
-
-        self._new_page()
-        c = self._canvas
-        c.setFont('Helvetica-Bold', 14)
-        c.setFillColor(C_HEADING)
-        c.drawString(self.MARGIN_L, self._y, 'Answer Key')
-        self._y -= 0.22 * inch
-        c.setFont('Helvetica-Oblique', 9)
-        c.setFillColor(HexColor('#666666'))
-        c.drawString(self.MARGIN_L, self._y,
-                     'Passages with correct answers shown in the green row below each verb.')
-        self._y -= 0.18 * inch
-        self._render_passages(show_answers=True)
 
 
 def build_ch28_hophal_exercise(out_dir: str = None) -> str:
