@@ -14,10 +14,33 @@ A project that generates and maintains statistics for Old Testament Hebrew/Arama
 - This project is in a git repository. As you write code, generate data, etc. I need you to keep the files organized and do periodic commits and pushes. 
 - I will look to Claude to make incremental improvements, suggest new features, and implement them.
 
-## BBH Chapter Map — Derived Stems
+## BBH Chapter Map — Full Syllabus
 
 | Chapter | Topic |
 |---|---|
+| Ch1 | Hebrew Alphabet |
+| Ch2 | Hebrew Vowels |
+| Ch3 | Syllabification and Pronunciation |
+| Ch4 | Hebrew Nouns |
+| Ch5 | Definite Article and Conjunction ו |
+| Ch6 | Hebrew Prepositions |
+| Ch7 | Hebrew Adjectives |
+| Ch8 | Hebrew Pronouns |
+| Ch9 | Hebrew Pronominal Suffixes |
+| Ch10 | Hebrew Construct Chain |
+| Ch11 | Hebrew Numbers |
+| Ch12 | Introduction to Hebrew Verbs |
+| Ch13 | Qal Perfect Strong Verbs |
+| Ch14 | Qal Perfect Weak Verbs |
+| Ch15 | Qal Imperfect Strong Verbs |
+| Ch16 | Qal Imperfect Weak Verbs |
+| Ch17 | Waw-Consecutive |
+| Ch18 | Qal Imperative |
+| Ch19 | Qal Pronominal Suffixes on Verbs |
+| Ch20 | Qal Infinitive Construct |
+| Ch21 | Qal Infinitive Absolute |
+| Ch22 | Qal Participle |
+| Ch23 | Sentence Syntax |
 | Ch24 | Niphal |
 | Ch26 | Hiphil Strong |
 | Ch27 | Hiphil Weak |
