@@ -72,6 +72,7 @@ Built to answer questions like:
   - [Hebrew Preposition Analysis](#hebrew-preposition-analysis)
   - [Greek Preposition Analysis](#greek-preposition-analysis)
   - [Slash Commands (Claude Code skills)](#slash-commands-claude-code-skills)
+- [BBH Lesson Packages](#bbh-lesson-packages)
 - [Notebooks](#notebooks)
 - [Data Notes](#data-notes)
 
@@ -1847,6 +1848,7 @@ slash commands are available:
 | `/hiphil semantic` | Semantic function category distribution |
 | `/hiphil report` | Full Markdown report + 6 PNG charts saved to output/ |
 | `/export <type> [args]` | Export any analysis to HTML + CSV |
+| `/lesson <lang> <textbook> <ch> <topic>` | Generate a complete BBH lesson package (README + paradigms + exercises + Anki decks) |
 
 Examples:
 ```
@@ -1882,6 +1884,58 @@ Examples:
 /poetry pairs Pro
 /poetry stats Psa
 /export word-study G3056
+```
+
+---
+
+## BBH Lesson Packages
+
+Complete lesson packages for all 35 chapters of *Basics of Biblical Hebrew* (Pratico & Van Pelt)
+are in `output/lessons/hebrew/bbh/`. Each chapter contains a full lesson in `README.md`,
+paradigm reference files (where applicable), Anki decks, and interactive exercises.
+
+### Chapter Coverage
+
+| Chapters | Topics |
+|---|---|
+| Ch1–Ch3 | Hebrew Alphabet · Hebrew Vowels · Syllabification and Pronunciation |
+| Ch4–Ch6 | Hebrew Nouns · Definite Article and Conjunction ו · Hebrew Prepositions |
+| Ch7–Ch9 | Hebrew Adjectives · Hebrew Pronouns · Pronominal Suffixes |
+| Ch10–Ch12 | Construct Chain · Hebrew Numbers · Introduction to Hebrew Verbs |
+| Ch13–Ch14 | Qal Perfect (Strong · Weak) |
+| Ch15–Ch16 | Qal Imperfect (Strong · Weak) |
+| Ch17–Ch19 | Waw-Consecutive · Qal Imperative · Qal Pronominal Suffixes on Verbs |
+| Ch20–Ch22 | Qal Infinitive Construct · Qal Infinitive Absolute · Qal Participle |
+| Ch23 | Sentence Syntax |
+| Ch24–Ch25 | Niphal (Strong · Weak) |
+| Ch26–Ch27 | Hiphil (Strong · Weak) |
+| Ch28–Ch29 | Hophal (Strong · Weak) |
+| Ch30–Ch31 | Piel (Strong · Weak) |
+| Ch32–Ch33 | Pual (Strong · Weak) |
+| Ch34–Ch35 | Hithpael (Strong · Weak) |
+
+### Exercise Formats
+
+Every exercise ships in three formats:
+
+| Format | Use |
+|---|---|
+| `.md` | Static reference copy — full answer key at the bottom |
+| `.html` | Classroom use — fillable fields, per-verb ▶ Answer reveal, Show All / Hide All / Clear All controls; fully self-contained, opens with a double-click |
+| `.pdf` | Print or tablet use — AcroForm text fields; answers always visible in the answer rows |
+
+### Distractor Policy (Ch24+)
+
+The "Spot the [Stem]" passage exercises for derived stems (Ch24–Ch35) include distractor
+verbs drawn from all previously-learned stems. Every numbered verb has a "[Stem]? Yes / No"
+column, so students must actively discriminate the target stem from Qal, Niphal, Hiphil, etc.
+
+### Generating PDFs
+
+All PDFs are produced by `src/bible_grammar/exercise_pdf.py`. To regenerate all PDFs:
+
+```bash
+python3 src/bible_grammar/exercise_pdf.py
 ```
 
 ---
