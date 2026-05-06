@@ -1,4 +1,4 @@
-# BBH Chapter 30 — Piel and Pual Morphology Flashcards
+# BBH Chapter 30 — Piel Strong Morphology Flashcards
 
 32 cards covering 4 roots across all conjugations of the Piel stem, plus key Pual forms.
 

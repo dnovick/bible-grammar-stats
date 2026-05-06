@@ -1,6 +1,6 @@
-# Chapter 30 — "Spot the Piel/Pual" Passage Exercise
+# Chapter 30 — "Spot the Piel" Passage Exercise
 
-**Stems:** Piel (פִּעֵל) and Pual (פֻּעַל)
+**Stem:** Piel (פִּעֵל) — Strong Verbs
 **Passages:** Gen 1:22 · Exo 19:10–14 · Num 22:6–8, 17–18
 
 ---

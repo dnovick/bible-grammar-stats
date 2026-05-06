@@ -1,4 +1,4 @@
-# BBH Chapter 30 — Piel and Pual (פִּעֵל / פֻּעַל)
+# BBH Chapter 30 — Piel Strong Verbs (פִּעֵל)
 
 ---
 
@@ -14,13 +14,13 @@
 
 | Exercise | Description |
 |---|---|
-| [exercises/ch30-passage-exercise/](exercises/ch30-passage-exercise/README.md) | Passage exercise — identify and parse Piel and Pual verbs in Torah narrative |
+| [exercises/ch30-passage-exercise/](exercises/ch30-passage-exercise/README.md) | Passage exercise — identify and parse Piel Strong verbs in Torah narrative |
 
 ### Flashcards
 
 | File | Format | Description |
 |---|---|---|
-| [ch30-morphology-deck.md](ch30-morphology-deck.md) | Markdown | 32-card morphology deck — Piel and Pual forms across all 8 conjugations for 4 roots |
+| [ch30-morphology-deck.md](ch30-morphology-deck.md) | Markdown | 32-card morphology deck — Piel Strong forms across all 8 conjugations for 4 roots |
 | [ch30-morphology-deck.txt](ch30-morphology-deck.txt) | Anki import | Morphology deck — tab-separated, ready for Anki File → Import (32 cards) |
 | [ch30-morphology-deck-fd.txt](ch30-morphology-deck-fd.txt) | Flashcards Deluxe | Morphology deck — tab-separated, ready for Flashcards Deluxe import (32 cards) |
 

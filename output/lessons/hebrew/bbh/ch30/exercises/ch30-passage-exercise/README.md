@@ -1,8 +1,8 @@
-# "Spot the Piel/Pual" — Chapter 30 Passage Exercise
+# "Spot the Piel" — Chapter 30 Passage Exercise
 
 ## Description
 
-Students identify and parse Piel and Pual verbs across three Torah passages: Genesis 1:22, 28 (the creation blessing), Exodus 19:10–14 (Sinai preparation), and Numbers 22:6–8, 17 (Balaam's encounter with Balak). The exercise includes 12 Piel/Pual verbs and 3 Qal distractors (verbs 8, 11, 16) that resemble Piel forms but lack Dagesh Forte in R2. Students parse Conjugation, PGN, Root, and Function for each numbered verb.
+Students identify and parse Piel and Pual verbs across three Torah passages: Genesis 1:22, 28 (the creation blessing), Exodus 19:10–14 (Sinai preparation), and Numbers 22:6–8, 17 (Balaam's encounter with Balak). The exercise includes 12 Piel Strong verbs and 3 Qal distractors (verbs 8, 11, 16) that resemble Piel forms but lack Dagesh Forte in R2. Students parse Conjugation, PGN, Root, and Function for each numbered verb.
 
 ### Conjugation coverage
 
