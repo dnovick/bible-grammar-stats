@@ -10,7 +10,7 @@
 
 ### Flashcards
 
-*Flashcard decks coming soon.*
+*No vocabulary introduced in this chapter.*
 
 ---
 
