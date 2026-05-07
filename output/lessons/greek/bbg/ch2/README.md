@@ -8,10 +8,6 @@
 
 *No exercises for this introductory chapter.*
 
-### Flashcards
-
-*Vocab deck coming soon.*
-
 ---
 
 *Basics of Biblical Greek Grammar, Mounce, 4th Edition*

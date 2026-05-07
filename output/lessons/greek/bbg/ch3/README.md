@@ -10,10 +10,6 @@
 |---|---|
 | [exercises/ch3-alphabet-drill/](exercises/ch3-alphabet-drill/README.md) | 24-item letter identification drill — recognize letter name and sound from written form |
 
-### Flashcards
-
-*Vocab deck coming soon.*
-
 ---
 
 *Basics of Biblical Greek Grammar, Mounce, 4th Edition*
