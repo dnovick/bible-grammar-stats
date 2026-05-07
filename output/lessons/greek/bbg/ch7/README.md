@@ -1,4 +1,4 @@
-# BBG Chapter 7
+# BBG Chapter 7 — Genitive and Dative
 
 *Lesson content coming soon.*
 

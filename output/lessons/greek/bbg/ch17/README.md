@@ -1,4 +1,4 @@
-# BBG Chapter 17
+# BBG Chapter 17 — Contract Verbs
 
 *Lesson content coming soon.*
 

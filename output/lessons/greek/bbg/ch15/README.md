@@ -1,4 +1,4 @@
-# BBG Chapter 15
+# BBG Chapter 15 — Introduction to Verbs
 
 *Lesson content coming soon.*
 

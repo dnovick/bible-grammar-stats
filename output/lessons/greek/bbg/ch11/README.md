@@ -1,4 +1,4 @@
-# BBG Chapter 11
+# BBG Chapter 11 — First and Second Person Personal Pronouns
 
 *Lesson content coming soon.*
 

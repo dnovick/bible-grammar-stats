@@ -1,4 +1,4 @@
-# BBG Chapter 30
+# BBG Chapter 30 — Combinative (Perfect) Participles and Genitive Absolutes
 
 *Lesson content coming soon.*
 

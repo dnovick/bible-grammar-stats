@@ -1,4 +1,4 @@
-# BBG Chapter 20
+# BBG Chapter 20 — Verbal Roots (Patterns 2–4)
 
 *Lesson content coming soon.*
 

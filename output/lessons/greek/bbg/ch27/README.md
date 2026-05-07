@@ -1,4 +1,4 @@
-# BBG Chapter 27
+# BBG Chapter 27 — Imperfective (Present) Adverbial Participles
 
 *Lesson content coming soon.*
 

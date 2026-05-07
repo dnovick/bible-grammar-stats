@@ -1,4 +1,4 @@
-# BBG Chapter 33
+# BBG Chapter 33 — Imperative
 
 *Lesson content coming soon.*
 

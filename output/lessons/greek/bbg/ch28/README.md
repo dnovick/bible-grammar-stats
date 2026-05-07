@@ -1,4 +1,4 @@
-# BBG Chapter 28
+# BBG Chapter 28 — Perfective (Aorist) Adverbial Participles
 
 *Lesson content coming soon.*
 

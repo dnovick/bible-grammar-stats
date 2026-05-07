@@ -1,4 +1,4 @@
-# BBG Chapter 25
+# BBG Chapter 25 — Perfect Indicative
 
 *Lesson content coming soon.*
 

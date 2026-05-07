@@ -1,4 +1,4 @@
-# BBG Chapter 26
+# BBG Chapter 26 — Introduction to Participles
 
 *Lesson content coming soon.*
 

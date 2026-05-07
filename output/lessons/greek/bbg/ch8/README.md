@@ -1,4 +1,4 @@
-# BBG Chapter 8
+# BBG Chapter 8 — Prepositions and εἰμί
 
 *Lesson content coming soon.*
 

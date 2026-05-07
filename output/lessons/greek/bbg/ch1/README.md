@@ -1,4 +1,4 @@
-# BBG Chapter 1
+# BBG Chapter 1 — The Greek Language
 
 *Lesson content coming soon.*
 

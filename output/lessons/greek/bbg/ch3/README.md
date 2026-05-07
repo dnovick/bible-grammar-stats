@@ -1,4 +1,4 @@
-# BBG Chapter 3
+# BBG Chapter 3 — The Alphabet and Pronunciation
 
 *Lesson content coming soon.*
 

@@ -1,4 +1,4 @@
-# BBG Chapter 22
+# BBG Chapter 22 — Second Aorist Active and Middle Indicative
 
 *Lesson content coming soon.*
 

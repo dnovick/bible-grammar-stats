@@ -1,4 +1,4 @@
-# BBG Chapter 32
+# BBG Chapter 32 — Infinitive
 
 *Lesson content coming soon.*
 

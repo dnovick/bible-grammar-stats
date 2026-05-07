@@ -1,4 +1,4 @@
-# BBG Chapter 29
+# BBG Chapter 29 — Adjectival Participles
 
 *Lesson content coming soon.*
 

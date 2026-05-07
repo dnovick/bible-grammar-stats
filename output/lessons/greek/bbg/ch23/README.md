@@ -1,4 +1,4 @@
-# BBG Chapter 23
+# BBG Chapter 23 — First Aorist Active and Middle Indicative
 
 *Lesson content coming soon.*
 

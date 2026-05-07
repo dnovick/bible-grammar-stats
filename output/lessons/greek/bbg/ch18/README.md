@@ -1,4 +1,4 @@
-# BBG Chapter 18
+# BBG Chapter 18 — Present Middle/Passive Indicative
 
 *Lesson content coming soon.*
 

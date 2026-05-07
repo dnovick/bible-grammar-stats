@@ -1,4 +1,4 @@
-# BBG Chapter 36
+# BBG Chapter 36 — ἵστημι, τίθημι, δείκνυμι and Odds 'n Ends
 
 *Lesson content coming soon.*
 

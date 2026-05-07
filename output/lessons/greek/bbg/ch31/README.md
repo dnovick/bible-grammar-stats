@@ -1,4 +1,4 @@
-# BBG Chapter 31
+# BBG Chapter 31 — Subjunctive
 
 *Lesson content coming soon.*
 

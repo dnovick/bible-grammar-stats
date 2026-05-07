@@ -1,4 +1,4 @@
-# BBG Chapter 2
+# BBG Chapter 2 — Learning Greek
 
 *Lesson content coming soon.*
 

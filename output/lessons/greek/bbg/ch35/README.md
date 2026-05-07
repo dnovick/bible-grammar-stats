@@ -1,4 +1,4 @@
-# BBG Chapter 35
+# BBG Chapter 35 — Nonindicative of δίδωμι and Conditional Sentences
 
 *Lesson content coming soon.*
 

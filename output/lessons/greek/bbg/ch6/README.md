@@ -1,4 +1,4 @@
-# BBG Chapter 6
+# BBG Chapter 6 — Nominative and Accusative; Article
 
 *Lesson content coming soon.*
 

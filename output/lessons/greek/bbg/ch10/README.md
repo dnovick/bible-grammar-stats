@@ -1,4 +1,4 @@
-# BBG Chapter 10
+# BBG Chapter 10 — Third Declension
 
 *Lesson content coming soon.*
 

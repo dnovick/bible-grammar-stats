@@ -1,4 +1,4 @@
-# BBG Chapter 12
+# BBG Chapter 12 — αὐτός
 
 *Lesson content coming soon.*
 

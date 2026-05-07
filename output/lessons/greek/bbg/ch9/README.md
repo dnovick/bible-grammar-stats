@@ -1,4 +1,4 @@
-# BBG Chapter 9
+# BBG Chapter 9 — Adjectives
 
 *Lesson content coming soon.*
 

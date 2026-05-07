@@ -1,4 +1,4 @@
-# BBG Chapter 4
+# BBG Chapter 4 — Punctuation and Syllabification
 
 *Lesson content coming soon.*
 

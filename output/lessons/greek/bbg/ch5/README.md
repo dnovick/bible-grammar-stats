@@ -1,4 +1,4 @@
-# BBG Chapter 5
+# BBG Chapter 5 — Introduction to English Nouns
 
 *Lesson content coming soon.*
 

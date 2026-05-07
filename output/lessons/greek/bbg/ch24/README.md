@@ -1,4 +1,4 @@
-# BBG Chapter 24
+# BBG Chapter 24 — Aorist and Future Passive Indicative
 
 *Lesson content coming soon.*
 

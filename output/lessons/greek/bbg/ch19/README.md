@@ -1,4 +1,4 @@
-# BBG Chapter 19
+# BBG Chapter 19 — Future Active and Middle Indicative
 
 *Lesson content coming soon.*
 

@@ -1,4 +1,4 @@
-# BBG Chapter 34
+# BBG Chapter 34 — Indicative of δίδωμι
 
 *Lesson content coming soon.*
 
