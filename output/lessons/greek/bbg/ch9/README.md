@@ -12,7 +12,11 @@
 
 ### Flashcards
 
-Vocab deck coming soon (word list not yet provided).
+| File | Description |
+|---|---|
+| [ch9-vocab-deck.md](ch9-vocab-deck.md) | Human-readable card list — 18 vocabulary words |
+| [ch9-vocab-deck.txt](ch9-vocab-deck.txt) | Anki import file (File → Import) |
+| [ch9-vocab-deck-fd.txt](ch9-vocab-deck-fd.txt) | Flashcards Deluxe import file |
 
 ---
 
