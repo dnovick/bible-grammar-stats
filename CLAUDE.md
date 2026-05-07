@@ -58,6 +58,51 @@ Always verify chapter number against this table before generating any lesson for
 
 ---
 
+## BBG Chapter Map — Full Syllabus (Mounce, 4th Edition)
+
+| Chapter | Topic |
+|---|---|
+| Ch1 | The Greek Language |
+| Ch2 | Learning Greek |
+| Ch3 | The Alphabet and Pronunciation |
+| Ch4 | Punctuation, Syllabification |
+| Ch5 | Introduction to English Nouns |
+| Ch6 | Nominative and Accusative Nouns; the Definite Article |
+| Ch7 | Genitive and Dative Nouns |
+| Ch8 | Prepositions and εἰμί |
+| Ch9 | Adjectives |
+| Ch10 | Third Declension Nouns |
+| Ch11 | First and Second Person Personal Pronouns |
+| Ch12 | αὐτός |
+| Ch13 | Demonstrative Pronouns and Adjectives |
+| Ch14 | Relative Pronouns |
+| Ch15 | Introduction to Verbs |
+| Ch16 | Present Active Indicative |
+| Ch17 | Contract Verbs |
+| Ch18 | Present Middle/Passive Indicative |
+| Ch19 | Future Active and Middle Indicative |
+| Ch20 | Verbal Roots and Other Forms of the Future |
+| Ch21 | Imperfect Indicative |
+| Ch22 | Second Aorist Active and Middle Indicative |
+| Ch23 | First Aorist Active and Middle Indicative |
+| Ch24 | Aorist and Future Passive Indicative |
+| Ch25 | Perfect Indicative |
+| Ch26 | Introduction to Participles |
+| Ch27 | Present (Continuous) Adverbial Participle |
+| Ch28 | Aorist (Undefined) Adverbial Participle |
+| Ch29 | Adjectival Participle |
+| Ch30 | Perfect Participle and Genitive Absolute |
+| Ch31 | Subjunctive Mood |
+| Ch32 | Infinitive |
+| Ch33 | Imperative Mood |
+| Ch34 | Indicative of διδωμι |
+| Ch35 | Additional μι Verbs |
+| Ch36 | Additional Nouns and Adjectives |
+
+BBG lessons live under `output/lessons/greek/bbg/ch<N>/`.
+
+---
+
 ## Lesson Output Structure
 
 Lessons live under `output/lessons/hebrew/bbh/ch<N>/`. Every chapter directory contains:
