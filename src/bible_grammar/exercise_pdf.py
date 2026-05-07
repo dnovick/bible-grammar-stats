@@ -7630,6 +7630,455 @@ def build_ch23_passage_exercise(out_dir: str = None) -> str:
     return ex.save(path)
 
 
+# ===========================================================================
+# BBG (Basics of Biblical Greek) Exercise PDF Builders
+# ===========================================================================
+
+_GREEK_FONT_REGISTERED = False
+
+
+def _register_greek_fonts():
+    """Register a TTF font with full Greek Unicode coverage."""
+    global _GREEK_FONT_REGISTERED
+    if _GREEK_FONT_REGISTERED:
+        return
+    # ArialHB.ttc subfontIndex=0 is the base Arial (Latin + Greek + more)
+    # Fall back to Helvetica if unavailable (Greek will be missing but PDF will generate)
+    import os
+    candidates = [
+        ('/System/Library/Fonts/ArialHB.ttc', 0),
+        ('/Library/Fonts/Arial Unicode.ttf', None),
+        ('/System/Library/Fonts/Supplemental/Arial Unicode.ttf', None),
+    ]
+    registered = False
+    for fpath, idx in candidates:
+        if os.path.exists(fpath):
+            try:
+                if idx is not None:
+                    pdfmetrics.registerFont(TTFont('GreekFont', fpath, subfontIndex=idx))
+                else:
+                    pdfmetrics.registerFont(TTFont('GreekFont', fpath))
+                registered = True
+                break
+            except Exception:
+                continue
+    if not registered:
+        # Last resort: use a built-in name alias (no Greek glyphs but PDF still generates)
+        pdfmetrics.registerFont(TTFont.__new__(TTFont))  # skip — just use Helvetica alias
+        import reportlab.lib.fonts as rlf
+        # Map 'GreekFont' to Helvetica as fallback
+        try:
+            pdfmetrics.registerFontFamily('GreekFont', normal='Helvetica',
+                                          bold='Helvetica-Bold',
+                                          italic='Helvetica-Oblique')
+        except Exception:
+            pass
+    _GREEK_FONT_REGISTERED = True
+
+
+class GreekExercisePDF(ExercisePDF):
+    """Base class for BBG Greek exercises. Uses GreekFont for Greek text columns."""
+
+    # Override heading color for Greek exercises (blue instead of Hebrew green)
+    def __init__(self, title: str, subtitle: str = ''):
+        _register_fonts()           # Hebrew fonts (needed by base class)
+        _register_greek_fonts()     # Greek font
+        super().__init__(title, subtitle)
+
+    def add_greek_table(self, headers: list, rows: list,
+                        col_ratios: list = None,
+                        greek_cols: list = None,
+                        show_answers: bool = True,
+                        answer_rows: list = None):
+        """
+        Draw a parse table with Greek text support.
+        greek_cols: indices of columns that display Greek (rendered with GreekFont).
+        Other columns behave like add_generic_table.
+        """
+        if col_ratios is None:
+            col_ratios = [1.0 / len(headers)] * len(headers)
+        if greek_cols is None:
+            greek_cols = []
+
+        w = self._usable_w()
+        cw = [r * w for r in col_ratios]
+        x0 = self.MARGIN_L
+        answer_data = answer_rows if answer_rows is not None else rows
+
+        needed = (self.HEADER_H
+                  + len(rows) * (self.ROW_H + (self.ANSWER_H if show_answers else 0))
+                  + 0.08 * inch)
+        self._check_space(needed)
+
+        c = self._canvas
+        C_GRK_HEADING = HexColor('#1a4a7a')   # blue for Greek exercises
+
+        # Header row
+        y = self._y
+        c.setFillColor(C_GRK_HEADING)
+        c.setStrokeColor(C_RULE)
+        c.setLineWidth(0.4)
+        c.rect(x0, y - self.HEADER_H, sum(cw), self.HEADER_H, fill=1, stroke=1)
+        cx = x0
+        c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+        c.setFillColor(white)
+        for hdr, col_w in zip(headers, cw):
+            if hdr:
+                c.drawString(cx + 3, y - self.HEADER_H + 5, hdr)
+            cx += col_w
+        y -= self.HEADER_H
+
+        for row_idx, row in enumerate(rows):
+            self._check_space(self.ROW_H + (self.ANSWER_H if show_answers else 0))
+
+            # Input row
+            row_bg = HexColor('#f0f4fa') if row_idx % 2 == 0 else white
+            c.setFillColor(row_bg)
+            c.setStrokeColor(C_RULE)
+            c.setLineWidth(0.4)
+            c.rect(x0, y - self.ROW_H, sum(cw), self.ROW_H, fill=1, stroke=1)
+
+            cx = x0
+            for col_idx, (cell, col_w) in enumerate(zip(row, cw)):
+                if col_idx in greek_cols:
+                    # Greek column — display text, centered, GreekFont
+                    try:
+                        gfont = 'GreekFont'
+                        c.setFont(gfont, self.BODY_SIZE + 1)
+                    except Exception:
+                        c.setFont('Helvetica', self.BODY_SIZE + 1)
+                    c.setFillColor(black)
+                    c.drawCentredString(cx + col_w / 2, y - self.ROW_H + 7, cell)
+                elif col_idx == 0:
+                    # Item number column — display only
+                    c.setFont('Helvetica-Bold', self.LABEL_SIZE)
+                    c.setFillColor(HexColor('#666666'))
+                    c.drawCentredString(cx + col_w / 2, y - self.ROW_H + 8, str(cell))
+                else:
+                    # Input field
+                    fid = f'r{row_idx}-c{col_idx}-{self._field_idx}'
+                    self._field_idx += 1
+                    fx = cx + self.FIELD_PAD
+                    fy = y - self.ROW_H + self.FIELD_PAD
+                    fw2 = col_w - self.FIELD_PAD * 2
+                    fh = self.ROW_H - self.FIELD_PAD * 2
+                    c.setFillColor(C_FIELD_BG)
+                    c.setStrokeColor(HexColor('#bbbbbb'))
+                    c.setLineWidth(0.5)
+                    c.rect(fx, fy, fw2, fh, fill=1, stroke=1)
+                    c.acroForm.textfield(
+                        name=fid,
+                        tooltip=f'{headers[col_idx]} row {row_idx + 1}',
+                        x=fx, y=fy, width=fw2, height=fh,
+                        borderStyle='underlined',
+                        borderColor=HexColor('#bbbbbb'),
+                        fillColor=C_FIELD_BG,
+                        textColor=black,
+                        fontSize=self.LABEL_SIZE,
+                        fontName='Helvetica',
+                        value='',
+                        fieldFlags='',
+                    )
+                cx += col_w
+            y -= self.ROW_H
+
+            # Answer row
+            if show_answers:
+                ans_row = answer_data[row_idx]
+                ans_text = '  ·  '.join(str(v) for v in ans_row[1:] if v)
+                needed_h = self.ANSWER_H
+                c.setFillColor(HexColor('#e8f0fb'))
+                c.setStrokeColor(C_RULE)
+                c.setLineWidth(0.3)
+                c.rect(x0, y - needed_h, sum(cw), needed_h, fill=1, stroke=1)
+                c.setFont('Helvetica', self.LABEL_SIZE - 0.5)
+                c.setFillColor(HexColor('#1a4a7a'))
+                c.drawString(x0 + 4, y - needed_h + 4, ans_text)
+                y -= needed_h
+
+        self._y = y - 0.08 * inch
+
+
+# ---------------------------------------------------------------------------
+# BBG Ch3 — Alphabet Drill PDF
+# ---------------------------------------------------------------------------
+
+class BbgCh3AlphabetDrillPDF(GreekExercisePDF):
+    def _build(self):
+        self.add_instructions(
+            'For each Greek letter form shown, write: (a) the letter name and '
+            '(b) its sound/pronunciation. '
+            'Item 19 tests the final sigma form (ς). '
+            'Part B tests uppercase recognition.'
+        )
+        hdrs = ['#', 'Form', 'Name', 'Sound / Pronunciation']
+        cr = [0.06, 0.10, 0.22, 0.62]
+        gk = [1]
+
+        rows_a = [
+            ['1',  'α', '', ''], ['2',  'β', '', ''], ['3',  'γ', '', ''],
+            ['4',  'δ', '', ''], ['5',  'ε', '', ''], ['6',  'ζ', '', ''],
+            ['7',  'η', '', ''], ['8',  'θ', '', ''], ['9',  'ι', '', ''],
+            ['10', 'κ', '', ''], ['11', 'λ', '', ''], ['12', 'μ', '', ''],
+            ['13', 'ν', '', ''], ['14', 'ξ', '', ''], ['15', 'ο', '', ''],
+            ['16', 'π', '', ''], ['17', 'ρ', '', ''], ['18', 'σ', '', ''],
+            ['19', 'ς', '', ''], ['20', 'τ', '', ''], ['21', 'υ', '', ''],
+            ['22', 'φ', '', ''], ['23', 'χ', '', ''], ['24', 'ψ', '', ''],
+            ['25', 'ω', '', ''],
+        ]
+        ans_a = [
+            ['1',  'α', 'Alpha',   '"father" (long) / "along" (short)'],
+            ['2',  'β', 'Beta',    '"b" as in "Bible"'],
+            ['3',  'γ', 'Gamma',   '"g" as in "gone"; "ng" before γ κ χ ξ'],
+            ['4',  'δ', 'Delta',   '"d" as in "dog"'],
+            ['5',  'ε', 'Epsilon', 'short "e" as in "met" — always short'],
+            ['6',  'ζ', 'Zeta',    '"z" as in "daze"'],
+            ['7',  'η', 'Eta',     'long "e" as in "they" — always long'],
+            ['8',  'θ', 'Theta',   '"th" as in "thin"'],
+            ['9',  'ι', 'Iota',    '"ee" (long) / short "i" as in "in"'],
+            ['10', 'κ', 'Kappa',   '"k" as in "kitchen"'],
+            ['11', 'λ', 'Lambda',  '"l" as in "law"'],
+            ['12', 'μ', 'Mu',      '"m" as in "mother"'],
+            ['13', 'ν', 'Nu',      '"n" as in "new"'],
+            ['14', 'ξ', 'Xi',      '"ks" as in "axiom" (double consonant)'],
+            ['15', 'ο', 'Omicron', 'short "o" as in "off" — always short'],
+            ['16', 'π', 'Pi',      '"p" as in "peach"'],
+            ['17', 'ρ', 'Rho',     '"r" as in "rod"; initial rho = rough breathing'],
+            ['18', 'σ', 'Sigma',   '"s" — medial form (beginning/middle of word)'],
+            ['19', 'ς', 'Sigma',   '"s" — final form (end of word only)'],
+            ['20', 'τ', 'Tau',     '"t" as in "talk"'],
+            ['21', 'υ', 'Upsilon', 'French "tu" or German "uber"'],
+            ['22', 'φ', 'Phi',     '"ph" as in "phone"'],
+            ['23', 'χ', 'Chi',     'breathy "ch" as in German "Bach"'],
+            ['24', 'ψ', 'Psi',     '"ps" as in "lips" (double consonant)'],
+            ['25', 'ω', 'Omega',   'long "o" as in "tone" — always long'],
+        ]
+
+        self.add_section_heading('Part A — The 24 Letters (+ Final Sigma)')
+        self.add_greek_table(hdrs, rows_a, cr, greek_cols=gk,
+                             show_answers=False)
+
+        self.add_section_heading('Answer Key')
+        self.add_greek_table(hdrs, rows_a, cr, greek_cols=gk,
+                             show_answers=True, answer_rows=ans_a)
+
+        # Part B — Uppercase
+        hdrs_b = ['#', 'Uppercase', 'Lowercase', 'Name']
+        cr_b = [0.06, 0.12, 0.12, 0.70]
+        rows_b = [
+            ['B1', 'Α', '', ''], ['B2', 'Γ', '', ''], ['B3', 'Δ', '', ''],
+            ['B4', 'Λ', '', ''], ['B5', 'Ξ', '', ''], ['B6', 'Π', '', ''],
+            ['B7', 'Σ', '', ''], ['B8', 'Φ', '', ''], ['B9', 'Χ', '', ''],
+            ['B10', 'Ψ', '', ''], ['B11', 'Ω', '', ''],
+        ]
+        ans_b = [
+            ['B1', 'Α', 'α', 'Alpha'], ['B2', 'Γ', 'γ', 'Gamma'],
+            ['B3', 'Δ', 'δ', 'Delta'], ['B4', 'Λ', 'λ', 'Lambda'],
+            ['B5', 'Ξ', 'ξ', 'Xi'], ['B6', 'Π', 'π', 'Pi'],
+            ['B7', 'Σ', 'σ/ς', 'Sigma'], ['B8', 'Φ', 'φ', 'Phi'],
+            ['B9', 'Χ', 'χ', 'Chi'], ['B10', 'Ψ', 'ψ', 'Psi'],
+            ['B11', 'Ω', 'ω', 'Omega'],
+        ]
+        self.add_section_heading('Part B — Uppercase Recognition')
+        self.add_greek_table(hdrs_b, rows_b, cr_b, greek_cols=[1],
+                             show_answers=False)
+        self.add_section_heading('Answer Key — Part B')
+        self.add_greek_table(hdrs_b, rows_b, cr_b, greek_cols=[1],
+                             show_answers=True, answer_rows=ans_b)
+
+
+def build_bbg_ch3_alphabet_drill(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'greek', 'bbg', 'ch3', 'exercises',
+                               'ch3-alphabet-drill')
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, 'ch3-alphabet-drill.pdf')
+    ex = BbgCh3AlphabetDrillPDF(
+        title='BBG Chapter 3 — Greek Alphabet Drill',
+        subtitle='Letter Identification: Name and Sound',
+    )
+    return ex.save(path)
+
+
+# ---------------------------------------------------------------------------
+# BBG Ch4 — Syllabification Drill PDF
+# ---------------------------------------------------------------------------
+
+class BbgCh4SyllableDrillPDF(GreekExercisePDF):
+    def _build(self):
+        self.add_instructions(
+            'For each Greek word: (a) divide into syllables using hyphens, '
+            '(b) name the accented syllable position (ultima / penult / antepenult), '
+            '(c) name the accent type (acute / grave / circumflex).'
+        )
+        hdrs = ['#', 'Word', 'Syllable Division', 'Accent Position', 'Accent Type']
+        cr = [0.05, 0.18, 0.28, 0.27, 0.22]
+        gk = [1]
+
+        rows_a = [
+            ['1',  'θεός',      '', '', ''], ['2',  'λόγος',    '', '', ''],
+            ['3',  'κύριος',    '', '', ''], ['4',  'πνεῦμα',   '', '', ''],
+            ['5',  'σάρξ',      '', '', ''], ['6',  'νόμος',    '', '', ''],
+            ['7',  'ἀγάπη',     '', '', ''], ['8',  'ζωή',      '', '', ''],
+            ['9',  'πίστις',    '', '', ''], ['10', 'εἰρήνη',   '', '', ''],
+        ]
+        ans_a = [
+            ['1',  'θεός',    'θε-ός',          'Ultima',      'Acute'],
+            ['2',  'λόγος',   'λό-γος',         'Penult',      'Acute'],
+            ['3',  'κύριος',  'κύ-ρι-ος',       'Antepenult',  'Acute'],
+            ['4',  'πνεῦμα',  'πνεῦ-μα',        'Penult',      'Circumflex'],
+            ['5',  'σάρξ',    'σάρξ (1 syl.)',   'Ultima',      'Acute'],
+            ['6',  'νόμος',   'νό-μος',         'Penult',      'Acute'],
+            ['7',  'ἀγάπη',   'ἀ-γά-πη',        'Penult',      'Acute'],
+            ['8',  'ζωή',     'ζω-ή',           'Ultima',      'Acute'],
+            ['9',  'πίστις',  'πίσ-τις',        'Penult',      'Acute'],
+            ['10', 'εἰρήνη',  'εἰ-ρή-νη',       'Penult',      'Circumflex'],
+        ]
+
+        rows_b = [
+            ['11', 'ἄνθρωπος',    '', '', ''], ['12', 'ἀπόστολος',  '', '', ''],
+            ['13', 'εὐαγγέλιον',  '', '', ''], ['14', 'βασιλεία',   '', '', ''],
+            ['15', 'ἁμαρτία',     '', '', ''], ['16', 'ἐκκλησία',   '', '', ''],
+            ['17', 'ἀδελφός',     '', '', ''], ['18', 'προφήτης',   '', '', ''],
+            ['19', 'παραβολή',    '', '', ''], ['20', 'ἀποκάλυψις', '', '', ''],
+        ]
+        ans_b = [
+            ['11', 'ἄνθρωπος',   'ἄν-θρω-πος',      'Antepenult', 'Acute'],
+            ['12', 'ἀπόστολος',  'ἀ-πόσ-το-λος',    'Penult',     'Acute'],
+            ['13', 'εὐαγγέλιον', 'εὐ-αγ-γέ-λι-ον',  'Antepenult', 'Acute'],
+            ['14', 'βασιλεία',   'βα-σι-λεί-α',      'Penult',     'Circumflex'],
+            ['15', 'ἁμαρτία',    'ἁ-μαρ-τί-α',       'Penult',     'Acute'],
+            ['16', 'ἐκκλησία',   'ἐκ-κλη-σί-α',      'Penult',     'Acute'],
+            ['17', 'ἀδελφός',    'ἀ-δελ-φός',        'Ultima',     'Acute'],
+            ['18', 'προφήτης',   'προ-φή-της',       'Penult',     'Circumflex'],
+            ['19', 'παραβολή',   'πα-ρα-βο-λή',      'Ultima',     'Acute'],
+            ['20', 'ἀποκάλυψις', 'ἀ-πο-κά-λυ-ψις',  'Antepenult', 'Acute'],
+        ]
+
+        self.add_section_heading('Part A — Two and Three Syllable Words')
+        self.add_greek_table(hdrs, rows_a, cr, greek_cols=gk, show_answers=False)
+        self.add_section_heading('Part B — Three to Five Syllable Words')
+        self.add_greek_table(hdrs, rows_b, cr, greek_cols=gk, show_answers=False)
+
+        self.add_section_heading('Answer Key — Part A')
+        self.add_greek_table(hdrs, rows_a, cr, greek_cols=gk,
+                             show_answers=True, answer_rows=ans_a)
+        self.add_section_heading('Answer Key — Part B')
+        self.add_greek_table(hdrs, rows_b, cr, greek_cols=gk,
+                             show_answers=True, answer_rows=ans_b)
+
+
+def build_bbg_ch4_syllable_drill(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'greek', 'bbg', 'ch4', 'exercises',
+                               'ch4-syllable-drill')
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, 'ch4-syllable-drill.pdf')
+    ex = BbgCh4SyllableDrillPDF(
+        title='BBG Chapter 4 — Syllabification Drill',
+        subtitle='Syllable Division, Accent Position, and Accent Type',
+    )
+    return ex.save(path)
+
+
+# ---------------------------------------------------------------------------
+# BBG Ch6 — Nominative/Accusative Parsing Drill PDF
+# ---------------------------------------------------------------------------
+
+class BbgCh6NomAccParsingPDF(GreekExercisePDF):
+    def _build(self):
+        self.add_instructions(
+            'For each form, give: (a) Case, (b) Number, (c) Gender, '
+            '(d) Lexical form (nom. sg.), (e) Function in a sentence '
+            '(subject / direct object / predicate nominative / article). '
+            'All forms are 2nd-declension nominative or accusative.'
+        )
+        hdrs = ['#', 'Form', 'Case', 'Number', 'Gender', 'Lexical Form', 'Function']
+        cr = [0.04, 0.14, 0.12, 0.10, 0.10, 0.14, 0.36]
+        gk = [1]
+
+        rows_a = [
+            ['1',  'λόγος',       '', '', '', '', ''],
+            ['2',  'λόγον',       '', '', '', '', ''],
+            ['3',  'λόγοι',       '', '', '', '', ''],
+            ['4',  'λόγους',      '', '', '', '', ''],
+            ['5',  'ὁ',           '', '', '', '', ''],
+            ['6',  'τόν',         '', '', '', '', ''],
+            ['7',  'οἱ',          '', '', '', '', ''],
+            ['8',  'τούς',        '', '', '', '', ''],
+            ['9',  'κύριον',      '', '', '', '', ''],
+            ['10', 'κύριοι',      '', '', '', '', ''],
+        ]
+        ans_a = [
+            ['1',  'λόγος',  'Nom.',  'Sg.', 'Masc.', 'λόγος', 'Subject / pred. nom.'],
+            ['2',  'λόγον',  'Acc.',  'Sg.', 'Masc.', 'λόγος', 'Direct object'],
+            ['3',  'λόγοι',  'Nom.',  'Pl.', 'Masc.', 'λόγος', 'Subject'],
+            ['4',  'λόγους', 'Acc.',  'Pl.', 'Masc.', 'λόγος', 'Direct object'],
+            ['5',  'ὁ',      'Nom.',  'Sg.', 'Masc.', 'ὁ (art.)', 'Article — masc. sg. nom.'],
+            ['6',  'τόν',    'Acc.',  'Sg.', 'Masc.', 'ὁ (art.)', 'Article — masc. sg. acc.'],
+            ['7',  'οἱ',     'Nom.',  'Pl.', 'Masc.', 'ὁ (art.)', 'Article — masc. pl. nom.'],
+            ['8',  'τούς',   'Acc.',  'Pl.', 'Masc.', 'ὁ (art.)', 'Article — masc. pl. acc.'],
+            ['9',  'κύριον', 'Acc.',  'Sg.', 'Masc.', 'κύριος', 'Direct object'],
+            ['10', 'κύριοι', 'Nom.',  'Pl.', 'Masc.', 'κύριος', 'Subject'],
+        ]
+
+        rows_b = [
+            ['11', 'ἔργον',        '', '', '', '', ''],
+            ['12', 'ἔργα',         '', '', '', '', ''],
+            ['13', 'τό',           '', '', '', '', ''],
+            ['14', 'τά',           '', '', '', '', ''],
+            ['15', 'εὐαγγέλιον',   '', '', '', '', ''],
+            ['16', 'εὐαγγέλια',    '', '', '', '', ''],
+            ['17', 'θεός',         '', '', '', '', ''],
+            ['18', 'θεόν',         '', '', '', '', ''],
+            ['19', 'κόσμοι',       '', '', '', '', ''],
+            ['20', 'ἔργα',         '', '', '', '', ''],
+        ]
+        ans_b = [
+            ['11', 'ἔργον',       'Nom./Acc.', 'Sg.', 'Neut.', 'ἔργον',       'Subj. or dir. obj. (neuter rule)'],
+            ['12', 'ἔργα',        'Nom./Acc.', 'Pl.', 'Neut.', 'ἔργον',       'Subj. or dir. obj.'],
+            ['13', 'τό',          'Nom./Acc.', 'Sg.', 'Neut.', 'ὁ (art.)',    'Article — neut. sg.'],
+            ['14', 'τά',          'Nom./Acc.', 'Pl.', 'Neut.', 'ὁ (art.)',    'Article — neut. pl.'],
+            ['15', 'εὐαγγέλιον',  'Nom./Acc.', 'Sg.', 'Neut.', 'εὐαγγέλιον', 'Subj. or dir. obj.'],
+            ['16', 'εὐαγγέλια',   'Nom./Acc.', 'Pl.', 'Neut.', 'εὐαγγέλιον', 'Subj. or dir. obj.'],
+            ['17', 'θεός',        'Nom.',      'Sg.', 'Masc.', 'θεός',        'Subject / pred. nom.'],
+            ['18', 'θεόν',        'Acc.',      'Sg.', 'Masc.', 'θεός',        'Direct object'],
+            ['19', 'κόσμοι',      'Nom.',      'Pl.', 'Masc.', 'κόσμος',      'Subject'],
+            ['20', 'ἔργα',        'Nom./Acc.', 'Pl.', 'Neut.', 'ἔργον',       'Subj. or dir. obj.'],
+        ]
+
+        self.add_section_heading('Part A — Masculine Nouns and Article')
+        self.add_greek_table(hdrs, rows_a, cr, greek_cols=gk, show_answers=False)
+        self.add_section_heading('Part B — Neuter Nouns, Article, and Mixed')
+        self.add_greek_table(hdrs, rows_b, cr, greek_cols=gk, show_answers=False)
+
+        self.add_section_heading('Answer Key — Part A')
+        self.add_greek_table(hdrs, rows_a, cr, greek_cols=gk,
+                             show_answers=True, answer_rows=ans_a)
+        self.add_section_heading('Answer Key — Part B')
+        self.add_greek_table(hdrs, rows_b, cr, greek_cols=gk,
+                             show_answers=True, answer_rows=ans_b)
+
+
+def build_bbg_ch6_nom_acc_parsing(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'greek', 'bbg', 'ch6', 'exercises',
+                               'ch6-nom-acc-parsing')
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, 'ch6-nom-acc-parsing.pdf')
+    ex = BbgCh6NomAccParsingPDF(
+        title='BBG Chapter 6 — Nominative and Accusative Parsing Drill',
+        subtitle='2nd Declension Nouns and Definite Article',
+    )
+    return ex.save(path)
+
+
 if __name__ == '__main__':
     # Ch1–Ch23 exercises (new)
     builders_ch1_23 = [
@@ -7712,3 +8161,16 @@ if __name__ == '__main__':
     print(f'Saved: {p14}')
     p15 = build_ch31_piel_weak_exercise()
     print(f'Saved: {p15}')
+
+    # BBG (Greek) exercises
+    bbg_builders = [
+        build_bbg_ch3_alphabet_drill,
+        build_bbg_ch4_syllable_drill,
+        build_bbg_ch6_nom_acc_parsing,
+    ]
+    for fn in bbg_builders:
+        try:
+            saved = fn()
+            print(f'Saved: {saved}')
+        except Exception as exc:
+            print(f'ERROR in {fn.__name__}: {exc}')
