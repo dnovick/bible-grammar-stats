@@ -12,7 +12,11 @@
 
 ### Flashcards
 
-*Coming soon.*
+| File | Description |
+|---|---|
+| [ch36-vocab-deck.md](ch36-vocab-deck.md) | Human-readable card list — 9 vocabulary words |
+| [ch36-vocab-deck.txt](ch36-vocab-deck.txt) | Anki import file (File → Import) |
+| [ch36-vocab-deck-fd.txt](ch36-vocab-deck-fd.txt) | Flashcards Deluxe import file |
 
 ---
 
