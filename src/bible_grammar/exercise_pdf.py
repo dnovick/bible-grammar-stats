@@ -11201,6 +11201,84 @@ def build_bba_ch13_peal_perfect_drill(out_dir: str = None) -> str:
     return ex.save(path)
 
 
+class BbaCh14PealImperfectDrillPDF(ExercisePDF):
+    def _build(self):
+        self.add_instructions(
+            'For each numbered Peal imperfect form drawn from Daniel or Ezra, '
+            'identify the Root (three root consonants, Peal perfect 3ms form), '
+            'the PGN (person, gender, number), '
+            'and provide an English translation. '
+            'All forms are Peal (G stem) imperfect. '
+            'Verb types include strong roots and the major weak classes: '
+            'I-aleph, I-nun, hollow (II-waw), III-he, and the suppletive imperfect of יהב.'
+        )
+        hdrs = ['#', 'Form', 'Root', 'PGN', 'Translation']
+        cr = [0.04, 0.16, 0.18, 0.18, 0.44]
+        hc = [1]
+        rows = [
+            [1,  'יִכְתֻּב',      '', '', ''],
+            [2,  'יֵאמַר',        '', '', ''],
+            [3,  'יְקוּם',         '', '', ''],
+            [4,  'יִפַּל',         '', '', ''],
+            [5,  'יֶהֱוֵא',        '', '', ''],
+            [6,  'יִשְׁלַח',       '', '', ''],
+            [7,  'תִּקְטֻל',       '', '', ''],
+            [8,  'יַעְבְּדוּן',    '', '', ''],
+            [9,  'תִּבְנֵא',       '', '', ''],
+            [10, 'יִסְגְּדוּן',    '', '', ''],
+            [11, 'נִזְכֻּר',       '', '', ''],
+            [12, 'יִנְתֵּן',       '', '', ''],
+            [13, 'יִקְטֻל',        '', '', ''],
+            [14, 'יִשְׁמַע',       '', '', ''],
+            [15, 'אֶכְתֻּב',       '', '', ''],
+            [16, 'תִּכְתְּבוּן',   '', '', ''],
+            [17, 'תִּכְתְּבִין',   '', '', ''],
+            [18, 'יִכְתְּבָן',     '', '', ''],
+            [19, 'תֵּאמְרוּן',     '', '', ''],
+            [20, 'נֶהֱוֵא',        '', '', ''],
+        ]
+        ans = [
+            [1,  'יִכְתֻּב',      'כתב',  '3ms',      'he will write'],
+            [2,  'יֵאמַר',        'אמר',  '3ms',      'he will say'],
+            [3,  'יְקוּם',         'קום',  '3ms',      'he will arise'],
+            [4,  'יִפַּל',         'נפל',  '3ms',      'he will fall'],
+            [5,  'יֶהֱוֵא',        'הוה',  '3ms',      'it will be'],
+            [6,  'יִשְׁלַח',       'שׁלח', '3ms',      'he will send'],
+            [7,  'תִּקְטֻל',       'קטל',  '3fs / 2ms', 'she will kill / you (ms) will kill'],
+            [8,  'יַעְבְּדוּן',    'עבד',  '3mp',      'they (m) will serve / do'],
+            [9,  'תִּבְנֵא',       'בנה',  '3fs / 2ms', 'she/it will build / you (ms) will build'],
+            [10, 'יִסְגְּדוּן',    'סגד',  '3mp',      'they (m) will bow down'],
+            [11, 'נִזְכֻּר',       'זכר',  '1cp',      'we will remember'],
+            [12, 'יִנְתֵּן',       'יהב',  '3ms',      'he will give (suppletive)'],
+            [13, 'יִקְטֻל',        'קטל',  '3ms',      'he will kill'],
+            [14, 'יִשְׁמַע',       'שׁמע', '3ms',      'he will hear'],
+            [15, 'אֶכְתֻּב',       'כתב',  '1cs',      'I will write'],
+            [16, 'תִּכְתְּבוּן',   'כתב',  '2mp',      'you (mp) will write'],
+            [17, 'תִּכְתְּבִין',   'כתב',  '2fs',      'you (fs) will write'],
+            [18, 'יִכְתְּבָן',     'כתב',  '3fp',      'they (f) will write'],
+            [19, 'תֵּאמְרוּן',     'אמר',  '2mp',      'you (mp) will say'],
+            [20, 'נֶהֱוֵא',        'הוה',  '1cp',      'we will be'],
+        ]
+        self.add_section_heading('Peal Imperfect Parsing — Items 1–20')
+        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
+        self.add_section_heading('Answer Key')
+        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+
+
+def build_bba_ch14_peal_imperfect_drill(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'aramaic', 'bba', 'ch14', 'exercises', 'ch14-peal-imperfect-drill')
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, 'ch14-peal-imperfect-drill.pdf')
+    ex = BbaCh14PealImperfectDrillPDF(
+        title='BBA Chapter 14 — Peal Imperfect Parsing Drill',
+        subtitle='Peal Imperfect · Strong and Weak Roots · Daniel and Ezra',
+    )
+    return ex.save(path)
+
+
 if __name__ == '__main__':
     # Ch1–Ch23 exercises (new)
     builders_ch1_23 = [
@@ -11340,6 +11418,7 @@ if __name__ == '__main__':
         build_bba_ch11_particle_drill,
         build_bba_ch12_verb_intro_drill,
         build_bba_ch13_peal_perfect_drill,
+        build_bba_ch14_peal_imperfect_drill,
     ]
     for fn in bba_builders:
         try:
