@@ -10839,6 +10839,79 @@ def build_bba_ch8_suffix_drill(out_dir: str = None) -> str:
     return ex.save(path)
 
 
+class BbaCh9PronounDrillPDF(ExercisePDF):
+    def _build(self):
+        self.add_instructions(
+            'For each form, identify the pronoun type, give the PGN where applicable, '
+            'and give the English gloss or translation.'
+        )
+        hdrs = ['#', 'Form', 'Type', 'PGN', 'Gloss / Translation']
+        cr = [0.04, 0.18, 0.26, 0.12, 0.40]
+        hc = [1]
+        rows = [
+            [1,  'אֲנָה',       '', '', ''],
+            [2,  'דְּנָה',      '', '', ''],
+            [3,  'אִיתַי',      '', '', ''],
+            [4,  'מַן',         '', '', ''],
+            [5,  'הוּא',        '', '', ''],
+            [6,  'כֹּל-אַרְעָא','', '', ''],
+            [7,  'לֵית',        '', '', ''],
+            [8,  'אִלֵּין',     '', '', ''],
+            [9,  'מָה',         '', '', ''],
+            [10, 'הִמּוֹ',       '', '', ''],
+            [11, 'דָּא',         '', '', ''],
+            [12, 'אֲנַחְנָה',   '', '', ''],
+            [13, 'הָדֵין',      '', '', ''],
+            [14, 'מִנְדַּעַם', '', '', ''],
+            [15, 'הִיא',        '', '', ''],
+            [16, 'אַנְתְּ',     '', '', ''],
+            [17, 'כִּדְנָה',    '', '', ''],
+            [18, 'מַן דִּי',    '', '', ''],
+            [19, 'אִיתַיְכוֹן','', '', ''],
+            [20, 'הָדָא',       '', '', ''],
+        ]
+        ans = [
+            [1,  'אֲנָה',       'personal',                       '1cs',  'I'],
+            [2,  'דְּנָה',      'demonstrative (near)',           'ms',   'this'],
+            [3,  'אִיתַי',      'existential',                    '—',    'there is / there are'],
+            [4,  'מַן',         'interrogative',                  '—',    'who?'],
+            [5,  'הוּא',        'personal',                       '3ms',  'he, it'],
+            [6,  'כֹּל-אַרְעָא','indefinite (כֹּל)',             '—',    'all the earth'],
+            [7,  'לֵית',        'existential (negative)',         '—',    'there is not'],
+            [8,  'אִלֵּין',     'demonstrative (near)',           'pl.',  'these'],
+            [9,  'מָה',         'interrogative',                  '—',    'what?'],
+            [10, 'הִמּוֹ',       'personal',                       '3mp',  'they'],
+            [11, 'דָּא',         'demonstrative (near)',           'fs',   'this'],
+            [12, 'אֲנַחְנָה',   'personal',                       '1cp',  'we'],
+            [13, 'הָדֵין',      'demonstrative (near/far)',       'ms',   'this / that'],
+            [14, 'מִנְדַּעַם', 'indefinite',                     '—',    'something, anything'],
+            [15, 'הִיא',        'personal',                       '3fs',  'she, it'],
+            [16, 'אַנְתְּ',     'personal',                       '2ms',  'you'],
+            [17, 'כִּדְנָה',    'demonstrative idiom',            '—',    'thus, in this way'],
+            [18, 'מַן דִּי',    'relative/interrogative compound','—',    'whoever, the one who'],
+            [19, 'אִיתַיְכוֹן','existential + 2mp suffix',       '2mp',  'you are (there are you)'],
+            [20, 'הָדָא',       'demonstrative (near/far)',       'fs',   'this / that'],
+        ]
+        self.add_section_heading('Items 1–20')
+        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
+        self.add_section_heading('Answer Key')
+        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+
+
+def build_bba_ch9_pronoun_drill(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'aramaic', 'bba', 'ch9', 'exercises', 'ch9-pronoun-drill')
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, 'ch9-pronoun-drill.pdf')
+    ex = BbaCh9PronounDrillPDF(
+        title='BBA Chapter 9 — Pronoun Drill',
+        subtitle='Personal, Demonstrative, Interrogative, Existential, Indefinite',
+    )
+    return ex.save(path)
+
+
 if __name__ == '__main__':
     # Ch1–Ch23 exercises (new)
     builders_ch1_23 = [
@@ -10973,6 +11046,7 @@ if __name__ == '__main__':
         build_bba_ch6_construct_chain_drill,
         build_bba_ch7_preposition_drill,
         build_bba_ch8_suffix_drill,
+        build_bba_ch9_pronoun_drill,
     ]
     for fn in bba_builders:
         try:
