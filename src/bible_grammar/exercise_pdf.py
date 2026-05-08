@@ -11279,6 +11279,85 @@ def build_bba_ch14_peal_imperfect_drill(out_dir: str = None) -> str:
     return ex.save(path)
 
 
+class BbaCh15PealImperativeDrillPDF(ExercisePDF):
+    def _build(self):
+        self.add_instructions(
+            'For each numbered Peal imperative form drawn from Daniel or Ezra, '
+            'identify the Root (three root consonants, Peal perfect 3ms form), '
+            'the PGN (person, gender, number), '
+            'and provide an English translation as a command ("Do X!"). '
+            'All forms are Peal (G stem) imperative (2nd person only). '
+            'Verb types include strong roots and the major weak classes: '
+            'I-aleph, I-ayin, hollow (II-waw), III-he, and I-yod. '
+            'Items 17-20 are negative imperative constructions (al + jussive; la + imperfect).'
+        )
+        hdrs = ['#', 'Form', 'Root', 'PGN', 'Translation']
+        cr = [0.04, 0.18, 0.16, 0.18, 0.44]
+        hc = [1]
+        rows = [
+            [1,  'קוּם',              '', '', ''],
+            [2,  'אֱמַר',              '', '', ''],
+            [3,  'כְּתֻב',             '', '', ''],
+            [4,  'שְׁלַח',             '', '', ''],
+            [5,  'עֲבֵד',              '', '', ''],
+            [6,  'שְׁמַע',             '', '', ''],
+            [7,  'הַב',                '', '', ''],
+            [8,  'פְּרֻק',             '', '', ''],
+            [9,  'בְּנוֹ',             '', '', ''],
+            [10, 'הָבוּ',              '', '', ''],
+            [11, 'אֱמַרוּ',            '', '', ''],
+            [12, 'שְׁמַעוּ',           '', '', ''],
+            [13, 'כְּתֻבִי',           '', '', ''],
+            [14, 'שִׁלְחוּ',           '', '', ''],
+            [15, 'קוּמוּ',             '', '', ''],
+            [16, 'עֲבֵדוּ',            '', '', ''],
+            [17, 'אַל תִּסְגֻּד',      '', '', ''],
+            [18, 'לָא תִּכְתֻּב',      '', '', ''],
+            [19, 'אַל תֵּאמְרוּן',     '', '', ''],
+            [20, 'לָא תִּסְגְּדוּן',   '', '', ''],
+        ]
+        ans = [
+            [1,  'קוּם',              'קום',   '2ms',      'Arise! / Stand up!'],
+            [2,  'אֱמַר',              'אמר',   '2ms',      'Say! / Tell!'],
+            [3,  'כְּתֻב',             'כתב',   '2ms',      'Write!'],
+            [4,  'שְׁלַח',             'שׁלח',  '2ms',      'Send!'],
+            [5,  'עֲבֵד',              'עבד',   '2ms',      'Do! / Serve! / Make!'],
+            [6,  'שְׁמַע',             'שׁמע',  '2ms',      'Hear! / Listen!'],
+            [7,  'הַב',                'יהב',   '2ms',      'Give!'],
+            [8,  'פְּרֻק',             'פרק',   '2ms',      'Deliver! / Atone!'],
+            [9,  'בְּנוֹ',             'בנה',   '2mp',      'Build! (to men)'],
+            [10, 'הָבוּ',              'יהב',   '2mp',      'Give! (to men)'],
+            [11, 'אֱמַרוּ',            'אמר',   '2mp',      'Say! (to men)'],
+            [12, 'שְׁמַעוּ',           'שׁמע',  '2mp',      'Hear! (to men)'],
+            [13, 'כְּתֻבִי',           'כתב',   '2fs',      'Write! (to a woman)'],
+            [14, 'שִׁלְחוּ',           'שׁלח',  '2mp',      'Send! (to men)'],
+            [15, 'קוּמוּ',             'קום',   '2mp',      'Arise! (to men)'],
+            [16, 'עֲבֵדוּ',            'עבד',   '2mp',      'Do! / Serve! (to men)'],
+            [17, 'אַל תִּסְגֻּד',      'סגד',   '2ms neg',  'Do not bow down! (urgent)'],
+            [18, 'לָא תִּכְתֻּב',      'כתב',   '2ms neg',  'You shall not write (general)'],
+            [19, 'אַל תֵּאמְרוּן',     'אמר',   '2mp neg',  'Do not say! (urgent, to men)'],
+            [20, 'לָא תִּסְגְּדוּן',   'סגד',   '2mp neg',  'You shall not bow down (general)'],
+        ]
+        self.add_section_heading('Peal Imperative Parsing — Items 1–20')
+        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
+        self.add_section_heading('Answer Key')
+        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+
+
+def build_bba_ch15_peal_imperative_drill(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'aramaic', 'bba', 'ch15', 'exercises', 'ch15-peal-imperative-drill')
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, 'ch15-peal-imperative-drill.pdf')
+    ex = BbaCh15PealImperativeDrillPDF(
+        title='BBA Chapter 15 — Peal Imperative Parsing Drill',
+        subtitle='Peal Imperative · Strong and Weak Roots · Daniel and Ezra',
+    )
+    return ex.save(path)
+
+
 if __name__ == '__main__':
     # Ch1–Ch23 exercises (new)
     builders_ch1_23 = [
@@ -11419,6 +11498,7 @@ if __name__ == '__main__':
         build_bba_ch12_verb_intro_drill,
         build_bba_ch13_peal_perfect_drill,
         build_bba_ch14_peal_imperfect_drill,
+        build_bba_ch15_peal_imperative_drill,
     ]
     for fn in bba_builders:
         try:
