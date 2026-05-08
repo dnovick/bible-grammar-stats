@@ -1212,7 +1212,7 @@ class ExercisePDF:
         os.makedirs(os.path.dirname(path), exist_ok=True)
         self._canvas = canvas.Canvas(path, pagesize=LETTER)
         self._canvas.setTitle(self.title)
-        self._canvas.setAuthor('Bible Grammar Stats')
+        self._canvas.setAuthor('Berean Bible Bots')
         self._canvas.setSubject('Biblical Hebrew Passage Exercise')
         self._page = 0
         self._y = 0.0

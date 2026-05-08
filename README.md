@@ -84,6 +84,7 @@ Built to answer questions like:
   - [Greek Preposition Analysis](#greek-preposition-analysis)
   - [Slash Commands (Claude Code skills)](#slash-commands-claude-code-skills)
 - [Lesson Packages](#lesson-packages)
+- [Daily Grammar Nuggets](#daily-grammar-nuggets)
 - [Notebooks](#notebooks)
 - [Data Notes](#data-notes)
 
@@ -1934,6 +1935,18 @@ All PDFs are produced by `src/bible_grammar/exercise_pdf.py`. To regenerate all 
 ```bash
 python3 src/bible_grammar/exercise_pdf.py
 ```
+
+---
+
+## Daily Grammar Nuggets
+
+Short, focused grammar observations — one example per day highlighting a specific
+grammatical form in a familiar OT or NT text. Designed for ongoing reinforcement
+alongside textbook study.
+
+| File | Topic |
+|---|---|
+| [output/nuggets/hiphil-strong-nuggets.md](output/nuggets/hiphil-strong-nuggets.md) | Hiphil Strong verb — daily examples from Deuteronomy, Psalms, Proverbs |
 
 ---
 
