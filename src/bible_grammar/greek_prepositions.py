@@ -30,13 +30,10 @@ Print wrappers:
   print_nt_lxx_compare()
 """
 
-import unicodedata
 import pandas as pd
 from typing import Optional, Literal
 
-
-def _nfc(s: str) -> str:
-    return unicodedata.normalize('NFC', s)
+from ._utils import nfc as _nfc
 
 
 Corpus = Literal['nt', 'lxx', 'both']
@@ -87,12 +84,12 @@ LXX_BOOK_GROUPS = {
 }
 
 # Major prepositions by corpus
-NT_MAJOR_PREPS = [unicodedata.normalize('NFC', x) for x in
+NT_MAJOR_PREPS = [_nfc(x) for x in
                   ['ἐν', 'εἰς', 'ἐκ', 'ἐπί', 'πρός', 'διά', 'ἀπό', 'κατά', 'μετά', 'περί']]
-LXX_MAJOR_PREPS = [unicodedata.normalize('NFC', x) for x in
+LXX_MAJOR_PREPS = [_nfc(x) for x in
                    ['ἐν', 'εἰς', 'ἐπί', 'πρός', 'ἀπό', 'ἐκ', 'μετά', 'κατά', 'διά', 'ἕως']]
 
-PREP_GLOSS = {unicodedata.normalize('NFC', k): v for k, v in {
+PREP_GLOSS = {_nfc(k): v for k, v in {
     'ἐν':         'en — in/among',
     'εἰς':        'eis — into/for',
     'ἐκ':         'ek — out of/from',

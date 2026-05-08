@@ -13,6 +13,11 @@ def strip_diacritics(text: str) -> str:
     )
 
 
+def nfc(s: str) -> str:
+    """Return NFC-normalized form of *s* (canonical Unicode composition)."""
+    return unicodedata.normalize('NFC', s)
+
+
 def norm_strongs(s: str) -> str:
     """
     Normalise a Strong's value to H/G + unpadded number + optional variant letter.

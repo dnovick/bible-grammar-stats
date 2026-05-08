@@ -163,13 +163,14 @@ class StemAnalysis:
         Columns: book, count, pct, pct_of_book_verbs."""
         df = self._load()
         h = self._stem_df(df)
+        bcol = self._book_col(df)
 
-        book_counts = h['book'].value_counts().reset_index()
+        book_counts = h[bcol].value_counts().reset_index()
         book_counts.columns = ['book', 'count']
         total = book_counts['count'].sum()
         book_counts['pct'] = (book_counts['count'] / total * 100).round(1)
 
-        all_v = df[df['class_'] == 'verb']['book'].value_counts().reset_index()
+        all_v = df[df['class_'] == 'verb'][bcol].value_counts().reset_index()
         all_v.columns = ['book', 'total_verbs']
         book_counts = book_counts.merge(all_v, on='book', how='left')
         book_counts['pct_of_book_verbs'] = (
@@ -182,9 +183,10 @@ class StemAnalysis:
         df = self._load()
         if books is None:
             books = self.config.default_comparison_books
+        bcol = self._book_col(df)
         rows: list[dict[str, Any]] = []
         for b in books:
-            bv = df[(df['class_'] == 'verb') & (df['book'] == b)]
+            bv = df[(df['class_'] == 'verb') & (df[bcol] == b)]
             tot = len(bv)
             row: dict[str, Any] = {'book': b}
             for s in _ALL_STEMS:

@@ -23,16 +23,13 @@ Print wrappers:
   print_inf_cst_by_prep()
 """
 
-import unicodedata
 import pandas as pd
 from typing import Optional
 
+from ._utils import nfc as _nfc, strip_diacritics as _strip_diacritics
+
 # Lazy-loaded syntax DataFrame
 _syntax_cache: Optional[pd.DataFrame] = None
-
-
-def _nfc(s: str) -> str:
-    return unicodedata.normalize('NFC', s)
 
 
 # Canonical book order
@@ -381,20 +378,12 @@ def find_governing_prep(book_df: pd.DataFrame, pos: int) -> str:
     str
         Diacritics-stripped lemma of the governing preposition, or '(none)'.
     """
-    import unicodedata
-
-    def _strip(s: str) -> str:
-        return ''.join(
-            c for c in unicodedata.normalize('NFD', s)
-            if unicodedata.category(c) != 'Mn'
-        )
-
     for back in range(1, 4):
         if pos - back < 0:
             break
         prev = book_df.iloc[pos - back]
         if prev['class_'] == 'prep':
-            return _strip(str(prev.get('lemma', '')))
+            return _strip_diacritics(str(prev.get('lemma', '')))
         if prev['class_'] in ('verb', 'noun', 'adj'):
             break
     return '(none)'
