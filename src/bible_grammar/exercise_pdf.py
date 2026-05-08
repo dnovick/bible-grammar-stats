@@ -1602,17 +1602,14 @@ class Ch26ContrastExercise(ExercisePDF):
 
 
 def build_ch26_contrast_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch26', 'exercises',
-                               'ch26-qal-hiphil-contrast')
-    path = os.path.join(out_dir, 'ch26-qal-hiphil-contrast.pdf')
-    ex = Ch26ContrastExercise(
-        title='Chapter 26 — Qal–Hiphil Contrast Drill',
-        subtitle='BBH Chapter 26 · Hiphil Strong Verbs',
+    return _build_exercise_pdf(
+        Ch26ContrastExercise,
+        'Chapter 26 — Qal–Hiphil Contrast Drill',
+        'BBH Chapter 26 · Hiphil Strong Verbs',
+        ['hebrew', 'bbh', 'ch26', 'exercises', 'ch26-qal-hiphil-contrast'],
+        'ch26-qal-hiphil-contrast.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -1681,31 +1678,25 @@ class Ch26FunctionSortExercise(ExercisePDF):
 
 
 def build_ch26_function_sort_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch26', 'exercises',
-                               'ch26-function-sort')
-    path = os.path.join(out_dir, 'ch26-function-sort.pdf')
-    ex = Ch26FunctionSortExercise(
-        title='Chapter 26 — Semantic Function Sorting',
-        subtitle='BBH Chapter 26 · Hiphil Strong Verbs',
+    return _build_exercise_pdf(
+        Ch26FunctionSortExercise,
+        'Chapter 26 — Semantic Function Sorting',
+        'BBH Chapter 26 · Hiphil Strong Verbs',
+        ['hebrew', 'bbh', 'ch26', 'exercises', 'ch26-function-sort'],
+        'ch26-function-sort.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 def build_ch26_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch26', 'exercises',
-                               'ch26-passage-exercise')
-    path = os.path.join(out_dir, 'ch26-passage-exercise.pdf')
-    ex = Ch26Exercise(
-        title='Chapter 26 — "Spot the Hiphil" Passage Exercise',
-        subtitle='Genesis 6–8  ·  Genesis 22  ·  Deuteronomy 7',
+    return _build_exercise_pdf(
+        Ch26Exercise,
+        'Chapter 26 — "Spot the Hiphil" Passage Exercise',
+        'Genesis 6–8  ·  Genesis 22  ·  Deuteronomy 7',
+        ['hebrew', 'bbh', 'ch26', 'exercises', 'ch26-passage-exercise'],
+        'ch26-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -1870,17 +1861,14 @@ class Ch25Exercise(PassageExercise):
 
 
 def build_ch25_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch25', 'exercises',
-                               'ch25-passage-exercise')
-    path = os.path.join(out_dir, 'ch25-passage-exercise.pdf')
-    ex = Ch25Exercise(
-        title='Chapter 25 — "Spot the Niphal" Passage Exercise',
-        subtitle='Genesis 3, 6, and 21  ·  The Garden, the Flood Prelude, and Beersheba',
+    return _build_exercise_pdf(
+        Ch25Exercise,
+        'Chapter 25 — "Spot the Niphal" Passage Exercise',
+        'Genesis 3, 6, and 21  ·  The Garden, the Flood Prelude, and Beersheba',
+        ['hebrew', 'bbh', 'ch25', 'exercises', 'ch25-passage-exercise'],
+        'ch25-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -2058,17 +2046,14 @@ class Ch24Exercise(PassageExercise):
 
 
 def build_ch24_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch24', 'exercises',
-                               'ch24-passage-exercise')
-    path = os.path.join(out_dir, 'ch24-passage-exercise.pdf')
-    ex = Ch24Exercise(
-        title='Chapter 24 — "Spot the Niphal" Passage Exercise',
-        subtitle='Genesis 37, 44, 45, 47, 49  ·  The Joseph Narrative',
+    return _build_exercise_pdf(
+        Ch24Exercise,
+        'Chapter 24 — "Spot the Niphal" Passage Exercise',
+        'Genesis 37, 44, 45, 47, 49  ·  The Joseph Narrative',
+        ['hebrew', 'bbh', 'ch24', 'exercises', 'ch24-passage-exercise'],
+        'ch24-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -2129,17 +2114,14 @@ class Ch24ContrastExercise(ExercisePDF):
 
 
 def build_ch24_contrast_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch24', 'exercises',
-                               'ch24-qal-niphal-contrast')
-    path = os.path.join(out_dir, 'ch24-qal-niphal-contrast.pdf')
-    ex = Ch24ContrastExercise(
-        title='Chapter 24 — Qal–Niphal Contrast Drill',
-        subtitle='BBH Chapter 24 · Niphal Strong Verbs',
+    return _build_exercise_pdf(
+        Ch24ContrastExercise,
+        'Chapter 24 — Qal–Niphal Contrast Drill',
+        'BBH Chapter 24 · Niphal Strong Verbs',
+        ['hebrew', 'bbh', 'ch24', 'exercises', 'ch24-qal-niphal-contrast'],
+        'ch24-qal-niphal-contrast.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -2204,17 +2186,14 @@ class Ch24FunctionSortExercise(ExercisePDF):
 
 
 def build_ch24_function_sort_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch24', 'exercises',
-                               'ch24-function-sort')
-    path = os.path.join(out_dir, 'ch24-function-sort.pdf')
-    ex = Ch24FunctionSortExercise(
-        title='Chapter 24 — Semantic Function Sorting',
-        subtitle='BBH Chapter 24 · Niphal Strong Verbs',
+    return _build_exercise_pdf(
+        Ch24FunctionSortExercise,
+        'Chapter 24 — Semantic Function Sorting',
+        'BBH Chapter 24 · Niphal Strong Verbs',
+        ['hebrew', 'bbh', 'ch24', 'exercises', 'ch24-function-sort'],
+        'ch24-function-sort.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class Ch25WeakFormIdExercise(ExercisePDF):
@@ -2335,17 +2314,14 @@ class Ch25WeakFormIdExercise(ExercisePDF):
 
 
 def build_ch25_weak_form_id_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch25', 'exercises',
-                               'ch25-weak-form-id')
-    path = os.path.join(out_dir, 'ch25-weak-form-id.pdf')
-    ex = Ch25WeakFormIdExercise(
-        title='Chapter 25 — Niphal Weak-Form Identification Drill',
-        subtitle='BBH Chapter 25 · Niphal Weak Verbs',
+    return _build_exercise_pdf(
+        Ch25WeakFormIdExercise,
+        'Chapter 25 — Niphal Weak-Form Identification Drill',
+        'BBH Chapter 25 · Niphal Weak Verbs',
+        ['hebrew', 'bbh', 'ch25', 'exercises', 'ch25-weak-form-id'],
+        'ch25-weak-form-id.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -2489,17 +2465,14 @@ class Ch27Exercise(ExercisePDF):
 
 
 def build_ch27_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch27', 'exercises',
-                               'ch27-passage-exercise')
-    path = os.path.join(out_dir, 'ch27-passage-exercise.pdf')
-    ex = Ch27Exercise(
-        title='Chapter 27 — "Spot the Hiphil" Passage Exercise',
-        subtitle='BBH Chapter 27 · Hiphil Weak Verbs',
+    return _build_exercise_pdf(
+        Ch27Exercise,
+        'Chapter 27 — "Spot the Hiphil" Passage Exercise',
+        'BBH Chapter 27 · Hiphil Weak Verbs',
+        ['hebrew', 'bbh', 'ch27', 'exercises', 'ch27-passage-exercise'],
+        'ch27-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class Ch27WeakFormIdExercise(ExercisePDF):
@@ -2617,17 +2590,14 @@ class Ch27WeakFormIdExercise(ExercisePDF):
 
 
 def build_ch27_weak_form_id_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch27', 'exercises',
-                               'ch27-weak-form-id')
-    path = os.path.join(out_dir, 'ch27-weak-form-id.pdf')
-    ex = Ch27WeakFormIdExercise(
-        title='Chapter 27 — Hiphil Weak-Form Identification Drill',
-        subtitle='BBH Chapter 27 · Hiphil Weak Verbs',
+    return _build_exercise_pdf(
+        Ch27WeakFormIdExercise,
+        'Chapter 27 — Hiphil Weak-Form Identification Drill',
+        'BBH Chapter 27 · Hiphil Weak Verbs',
+        ['hebrew', 'bbh', 'ch27', 'exercises', 'ch27-weak-form-id'],
+        'ch27-weak-form-id.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -2760,17 +2730,14 @@ class Ch27NHContrastExercise(ExercisePDF):
 
 
 def build_ch27_nh_contrast_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch27', 'exercises',
-                               'ch27-niphal-hiphil-contrast')
-    path = os.path.join(out_dir, 'ch27-niphal-hiphil-contrast.pdf')
-    ex = Ch27NHContrastExercise(
-        title='Chapter 27 — Niphal–Hiphil Contrast Drill',
-        subtitle='BBH Chapters 25 & 27 · Niphal and Hiphil Weak Verbs',
+    return _build_exercise_pdf(
+        Ch27NHContrastExercise,
+        'Chapter 27 — Niphal–Hiphil Contrast Drill',
+        'BBH Chapters 25 & 27 · Niphal and Hiphil Weak Verbs',
+        ['hebrew', 'bbh', 'ch27', 'exercises', 'ch27-niphal-hiphil-contrast'],
+        'ch27-niphal-hiphil-contrast.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class Ch27BGDrillExercise(ExercisePDF):
@@ -2912,17 +2879,14 @@ class Ch27BGDrillExercise(ExercisePDF):
 
 
 def build_ch27_bg_drill_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch27', 'exercises',
-                               'ch27-biconsig-drill')
-    path = os.path.join(out_dir, 'ch27-biconsig-drill.pdf')
-    ex = Ch27BGDrillExercise(
-        title='Chapter 27 — Biconsonantal / Geminate Disambiguation Drill',
-        subtitle='BBH Chapters 25 & 27 · Niphal and Hiphil Weak Verbs',
+    return _build_exercise_pdf(
+        Ch27BGDrillExercise,
+        'Chapter 27 — Biconsonantal / Geminate Disambiguation Drill',
+        'BBH Chapters 25 & 27 · Niphal and Hiphil Weak Verbs',
+        ['hebrew', 'bbh', 'ch27', 'exercises', 'ch27-biconsig-drill'],
+        'ch27-biconsig-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -3027,17 +2991,14 @@ class Ch30PielExercise(PassageExercise):
 
 
 def build_ch30_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch30', 'exercises',
-                               'ch30-passage-exercise')
-    path = os.path.join(out_dir, 'ch30-passage-exercise.pdf')
-    ex = Ch30PielExercise(
-        title='Chapter 30 — "Spot the Piel" Passage Exercise',
-        subtitle='Gen 1  ·  Exo 19  ·  Num 22',
+    return _build_exercise_pdf(
+        Ch30PielExercise,
+        'Chapter 30 — "Spot the Piel" Passage Exercise',
+        'Gen 1  ·  Exo 19  ·  Num 22',
+        ['hebrew', 'bbh', 'ch30', 'exercises', 'ch30-passage-exercise'],
+        'ch30-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -3113,17 +3074,14 @@ class Ch28HophalExercise(PassageExercise):
 
 
 def build_ch28_hophal_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch28', 'exercises',
-                               'ch28-passage-exercise')
-    path = os.path.join(out_dir, 'ch28-passage-exercise.pdf')
-    ex = Ch28HophalExercise(
-        title='Chapter 28 — "Spot the Hophal" Passage Exercise',
-        subtitle='Genesis 22  ·  Exodus 5  ·  Numbers 35',
+    return _build_exercise_pdf(
+        Ch28HophalExercise,
+        'Chapter 28 — "Spot the Hophal" Passage Exercise',
+        'Genesis 22  ·  Exodus 5  ·  Numbers 35',
+        ['hebrew', 'bbh', 'ch28', 'exercises', 'ch28-passage-exercise'],
+        'ch28-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -3243,18 +3201,14 @@ class Ch34HithpaelExercise(PassageExercise):
 
 
 def build_ch34_hithpael_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch34', 'exercises',
-                               'ch34-passage-exercise')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch34-passage-exercise.pdf')
-    ex = Ch34HithpaelExercise(
-        title='Chapter 34 — "Spot the Hithpael" Passage Exercise',
-        subtitle='(Strong Verbs)  ·  1 Kgs 8  ·  Gen 20  ·  Jos 3  ·  Exo 19  ·  Gen 22  ·  2 Sam 10',
+    return _build_exercise_pdf(
+        Ch34HithpaelExercise,
+        'Chapter 34 — "Spot the Hithpael" Passage Exercise',
+        '(Strong Verbs)  ·  1 Kgs 8  ·  Gen 20  ·  Jos 3  ·  Exo 19  ·  Gen 22  ·  2 Sam 10',
+        ['hebrew', 'bbh', 'ch34', 'exercises', 'ch34-passage-exercise'],
+        'ch34-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -3374,18 +3328,14 @@ class Ch35HithpaelWeakExercise(PassageExercise):
 
 
 def build_ch35_hithpael_weak_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch35', 'exercises',
-                               'ch35-passage-exercise')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch35-passage-exercise.pdf')
-    ex = Ch35HithpaelWeakExercise(
-        title='Chapter 35 — "Spot the Hithpael" Passage Exercise',
-        subtitle='(Weak Verbs)  ·  Gen 22/18  ·  Exo 20  ·  Psa 95  ·  Gen 35/44  ·  1 Sam 10  ·  2 Kgs 8',
+    return _build_exercise_pdf(
+        Ch35HithpaelWeakExercise,
+        'Chapter 35 — "Spot the Hithpael" Passage Exercise',
+        '(Weak Verbs)  ·  Gen 22/18  ·  Exo 20  ·  Psa 95  ·  Gen 35/44  ·  1 Sam 10  ·  2 Kgs 8',
+        ['hebrew', 'bbh', 'ch35', 'exercises', 'ch35-passage-exercise'],
+        'ch35-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -3524,18 +3474,14 @@ class Ch29HophalWeakExercise(PassageExercise):
 
 
 def build_ch29_hophal_weak_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch29', 'exercises',
-                               'ch29-passage-exercise')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch29-passage-exercise.pdf')
-    ex = Ch29HophalWeakExercise(
-        title='Chapter 29 — "Spot the Hophal Weak" Passage Exercise',
-        subtitle='Genesis 39-43  /  Exodus 40 + Numbers 9  /  Genesis 38 + Exodus 14',
+    return _build_exercise_pdf(
+        Ch29HophalWeakExercise,
+        'Chapter 29 — "Spot the Hophal Weak" Passage Exercise',
+        'Genesis 39-43  /  Exodus 40 + Numbers 9  /  Genesis 38 + Exodus 14',
+        ['hebrew', 'bbh', 'ch29', 'exercises', 'ch29-passage-exercise'],
+        'ch29-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -3693,18 +3639,14 @@ class Ch31PielWeakExercise(PassageExercise):
 
 
 def build_ch31_piel_weak_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch31', 'exercises',
-                               'ch31-passage-exercise')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch31-passage-exercise.pdf')
-    ex = Ch31PielWeakExercise(
-        title='Chapter 31 — "Spot the Piel Weak" Passage Exercise',
-        subtitle='Gen 2-3, 6, 16, 18  /  Exo 1  /  Deu 8  /  Amos 3  /  Gen 50',
+    return _build_exercise_pdf(
+        Ch31PielWeakExercise,
+        'Chapter 31 — "Spot the Piel Weak" Passage Exercise',
+        'Gen 2-3, 6, 16, 18  /  Exo 1  /  Deu 8  /  Amos 3  /  Gen 50',
+        ['hebrew', 'bbh', 'ch31', 'exercises', 'ch31-passage-exercise'],
+        'ch31-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -3817,17 +3759,14 @@ class Ch32PualExercise(PassageExercise):
 
 
 def build_ch32_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch32', 'exercises',
-                               'ch32-passage-exercise')
-    path = os.path.join(out_dir, 'ch32-passage-exercise.pdf')
-    ex = Ch32PualExercise(
-        title='Chapter 32 — "Spot the Pual" Passage Exercise',
-        subtitle='Num 22–23  ·  Exo 29  ·  Isa 43',
+    return _build_exercise_pdf(
+        Ch32PualExercise,
+        'Chapter 32 — "Spot the Pual" Passage Exercise',
+        'Num 22–23  ·  Exo 29  ·  Isa 43',
+        ['hebrew', 'bbh', 'ch32', 'exercises', 'ch32-passage-exercise'],
+        'ch32-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -3951,17 +3890,14 @@ class Ch33PualWeakExercise(PassageExercise):
 
 
 def build_ch33_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch33', 'exercises',
-                               'ch33-passage-exercise')
-    path = os.path.join(out_dir, 'ch33-passage-exercise.pdf')
-    ex = Ch33PualWeakExercise(
-        title='Chapter 33 — "Spot the Pual" Passage Exercise (Weak Roots)',
-        subtitle='Gen 4  ·  Lev 7–8  ·  Num 3, 22  ·  Psa 72',
+    return _build_exercise_pdf(
+        Ch33PualWeakExercise,
+        'Chapter 33 — "Spot the Pual" Passage Exercise (Weak Roots)',
+        'Gen 4  ·  Lev 7–8  ·  Num 3, 22  ·  Psa 72',
+        ['hebrew', 'bbh', 'ch33', 'exercises', 'ch33-passage-exercise'],
+        'ch33-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -4080,17 +4016,14 @@ class Ch1LetterRecognitionExercise(ExercisePDF):
 
 
 def build_ch1_letter_recognition(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch1', 'exercises',
-                               'ch1-letter-recognition')
-    path = os.path.join(out_dir, 'ch1-letter-recognition.pdf')
-    ex = Ch1LetterRecognitionExercise(
-        title='Chapter 1 — Hebrew Letter Recognition Exercise',
-        subtitle='Hebrew Alphabet — Letter Identification',
+    return _build_exercise_pdf(
+        Ch1LetterRecognitionExercise,
+        'Chapter 1 — Hebrew Letter Recognition Exercise',
+        'Hebrew Alphabet — Letter Identification',
+        ['hebrew', 'bbh', 'ch1', 'exercises', 'ch1-letter-recognition'],
+        'ch1-letter-recognition.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -4171,17 +4104,14 @@ class Ch2VowelIdentificationExercise(ExercisePDF):
 
 
 def build_ch2_vowel_identification(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch2', 'exercises',
-                               'ch2-vowel-identification')
-    path = os.path.join(out_dir, 'ch2-vowel-identification.pdf')
-    ex = Ch2VowelIdentificationExercise(
-        title='Chapter 2 — Vowel Identification Exercise',
-        subtitle='Hebrew Vowels — Identification and Classification',
+    return _build_exercise_pdf(
+        Ch2VowelIdentificationExercise,
+        'Chapter 2 — Vowel Identification Exercise',
+        'Hebrew Vowels — Identification and Classification',
+        ['hebrew', 'bbh', 'ch2', 'exercises', 'ch2-vowel-identification'],
+        'ch2-vowel-identification.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -4249,17 +4179,14 @@ class Ch3SyllableDivisionExercise(ExercisePDF):
 
 
 def build_ch3_syllable_division(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch3', 'exercises',
-                               'ch3-syllable-division')
-    path = os.path.join(out_dir, 'ch3-syllable-division.pdf')
-    ex = Ch3SyllableDivisionExercise(
-        title='Chapter 3 — Syllable Division Exercise',
-        subtitle='Hebrew Syllables — Open, Closed, Stress, Qamets Hatuf',
+    return _build_exercise_pdf(
+        Ch3SyllableDivisionExercise,
+        'Chapter 3 — Syllable Division Exercise',
+        'Hebrew Syllables — Open, Closed, Stress, Qamets Hatuf',
+        ['hebrew', 'bbh', 'ch3', 'exercises', 'ch3-syllable-division'],
+        'ch3-syllable-division.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -4335,17 +4262,14 @@ class Ch4NounParsingExercise(ExercisePDF):
 
 
 def build_ch4_noun_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch4', 'exercises',
-                               'ch4-noun-parsing')
-    path = os.path.join(out_dir, 'ch4-noun-parsing.pdf')
-    ex = Ch4NounParsingExercise(
-        title='Chapter 4 — Noun Parsing Drill',
-        subtitle='Hebrew Nouns — Gender, Number, State, Lexical Form',
+    return _build_exercise_pdf(
+        Ch4NounParsingExercise,
+        'Chapter 4 — Noun Parsing Drill',
+        'Hebrew Nouns — Gender, Number, State, Lexical Form',
+        ['hebrew', 'bbh', 'ch4', 'exercises', 'ch4-noun-parsing'],
+        'ch4-noun-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -4456,17 +4380,14 @@ class Ch5ArticleAndVavExercise(ExercisePDF):
 
 
 def build_ch5_article_and_vav(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch5', 'exercises',
-                               'ch5-article-and-vav')
-    path = os.path.join(out_dir, 'ch5-article-and-vav.pdf')
-    ex = Ch5ArticleAndVavExercise(
-        title='Chapter 5 — Definite Article and Conjunction ו',
-        subtitle='BBH Chapter 5 · 25 items',
+    return _build_exercise_pdf(
+        Ch5ArticleAndVavExercise,
+        'Chapter 5 — Definite Article and Conjunction ו',
+        'BBH Chapter 5 · 25 items',
+        ['hebrew', 'bbh', 'ch5', 'exercises', 'ch5-article-and-vav'],
+        'ch5-article-and-vav.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -4569,17 +4490,14 @@ class Ch6PrepositionParsingExercise(ExercisePDF):
 
 
 def build_ch6_preposition_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch6', 'exercises',
-                               'ch6-preposition-parsing')
-    path = os.path.join(out_dir, 'ch6-preposition-parsing.pdf')
-    ex = Ch6PrepositionParsingExercise(
-        title='Chapter 6 — Preposition Parsing Drill',
-        subtitle='Hebrew Prepositions — Inseparable, Article Fusion, מִן, Independent',
+    return _build_exercise_pdf(
+        Ch6PrepositionParsingExercise,
+        'Chapter 6 — Preposition Parsing Drill',
+        'Hebrew Prepositions — Inseparable, Article Fusion, מִן, Independent',
+        ['hebrew', 'bbh', 'ch6', 'exercises', 'ch6-preposition-parsing'],
+        'ch6-preposition-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -4691,17 +4609,14 @@ class Ch7AdjectiveUsageExercise(ExercisePDF):
 
 
 def build_ch7_adjective_usage(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch7', 'exercises',
-                               'ch7-adjective-usage')
-    path = os.path.join(out_dir, 'ch7-adjective-usage.pdf')
-    ex = Ch7AdjectiveUsageExercise(
-        title='Chapter 7 — Adjective Usage Drill',
-        subtitle='Hebrew Adjectives — Attributive, Predicate, and Substantival Uses',
+    return _build_exercise_pdf(
+        Ch7AdjectiveUsageExercise,
+        'Chapter 7 — Adjective Usage Drill',
+        'Hebrew Adjectives — Attributive, Predicate, and Substantival Uses',
+        ['hebrew', 'bbh', 'ch7', 'exercises', 'ch7-adjective-usage'],
+        'ch7-adjective-usage.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -4781,17 +4696,14 @@ class Ch8PronounIdentificationExercise(ExercisePDF):
 
 
 def build_ch8_pronoun_identification(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch8', 'exercises',
-                               'ch8-pronoun-identification')
-    path = os.path.join(out_dir, 'ch8-pronoun-identification.pdf')
-    ex = Ch8PronounIdentificationExercise(
-        title='Chapter 8 — Pronoun Identification Drill',
-        subtitle='Personal, Demonstrative, Relative, and Interrogative Pronouns',
+    return _build_exercise_pdf(
+        Ch8PronounIdentificationExercise,
+        'Chapter 8 — Pronoun Identification Drill',
+        'Personal, Demonstrative, Relative, and Interrogative Pronouns',
+        ['hebrew', 'bbh', 'ch8', 'exercises', 'ch8-pronoun-identification'],
+        'ch8-pronoun-identification.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -4870,17 +4782,14 @@ class Ch9SuffixParsingExercise(ExercisePDF):
 
 
 def build_ch9_suffix_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch9', 'exercises',
-                               'ch9-suffix-parsing')
-    path = os.path.join(out_dir, 'ch9-suffix-parsing.pdf')
-    ex = Ch9SuffixParsingExercise(
-        title='Chapter 9 — Hebrew Pronominal Suffix Parsing Drill',
-        subtitle='Pronominal Suffixes on Nouns, Prepositions, and the DOM',
+    return _build_exercise_pdf(
+        Ch9SuffixParsingExercise,
+        'Chapter 9 — Hebrew Pronominal Suffix Parsing Drill',
+        'Pronominal Suffixes on Nouns, Prepositions, and the DOM',
+        ['hebrew', 'bbh', 'ch9', 'exercises', 'ch9-suffix-parsing'],
+        'ch9-suffix-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -4981,17 +4890,14 @@ class Ch10ConstructChainExercise(ExercisePDF):
 
 
 def build_ch10_construct_chain(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch10', 'exercises',
-                               'ch10-construct-chain')
-    path = os.path.join(out_dir, 'ch10-construct-chain.pdf')
-    ex = Ch10ConstructChainExercise(
-        title='Chapter 10 — Construct Chain Drill',
-        subtitle='BBH Chapter 10 — Hebrew Construct Chain',
+    return _build_exercise_pdf(
+        Ch10ConstructChainExercise,
+        'Chapter 10 — Construct Chain Drill',
+        'BBH Chapter 10 — Hebrew Construct Chain',
+        ['hebrew', 'bbh', 'ch10', 'exercises', 'ch10-construct-chain'],
+        'ch10-construct-chain.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -5063,17 +4969,14 @@ class Ch11NumberIdentificationExercise(ExercisePDF):
 
 
 def build_ch11_number_identification(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch11', 'exercises',
-                               'ch11-number-identification')
-    path = os.path.join(out_dir, 'ch11-number-identification.pdf')
-    ex = Ch11NumberIdentificationExercise(
-        title='Chapter 11 — Number Identification Drill',
-        subtitle='Hebrew Numbers — Cardinals, Teens, Tens, and Ordinals',
+    return _build_exercise_pdf(
+        Ch11NumberIdentificationExercise,
+        'Chapter 11 — Number Identification Drill',
+        'Hebrew Numbers — Cardinals, Teens, Tens, and Ordinals',
+        ['hebrew', 'bbh', 'ch11', 'exercises', 'ch11-number-identification'],
+        'ch11-number-identification.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -5157,17 +5060,14 @@ class Ch12VerbOverviewExercise(ExercisePDF):
 
 
 def build_ch12_verb_overview(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch12', 'exercises',
-                               'ch12-verb-overview')
-    path = os.path.join(out_dir, 'ch12-verb-overview.pdf')
-    ex = Ch12VerbOverviewExercise(
-        title='Chapter 12 — Verb Overview Exercise',
-        subtitle='BBH Chapter 12 · 20 items',
+    return _build_exercise_pdf(
+        Ch12VerbOverviewExercise,
+        'Chapter 12 — Verb Overview Exercise',
+        'BBH Chapter 12 · 20 items',
+        ['hebrew', 'bbh', 'ch12', 'exercises', 'ch12-verb-overview'],
+        'ch12-verb-overview.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -5268,17 +5168,14 @@ class Ch13ParsingDrillExercise(ExercisePDF):
 
 
 def build_ch13_parsing_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch13', 'exercises',
-                               'ch13-parsing-drill')
-    path = os.path.join(out_dir, 'ch13-parsing-drill.pdf')
-    ex = Ch13ParsingDrillExercise(
-        title='Chapter 13 — Parsing Drill: Qal Perfect Strong Verbs',
-        subtitle='BBH Chapter 13',
+    return _build_exercise_pdf(
+        Ch13ParsingDrillExercise,
+        'Chapter 13 — Parsing Drill: Qal Perfect Strong Verbs',
+        'BBH Chapter 13',
+        ['hebrew', 'bbh', 'ch13', 'exercises', 'ch13-parsing-drill'],
+        'ch13-parsing-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -5357,17 +5254,14 @@ class Ch13PassageExercise(ExercisePDF):
 
 
 def build_ch13_passage_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch13', 'exercises',
-                               'ch13-passage-exercise')
-    path = os.path.join(out_dir, 'ch13-passage-exercise.pdf')
-    ex = Ch13PassageExercise(
-        title='Chapter 13 — Passage Exercise: Qal Perfect Strong Verbs',
-        subtitle='BBH Chapter 13',
+    return _build_exercise_pdf(
+        Ch13PassageExercise,
+        'Chapter 13 — Passage Exercise: Qal Perfect Strong Verbs',
+        'BBH Chapter 13',
+        ['hebrew', 'bbh', 'ch13', 'exercises', 'ch13-passage-exercise'],
+        'ch13-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -5465,17 +5359,14 @@ class Ch14PassageExercise(ExercisePDF):
 
 
 def build_ch14_passage_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch14', 'exercises',
-                               'ch14-passage-exercise')
-    path = os.path.join(out_dir, 'ch14-passage-exercise.pdf')
-    ex = Ch14PassageExercise(
-        title='Chapter 14 — Passage Exercise: Qal Perfect Weak Verbs',
-        subtitle='BBH Chapter 14',
+    return _build_exercise_pdf(
+        Ch14PassageExercise,
+        'Chapter 14 — Passage Exercise: Qal Perfect Weak Verbs',
+        'BBH Chapter 14',
+        ['hebrew', 'bbh', 'ch14', 'exercises', 'ch14-passage-exercise'],
+        'ch14-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -5607,17 +5498,14 @@ class Ch14WeakFormIdExercise(ExercisePDF):
 
 
 def build_ch14_weak_form_id(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch14', 'exercises',
-                               'ch14-weak-form-id')
-    path = os.path.join(out_dir, 'ch14-weak-form-id.pdf')
-    ex = Ch14WeakFormIdExercise(
-        title='Chapter 14 — Weak-Form Identification Drill: Qal Perfect Weak Verbs',
-        subtitle='BBH Chapter 14',
+    return _build_exercise_pdf(
+        Ch14WeakFormIdExercise,
+        'Chapter 14 — Weak-Form Identification Drill: Qal Perfect Weak Verbs',
+        'BBH Chapter 14',
+        ['hebrew', 'bbh', 'ch14', 'exercises', 'ch14-weak-form-id'],
+        'ch14-weak-form-id.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -5721,17 +5609,14 @@ class Ch15ParsingDrillExercise(ExercisePDF):
 
 
 def build_ch15_parsing_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch15', 'exercises',
-                               'ch15-parsing-drill')
-    path = os.path.join(out_dir, 'ch15-parsing-drill.pdf')
-    ex = Ch15ParsingDrillExercise(
-        title='Chapter 15 — Parsing Drill: Qal Imperfect Strong Verbs',
-        subtitle='BBH Chapter 15',
+    return _build_exercise_pdf(
+        Ch15ParsingDrillExercise,
+        'Chapter 15 — Parsing Drill: Qal Imperfect Strong Verbs',
+        'BBH Chapter 15',
+        ['hebrew', 'bbh', 'ch15', 'exercises', 'ch15-parsing-drill'],
+        'ch15-parsing-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -5811,17 +5696,14 @@ class Ch15PassageExercise(ExercisePDF):
 
 
 def build_ch15_passage_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch15', 'exercises',
-                               'ch15-passage-exercise')
-    path = os.path.join(out_dir, 'ch15-passage-exercise.pdf')
-    ex = Ch15PassageExercise(
-        title='Chapter 15 — Passage Exercise: Qal Imperfect Strong Verbs',
-        subtitle='BBH Chapter 15',
+    return _build_exercise_pdf(
+        Ch15PassageExercise,
+        'Chapter 15 — Passage Exercise: Qal Imperfect Strong Verbs',
+        'BBH Chapter 15',
+        ['hebrew', 'bbh', 'ch15', 'exercises', 'ch15-passage-exercise'],
+        'ch15-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -5906,17 +5788,14 @@ class Ch16PassageExercise(ExercisePDF):
 
 
 def build_ch16_passage_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch16', 'exercises',
-                               'ch16-passage-exercise')
-    path = os.path.join(out_dir, 'ch16-passage-exercise.pdf')
-    ex = Ch16PassageExercise(
-        title='Chapter 16 — Passage Exercise: Qal Imperfect Weak Verbs',
-        subtitle='BBH Chapter 16',
+    return _build_exercise_pdf(
+        Ch16PassageExercise,
+        'Chapter 16 — Passage Exercise: Qal Imperfect Weak Verbs',
+        'BBH Chapter 16',
+        ['hebrew', 'bbh', 'ch16', 'exercises', 'ch16-passage-exercise'],
+        'ch16-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -6072,17 +5951,14 @@ class Ch16WeakFormIdExercise(ExercisePDF):
 
 
 def build_ch16_weak_form_id(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch16', 'exercises',
-                               'ch16-weak-form-id')
-    path = os.path.join(out_dir, 'ch16-weak-form-id.pdf')
-    ex = Ch16WeakFormIdExercise(
-        title='Chapter 16 — Weak Form ID Drill: Qal Imperfect Weak Verbs',
-        subtitle='BBH Chapter 16',
+    return _build_exercise_pdf(
+        Ch16WeakFormIdExercise,
+        'Chapter 16 — Weak Form ID Drill: Qal Imperfect Weak Verbs',
+        'BBH Chapter 16',
+        ['hebrew', 'bbh', 'ch16', 'exercises', 'ch16-weak-form-id'],
+        'ch16-weak-form-id.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -6185,17 +6061,14 @@ class Ch17ParsingDrillExercise(ExercisePDF):
 
 
 def build_ch17_parsing_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch17', 'exercises',
-                               'ch17-parsing-drill')
-    path = os.path.join(out_dir, 'ch17-parsing-drill.pdf')
-    ex = Ch17ParsingDrillExercise(
-        title='Chapter 17 — Parsing Drill: Wayyiqtol and Weqatal',
-        subtitle='BBH Chapter 17',
+    return _build_exercise_pdf(
+        Ch17ParsingDrillExercise,
+        'Chapter 17 — Parsing Drill: Wayyiqtol and Weqatal',
+        'BBH Chapter 17',
+        ['hebrew', 'bbh', 'ch17', 'exercises', 'ch17-parsing-drill'],
+        'ch17-parsing-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -6278,17 +6151,14 @@ class Ch17PassageExercise(ExercisePDF):
 
 
 def build_ch17_passage_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch17', 'exercises',
-                               'ch17-passage-exercise')
-    path = os.path.join(out_dir, 'ch17-passage-exercise.pdf')
-    ex = Ch17PassageExercise(
-        title='Chapter 17 — Passage Exercise: Wayyiqtol and Weqatal in Context',
-        subtitle='BBH Chapter 17',
+    return _build_exercise_pdf(
+        Ch17PassageExercise,
+        'Chapter 17 — Passage Exercise: Wayyiqtol and Weqatal in Context',
+        'BBH Chapter 17',
+        ['hebrew', 'bbh', 'ch17', 'exercises', 'ch17-passage-exercise'],
+        'ch17-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -6407,17 +6277,14 @@ class Ch18ParsingDrillExercise(ExercisePDF):
 
 
 def build_ch18_parsing_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch18', 'exercises',
-                               'ch18-parsing-drill')
-    path = os.path.join(out_dir, 'ch18-parsing-drill.pdf')
-    ex = Ch18ParsingDrillExercise(
-        title='Chapter 18 — Parsing Drill: Qal Imperative',
-        subtitle='BBH Chapter 18',
+    return _build_exercise_pdf(
+        Ch18ParsingDrillExercise,
+        'Chapter 18 — Parsing Drill: Qal Imperative',
+        'BBH Chapter 18',
+        ['hebrew', 'bbh', 'ch18', 'exercises', 'ch18-parsing-drill'],
+        'ch18-parsing-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -6504,17 +6371,14 @@ class Ch18PassageExercise(ExercisePDF):
 
 
 def build_ch18_passage_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch18', 'exercises',
-                               'ch18-passage-exercise')
-    path = os.path.join(out_dir, 'ch18-passage-exercise.pdf')
-    ex = Ch18PassageExercise(
-        title='Chapter 18 — Passage Exercise: Qal Imperative in Context',
-        subtitle='BBH Chapter 18',
+    return _build_exercise_pdf(
+        Ch18PassageExercise,
+        'Chapter 18 — Passage Exercise: Qal Imperative in Context',
+        'BBH Chapter 18',
+        ['hebrew', 'bbh', 'ch18', 'exercises', 'ch18-passage-exercise'],
+        'ch18-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -6648,18 +6512,14 @@ class Ch19ParsingDrillExercise(ExercisePDF):
 
 
 def build_ch19_parsing_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch19', 'exercises',
-                               'ch19-parsing-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch19-parsing-drill.pdf')
-    ex = Ch19ParsingDrillExercise(
-        title='Chapter 19 — Parsing Drill: Pronominal Suffixes on Verbs',
-        subtitle='BBH Chapter 19',
+    return _build_exercise_pdf(
+        Ch19ParsingDrillExercise,
+        'Chapter 19 — Parsing Drill: Pronominal Suffixes on Verbs',
+        'BBH Chapter 19',
+        ['hebrew', 'bbh', 'ch19', 'exercises', 'ch19-parsing-drill'],
+        'ch19-parsing-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class Ch19PassageExercise(ExercisePDF):
@@ -6738,18 +6598,14 @@ class Ch19PassageExercise(ExercisePDF):
 
 
 def build_ch19_passage_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch19', 'exercises',
-                               'ch19-passage-exercise')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch19-passage-exercise.pdf')
-    ex = Ch19PassageExercise(
-        title='Chapter 19 — Passage Exercise: Pronominal Suffixes on Verbs in Context',
-        subtitle='BBH Chapter 19',
+    return _build_exercise_pdf(
+        Ch19PassageExercise,
+        'Chapter 19 — Passage Exercise: Pronominal Suffixes on Verbs in Context',
+        'BBH Chapter 19',
+        ['hebrew', 'bbh', 'ch19', 'exercises', 'ch19-passage-exercise'],
+        'ch19-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -6866,18 +6722,14 @@ class Ch20ParsingDrillExercise(ExercisePDF):
 
 
 def build_ch20_parsing_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch20', 'exercises',
-                               'ch20-parsing-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch20-parsing-drill.pdf')
-    ex = Ch20ParsingDrillExercise(
-        title='Chapter 20 — Parsing Drill: Qal Infinitive Construct',
-        subtitle='BBH Chapter 20',
+    return _build_exercise_pdf(
+        Ch20ParsingDrillExercise,
+        'Chapter 20 — Parsing Drill: Qal Infinitive Construct',
+        'BBH Chapter 20',
+        ['hebrew', 'bbh', 'ch20', 'exercises', 'ch20-parsing-drill'],
+        'ch20-parsing-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class Ch20PassageExercise(ExercisePDF):
@@ -6970,18 +6822,14 @@ class Ch20PassageExercise(ExercisePDF):
 
 
 def build_ch20_passage_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch20', 'exercises',
-                               'ch20-passage-exercise')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch20-passage-exercise.pdf')
-    ex = Ch20PassageExercise(
-        title='Chapter 20 — Passage Exercise: Qal Infinitive Construct in Context',
-        subtitle='BBH Chapter 20',
+    return _build_exercise_pdf(
+        Ch20PassageExercise,
+        'Chapter 20 — Passage Exercise: Qal Infinitive Construct in Context',
+        'BBH Chapter 20',
+        ['hebrew', 'bbh', 'ch20', 'exercises', 'ch20-passage-exercise'],
+        'ch20-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -7098,18 +6946,14 @@ class Ch21ParsingDrillExercise(ExercisePDF):
 
 
 def build_ch21_parsing_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch21', 'exercises',
-                               'ch21-parsing-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch21-parsing-drill.pdf')
-    ex = Ch21ParsingDrillExercise(
-        title='Chapter 21 — Parsing Drill: Qal Infinitive Absolute',
-        subtitle='BBH Chapter 21',
+    return _build_exercise_pdf(
+        Ch21ParsingDrillExercise,
+        'Chapter 21 — Parsing Drill: Qal Infinitive Absolute',
+        'BBH Chapter 21',
+        ['hebrew', 'bbh', 'ch21', 'exercises', 'ch21-parsing-drill'],
+        'ch21-parsing-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class Ch21PassageExercise(ExercisePDF):
@@ -7197,18 +7041,14 @@ class Ch21PassageExercise(ExercisePDF):
 
 
 def build_ch21_passage_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch21', 'exercises',
-                               'ch21-passage-exercise')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch21-passage-exercise.pdf')
-    ex = Ch21PassageExercise(
-        title='Chapter 21 — Passage Exercise: Qal Infinitive Absolute in Context',
-        subtitle='BBH Chapter 21',
+    return _build_exercise_pdf(
+        Ch21PassageExercise,
+        'Chapter 21 — Passage Exercise: Qal Infinitive Absolute in Context',
+        'BBH Chapter 21',
+        ['hebrew', 'bbh', 'ch21', 'exercises', 'ch21-passage-exercise'],
+        'ch21-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -7354,18 +7194,14 @@ class Ch22ParsingDrillExercise(ExercisePDF):
 
 
 def build_ch22_parsing_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch22', 'exercises',
-                               'ch22-parsing-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch22-parsing-drill.pdf')
-    ex = Ch22ParsingDrillExercise(
-        title='Chapter 22 — Parsing Drill: Qal Participle (Active and Passive)',
-        subtitle='BBH Chapter 22',
+    return _build_exercise_pdf(
+        Ch22ParsingDrillExercise,
+        'Chapter 22 — Parsing Drill: Qal Participle (Active and Passive)',
+        'BBH Chapter 22',
+        ['hebrew', 'bbh', 'ch22', 'exercises', 'ch22-parsing-drill'],
+        'ch22-parsing-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class Ch22PassageExercise(ExercisePDF):
@@ -7466,18 +7302,14 @@ class Ch22PassageExercise(ExercisePDF):
 
 
 def build_ch22_passage_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch22', 'exercises',
-                               'ch22-passage-exercise')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch22-passage-exercise.pdf')
-    ex = Ch22PassageExercise(
-        title='Chapter 22 — Passage Exercise: Qal Participle (Active and Passive) in Context',
-        subtitle='BBH Chapter 22',
+    return _build_exercise_pdf(
+        Ch22PassageExercise,
+        'Chapter 22 — Passage Exercise: Qal Participle (Active and Passive) in Context',
+        'BBH Chapter 22',
+        ['hebrew', 'bbh', 'ch22', 'exercises', 'ch22-passage-exercise'],
+        'ch22-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -7620,18 +7452,14 @@ class Ch23ClauseAnalysisExercise(ExercisePDF):
 
 
 def build_ch23_clause_analysis(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch23', 'exercises',
-                               'ch23-clause-analysis')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch23-clause-analysis.pdf')
-    ex = Ch23ClauseAnalysisExercise(
-        title='Chapter 23 — Clause Analysis Drill',
-        subtitle='BBH Chapter 23',
+    return _build_exercise_pdf(
+        Ch23ClauseAnalysisExercise,
+        'Chapter 23 — Clause Analysis Drill',
+        'BBH Chapter 23',
+        ['hebrew', 'bbh', 'ch23', 'exercises', 'ch23-clause-analysis'],
+        'ch23-clause-analysis.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class Ch23PassageExercise(ExercisePDF):
@@ -7709,18 +7537,14 @@ class Ch23PassageExercise(ExercisePDF):
 
 
 def build_ch23_passage_exercise(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'hebrew', 'bbh', 'ch23', 'exercises',
-                               'ch23-passage-exercise')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch23-passage-exercise.pdf')
-    ex = Ch23PassageExercise(
-        title='Chapter 23 — Passage Exercise: Reading the Clause in Context',
-        subtitle='BBH Chapter 23',
+    return _build_exercise_pdf(
+        Ch23PassageExercise,
+        'Chapter 23 — Passage Exercise: Reading the Clause in Context',
+        'BBH Chapter 23',
+        ['hebrew', 'bbh', 'ch23', 'exercises', 'ch23-passage-exercise'],
+        'ch23-passage-exercise.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ===========================================================================
@@ -7981,18 +7805,14 @@ class BbgCh3AlphabetDrillPDF(GreekExercisePDF):
 
 
 def build_bbg_ch3_alphabet_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch3', 'exercises',
-                               'ch3-alphabet-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch3-alphabet-drill.pdf')
-    ex = BbgCh3AlphabetDrillPDF(
-        title='BBG Chapter 3 — Greek Alphabet Drill',
-        subtitle='Letter Identification: Name and Sound',
+    return _build_exercise_pdf(
+        BbgCh3AlphabetDrillPDF,
+        'BBG Chapter 3 — Greek Alphabet Drill',
+        'Letter Identification: Name and Sound',
+        ['greek', 'bbg', 'ch3', 'exercises', 'ch3-alphabet-drill'],
+        'ch3-alphabet-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -8064,18 +7884,14 @@ class BbgCh4SyllableDrillPDF(GreekExercisePDF):
 
 
 def build_bbg_ch4_syllable_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch4', 'exercises',
-                               'ch4-syllable-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch4-syllable-drill.pdf')
-    ex = BbgCh4SyllableDrillPDF(
-        title='BBG Chapter 4 — Syllabification Drill',
-        subtitle='Syllable Division, Accent Position, and Accent Type',
+    return _build_exercise_pdf(
+        BbgCh4SyllableDrillPDF,
+        'BBG Chapter 4 — Syllabification Drill',
+        'Syllable Division, Accent Position, and Accent Type',
+        ['greek', 'bbg', 'ch4', 'exercises', 'ch4-syllable-drill'],
+        'ch4-syllable-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -8158,18 +7974,14 @@ class BbgCh6NomAccParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch6_nom_acc_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch6', 'exercises',
-                               'ch6-nom-acc-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch6-nom-acc-parsing.pdf')
-    ex = BbgCh6NomAccParsingPDF(
-        title='BBG Chapter 6 — Nominative and Accusative Parsing Drill',
-        subtitle='2nd Declension Nouns and Definite Article',
+    return _build_exercise_pdf(
+        BbgCh6NomAccParsingPDF,
+        'BBG Chapter 6 — Nominative and Accusative Parsing Drill',
+        '2nd Declension Nouns and Definite Article',
+        ['greek', 'bbg', 'ch6', 'exercises', 'ch6-nom-acc-parsing'],
+        'ch6-nom-acc-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -8237,17 +8049,14 @@ class BbgCh7GenDatParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch7_gen_dat_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch7', 'exercises', 'ch7-gen-dat-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch7-gen-dat-parsing.pdf')
-    ex = BbgCh7GenDatParsingPDF(
-        title='BBG Chapter 7 — Genitive and Dative Parsing Drill',
-        subtitle='2nd Declension Genitive and Dative Forms',
+    return _build_exercise_pdf(
+        BbgCh7GenDatParsingPDF,
+        'BBG Chapter 7 — Genitive and Dative Parsing Drill',
+        '2nd Declension Genitive and Dative Forms',
+        ['greek', 'bbg', 'ch7', 'exercises', 'ch7-gen-dat-parsing'],
+        'ch7-gen-dat-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -8315,17 +8124,14 @@ class BbgCh8PrepositionParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch8_preposition_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch8', 'exercises', 'ch8-preposition-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch8-preposition-parsing.pdf')
-    ex = BbgCh8PrepositionParsingPDF(
-        title='BBG Chapter 8 — Preposition Parsing Drill',
-        subtitle='Prepositions and εἰμί',
+    return _build_exercise_pdf(
+        BbgCh8PrepositionParsingPDF,
+        'BBG Chapter 8 — Preposition Parsing Drill',
+        'Prepositions and εἰμί',
+        ['greek', 'bbg', 'ch8', 'exercises', 'ch8-preposition-parsing'],
+        'ch8-preposition-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -8392,17 +8198,14 @@ class BbgCh9AdjectiveParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch9_adjective_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch9', 'exercises', 'ch9-adjective-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch9-adjective-parsing.pdf')
-    ex = BbgCh9AdjectiveParsingPDF(
-        title='BBG Chapter 9 — Adjective Parsing Drill',
-        subtitle='Attributive, Predicate, and Substantival Positions',
+    return _build_exercise_pdf(
+        BbgCh9AdjectiveParsingPDF,
+        'BBG Chapter 9 — Adjective Parsing Drill',
+        'Attributive, Predicate, and Substantival Positions',
+        ['greek', 'bbg', 'ch9', 'exercises', 'ch9-adjective-parsing'],
+        'ch9-adjective-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -8469,17 +8272,14 @@ class BbgCh10ThirdDeclParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch10_third_decl_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch10', 'exercises', 'ch10-third-decl-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch10-third-decl-parsing.pdf')
-    ex = BbgCh10ThirdDeclParsingPDF(
-        title='BBG Chapter 10 — Third Declension Parsing Drill',
-        subtitle='Consonant and Vowel Stem Nouns',
+    return _build_exercise_pdf(
+        BbgCh10ThirdDeclParsingPDF,
+        'BBG Chapter 10 — Third Declension Parsing Drill',
+        'Consonant and Vowel Stem Nouns',
+        ['greek', 'bbg', 'ch10', 'exercises', 'ch10-third-decl-parsing'],
+        'ch10-third-decl-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -8536,17 +8336,14 @@ class BbgCh11PronounParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch11_pronoun_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch11', 'exercises', 'ch11-pronoun-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch11-pronoun-parsing.pdf')
-    ex = BbgCh11PronounParsingPDF(
-        title='BBG Chapter 11 — Personal Pronoun Parsing Drill',
-        subtitle='First and Second Person Pronouns',
+    return _build_exercise_pdf(
+        BbgCh11PronounParsingPDF,
+        'BBG Chapter 11 — Personal Pronoun Parsing Drill',
+        'First and Second Person Pronouns',
+        ['greek', 'bbg', 'ch11', 'exercises', 'ch11-pronoun-parsing'],
+        'ch11-pronoun-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -8614,17 +8411,14 @@ class BbgCh12AutosParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch12_autos_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch12', 'exercises', 'ch12-autos-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch12-autos-parsing.pdf')
-    ex = BbgCh12AutosParsingPDF(
-        title='BBG Chapter 12 — αὐτός Parsing and Use Identification',
-        subtitle='Personal Pronoun · Intensive · Identical Adjective',
+    return _build_exercise_pdf(
+        BbgCh12AutosParsingPDF,
+        'BBG Chapter 12 — αὐτός Parsing and Use Identification',
+        'Personal Pronoun · Intensive · Identical Adjective',
+        ['greek', 'bbg', 'ch12', 'exercises', 'ch12-autos-parsing'],
+        'ch12-autos-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -8691,17 +8485,14 @@ class BbgCh13DemonstrativeParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch13_demonstrative_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch13', 'exercises', 'ch13-demonstrative-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch13-demonstrative-parsing.pdf')
-    ex = BbgCh13DemonstrativeParsingPDF(
-        title='BBG Chapter 13 — Demonstrative Parsing Drill',
-        subtitle='οὗτος and ἐκεῖνος — Adjective vs. Pronoun Use',
+    return _build_exercise_pdf(
+        BbgCh13DemonstrativeParsingPDF,
+        'BBG Chapter 13 — Demonstrative Parsing Drill',
+        'οὗτος and ἐκεῖνος — Adjective vs. Pronoun Use',
+        ['greek', 'bbg', 'ch13', 'exercises', 'ch13-demonstrative-parsing'],
+        'ch13-demonstrative-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -8769,17 +8560,14 @@ class BbgCh14RelativeParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch14_relative_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch14', 'exercises', 'ch14-relative-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch14-relative-parsing.pdf')
-    ex = BbgCh14RelativeParsingPDF(
-        title='BBG Chapter 14 — Relative Pronoun Parsing Drill',
-        subtitle='ὅς, ἥ, ὅ — Gender/Number from Antecedent; Case from Clause Function',
+    return _build_exercise_pdf(
+        BbgCh14RelativeParsingPDF,
+        'BBG Chapter 14 — Relative Pronoun Parsing Drill',
+        'ὅς, ἥ, ὅ — Gender/Number from Antecedent; Case from Clause Function',
+        ['greek', 'bbg', 'ch14', 'exercises', 'ch14-relative-parsing'],
+        'ch14-relative-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -8836,17 +8624,14 @@ class BbgCh16PresentActiveParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch16_present_active_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch16', 'exercises', 'ch16-present-active-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch16-present-active-parsing.pdf')
-    ex = BbgCh16PresentActiveParsingPDF(
-        title='BBG Chapter 16 — Present Active Indicative Parsing Drill',
-        subtitle='λύω Paradigm and Common Verbs',
+    return _build_exercise_pdf(
+        BbgCh16PresentActiveParsingPDF,
+        'BBG Chapter 16 — Present Active Indicative Parsing Drill',
+        'λύω Paradigm and Common Verbs',
+        ['greek', 'bbg', 'ch16', 'exercises', 'ch16-present-active-parsing'],
+        'ch16-present-active-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -8903,17 +8688,14 @@ class BbgCh17ContractVerbParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch17_contract_verb_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch17', 'exercises', 'ch17-contract-verb-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch17-contract-verb-parsing.pdf')
-    ex = BbgCh17ContractVerbParsingPDF(
-        title='BBG Chapter 17 — Contract Verb Parsing Drill',
-        subtitle='α-, ε-, ο-Contract Verbs',
+    return _build_exercise_pdf(
+        BbgCh17ContractVerbParsingPDF,
+        'BBG Chapter 17 — Contract Verb Parsing Drill',
+        'α-, ε-, ο-Contract Verbs',
+        ['greek', 'bbg', 'ch17', 'exercises', 'ch17-contract-verb-parsing'],
+        'ch17-contract-verb-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -8980,17 +8762,14 @@ class BbgCh18MiddlePassiveParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch18_middle_passive_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch18', 'exercises', 'ch18-middle-passive-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch18-middle-passive-parsing.pdf')
-    ex = BbgCh18MiddlePassiveParsingPDF(
-        title='BBG Chapter 18 — Present Middle/Passive Indicative Parsing Drill',
-        subtitle='Middle, Passive, and Deponent Verbs',
+    return _build_exercise_pdf(
+        BbgCh18MiddlePassiveParsingPDF,
+        'BBG Chapter 18 — Present Middle/Passive Indicative Parsing Drill',
+        'Middle, Passive, and Deponent Verbs',
+        ['greek', 'bbg', 'ch18', 'exercises', 'ch18-middle-passive-parsing'],
+        'ch18-middle-passive-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -9047,17 +8826,14 @@ class BbgCh19FutureParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch19_future_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch19', 'exercises', 'ch19-future-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch19-future-parsing.pdf')
-    ex = BbgCh19FutureParsingPDF(
-        title='BBG Chapter 19 — Future Active and Middle Parsing Drill',
-        subtitle='Sigma Tense Formant and Liquid Futures',
+    return _build_exercise_pdf(
+        BbgCh19FutureParsingPDF,
+        'BBG Chapter 19 — Future Active and Middle Parsing Drill',
+        'Sigma Tense Formant and Liquid Futures',
+        ['greek', 'bbg', 'ch19', 'exercises', 'ch19-future-parsing'],
+        'ch19-future-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -9113,17 +8889,14 @@ class BbgCh20StemChangeDrillPDF(GreekExercisePDF):
 
 
 def build_bbg_ch20_stem_change_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch20', 'exercises', 'ch20-stem-change-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch20-stem-change-drill.pdf')
-    ex = BbgCh20StemChangeDrillPDF(
-        title='BBG Chapter 20 — Verbal Root and Stem Change Drill',
-        subtitle='Patterns 2–4: Stop Mutation, Nasal Infix, Suppletive',
+    return _build_exercise_pdf(
+        BbgCh20StemChangeDrillPDF,
+        'BBG Chapter 20 — Verbal Root and Stem Change Drill',
+        'Patterns 2–4: Stop Mutation, Nasal Infix, Suppletive',
+        ['greek', 'bbg', 'ch20', 'exercises', 'ch20-stem-change-drill'],
+        'ch20-stem-change-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -9179,17 +8952,14 @@ class BbgCh21ImperfectParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch21_imperfect_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch21', 'exercises', 'ch21-imperfect-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch21-imperfect-parsing.pdf')
-    ex = BbgCh21ImperfectParsingPDF(
-        title='BBG Chapter 21 — Imperfect Indicative Parsing Drill',
-        subtitle='Augment · Secondary Active and Middle/Passive Endings',
+    return _build_exercise_pdf(
+        BbgCh21ImperfectParsingPDF,
+        'BBG Chapter 21 — Imperfect Indicative Parsing Drill',
+        'Augment · Secondary Active and Middle/Passive Endings',
+        ['greek', 'bbg', 'ch21', 'exercises', 'ch21-imperfect-parsing'],
+        'ch21-imperfect-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -9246,17 +9016,14 @@ class BbgCh22SecondAoristParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch22_second_aorist_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch22', 'exercises', 'ch22-second-aorist-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch22-second-aorist-parsing.pdf')
-    ex = BbgCh22SecondAoristParsingPDF(
-        title='BBG Chapter 22 — Second Aorist Parsing Drill',
-        subtitle='Second Aorist Active and Middle Indicative',
+    return _build_exercise_pdf(
+        BbgCh22SecondAoristParsingPDF,
+        'BBG Chapter 22 — Second Aorist Parsing Drill',
+        'Second Aorist Active and Middle Indicative',
+        ['greek', 'bbg', 'ch22', 'exercises', 'ch22-second-aorist-parsing'],
+        'ch22-second-aorist-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -9313,17 +9080,14 @@ class BbgCh23FirstAoristParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch23_first_aorist_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch23', 'exercises', 'ch23-first-aorist-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch23-first-aorist-parsing.pdf')
-    ex = BbgCh23FirstAoristParsingPDF(
-        title='BBG Chapter 23 — First Aorist Parsing Drill',
-        subtitle='First Aorist Active and Middle Indicative',
+    return _build_exercise_pdf(
+        BbgCh23FirstAoristParsingPDF,
+        'BBG Chapter 23 — First Aorist Parsing Drill',
+        'First Aorist Active and Middle Indicative',
+        ['greek', 'bbg', 'ch23', 'exercises', 'ch23-first-aorist-parsing'],
+        'ch23-first-aorist-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -9380,17 +9144,14 @@ class BbgCh24AoristFuturePassiveParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch24_aorist_future_passive_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch24', 'exercises', 'ch24-aorist-future-passive-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch24-aorist-future-passive-parsing.pdf')
-    ex = BbgCh24AoristFuturePassiveParsingPDF(
-        title='BBG Chapter 24 — Aorist and Future Passive Parsing Drill',
-        subtitle='Theta Tense Formant and Passive Personal Endings',
+    return _build_exercise_pdf(
+        BbgCh24AoristFuturePassiveParsingPDF,
+        'BBG Chapter 24 — Aorist and Future Passive Parsing Drill',
+        'Theta Tense Formant and Passive Personal Endings',
+        ['greek', 'bbg', 'ch24', 'exercises', 'ch24-aorist-future-passive-parsing'],
+        'ch24-aorist-future-passive-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -9447,17 +9208,14 @@ class BbgCh25PerfectParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch25_perfect_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch25', 'exercises', 'ch25-perfect-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch25-perfect-parsing.pdf')
-    ex = BbgCh25PerfectParsingPDF(
-        title='BBG Chapter 25 — Perfect Indicative Parsing Drill',
-        subtitle='Reduplication · Kappa Tense Formant · Perfect Active and Passive',
+    return _build_exercise_pdf(
+        BbgCh25PerfectParsingPDF,
+        'BBG Chapter 25 — Perfect Indicative Parsing Drill',
+        'Reduplication · Kappa Tense Formant · Perfect Active and Passive',
+        ['greek', 'bbg', 'ch25', 'exercises', 'ch25-perfect-parsing'],
+        'ch25-perfect-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -9514,17 +9272,14 @@ class BbgCh27PresentParticipleParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch27_present_participle_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch27', 'exercises', 'ch27-present-participle-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch27-present-participle-parsing.pdf')
-    ex = BbgCh27PresentParticipleParsingPDF(
-        title='BBG Chapter 27 — Present Participle Parsing Drill',
-        subtitle='Imperfective (Present) Adverbial · Adjectival · Substantival Participles',
+    return _build_exercise_pdf(
+        BbgCh27PresentParticipleParsingPDF,
+        'BBG Chapter 27 — Present Participle Parsing Drill',
+        'Imperfective (Present) Adverbial · Adjectival · Substantival Participles',
+        ['greek', 'bbg', 'ch27', 'exercises', 'ch27-present-participle-parsing'],
+        'ch27-present-participle-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -9581,17 +9336,14 @@ class BbgCh28AoristParticipleParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch28_aorist_participle_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch28', 'exercises', 'ch28-aorist-participle-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch28-aorist-participle-parsing.pdf')
-    ex = BbgCh28AoristParticipleParsingPDF(
-        title='BBG Chapter 28 — Aorist Participle Parsing Drill',
-        subtitle='Perfective (Aorist) Adverbial · Adjectival · Substantival Participles',
+    return _build_exercise_pdf(
+        BbgCh28AoristParticipleParsingPDF,
+        'BBG Chapter 28 — Aorist Participle Parsing Drill',
+        'Perfective (Aorist) Adverbial · Adjectival · Substantival Participles',
+        ['greek', 'bbg', 'ch28', 'exercises', 'ch28-aorist-participle-parsing'],
+        'ch28-aorist-participle-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -9649,17 +9401,14 @@ class BbgCh29AdjectivalParticipleParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch29_adjectival_participle_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch29', 'exercises', 'ch29-adjectival-participle-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch29-adjectival-participle-parsing.pdf')
-    ex = BbgCh29AdjectivalParticipleParsingPDF(
-        title='BBG Chapter 29 — Adjectival Participle Parsing Drill',
-        subtitle='Attributive (1st & 2nd Position) and Substantival Participle Uses',
+    return _build_exercise_pdf(
+        BbgCh29AdjectivalParticipleParsingPDF,
+        'BBG Chapter 29 — Adjectival Participle Parsing Drill',
+        'Attributive (1st & 2nd Position) and Substantival Participle Uses',
+        ['greek', 'bbg', 'ch29', 'exercises', 'ch29-adjectival-participle-parsing'],
+        'ch29-adjectival-participle-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -9731,17 +9480,14 @@ class BbgCh30PerfectParticipleGenAbsPDF(GreekExercisePDF):
 
 
 def build_bbg_ch30_perfect_participle_genabs(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch30', 'exercises', 'ch30-perfect-participle-genabs')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch30-perfect-participle-genabs.pdf')
-    ex = BbgCh30PerfectParticipleGenAbsPDF(
-        title='BBG Chapter 30 — Perfect Participles and Genitive Absolutes',
-        subtitle='Combinative (Perfect) Participles · Genitive Absolute Construction',
+    return _build_exercise_pdf(
+        BbgCh30PerfectParticipleGenAbsPDF,
+        'BBG Chapter 30 — Perfect Participles and Genitive Absolutes',
+        'Combinative (Perfect) Participles · Genitive Absolute Construction',
+        ['greek', 'bbg', 'ch30', 'exercises', 'ch30-perfect-participle-genabs'],
+        'ch30-perfect-participle-genabs.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -9809,17 +9555,14 @@ class BbgCh31SubjunctiveParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch31_subjunctive_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch31', 'exercises', 'ch31-subjunctive-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch31-subjunctive-parsing.pdf')
-    ex = BbgCh31SubjunctiveParsingPDF(
-        title='BBG Chapter 31 — Subjunctive Parsing Drill',
-        subtitle='Purpose · Conditional · Hortatory · Prohibition · Indefinite · Emphatic Denial',
+    return _build_exercise_pdf(
+        BbgCh31SubjunctiveParsingPDF,
+        'BBG Chapter 31 — Subjunctive Parsing Drill',
+        'Purpose · Conditional · Hortatory · Prohibition · Indefinite · Emphatic Denial',
+        ['greek', 'bbg', 'ch31', 'exercises', 'ch31-subjunctive-parsing'],
+        'ch31-subjunctive-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -9887,17 +9630,14 @@ class BbgCh32InfinitiveParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch32_infinitive_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch32', 'exercises', 'ch32-infinitive-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch32-infinitive-parsing.pdf')
-    ex = BbgCh32InfinitiveParsingPDF(
-        title='BBG Chapter 32 — Infinitive Parsing Drill',
-        subtitle='Complementary · Articular · Purpose · Result · Indirect Discourse · Temporal',
+    return _build_exercise_pdf(
+        BbgCh32InfinitiveParsingPDF,
+        'BBG Chapter 32 — Infinitive Parsing Drill',
+        'Complementary · Articular · Purpose · Result · Indirect Discourse · Temporal',
+        ['greek', 'bbg', 'ch32', 'exercises', 'ch32-infinitive-parsing'],
+        'ch32-infinitive-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -9965,17 +9705,14 @@ class BbgCh33ImperativeParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch33_imperative_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch33', 'exercises', 'ch33-imperative-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch33-imperative-parsing.pdf')
-    ex = BbgCh33ImperativeParsingPDF(
-        title='BBG Chapter 33 — Imperative Parsing Drill',
-        subtitle='Commands and Prohibitions · Present vs. Aorist Aspect',
+    return _build_exercise_pdf(
+        BbgCh33ImperativeParsingPDF,
+        'BBG Chapter 33 — Imperative Parsing Drill',
+        'Commands and Prohibitions · Present vs. Aorist Aspect',
+        ['greek', 'bbg', 'ch33', 'exercises', 'ch33-imperative-parsing'],
+        'ch33-imperative-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -10042,17 +9779,14 @@ class BbgCh34DidomiParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch34_didomi_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch34', 'exercises', 'ch34-didomi-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch34-didomi-parsing.pdf')
-    ex = BbgCh34DidomiParsingPDF(
-        title='BBG Chapter 34 — δίδωμι Parsing Drill',
-        subtitle='Present · Imperfect · Aorist · Passive forms of δίδωμι and compounds',
+    return _build_exercise_pdf(
+        BbgCh34DidomiParsingPDF,
+        'BBG Chapter 34 — δίδωμι Parsing Drill',
+        'Present · Imperfect · Aorist · Passive forms of δίδωμι and compounds',
+        ['greek', 'bbg', 'ch34', 'exercises', 'ch34-didomi-parsing'],
+        'ch34-didomi-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -10134,17 +9868,14 @@ class BbgCh35ConditionalsdrillPDF(GreekExercisePDF):
 
 
 def build_bbg_ch35_conditionals_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch35', 'exercises', 'ch35-conditionals-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch35-conditionals-drill.pdf')
-    ex = BbgCh35ConditionalsdrillPDF(
-        title='BBG Chapter 35 — Conditionals and δίδωμι Non-Indicative',
-        subtitle='Four Conditional Classes · Subjunctive · Infinitive · Imperative · Participle of δίδωμι',
+    return _build_exercise_pdf(
+        BbgCh35ConditionalsdrillPDF,
+        'BBG Chapter 35 — Conditionals and δίδωμι Non-Indicative',
+        'Four Conditional Classes · Subjunctive · Infinitive · Imperative · Participle of δίδωμι',
+        ['greek', 'bbg', 'ch35', 'exercises', 'ch35-conditionals-drill'],
+        'ch35-conditionals-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -10212,17 +9943,14 @@ class BbgCh36MiVerbsParsingPDF(GreekExercisePDF):
 
 
 def build_bbg_ch36_mi_verbs_parsing(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'greek', 'bbg', 'ch36', 'exercises', 'ch36-mi-verbs-parsing')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch36-mi-verbs-parsing.pdf')
-    ex = BbgCh36MiVerbsParsingPDF(
-        title='BBG Chapter 36 — μι-Verb Parsing Drill',
-        subtitle='ἵστημι · τίθημι · δείκνυμι · ἀφίημι · ἀπόλλυμι · οἶδα',
+    return _build_exercise_pdf(
+        BbgCh36MiVerbsParsingPDF,
+        'BBG Chapter 36 — μι-Verb Parsing Drill',
+        'ἵστημι · τίθημι · δείκνυμι · ἀφίημι · ἀπόλλυμι · οἶδα',
+        ['greek', 'bbg', 'ch36', 'exercises', 'ch36-mi-verbs-parsing'],
+        'ch36-mi-verbs-parsing.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
