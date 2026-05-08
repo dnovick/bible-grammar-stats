@@ -122,7 +122,7 @@ transliteration, gloss, definition, and POS code for every Strong's number.
 ```bash
 # 1. Clone the repository with all submodules
 git clone --recurse-submodules <repo-url>
-cd bible-grammar-stats
+cd berean-bible-bots
 
 # 2. Install Python dependencies
 pip install -r requirements.txt
@@ -148,7 +148,7 @@ git submodule update --init --recursive
 ## Project Structure
 
 ```
-bible-grammar-stats/
+berean-bible-bots/
 ├── src/bible_grammar/          # Core Python library
 │   ├── query.py                # Filtered morphology + translation query API
 │   ├── wordstudy.py            # Word study: lexicon + stats + LXX equivalents

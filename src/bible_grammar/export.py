@@ -1,5 +1,5 @@
 """
-HTML and CSV export utilities for bible-grammar-stats analyses.
+HTML and CSV export utilities for berean-bible-bots analyses.
 
 Provides two levels of export:
 
