@@ -8,6 +8,14 @@
 
 *(No separate reference files for this chapter — full content is in this README.)*
 
+### Vocabulary Decks
+
+| File | Use |
+|---|---|
+| [ch3-vocab-deck.md](ch3-vocab-deck.md) | Reference list with glosses |
+| [ch3-vocab-deck.txt](ch3-vocab-deck.txt) | Anki import (tab-separated) |
+| [ch3-vocab-deck-fd.txt](ch3-vocab-deck-fd.txt) | Flashcards Deluxe import |
+
 ### Exercises
 
 | Exercise | Description |
