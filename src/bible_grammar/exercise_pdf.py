@@ -10985,6 +10985,80 @@ def build_bba_ch10_adjective_number_drill(out_dir: str = None) -> str:
     return ex.save(path)
 
 
+class BbaCh11ParticleDrillPDF(ExercisePDF):
+    def _build(self):
+        self.add_instructions(
+            'For each phrase, identify the adverb or particle, give its category '
+            '(time, place, manner, negation, discourse, causal/purpose), '
+            'and give the English gloss or translation.'
+        )
+        hdrs = ['#', 'Aramaic Phrase', 'Adverb / Particle', 'Category', 'Gloss / Translation']
+        cr = [0.04, 0.22, 0.16, 0.20, 0.38]
+        hc = [1]
+        rows = [
+            [1,  'אֱדַיִן מַלְכָּא', '', '', ''],
+            [2,  'לָא יָכְלִין',     '', '', ''],
+            [3,  'כְּעַן אֱלָהּ',    '', '', ''],
+            [4,  'תַּמָּה מֶלֶךְ',   '', '', ''],
+            [5,  'יַתִּיר מִן',      '', '', ''],
+            [6,  'כֵּן אֲמַר',       '', '', ''],
+            [7,  'עֲדַיִן לָא',      '', '', ''],
+            [8,  'הָכָא קָיְמִין',   '', '', ''],
+            [9,  'לָהֵן מַלְכָּא',  '', '', ''],
+            [10, 'אַף אֲנָה',        '', '', ''],
+            [11, 'הֵן אִיתַי',       '', '', ''],
+            [12, 'אֱדַיִן בֵּאדַיִן','', '', ''],
+            [13, 'בְּדִיל דִּי',     '', '', ''],
+            [14, 'אַל תִּדְחַל',     '', '', ''],
+            [15, 'שַׂגִּיא טָב',     '', '', ''],
+            [16, 'לָא עֲדַיִן',      '', '', ''],
+            [17, 'אֲרוּ חֵיוָה',     '', '', ''],
+            [18, 'כִּדְנָה אֲמַר',   '', '', ''],
+            [19, 'כָּל-קֳבֵל דִּי', '', '', ''],
+            [20, 'הֵן...הֵן',        '', '', ''],
+        ]
+        ans = [
+            [1,  'אֱדַיִן מַלְכָּא', 'אֱדַיִן',          'time / discourse marker',       "then; at that time — 'then the king...'"],
+            [2,  'לָא יָכְלִין',     'לָא',              'negation',                      "not — 'they are not able'"],
+            [3,  'כְּעַן אֱלָהּ',    'כְּעַן',           'time (present)',                "now — 'now, O God...'"],
+            [4,  'תַּמָּה מֶלֶךְ',   'תַּמָּה',          'place',                         "there — 'there (was) a king'"],
+            [5,  'יַתִּיר מִן',      'יַתִּיר',          'manner',                        'exceedingly, more than'],
+            [6,  'כֵּן אֲמַר',       'כֵּן',             'manner',                        "thus, so — 'thus he said'"],
+            [7,  'עֲדַיִן לָא',      'עֲדַיִן',          'time (continuity)',             "still, yet — 'not yet'"],
+            [8,  'הָכָא קָיְמִין',   'הָכָא',            'place',                         "here — 'standing here'"],
+            [9,  'לָהֵן מַלְכָּא',  'לָהֵן',            'discourse (consequence/contrast)',"therefore / but — 'therefore, O king'"],
+            [10, 'אַף אֲנָה',        'אַף',              'assertive',                     "also, even — 'even I / I also'"],
+            [11, 'הֵן אִיתַי',       'הֵן',              'conditional/assertive',         "if; behold — 'if there is'"],
+            [12, 'אֱדַיִן בֵּאדַיִן','אֱדַיִן',          'time / discourse marker',       'then — sequential / narrative marker'],
+            [13, 'בְּדִיל דִּי',     'בְּדִיל דִּי',      'causal/purpose',                'in order that, for the sake of, because'],
+            [14, 'אַל תִּדְחַל',     'אַל',              'negation (prohibitive)',        "do not — 'do not fear'"],
+            [15, 'שַׂגִּיא טָב',     'שַׂגִּיא',         'manner (adverb from adj.)',     "greatly, very — 'very good'"],
+            [16, 'לָא עֲדַיִן',      'לָא + עֲדַיִן',    'negation + time (idiom)',       'not yet'],
+            [17, 'אֲרוּ חֵיוָה',     'אֲרוּ',            'discourse (presentative)',      "behold, lo — 'behold, a beast'"],
+            [18, 'כִּדְנָה אֲמַר',   'כִּדְנָה',         'manner',                        "thus, in this manner — 'thus he said'"],
+            [19, 'כָּל-קֳבֵל דִּי', 'כָּל-קֳבֵל דִּי',  'causal',                        'because, inasmuch as, therefore'],
+            [20, 'הֵן...הֵן',        'הֵן...הֵן',         'conditional (correlative)',     'whether...or; if...then'],
+        ]
+        self.add_section_heading('Items 1–20')
+        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
+        self.add_section_heading('Answer Key')
+        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+
+
+def build_bba_ch11_particle_drill(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'aramaic', 'bba', 'ch11', 'exercises', 'ch11-particle-drill')
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, 'ch11-particle-drill.pdf')
+    ex = BbaCh11ParticleDrillPDF(
+        title='BBA Chapter 11 — Particle Drill',
+        subtitle='Adverbs and Particles · Time, Place, Manner, Negation, Discourse',
+    )
+    return ex.save(path)
+
+
 if __name__ == '__main__':
     # Ch1–Ch23 exercises (new)
     builders_ch1_23 = [
@@ -11121,6 +11195,7 @@ if __name__ == '__main__':
         build_bba_ch8_suffix_drill,
         build_bba_ch9_pronoun_drill,
         build_bba_ch10_adjective_number_drill,
+        build_bba_ch11_particle_drill,
     ]
     for fn in bba_builders:
         try:
