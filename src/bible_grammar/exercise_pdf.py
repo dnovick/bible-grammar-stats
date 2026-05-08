@@ -11059,6 +11059,70 @@ def build_bba_ch11_particle_drill(out_dir: str = None) -> str:
     return ex.save(path)
 
 
+# BBA Ch12 — Stem Identification Drill
+class BbaCh12VerbIntroDrillPDF(ExercisePDF):
+    def _build(self):
+        self.add_instructions(
+            'For each underlined verb from Daniel or Ezra, identify the stem '
+            '(Peal, Peil, Ithpeel, Pael, Ithpaal, Haphel, Hophal, Shaph\'el, or Ithhaph\'al), '
+            'isolate the three-letter root (3ms Peal perfect form), '
+            'and give an English gloss of the verb as it appears in the verse.'
+        )
+        hdrs = ['#', 'Aramaic Clause', 'Ref', 'Stem', 'Root', 'Gloss']
+        cr = [0.04, 0.30, 0.09, 0.17, 0.10, 0.30]
+        hc = [1]
+        rows = [
+            [1,  'אֱדַיִן דָּנִיֵּאל לְבֵיתֵהּ אֲזַל',              'Dan 2:17', '', '', ''],
+            [2,  'וּמִלְּתָא כְּתַב מַלְכָּא',                                                        'Dan 6:26', '', '', ''],
+            [3,  'אֱדַיִן נְבוּכַדְנֶצַּר נְפַל עַל-אַנְפּוֹהִי',  'Dan 2:46', '', '', ''],
+            [4,  'אֱדַיִן אֲמַר מַלְכָּא לְאַרְיוֹךְ',            'Dan 2:24', '', '', ''],
+            [5,  'כְדִי הֲוָה דָנִיֵּאל מִתְחַנַּן',                      'Dan 6:12', '', '', ''],
+            [6,  'וּמַלְכָּא שְׁלַח כְנֵמָא',                                                          'Ezra 5:17', '', '', ''],
+            [7,  'יְהַבְתְּ לִי חָכְמְתָא וּגְבוּרְתָא',  'Dan 2:23', '', '', ''],
+            [8,  'דִי כָל-עַמְמַיָּא ... יִפְּלוּן',                                        'Dan 3:7',  '', '', ''],
+            [9,  'וְדָנִיֵּאל עֲבַד קַרְצֵי לְשַׁדְרַךְ',  'Dan 3:12', '', '', ''],
+            [10, 'מַלְכוּתָא עֲלָךְ קָמַת',                                                                      'Dan 4:33', '', '', ''],
+            [11, 'כְעַן הוֹדַעְתַּנִי דִי בְעֵינָא מִנָּךְ',  'Dan 2:23', '', '', ''],
+            [12, 'דִי-יְהַב מַלְכָּא הֲקִים',                                                              'Dan 3:2',  '', '', ''],
+            [13, 'בַּיְתָה דְנָה הִתְבְנִי',                                                              'Ezra 5:16', '', '', ''],
+            [14, 'כָל-חֲבוּל לָא הִשְׁתְְּכַח בֵּהּ',                   'Dan 6:23', '', '', ''],
+        ]
+        ans = [
+            [1,  'אֱדַיִן דָּנִיֵּאל לְבֵיתֵהּ אֲזַל',              'Dan 2:17', 'Peal',         'אזל', 'he went'],
+            [2,  'וּמִלְּתָא כְּתַב מַלְכָּא',                                                        'Dan 6:26', 'Peal',         'כתב', 'the king wrote'],
+            [3,  'אֱדַיִן נְבוּכַדְנֶצַּר נְפַל עַל-אַנְפּוֹהִי',  'Dan 2:46', 'Peal',         'נפל', 'he fell'],
+            [4,  'אֱדַיִן אֲמַר מַלְכָּא לְאַרְיוֹךְ',            'Dan 2:24', 'Peal',         'אמר', 'the king said'],
+            [5,  'כְדִי הֲוָה דָנִיֵּאל מִתְחַנַּן',                      'Dan 6:12', 'Peal',         'הוה', 'when Daniel was (praying)'],
+            [6,  'וּמַלְכָּא שְׁלַח כְנֵמָא',                                                          'Ezra 5:17', 'Peal',        'שׁלח', 'the king sent'],
+            [7,  'יְהַבְתְּ לִי חָכְמְתָא וּגְבוּרְתָא',  'Dan 2:23', 'Peal (2ms pf)', 'יהב', 'you gave'],
+            [8,  'דִי כָל-עַמְמַיָּא ... יִפְּלוּן',                                        'Dan 3:7',  'Peal (3mp ipf)', 'נפל', 'they will fall'],
+            [9,  'וְדָנִיֵּאל עֲבַד קַרְצֵי לְשַׁדְרַךְ',  'Dan 3:12', 'Peal',         'עבד', 'Daniel did / made'],
+            [10, 'מַלְכוּתָא עֲלָךְ קָמַת',                                                                      'Dan 4:33', 'Peal (3fs pf)', 'קום', 'the kingdom stood / was restored'],
+            [11, 'כְעַן הוֹדַעְתַּנִי דִי בְעֵינָא מִנָּךְ',  'Dan 2:23', 'Haphel (2ms+suf)', 'ידע', 'you made known to me'],
+            [12, 'דִי-יְהַב מַלְכָּא הֲקִים',                                                              'Dan 3:2',  'Haphel (3ms pf)', 'קום', 'he/king set up, erected'],
+            [13, 'בַּיְתָה דְנָה הִתְבְנִי',                                                              'Ezra 5:16', 'Ithpeel (3ms pf)', 'בנה', 'this house was built'],
+            [14, 'כָל-חֲבוּל לָא הִשְׁתְְּכַח בֵּהּ',                   'Dan 6:23', 'Ithpeel (3ms pf)', 'שׁכח', 'no harm was found on him'],
+        ]
+        self.add_section_heading('Verb Identification — Items 1–14')
+        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
+        self.add_section_heading('Answer Key')
+        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+
+
+def build_bba_ch12_verb_intro_drill(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'aramaic', 'bba', 'ch12', 'exercises', 'ch12-verb-intro-drill')
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, 'ch12-verb-intro-drill.pdf')
+    ex = BbaCh12VerbIntroDrillPDF(
+        title='BBA Chapter 12 — Stem Identification Drill',
+        subtitle='Introduction to Aramaic Verbs · Peal · Haphel · Ithpeel',
+    )
+    return ex.save(path)
+
+
 if __name__ == '__main__':
     # Ch1–Ch23 exercises (new)
     builders_ch1_23 = [
@@ -11196,6 +11260,7 @@ if __name__ == '__main__':
         build_bba_ch9_pronoun_drill,
         build_bba_ch10_adjective_number_drill,
         build_bba_ch11_particle_drill,
+        build_bba_ch12_verb_intro_drill,
     ]
     for fn in bba_builders:
         try:
