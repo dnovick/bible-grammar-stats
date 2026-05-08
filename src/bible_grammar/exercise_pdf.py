@@ -11687,6 +11687,92 @@ def build_bba_ch19_pael_stem_drill(out_dir: str = None) -> str:
     return ex.save(path)
 
 
+# BBA Ch20 — Hithpaal / Ithpaal Stem Drill
+
+
+class BbaCh20HithpaalDrillPDF(ExercisePDF):
+    def _build(self):
+        self.add_instructions(
+            'For each numbered Hithpaal/Ithpaal verb form drawn from Daniel or Ezra, '
+            'identify the Stem (Hithpaal — note metathesis if present), '
+            'the Conjugation (Perfect / Imperfect / Imperative / Infinitive / Participle), '
+            'the Root (three root consonants, Peal perfect 3ms form), '
+            'the PGN (Person-Gender-Number; N/A for infinitive), '
+            'and provide an English translation. '
+            'Hithpaal marker: it-/hit- prefix AND dagesh forte in R2 — both features together. '
+            'Metathesis: sibilant R1 (shin, sin, samekh) swaps with taw; prefix becomes hist-/isht-. '
+            'Perfect 3ms: it-qattal pattern — it- prefix + patach + dagesh-patach in R2 (contrast Pael: tsere in R2). '
+            'Imperfect 3ms: yit-qattal; prefix yit- (yod + hireq + taw + shewa). '
+            'Participle: mit-qattal; prefix mit- (mem + hireq + taw + shewa). '
+            'Distinguish from Ithpeel: same prefix but Ithpeel has NO dagesh in R2.'
+        )
+        hdrs = ['#', 'Form', 'Stem', 'Conjugation', 'Root', 'PGN', 'Translation']
+        cr = [0.04, 0.13, 0.13, 0.14, 0.10, 0.10, 0.36]
+        hc = [1]
+        rows = [
+            [1,  'הִשְׁתַּכַּח',      '', '', '', '', ''],
+            [2,  'אִתְחַשַּׁב',       '', '', '', '', ''],
+            [3,  'יִתְחַבַּל',        '', '', '', '', ''],
+            [4,  'הִשְׁתַּכַּחוּ',    '', '', '', '', ''],
+            [5,  'מִשְׁתַּכַּח',      '', '', '', '', ''],
+            [6,  'הִתְנַדַּב',        '', '', '', '', ''],
+            [7,  'הִתְמְלִּי',        '', '', '', '', ''],
+            [8,  'יִתְרוֹמַם',        '', '', '', '', ''],
+            [9,  'אִתְקַטַּל',        '', '', '', '', ''],
+            [10, 'הִשְׁתַּוִּי',      '', '', '', '', ''],
+            [11, 'מִתְנַדְּבִין',     '', '', '', '', ''],
+            [12, 'תִּתְחַשַּׁב',     '', '', '', '', ''],
+            [13, 'אִתְקַטַּלוּ',      '', '', '', '', ''],
+            [14, 'מִתְקַטַּל',        '', '', '', '', ''],
+            [15, 'הִשְׁתַּכַּחַת',    '', '', '', '', ''],
+            [16, 'יִתְקַטְּלוּן',     '', '', '', '', ''],
+            [17, 'אִתְנַדַּבְנָא',    '', '', '', '', ''],
+            [18, 'לְהִתְקַטָּלָה',    '', '', '', '', ''],
+            [19, 'אֶתְחַשַּׁב',       '', '', '', '', ''],
+            [20, 'מִשְׁתַּכְּחָן',    '', '', '', '', ''],
+        ]
+        ans = [
+            [1,  'הִשְׁתַּכַּח',      'Hithpaal (metath.)', 'Perfect',    'שׁכח',     '3ms',        'it/he was found'],
+            [2,  'אִתְחַשַּׁב',       'Hithpaal',          'Perfect',    'חשׁב',     '3ms',        'it was reckoned / considered'],
+            [3,  'יִתְחַבַּל',        'Hithpaal',          'Imperfect',  'חבל',      '3ms',        'it will be destroyed / harmed'],
+            [4,  'הִשְׁתַּכַּחוּ',    'Hithpaal (metath.)', 'Perfect',   'שׁכח',     '3mp',        'they were found'],
+            [5,  'מִשְׁתַּכַּח',      'Hithpaal (metath.)', 'Participle', 'שׁכח',    'ms',         'being found / was found'],
+            [6,  'הִתְנַדַּב',        'Hithpaal',          'Perfect',    'נדב',      '3ms',        'he volunteered / gave freely'],
+            [7,  'הִתְמְלִּי',        'Hithpaal',          'Perfect',    'מלא/מלי',  '3ms (III-he)', 'he was filled'],
+            [8,  'יִתְרוֹמַם',        'Hithpaal',          'Imperfect',  'רמם/רום',  '3ms',        'he will exalt himself'],
+            [9,  'אִתְקַטַּל',        'Hithpaal',          'Perfect',    'קטל',      '3ms',        'he was killed (model)'],
+            [10, 'הִשְׁתַּוִּי',      'Hithpaal (metath.)', 'Perfect',   'שׁוה',    '3ms (III-he)', 'he became equal / was made like'],
+            [11, 'מִתְנַדְּבִין',     'Hithpaal',          'Participle', 'נדב',      'mp',         'volunteering / those who volunteer'],
+            [12, 'תִּתְחַשַּׁב',     'Hithpaal',          'Imperfect',  'חשׁב',     '3fs / 2ms',  'she/it will be reckoned / you will consider'],
+            [13, 'אִתְקַטַּלוּ',      'Hithpaal',          'Perfect',    'קטל',      '3mp',        'they were killed (model)'],
+            [14, 'מִתְקַטַּל',        'Hithpaal',          'Participle', 'קטל',      'ms',         'being killed (model)'],
+            [15, 'הִשְׁתַּכַּחַת',    'Hithpaal (metath.)', 'Perfect',   'שׁכח',    '3fs',        'she/it was found'],
+            [16, 'יִתְקַטְּלוּן',     'Hithpaal',          'Imperfect',  'קטל',      '3mp',        'they will be killed (model)'],
+            [17, 'אִתְנַדַּבְנָא',    'Hithpaal',          'Perfect',    'נדב',      '1cp',        'we volunteered / gave freely'],
+            [18, 'לְהִתְקַטָּלָה',    'Hithpaal',          'Infinitive', 'קטל',      'N/A',        'to be killed / to kill oneself (model)'],
+            [19, 'אֶתְחַשַּׁב',       'Hithpaal',          'Imperfect',  'חשׁב',     '1cs',        'I will be reckoned / will consider'],
+            [20, 'מִשְׁתַּכְּחָן',    'Hithpaal (metath.)', 'Participle', 'שׁכח',   'fp',         'being found (fp) / those (f) being found'],
+        ]
+        self.add_section_heading('Hithpaal / Ithpaal Stem Drill — Items 1–20')
+        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
+        self.add_section_heading('Answer Key')
+        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+
+
+def build_bba_ch20_hithpaal_drill(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'aramaic', 'bba', 'ch20', 'exercises', 'ch20-hithpaal-drill')
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, 'ch20-hithpaal-drill.pdf')
+    ex = BbaCh20HithpaalDrillPDF(
+        title='BBA Chapter 20 — Hithpaal / Ithpaal Stem Drill',
+        subtitle='Hithpaal / Ithpaal (Dt Stem — Reflexive/Passive of Pael) · Daniel and Ezra',
+    )
+    return ex.save(path)
+
+
 if __name__ == '__main__':
     # Ch1–Ch23 exercises (new)
     builders_ch1_23 = [
@@ -11832,6 +11918,7 @@ if __name__ == '__main__':
         build_bba_ch17_peal_participle_drill,
         build_bba_ch18_passive_stems_drill,
         build_bba_ch19_pael_stem_drill,
+        build_bba_ch20_hithpaal_drill,
     ]
     for fn in bba_builders:
         try:
