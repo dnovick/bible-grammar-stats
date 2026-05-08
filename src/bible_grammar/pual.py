@@ -38,9 +38,8 @@ pual_report(output_dir=None)          → Path   (full Markdown report)
 """
 
 from __future__ import annotations
+import functools
 from pathlib import Path
-
-import pandas as pd
 
 from ._stem_analysis import StemAnalysis, StemConfig
 
@@ -94,117 +93,35 @@ _CONFIG = StemConfig(
 _ANALYSIS = StemAnalysis(_CONFIG)
 
 
-# ── Public API wrappers ───────────────────────────────────────────────────────
+# ── Public API ────────────────────────────────────────────────────────────────
 
-def pual_data(book: str | None = None) -> pd.DataFrame:
-    """Return all Pual tokens, optionally filtered to one book."""
-    return _ANALYSIS.data(book)
+pual_data                    = _ANALYSIS.data
+pual_conjugation_profile     = _ANALYSIS.conjugation_profile
+pual_top_roots               = _ANALYSIS.top_roots
+pual_root_conjugation        = _ANALYSIS.root_conjugation
+pual_book_distribution       = _ANALYSIS.book_distribution
+pual_stem_comparison         = _ANALYSIS.stem_comparison
 
-
-def pual_conjugation_profile(book: str | None = None) -> pd.DataFrame:
-    """Count Pual tokens by conjugation type. Returns DataFrame: form, count, pct."""
-    return _ANALYSIS.conjugation_profile(book)
-
-
-def pual_top_roots(n: int = 30, book: str | None = None) -> pd.DataFrame:
-    """Return the top-n most frequent Pual roots. Columns: root, lemma, count, pct, top_gloss."""
-    return _ANALYSIS.top_roots(n, book)
-
-
-def pual_root_conjugation(
-    roots: list[str] | None = None,
-    top_n: int = 15,
-) -> pd.DataFrame:
-    """Return a root × conjugation crosstab (counts)."""
-    return _ANALYSIS.root_conjugation(roots, top_n)
-
-
-def pual_book_distribution() -> pd.DataFrame:
-    """Count Pual tokens per book with percentage of all-OT Pual."""
-    return _ANALYSIS.book_distribution()
-
-
-def pual_stem_comparison(books: list[str] | None = None) -> pd.DataFrame:
-    """Return verb stem percentages for a set of books."""
-    return _ANALYSIS.stem_comparison(books)
-
-
-def pual_dominant_roots(
-    min_pct: float = 70.0,
-    min_tokens: int = 5,
-) -> pd.DataFrame:
+def pual_dominant_roots(min_pct: float = 70.0, min_tokens: int = 5):
     """Roots where the Pual accounts for ≥ min_pct of all occurrences."""
     return _ANALYSIS.dominant_roots(min_pct, min_tokens)
 
+pual_semantic_categories     = functools.partial(_ANALYSIS.semantic_categories, _pual_semantic_fn)
+print_pual_semantic_categories = functools.partial(_ANALYSIS.print_semantic_categories, _pual_semantic_fn)
+pual_semantic_chart          = functools.partial(_ANALYSIS.semantic_chart, _pual_semantic_fn)
 
-def pual_semantic_categories() -> pd.DataFrame:
-    """Assign each Pual token a broad semantic function category."""
-    return _ANALYSIS.semantic_categories(_pual_semantic_fn)
+print_pual_overview          = _ANALYSIS.print_overview
+print_pual_conjugation       = _ANALYSIS.print_conjugation
+print_pual_top_roots         = _ANALYSIS.print_top_roots
+print_pual_root_conjugation  = _ANALYSIS.print_root_conjugation
+print_pual_book_distribution = _ANALYSIS.print_book_distribution
+print_pual_dominant_roots    = _ANALYSIS.print_dominant_roots
 
-
-def print_pual_overview() -> None:
-    """Print a quick statistical overview of the Pual in the OT."""
-    _ANALYSIS.print_overview()
-
-
-def print_pual_conjugation(book: str | None = None) -> None:
-    """Print Pual conjugation distribution."""
-    _ANALYSIS.print_conjugation(book)
-
-
-def print_pual_top_roots(n: int = 25, book: str | None = None) -> None:
-    """Print the top Pual roots."""
-    _ANALYSIS.print_top_roots(n, book)
-
-
-def print_pual_root_conjugation(roots: list[str] | None = None, top_n: int = 15) -> None:
-    """Print root × conjugation frequency table."""
-    _ANALYSIS.print_root_conjugation(roots, top_n)
-
-
-def print_pual_book_distribution(top_n: int = 25) -> None:
-    """Print Pual distribution across books."""
-    _ANALYSIS.print_book_distribution(top_n)
-
-
-def print_pual_dominant_roots(top_n: int = 25) -> None:
-    """Print roots where the Pual is the dominant stem."""
-    _ANALYSIS.print_dominant_roots(top_n)
-
-
-def print_pual_semantic_categories() -> None:
-    """Print Pual semantic function distribution."""
-    _ANALYSIS.print_semantic_categories(_pual_semantic_fn)
-
-
-def pual_conjugation_chart(book: str | None = None) -> Path | None:
-    """Save a horizontal bar chart of Pual conjugation distribution."""
-    return _ANALYSIS.conjugation_chart(book)
-
-
-def pual_book_chart(top_n: int = 20) -> Path | None:
-    """Save a bar chart of top books by Pual count."""
-    return _ANALYSIS.book_chart(top_n)
-
-
-def pual_stem_chart(books: list[str] | None = None) -> Path | None:
-    """Save a stacked bar chart showing all verb stem percentages."""
-    return _ANALYSIS.stem_comparison_chart(books)
-
-
-def pual_root_heatmap(top_n: int = 15) -> Path | None:
-    """Save a heatmap: top roots × conjugation type (row-normalised %)."""
-    return _ANALYSIS.root_heatmap(top_n)
-
-
-def pual_semantic_chart() -> Path | None:
-    """Save a pie chart of Pual semantic function categories."""
-    return _ANALYSIS.semantic_chart(_pual_semantic_fn)
-
-
-def pual_top_roots_chart(top_n: int = 20) -> Path | None:
-    """Save a horizontal bar chart of the top Pual roots."""
-    return _ANALYSIS.top_roots_chart(top_n)
+pual_conjugation_chart       = _ANALYSIS.conjugation_chart
+pual_book_chart              = _ANALYSIS.book_chart
+pual_stem_chart              = _ANALYSIS.stem_comparison_chart
+pual_root_heatmap            = _ANALYSIS.root_heatmap
+pual_top_roots_chart         = _ANALYSIS.top_roots_chart
 
 
 def pual_report(output_dir: str | None = None) -> Path:

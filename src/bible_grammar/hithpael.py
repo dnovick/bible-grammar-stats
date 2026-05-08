@@ -39,9 +39,8 @@ hithpael_report(output_dir=None)          → Path   (full Markdown report)
 """
 
 from __future__ import annotations
+import functools
 from pathlib import Path
-
-import pandas as pd
 
 from ._stem_analysis import StemAnalysis, StemConfig
 
@@ -100,119 +99,35 @@ _CONFIG = StemConfig(
 _ANALYSIS = StemAnalysis(_CONFIG)
 
 
-# ── Public API wrappers ───────────────────────────────────────────────────────
+# ── Public API ────────────────────────────────────────────────────────────────
 
-def hithpael_data(book: str | None = None) -> pd.DataFrame:
-    """Return all Hithpael tokens, optionally filtered to one book."""
-    return _ANALYSIS.data(book)
+hithpael_data                    = _ANALYSIS.data
+hithpael_conjugation_profile     = _ANALYSIS.conjugation_profile
+hithpael_top_roots               = _ANALYSIS.top_roots
+hithpael_root_conjugation        = _ANALYSIS.root_conjugation
+hithpael_book_distribution       = _ANALYSIS.book_distribution
+hithpael_stem_comparison         = _ANALYSIS.stem_comparison
 
-
-def hithpael_conjugation_profile(book: str | None = None) -> pd.DataFrame:
-    """Count Hithpael tokens by conjugation type. Returns DataFrame: form, count, pct."""
-    return _ANALYSIS.conjugation_profile(book)
-
-
-def hithpael_top_roots(n: int = 30, book: str | None = None) -> pd.DataFrame:
-    """Return the top-n most frequent Hithpael roots."""
-    return _ANALYSIS.top_roots(n, book)
-
-
-def hithpael_root_conjugation(
-    roots: list[str] | None = None,
-    top_n: int = 15,
-) -> pd.DataFrame:
-    """Return a root × conjugation crosstab (counts)."""
-    return _ANALYSIS.root_conjugation(roots, top_n)
-
-
-def hithpael_book_distribution() -> pd.DataFrame:
-    """Count Hithpael tokens per book with percentage of all-OT Hithpael."""
-    return _ANALYSIS.book_distribution()
-
-
-def hithpael_stem_comparison(books: list[str] | None = None) -> pd.DataFrame:
-    """Return verb stem percentages for a set of books."""
-    return _ANALYSIS.stem_comparison(books)
-
-
-def hithpael_dominant_roots(
-    min_pct: float = 70.0,
-    min_tokens: int = 5,
-) -> pd.DataFrame:
+def hithpael_dominant_roots(min_pct: float = 70.0, min_tokens: int = 5):
     """Roots where the Hithpael accounts for ≥ min_pct of all occurrences."""
     return _ANALYSIS.dominant_roots(min_pct, min_tokens)
 
+hithpael_semantic_categories     = functools.partial(_ANALYSIS.semantic_categories, _hithpael_semantic_fn)
+print_hithpael_semantic_categories = functools.partial(_ANALYSIS.print_semantic_categories, _hithpael_semantic_fn)
+hithpael_semantic_chart          = functools.partial(_ANALYSIS.semantic_chart, _hithpael_semantic_fn)
 
-def hithpael_semantic_categories() -> pd.DataFrame:
-    """Assign each Hithpael token a broad semantic function category."""
-    return _ANALYSIS.semantic_categories(_hithpael_semantic_fn)
+print_hithpael_overview          = _ANALYSIS.print_overview
+print_hithpael_conjugation       = _ANALYSIS.print_conjugation
+print_hithpael_top_roots         = _ANALYSIS.print_top_roots
+print_hithpael_root_conjugation  = _ANALYSIS.print_root_conjugation
+print_hithpael_book_distribution = _ANALYSIS.print_book_distribution
+print_hithpael_dominant_roots    = _ANALYSIS.print_dominant_roots
 
-
-def print_hithpael_overview() -> None:
-    """Print a quick statistical overview of the Hithpael in the OT."""
-    _ANALYSIS.print_overview()
-
-
-def print_hithpael_conjugation(book: str | None = None) -> None:
-    """Print Hithpael conjugation distribution."""
-    _ANALYSIS.print_conjugation(book)
-
-
-def print_hithpael_top_roots(n: int = 25, book: str | None = None) -> None:
-    """Print the top Hithpael roots."""
-    _ANALYSIS.print_top_roots(n, book)
-
-
-def print_hithpael_root_conjugation(
-    roots: list[str] | None = None, top_n: int = 15,
-) -> None:
-    """Print root × conjugation frequency table."""
-    _ANALYSIS.print_root_conjugation(roots, top_n)
-
-
-def print_hithpael_book_distribution(top_n: int = 25) -> None:
-    """Print Hithpael distribution across books."""
-    _ANALYSIS.print_book_distribution(top_n)
-
-
-def print_hithpael_dominant_roots(top_n: int = 25) -> None:
-    """Print roots where the Hithpael is the dominant stem."""
-    _ANALYSIS.print_dominant_roots(top_n)
-
-
-def print_hithpael_semantic_categories() -> None:
-    """Print Hithpael semantic function distribution."""
-    _ANALYSIS.print_semantic_categories(_hithpael_semantic_fn)
-
-
-def hithpael_conjugation_chart(book: str | None = None) -> Path | None:
-    """Save a horizontal bar chart of Hithpael conjugation distribution."""
-    return _ANALYSIS.conjugation_chart(book)
-
-
-def hithpael_book_chart(top_n: int = 20) -> Path | None:
-    """Save a bar chart of top books by Hithpael count."""
-    return _ANALYSIS.book_chart(top_n)
-
-
-def hithpael_stem_chart(books: list[str] | None = None) -> Path | None:
-    """Save a stacked bar chart showing all verb stem percentages."""
-    return _ANALYSIS.stem_comparison_chart(books)
-
-
-def hithpael_root_heatmap(top_n: int = 15) -> Path | None:
-    """Save a heatmap: top roots × conjugation type (row-normalised %)."""
-    return _ANALYSIS.root_heatmap(top_n)
-
-
-def hithpael_semantic_chart() -> Path | None:
-    """Save a pie chart of Hithpael semantic function categories."""
-    return _ANALYSIS.semantic_chart(_hithpael_semantic_fn)
-
-
-def hithpael_top_roots_chart(top_n: int = 20) -> Path | None:
-    """Save a horizontal bar chart of the top Hithpael roots."""
-    return _ANALYSIS.top_roots_chart(top_n)
+hithpael_conjugation_chart       = _ANALYSIS.conjugation_chart
+hithpael_book_chart              = _ANALYSIS.book_chart
+hithpael_stem_chart              = _ANALYSIS.stem_comparison_chart
+hithpael_root_heatmap            = _ANALYSIS.root_heatmap
+hithpael_top_roots_chart         = _ANALYSIS.top_roots_chart
 
 
 def hithpael_report(output_dir: str | None = None) -> Path:

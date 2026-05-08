@@ -39,9 +39,8 @@ niphal_report(output_dir=None)          → Path   (full Markdown report)
 """
 
 from __future__ import annotations
+import functools
 from pathlib import Path
-
-import pandas as pd
 
 from ._stem_analysis import StemAnalysis, StemConfig
 
@@ -101,117 +100,32 @@ _CONFIG = StemConfig(
 _ANALYSIS = StemAnalysis(_CONFIG)
 
 
-# ── Public API wrappers ───────────────────────────────────────────────────────
+# ── Public API ────────────────────────────────────────────────────────────────
 
-def niphal_data(book: str | None = None) -> pd.DataFrame:
-    """Return all Niphal tokens, optionally filtered to one book."""
-    return _ANALYSIS.data(book)
+niphal_data                    = _ANALYSIS.data
+niphal_conjugation_profile     = _ANALYSIS.conjugation_profile
+niphal_top_roots               = _ANALYSIS.top_roots
+niphal_root_conjugation        = _ANALYSIS.root_conjugation
+niphal_book_distribution       = _ANALYSIS.book_distribution
+niphal_stem_comparison         = _ANALYSIS.stem_comparison
+niphal_dominant_roots          = _ANALYSIS.dominant_roots
 
+niphal_semantic_categories     = functools.partial(_ANALYSIS.semantic_categories, _niphal_semantic_fn)
+print_niphal_semantic_categories = functools.partial(_ANALYSIS.print_semantic_categories, _niphal_semantic_fn)
+niphal_semantic_chart          = functools.partial(_ANALYSIS.semantic_chart, _niphal_semantic_fn)
 
-def niphal_conjugation_profile(book: str | None = None) -> pd.DataFrame:
-    """Count Niphal tokens by conjugation type. Returns DataFrame: form, count, pct."""
-    return _ANALYSIS.conjugation_profile(book)
+print_niphal_overview          = _ANALYSIS.print_overview
+print_niphal_conjugation       = _ANALYSIS.print_conjugation
+print_niphal_top_roots         = _ANALYSIS.print_top_roots
+print_niphal_root_conjugation  = _ANALYSIS.print_root_conjugation
+print_niphal_book_distribution = _ANALYSIS.print_book_distribution
+print_niphal_dominant_roots    = _ANALYSIS.print_dominant_roots
 
-
-def niphal_top_roots(n: int = 30, book: str | None = None) -> pd.DataFrame:
-    """Return the top-n most frequent Niphal roots. Columns: root, lemma, count, pct, top_gloss."""
-    return _ANALYSIS.top_roots(n, book)
-
-
-def niphal_root_conjugation(
-    roots: list[str] | None = None,
-    top_n: int = 15,
-) -> pd.DataFrame:
-    """Return a root × conjugation crosstab (counts)."""
-    return _ANALYSIS.root_conjugation(roots, top_n)
-
-
-def niphal_book_distribution() -> pd.DataFrame:
-    """Count Niphal tokens per book with percentage of all-OT Niphal."""
-    return _ANALYSIS.book_distribution()
-
-
-def niphal_stem_comparison(books: list[str] | None = None) -> pd.DataFrame:
-    """Return verb stem percentages for a set of books."""
-    return _ANALYSIS.stem_comparison(books)
-
-
-def niphal_dominant_roots(
-    min_pct: float = 70.0,
-    min_tokens: int = 10,
-) -> pd.DataFrame:
-    """Roots where the Niphal accounts for ≥ min_pct of all occurrences."""
-    return _ANALYSIS.dominant_roots(min_pct, min_tokens)
-
-
-def niphal_semantic_categories() -> pd.DataFrame:
-    """Assign each Niphal token a broad semantic function category."""
-    return _ANALYSIS.semantic_categories(_niphal_semantic_fn)
-
-
-def print_niphal_overview() -> None:
-    """Print a quick statistical overview of the Niphal in the OT."""
-    _ANALYSIS.print_overview()
-
-
-def print_niphal_conjugation(book: str | None = None) -> None:
-    """Print Niphal conjugation distribution."""
-    _ANALYSIS.print_conjugation(book)
-
-
-def print_niphal_top_roots(n: int = 25, book: str | None = None) -> None:
-    """Print the top Niphal roots."""
-    _ANALYSIS.print_top_roots(n, book)
-
-
-def print_niphal_root_conjugation(roots: list[str] | None = None, top_n: int = 15) -> None:
-    """Print root × conjugation frequency table."""
-    _ANALYSIS.print_root_conjugation(roots, top_n)
-
-
-def print_niphal_book_distribution(top_n: int = 25) -> None:
-    """Print Niphal distribution across books."""
-    _ANALYSIS.print_book_distribution(top_n)
-
-
-def print_niphal_dominant_roots(top_n: int = 25) -> None:
-    """Print roots where the Niphal is the dominant stem."""
-    _ANALYSIS.print_dominant_roots(top_n)
-
-
-def print_niphal_semantic_categories() -> None:
-    """Print Niphal semantic function distribution."""
-    _ANALYSIS.print_semantic_categories(_niphal_semantic_fn)
-
-
-def niphal_conjugation_chart(book: str | None = None) -> Path | None:
-    """Save a horizontal bar chart of Niphal conjugation distribution."""
-    return _ANALYSIS.conjugation_chart(book)
-
-
-def niphal_book_chart(top_n: int = 20) -> Path | None:
-    """Save a bar chart of top books by Niphal count."""
-    return _ANALYSIS.book_chart(top_n)
-
-
-def niphal_stem_chart(books: list[str] | None = None) -> Path | None:
-    """Save a stacked bar chart showing all verb stem percentages."""
-    return _ANALYSIS.stem_comparison_chart(books)
-
-
-def niphal_root_heatmap(top_n: int = 15) -> Path | None:
-    """Save a heatmap: top roots × conjugation type (row-normalised %)."""
-    return _ANALYSIS.root_heatmap(top_n)
-
-
-def niphal_semantic_chart() -> Path | None:
-    """Save a pie chart of Niphal semantic function categories."""
-    return _ANALYSIS.semantic_chart(_niphal_semantic_fn)
-
-
-def niphal_top_roots_chart(top_n: int = 20) -> Path | None:
-    """Save a horizontal bar chart of the top Niphal roots."""
-    return _ANALYSIS.top_roots_chart(top_n)
+niphal_conjugation_chart       = _ANALYSIS.conjugation_chart
+niphal_book_chart              = _ANALYSIS.book_chart
+niphal_stem_chart              = _ANALYSIS.stem_comparison_chart
+niphal_root_heatmap            = _ANALYSIS.root_heatmap
+niphal_top_roots_chart         = _ANALYSIS.top_roots_chart
 
 
 def niphal_report(output_dir: str | None = None) -> Path:
