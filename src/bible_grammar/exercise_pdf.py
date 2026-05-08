@@ -11857,6 +11857,93 @@ def build_bba_ch21_haphel_stem_drill(out_dir: str = None) -> str:
     return ex.save(path)
 
 
+class BbaCh22CausativePassiveDrillPDF(ExercisePDF):
+    def _build(self):
+        self.add_instructions(
+            'Capstone review covering all nine Aramaic stems (BBA Ch12-22). '
+            'For each numbered verb form from Daniel or Ezra, identify: '
+            'Stem (Peal / Peil / Ithpeel / Pael / Ithpaal / Haphel / Aphel / Shaphel / Hophal), '
+            'Conjugation (Perfect / Imperfect / Imperative / Infinitive / Participle), '
+            'Root (three root consonants), '
+            'PGN (Person-Gender-Number; N/A for infinitive; ms/mp/fs for participle), '
+            'and Translation. '
+            'Diagnostics — Peal: no prefix, no R2 dagesh; '
+            'Peil: qetil vowel pattern; '
+            'Ithpeel: it/hit- prefix, no R2 dagesh; '
+            'Pael: R2 dagesh forte (no prefix); '
+            'Ithpaal: it/hit- prefix + R2 dagesh; '
+            'Haphel: ha- (perf) / yeha- (imperf) / meha- (ptcp); '
+            'Aphel: a- prefix, tsere in R2; '
+            'Shaphel: sha-/she- prefix; '
+            'Hophal: hu- (heh + qibbuts u-vowel).'
+        )
+        hdrs = ['#', 'Form', 'Stem', 'Conjugation', 'Root', 'PGN', 'Translation']
+        cr = [0.04, 0.13, 0.12, 0.13, 0.09, 0.10, 0.39]
+        hc = [1]
+        rows = [
+            [1,  'שֵׁיזִב',              '', '', '', '', ''],
+            [2,  'הֻנְעַל',              '', '', '', '', ''],
+            [3,  'אַחֲוִי',              '', '', '', '', ''],
+            [4,  'יְשֵׁיזְבִנְּכוֹן',   '', '', '', '', ''],
+            [5,  'לְשֵׁיזָבָה',          '', '', '', '', ''],
+            [6,  'אַסְגִּי',             '', '', '', '', ''],
+            [7,  'הֻרְמִי',              '', '', '', '', ''],
+            [8,  'שֵׁיזְבָךְ',           '', '', '', '', ''],
+            [9,  'כְּתַב',               '', '', '', '', ''],
+            [10, 'כְּתִיב',              '', '', '', '', ''],
+            [11, 'אִתְכְּתִב',           '', '', '', '', ''],
+            [12, 'קַטֵּל',               '', '', '', '', ''],
+            [13, 'אִתְקַטַּל',           '', '', '', '', ''],
+            [14, 'הוֹדַע',               '', '', '', '', ''],
+            [15, 'מְהַקְטֵל',            '', '', '', '', ''],
+            [16, 'יְהַקְטֵל',            '', '', '', '', ''],
+            [17, 'מְהוֹדֵעַ',            '', '', '', '', ''],
+            [18, 'הַקִּים',              '', '', '', '', ''],
+            [19, 'מְקַטֵּל',             '', '', '', '', ''],
+            [20, 'יְשֵׁיזִב',            '', '', '', '', ''],
+        ]
+        ans = [
+            [1,  'שֵׁיזִב',              'Shaphel',   'Perfect',    'יזב',      '3ms',               'he delivered / rescued'],
+            [2,  'הֻנְעַל',              'Hophal',    'Perfect',    'עלל',      '3ms',               'was brought in'],
+            [3,  'אַחֲוִי',              'Aphel',     'Perfect',    'חזה',      '3ms',               'he showed / declared'],
+            [4,  'יְשֵׁיזְבִנְּכוֹן',   'Shaphel',   'Imperfect',  'יזב',      '3ms + 2mp obj.',    'will deliver you (pl.)'],
+            [5,  'לְשֵׁיזָבָה',          'Shaphel',   'Infinitive', 'יזב',      'N/A',               'to deliver / rescue'],
+            [6,  'אַסְגִּי',             'Aphel',     'Perfect',    'סגא/סגה',  '3ms',               'he made great / magnified'],
+            [7,  'הֻרְמִי',              'Hophal',    'Perfect',    'רמה',      '3ms',               'was cast / thrown'],
+            [8,  'שֵׁיזְבָךְ',           'Shaphel',   'Perfect',    'יזב',      '3ms + 2ms obj.',    'he delivered you'],
+            [9,  'כְּתַב',               'Peal',      'Perfect',    'כתב',      '3ms',               'he wrote'],
+            [10, 'כְּתִיב',              'Peil',      'Participle', 'כתב',      'ms',                'written / it is written'],
+            [11, 'אִתְכְּתִב',           'Ithpeel',   'Perfect',    'כתב',      '3ms',               'it was written / recorded'],
+            [12, 'קַטֵּל',               'Pael',      'Perfect',    'קטל',      '3ms',               'he killed / slaughtered'],
+            [13, 'אִתְקַטַּל',           'Ithpaal',   'Perfect',    'קטל',      '3ms',               'he was killed'],
+            [14, 'הוֹדַע',               'Haphel',    'Perfect',    'ידע',      '3ms',               'he made known / revealed'],
+            [15, 'מְהַקְטֵל',            'Haphel',    'Participle', 'קטל',      'ms',                'causing to kill (model)'],
+            [16, 'יְהַקְטֵל',            'Haphel',    'Imperfect',  'קטל',      '3ms',               'he will cause to kill (model)'],
+            [17, 'מְהוֹדֵעַ',            'Haphel',    'Participle', 'ידע',      'ms',                'making known / revealing'],
+            [18, 'הַקִּים',              'Haphel',    'Perfect',    'קום',      '3ms',               'he set up / established'],
+            [19, 'מְקַטֵּל',             'Pael',      'Participle', 'קטל',      'ms',                'killing intensively (model)'],
+            [20, 'יְשֵׁיזִב',            'Shaphel',   'Imperfect',  'יזב',      '3ms',               'he will deliver / rescue'],
+        ]
+        self.add_section_heading('Capstone Review Drill — All Nine Stems — Items 1–20')
+        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
+        self.add_section_heading('Answer Key')
+        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+
+
+def build_bba_ch22_causative_passive_drill(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'aramaic', 'bba', 'ch22', 'exercises', 'ch22-causative-passive-drill')
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, 'ch22-causative-passive-drill.pdf')
+    ex = BbaCh22CausativePassiveDrillPDF(
+        title='BBA Chapter 22 — Causative & Passive Stems: Capstone Review',
+        subtitle='All Nine Aramaic Stems · Daniel and Ezra · Capstone Drill',
+    )
+    return ex.save(path)
+
+
 if __name__ == '__main__':
     # Ch1–Ch23 exercises (new)
     builders_ch1_23 = [
@@ -12004,6 +12091,7 @@ if __name__ == '__main__':
         build_bba_ch19_pael_stem_drill,
         build_bba_ch20_hithpaal_drill,
         build_bba_ch21_haphel_stem_drill,
+        build_bba_ch22_causative_passive_drill,
     ]
     for fn in bba_builders:
         try:
