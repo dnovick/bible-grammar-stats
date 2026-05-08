@@ -11773,6 +11773,90 @@ def build_bba_ch20_hithpaal_drill(out_dir: str = None) -> str:
     return ex.save(path)
 
 
+class BbaCh21HaphelStemDrillPDF(ExercisePDF):
+    def _build(self):
+        self.add_instructions(
+            'For each numbered Haphel verb form drawn from Daniel or Ezra, '
+            'identify the Conjugation (Perfect / Imperfect / Imperative / Infinitive / Participle), '
+            'the Root (three root consonants, Peal perfect 3ms form), '
+            'the PGN (Person-Gender-Number; N/A for infinitive; ms/mp/fs for participle), '
+            'and provide an English translation. '
+            'All forms are Haphel (H stem — causative). '
+            'Haphel perfect: ha- prefix before R1; tsere in R2; no R2 dagesh. '
+            'Haphel imperfect: yeh- prefix letter + ha- visible in stem (yeha-); tsere in R2. '
+            'Haphel infinitive: leha- + qamets in R2 + -ah ending. '
+            'Haphel participle: meha- prefix; tsere in R2; no R2 dagesh (contrast Pael: R2 dagesh). '
+            'I-yod roots (yadac): ha + yeh- contracts to ho- (holem-waw). '
+            'Hollow roots (qum): haqim pattern (compensatory dagesh in R3, not D-stem doubling). '
+            '"Bring" root (yty/ath): fixed stem hethi (Haphel perfect 3ms).'
+        )
+        hdrs = ['#', 'Form', 'Conjugation', 'Root', 'PGN', 'Translation']
+        cr = [0.04, 0.14, 0.16, 0.11, 0.13, 0.42]
+        hc = [1]
+        rows = [
+            [1,  'הוֹדַע',         '', '', '', ''],
+            [2,  'הַקִּים',         '', '', '', ''],
+            [3,  'הֵיתִיוּ',        '', '', '', ''],
+            [4,  'יְהוֹדַע',        '', '', '', ''],
+            [5,  'לְהוֹדָעָה',      '', '', '', ''],
+            [6,  'מְהוֹדֵעַ',       '', '', '', ''],
+            [7,  'הַשְׁלְטָךְ',     '', '', '', ''],
+            [8,  'מְהַעְדֵּה',      '', '', '', ''],
+            [9,  'מְהַשְׁנֵא',      '', '', '', ''],
+            [10, 'הַקִּימוּ',        '', '', '', ''],
+            [11, 'לְהַשְׁלָטָה',    '', '', '', ''],
+            [12, 'יְהַשְׁלַח',      '', '', '', ''],
+            [13, 'הֵיתִי',          '', '', '', ''],
+            [14, 'הוֹדַעְתְּ',      '', '', '', ''],
+            [15, 'מְהָקֵם',         '', '', '', ''],
+            [16, 'הַקְטֵל',         '', '', '', ''],
+            [17, 'יְהֵיתוּן',       '', '', '', ''],
+            [18, 'הַשְׁלֵט',        '', '', '', ''],
+            [19, 'לְהַקְטָלָה',     '', '', '', ''],
+            [20, 'מְהַקְטֵל',       '', '', '', ''],
+        ]
+        ans = [
+            [1,  'הוֹדַע',         'Perfect',              'ידע',      '3ms',              'he made known / revealed'],
+            [2,  'הַקִּים',         'Perfect',              'קום',      '3ms',              'he set up / established'],
+            [3,  'הֵיתִיוּ',        'Perfect',              'יתי/אתה',  '3mp',              'they brought'],
+            [4,  'יְהוֹדַע',        'Imperfect',            'ידע',      '3ms',              'he will make known / reveal'],
+            [5,  'לְהוֹדָעָה',      'Infinitive',           'ידע',      'N/A',              'to make known / to declare'],
+            [6,  'מְהוֹדֵעַ',       'Participle',           'ידע',      'ms',               'making known / revealing'],
+            [7,  'הַשְׁלְטָךְ',     'Perfect',              'שׁלט',    '3ms + 2ms obj.',   'he made you ruler over'],
+            [8,  'מְהַעְדֵּה',      'Participle',           'עדה',      'ms',               'removing / deposing'],
+            [9,  'מְהַשְׁנֵא',      'Participle',           'שׁנה',    'ms',               'changing / altering'],
+            [10, 'הַקִּימוּ',        'Perfect',              'קום',      '3mp',              'they set up / established'],
+            [11, 'לְהַשְׁלָטָה',    'Infinitive',           'שׁלט',    'N/A',              'to give rule / to make ruler'],
+            [12, 'יְהַשְׁלַח',      'Imperfect',            'שׁלח',    '3ms',              'he will send out / throw'],
+            [13, 'הֵיתִי',          'Perfect',              'יתי/אתה',  '3ms',              'he brought'],
+            [14, 'הוֹדַעְתְּ',      'Perfect',              'ידע',      '2ms',              'you made known / revealed'],
+            [15, 'מְהָקֵם',         'Participle',           'קום',      'ms',               'setting up / establishing'],
+            [16, 'הַקְטֵל',         'Perfect / Imperative', 'קטל',      '3ms / 2ms',        'he caused to kill / cause to kill! (model)'],
+            [17, 'יְהֵיתוּן',       'Imperfect',            'יתי/אתה',  '3mp',              'they will bring'],
+            [18, 'הַשְׁלֵט',        'Perfect',              'שׁלט',    '3ms',              'he made [him] ruler / gave dominion'],
+            [19, 'לְהַקְטָלָה',     'Infinitive',           'קטל',      'N/A',              'to cause to kill (model)'],
+            [20, 'מְהַקְטֵל',       'Participle',           'קטל',      'ms',               'causing to kill (model)'],
+        ]
+        self.add_section_heading('Haphel Stem Drill — Items 1–20')
+        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
+        self.add_section_heading('Answer Key')
+        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+
+
+def build_bba_ch21_haphel_stem_drill(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'aramaic', 'bba', 'ch21', 'exercises', 'ch21-haphel-stem-drill')
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, 'ch21-haphel-stem-drill.pdf')
+    ex = BbaCh21HaphelStemDrillPDF(
+        title='BBA Chapter 21 — Haphel Stem Drill',
+        subtitle='Haphel (H Stem — Causative) · Daniel and Ezra',
+    )
+    return ex.save(path)
+
+
 if __name__ == '__main__':
     # Ch1–Ch23 exercises (new)
     builders_ch1_23 = [
@@ -11919,6 +12003,7 @@ if __name__ == '__main__':
         build_bba_ch18_passive_stems_drill,
         build_bba_ch19_pael_stem_drill,
         build_bba_ch20_hithpaal_drill,
+        build_bba_ch21_haphel_stem_drill,
     ]
     for fn in bba_builders:
         try:
