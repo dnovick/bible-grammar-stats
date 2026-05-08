@@ -11,6 +11,8 @@ Primary functions:
   prep_collocates()       — top collocates for a given preposition
   prep_object_types()     — grammatical breakdown of what follows a prep
   compare_preps()         — side-by-side collocate comparison of two preps
+  find_governing_prep()   — look backwards from a word position for a governing preposition
+  inf_cst_by_prep()       — frequency table of infinitive constructs by governing preposition
 
 Print wrappers:
   print_prep_frequency()
@@ -18,6 +20,7 @@ Print wrappers:
   print_prep_distribution()
   print_prep_collocates()
   print_compare_preps()
+  print_inf_cst_by_prep()
 """
 
 import unicodedata
@@ -358,6 +361,81 @@ def compare_preps(
 
 
 # ---------------------------------------------------------------------------
+# Infinitive construct / governing preposition helpers
+# ---------------------------------------------------------------------------
+
+def find_governing_prep(book_df: pd.DataFrame, pos: int) -> str:
+    """
+    Look back up to 3 positions from *pos* in *book_df* to find a governing
+    preposition.  Stops early if a verb, noun, or adjective is encountered.
+
+    Parameters
+    ----------
+    book_df : DataFrame
+        A reset-indexed slice of the MACULA syntax table for a single book.
+    pos : int
+        Integer row position of the word whose governing prep is sought.
+
+    Returns
+    -------
+    str
+        Diacritics-stripped lemma of the governing preposition, or '(none)'.
+    """
+    import unicodedata
+
+    def _strip(s: str) -> str:
+        return ''.join(
+            c for c in unicodedata.normalize('NFD', s)
+            if unicodedata.category(c) != 'Mn'
+        )
+
+    for back in range(1, 4):
+        if pos - back < 0:
+            break
+        prev = book_df.iloc[pos - back]
+        if prev['class_'] == 'prep':
+            return _strip(str(prev.get('lemma', '')))
+        if prev['class_'] in ('verb', 'noun', 'adj'):
+            break
+    return '(none)'
+
+
+def inf_cst_by_prep(book: Optional[str] = None) -> pd.DataFrame:
+    """
+    Frequency table of infinitive constructs grouped by governing preposition.
+
+    Parameters
+    ----------
+    book : str, optional
+        OT book abbreviation (e.g. 'Gen').  If None, covers the entire OT.
+
+    Returns
+    -------
+    DataFrame with columns: prep, count, pct
+        Sorted by count descending.
+    """
+    df = _df()
+    if book is not None:
+        df = df[df['book'] == book].reset_index(drop=True)
+    else:
+        df = df.reset_index(drop=True)
+
+    inf_rows = df[df['type_'] == 'infinitive construct']
+    counts: dict[str, int] = {}
+    for _, row in inf_rows.iterrows():
+        pos = df.index.get_loc(row.name)
+        prep = find_governing_prep(df, pos)
+        counts[prep] = counts.get(prep, 0) + 1
+
+    total = sum(counts.values()) or 1
+    result = pd.DataFrame(
+        [{'prep': p, 'count': c, 'pct': round(c / total * 100, 1)}
+         for p, c in sorted(counts.items(), key=lambda x: -x[1])]
+    )
+    return result.reset_index(drop=True)
+
+
+# ---------------------------------------------------------------------------
 # Print helpers
 # ---------------------------------------------------------------------------
 
@@ -411,4 +489,11 @@ def print_compare_preps(
     g2 = PREP_GLOSS.get(lemma2, lemma2)
     print(f'\n=== Collocate comparison: {lemma1} ({g1}) vs. {lemma2} ({g2}) ===')
     df = compare_preps(lemma1, lemma2, pos=pos, top_n=top_n, book_group=book_group)
+    print(df.to_string(index=False))
+
+
+def print_inf_cst_by_prep(book: Optional[str] = None) -> None:
+    scope = book or 'OT-wide'
+    print(f'\n=== Infinitive Construct by Governing Preposition ({scope}) ===')
+    df = inf_cst_by_prep(book=book)
     print(df.to_string(index=False))

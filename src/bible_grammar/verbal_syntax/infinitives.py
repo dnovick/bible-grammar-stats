@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from ._common import _load_macula, _filter_book, _strip_diacritics, _PREP_DISPLAY
+from ..prepositions import find_governing_prep
 
 
 def infinitive_usage(book: str) -> dict:
@@ -19,24 +20,13 @@ def infinitive_usage(book: str) -> dict:
     inf_cst_rows = book_df[book_df['type_'] == 'infinitive construct']
     inf_abs_rows = book_df[book_df['type_'] == 'infinitive absolute']
 
-    def _find_prep(pos: int) -> str:
-        for back in range(1, 4):
-            if pos - back < 0:
-                break
-            prev = book_df.iloc[pos - back]
-            if prev['class_'] == 'prep':
-                return _strip_diacritics(str(prev.get('lemma', '')))
-            if prev['class_'] in ('verb', 'noun', 'adj'):
-                break
-        return '(none)'
-
     inf_cst_by_prep: dict[str, int] = {}
     inf_cst_by_role: dict[str, int] = {}
     inf_cst_examples: list[dict] = []
 
     for _, row in inf_cst_rows.iterrows():
         actual_pos = book_df.index.get_loc(row.name)
-        prep = _find_prep(actual_pos)
+        prep = find_governing_prep(book_df, actual_pos)
         inf_cst_by_prep[prep] = inf_cst_by_prep.get(prep, 0) + 1
         role = str(row.get('role', ''))
         inf_cst_by_role[role] = inf_cst_by_role.get(role, 0) + 1
