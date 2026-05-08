@@ -293,6 +293,67 @@ class ExercisePDF:
         self._hline(self._y + 2, color=HexColor('#aaaaaa'), width=0.75)
         self._y -= 0.08 * inch
 
+    def add_drill_with_answer_key(self, headers: list, rows: list, answers: list,
+                                   col_ratios: list = None,
+                                   heb_cols: list = None,
+                                   translit_cols: list = None,
+                                   section_title: str = 'Items 1–20',
+                                   answer_title: str = 'Answer Key',
+                                   greek_cols: list = None,
+                                   use_greek: bool = False):
+        """Render a drill section followed by an answer key section."""
+        if use_greek:
+            self.add_section_heading(section_title)
+            self.add_greek_table(headers, rows, col_ratios, greek_cols=greek_cols, show_answers=False)
+            self.add_section_heading(answer_title)
+            self.add_greek_table(headers, rows, col_ratios, greek_cols=greek_cols,
+                                 show_answers=True, answer_rows=answers)
+        else:
+            self.add_section_heading(section_title)
+            self.add_generic_table(headers, rows, col_ratios=col_ratios,
+                                   heb_cols=heb_cols, translit_cols=translit_cols,
+                                   show_answers=False)
+            self.add_section_heading(answer_title)
+            self.add_generic_table(headers, rows, col_ratios=col_ratios,
+                                   heb_cols=heb_cols, translit_cols=translit_cols,
+                                   show_answers=True, answer_rows=answers)
+
+    def add_multi_part_drill(self, parts: list,
+                             heb_cols: list = None,
+                             translit_cols: list = None,
+                             greek_cols: list = None,
+                             use_greek: bool = False):
+        """
+        Render multiple drill parts each followed by their answer key.
+
+        parts: list of dicts with keys:
+            title       — section heading string (e.g. 'Part A — Long Vowels (1–5)')
+            headers     — column header list
+            rows        — blank/prompt rows
+            answers     — answer rows
+            col_ratios  — (optional) override col_ratios for this part
+            translit_cols — (optional) override translit_cols for this part
+            greek_cols  — (optional) override greek_cols for this part
+        """
+        for part in parts:
+            ptitle = part['title']
+            headers = part['headers']
+            rows = part['rows']
+            answers = part['answers']
+            cr = part.get('col_ratios', None)
+            tc = part.get('translit_cols', translit_cols)
+            gc = part.get('greek_cols', greek_cols)
+            self.add_drill_with_answer_key(
+                headers, rows, answers,
+                col_ratios=cr,
+                heb_cols=heb_cols,
+                translit_cols=tc,
+                section_title=ptitle,
+                answer_title=f'{ptitle} — Answer Key',
+                greek_cols=gc,
+                use_greek=use_greek,
+            )
+
     def add_section_break(self):
         self._check_space(0.3 * inch)
         self._y -= 0.12 * inch
@@ -10222,18 +10283,31 @@ class BbaCh1LetterRecognitionPDF(ExercisePDF):
         self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, translit_cols=tc, show_answers=True, answer_rows=ans)
 
 
-def build_bba_ch1_letter_recognition(out_dir: str = None) -> str:
+def _build_exercise_pdf(klass, title: str, subtitle: str,
+                        path_parts: list, filename: str,
+                        out_dir: str = None) -> str:
+    """
+    Instantiate `klass(title, subtitle)`, save to the standard output path, and return the path.
+
+    path_parts: sub-path components under output/lessons/ (e.g. ['aramaic','bba','ch1','exercises','ch1-letter-recognition'])
+    filename:   PDF filename without directory (e.g. 'ch1-letter-recognition.pdf')
+    """
     if out_dir is None:
         here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch1', 'exercises', 'ch1-letter-recognition')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch1-letter-recognition.pdf')
-    ex = BbaCh1LetterRecognitionPDF(
-        title='BBA Chapter 1 — Aramaic Letter Recognition',
-        subtitle='All 22 Letters · Gutturals · Emphatics · Bgdkpt · Hebrew Comparison',
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons', *path_parts)
+    path = os.path.join(out_dir, filename)
+    return klass(title=title, subtitle=subtitle).save(path)
+
+
+def build_bba_ch1_letter_recognition(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        BbaCh1LetterRecognitionPDF,
+        'BBA Chapter 1 — Aramaic Letter Recognition',
+        'All 22 Letters · Gutturals · Emphatics · Bgdkpt · Hebrew Comparison',
+        ['aramaic', 'bba', 'ch1', 'exercises', 'ch1-letter-recognition'],
+        'ch1-letter-recognition.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -10246,98 +10320,98 @@ class BbaCh2VowelIdentificationPDF(ExercisePDF):
             'For each vowel form: (1) Vowel Name, (2) Class (Long/Short/Reduced), '
             '(3) Transliteration, (4) Mater Lectionis? (Yes/No), (5) Notes.'
         )
+        hc = [1]
         hdrs_abc = ['#', 'Form', 'Vowel Name', 'Class', 'Translit.', 'Mater?', 'Notes']
         cr_abc = [0.04, 0.10, 0.14, 0.10, 0.08, 0.08, 0.46]
-        hc = [1]
-        tc_abc = [4]   # Translit. column
-
-        self.add_section_heading('Part A — Long Vowels (1–5)')
-        rows_a = [
-            ['1','בָּ','','','','',''], ['2','בֵּ','','','','',''],
-            ['3','בִּי','','','','',''], ['4','בּוֹ','','','','',''],
-            ['5','בּוּ','','','','',''],
-        ]
-        ans_a = [
-            ['1','בָּ', 'Qamets',     'Long',    'ā', 'No',        'Most common long vowel'],
-            ['2','בֵּ', 'Tsere',      'Long',    'ē', 'No (plain)','Often has Yod mater'],
-            ['3','בִּי','Hireq Gadol','Long',    'ī', 'Yes — Yod', 'Yod is the mater'],
-            ['4','בּוֹ','Holem',      'Long',    'ō', 'Yes — Waw', 'Waw above-right of consonant'],
-            ['5','בּוּ','Shuruq',     'Long',    'ū', 'Yes — Waw', 'Dot in middle of Waw'],
-        ]
-        self.add_generic_table(hdrs_abc, rows_a, col_ratios=cr_abc, heb_cols=hc, translit_cols=tc_abc, show_answers=False)
-        self.add_section_heading('Part A — Answer Key')
-        self.add_generic_table(hdrs_abc, rows_a, col_ratios=cr_abc, heb_cols=hc, translit_cols=tc_abc, show_answers=True, answer_rows=ans_a)
-
-        self.add_section_heading('Part B — Short Vowels (6–10)')
-        rows_b = [
-            ['6', 'בַּ','','','','',''], ['7','בֶּ','','','','',''],
-            ['8', 'בִּ','','','','',''], ['9','בָּ (closed unstr.)','','','','',''],
-            ['10','בֻּ','','','','',''],
-        ]
-        ans_b = [
-            ['6', 'בַּ', 'Patach',       'Short',   'a', 'No', 'Most common short vowel'],
-            ['7', 'בֶּ', 'Seghol',       'Short',   'e', 'No', 'Triangle of three dots'],
-            ['8', 'בִּ', 'Hireq Qatan',  'Short',   'i', 'No', 'No Yod mater'],
-            ['9', 'בָּ', 'Qamets Hatuph','Short',   'o', 'No', 'Same sign as Qamets; context determines'],
-            ['10','בֻּ', 'Qibbuts',      'Short',   'u', 'No', 'Three diagonal dots'],
-        ]
-        self.add_generic_table(hdrs_abc, rows_b, col_ratios=cr_abc, heb_cols=hc, translit_cols=tc_abc, show_answers=False)
-        self.add_section_heading('Part B — Answer Key')
-        self.add_generic_table(hdrs_abc, rows_b, col_ratios=cr_abc, heb_cols=hc, translit_cols=tc_abc, show_answers=True, answer_rows=ans_b)
-
         hdrs_c = ['#', 'Form', 'Vowel Name', 'Class', 'Translit.', 'Notes']
         cr_c = [0.04, 0.10, 0.16, 0.10, 0.08, 0.52]
-        tc_c = [4]
-        self.add_section_heading('Part C — Reduced Vowels (11–15)')
-        rows_c = [
-            ['11','בְּ (vocal)','','','',''], ['12','בְּ (silent)','','','',''],
-            ['13','אֲ','','','',''],          ['14','אֱ','','','',''],
-            ['15','אֳ','','','',''],
-        ]
-        ans_c = [
-            ['11','בְּ','Vocal Sheva',   'Reduced','ə', 'Brief neutral vowel; opens syllable'],
-            ['12','בְּ','Silent Sheva',  '—',      '—', 'Closes syllable; not pronounced'],
-            ['13','אֲ', 'Hateph Patach', 'Reduced','ă', 'Under gutturals; very brief "ah"'],
-            ['14','אֱ', 'Hateph Seghol', 'Reduced','ĕ', 'Under gutturals; very brief "eh"'],
-            ['15','אֳ', 'Hateph Qamets', 'Reduced','ŏ', 'Under gutturals; rare; very brief "oh"'],
-        ]
-        self.add_generic_table(hdrs_c, rows_c, col_ratios=cr_c, heb_cols=hc, translit_cols=tc_c, show_answers=False)
-        self.add_section_heading('Part C — Answer Key')
-        self.add_generic_table(hdrs_c, rows_c, col_ratios=cr_c, heb_cols=hc, translit_cols=tc_c, show_answers=True, answer_rows=ans_c)
-
         hdrs_d = ['#', 'Form', 'Mater Letter', 'Vowel', 'Notes']
         cr_d = [0.04, 0.14, 0.14, 0.10, 0.58]
-        tc_d = [3]   # Vowel column has macron characters
-        self.add_section_heading('Part D — Matres Lectionis (16–20)')
-        rows_d = [
-            ['16','מַלְכָּא','','',''], ['17','כְּתִיב','','',''],
-            ['18','שְׁלוֹ','','',''],  ['19','בּוּ','','',''],
-            ['20','אֱלָהָא','','',''],
-        ]
-        ans_d = [
-            ['16','מַלְכָּא','א (Aleph)','ā (final)','Determined state suffix; Aleph is mater'],
-            ['17','כְּתִיב', 'י (Yod)',  'ī',        'Yod after Hireq = long ī'],
-            ['18','שְׁלוֹ',  'ו (Waw)',  'ō',        'Waw after Holem dot = long ō'],
-            ['19','בּוּ',    'ו (Waw)',  'ū',        'Shuruq — dot in middle of Waw'],
-            ['20','אֱלָהָא','א (Aleph)','ā (final)','Determined state suffix again'],
-        ]
-        self.add_generic_table(hdrs_d, rows_d, col_ratios=cr_d, heb_cols=hc, translit_cols=tc_d, show_answers=False)
-        self.add_section_heading('Part D — Answer Key')
-        self.add_generic_table(hdrs_d, rows_d, col_ratios=cr_d, heb_cols=hc, translit_cols=tc_d, show_answers=True, answer_rows=ans_d)
+        self.add_multi_part_drill([
+            {
+                'title': 'Part A — Long Vowels (1–5)',
+                'headers': hdrs_abc,
+                'rows': [
+                    ['1','בָּ','','','','',''], ['2','בֵּ','','','','',''],
+                    ['3','בִּי','','','','',''], ['4','בּוֹ','','','','',''],
+                    ['5','בּוּ','','','','',''],
+                ],
+                'answers': [
+                    ['1','בָּ', 'Qamets',     'Long',    'ā', 'No',        'Most common long vowel'],
+                    ['2','בֵּ', 'Tsere',      'Long',    'ē', 'No (plain)','Often has Yod mater'],
+                    ['3','בִּי','Hireq Gadol','Long',    'ī', 'Yes — Yod', 'Yod is the mater'],
+                    ['4','בּוֹ','Holem',      'Long',    'ō', 'Yes — Waw', 'Waw above-right of consonant'],
+                    ['5','בּוּ','Shuruq',     'Long',    'ū', 'Yes — Waw', 'Dot in middle of Waw'],
+                ],
+                'col_ratios': cr_abc,
+                'translit_cols': [4],
+            },
+            {
+                'title': 'Part B — Short Vowels (6–10)',
+                'headers': hdrs_abc,
+                'rows': [
+                    ['6', 'בַּ','','','','',''], ['7','בֶּ','','','','',''],
+                    ['8', 'בִּ','','','','',''], ['9','בָּ (closed unstr.)','','','','',''],
+                    ['10','בֻּ','','','','',''],
+                ],
+                'answers': [
+                    ['6', 'בַּ', 'Patach',       'Short',   'a', 'No', 'Most common short vowel'],
+                    ['7', 'בֶּ', 'Seghol',       'Short',   'e', 'No', 'Triangle of three dots'],
+                    ['8', 'בִּ', 'Hireq Qatan',  'Short',   'i', 'No', 'No Yod mater'],
+                    ['9', 'בָּ', 'Qamets Hatuph','Short',   'o', 'No', 'Same sign as Qamets; context determines'],
+                    ['10','בֻּ', 'Qibbuts',      'Short',   'u', 'No', 'Three diagonal dots'],
+                ],
+                'col_ratios': cr_abc,
+                'translit_cols': [4],
+            },
+            {
+                'title': 'Part C — Reduced Vowels (11–15)',
+                'headers': hdrs_c,
+                'rows': [
+                    ['11','בְּ (vocal)','','','',''], ['12','בְּ (silent)','','','',''],
+                    ['13','אֲ','','','',''],          ['14','אֱ','','','',''],
+                    ['15','אֳ','','','',''],
+                ],
+                'answers': [
+                    ['11','בְּ','Vocal Sheva',   'Reduced','ə', 'Brief neutral vowel; opens syllable'],
+                    ['12','בְּ','Silent Sheva',  '—',      '—', 'Closes syllable; not pronounced'],
+                    ['13','אֲ', 'Hateph Patach', 'Reduced','ă', 'Under gutturals; very brief "ah"'],
+                    ['14','אֱ', 'Hateph Seghol', 'Reduced','ĕ', 'Under gutturals; very brief "eh"'],
+                    ['15','אֳ', 'Hateph Qamets', 'Reduced','ŏ', 'Under gutturals; rare; very brief "oh"'],
+                ],
+                'col_ratios': cr_c,
+                'translit_cols': [4],
+            },
+            {
+                'title': 'Part D — Matres Lectionis (16–20)',
+                'headers': hdrs_d,
+                'rows': [
+                    ['16','מַלְכָּא','','',''], ['17','כְּתִיב','','',''],
+                    ['18','שְׁלוֹ','','',''],  ['19','בּוּ','','',''],
+                    ['20','אֱלָהָא','','',''],
+                ],
+                'answers': [
+                    ['16','מַלְכָּא','א (Aleph)','ā (final)','Determined state suffix; Aleph is mater'],
+                    ['17','כְּתִיב', 'י (Yod)',  'ī',        'Yod after Hireq = long ī'],
+                    ['18','שְׁלוֹ',  'ו (Waw)',  'ō',        'Waw after Holem dot = long ō'],
+                    ['19','בּוּ',    'ו (Waw)',  'ū',        'Shuruq — dot in middle of Waw'],
+                    ['20','אֱלָהָא','א (Aleph)','ā (final)','Determined state suffix again'],
+                ],
+                'col_ratios': cr_d,
+                'translit_cols': [3],
+            },
+        ], heb_cols=hc)
 
 
 def build_bba_ch2_vowel_identification(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch2', 'exercises', 'ch2-vowel-identification')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch2-vowel-identification.pdf')
-    ex = BbaCh2VowelIdentificationPDF(
-        title='BBA Chapter 2 — Aramaic Vowel Identification',
-        subtitle='Long · Short · Reduced Vowels · Matres Lectionis',
+    return _build_exercise_pdf(
+        BbaCh2VowelIdentificationPDF,
+        'BBA Chapter 2 — Aramaic Vowel Identification',
+        'Long · Short · Reduced Vowels · Matres Lectionis',
+        ['aramaic', 'bba', 'ch2', 'exercises', 'ch2-vowel-identification'],
+        'ch2-vowel-identification.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -10355,97 +10429,100 @@ class BbaCh3SyllabificationDrillPDF(ExercisePDF):
         hdrs = ['#', 'Word', 'Translit.', 'Division', 'Types', 'Stress', 'Special Features']
         cr = [0.04, 0.12, 0.14, 0.16, 0.10, 0.14, 0.30]
         hc = [1]
-
-        self.add_section_heading('Part A — Basic Division (1–8)')
-        rows_a = [
-            ['1', 'מַלְכָּא',  'malkāʾ',        '', '', '', ''],
-            ['2', 'אֱלָהָא',   'ʾĕlāhāʾ',       '', '', '', ''],
-            ['3', 'בֵּית',     'bêt',            '', '', '', ''],
-            ['4', 'מַלְכִין',  'malkîn',         '', '', '', ''],
-            ['5', 'כְּתַב',    'kətab',          '', '', '', ''],
-            ['6', 'אֲבוּהִי',  'ʾăbûhî',         '', '', '', ''],
-            ['7', 'יְהוּד',    'yəhûd',          '', '', '', ''],
-            ['8', 'שְׁמַיָּא', 'šəmayyāʾ',       '', '', '', ''],
-        ]
-        ans_a = [
-            ['1', 'מַלְכָּא',  'malkāʾ',   'מַל | כָּא',          'C · C',        '′כָּא',   'Final א quiescent (det. state)'],
-            ['2', 'אֱלָהָא',   'ʾĕlāhāʾ',  'אֱ | לָ | הָא',        'O · O · C',    '′הָא',    'Hateph seghol; final א quiescent'],
-            ['3', 'בֵּית',     'bêt',       'בֵּית',                'C (monosyll.)', '′בֵּית',  'Waw is mater for Tsere'],
-            ['4', 'מַלְכִין',  'malkîn',    'מַל | כִין',           'C · C',        '′כִין',   'Yod is mater for Hireq Gadol'],
-            ['5', 'כְּתַב',    'kətab',     'כְּ | תַב',            'O · C',        '′תַב',    'Opening sheva = vocal'],
-            ['6', 'אֲבוּהִי',  'ʾăbûhî',    'אֲ | בוּ | הִי',       'O · O · O',    '′הִי',    'Hateph Patach; Waw = Shuruq; Yod = mater'],
-            ['7', 'יְהוּד',    'yəhûd',     'יְ | הוּד',            'O · C',        '′הוּד',   'Opening sheva = vocal; Waw = Shuruq'],
-            ['8', 'שְׁמַיָּא', 'šəmayyāʾ',  'שְׁ | מַי | יָא',      'O · C · C',    '′יָא',    'Dagesh Forte in Yod = doubled'],
-        ]
         tc = [2]
-        self.add_generic_table(hdrs, rows_a, col_ratios=cr, heb_cols=hc, translit_cols=tc, show_answers=False)
-        self.add_section_heading('Part A — Answer Key')
-        self.add_generic_table(hdrs, rows_a, col_ratios=cr, heb_cols=hc, translit_cols=tc, show_answers=True, answer_rows=ans_a)
-
-        self.add_section_heading('Part B — Dagesh Forte Doubling (9–12)')
-        rows_b = [
-            ['9',  'שַׁבַּת',    'šabbat',   '', '', '', ''],
-            ['10', 'כַּסְּדִים', 'kaśśədîm', '', '', '', ''],
-            ['11', 'הַדַּבְרִין','haddabrîn', '', '', '', ''],
-            ['12', 'מִנַּי',     'minnay',   '', '', '', ''],
-        ]
-        ans_b = [
-            ['9',  'שַׁבַּת',    'šabbat',   'שַׁב | בַּת',  'C · C', '′בַּת', 'Dagesh Forte in Beth'],
-            ['10', 'כַּסְּדִים', 'kaśśədîm', 'כַּסּ | דִים', 'C · C', '′דִים', 'Dagesh Forte in Samech'],
-            ['11', 'הַדַּבְרִין','haddabrîn', 'הַד | דַבְ | רִין', 'C · C · C', '′רִין', 'Dagesh Forte in Dalet'],
-            ['12', 'מִנַּי',     'minnay',   'מִנ | נַי',   'C · O', '′נַי', 'Dagesh Forte in Nun (assimilation)'],
-        ]
-        self.add_generic_table(hdrs, rows_b, col_ratios=cr, heb_cols=hc, translit_cols=tc, show_answers=False)
-        self.add_section_heading('Part B — Answer Key')
-        self.add_generic_table(hdrs, rows_b, col_ratios=cr, heb_cols=hc, translit_cols=tc, show_answers=True, answer_rows=ans_b)
-
-        self.add_section_heading('Part C — Guttural and Quiescence Features (13–16)')
-        rows_c = [
-            ['13', 'אָמַר',   'ʾāmar',  '', '', '', ''],
-            ['14', 'חַכִּים', 'ḥakkîm', '', '', '', ''],
-            ['15', 'עִם',     'ʿim',    '', '', '', ''],
-            ['16', 'מַלְאַךְ','malʾak', '', '', '', ''],
-        ]
-        ans_c = [
-            ['13', 'אָמַר',   'ʾāmar',  'אָ | מַר',    'O · C',        '′מַר',   'Long Qamets in open syllable; Aleph opens word'],
-            ['14', 'חַכִּים', 'ḥakkîm', 'חַכּ | כִים', 'C · C',        '′כִים',  'Dagesh Forte in Kaph; Cheth = guttural'],
-            ['15', 'עִם',     'ʿim',    'עִם',          'C (monosyll.)', '′עִם',   'Ayin = guttural; short Hireq in closed syllable'],
-            ['16', 'מַלְאַךְ','malʾak', 'מַל | אַךְ',  'C · C',        '′אַךְ',  'Aleph in second syllable; takes Patach'],
-        ]
-        self.add_generic_table(hdrs, rows_c, col_ratios=cr, heb_cols=hc, translit_cols=tc, show_answers=False)
-        self.add_section_heading('Part C — Answer Key')
-        self.add_generic_table(hdrs, rows_c, col_ratios=cr, heb_cols=hc, translit_cols=tc, show_answers=True, answer_rows=ans_c)
-
-        self.add_section_heading('Part D — Accent and Vowel Reduction (17–20)')
-        rows_d = [
-            ['17', 'נְבוּכַדְנֶצַּר', 'nəbûḵadneṣṣar', '', '', '', ''],
-            ['18', 'מַלְכוּתָא',       'malkûtāʾ',       '', '', '', ''],
-            ['19', 'בְּיוֹם',          'bəyôm',          '', '', '', ''],
-            ['20', 'לְמַלְכָּא',       'ləmalkāʾ',       '', '', '', ''],
-        ]
-        ans_d = [
-            ['17', 'נְבוּכַדְנֶצַּר', 'nəbûḵadneṣṣar', 'נְ·בוּ·כַד·נֶצּ·צַר', 'O·O·C·C·C', '′צַר', 'Opening vocal sheva; Dagesh Forte in Tsade; propretonic reduction'],
-            ['18', 'מַלְכוּתָא',       'malkûtāʾ',       'מַל·כוּ·תָא',         'C·O·C',     '′תָא', 'Waw = Shuruq; final א quiescent'],
-            ['19', 'בְּיוֹם',          'bəyôm',          'בְּ·יוֹם',            'O·C',       '′יוֹם','Prefix בְּ = vocal sheva; Waw = Holem mater'],
-            ['20', 'לְמַלְכָּא',       'ləmalkāʾ',       'לְ·מַל·כָּא',         'O·C·C',     '′כָּא', 'Prefix לְ = vocal sheva; propretonic מַ stays short'],
-        ]
-        self.add_generic_table(hdrs, rows_d, col_ratios=cr, heb_cols=hc, translit_cols=tc, show_answers=False)
-        self.add_section_heading('Part D — Answer Key')
-        self.add_generic_table(hdrs, rows_d, col_ratios=cr, heb_cols=hc, translit_cols=tc, show_answers=True, answer_rows=ans_d)
+        self.add_multi_part_drill([
+            {
+                'title': 'Part A — Basic Division (1–8)',
+                'headers': hdrs,
+                'rows': [
+                    ['1', 'מַלְכָּא',  'malkāʾ',        '', '', '', ''],
+                    ['2', 'אֱלָהָא',   'ʾĕlāhāʾ',       '', '', '', ''],
+                    ['3', 'בֵּית',     'bêt',            '', '', '', ''],
+                    ['4', 'מַלְכִין',  'malkîn',         '', '', '', ''],
+                    ['5', 'כְּתַב',    'kətab',          '', '', '', ''],
+                    ['6', 'אֲבוּהִי',  'ʾăbûhî',         '', '', '', ''],
+                    ['7', 'יְהוּד',    'yəhûd',          '', '', '', ''],
+                    ['8', 'שְׁמַיָּא', 'šəmayyāʾ',       '', '', '', ''],
+                ],
+                'answers': [
+                    ['1', 'מַלְכָּא',  'malkāʾ',   'מַל | כָּא',          'C · C',        '′כָּא',   'Final א quiescent (det. state)'],
+                    ['2', 'אֱלָהָא',   'ʾĕlāhāʾ',  'אֱ | לָ | הָא',        'O · O · C',    '′הָא',    'Hateph seghol; final א quiescent'],
+                    ['3', 'בֵּית',     'bêt',       'בֵּית',                'C (monosyll.)', '′בֵּית',  'Waw is mater for Tsere'],
+                    ['4', 'מַלְכִין',  'malkîn',    'מַל | כִין',           'C · C',        '′כִין',   'Yod is mater for Hireq Gadol'],
+                    ['5', 'כְּתַב',    'kətab',     'כְּ | תַב',            'O · C',        '′תַב',    'Opening sheva = vocal'],
+                    ['6', 'אֲבוּהִי',  'ʾăbûhî',    'אֲ | בוּ | הִי',       'O · O · O',    '′הִי',    'Hateph Patach; Waw = Shuruq; Yod = mater'],
+                    ['7', 'יְהוּד',    'yəhûd',     'יְ | הוּד',            'O · C',        '′הוּד',   'Opening sheva = vocal; Waw = Shuruq'],
+                    ['8', 'שְׁמַיָּא', 'šəmayyāʾ',  'שְׁ | מַי | יָא',      'O · C · C',    '′יָא',    'Dagesh Forte in Yod = doubled'],
+                ],
+                'col_ratios': cr,
+                'translit_cols': tc,
+            },
+            {
+                'title': 'Part B — Dagesh Forte Doubling (9–12)',
+                'headers': hdrs,
+                'rows': [
+                    ['9',  'שַׁבַּת',    'šabbat',   '', '', '', ''],
+                    ['10', 'כַּסְּדִים', 'kaśśədîm', '', '', '', ''],
+                    ['11', 'הַדַּבְרִין','haddabrîn', '', '', '', ''],
+                    ['12', 'מִנַּי',     'minnay',   '', '', '', ''],
+                ],
+                'answers': [
+                    ['9',  'שַׁבַּת',    'šabbat',   'שַׁב | בַּת',       'C · C',     '′בַּת', 'Dagesh Forte in Beth'],
+                    ['10', 'כַּסְּדִים', 'kaśśədîm', 'כַּסּ | דִים',      'C · C',     '′דִים', 'Dagesh Forte in Samech'],
+                    ['11', 'הַדַּבְרִין','haddabrîn', 'הַד | דַבְ | רִין', 'C · C · C', '′רִין', 'Dagesh Forte in Dalet'],
+                    ['12', 'מִנַּי',     'minnay',   'מִנ | נַי',         'C · O',     '′נַי', 'Dagesh Forte in Nun (assimilation)'],
+                ],
+                'col_ratios': cr,
+                'translit_cols': tc,
+            },
+            {
+                'title': 'Part C — Guttural and Quiescence Features (13–16)',
+                'headers': hdrs,
+                'rows': [
+                    ['13', 'אָמַר',   'ʾāmar',  '', '', '', ''],
+                    ['14', 'חַכִּים', 'ḥakkîm', '', '', '', ''],
+                    ['15', 'עִם',     'ʿim',    '', '', '', ''],
+                    ['16', 'מַלְאַךְ','malʾak', '', '', '', ''],
+                ],
+                'answers': [
+                    ['13', 'אָמַר',   'ʾāmar',  'אָ | מַר',    'O · C',        '′מַר',  'Long Qamets in open syllable; Aleph opens word'],
+                    ['14', 'חַכִּים', 'ḥakkîm', 'חַכּ | כִים', 'C · C',        '′כִים', 'Dagesh Forte in Kaph; Cheth = guttural'],
+                    ['15', 'עִם',     'ʿim',    'עִם',          'C (monosyll.)', '′עִם',  'Ayin = guttural; short Hireq in closed syllable'],
+                    ['16', 'מַלְאַךְ','malʾak', 'מַל | אַךְ',  'C · C',        '′אַךְ', 'Aleph in second syllable; takes Patach'],
+                ],
+                'col_ratios': cr,
+                'translit_cols': tc,
+            },
+            {
+                'title': 'Part D — Accent and Vowel Reduction (17–20)',
+                'headers': hdrs,
+                'rows': [
+                    ['17', 'נְבוּכַדְנֶצַּר', 'nəbûḵadneṣṣar', '', '', '', ''],
+                    ['18', 'מַלְכוּתָא',       'malkûtāʾ',       '', '', '', ''],
+                    ['19', 'בְּיוֹם',          'bəyôm',          '', '', '', ''],
+                    ['20', 'לְמַלְכָּא',       'ləmalkāʾ',       '', '', '', ''],
+                ],
+                'answers': [
+                    ['17', 'נְבוּכַדְנֶצַּר', 'nəbûḵadneṣṣar', 'נְ·בוּ·כַד·נֶצּ·צַר', 'O·O·C·C·C', '′צַר', 'Opening vocal sheva; Dagesh Forte in Tsade; propretonic reduction'],
+                    ['18', 'מַלְכוּתָא',       'malkûtāʾ',       'מַל·כוּ·תָא',         'C·O·C',     '′תָא', 'Waw = Shuruq; final א quiescent'],
+                    ['19', 'בְּיוֹם',          'bəyôm',          'בְּ·יוֹם',            'O·C',       '′יוֹם','Prefix בְּ = vocal sheva; Waw = Holem mater'],
+                    ['20', 'לְמַלְכָּא',       'ləmalkāʾ',       'לְ·מַל·כָּא',         'O·C·C',     '′כָּא', 'Prefix לְ = vocal sheva; propretonic מַ stays short'],
+                ],
+                'col_ratios': cr,
+                'translit_cols': tc,
+            },
+        ], heb_cols=hc)
 
 
 def build_bba_ch3_syllabification_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch3', 'exercises', 'ch3-syllabification-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch3-syllabification-drill.pdf')
-    ex = BbaCh3SyllabificationDrillPDF(
-        title='BBA Chapter 3 — Aramaic Syllabification Drill',
-        subtitle='Open/Closed Syllables · Dagesh Forte · Guttural Quiescence · Accent',
+    return _build_exercise_pdf(
+        BbaCh3SyllabificationDrillPDF,
+        'BBA Chapter 3 — Aramaic Syllabification Drill',
+        'Open/Closed Syllables · Dagesh Forte · Guttural Quiescence · Accent',
+        ['aramaic', 'bba', 'ch3', 'exercises', 'ch3-syllabification-drill'],
+        'ch3-syllabification-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -10507,24 +10584,18 @@ class BbaCh4NounIdentificationPDF(ExercisePDF):
             ['19', 'טְעֵם',       'm.', 's.',  'abs.', 'טְעֵם — understanding, command'],
             ['20', 'נוּרִין',     'm.', 'pl.', 'abs.', 'נוּר — fires'],
         ]
-        self.add_section_heading('Items 1–20')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc)
 
 
 def build_bba_ch4_noun_identification(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch4', 'exercises', 'ch4-noun-identification')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch4-noun-identification.pdf')
-    ex = BbaCh4NounIdentificationPDF(
-        title='BBA Chapter 4 — Noun Identification Drill',
-        subtitle='Absolute State · Gender · Number · Root Form',
+    return _build_exercise_pdf(
+        BbaCh4NounIdentificationPDF,
+        'BBA Chapter 4 — Noun Identification Drill',
+        'Absolute State · Gender · Number · Root Form',
+        ['aramaic', 'bba', 'ch4', 'exercises', 'ch4-noun-identification'],
+        'ch4-noun-identification.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -10595,24 +10666,18 @@ class BbaCh5DeterminedStateDrillPDF(ExercisePDF):
             ['19', 'זְמָנִין',  'זְמָנַיָּא',  'mp.', 'Replace ִין- with ַיָּא- (Ch4)'],
             ['20', 'זְמָרִין',  'זְמָרַיָּא',  'mp.', 'Remove ַיָּא-, restore ִין-'],
         ]
-        self.add_section_heading('Items 1–20')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc)
 
 
 def build_bba_ch5_determined_state_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch5', 'exercises', 'ch5-determined-state-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch5-determined-state-drill.pdf')
-    ex = BbaCh5DeterminedStateDrillPDF(
-        title='BBA Chapter 5 — Determined State Forms Drill',
-        subtitle='Absolute ↔ Determined · All Four Gender/Number Patterns',
+    return _build_exercise_pdf(
+        BbaCh5DeterminedStateDrillPDF,
+        'BBA Chapter 5 — Determined State Forms Drill',
+        'Absolute ↔ Determined · All Four Gender/Number Patterns',
+        ['aramaic', 'bba', 'ch5', 'exercises', 'ch5-determined-state-drill'],
+        'ch5-determined-state-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # ---------------------------------------------------------------------------
@@ -10673,24 +10738,18 @@ class BbaCh6ConstructChainDrillPDF(ExercisePDF):
             ['19', 'מְדוֹר (ms)',   'מְדוֹר',   'שְׁמַיָּא',    'dwelling of the heavens'],
             ['20', 'שָׁעָן (fp)',   'שָׁעָת',   'יוֹמָא',       'hours of the day — fp ָן- → ָת-'],
         ]
-        self.add_section_heading('Items 1–20')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc)
 
 
 def build_bba_ch6_construct_chain_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch6', 'exercises', 'ch6-construct-chain-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch6-construct-chain-drill.pdf')
-    ex = BbaCh6ConstructChainDrillPDF(
-        title='BBA Chapter 6 — Construct Chain Drill',
-        subtitle='Construct State · All Four Gender/Number Patterns · Genitive Chains',
+    return _build_exercise_pdf(
+        BbaCh6ConstructChainDrillPDF,
+        'BBA Chapter 6 — Construct Chain Drill',
+        'Construct State · All Four Gender/Number Patterns · Genitive Chains',
+        ['aramaic', 'bba', 'ch6', 'exercises', 'ch6-construct-chain-drill'],
+        'ch6-construct-chain-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class BbaCh7PrepositionDrillPDF(ExercisePDF):
@@ -10746,24 +10805,18 @@ class BbaCh7PrepositionDrillPDF(ExercisePDF):
             [19, 'מִבָּבֶל',         'מִ- (מִן prefixed)', 'from',                     'proper noun',            'from Babylon'],
             [20, 'בְּמַלְכוּ',       'בְּ-',             'in',                         'abs. fs.',               'in a kingdom'],
         ]
-        self.add_section_heading('Items 1–20')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc)
 
 
 def build_bba_ch7_preposition_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch7', 'exercises', 'ch7-preposition-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch7-preposition-drill.pdf')
-    ex = BbaCh7PrepositionDrillPDF(
-        title='BBA Chapter 7 — Preposition Drill',
-        subtitle='Conjunctions and Prepositions · Identification and Translation',
+    return _build_exercise_pdf(
+        BbaCh7PrepositionDrillPDF,
+        'BBA Chapter 7 — Preposition Drill',
+        'Conjunctions and Prepositions · Identification and Translation',
+        ['aramaic', 'bba', 'ch7', 'exercises', 'ch7-preposition-drill'],
+        'ch7-preposition-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class BbaCh8SuffixDrillPDF(ExercisePDF):
@@ -10819,24 +10872,18 @@ class BbaCh8SuffixDrillPDF(ExercisePDF):
             [19, 'בָּנַיְכוֹן',  'בַּר (son, pl. בָּנִין)',      '2mp',  'your (mp) sons'],
             [20, 'מִנְּהוֹן',     'מִן (from, prep)',             '3mp',  'from them'],
         ]
-        self.add_section_heading('Items 1–20')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc)
 
 
 def build_bba_ch8_suffix_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch8', 'exercises', 'ch8-suffix-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch8-suffix-drill.pdf')
-    ex = BbaCh8SuffixDrillPDF(
-        title='BBA Chapter 8 — Suffix Drill',
-        subtitle='Pronominal Suffixes on Nouns and Prepositions',
+    return _build_exercise_pdf(
+        BbaCh8SuffixDrillPDF,
+        'BBA Chapter 8 — Suffix Drill',
+        'Pronominal Suffixes on Nouns and Prepositions',
+        ['aramaic', 'bba', 'ch8', 'exercises', 'ch8-suffix-drill'],
+        'ch8-suffix-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class BbaCh9PronounDrillPDF(ExercisePDF):
@@ -10892,24 +10939,18 @@ class BbaCh9PronounDrillPDF(ExercisePDF):
             [19, 'אִיתַיְכוֹן','existential + 2mp suffix',       '2mp',  'you are (there are you)'],
             [20, 'הָדָא',       'demonstrative (near/far)',       'fs',   'this / that'],
         ]
-        self.add_section_heading('Items 1–20')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc)
 
 
 def build_bba_ch9_pronoun_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch9', 'exercises', 'ch9-pronoun-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch9-pronoun-drill.pdf')
-    ex = BbaCh9PronounDrillPDF(
-        title='BBA Chapter 9 — Pronoun Drill',
-        subtitle='Personal, Demonstrative, Interrogative, Existential, Indefinite',
+    return _build_exercise_pdf(
+        BbaCh9PronounDrillPDF,
+        'BBA Chapter 9 — Pronoun Drill',
+        'Personal, Demonstrative, Interrogative, Existential, Indefinite',
+        ['aramaic', 'bba', 'ch9', 'exercises', 'ch9-pronoun-drill'],
+        'ch9-pronoun-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class BbaCh10AdjectiveNumberDrillPDF(ExercisePDF):
@@ -10965,24 +11006,18 @@ class BbaCh10AdjectiveNumberDrillPDF(ExercisePDF):
             [19, 'אֱלָה שְׁמַיָּא חַיָּא','adjective',           'absolute',             'ms',      'the living God of heaven'],
             [20, 'חַד מִן',              'number',              'cardinal 1 (partitive)','—',       'one of...'],
         ]
-        self.add_section_heading('Items 1–20')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc)
 
 
 def build_bba_ch10_adjective_number_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch10', 'exercises', 'ch10-adjective-number-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch10-adjective-number-drill.pdf')
-    ex = BbaCh10AdjectiveNumberDrillPDF(
-        title='BBA Chapter 10 — Adjective and Number Drill',
-        subtitle='Adjective States and Agreement · Cardinal and Ordinal Numbers',
+    return _build_exercise_pdf(
+        BbaCh10AdjectiveNumberDrillPDF,
+        'BBA Chapter 10 — Adjective and Number Drill',
+        'Adjective States and Agreement · Cardinal and Ordinal Numbers',
+        ['aramaic', 'bba', 'ch10', 'exercises', 'ch10-adjective-number-drill'],
+        'ch10-adjective-number-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class BbaCh11ParticleDrillPDF(ExercisePDF):
@@ -11039,24 +11074,18 @@ class BbaCh11ParticleDrillPDF(ExercisePDF):
             [19, 'כָּל-קֳבֵל דִּי', 'כָּל-קֳבֵל דִּי',  'causal',                        'because, inasmuch as, therefore'],
             [20, 'הֵן...הֵן',        'הֵן...הֵן',         'conditional (correlative)',     'whether...or; if...then'],
         ]
-        self.add_section_heading('Items 1–20')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc)
 
 
 def build_bba_ch11_particle_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch11', 'exercises', 'ch11-particle-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch11-particle-drill.pdf')
-    ex = BbaCh11ParticleDrillPDF(
-        title='BBA Chapter 11 — Particle Drill',
-        subtitle='Adverbs and Particles · Time, Place, Manner, Negation, Discourse',
+    return _build_exercise_pdf(
+        BbaCh11ParticleDrillPDF,
+        'BBA Chapter 11 — Particle Drill',
+        'Adverbs and Particles · Time, Place, Manner, Negation, Discourse',
+        ['aramaic', 'bba', 'ch11', 'exercises', 'ch11-particle-drill'],
+        'ch11-particle-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # BBA Ch12 — Stem Identification Drill
@@ -11103,24 +11132,19 @@ class BbaCh12VerbIntroDrillPDF(ExercisePDF):
             [13, 'בַּיְתָה דְנָה הִתְבְנִי',                                                              'Ezra 5:16', 'Ithpeel (3ms pf)', 'בנה', 'this house was built'],
             [14, 'כָל-חֲבוּל לָא הִשְׁתְְּכַח בֵּהּ',                   'Dan 6:23', 'Ithpeel (3ms pf)', 'שׁכח', 'no harm was found on him'],
         ]
-        self.add_section_heading('Verb Identification — Items 1–14')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc,
+                                        section_title='Verb Identification — Items 1–14')
 
 
 def build_bba_ch12_verb_intro_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch12', 'exercises', 'ch12-verb-intro-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch12-verb-intro-drill.pdf')
-    ex = BbaCh12VerbIntroDrillPDF(
-        title='BBA Chapter 12 — Stem Identification Drill',
-        subtitle='Introduction to Aramaic Verbs · Peal · Haphel · Ithpeel',
+    return _build_exercise_pdf(
+        BbaCh12VerbIntroDrillPDF,
+        'BBA Chapter 12 — Stem Identification Drill',
+        'Introduction to Aramaic Verbs · Peal · Haphel · Ithpeel',
+        ['aramaic', 'bba', 'ch12', 'exercises', 'ch12-verb-intro-drill'],
+        'ch12-verb-intro-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class BbaCh13PealPerfectDrillPDF(ExercisePDF):
@@ -11181,24 +11205,19 @@ class BbaCh13PealPerfectDrillPDF(ExercisePDF):
             [19, 'קָמַת',        'קום',  '3fs',  'she/it arose'],
             [20, 'בְּנַיְנָא',   'בנה',  '1cp',  'we built'],
         ]
-        self.add_section_heading('Peal Perfect Parsing — Items 1–20')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc,
+                                        section_title='Peal Perfect Parsing — Items 1–20')
 
 
 def build_bba_ch13_peal_perfect_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch13', 'exercises', 'ch13-peal-perfect-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch13-peal-perfect-drill.pdf')
-    ex = BbaCh13PealPerfectDrillPDF(
-        title='BBA Chapter 13 — Peal Perfect Parsing Drill',
-        subtitle='Peal Perfect · Strong and Weak Roots · Daniel and Ezra',
+    return _build_exercise_pdf(
+        BbaCh13PealPerfectDrillPDF,
+        'BBA Chapter 13 — Peal Perfect Parsing Drill',
+        'Peal Perfect · Strong and Weak Roots · Daniel and Ezra',
+        ['aramaic', 'bba', 'ch13', 'exercises', 'ch13-peal-perfect-drill'],
+        'ch13-peal-perfect-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class BbaCh14PealImperfectDrillPDF(ExercisePDF):
@@ -11259,24 +11278,19 @@ class BbaCh14PealImperfectDrillPDF(ExercisePDF):
             [19, 'תֵּאמְרוּן',     'אמר',  '2mp',      'you (mp) will say'],
             [20, 'נֶהֱוֵא',        'הוה',  '1cp',      'we will be'],
         ]
-        self.add_section_heading('Peal Imperfect Parsing — Items 1–20')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc,
+                                        section_title='Peal Imperfect Parsing — Items 1–20')
 
 
 def build_bba_ch14_peal_imperfect_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch14', 'exercises', 'ch14-peal-imperfect-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch14-peal-imperfect-drill.pdf')
-    ex = BbaCh14PealImperfectDrillPDF(
-        title='BBA Chapter 14 — Peal Imperfect Parsing Drill',
-        subtitle='Peal Imperfect · Strong and Weak Roots · Daniel and Ezra',
+    return _build_exercise_pdf(
+        BbaCh14PealImperfectDrillPDF,
+        'BBA Chapter 14 — Peal Imperfect Parsing Drill',
+        'Peal Imperfect · Strong and Weak Roots · Daniel and Ezra',
+        ['aramaic', 'bba', 'ch14', 'exercises', 'ch14-peal-imperfect-drill'],
+        'ch14-peal-imperfect-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class BbaCh15PealImperativeDrillPDF(ExercisePDF):
@@ -11338,24 +11352,19 @@ class BbaCh15PealImperativeDrillPDF(ExercisePDF):
             [19, 'אַל תֵּאמְרוּן',     'אמר',   '2mp neg',  'Do not say! (urgent, to men)'],
             [20, 'לָא תִּסְגְּדוּן',   'סגד',   '2mp neg',  'You shall not bow down (general)'],
         ]
-        self.add_section_heading('Peal Imperative Parsing — Items 1–20')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc,
+                                        section_title='Peal Imperative Parsing — Items 1–20')
 
 
 def build_bba_ch15_peal_imperative_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch15', 'exercises', 'ch15-peal-imperative-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch15-peal-imperative-drill.pdf')
-    ex = BbaCh15PealImperativeDrillPDF(
-        title='BBA Chapter 15 — Peal Imperative Parsing Drill',
-        subtitle='Peal Imperative · Strong and Weak Roots · Daniel and Ezra',
+    return _build_exercise_pdf(
+        BbaCh15PealImperativeDrillPDF,
+        'BBA Chapter 15 — Peal Imperative Parsing Drill',
+        'Peal Imperative · Strong and Weak Roots · Daniel and Ezra',
+        ['aramaic', 'bba', 'ch15', 'exercises', 'ch15-peal-imperative-drill'],
+        'ch15-peal-imperative-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # BBA Ch16 — Peal Infinitive Construct Drill
@@ -11419,24 +11428,19 @@ class BbaCh16PealInfinitiveDrillPDF(ExercisePDF):
             [19, 'לְהַשְׁנָיָה',  'שׁנה', 'לְהַ — Haphel inf. ("to change")', 'to change / to alter (Haphel)'],
             [20, 'לְהוֹדָעָה',   'ידע',  'לְהוֹ — Haphel inf. ("to inform")', 'to make known / to inform (Haphel)'],
         ]
-        self.add_section_heading('Peal Infinitive Construct Drill — Items 1–20')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc,
+                                        section_title='Peal Infinitive Construct Drill — Items 1–20')
 
 
 def build_bba_ch16_peal_infinitive_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch16', 'exercises', 'ch16-peal-infinitive-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch16-peal-infinitive-drill.pdf')
-    ex = BbaCh16PealInfinitiveDrillPDF(
-        title='BBA Chapter 16 — Peal Infinitive Construct Drill',
-        subtitle='Peal Infinitive Construct · Strong and Weak Roots · Daniel and Ezra',
+    return _build_exercise_pdf(
+        BbaCh16PealInfinitiveDrillPDF,
+        'BBA Chapter 16 — Peal Infinitive Construct Drill',
+        'Peal Infinitive Construct · Strong and Weak Roots · Daniel and Ezra',
+        ['aramaic', 'bba', 'ch16', 'exercises', 'ch16-peal-infinitive-drill'],
+        'ch16-peal-infinitive-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class BbaCh17PealParticipleDrillPDF(ExercisePDF):
@@ -11500,24 +11504,19 @@ class BbaCh17PealParticipleDrillPDF(ExercisePDF):
             [19, 'בָּנֵא',       'Active',  'בנה',  'ms', 'building / one who builds (III-he)'],
             [20, 'יְהִיב',       'Passive', 'יהב',  'ms', 'given / that which is given'],
         ]
-        self.add_section_heading('Peal Participle Drill — Items 1–20')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc,
+                                        section_title='Peal Participle Drill — Items 1–20')
 
 
 def build_bba_ch17_peal_participle_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch17', 'exercises', 'ch17-peal-participle-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch17-peal-participle-drill.pdf')
-    ex = BbaCh17PealParticipleDrillPDF(
-        title='BBA Chapter 17 — Peal Participle Drill',
-        subtitle='Peal Active and Passive Participles · Strong and Weak Roots · Daniel and Ezra',
+    return _build_exercise_pdf(
+        BbaCh17PealParticipleDrillPDF,
+        'BBA Chapter 17 — Peal Participle Drill',
+        'Peal Active and Passive Participles · Strong and Weak Roots · Daniel and Ezra',
+        ['aramaic', 'bba', 'ch17', 'exercises', 'ch17-peal-participle-drill'],
+        'ch17-peal-participle-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # BBA Ch18 — Peil and Ithpeel Stem Drill
@@ -11584,24 +11583,19 @@ class BbaCh18PassiveStemsDrillPDF(ExercisePDF):
             [19, 'יִתְחַסְּנוּן',     'Ithpeel',  'Imperfect 3mp',  'חסן',  'they will be strengthened / prevail'],
             [20, 'הִשְׁתְּכַחַת',     'Hithpeel', 'Perfect 2ms',    'שׁכח', 'you were found deficient (Dan. 5:27)'],
         ]
-        self.add_section_heading('Peil and Ithpeel Stem Drill — Items 1–20')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc,
+                                        section_title='Peil and Ithpeel Stem Drill — Items 1–20')
 
 
 def build_bba_ch18_passive_stems_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch18', 'exercises', 'ch18-passive-stems-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch18-passive-stems-drill.pdf')
-    ex = BbaCh18PassiveStemsDrillPDF(
-        title='BBA Chapter 18 — Peil and Ithpeel Stem Drill',
-        subtitle='Peil (Simple Passive) and Hithpeel/Ithpeel (Reflexive/Passive) · Daniel and Ezra',
+    return _build_exercise_pdf(
+        BbaCh18PassiveStemsDrillPDF,
+        'BBA Chapter 18 — Peil and Ithpeel Stem Drill',
+        'Peil (Simple Passive) and Hithpeel/Ithpeel (Reflexive/Passive) · Daniel and Ezra',
+        ['aramaic', 'bba', 'ch18', 'exercises', 'ch18-passive-stems-drill'],
+        'ch18-passive-stems-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class BbaCh19PaelStemDrillPDF(ExercisePDF):
@@ -11667,24 +11661,19 @@ class BbaCh19PaelStemDrillPDF(ExercisePDF):
             [19, 'מְקַטַּל',   'Participle (passive)', 'קטל', 'ms',           'being killed / the one killed'],
             [20, 'יְרַבֵּא',   'Imperfect',            'רבה', '3ms (III-he)', 'he will make great / exalt'],
         ]
-        self.add_section_heading('Pael Stem Drill — Items 1–20')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc,
+                                        section_title='Pael Stem Drill — Items 1–20')
 
 
 def build_bba_ch19_pael_stem_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch19', 'exercises', 'ch19-pael-stem-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch19-pael-stem-drill.pdf')
-    ex = BbaCh19PaelStemDrillPDF(
-        title='BBA Chapter 19 — Pael Stem Drill',
-        subtitle='Pael (D Stem — Intensive/Causative) · Daniel and Ezra',
+    return _build_exercise_pdf(
+        BbaCh19PaelStemDrillPDF,
+        'BBA Chapter 19 — Pael Stem Drill',
+        'Pael (D Stem — Intensive/Causative) · Daniel and Ezra',
+        ['aramaic', 'bba', 'ch19', 'exercises', 'ch19-pael-stem-drill'],
+        'ch19-pael-stem-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 # BBA Ch20 — Hithpaal / Ithpaal Stem Drill
@@ -11753,24 +11742,19 @@ class BbaCh20HithpaalDrillPDF(ExercisePDF):
             [19, 'אֶתְחַשַּׁב',       'Hithpaal',          'Imperfect',  'חשׁב',     '1cs',        'I will be reckoned / will consider'],
             [20, 'מִשְׁתַּכְּחָן',    'Hithpaal (metath.)', 'Participle', 'שׁכח',   'fp',         'being found (fp) / those (f) being found'],
         ]
-        self.add_section_heading('Hithpaal / Ithpaal Stem Drill — Items 1–20')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc,
+                                        section_title='Hithpaal / Ithpaal Stem Drill — Items 1–20')
 
 
 def build_bba_ch20_hithpaal_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch20', 'exercises', 'ch20-hithpaal-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch20-hithpaal-drill.pdf')
-    ex = BbaCh20HithpaalDrillPDF(
-        title='BBA Chapter 20 — Hithpaal / Ithpaal Stem Drill',
-        subtitle='Hithpaal / Ithpaal (Dt Stem — Reflexive/Passive of Pael) · Daniel and Ezra',
+    return _build_exercise_pdf(
+        BbaCh20HithpaalDrillPDF,
+        'BBA Chapter 20 — Hithpaal / Ithpaal Stem Drill',
+        'Hithpaal / Ithpaal (Dt Stem — Reflexive/Passive of Pael) · Daniel and Ezra',
+        ['aramaic', 'bba', 'ch20', 'exercises', 'ch20-hithpaal-drill'],
+        'ch20-hithpaal-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class BbaCh21HaphelStemDrillPDF(ExercisePDF):
@@ -11837,24 +11821,19 @@ class BbaCh21HaphelStemDrillPDF(ExercisePDF):
             [19, 'לְהַקְטָלָה',     'Infinitive',           'קטל',      'N/A',              'to cause to kill (model)'],
             [20, 'מְהַקְטֵל',       'Participle',           'קטל',      'ms',               'causing to kill (model)'],
         ]
-        self.add_section_heading('Haphel Stem Drill — Items 1–20')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc,
+                                        section_title='Haphel Stem Drill — Items 1–20')
 
 
 def build_bba_ch21_haphel_stem_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch21', 'exercises', 'ch21-haphel-stem-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch21-haphel-stem-drill.pdf')
-    ex = BbaCh21HaphelStemDrillPDF(
-        title='BBA Chapter 21 — Haphel Stem Drill',
-        subtitle='Haphel (H Stem — Causative) · Daniel and Ezra',
+    return _build_exercise_pdf(
+        BbaCh21HaphelStemDrillPDF,
+        'BBA Chapter 21 — Haphel Stem Drill',
+        'Haphel (H Stem — Causative) · Daniel and Ezra',
+        ['aramaic', 'bba', 'ch21', 'exercises', 'ch21-haphel-stem-drill'],
+        'ch21-haphel-stem-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 class BbaCh22CausativePassiveDrillPDF(ExercisePDF):
@@ -11924,24 +11903,19 @@ class BbaCh22CausativePassiveDrillPDF(ExercisePDF):
             [19, 'מְקַטֵּל',             'Pael',      'Participle', 'קטל',      'ms',                'killing intensively (model)'],
             [20, 'יְשֵׁיזִב',            'Shaphel',   'Imperfect',  'יזב',      '3ms',               'he will deliver / rescue'],
         ]
-        self.add_section_heading('Capstone Review Drill — All Nine Stems — Items 1–20')
-        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
-        self.add_section_heading('Answer Key')
-        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, heb_cols=hc,
+                                        section_title='Capstone Review Drill — All Nine Stems — Items 1–20')
 
 
 def build_bba_ch22_causative_passive_drill(out_dir: str = None) -> str:
-    if out_dir is None:
-        here = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
-                               'aramaic', 'bba', 'ch22', 'exercises', 'ch22-causative-passive-drill')
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, 'ch22-causative-passive-drill.pdf')
-    ex = BbaCh22CausativePassiveDrillPDF(
-        title='BBA Chapter 22 — Causative & Passive Stems: Capstone Review',
-        subtitle='All Nine Aramaic Stems · Daniel and Ezra · Capstone Drill',
+    return _build_exercise_pdf(
+        BbaCh22CausativePassiveDrillPDF,
+        'BBA Chapter 22 — Causative & Passive Stems: Capstone Review',
+        'All Nine Aramaic Stems · Daniel and Ezra · Capstone Drill',
+        ['aramaic', 'bba', 'ch22', 'exercises', 'ch22-causative-passive-drill'],
+        'ch22-causative-passive-drill.pdf',
+        out_dir,
     )
-    return ex.save(path)
 
 
 if __name__ == '__main__':
