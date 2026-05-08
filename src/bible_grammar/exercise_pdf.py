@@ -11358,6 +11358,87 @@ def build_bba_ch15_peal_imperative_drill(out_dir: str = None) -> str:
     return ex.save(path)
 
 
+# BBA Ch16 — Peal Infinitive Construct Drill
+class BbaCh16PealInfinitiveDrillPDF(ExercisePDF):
+    def _build(self):
+        self.add_instructions(
+            'For each numbered infinitive construct form drawn from Daniel or Ezra, '
+            'identify the Root (three root consonants, Peal perfect 3ms form), '
+            'the Prefix and its meaning '
+            '(le = purpose/complement "to"; ke = temporal "when/upon"; none = bare verbal noun), '
+            'and provide an English translation of the full infinitive phrase. '
+            'Forms cover strong roots, I-nun (nun retained), I-aleph (tsere prefix), '
+            'hollow II-waw (tsere + yod prefix), III-he (aleph-tsere ending), '
+            'and I-ayin (seghol prefix). '
+            'Items 18-20 are Haphel infinitives (le-ha- prefix) — a preview of Ch21.'
+        )
+        hdrs = ['#', 'Form', 'Root', 'Prefix', 'Translation']
+        cr = [0.04, 0.17, 0.14, 0.28, 0.37]
+        hc = [1]
+        rows = [
+            [1,  'לְמִכְתַּב',    '', '', ''],
+            [2,  'לְמֵאמַר',     '', '', ''],
+            [3,  'לְמֵיקַם',     '', '', ''],
+            [4,  'לְמִנְפַּל',    '', '', ''],
+            [5,  'כְּמִשְׁמַע',   '', '', ''],
+            [6,  'לְמֶעְבַּד',    '', '', ''],
+            [7,  'לְמִנְתַּן',    '', '', ''],
+            [8,  'לְמִבְנֵא',     '', '', ''],
+            [9,  'כְּמֵיקַם',     '', '', ''],
+            [10, 'לְמִסְגַּד',    '', '', ''],
+            [11, 'לְמִקְרַב',     '', '', ''],
+            [12, 'מִשְׁמַע',     '', '', ''],
+            [13, 'מִכְתַּב',     '', '', ''],
+            [14, 'לְמִשְׁלַח',    '', '', ''],
+            [15, 'כְּמִכְתַּב',   '', '', ''],
+            [16, 'לְמִנְפַּל',    '', '', ''],
+            [17, 'מֶעְבַּד',      '', '', ''],
+            [18, 'לְהַחֲוָיָה',   '', '', ''],
+            [19, 'לְהַשְׁנָיָה',  '', '', ''],
+            [20, 'לְהוֹדָעָה',   '', '', ''],
+        ]
+        ans = [
+            [1,  'לְמִכְתַּב',    'כתב',  'לְ — purpose/complement',         'to write / in order to write'],
+            [2,  'לְמֵאמַר',     'אמר',  'לְ — purpose; מֵ = I-aleph',       'to say / in order to say'],
+            [3,  'לְמֵיקַם',     'קום',  'לְ — purpose; מֵי = hollow',        'to arise / to stand up'],
+            [4,  'לְמִנְפַּל',    'נפל',  'לְ — purpose; nun retained (I-nun)', 'to fall (down)'],
+            [5,  'כְּמִשְׁמַע',   'שׁמע', 'כְּ — temporal ("when/upon")',       'when hearing / upon hearing'],
+            [6,  'לְמֶעְבַּד',    'עבד',  'לְ — purpose; מֶ = seghol (I-ayin)', 'to do / to make / to serve'],
+            [7,  'לְמִנְתַּן',    'נתן',  'לְ — purpose; nun retained (I-nun)', 'to give'],
+            [8,  'לְמִבְנֵא',     'בנה',  'לְ — purpose; ֵא ending = III-he',  'to build'],
+            [9,  'כְּמֵיקַם',     'קום',  'כְּ — temporal; מֵי = hollow',       'when arising / upon standing'],
+            [10, 'לְמִסְגַּד',    'סגד',  'לְ — purpose/complement',           'to bow down / to worship'],
+            [11, 'לְמִקְרַב',     'קרב',  'לְ — purpose/complement',           'to approach / to draw near'],
+            [12, 'מִשְׁמַע',     'שׁמע', 'none — bare infinitive',             'hearing / the act of hearing'],
+            [13, 'מִכְתַּב',     'כתב',  'none — bare infinitive',             'writing / the act of writing'],
+            [14, 'לְמִשְׁלַח',    'שׁלח', 'לְ — purpose/complement',           'to send'],
+            [15, 'כְּמִכְתַּב',   'כתב',  'כְּ — temporal ("when/upon")',       'when writing / upon writing'],
+            [16, 'לְמִנְפַּל',    'נפל',  'לְ — purpose; nun retained (I-nun)', 'to fall (down)'],
+            [17, 'מֶעְבַּד',      'עבד',  'none — bare; מֶ = seghol (I-ayin)', 'doing / making / the act of serving'],
+            [18, 'לְהַחֲוָיָה',   'חוה',  'לְהַ — Haphel inf. ("to show")',    'to show / to declare (Haphel)'],
+            [19, 'לְהַשְׁנָיָה',  'שׁנה', 'לְהַ — Haphel inf. ("to change")', 'to change / to alter (Haphel)'],
+            [20, 'לְהוֹדָעָה',   'ידע',  'לְהוֹ — Haphel inf. ("to inform")', 'to make known / to inform (Haphel)'],
+        ]
+        self.add_section_heading('Peal Infinitive Construct Drill — Items 1–20')
+        self.add_generic_table(hdrs, rows, col_ratios=cr, heb_cols=hc, show_answers=False)
+        self.add_section_heading('Answer Key')
+        self.add_generic_table(hdrs, ans, col_ratios=cr, heb_cols=hc, show_answers=True, answer_rows=ans)
+
+
+def build_bba_ch16_peal_infinitive_drill(out_dir: str = None) -> str:
+    if out_dir is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(here, '..', '..', 'output', 'lessons',
+                               'aramaic', 'bba', 'ch16', 'exercises', 'ch16-peal-infinitive-drill')
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, 'ch16-peal-infinitive-drill.pdf')
+    ex = BbaCh16PealInfinitiveDrillPDF(
+        title='BBA Chapter 16 — Peal Infinitive Construct Drill',
+        subtitle='Peal Infinitive Construct · Strong and Weak Roots · Daniel and Ezra',
+    )
+    return ex.save(path)
+
+
 if __name__ == '__main__':
     # Ch1–Ch23 exercises (new)
     builders_ch1_23 = [
@@ -11499,6 +11580,7 @@ if __name__ == '__main__':
         build_bba_ch13_peal_perfect_drill,
         build_bba_ch14_peal_imperfect_drill,
         build_bba_ch15_peal_imperative_drill,
+        build_bba_ch16_peal_infinitive_drill,
     ]
     for fn in bba_builders:
         try:
