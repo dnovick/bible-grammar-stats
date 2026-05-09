@@ -22,6 +22,7 @@
 
 | Notebook | What it shows |
 |---|---|
+| [GNT Verb Morphology](../../../../../notebooks/nt/verbs/nt_verbs.ipynb) | Imperfect tense profile; narrative vs. discourse |
 | [Genre Comparison](../../../../../notebooks/both/survey/genre_compare.ipynb) | Imperfect tense distribution in narrative vs epistolary genres |
 
 ---

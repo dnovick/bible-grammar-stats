@@ -22,6 +22,7 @@
 
 | Notebook | What it shows |
 |---|---|
+| [GNT Verb Morphology](../../../../../notebooks/nt/verbs/nt_verbs.ipynb) | Tense/voice/mood profiles — present tense in context |
 | [Genre Comparison](../../../../../notebooks/both/survey/genre_compare.ipynb) | Greek present tense distribution across Gospels / Pauline / General epistles |
 
 ---

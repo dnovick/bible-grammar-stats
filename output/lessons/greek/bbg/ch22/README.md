@@ -22,6 +22,7 @@
 
 | Notebook | What it shows |
 |---|---|
+| [GNT Verb Morphology](../../../../../notebooks/nt/verbs/nt_verbs.ipynb) | Aorist tense dominance; tense × voice; top lemmas |
 | [Genre Comparison](../../../../../notebooks/both/survey/genre_compare.ipynb) | Aorist distribution and voice; most common aorist roots by genre |
 
 ---

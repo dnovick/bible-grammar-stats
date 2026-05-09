@@ -51,6 +51,12 @@ the notebooks running in VS Code (5–10 minutes).
 
 ## New Testament (Greek)
 
+### Verb Morphology
+
+| Notebook | Description |
+|---|---|
+| [nt/verbs/nt_verbs.ipynb](nt/verbs/nt_verbs.ipynb) | GNT verb morphology: tense/voice/mood profiles, tense × voice crosstab, top lemmas by frequency, distribution across NT books, genre comparison (Gospels & Acts / Pauline / General & Rev) |
+
 ### Syntax & Roles
 
 | Notebook | Description |

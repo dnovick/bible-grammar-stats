@@ -16,6 +16,7 @@
 
 | Notebook | What it shows |
 |---|---|
+| [GNT Verb Morphology](../../../../../notebooks/nt/verbs/nt_verbs.ipynb) | Tense/voice/mood profiles, tense × voice crosstab, top lemmas, genre comparison |
 | [Hebrew & Greek Verb Stem Overview](../../../../../notebooks/ot/verbs/stem_overview.ipynb) | Comparative stem statistics; Greek tense×voice heatmap |
 
 ---

@@ -195,6 +195,18 @@ from .hithpael import (
     hithpael_semantic_chart, hithpael_top_roots_chart,
     hithpael_report,
 )
+from .nt_verb_profile import (
+    nt_verb_data, nt_verb_tense_profile, nt_verb_voice_profile, nt_verb_mood_profile,
+    nt_verb_tense_voice, nt_verb_tense_mood,
+    nt_verb_top_lemmas, nt_verb_lemma_tense,
+    nt_verb_book_distribution, nt_verb_genre_profile,
+    print_nt_verb_overview, print_nt_verb_tense, print_nt_verb_voice, print_nt_verb_mood,
+    print_nt_verb_tense_voice, print_nt_verb_top_lemmas,
+    print_nt_verb_genre_profile, print_nt_verb_book_distribution,
+    nt_verb_tense_chart, nt_verb_voice_chart, nt_verb_mood_chart,
+    nt_verb_genre_heatmap, nt_verb_book_chart, nt_verb_tense_voice_heatmap,
+    NT_BOOK_GROUPS, TENSE_ORDER, VOICE_ORDER, MOOD_ORDER,
+)
 from .speaker import (is_jesus_speaking, jesus_speaking_verse_set,
                       filter_to_jesus_speech, ALLOWLIST_VERSES)
 from .lexicon import lookup, search_gloss, lex_entry, lemma_index
