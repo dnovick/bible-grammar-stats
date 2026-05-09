@@ -22,6 +22,12 @@
 |---|---|
 | [exercises/ch6-construct-chain-drill/](exercises/ch6-construct-chain-drill/README.md) | 20-item construct chain drill — identify the construct form of the first noun and complete the chain, covering all four gender/number patterns |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Aramaic Nominal Morphology](../../../../../notebooks/ot/aramaic/aramaic_nominal.ipynb) | Construct state frequency; gender × state crosstab; top Aramaic nouns in construct |
+
 ---
 
 *Basics of Biblical Aramaic, Van Pelt*

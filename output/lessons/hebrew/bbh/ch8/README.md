@@ -18,6 +18,12 @@
 | [ch8-vocab-deck.txt](ch8-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (20 cards) |
 | [ch8-vocab-deck-fd.txt](ch8-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (20 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [OT Noun Morphology](../../../../../notebooks/ot/nouns/ot_nouns.ipynb) | Pronoun frequency by type (personal/demonstrative/interrogative) in the Hebrew OT corpus |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt*

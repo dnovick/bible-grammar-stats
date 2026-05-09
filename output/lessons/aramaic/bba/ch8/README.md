@@ -18,6 +18,12 @@
 |---|---|
 | [exercises/ch8-suffix-drill/](exercises/ch8-suffix-drill/README.md) | Pronominal suffix identification and translation drill |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Aramaic Nominal Morphology](../../../../../notebooks/ot/aramaic/aramaic_nominal.ipynb) | Pronoun type distribution; pronominal suffix frequency and patterns in Daniel/Ezra |
+
 ---
 
 *Basics of Biblical Aramaic, Van Pelt*

@@ -22,6 +22,12 @@
 |---|---|
 | [exercises/ch11-particle-drill/](exercises/ch11-particle-drill/README.md) | Particle and adverb identification drill from Daniel and Ezra |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Aramaic Nominal Morphology](../../../../../notebooks/ot/aramaic/aramaic_nominal.ipynb) | Complete word class distribution including adverbs/particles across Daniel and Ezra |
+
 ---
 
 *Basics of Biblical Aramaic, Van Pelt*

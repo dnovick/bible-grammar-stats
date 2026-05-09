@@ -22,6 +22,12 @@
 |---|---|
 | [exercises/ch4-noun-identification/](exercises/ch4-noun-identification/README.md) | 20-item noun identification drill — gender, number, state, and root/lexical form |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Aramaic Nominal Morphology](../../../../../notebooks/ot/aramaic/aramaic_nominal.ipynb) | Aramaic noun state distribution; absolute vs. determined vs. construct — Daniel and Ezra |
+
 ---
 
 *Basics of Biblical Aramaic, Van Pelt*

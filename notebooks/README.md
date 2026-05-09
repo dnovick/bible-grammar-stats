@@ -19,11 +19,18 @@ the notebooks running in VS Code (5–10 minutes).
 |---|---|
 | [ot/lexicon/hapax_legomena.ipynb](ot/lexicon/hapax_legomena.ipynb) | Hapax legomena — words occurring once in the biblical text: OT and NT hapax counts by book, deep dives into Job (most OT hapaxes) and Leviticus (cultic vocabulary), NT hapaxes in Revelation, filtering by part of speech, rare words (max_count=3) |
 
+### Noun Morphology
+
+| Notebook | Description |
+|---|---|
+| [ot/nouns/ot_nouns.ipynb](ot/nouns/ot_nouns.ipynb) | Hebrew OT noun morphology: state (absolute/construct), gender (masculine/feminine), number, top lemmas, construct chain analysis, definite article usage by genre, book distribution |
+
 ### Aramaic
 
 | Notebook | Description |
 |---|---|
 | [ot/aramaic/aramaic_overview.ipynb](ot/aramaic/aramaic_overview.ipynb) | Biblical Aramaic morphology: token distribution (Daniel/Ezra), verb stem profiles (Peal/Pael/Haphel/Peil/Hithpeel), conjugation distribution, stem×conjugation crosstab, top roots, Daniel vs. Ezra comparison |
+| [ot/aramaic/aramaic_nominal.ipynb](ot/aramaic/aramaic_nominal.ipynb) | Biblical Aramaic nominal system: noun state (absolute/construct/determined), gender/number, top noun lemmas, pronoun types, preposition frequency, Daniel vs. Ezra comparison |
 
 ### Verb Stems
 

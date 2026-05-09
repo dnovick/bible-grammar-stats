@@ -22,6 +22,12 @@
 |---|---|
 | [exercises/ch9-pronoun-drill/](exercises/ch9-pronoun-drill/README.md) | Pronoun identification and translation drill |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Aramaic Nominal Morphology](../../../../../notebooks/ot/aramaic/aramaic_nominal.ipynb) | Personal pronoun frequency; pronoun type breakdown (personal/demonstrative/interrogative) in Daniel/Ezra |
+
 ---
 
 *Basics of Biblical Aramaic, Van Pelt*

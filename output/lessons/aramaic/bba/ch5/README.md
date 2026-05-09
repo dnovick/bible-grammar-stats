@@ -22,6 +22,12 @@
 |---|---|
 | [exercises/ch5-determined-state-drill/](exercises/ch5-determined-state-drill/README.md) | 20-item drill — convert nouns between absolute and determined state across all four gender/number patterns |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Aramaic Nominal Morphology](../../../../../notebooks/ot/aramaic/aramaic_nominal.ipynb) | Determined state frequency vs. absolute/construct; Daniel vs. Ezra comparison; top nouns in each state |
+
 ---
 
 *Basics of Biblical Aramaic, Van Pelt*

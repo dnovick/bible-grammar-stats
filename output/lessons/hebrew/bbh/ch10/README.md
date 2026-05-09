@@ -22,6 +22,7 @@
 
 | Notebook | What it shows |
 |---|---|
+| [OT Noun Morphology](../../../../../notebooks/ot/nouns/ot_nouns.ipynb) | Top nouns in construct state, construct % by lemma, lemma × state crosstab across the OT |
 | [Collocation and Phrase Search](../../../../../notebooks/both/lexicon/collocation_and_phrase.ipynb) | Phrase search: find construct chains and prepositional phrases in the OT corpus |
 
 ---

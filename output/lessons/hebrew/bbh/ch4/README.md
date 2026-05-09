@@ -22,6 +22,7 @@
 
 | Notebook | What it shows |
 |---|---|
+| [OT Noun Morphology](../../../../../notebooks/ot/nouns/ot_nouns.ipynb) | Hebrew noun state (absolute/construct), gender, number, top lemmas, construct chains, article usage |
 | [Morphological Distribution of Nouns](../../../../../notebooks/both/lexicon/morph_distribution.ipynb) | Morphological distribution of Hebrew nouns across books (case, state, gender) |
 
 ---

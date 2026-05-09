@@ -18,6 +18,12 @@
 | [ch9-vocab-deck.txt](ch9-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (20 cards) |
 | [ch9-vocab-deck-fd.txt](ch9-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (20 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [OT Noun Morphology](../../../../../notebooks/ot/nouns/ot_nouns.ipynb) | Top noun lemmas showing which most commonly take pronominal suffixes (construct-heavy lemmas) |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt, Chapter 9*

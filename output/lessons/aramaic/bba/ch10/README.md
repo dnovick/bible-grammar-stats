@@ -22,6 +22,12 @@
 |---|---|
 | [exercises/ch10-adjective-number-drill/](exercises/ch10-adjective-number-drill/README.md) | Adjective identification and number parsing drill from Daniel and Ezra |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Aramaic Nominal Morphology](../../../../../notebooks/ot/aramaic/aramaic_nominal.ipynb) | Adjective token counts; word class distribution across Daniel/Ezra |
+
 ---
 
 *Basics of Biblical Aramaic, Van Pelt*

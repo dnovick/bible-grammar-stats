@@ -18,6 +18,12 @@
 | [ch5-vocab-deck.txt](ch5-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (19 cards) |
 | [ch5-vocab-deck-fd.txt](ch5-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (19 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [OT Noun Morphology](../../../../../notebooks/ot/nouns/ot_nouns.ipynb) | Definite article usage by genre; noun state and gender distribution across the OT |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt*

@@ -22,6 +22,12 @@
 |---|---|
 | [exercises/ch7-preposition-drill/](exercises/ch7-preposition-drill/README.md) | 20-item preposition identification and translation drill |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Aramaic Nominal Morphology](../../../../../notebooks/ot/aramaic/aramaic_nominal.ipynb) | Top Aramaic prepositions by frequency — לְ, בְּ, מִן, עַל distribution across Daniel and Ezra |
+
 ---
 
 *Basics of Biblical Aramaic, Van Pelt*
