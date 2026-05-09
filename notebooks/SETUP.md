@@ -76,20 +76,33 @@ the extension published by Microsoft.
 
 ---
 
-## Step 7 — Open a notebook and select the kernel
+## Step 7 — Register the venv as a Jupyter kernel
+
+With the venv still active (you should see `(.venv)` in your terminal),
+run:
+
+```bash
+python3 -m ipykernel install --user --name berean-bible-bots --display-name "Berean Bible Bots"
+```
+
+This registers the venv with Jupyter so VS Code can find it. It only
+needs to be done once.
+
+---
+
+## Step 8 — Open a notebook and select the kernel
 
 1. In the VS Code file explorer, navigate to `notebooks/` and open any
    `.ipynb` file (for example, `ot/verbs/qal.ipynb`).
 2. In the top-right corner of the notebook, click **Select Kernel**.
-3. Choose **Python Environments**, then select the `.venv` environment
-   (it will show the path ending in `.venv`).
+3. Choose **Jupyter Kernel**, then select **Berean Bible Bots**.
 
 VS Code will remember this kernel choice for future notebooks in the
 same workspace.
 
 ---
 
-## Step 8 — Run the notebook
+## Step 9 — Run the notebook
 
 Click **Run All** at the top of the notebook, or run cells one at a
 time with `Shift+Enter`.
@@ -122,9 +135,16 @@ each one covers.
 
 ## Troubleshooting
 
+**The kernel "Berean Bible Bots" doesn't appear in the kernel picker:**
+Make sure you ran the `ipykernel install` command in Step 7 with the
+venv active. After running it, click the kernel picker again — VS Code
+may need a moment to refresh. If it still doesn't appear, reload VS
+Code (`Cmd+Shift+P` → "Reload Window").
+
 **"Module not found" error when running a cell:**
-Make sure you selected the `.venv` kernel (Step 7), not the system
-Python. Click the kernel name in the top-right corner to change it.
+Make sure you selected the **Berean Bible Bots** kernel (Step 8), not
+the system Python. Click the kernel name in the top-right corner to
+change it.
 
 **The venv prompt disappeared / `(.venv)` is not showing:**
 Re-run the activation command from Step 4.
