@@ -49,8 +49,8 @@ _PREP_DISPLAY: dict[str, str] = {
 
 
 def _load_macula() -> pd.DataFrame:
-    from ..syntax_ot import load_syntax_ot
-    return load_syntax_ot()
+    from .._utils import load_ot_data
+    return load_ot_data()
 
 
 def _filter_book(df: pd.DataFrame, book: str, chapter: int | None = None) -> pd.DataFrame:

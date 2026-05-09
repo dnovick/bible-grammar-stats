@@ -50,6 +50,8 @@ from pathlib import Path
 import re
 import pandas as pd
 
+from ._utils import load_ot_data
+
 # Strong's numbers for divine / key figures — convenience constants
 GOD_OT = {'H0430', 'H3068', 'H0136', 'H0410'}   # Elohim, YHWH, Adonai, El
 GOD_NT = {'G2316'}                                # Theos
@@ -66,8 +68,7 @@ _CORPUS_MAP = {
 # ── Internal helpers ──────────────────────────────────────────────────────────
 
 def _load_ot() -> pd.DataFrame:
-    from .syntax_ot import load_syntax_ot
-    return load_syntax_ot()
+    return load_ot_data()
 
 
 def _load_nt() -> pd.DataFrame:

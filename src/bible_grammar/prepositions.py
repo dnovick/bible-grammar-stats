@@ -26,10 +26,7 @@ Print wrappers:
 import pandas as pd
 from typing import Optional
 
-from ._utils import nfc as _nfc, strip_diacritics as _strip_diacritics
-
-# Lazy-loaded syntax DataFrame
-_syntax_cache: Optional[pd.DataFrame] = None
+from ._utils import nfc as _nfc, strip_diacritics as _strip_diacritics, load_ot_data
 
 
 # Canonical book order
@@ -75,16 +72,7 @@ PREP_GLOSS = {
 
 
 def _df() -> pd.DataFrame:
-    global _syntax_cache
-    if _syntax_cache is None:
-        from .syntax_ot import load_syntax_ot
-        raw = load_syntax_ot()
-        # Normalize Hebrew combining character order so lemma equality works
-        # regardless of whether dagesh precedes or follows sheva in source data.
-        raw = raw.copy()
-        raw['lemma'] = raw['lemma'].apply(lambda x: _nfc(str(x)) if pd.notna(x) else x)
-        _syntax_cache = raw
-    return _syntax_cache
+    return load_ot_data()
 
 
 def _preps(book: Optional[str] = None,

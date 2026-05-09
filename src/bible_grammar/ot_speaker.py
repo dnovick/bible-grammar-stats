@@ -34,6 +34,8 @@ from __future__ import annotations
 from pathlib import Path
 import pandas as pd
 
+from ._utils import load_ot_data
+
 # Hebrew speech verbs by Strong's number (zero-padded, no prefix)
 SPEECH_VERB_STRONGS: set[str] = {
     '0559',  # אָמַר  — say
@@ -50,8 +52,7 @@ GOD_OT_SPEECH = {'H0430', 'H3068', 'H0136', 'H0410'}   # Elohim, YHWH, Adonai, E
 
 
 def _load_ot() -> pd.DataFrame:
-    from .syntax_ot import load_syntax_ot
-    return load_syntax_ot()
+    return load_ot_data()
 
 
 def _ot_id_to_info(df: pd.DataFrame) -> dict[str, dict]:

@@ -33,6 +33,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from ._utils import load_ot_data
+
 # ── Constants ─────────────────────────────────────────────────────────────────
 
 POETRY_BOOKS = ['Psa', 'Pro', 'Job', 'Sng', 'Lam', 'Ecc']
@@ -99,8 +101,7 @@ def _is_content_word(pos: str) -> bool:
 
 
 def _load_macula() -> pd.DataFrame:
-    from .syntax_ot import load_syntax_ot
-    return load_syntax_ot()
+    return load_ot_data()
 
 
 # ── Cola splitting ─────────────────────────────────────────────────────────────

@@ -31,7 +31,7 @@ from typing import Any, Callable
 
 import pandas as pd
 
-from ._utils import strip_diacritics as _strip
+from ._utils import strip_diacritics as _strip, load_ot_data
 
 
 # ── Default conjugation order (same for all Hebrew stems) ────────────────────
@@ -85,8 +85,7 @@ class StemAnalysis:
     # ── Internal helpers ──────────────────────────────────────────────────────
 
     def _load(self) -> pd.DataFrame:
-        from .syntax_ot import load_syntax_ot
-        df = load_syntax_ot()
+        df = load_ot_data().copy()
         df['_lem'] = df['lemma'].apply(_strip)
         return df
 

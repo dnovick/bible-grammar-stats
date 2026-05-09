@@ -3,6 +3,30 @@
 from __future__ import annotations
 import re
 import unicodedata
+from typing import Optional
+
+import pandas as pd
+
+_ot_cache: Optional[pd.DataFrame] = None
+
+
+def load_ot_data() -> pd.DataFrame:
+    """
+    Load the MACULA OT syntax DataFrame, NFC-normalizing the lemma column.
+
+    Wraps load_syntax_ot() (which caches the raw parquet load) with a
+    second module-level cache so the NFC pass runs at most once per process.
+    """
+    global _ot_cache
+    if _ot_cache is None:
+        from .syntax_ot import load_syntax_ot
+        raw = load_syntax_ot()
+        raw = raw.copy()
+        raw['lemma'] = raw['lemma'].apply(
+            lambda x: unicodedata.normalize('NFC', str(x)) if pd.notna(x) else x
+        )
+        _ot_cache = raw
+    return _ot_cache
 
 
 def strip_diacritics(text: str) -> str:
