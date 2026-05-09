@@ -35,6 +35,12 @@
 | [ch14-vocab-deck.txt](ch14-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (18 cards) |
 | [ch14-vocab-deck-fd.txt](ch14-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (18 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Qal Stem](../../../../../notebooks/ot/verbs/qal.ipynb) | Qal stem: root×conjugation heatmap showing which weak roots favor the Perfect |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt*
@@ -424,11 +430,3 @@ Geminate roots have **R2 = R3** (e.g., ס-ב-ב, ת-מ-מ). In the Qal Perfect:
 | [Morphology Flashcard Deck](ch14-morphology-deck.md) | ~40 cards across all eight weak classes; 1–2 roots per class. |
 | [Passage Exercise](exercises/ch14-passage-exercise/README.md) | Parse weak-root Qal Perfect verbs from a Torah passage; includes Weak Class column. |
 | [Weak-Form ID Drill](exercises/ch14-weak-form-id/README.md) | 40 forms across all eight classes — identify class, PGN, and root. |
-
----
-
-## Explore Further
-
-| Notebook | What it shows |
-|---|---|
-| [Qal Stem](../../../../../notebooks/ot/verbs/qal.ipynb) | Qal stem: root×conjugation heatmap showing which weak roots favor the Perfect |

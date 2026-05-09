@@ -18,6 +18,12 @@
 | [ch29-vocab-deck.txt](ch29-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (12 cards) |
 | [ch29-vocab-deck-fd.txt](ch29-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (12 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Hophal Stem](../../../../../notebooks/ot/verbs/hophal.ipynb) | Hophal stem: root×conjugation heatmap; weak root behavior in the causative-passive |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt, Chapter 29*
@@ -373,11 +379,3 @@ The following weak-root Hophal lemmas are among the most common in the OT. Frequ
 ---
 
 *Sources: MACULA Hebrew WLC (Clear Bible, CC BY 4.0) · BBH = Pratico & Van Pelt, Basics of Biblical Hebrew, 3rd ed.*
-
----
-
-## Explore Further
-
-| Notebook | What it shows |
-|---|---|
-| [Hophal Stem](../../../../../notebooks/ot/verbs/hophal.ipynb) | Hophal stem: root×conjugation heatmap; weak root behavior in the causative-passive |

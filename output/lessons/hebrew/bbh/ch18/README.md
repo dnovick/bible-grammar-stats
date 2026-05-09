@@ -28,6 +28,13 @@
 | [ch18-vocab-deck.txt](ch18-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (14 cards) |
 | [ch18-vocab-deck-fd.txt](ch18-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (14 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Qal Stem](../../../../../notebooks/ot/verbs/qal.ipynb) | Qal stem: imperative distribution by book and root |
+| [OT Speaker Attribution](../../../../../notebooks/ot/speakers/speaker_attribution.ipynb) | OT speaker attribution: find who issues imperatives in each book |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt*
@@ -248,12 +255,3 @@ Corpus: Genesis–Deuteronomy · 467 Qal Imperative tokens
 | תֵּן | נתן | 2ms | I-נ; both nuns drop |
 | אֱמֹר | אמר | 2ms | I-aleph; hateph |
 | שָׂא | נשא | 2ms | I-נ + I-aleph; very short |
-
----
-
-## Explore Further
-
-| Notebook | What it shows |
-|---|---|
-| [Qal Stem](../../../../../notebooks/ot/verbs/qal.ipynb) | Qal stem: imperative distribution by book and root |
-| [OT Speaker Attribution](../../../../../notebooks/ot/speakers/speaker_attribution.ipynb) | OT speaker attribution: find who issues imperatives in each book |

@@ -19,6 +19,13 @@
 | [ch23-vocab-deck.txt](ch23-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (13 cards) |
 | [ch23-vocab-deck-fd.txt](ch23-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (13 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Verbal Syntax](../../../../../notebooks/ot/syntax/verbal_syntax.ipynb) | Clause type profiles: disjunctive clauses, conditional clauses, relative clauses, aspect comparison |
+| [Syntactic Roles OT](../../../../../notebooks/ot/speakers/syntactic_roles_ot.ipynb) | Syntactic role search: who does what to whom in the OT |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt*
@@ -185,12 +192,3 @@ These particles signal the relationship between clauses and often signal a shift
 | Gen 1:4 | כִּי\-ט֖וֹב | Verbless | Predicate adj. כִּי clause; "that it was good" |
 | Gen 1:5 | וַיִּקְרָ֨א אֱלֹהִ֤ים׀ לָ/אוֹר֙ יוֹם֔ | Verbal | VSO; Wayyiqtol; object follows subject |
 | Gen 1:27 | בְּ/צֶ֥לֶם אֱלֹהִ֖ים בָּרָ֣א אֹת֑וֹ | Verbal — fronted PP | Prepositional phrase fronted for emphasis |
-
----
-
-## Explore Further
-
-| Notebook | What it shows |
-|---|---|
-| [Verbal Syntax](../../../../../notebooks/ot/syntax/verbal_syntax.ipynb) | Clause type profiles: disjunctive clauses, conditional clauses, relative clauses, aspect comparison |
-| [Syntactic Roles OT](../../../../../notebooks/ot/speakers/syntactic_roles_ot.ipynb) | Syntactic role search: who does what to whom in the OT |

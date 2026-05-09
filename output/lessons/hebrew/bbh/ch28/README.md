@@ -27,6 +27,12 @@
 | [ch28-vocab-deck.txt](ch28-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (12 cards) |
 | [ch28-vocab-deck-fd.txt](ch28-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (12 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Hophal Stem](../../../../../notebooks/ot/verbs/hophal.ipynb) | Hophal stem: complete morphological profile; legal formulas (מוּת יוּמַת), motion and speech |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt, Chapter 28*
@@ -256,11 +262,3 @@ Both the Hophal and Pual Participle take a מ prefix with a u-class vowel under 
 | What stem is the Hophal passive of? | **Hiphil** (causative active) |
 | Most common Hophal form by far? | **יוּמַת** — "shall be put to death" (99× OT) |
 | How to distinguish Hophal Ptc from Pual Ptc? | **Dagesh in R2:** Pual has it; Hophal does not |
-
----
-
-## Explore Further
-
-| Notebook | What it shows |
-|---|---|
-| [Hophal Stem](../../../../../notebooks/ot/verbs/hophal.ipynb) | Hophal stem: complete morphological profile; legal formulas (מוּת יוּמַת), motion and speech |

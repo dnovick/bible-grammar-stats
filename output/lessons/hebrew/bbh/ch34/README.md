@@ -18,6 +18,12 @@
 | [ch34-vocab-deck.txt](ch34-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (12 cards) |
 | [ch34-vocab-deck-fd.txt](ch34-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (12 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Hithpael Stem](../../../../../notebooks/ot/verbs/hithpael.ipynb) | Hithpael stem: complete morphological profile; reflexive, reciprocal, iterative categories |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt, Chapter 34*
@@ -286,11 +292,3 @@ When **R1 is an emphatic or related consonant**, the תְ of the Hithpael prefix
 | What stem is the Hithpael the reflexive of? | **Piel** (intensive-active) |
 | Where is the Piel covered? | **Chapter 30** (strong); Chapter 31 (weak) |
 | Where is Hithpael Weak covered? | **Chapter 35** |
-
----
-
-## Explore Further
-
-| Notebook | What it shows |
-|---|---|
-| [Hithpael Stem](../../../../../notebooks/ot/verbs/hithpael.ipynb) | Hithpael stem: complete morphological profile; reflexive, reciprocal, iterative categories |

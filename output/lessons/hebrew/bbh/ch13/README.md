@@ -28,6 +28,13 @@
 | [ch13-vocab-deck.txt](ch13-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (16 cards) |
 | [ch13-vocab-deck-fd.txt](ch13-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (16 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [ot/verbs/qal.ipynb](../../../../../notebooks/ot/verbs/qal.ipynb) | Qal stem notebook |
+| [both/survey/book_profiles.ipynb](../../../../../notebooks/both/survey/book_profiles.ipynb) | Per-book language profiles |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt*
@@ -269,5 +276,3 @@ Qal examples of Prophetic Perfect are most common in the Prophets.
 |---|---|
 | Anki (free flashcard app — Windows, Mac, iOS, Android) | [apps.ankiweb.net](https://apps.ankiweb.net) |
 | Morphology import file for this chapter | [ch13-morphology-deck.txt](ch13-morphology-deck.txt) |
-| Qal stem notebook | [ot/verbs/qal.ipynb](../../../../../notebooks/ot/verbs/qal.ipynb) |
-| Per-book language profiles | [both/survey/book_profiles.ipynb](../../../../../notebooks/both/survey/book_profiles.ipynb) |

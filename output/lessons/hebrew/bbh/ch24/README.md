@@ -29,6 +29,12 @@
 | [ch24-vocab-deck.txt](ch24-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (14 cards) |
 | [ch24-vocab-deck-fd.txt](ch24-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (14 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Niphal Stem](../../../../../notebooks/ot/verbs/niphal.ipynb) | Niphal stem: complete morphological profile, top roots, semantic categories (passive/reflexive/reciprocal) |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt*
@@ -375,11 +381,3 @@ These roots are rarely (or never) used in the Qal — the Niphal *is* their base
 ---
 
 *Sources: MACULA Hebrew WLC (Clear Bible, CC BY 4.0) · BBH = Pratico & Van Pelt, Basics of Biblical Hebrew, 3rd ed.*
-
----
-
-## Explore Further
-
-| Notebook | What it shows |
-|---|---|
-| [Niphal Stem](../../../../../notebooks/ot/verbs/niphal.ipynb) | Niphal stem: complete morphological profile, top roots, semantic categories (passive/reflexive/reciprocal) |

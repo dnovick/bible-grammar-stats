@@ -18,6 +18,12 @@
 | [ch12-vocab-deck.txt](ch12-vocab-deck.txt) | Anki import file (File → Import) |
 | [ch12-vocab-deck-fd.txt](ch12-vocab-deck-fd.txt) | Flashcards Deluxe import file |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [OT Verb Stem Overview](../../../../../notebooks/ot/verbs/stem_overview.ipynb) | OT verb stem totals and distribution across Torah, Prophets, and Writings |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt*
@@ -289,11 +295,3 @@ on which root consonant is "weak."
 *BBH Ch12 — Introduction to Hebrew Verbs*
 *Prerequisite: BBH Ch1–11 (Hebrew nominal system, vocabulary, and vowels)*
 *Followed by: Ch13 — Qal Perfect Strong Verbs*
-
----
-
-## Explore Further
-
-| Notebook | What it shows |
-|---|---|
-| [OT Verb Stem Overview](../../../../../notebooks/ot/verbs/stem_overview.ipynb) | OT verb stem totals and distribution across Torah, Prophets, and Writings |

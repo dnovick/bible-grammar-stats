@@ -28,6 +28,13 @@
 | [ch21-vocab-deck.txt](ch21-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (14 cards) |
 | [ch21-vocab-deck-fd.txt](ch21-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (14 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Qal Stem](../../../../../notebooks/ot/verbs/qal.ipynb) | Qal stem: infinitive absolute distribution and paronomastic usage |
+| [Verbal Syntax](../../../../../notebooks/ot/syntax/verbal_syntax.ipynb) | Infinitive usage patterns (construct vs. absolute) by book and genre |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt*
@@ -244,12 +251,3 @@ Corpus: Genesis–Deuteronomy · 149 Qal IA tokens
 | שׁ֣וֹב | שוב | Biconsonantal IA | "returning" | Manner use; paired IA |
 | פָּקֹ֨ד | פקד | Strong A IA | "surely visit/punish" | Legal/prophetic contexts |
 | גָּאֹ֖ל | גאל | Strong A IA | "surely redeem" | Leviticus legal formulas |
-
----
-
-## Explore Further
-
-| Notebook | What it shows |
-|---|---|
-| [Qal Stem](../../../../../notebooks/ot/verbs/qal.ipynb) | Qal stem: infinitive absolute distribution and paronomastic usage |
-| [Verbal Syntax](../../../../../notebooks/ot/syntax/verbal_syntax.ipynb) | Infinitive usage patterns (construct vs. absolute) by book and genre |

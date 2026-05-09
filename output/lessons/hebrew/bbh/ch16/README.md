@@ -35,6 +35,12 @@
 | [ch16-vocab-deck.txt](ch16-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (15 cards) |
 | [ch16-vocab-deck-fd.txt](ch16-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (15 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Qal Stem](../../../../../notebooks/ot/verbs/qal.ipynb) | Qal stem: root×conjugation heatmap showing weak root imperfect patterns |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt*
@@ -433,11 +439,3 @@ when the syllable structure allows it, and a distinctive vowel:
 | [Morphology Flashcard Deck](ch16-morphology-deck.md) | ~40 cards across all eight weak classes in the Imperfect. |
 | [Passage Exercise](exercises/ch16-passage-exercise/README.md) | Parse weak-root Qal Imperfect and Wayyiqtol forms from Genesis 1–22; includes Weak Class column. |
 | [Weak-Form ID Drill](exercises/ch16-weak-form-id/README.md) | 40 forms — identify class, PGN, and root; Part A by class, Part B mixed. |
-
----
-
-## Explore Further
-
-| Notebook | What it shows |
-|---|---|
-| [Qal Stem](../../../../../notebooks/ot/verbs/qal.ipynb) | Qal stem: root×conjugation heatmap showing weak root imperfect patterns |

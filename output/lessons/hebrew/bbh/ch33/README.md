@@ -18,6 +18,12 @@
 | [ch33-vocab-deck.txt](ch33-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (12 cards) |
 | [ch33-vocab-deck-fd.txt](ch33-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (12 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Pual Stem](../../../../../notebooks/ot/verbs/pual.ipynb) | Pual stem: root×conjugation heatmap; weak root behavior in the passive intensive |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt, Chapter 33*
@@ -472,11 +478,3 @@ prophetic literature.
 ---
 
 *Sources: MACULA Hebrew WLC (Clear Bible, CC BY 4.0) · BBH = Pratico & Van Pelt, Basics of Biblical Hebrew, 3rd ed.*
-
----
-
-## Explore Further
-
-| Notebook | What it shows |
-|---|---|
-| [Pual Stem](../../../../../notebooks/ot/verbs/pual.ipynb) | Pual stem: root×conjugation heatmap; weak root behavior in the passive intensive |

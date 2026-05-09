@@ -28,6 +28,13 @@
 | [ch17-vocab-deck.txt](ch17-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (14 cards) |
 | [ch17-vocab-deck-fd.txt](ch17-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (14 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Qal Stem](../../../../../notebooks/ot/verbs/qal.ipynb) | Qal stem: wayyiqtol is the single most common Qal form (~23% of all Qal tokens) |
+| [Verbal Syntax](../../../../../notebooks/ot/syntax/verbal_syntax.ipynb) | Wayyiqtol narrative chains and verb form profiles by genre |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt*
@@ -333,12 +340,3 @@ Based on MACULA Hebrew morphology data for Qal wayyiqtol:
 | וָאֶ | Wayyiqtol 1cs | וָאֶקְטֹל |
 | וְ + perfect pattern | Weqatal | וְשָׁמַרְתָּ |
 | וְיִ / וְתִ (no dagesh in prefix) | Waw + Jussive or Imperfect | וְיִשְׁמֹר (purpose clause) |
-
----
-
-## Explore Further
-
-| Notebook | What it shows |
-|---|---|
-| [Qal Stem](../../../../../notebooks/ot/verbs/qal.ipynb) | Qal stem: wayyiqtol is the single most common Qal form (~23% of all Qal tokens) |
-| [Verbal Syntax](../../../../../notebooks/ot/syntax/verbal_syntax.ipynb) | Wayyiqtol narrative chains and verb form profiles by genre |

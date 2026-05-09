@@ -18,6 +18,12 @@
 | [ch6-vocab-deck.txt](ch6-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (19 cards) |
 | [ch6-vocab-deck-fd.txt](ch6-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (19 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Hebrew Prepositions](../../../../../notebooks/ot/syntax/prepositions.ipynb) | Hebrew preposition frequency and infinitive-construct governing analysis |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt*
@@ -238,11 +244,3 @@ Prepositions are among the most frequent items in the Hebrew OT. The figures bel
 | Resource | Description |
 |---|---|
 | [Preposition Parsing Drill](exercises/ch6-preposition-parsing/README.md) | 25 Hebrew prepositional phrases — identify the preposition, base form, vowel change and reason, object, and translation. Answer key included. |
-
----
-
-## Explore Further
-
-| Notebook | What it shows |
-|---|---|
-| [Hebrew Prepositions](../../../../../notebooks/ot/syntax/prepositions.ipynb) | Hebrew preposition frequency and infinitive-construct governing analysis |

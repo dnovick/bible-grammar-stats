@@ -28,6 +28,14 @@
 | [ch20-vocab-deck.txt](ch20-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (15 cards) |
 | [ch20-vocab-deck-fd.txt](ch20-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (15 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Qal Stem](../../../../../notebooks/ot/verbs/qal.ipynb) | Qal stem: infinitive construct distribution and top roots |
+| [Verbal Syntax](../../../../../notebooks/ot/syntax/verbal_syntax.ipynb) | Infinitive construct usage and governing preposition analysis |
+| [Hebrew Prepositions](../../../../../notebooks/ot/syntax/prepositions.ipynb) | Governing prepositions on infinitive constructs (לְ, בְּ, כְּ, מִן) |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt*
@@ -246,13 +254,3 @@ Corpus: Genesis–Deuteronomy · ~1,081 Qal IC tokens (including connector morph
 | לָ/דַ֥עַת | ידע | I-י | "to know" | I-י + dagesh in ד |
 | בְּ/שָׁמְר/וֹ | שמר | Strong | "when he kept" | בְּ + IC + 3ms subject suffix |
 | כִּ/שְׁמֹ֣עַ | שמע | B-class | "when he heard" | כְּ + IC temporal |
-
----
-
-## Explore Further
-
-| Notebook | What it shows |
-|---|---|
-| [Qal Stem](../../../../../notebooks/ot/verbs/qal.ipynb) | Qal stem: infinitive construct distribution and top roots |
-| [Verbal Syntax](../../../../../notebooks/ot/syntax/verbal_syntax.ipynb) | Infinitive construct usage and governing preposition analysis |
-| [Hebrew Prepositions](../../../../../notebooks/ot/syntax/prepositions.ipynb) | Governing prepositions on infinitive constructs (לְ, בְּ, כְּ, מִן) |

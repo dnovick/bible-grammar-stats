@@ -35,6 +35,12 @@
 | [ch25-vocab-deck.txt](ch25-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (14 cards) |
 | [ch25-vocab-deck-fd.txt](ch25-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (14 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Niphal Stem](../../../../../notebooks/ot/verbs/niphal.ipynb) | Niphal stem: root×conjugation heatmap showing weak root patterns |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt*
@@ -406,11 +412,3 @@ Torah-frequency counts (Genesis–Deuteronomy) for the most common Niphal lemmas
 | [Morphology Flashcard Deck](ch25-morphology-deck.md) | 40 cards across all eight weak classes. Import the `.txt` file into Anki for spaced-repetition drilling. |
 | [Passage Exercise](exercises/ch25-passage-exercise/README.md) | "Spot the Niphal" — parsing exercise from Gen 3, 6, and 21 with weak-root emphasis. Includes weak-class identification column. |
 | [Weak-Form Identification Drill](exercises/ch25-weak-form-id/README.md) | 40 forms across all eight classes in two parts: by class, then mixed. |
-
----
-
-## Explore Further
-
-| Notebook | What it shows |
-|---|---|
-| [Niphal Stem](../../../../../notebooks/ot/verbs/niphal.ipynb) | Niphal stem: root×conjugation heatmap showing weak root patterns |

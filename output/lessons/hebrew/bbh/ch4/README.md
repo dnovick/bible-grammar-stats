@@ -18,6 +18,12 @@
 | [ch4-vocab-deck.txt](ch4-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (20 cards) |
 | [ch4-vocab-deck-fd.txt](ch4-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (20 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Morphological Distribution of Nouns](../../../../../notebooks/both/lexicon/morph_distribution.ipynb) | Morphological distribution of Hebrew nouns across books (case, state, gender) |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt*
@@ -330,11 +336,3 @@ The following are the twenty most frequently occurring Hebrew nouns in the Old T
 | Resource | Description |
 |---|---|
 | [Noun Parsing Drill](exercises/ch4-noun-parsing/README.md) | 25-item parsing drill — identify gender, number, state, lexical form, and gloss for a range of noun forms including segolates, duals, and irregular plurals. |
-
----
-
-## Explore Further
-
-| Notebook | What it shows |
-|---|---|
-| [Morphological Distribution of Nouns](../../../../../notebooks/both/lexicon/morph_distribution.ipynb) | Morphological distribution of Hebrew nouns across books (case, state, gender) |

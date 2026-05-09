@@ -27,6 +27,12 @@
 | [ch30-vocab-deck.txt](ch30-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (12 cards) |
 | [ch30-vocab-deck-fd.txt](ch30-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (12 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Piel Stem](../../../../../notebooks/ot/verbs/piel.ipynb) | Piel stem: complete morphological profile, intensive/factitive/declarative categories |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt, Chapter 30*
@@ -274,11 +280,3 @@ These roots appear almost exclusively in the Piel — there is no meaningful Qal
 | Is the Piel Participle active or passive? | **Active** — מְדַבֵּר "speaking" |
 | What form is Piel Inf. Construct identical to? | The **Piel Imperative 2ms** — context and prepositions distinguish them |
 | Where is the Pual (passive of Piel) covered? | **Chapter 32** |
-
----
-
-## Explore Further
-
-| Notebook | What it shows |
-|---|---|
-| [Piel Stem](../../../../../notebooks/ot/verbs/piel.ipynb) | Piel stem: complete morphological profile, intensive/factitive/declarative categories |

@@ -18,6 +18,12 @@
 | [ch35-vocab-deck.txt](ch35-vocab-deck.txt) | Anki import | Vocabulary deck — tab-separated, ready for Anki File → Import (12 cards) |
 | [ch35-vocab-deck-fd.txt](ch35-vocab-deck-fd.txt) | Flashcards Deluxe | Vocabulary deck — tab-separated, ready for Flashcards Deluxe import (12 cards) |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Hithpael Stem](../../../../../notebooks/ot/verbs/hithpael.ipynb) | Hithpael stem: root×conjugation heatmap; weak root behavior in the reflexive-intensive |
+
 ---
 
 *Basics of Biblical Hebrew, Pratico & Van Pelt, Chapter 35*
@@ -455,11 +461,3 @@ represent Hithpael tokens only.
 ---
 
 *Sources: MACULA Hebrew WLC (Clear Bible, CC BY 4.0) · BBH = Pratico & Van Pelt, Basics of Biblical Hebrew, 3rd ed.*
-
----
-
-## Explore Further
-
-| Notebook | What it shows |
-|---|---|
-| [Hithpael Stem](../../../../../notebooks/ot/verbs/hithpael.ipynb) | Hithpael stem: root×conjugation heatmap; weak root behavior in the reflexive-intensive |
