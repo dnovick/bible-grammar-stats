@@ -6,6 +6,9 @@ verb morphology, syntactic role search, speaker attribution, poetry analysis,
 lexicon lookups, intertextuality, cross-testament trajectories, and more —
 all backed by the MACULA Hebrew WLC and MACULA Greek Nestle1904 syntax trees.
 
+**New here?** See [SETUP.md](SETUP.md) for step-by-step instructions to get
+the notebooks running in VS Code (5–10 minutes).
+
 ---
 
 ## Old Testament (Hebrew)
