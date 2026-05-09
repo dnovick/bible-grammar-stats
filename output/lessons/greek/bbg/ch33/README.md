@@ -22,6 +22,7 @@
 
 | Notebook | What it shows |
 |---|---|
+| [NT Mood Usage](../../../../../notebooks/nt/syntax/mood_usage.ipynb) | Imperative distribution, present vs. aorist aspect, tense × person breakdown, genre comparison |
 | [Concordance](../../../../../notebooks/both/lexicon/concordance.ipynb) | Find all imperatives of any NT verb |
 
 ---

@@ -22,6 +22,7 @@
 
 | Notebook | What it shows |
 |---|---|
+| [NT Mood Usage](../../../../../notebooks/nt/syntax/mood_usage.ipynb) | Infinitive distribution, construction types (complementary/articular/prepositional), genre comparison |
 | [Concordance](../../../../../notebooks/both/lexicon/concordance.ipynb) | Find all infinitive forms; collocations with key infinitive complements |
 
 ---
