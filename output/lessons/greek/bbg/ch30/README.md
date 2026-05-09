@@ -22,6 +22,7 @@
 
 | Notebook | What it shows |
 |---|---|
+| [Greek Participles](../../../../../notebooks/nt/syntax/participles.ipynb) | Perfect participle count and top lemmas; genitive absolute distribution |
 | [Genre Comparison](../../../../../notebooks/both/survey/genre_compare.ipynb) | Perfect participle and genitive absolute distribution by genre |
 
 ---

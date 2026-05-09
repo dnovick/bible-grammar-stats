@@ -69,6 +69,7 @@ the notebooks running in VS Code (5–10 minutes).
 |---|---|
 | [nt/syntax/syntactic_roles_nt.ipynb](nt/syntax/syntactic_roles_nt.ipynb) | NT syntactic roles: loading NT syntax data (load_syntax), Jesus speaking verses (MACULA + allowlists), what Theos does in NT, what Jesus does in Gospels, object/argument search, syntactic role charts |
 | [nt/syntax/prepositions.ipynb](nt/syntax/prepositions.ipynb) | Greek preposition analysis: preposition distribution in the NT, governing constructions |
+| [nt/syntax/participles.ipynb](nt/syntax/participles.ipynb) | Greek participle usage: tense/voice profiles, tense × voice crosstab, syntactic role (adverbial/adjectival/substantival), genitive absolutes, perfect participles, genre comparison |
 
 ### Discourse
 

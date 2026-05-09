@@ -22,6 +22,7 @@
 
 | Notebook | What it shows |
 |---|---|
+| [Greek Participles](../../../../../notebooks/nt/syntax/participles.ipynb) | Adjectival vs adverbial role profile; substantival participles (ὁ πιστεύων) |
 | [Genre Comparison](../../../../../notebooks/both/survey/genre_compare.ipynb) | Adjectival vs adverbial participle rates by genre |
 
 ---

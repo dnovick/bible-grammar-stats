@@ -195,6 +195,18 @@ from .hithpael import (
     hithpael_semantic_chart, hithpael_top_roots_chart,
     hithpael_report,
 )
+from .nt_participles import (
+    nt_participle_data, nt_participle_tense_profile, nt_participle_voice_profile,
+    nt_participle_tense_voice, nt_participle_role_profile,
+    nt_participle_top_lemmas, nt_participle_book_distribution, nt_participle_genre_profile,
+    nt_genitive_absolutes, nt_perfect_participles,
+    print_nt_participle_overview, print_nt_participle_tense, print_nt_participle_voice,
+    print_nt_participle_tense_voice, print_nt_participle_role,
+    print_nt_participle_top_lemmas, print_nt_participle_genre_profile,
+    print_nt_genitive_absolutes, print_nt_perfect_participles,
+    print_nt_participle_book_distribution,
+    nt_participle_tense_chart, nt_participle_genre_heatmap, nt_participle_book_chart,
+)
 from .nt_discourse import (
     nt_particle_frequency, nt_particle_by_book, nt_particle_genre_profile,
     nt_hina_profile, nt_hoti_profile,

@@ -22,6 +22,7 @@
 
 | Notebook | What it shows |
 |---|---|
+| [Greek Participles](../../../../../notebooks/nt/syntax/participles.ipynb) | Aorist participle dominance; temporal relationship (aorist = antecedent action) |
 | [Genre Comparison](../../../../../notebooks/both/survey/genre_compare.ipynb) | Aorist participle distribution and temporal relationship to main verb |
 
 ---
