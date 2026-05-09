@@ -14,6 +14,7 @@ all backed by the MACULA Hebrew WLC and MACULA Greek Nestle1904 syntax trees.
 
 | Notebook | Description |
 |---|---|
+| [ot/verbs/qal.ipynb](ot/verbs/qal.ipynb) | Qal (קַל) — base stem (~68% of all OT verbs): conjugation profile (incl. participle passive), top roots, root×conjugation heatmap, book distribution, stem comparison, dominant roots, semantic categories, full report |
 | [ot/verbs/hiphil.ipynb](ot/verbs/hiphil.ipynb) | Hiphil (הִפְעִיל) — causative-active stem: conjugation profile, top roots, root×conjugation heatmap, book distribution, stem comparison, dominant roots, semantic categories, full report |
 | [ot/verbs/niphal.ipynb](ot/verbs/niphal.ipynb) | Niphal (נִפְעַל) — reflexive/passive stem: same nine-section structure as Hiphil; covers passive, reflexive, reciprocal, middle/stative, and tolerative functions |
 | [ot/verbs/piel.ipynb](ot/verbs/piel.ipynb) | Piel (פִּעֵל) — intensive-active stem: intensive, factitive, declarative, denominative functions; top root דִּבֵּר (speak) dominates |

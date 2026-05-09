@@ -97,6 +97,20 @@ from .verbal_syntax import (
     discourse_particles, print_discourse_particles,
     discourse_particle_summary, print_particle_summary,
 )
+from .qal import (
+    qal_data, qal_conjugation_profile, qal_top_roots,
+    qal_root_conjugation, qal_book_distribution,
+    qal_stem_comparison, qal_dominant_roots,
+    qal_semantic_categories,
+    print_qal_overview, print_qal_conjugation,
+    print_qal_top_roots, print_qal_root_conjugation,
+    print_qal_book_distribution, print_qal_dominant_roots,
+    print_qal_semantic_categories,
+    qal_conjugation_chart, qal_book_chart,
+    qal_stem_chart, qal_root_heatmap,
+    qal_semantic_chart, qal_top_roots_chart,
+    qal_report,
+)
 from .hiphil import (
     hiphil_data, hiphil_conjugation_profile, hiphil_top_roots,
     hiphil_root_conjugation, hiphil_book_distribution,
