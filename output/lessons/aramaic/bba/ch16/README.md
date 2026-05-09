@@ -25,6 +25,12 @@
 |---|---|
 | [exercises/ch16-peal-infinitive-drill/](exercises/ch16-peal-infinitive-drill/README.md) | 20-item Peal infinitive construct identification and translation drill |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Biblical Aramaic Overview](../../../../../notebooks/ot/aramaic/aramaic_overview.ipynb) | Infinitive construct frequency; Peal infinitives in Daniel/Ezra |
+
 ---
 
 ## 1. Introduction — The Peal Infinitive Construct

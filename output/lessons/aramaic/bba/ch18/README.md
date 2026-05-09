@@ -17,6 +17,12 @@
 |---|---|
 | [exercises/ch18-passive-stems-drill/](exercises/ch18-passive-stems-drill/README.md) | 20-item Peil and Ithpeel stem identification drill |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Biblical Aramaic Overview](../../../../../notebooks/ot/aramaic/aramaic_overview.ipynb) | Peil, Hithpeel, Ithpeel stem profiles and top roots |
+
 ---
 
 ## 1. Introduction — Passive and Reflexive Stems in Biblical Aramaic

@@ -17,6 +17,12 @@
 |---|---|
 | [exercises/ch20-hithpaal-drill/](exercises/ch20-hithpaal-drill/README.md) | 20-item Hithpaal/Ithpaal stem parsing drill |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Biblical Aramaic Overview](../../../../../notebooks/ot/aramaic/aramaic_overview.ipynb) | Hithpaal and Ithpaal stem profiles |
+
 ---
 
 ## 1. Introduction — The Hithpaal as the Dt Stem

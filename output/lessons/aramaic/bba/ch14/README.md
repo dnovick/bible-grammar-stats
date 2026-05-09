@@ -25,6 +25,12 @@
 |---|---|
 | [exercises/ch14-peal-imperfect-drill/](exercises/ch14-peal-imperfect-drill/README.md) | 20-item Peal imperfect parsing drill |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Biblical Aramaic Overview](../../../../../notebooks/ot/aramaic/aramaic_overview.ipynb) | Peal imperfect profile; yiqtol distribution by root |
+
 ---
 
 ## 1. Introduction — The Peal Imperfect

@@ -25,6 +25,12 @@
 |---|---|
 | [exercises/ch17-peal-participle-drill/](exercises/ch17-peal-participle-drill/README.md) | 20-item Peal participle identification and translation drill — active/passive, root, G/N, translation |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Biblical Aramaic Overview](../../../../../notebooks/ot/aramaic/aramaic_overview.ipynb) | Participle distribution; active vs. passive participle counts |
+
 ---
 
 ## 1. Introduction — The Peal Participle

@@ -195,6 +195,15 @@ from .hithpael import (
     hithpael_semantic_chart, hithpael_top_roots_chart,
     hithpael_report,
 )
+from .aramaic_profile import (
+    aramaic_data, aramaic_verb_data,
+    aramaic_stem_profile, aramaic_conj_profile, aramaic_stem_conj,
+    aramaic_top_roots, aramaic_book_distribution, aramaic_stem_by_book,
+    print_aramaic_overview, print_aramaic_stem_profile, print_aramaic_conj_profile,
+    print_aramaic_stem_conj, print_aramaic_top_roots, print_aramaic_book_distribution,
+    aramaic_stem_chart, aramaic_conj_chart, aramaic_stem_book_chart,
+    STEM_ORDER as ARAMAIC_STEM_ORDER, CONJ_ORDER as ARAMAIC_CONJ_ORDER,
+)
 from .nt_participles import (
     nt_participle_data, nt_participle_tense_profile, nt_participle_voice_profile,
     nt_participle_tense_voice, nt_participle_role_profile,

@@ -17,6 +17,12 @@
 |---|---|
 | [exercises/ch22-causative-passive-drill/](exercises/ch22-causative-passive-drill/README.md) | 20-item capstone review drill — all 9 Aramaic stems |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Biblical Aramaic Overview](../../../../../notebooks/ot/aramaic/aramaic_overview.ipynb) | Aphel, Shaphel, and Hophal stem profiles |
+
 ---
 
 ## 1. Introduction — Completing the Aramaic Stem System

@@ -17,6 +17,12 @@
 |---|---|
 | [exercises/ch19-pael-stem-drill/](exercises/ch19-pael-stem-drill/README.md) | 20-item Pael stem parsing drill |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Biblical Aramaic Overview](../../../../../notebooks/ot/aramaic/aramaic_overview.ipynb) | Pael stem profile; top roots and conjugation distribution |
+
 ---
 
 ## 1. Introduction — The Pael as the D Stem

@@ -25,6 +25,12 @@
 |---|---|
 | [exercises/ch13-peal-perfect-drill/](exercises/ch13-peal-perfect-drill/README.md) | 20-item Peal perfect parsing drill |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Biblical Aramaic Overview](../../../../../notebooks/ot/aramaic/aramaic_overview.ipynb) | Peal stem profile; qatal conjugation distribution; top Peal roots |
+
 ---
 
 ## 1. Introduction — The Peal Perfect

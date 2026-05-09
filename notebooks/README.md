@@ -19,6 +19,12 @@ the notebooks running in VS Code (5–10 minutes).
 |---|---|
 | [ot/lexicon/hapax_legomena.ipynb](ot/lexicon/hapax_legomena.ipynb) | Hapax legomena — words occurring once in the biblical text: OT and NT hapax counts by book, deep dives into Job (most OT hapaxes) and Leviticus (cultic vocabulary), NT hapaxes in Revelation, filtering by part of speech, rare words (max_count=3) |
 
+### Aramaic
+
+| Notebook | Description |
+|---|---|
+| [ot/aramaic/aramaic_overview.ipynb](ot/aramaic/aramaic_overview.ipynb) | Biblical Aramaic morphology: token distribution (Daniel/Ezra), verb stem profiles (Peal/Pael/Haphel/Peil/Hithpeel), conjugation distribution, stem×conjugation crosstab, top roots, Daniel vs. Ezra comparison |
+
 ### Verb Stems
 
 | Notebook | Description |

@@ -25,6 +25,12 @@
 |---|---|
 | [exercises/ch15-peal-imperative-drill/](exercises/ch15-peal-imperative-drill/README.md) | 20-item Peal imperative parsing drill |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Biblical Aramaic Overview](../../../../../notebooks/ot/aramaic/aramaic_overview.ipynb) | Peal imperative count and top roots |
+
 ---
 
 ## 1. Introduction — The Peal Imperative

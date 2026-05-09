@@ -17,6 +17,12 @@
 |---|---|
 | [exercises/ch21-haphel-stem-drill/](exercises/ch21-haphel-stem-drill/README.md) | 20-item Haphel stem parsing drill |
 
+### Notebooks
+
+| Notebook | What it shows |
+|---|---|
+| [Biblical Aramaic Overview](../../../../../notebooks/ot/aramaic/aramaic_overview.ipynb) | Haphel stem profile; causative roots in Daniel/Ezra |
+
 ---
 
 ## 1. Introduction — The Haphel as the H Stem
