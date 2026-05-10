@@ -293,6 +293,16 @@ from .ot_numbers import (
     ot_number_frequency_chart, ot_number_genre_chart, ot_number_book_chart,
     CARDINALS_1_10,
 )
+from .nt_louw_nida import (
+    nt_ln_data, nt_ln_subdomain_frequency, nt_ln_top_lemmas,
+    nt_ln_book_distribution, nt_ln_genre_profile,
+    nt_ln_domain_breakdown, nt_ln_comparison,
+    print_nt_ln_overview, print_nt_ln_subdomain_frequency,
+    print_nt_ln_top_lemmas, print_nt_ln_book_distribution,
+    print_nt_ln_domain_breakdown, print_nt_ln_comparison,
+    nt_ln_subdomain_chart, nt_ln_book_chart, nt_ln_genre_heatmap,
+    LN_DOMAIN_NAMES,
+)
 from .nt_coreference import (
     nt_referent_data, nt_referent_frequency, nt_entity_chain,
     nt_pronoun_referents, nt_book_entity_density, nt_entity_chapter_distribution,
@@ -319,6 +329,15 @@ from .ot_semantic_domains import (
     ot_domain_frequency_chart, ot_domain_book_chart,
     ot_domain_genre_chart, ot_domain_heatmap,
     COREDOMAIN_NAMES, LEXDOMAIN_TOP, THEOLOGY_COREDOMAINS,
+)
+from .ot_discourse import (
+    ot_discourse_wayyiqtol_density, ot_discourse_speech_density,
+    ot_discourse_lexical_diversity, ot_discourse_peak_score,
+    ot_discourse_episode_boundaries, ot_discourse_narrative_profile,
+    print_ot_discourse_overview, print_ot_wayyiqtol_density,
+    print_ot_speech_density, print_ot_peak_score, print_ot_episode_boundaries,
+    ot_discourse_density_chart, ot_discourse_peak_chart,
+    SCENE_SETTING_LEMMAS,
 )
 from .nt_demonstratives import (
     nt_demo_data, nt_demo_frequency, nt_demo_case_profile,
