@@ -38,6 +38,12 @@ the notebooks running in VS Code (5–10 minutes).
 | [ot/aramaic/aramaic_overview.ipynb](ot/aramaic/aramaic_overview.ipynb) | Biblical Aramaic morphology: token distribution (Daniel/Ezra), verb stem profiles (Peal/Pael/Haphel/Peil/Hithpeel), conjugation distribution, stem×conjugation crosstab, top roots, Daniel vs. Ezra comparison |
 | [ot/aramaic/aramaic_nominal.ipynb](ot/aramaic/aramaic_nominal.ipynb) | Biblical Aramaic nominal system: noun state (absolute/construct/determined), gender/number, top noun lemmas, pronoun types, preposition frequency, Daniel vs. Ezra comparison |
 
+### Semantic Domains
+
+| Notebook | Description |
+|---|---|
+| [ot/semantic_domains/ot_semantic_domains.ipynb](ot/semantic_domains/ot_semantic_domains.ipynb) | Hebrew OT semantic domain analysis (MARBLE SDBH): coredomain coverage, top-25 categories, 12 theological clusters (Covenant/Worship/Divinity/etc.), vocabulary per domain, book/genre distribution, book-comparison heatmap |
+
 ### Verb Stems
 
 | Notebook | Description |
@@ -58,6 +64,7 @@ the notebooks running in VS Code (5–10 minutes).
 | [ot/syntax/verbal_syntax.ipynb](ot/syntax/verbal_syntax.ipynb) | Hebrew verbal syntax: verb form profiles (wayyiqtol/qatal/yiqtol), wayyiqtol narrative chains, infinitive usage, clause type profiles, stem distribution, disjunctive clauses, conditional clauses, relative clauses, aspect comparison across genres |
 | [ot/syntax/poetry.ipynb](ot/syntax/poetry.ipynb) | Hebrew poetry analysis: cola splitting (Etnahta-based), parallel word pairs, parallelism type statistics (synonymous/antithetic/synthetic), chiasm detection, acrostic detection (Lamentations, Psalms), meter analysis (qinah 3+2) |
 | [ot/syntax/prepositions.ipynb](ot/syntax/prepositions.ipynb) | Hebrew preposition analysis: governing prepositions on infinitive constructs, preposition distribution by book |
+| [ot/syntax/predicate_argument.ipynb](ot/syntax/predicate_argument.ipynb) | Predicate-argument structure (semantic role labeling): what God/YHWH does (A0 agent), what is created/given/judged (A1 patient), theological verb profiles (בָּרָא/נָתַן/שָׁפַט), most common agent–verb–patient triples by book |
 
 ### Speaker & Role Analysis
 
@@ -91,6 +98,7 @@ the notebooks running in VS Code (5–10 minutes).
 | [nt/syntax/participles.ipynb](nt/syntax/participles.ipynb) | Greek participle usage: tense/voice profiles, tense × voice crosstab, syntactic role (adverbial/adjectival/substantival), genitive absolutes, perfect participles, genre comparison |
 | [nt/syntax/mood_usage.ipynb](nt/syntax/mood_usage.ipynb) | GNT mood distribution: subjunctive constructions (purpose/conditional/hortatory), infinitive constructions (complementary/articular/prepositional), imperative tense comparison, mood genre heatmap |
 | [nt/syntax/demonstratives.ipynb](nt/syntax/demonstratives.ipynb) | Greek demonstrative pronouns: οὗτος vs. ἐκεῖνος frequency, attributive/substantival use, case/gender profiles, near/far genre comparison, John's distinctive use of ἐκεῖνος for the Paraclete |
+| [nt/syntax/coreference.ipynb](nt/syntax/coreference.ipynb) | NT coreference and anaphora chains: most-referenced entities per book, pronoun referent profiles (αὐτός/ἐκεῖνος/ὅς), entity chain chapter distribution, John's ἐκεῖνος for the Paraclete in John 14–16 |
 
 ### Discourse
 
@@ -152,6 +160,7 @@ All notebooks use `sys.path.insert(0, '<depth>/src')` to locate the `bible_gramm
 
 | Location | sys.path depth |
 |---|---|
+| `notebooks/ot/semantic_domains/` | `'../../../src'` |
 | `notebooks/ot/verbs/` | `'../../../src'` |
 | `notebooks/ot/syntax/` | `'../../../src'` |
 | `notebooks/ot/speakers/` | `'../../../src'` |

@@ -293,6 +293,33 @@ from .ot_numbers import (
     ot_number_frequency_chart, ot_number_genre_chart, ot_number_book_chart,
     CARDINALS_1_10,
 )
+from .nt_coreference import (
+    nt_referent_data, nt_referent_frequency, nt_entity_chain,
+    nt_pronoun_referents, nt_book_entity_density, nt_entity_chapter_distribution,
+    print_nt_referent_overview, print_nt_referent_frequency,
+    print_nt_entity_chain, print_nt_pronoun_referents, print_nt_book_entity_density,
+    nt_referent_book_chart, nt_entity_density_chart,
+    KNOWN_ENTITIES,
+)
+from .ot_predicate_args import (
+    ot_frame_data, ot_agent_verbs, ot_patient_verbs,
+    ot_verb_agents, ot_verb_patients, ot_frame_pairs,
+    print_ot_frame_overview, print_ot_agent_verbs, print_ot_patient_verbs,
+    print_ot_verb_agents, print_ot_verb_patients, print_ot_frame_pairs,
+    ot_agent_verbs_chart, ot_patient_verbs_chart,
+)
+from .ot_semantic_domains import (
+    ot_domain_data, ot_domain_frequency, ot_top_domain_lemmas,
+    ot_domain_book_distribution, ot_domain_genre_profile,
+    ot_domain_comparison, ot_coredomain_profile, ot_theology_profile,
+    print_ot_domain_overview, print_ot_domain_frequency,
+    print_ot_top_lemmas, print_ot_domain_book_distribution,
+    print_ot_domain_genre_profile, print_ot_domain_comparison,
+    print_ot_theology_profile,
+    ot_domain_frequency_chart, ot_domain_book_chart,
+    ot_domain_genre_chart, ot_domain_heatmap,
+    COREDOMAIN_NAMES, LEXDOMAIN_TOP, THEOLOGY_COREDOMAINS,
+)
 from .nt_demonstratives import (
     nt_demo_data, nt_demo_frequency, nt_demo_case_profile,
     nt_demo_gender_profile, nt_demo_use_profile,
