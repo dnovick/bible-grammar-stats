@@ -9,6 +9,7 @@
 | Exercise | Description |
 |---|---|
 | [exercises/ch27-present-participle-parsing/](exercises/ch27-present-participle-parsing/README.md) | "Spot the Present Participle" — 15-item passage drill: parse form, identify use, translate |
+| [exercises/ch27-participle-use-sort/](exercises/ch27-participle-use-sort/README.md) | Participle Use Classification Drill — 20 phrases: classify ADV / ADJ / SUB, identify key signal, translate |
 
 ### Flashcards
 

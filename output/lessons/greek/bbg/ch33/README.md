@@ -9,6 +9,7 @@
 | Exercise | Description |
 |---|---|
 | [exercises/ch33-imperative-parsing/](exercises/ch33-imperative-parsing/README.md) | 20-item drill: parse imperatives, identify tense/voice/aspect implications, translate |
+| [exercises/ch33-prohibition-drill/](exercises/ch33-prohibition-drill/README.md) | Prohibition Pattern Drill — 20 items: classify STOP (μή + pres. imper.) vs. DONT (μή + aor. subj.) |
 
 ### Flashcards
 

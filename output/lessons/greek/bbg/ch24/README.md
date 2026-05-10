@@ -9,6 +9,7 @@
 | Exercise | Description |
 |---|---|
 | [exercises/ch24-aorist-future-passive-parsing/](exercises/ch24-aorist-future-passive-parsing/README.md) | Aorist/Future Passive Parsing Drill — 20 forms to parse |
+| [exercises/ch24-passive-formation/](exercises/ch24-passive-formation/README.md) | Aorist vs. Future Passive Formation Drill — 20 items: classify θη-Aorist vs. θησ-Future, parse, translate |
 
 ### Flashcards
 

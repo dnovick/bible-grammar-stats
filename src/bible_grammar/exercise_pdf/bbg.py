@@ -2173,3 +2173,443 @@ def build_bbg_ch36_mi_verbs_parsing(out_dir: str = None) -> str:
     )
 
 
+
+
+# ---------------------------------------------------------------------------
+# BBG Ch22 — First vs. Second Aorist Contrast Drill
+# ---------------------------------------------------------------------------
+
+class BbgCh22AoristContrastPDF(GreekExercisePDF):
+    def _build(self):
+        self.add_instructions(
+            'For each aorist form: (1) classify as 1st or 2nd aorist, '
+            '(2) give Person, (3) Number, (4) Lexical form, (5) Translation.'
+        )
+        hdrs = ['#', 'Form', 'Type (1st/2nd)', 'Person', 'Number', 'Lexical Form', 'Translation']
+        cr = [0.04, 0.14, 0.11, 0.08, 0.09, 0.13, 0.41]
+        gk = [1]
+        rows = [
+            ['1',  'ἔλυσα',        '', '', '', '', ''],
+            ['2',  'εἶπον',        '', '', '', '', ''],
+            ['3',  'ἦλθεν',        '', '', '', '', ''],
+            ['4',  'εἶδον',        '', '', '', '', ''],
+            ['5',  'ἐπίστευσας',   '', '', '', '', ''],
+            ['6',  'ἔλαβεν',       '', '', '', '', ''],
+            ['7',  'ἐδίδαξεν',     '', '', '', '', ''],
+            ['8',  'ἔβαλεν',       '', '', '', '', ''],
+            ['9',  'ἠκούσαμεν',    '', '', '', '', ''],
+            ['10', 'ἔγνω',         '', '', '', '', ''],
+            ['11', 'ἐκηρύξατε',    '', '', '', '', ''],
+            ['12', 'ἔφαγεν',       '', '', '', '', ''],
+            ['13', 'ἔσωσεν',       '', '', '', '', ''],
+            ['14', 'ἀπέθανεν',     '', '', '', '', ''],
+            ['15', 'ἐδόξασαν',     '', '', '', '', ''],
+            ['16', 'ἐγένετο',      '', '', '', '', ''],
+            ['17', 'ἐπίστευσαν',   '', '', '', '', ''],
+            ['18', 'εὗρον',        '', '', '', '', ''],
+            ['19', 'ἀπήγγειλαν',   '', '', '', '', ''],
+            ['20', 'ἤγαγεν',       '', '', '', '', ''],
+        ]
+        ans = [
+            ['1',  'ἔλυσα',       '1st', '1st', 'Sg', 'λύω',          'I loosed / I released'],
+            ['2',  'εἶπον',       '2nd', '1st', 'Sg', 'λέγω',         'I said'],
+            ['3',  'ἦλθεν',       '2nd', '3rd', 'Sg', 'ἔρχομαι',      'He came'],
+            ['4',  'εἶδον',       '2nd', '1st', 'Sg', 'ὁράω',         'I saw'],
+            ['5',  'ἐπίστευσας',  '1st', '2nd', 'Sg', 'πιστεύω',      'You believed'],
+            ['6',  'ἔλαβεν',      '2nd', '3rd', 'Sg', 'λαμβάνω',      'He took'],
+            ['7',  'ἐδίδαξεν',    '1st', '3rd', 'Sg', 'διδάσκω',      'He taught'],
+            ['8',  'ἔβαλεν',      '2nd', '3rd', 'Sg', 'βάλλω',        'He threw / cast'],
+            ['9',  'ἠκούσαμεν',   '1st', '1st', 'Pl', 'ἀκούω',        'We heard'],
+            ['10', 'ἔγνω',        '2nd', '3rd', 'Sg', 'γινώσκω',      'He knew'],
+            ['11', 'ἐκηρύξατε',   '1st', '2nd', 'Pl', 'κηρύσσω',      'You (pl.) preached'],
+            ['12', 'ἔφαγεν',      '2nd', '3rd', 'Sg', 'ἐσθίω',        'He ate'],
+            ['13', 'ἔσωσεν',      '1st', '3rd', 'Sg', 'σῴζω',         'He saved'],
+            ['14', 'ἀπέθανεν',    '2nd', '3rd', 'Sg', 'ἀποθνῄσκω',    'He died'],
+            ['15', 'ἐδόξασαν',    '1st', '3rd', 'Pl', 'δοξάζω',       'They glorified'],
+            ['16', 'ἐγένετο',     '2nd', '3rd', 'Sg', 'γίνομαι',      'It came to pass / He became'],
+            ['17', 'ἐπίστευσαν',  '1st', '3rd', 'Pl', 'πιστεύω',      'They believed'],
+            ['18', 'εὗρον',       '2nd', '3rd', 'Pl', 'εὑρίσκω',      'They found'],
+            ['19', 'ἀπήγγειλαν',  '1st', '3rd', 'Pl', 'ἀπαγγέλλω',    'They reported / announced'],
+            ['20', 'ἤγαγεν',      '2nd', '3rd', 'Sg', 'ἄγω',          'He led / brought'],
+        ]
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, greek_cols=gk,
+                                       section_title='Parsing Table', use_greek=True)
+
+
+def build_bbg_ch22_aorist_contrast(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        BbgCh22AoristContrastPDF,
+        'BBG Chapter 22 — First vs. Second Aorist Contrast Drill',
+        'Second Aorist Active and Middle Indicative',
+        ['greek', 'bbg', 'ch22', 'exercises', 'ch22-aorist-contrast'],
+        'ch22-aorist-contrast.pdf',
+        out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# BBG Ch24 — Aorist and Future Passive Formation Drill
+# ---------------------------------------------------------------------------
+
+class BbgCh24PassiveFormationPDF(GreekExercisePDF):
+    def _build(self):
+        self.add_instructions(
+            'For each passive form: (1) classify as Aorist Passive or Future Passive, '
+            '(2) give Person, (3) Number, (4) Lexical form, (5) Translation.'
+        )
+        hdrs = ['#', 'Form', 'Tense (Aor/Fut)', 'Person', 'Number', 'Lexical Form', 'Translation']
+        cr = [0.04, 0.16, 0.13, 0.08, 0.09, 0.14, 0.36]
+        gk = [1]
+        rows = [
+            ['1',  'ἐλύθην',           '', '', '', '', ''],
+            ['2',  'λυθήσομαι',        '', '', '', '', ''],
+            ['3',  'ἐβλήθη',           '', '', '', '', ''],
+            ['4',  'σωθήσεται',        '', '', '', '', ''],
+            ['5',  'ἐβαπτίσθην',       '', '', '', '', ''],
+            ['6',  'γραφήσεται',       '', '', '', '', ''],
+            ['7',  'ἐδιδάχθητε',       '', '', '', '', ''],
+            ['8',  'ἀκουσθήσεται',     '', '', '', '', ''],
+            ['9',  'ἐγερθήσονται',     '', '', '', '', ''],
+            ['10', 'ἠγέρθη',           '', '', '', '', ''],
+            ['11', 'ἐπιστεύθη',        '', '', '', '', ''],
+            ['12', 'δοξασθήσεται',     '', '', '', '', ''],
+            ['13', 'ἐκρίθησαν',        '', '', '', '', ''],
+            ['14', 'κριθήσονται',      '', '', '', '', ''],
+            ['15', 'ἐλήμφθη',          '', '', '', '', ''],
+            ['16', 'λημφθήσονται',     '', '', '', '', ''],
+            ['17', 'ἀπεστάλην',        '', '', '', '', ''],
+            ['18', 'ἀποσταλήσεται',    '', '', '', '', ''],
+            ['19', 'εὑρέθη',           '', '', '', '', ''],
+            ['20', 'εὑρεθήσεται',      '', '', '', '', ''],
+        ]
+        ans = [
+            ['1',  'ἐλύθην',          'Aorist', '1st', 'Sg', 'λύω',          'I was loosed'],
+            ['2',  'λυθήσομαι',       'Future', '1st', 'Sg', 'λύω',          'I will be loosed'],
+            ['3',  'ἐβλήθη',          'Aorist', '3rd', 'Sg', 'βάλλω',        'He / it was thrown'],
+            ['4',  'σωθήσεται',       'Future', '3rd', 'Sg', 'σῴζω',         'He will be saved'],
+            ['5',  'ἐβαπτίσθην',      'Aorist', '1st', 'Sg', 'βαπτίζω',      'I was baptized'],
+            ['6',  'γραφήσεται',      'Future', '3rd', 'Sg', 'γράφω',        'It will be written'],
+            ['7',  'ἐδιδάχθητε',      'Aorist', '2nd', 'Pl', 'διδάσκω',      'You (pl.) were taught'],
+            ['8',  'ἀκουσθήσεται',    'Future', '3rd', 'Sg', 'ἀκούω',        'It will be heard'],
+            ['9',  'ἐγερθήσονται',    'Future', '3rd', 'Pl', 'ἐγείρω',       'They will be raised'],
+            ['10', 'ἠγέρθη',          'Aorist', '3rd', 'Sg', 'ἐγείρω',       'He was raised'],
+            ['11', 'ἐπιστεύθη',       'Aorist', '3rd', 'Sg', 'πιστεύω',      'It was believed'],
+            ['12', 'δοξασθήσεται',    'Future', '3rd', 'Sg', 'δοξάζω',       'He / it will be glorified'],
+            ['13', 'ἐκρίθησαν',       'Aorist', '3rd', 'Pl', 'κρίνω',        'They were judged'],
+            ['14', 'κριθήσονται',     'Future', '3rd', 'Pl', 'κρίνω',        'They will be judged'],
+            ['15', 'ἐλήμφθη',         'Aorist', '3rd', 'Sg', 'λαμβάνω',      'He / it was taken'],
+            ['16', 'λημφθήσονται',    'Future', '3rd', 'Pl', 'λαμβάνω',      'They will be taken'],
+            ['17', 'ἀπεστάλην',       'Aorist', '1st', 'Sg', 'ἀποστέλλω',    'I was sent'],
+            ['18', 'ἀποσταλήσεται',   'Future', '3rd', 'Sg', 'ἀποστέλλω',    'He will be sent'],
+            ['19', 'εὑρέθη',          'Aorist', '3rd', 'Sg', 'εὑρίσκω',      'He / it was found'],
+            ['20', 'εὑρεθήσεται',     'Future', '3rd', 'Sg', 'εὑρίσκω',      'He / it will be found'],
+        ]
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, greek_cols=gk,
+                                       section_title='Parsing Table', use_greek=True)
+
+
+def build_bbg_ch24_passive_formation(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        BbgCh24PassiveFormationPDF,
+        'BBG Chapter 24 — Aorist and Future Passive Formation Drill',
+        'θη-Aorist Passive vs. θησ-Future Passive',
+        ['greek', 'bbg', 'ch24', 'exercises', 'ch24-passive-formation'],
+        'ch24-passive-formation.pdf',
+        out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# BBG Ch27 — Participle Use Classification Drill
+# ---------------------------------------------------------------------------
+
+class BbgCh27ParticipleUseSortPDF(GreekExercisePDF):
+    def _build(self):
+        self.add_instructions(
+            'For each participle phrase, classify the use as ADV (adverbial), '
+            'ADJ (adjectival), or SUB (substantival). '
+            'Then identify the Key Signal (articular/anarthrous, presence of antecedent noun, etc.) '
+            'and provide a Translation.'
+        )
+        hdrs = ['#', 'Greek Phrase', 'Use (ADV/ADJ/SUB)', 'Key Signal', 'Translation']
+        cr = [0.04, 0.32, 0.11, 0.20, 0.33]
+        gk = [1]
+        rows = [
+            ['1',  'ἀκούων ταῦτα ἐξῆλθεν',                     '', '', ''],
+            ['2',  'ὁ πιστεύων εἰς αὐτόν',                      '', '', ''],
+            ['3',  'ὁ λόγος ὁ λαλούμενος',                      '', '', ''],
+            ['4',  'βλέπων τοὺς ὄχλους ἐσπλαγχνίσθη',           '', '', ''],
+            ['5',  'οἱ πιστεύοντες σῴζονται',                    '', '', ''],
+            ['6',  'εἶδεν τοὺς ἀδελφοὺς τοὺς ἐρχομένους',       '', '', ''],
+            ['7',  'πορευόμενος εἶπεν αὐτοῖς',                   '', '', ''],
+            ['8',  'ὁ ἀγαπῶν τὸν θεόν',                         '', '', ''],
+            ['9',  'ἀνὴρ ὁ πιστεύων',                           '', '', ''],
+            ['10', 'ἀπεκρίθη λέγων',                            '', '', ''],
+            ['11', 'τοὺς ἔχοντας νόσους',                        '', '', ''],
+            ['12', 'γυνὴ ἡ ἀσθενοῦσα',                          '', '', ''],
+            ['13', 'ἀκούσαντες δὲ ἐχάρησαν',                    '', '', ''],
+            ['14', 'οἱ ζητοῦντες τὴν ψυχήν',                    '', '', ''],
+            ['15', 'λόγον τὸν ῥηθέντα',                         '', '', ''],
+            ['16', 'ταῦτα εἰπὼν ἀπῆλθεν',                       '', '', ''],
+            ['17', 'τὸ γεγεννημένον',                            '', '', ''],
+            ['18', 'διδάσκων ἐν τῇ συναγωγῇ',                    '', '', ''],
+            ['19', 'πᾶς ὁ πιστεύων',                            '', '', ''],
+            ['20', 'ἡ γυνὴ ἡ λεγομένη',                         '', '', ''],
+        ]
+        ans = [
+            ['1',  'ἀκούων ταῦτα ἐξῆλθεν',                    'ADV', 'Anarthrous, nom., modifies main verb action',    'Hearing these things, he went out'],
+            ['2',  'ὁ πιστεύων εἰς αὐτόν',                     'SUB', 'Articular (ὁ), no antecedent noun',              'The one who believes in him'],
+            ['3',  'ὁ λόγος ὁ λαλούμενος',                     'ADJ', 'Articular, modifies λόγος',                      'The word that was spoken'],
+            ['4',  'βλέπων τοὺς ὄχλους ἐσπλαγχνίσθη',          'ADV', 'Anarthrous, nom., temporal',                     'Seeing the crowds, he had compassion'],
+            ['5',  'οἱ πιστεύοντες σῴζονται',                   'SUB', 'Articular (οἱ), no antecedent noun',             'Those who believe are being saved'],
+            ['6',  'εἶδεν τοὺς ἀδελφοὺς τοὺς ἐρχομένους',      'ADJ', 'Articular, agrees with ἀδελφούς',               'He saw the brothers, the ones coming'],
+            ['7',  'πορευόμενος εἶπεν αὐτοῖς',                  'ADV', 'Anarthrous, nom., modal / temporal',             'While going, he said to them'],
+            ['8',  'ὁ ἀγαπῶν τὸν θεόν',                        'SUB', 'Articular (ὁ), standalone phrase',               'The one who loves God'],
+            ['9',  'ἀνὴρ ὁ πιστεύων',                          'ADJ', 'Articular, agrees with ἀνήρ',                   'A believing man (lit. a man, the one who believes)'],
+            ['10', 'ἀπεκρίθη λέγων',                           'ADV', 'Anarthrous, modal (manner)',                     'He answered, saying'],
+            ['11', 'τοὺς ἔχοντας νόσους',                       'SUB', 'Articular (τοὺς), no antecedent noun',           'Those who had diseases'],
+            ['12', 'γυνὴ ἡ ἀσθενοῦσα',                         'ADJ', 'Articular, agrees with γυνή',                   'A sick woman (lit. a woman, the one who was sick)'],
+            ['13', 'ἀκούσαντες δὲ ἐχάρησαν',                   'ADV', 'Anarthrous, nom., temporal (aorist = antecedent)','When they heard, they rejoiced'],
+            ['14', 'οἱ ζητοῦντες τὴν ψυχήν',                   'SUB', 'Articular (οἱ), standalone',                    'Those who are seeking his life'],
+            ['15', 'λόγον τὸν ῥηθέντα',                        'ADJ', 'Articular, agrees with λόγον',                  'The word that was spoken'],
+            ['16', 'ταῦτα εἰπὼν ἀπῆλθεν',                      'ADV', 'Anarthrous, nom., temporal (aorist ptc.)',        'Having said these things, he departed'],
+            ['17', 'τὸ γεγεννημένον',                           'SUB', 'Articular neuter, no antecedent',               'That which has been born'],
+            ['18', 'διδάσκων ἐν τῇ συναγωγῇ',                   'ADV', 'Anarthrous, nom., circumstantial',              'While teaching in the synagogue'],
+            ['19', 'πᾶς ὁ πιστεύων',                           'SUB', 'Articular (ὁ) with πᾶς',                        'Everyone who believes'],
+            ['20', 'ἡ γυνὴ ἡ λεγομένη',                        'ADJ', 'Articular, agrees with γυνή',                   'The woman who is called'],
+        ]
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, greek_cols=gk,
+                                       section_title='Classification Table', use_greek=True)
+
+
+def build_bbg_ch27_participle_use_sort(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        BbgCh27ParticipleUseSortPDF,
+        'BBG Chapter 27 — Participle Use Classification Drill',
+        'Adverbial · Adjectival · Substantival Participles',
+        ['greek', 'bbg', 'ch27', 'exercises', 'ch27-participle-use-sort'],
+        'ch27-participle-use-sort.pdf',
+        out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# BBG Ch28 — Present vs. Aorist Adverbial Participle Contrast
+# ---------------------------------------------------------------------------
+
+class BbgCh28ParticipleTenseContrastPDF(GreekExercisePDF):
+    def _build(self):
+        self.add_instructions(
+            'For each adverbial participle clause, classify the temporal relation as '
+            'CONTEMP (present participle = same time as main verb) or '
+            'ANTEC (aorist participle = prior to main verb). '
+            'Then give Tense, Voice, Lexical form, and Translation.'
+        )
+        hdrs = ['#', 'Participle Clause', 'Relation', 'Tense', 'Voice', 'Lexical Form', 'Translation']
+        cr = [0.04, 0.28, 0.08, 0.07, 0.07, 0.13, 0.33]
+        gk = [1]
+        rows = [
+            ['1',  'ταῦτα εἰπὼν ἀπῆλθεν',                          '', '', '', '', ''],
+            ['2',  'πορευόμενος κηρύσσει',                           '', '', '', '', ''],
+            ['3',  'ἀκούσαντες ἐχάρησαν',                           '', '', '', '', ''],
+            ['4',  'βλέπων τοὺς ὄχλους ἐσπλαγχνίσθη',               '', '', '', '', ''],
+            ['5',  'ἐλθόντες εἶδον',                                 '', '', '', '', ''],
+            ['6',  'προσευχόμενος μὴ βατταλογήσητε',                 '', '', '', '', ''],
+            ['7',  'εἰσελθὼν εἰς τὴν συναγωγήν',                    '', '', '', '', ''],
+            ['8',  'λαλῶν ταῦτα εἶπεν',                             '', '', '', '', ''],
+            ['9',  'πιστεύσαντες ἐβαπτίσθησαν',                     '', '', '', '', ''],
+            ['10', 'ἀποκριθεὶς εἶπεν',                               '', '', '', '', ''],
+            ['11', 'διδάσκων ἐν τῇ συναγωγῇ ἐξεπλήσσοντο',          '', '', '', '', ''],
+            ['12', 'ἐγερθεὶς παρέλαβεν τὸ παιδίον',                 '', '', '', '', ''],
+            ['13', 'ἀναβλέψας εἰς τὸν οὐρανὸν εὐλόγησεν',           '', '', '', '', ''],
+            ['14', 'κλαίων ἐξῆλθεν ἔξω',                            '', '', '', '', ''],
+            ['15', 'εὑρόντες αὐτόν',                                 '', '', '', '', ''],
+            ['16', 'ἐρχόμενος πρὸς αὐτόν',                          '', '', '', '', ''],
+            ['17', 'λαβὼν τοὺς πέντε ἄρτους ηὐλόγησεν',             '', '', '', '', ''],
+            ['18', 'ἐσθίων μετ᾽ αὐτῶν παρήγγειλεν',                 '', '', '', '', ''],
+            ['19', 'ἀναστὰς ἐπορεύθη',                               '', '', '', '', ''],
+            ['20', 'χαίροντες ὑπέστρεψαν',                           '', '', '', '', ''],
+        ]
+        ans = [
+            ['1',  'ταῦτα εἰπὼν ἀπῆλθεν',                         'ANTEC',   'Aorist', 'Active',       'λέγω',          'Having said these things, he departed'],
+            ['2',  'πορευόμενος κηρύσσει',                          'CONTEMP', 'Pres',  'Middle',        'πορεύομαι',     'While going, he preaches'],
+            ['3',  'ἀκούσαντες ἐχάρησαν',                          'ANTEC',   'Aorist', 'Active',       'ἀκούω',         'When they heard, they rejoiced'],
+            ['4',  'βλέπων τοὺς ὄχλους ἐσπλαγχνίσθη',              'CONTEMP', 'Pres',  'Active',        'βλέπω',         'While seeing the crowds, he had compassion'],
+            ['5',  'ἐλθόντες εἶδον',                                'ANTEC',   'Aorist', 'Active',       'ἔρχομαι',       'After coming, they saw'],
+            ['6',  'προσευχόμενος μὴ βατταλογήσητε',                'CONTEMP', 'Pres',  'Middle',        'προσεύχομαι',   'While praying, do not babble'],
+            ['7',  'εἰσελθὼν εἰς τὴν συναγωγήν',                   'ANTEC',   'Aorist', 'Active',       'εἰσέρχομαι',    'After entering the synagogue'],
+            ['8',  'λαλῶν ταῦτα εἶπεν',                            'CONTEMP', 'Pres',  'Active',        'λαλέω',         'While saying these things, he said (more)'],
+            ['9',  'πιστεύσαντες ἐβαπτίσθησαν',                    'ANTEC',   'Aorist', 'Active',       'πιστεύω',       'When they believed, they were baptized'],
+            ['10', 'ἀποκριθεὶς εἶπεν',                              'ANTEC',   'Aorist', 'Pass (dep.)',  'ἀποκρίνομαι',   'Having answered, he said'],
+            ['11', 'διδάσκων ἐν τῇ συναγωγῇ ἐξεπλήσσοντο',         'CONTEMP', 'Pres',  'Active',        'διδάσκω',       'While he was teaching, they were amazed'],
+            ['12', 'ἐγερθεὶς παρέλαβεν τὸ παιδίον',                'ANTEC',   'Aorist', 'Pass (dep.)',  'ἐγείρω',        'Having gotten up, he took the child'],
+            ['13', 'ἀναβλέψας εἰς τὸν οὐρανὸν εὐλόγησεν',          'ANTEC',   'Aorist', 'Active',       'ἀναβλέπω',      'Having looked up to heaven, he blessed'],
+            ['14', 'κλαίων ἐξῆλθεν ἔξω',                           'CONTEMP', 'Pres',  'Active',        'κλαίω',         'Weeping, he went outside'],
+            ['15', 'εὑρόντες αὐτόν',                                'ANTEC',   'Aorist', 'Active',       'εὑρίσκω',       'After / when they found him'],
+            ['16', 'ἐρχόμενος πρὸς αὐτόν',                         'CONTEMP', 'Pres',  'Middle',        'ἔρχομαι',       'While coming to him'],
+            ['17', 'λαβὼν τοὺς πέντε ἄρτους ηὐλόγησεν',            'ANTEC',   'Aorist', 'Active',       'λαμβάνω',       'Having taken the five loaves, he blessed'],
+            ['18', 'ἐσθίων μετ᾽ αὐτῶν παρήγγειλεν',                'CONTEMP', 'Pres',  'Active',        'ἐσθίω',         'While eating with them, he commanded'],
+            ['19', 'ἀναστὰς ἐπορεύθη',                              'ANTEC',   'Aorist', 'Active',       'ἀνίστημι',      'Having risen, he went'],
+            ['20', 'χαίροντες ὑπέστρεψαν',                          'CONTEMP', 'Pres',  'Active',        'χαίρω',         'Rejoicing, they returned'],
+        ]
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, greek_cols=gk,
+                                       section_title='Classification Table', use_greek=True)
+
+
+def build_bbg_ch28_participle_tense_contrast(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        BbgCh28ParticipleTenseContrastPDF,
+        'BBG Chapter 28 — Present vs. Aorist Adverbial Participle Contrast',
+        'Contemporaneous vs. Antecedent Action',
+        ['greek', 'bbg', 'ch28', 'exercises', 'ch28-participle-tense-contrast'],
+        'ch28-participle-tense-contrast.pdf',
+        out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# BBG Ch31 — Subjunctive Use Classification Drill
+# ---------------------------------------------------------------------------
+
+class BbgCh31SubjunctiveUseSortPDF(GreekExercisePDF):
+    def _build(self):
+        self.add_instructions(
+            'Classify each subjunctive clause by use code: '
+            'HO (Hortatory), PU (Purpose), CO (3rd-class Conditional), '
+            'IN (Indefinite Relative), DE (Deliberative), FS (Fear Statement). '
+            'Then give Person, Number, Lexical form, and Translation.'
+        )
+        hdrs = ['#', 'Greek Clause', 'Use Code', 'Person', 'Number', 'Lexical Form', 'Translation']
+        cr = [0.04, 0.30, 0.07, 0.07, 0.08, 0.12, 0.32]
+        gk = [1]
+        rows = [
+            ['1',  'ἀγαπῶμεν ἀλλήλους',            '', '', '', '', ''],
+            ['2',  'ἵνα πιστεύσητε',                '', '', '', '', ''],
+            ['3',  'ἐὰν εἴπω ὑμῖν',                '', '', '', '', ''],
+            ['4',  'ὅς ἐὰν ἀκούσῃ',                '', '', '', '', ''],
+            ['5',  'τί ποιήσωμεν',                  '', '', '', '', ''],
+            ['6',  'ἵνα σωθῶσιν',                   '', '', '', '', ''],
+            ['7',  'μὴ φοβηθῶμεν',                  '', '', '', '', ''],
+            ['8',  'ἐὰν ὁμολογήσῃ',                 '', '', '', '', ''],
+            ['9',  'ὅπου ἐὰν εἰσέλθῃ',              '', '', '', '', ''],
+            ['10', 'ποῦ ὑπάγω',                     '', '', '', '', ''],
+            ['11', 'ἵνα γνῶτε',                     '', '', '', '', ''],
+            ['12', 'εἰσέλθωμεν εἰς τὴν κατάπαυσιν','', '', '', '', ''],
+            ['13', 'ἐὰν μὴ φάγητε',                 '', '', '', '', ''],
+            ['14', 'ὃς ἐὰν ποιήσῃ τὸ θέλημα',       '', '', '', '', ''],
+            ['15', 'ἵνα πλησθῶσιν',                 '', '', '', '', ''],
+            ['16', 'πῶς σωθῶμεν',                   '', '', '', '', ''],
+            ['17', 'φοβοῦμαι μὴ πλανηθῆτε',         '', '', '', '', ''],
+            ['18', 'ἵνα ζήσωσιν',                   '', '', '', '', ''],
+            ['19', 'ἐὰν ᾖ ἀγαθός',                  '', '', '', '', ''],
+            ['20', 'ἄγωμεν ἐκεῖθεν',                '', '', '', '', ''],
+        ]
+        ans = [
+            ['1',  'ἀγαπῶμεν ἀλλήλους',            'HO', '1st', 'Pl', 'ἀγαπάω',     'Let us love one another'],
+            ['2',  'ἵνα πιστεύσητε',                'PU', '2nd', 'Pl', 'πιστεύω',    'In order that you may believe'],
+            ['3',  'ἐὰν εἴπω ὑμῖν',                'CO', '1st', 'Sg', 'λέγω',       'If I say to you'],
+            ['4',  'ὅς ἐὰν ἀκούσῃ',                'IN', '3rd', 'Sg', 'ἀκούω',      'Whoever hears'],
+            ['5',  'τί ποιήσωμεν',                  'DE', '1st', 'Pl', 'ποιέω',      'What should we do?'],
+            ['6',  'ἵνα σωθῶσιν',                   'PU', '3rd', 'Pl', 'σῴζω',       'In order that they might be saved'],
+            ['7',  'μὴ φοβηθῶμεν',                  'HO', '1st', 'Pl', 'φοβέομαι',   'Let us not fear'],
+            ['8',  'ἐὰν ὁμολογήσῃ',                 'CO', '3rd', 'Sg', 'ὁμολογέω',   'If he confesses'],
+            ['9',  'ὅπου ἐὰν εἰσέλθῃ',              'IN', '3rd', 'Sg', 'εἰσέρχομαι', 'Wherever he enters'],
+            ['10', 'ποῦ ὑπάγω',                     'DE', '1st', 'Sg', 'ὑπάγω',      'Where am I going? / Where should I go?'],
+            ['11', 'ἵνα γνῶτε',                     'PU', '2nd', 'Pl', 'γινώσκω',    'In order that you may know'],
+            ['12', 'εἰσέλθωμεν εἰς τὴν κατάπαυσιν','HO', '1st', 'Pl', 'εἰσέρχομαι', 'Let us enter into the rest'],
+            ['13', 'ἐὰν μὴ φάγητε',                 'CO', '2nd', 'Pl', 'ἐσθίω',      'Unless you eat'],
+            ['14', 'ὃς ἐὰν ποιήσῃ τὸ θέλημα',       'IN', '3rd', 'Sg', 'ποιέω',      'Whoever does the will'],
+            ['15', 'ἵνα πλησθῶσιν',                 'PU', '3rd', 'Pl', 'πληρόω',     'In order that they might be filled'],
+            ['16', 'πῶς σωθῶμεν',                   'DE', '1st', 'Pl', 'σῴζω',       'How can we be saved?'],
+            ['17', 'φοβοῦμαι μὴ πλανηθῆτε',         'FS', '2nd', 'Pl', 'πλανάω',     'I fear that you may be led astray'],
+            ['18', 'ἵνα ζήσωσιν',                   'PU', '3rd', 'Pl', 'ζάω',        'In order that they might live'],
+            ['19', 'ἐὰν ᾖ ἀγαθός',                  'CO', '3rd', 'Sg', 'εἰμί',       'If he is good'],
+            ['20', 'ἄγωμεν ἐκεῖθεν',                'HO', '1st', 'Pl', 'ἄγω',        'Let us go from there'],
+        ]
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, greek_cols=gk,
+                                       section_title='Classification Table', use_greek=True)
+
+
+def build_bbg_ch31_subjunctive_use_sort(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        BbgCh31SubjunctiveUseSortPDF,
+        'BBG Chapter 31 — Subjunctive Use Classification Drill',
+        'Hortatory · Purpose · Conditional · Indefinite · Deliberative · Fear Statement',
+        ['greek', 'bbg', 'ch31', 'exercises', 'ch31-subjunctive-use-sort'],
+        'ch31-subjunctive-use-sort.pdf',
+        out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# BBG Ch33 — Prohibition Pattern Drill
+# ---------------------------------------------------------------------------
+
+class BbgCh33ProhibitionDrillPDF(GreekExercisePDF):
+    def _build(self):
+        self.add_instructions(
+            'For each prohibition, classify the pattern as '
+            'STOP (μή + present imperative = stop an ongoing action) or '
+            'DONT (μή + aorist subjunctive = do not begin an action). '
+            'Then give Tense, Mood, Lexical form, and Translation.'
+        )
+        hdrs = ['#', 'Greek Sentence', 'Pattern (STOP/DONT)', 'Tense', 'Mood', 'Lexical Form', 'Translation']
+        cr = [0.04, 0.30, 0.10, 0.07, 0.08, 0.12, 0.29]
+        gk = [1]
+        rows = [
+            ['1',  'μὴ κλαίετε',                           '', '', '', '', ''],
+            ['2',  'μὴ φοβηθῇς',                           '', '', '', '', ''],
+            ['3',  'μὴ νομίζετε ὅτι ἦλθον',               '', '', '', '', ''],
+            ['4',  'μὴ εἰσέλθῃς εἰς πειρασμόν',           '', '', '', '', ''],
+            ['5',  'μὴ μεριμνᾶτε',                         '', '', '', '', ''],
+            ['6',  'μὴ λαλήσῃς κακόν',                    '', '', '', '', ''],
+            ['7',  'μὴ θαυμάζετε',                         '', '', '', '', ''],
+            ['8',  'μὴ πορευθῇς',                          '', '', '', '', ''],
+            ['9',  'μὴ λέγε τοῦτο',                        '', '', '', '', ''],
+            ['10', 'μὴ ἅψῃ',                               '', '', '', '', ''],
+            ['11', 'μὴ φοβεῖσθε',                          '', '', '', '', ''],
+            ['12', 'μὴ ἀποκτείνῃς',                        '', '', '', '', ''],
+            ['13', 'μὴ κρίνετε',                           '', '', '', '', ''],
+            ['14', 'μὴ ἁμάρτῃς',                           '', '', '', '', ''],
+            ['15', 'μὴ κατεσθίετε τοὺς πτωχούς',          '', '', '', '', ''],
+            ['16', 'μὴ ἄρῃς τὸ σκεῦος',                   '', '', '', '', ''],
+            ['17', 'μὴ ἐπιθυμεῖτε',                        '', '', '', '', ''],
+            ['18', 'μὴ πιστεύσῃς',                         '', '', '', '', ''],
+            ['19', 'μὴ δίδοτε τὸ ἅγιον τοῖς κυσίν',       '', '', '', '', ''],
+            ['20', 'μὴ ποιήσῃς τοῦτο',                    '', '', '', '', ''],
+        ]
+        ans = [
+            ['1',  'μὴ κλαίετε',                          'STOP', 'Pres', 'Imperative',  'κλαίω',        'Stop weeping'],
+            ['2',  'μὴ φοβηθῇς',                          'DONT', 'Aor',  'Subjunctive', 'φοβέομαι',     'Do not be afraid'],
+            ['3',  'μὴ νομίζετε ὅτι ἦλθον',              'STOP', 'Pres', 'Imperative',  'νομίζω',       'Stop thinking that I came'],
+            ['4',  'μὴ εἰσέλθῃς εἰς πειρασμόν',          'DONT', 'Aor',  'Subjunctive', 'εἰσέρχομαι',   'Do not enter into temptation'],
+            ['5',  'μὴ μεριμνᾶτε',                        'STOP', 'Pres', 'Imperative',  'μεριμνάω',     'Stop worrying'],
+            ['6',  'μὴ λαλήσῃς κακόν',                   'DONT', 'Aor',  'Subjunctive', 'λαλέω',        'Do not speak evil'],
+            ['7',  'μὴ θαυμάζετε',                        'STOP', 'Pres', 'Imperative',  'θαυμάζω',      'Stop marveling'],
+            ['8',  'μὴ πορευθῇς',                         'DONT', 'Aor',  'Subjunctive', 'πορεύομαι',    'Do not go'],
+            ['9',  'μὴ λέγε τοῦτο',                       'STOP', 'Pres', 'Imperative',  'λέγω',         'Stop saying this'],
+            ['10', 'μὴ ἅψῃ',                              'DONT', 'Aor',  'Subjunctive', 'ἅπτω',         'Do not touch'],
+            ['11', 'μὴ φοβεῖσθε',                         'STOP', 'Pres', 'Imperative',  'φοβέομαι',     'Stop being afraid'],
+            ['12', 'μὴ ἀποκτείνῃς',                       'DONT', 'Aor',  'Subjunctive', 'ἀποκτείνω',    'Do not kill'],
+            ['13', 'μὴ κρίνετε',                          'STOP', 'Pres', 'Imperative',  'κρίνω',        'Do not judge (stop judging)'],
+            ['14', 'μὴ ἁμάρτῃς',                          'DONT', 'Aor',  'Subjunctive', 'ἁμαρτάνω',     'Do not sin'],
+            ['15', 'μὴ κατεσθίετε τοὺς πτωχούς',         'STOP', 'Pres', 'Imperative',  'κατεσθίω',     'Stop devouring the poor'],
+            ['16', 'μὴ ἄρῃς τὸ σκεῦος',                  'DONT', 'Aor',  'Subjunctive', 'αἴρω',         'Do not take the vessel'],
+            ['17', 'μὴ ἐπιθυμεῖτε',                       'STOP', 'Pres', 'Imperative',  'ἐπιθυμέω',     'Stop desiring / do not covet'],
+            ['18', 'μὴ πιστεύσῃς',                        'DONT', 'Aor',  'Subjunctive', 'πιστεύω',      'Do not believe'],
+            ['19', 'μὴ δίδοτε τὸ ἅγιον τοῖς κυσίν',      'STOP', 'Pres', 'Imperative',  'δίδωμι',       'Do not give what is holy to dogs'],
+            ['20', 'μὴ ποιήσῃς τοῦτο',                   'DONT', 'Aor',  'Subjunctive', 'ποιέω',        'Do not do this'],
+        ]
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr, greek_cols=gk,
+                                       section_title='Classification Table', use_greek=True)
+
+
+def build_bbg_ch33_prohibition_drill(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        BbgCh33ProhibitionDrillPDF,
+        'BBG Chapter 33 — Prohibition Pattern Drill',
+        'μή + Present Imperative (STOP) vs. μή + Aorist Subjunctive (DONT)',
+        ['greek', 'bbg', 'ch33', 'exercises', 'ch33-prohibition-drill'],
+        'ch33-prohibition-drill.pdf',
+        out_dir,
+    )
