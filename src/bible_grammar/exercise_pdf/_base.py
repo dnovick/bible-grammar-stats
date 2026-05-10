@@ -300,7 +300,8 @@ class ExercisePDF:
                                    section_title: str = 'Items 1–20',
                                    answer_title: str = 'Answer Key',
                                    greek_cols: list = None,
-                                   use_greek: bool = False):
+                                   use_greek: bool = False,
+                                   answer_heb_cols: list = None):
         """Render a drill section followed by an answer key section."""
         if use_greek:
             self.add_section_heading(section_title)
@@ -316,7 +317,8 @@ class ExercisePDF:
             self.add_section_heading(answer_title)
             self.add_generic_table(headers, rows, col_ratios=col_ratios,
                                    heb_cols=heb_cols, translit_cols=translit_cols,
-                                   show_answers=True, answer_rows=answers)
+                                   show_answers=True, answer_rows=answers,
+                                   answer_heb_cols=answer_heb_cols)
 
     def add_multi_part_drill(self, parts: list,
                              heb_cols: list = None,
@@ -556,7 +558,8 @@ class ExercisePDF:
                           heb_cols: list = None,
                           translit_cols: list = None,
                           show_answers: bool = True,
-                          answer_rows: list = None):
+                          answer_rows: list = None,
+                          answer_heb_cols: list = None):
         """
         Draw a generic parse table with arbitrary columns.
 
@@ -568,6 +571,7 @@ class ExercisePDF:
                        Uses Arial Unicode MS if registered, otherwise falls back to Helvetica.
         show_answers: if True, draw green answer rows below each input row
         answer_rows: if show_answers, the answer data (same shape as rows); if None, answers = rows
+        answer_heb_cols: additional column indices that are Hebrew only in answer rows (blank input in question row)
         """
         if col_ratios is None:
             col_ratios = [1.0 / len(headers)] * len(headers)
@@ -575,6 +579,8 @@ class ExercisePDF:
             heb_cols = []
         if translit_cols is None:
             translit_cols = []
+        if answer_heb_cols is None:
+            answer_heb_cols = []
         _tlit_font = UNICODE_TRANSLIT_FONT if UNICODE_TRANSLIT_FONT else 'Helvetica'
 
         w = self._usable_w()
@@ -670,7 +676,7 @@ class ExercisePDF:
                         c.setFont('Helvetica-Bold', self.LABEL_SIZE)
                         c.setFillColor(C_ANSWER_FG)
                         c.drawCentredString(cx + col_w / 2, y - self.ANSWER_H + 6, '✓')
-                    elif col_idx in heb_cols:
+                    elif col_idx in heb_cols or col_idx in answer_heb_cols:
                         c.setFont('ArialHebrew', self.LABEL_SIZE)
                         c.setFillColor(C_ANSWER_FG)
                         c.drawRightString(cx + col_w - 3, y - self.ANSWER_H + 6, _heb(cell))

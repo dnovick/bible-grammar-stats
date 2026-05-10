@@ -7269,3 +7269,930 @@ def build_ch35_weak_form_id_exercise(out_dir: str = None) -> str:
         out_dir,
     )
 
+
+# ===========================================================================
+# Paradigm Completion Exercises — BBH Ch13–Ch35
+# ===========================================================================
+
+# ---------------------------------------------------------------------------
+# Ch13 — Qal Perfect Paradigm Drill
+# ---------------------------------------------------------------------------
+class Ch13QalPerfectParadigmDrill(ExercisePDF):
+    _instructions = (
+        'Write the correct Qal Perfect form for each PGN cell. '
+        'Root: קטל (Type-A fientive). All cells are blank — fill from memory.'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'PGN', 'Form (קטל)']
+        cr   = [0.06, 0.20, 0.74]
+        rows = [
+            ['1', '3ms', ''], ['2', '3fs', ''], ['3', '2ms', ''], ['4', '2fs', ''],
+            ['5', '1cs', ''], ['6', '3cp', ''], ['7', '2mp', ''], ['8', '2fp', ''],
+            ['9', '1cp', ''],
+        ]
+        ans = [
+            ['1', '3ms', 'קָטַל'], ['2', '3fs', 'קָטְלָה'], ['3', '2ms', 'קָטַלְתָּ'],
+            ['4', '2fs', 'קָטַלְתְּ'], ['5', '1cs', 'קָטַלְתִּי'], ['6', '3cp', 'קָטְלוּ'],
+            ['7', '2mp', 'קְטַלְתֶּם'], ['8', '2fp', 'קְטַלְתֶּן'], ['9', '1cp', 'קָטַלְנוּ'],
+        ]
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Qal Perfect — קטל')
+
+def build_ch13_qal_perfect_paradigm_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch13QalPerfectParadigmDrill,
+        'Chapter 13 — Qal Perfect Paradigm Drill',
+        'BBH Chapter 13 · Qal Perfect Strong Verbs',
+        ['hebrew', 'bbh', 'ch13', 'exercises', 'ch13-qal-perfect-paradigm-drill'],
+        'ch13-qal-perfect-paradigm-drill.pdf', out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Ch15 — Qal Imperfect Paradigm Drill
+# ---------------------------------------------------------------------------
+class Ch15QalImperfectParadigmDrill(ExercisePDF):
+    _instructions = (
+        'Write the correct Qal Imperfect (yiqtol) form for each PGN. '
+        'Root: שמר → יִשְׁמֹר (A-class, holem theme). All cells blank — fill from memory.'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'PGN', 'Form (שמר)']
+        cr   = [0.06, 0.20, 0.74]
+        rows = [['%d' % i, pgn, ''] for i, pgn in enumerate([
+            '3ms','3fs','2ms','2fs','1cs','3mp','3fp','2mp','2fp','1cp'], 1)]
+        ans = [
+            ['1','3ms','יִשְׁמֹר'], ['2','3fs','תִּשְׁמֹר'], ['3','2ms','תִּשְׁמֹר'],
+            ['4','2fs','תִּשְׁמְרִי'], ['5','1cs','אֶשְׁמֹר'], ['6','3mp','יִשְׁמְרוּ'],
+            ['7','3fp','תִּשְׁמֹרְנָה'], ['8','2mp','תִּשְׁמְרוּ'], ['9','2fp','תִּשְׁמֹרְנָה'],
+            ['10','1cp','נִשְׁמֹר'],
+        ]
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Qal Imperfect — שמר')
+
+def build_ch15_qal_imperfect_paradigm_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch15QalImperfectParadigmDrill,
+        'Chapter 15 — Qal Imperfect Paradigm Drill',
+        'BBH Chapter 15 · Qal Imperfect Strong Verbs',
+        ['hebrew', 'bbh', 'ch15', 'exercises', 'ch15-qal-imperfect-paradigm-drill'],
+        'ch15-qal-imperfect-paradigm-drill.pdf', out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Ch17 — Wayyiqtol Paradigm Drill
+# ---------------------------------------------------------------------------
+class Ch17WayyiqtolParadigmDrill(ExercisePDF):
+    _instructions = (
+        'Write the Wayyiqtol (waw-consecutive imperfect) form for each PGN. '
+        'Root: קטל. Note: 1cs prefix waw takes qamets (וָ) before aleph.'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'PGN', 'Wayyiqtol form (קטל)']
+        cr   = [0.06, 0.20, 0.74]
+        rows = [['%d' % i, pgn, ''] for i, pgn in enumerate([
+            '3ms','3fs','2ms','2fs','1cs','3mp','3fp','2mp','2fp','1cp'], 1)]
+        ans = [
+            ['1','3ms','וַיִּקְטֹל'], ['2','3fs','וַתִּקְטֹל'], ['3','2ms','וַתִּקְטֹל'],
+            ['4','2fs','וַתִּקְטְלִי'], ['5','1cs','וָאֶקְטֹל'], ['6','3mp','וַיִּקְטְלוּ'],
+            ['7','3fp','וַתִּקְטֹלְנָה'], ['8','2mp','וַתִּקְטְלוּ'], ['9','2fp','וַתִּקְטֹלְנָה'],
+            ['10','1cp','וַנִּקְטֹל'],
+        ]
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Wayyiqtol — קטל')
+
+def build_ch17_wayyiqtol_paradigm_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch17WayyiqtolParadigmDrill,
+        'Chapter 17 — Wayyiqtol Paradigm Drill',
+        'BBH Chapter 17 · Waw-Consecutive',
+        ['hebrew', 'bbh', 'ch17', 'exercises', 'ch17-wayyiqtol-paradigm-drill'],
+        'ch17-wayyiqtol-paradigm-drill.pdf', out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Ch18 — Qal Imperative Paradigm Drill
+# ---------------------------------------------------------------------------
+class Ch18QalImperativeParadigmDrill(ExercisePDF):
+    _instructions = (
+        'Write the Qal Imperative form for each PGN. '
+        'Root: שמר (A-class). Note: Imperative has only 2nd-person forms.'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'PGN', 'Imperative form (שמר)']
+        cr   = [0.06, 0.20, 0.74]
+        rows = [['%d' % i, pgn, ''] for i, pgn in enumerate(['2ms','2fs','2mp','2fp'], 1)]
+        ans  = [
+            ['1','2ms','שְׁמֹר'], ['2','2fs','שִׁמְרִי'],
+            ['3','2mp','שִׁמְרוּ'], ['4','2fp','שְׁמֹרְנָה'],
+        ]
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Qal Imperative — שמר')
+
+def build_ch18_qal_imperative_paradigm_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch18QalImperativeParadigmDrill,
+        'Chapter 18 — Qal Imperative Paradigm Drill',
+        'BBH Chapter 18 · Qal Imperative',
+        ['hebrew', 'bbh', 'ch18', 'exercises', 'ch18-qal-imperative-paradigm-drill'],
+        'ch18-qal-imperative-paradigm-drill.pdf', out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Ch19 — Verb + Pronominal Suffix Paradigm Drill
+# ---------------------------------------------------------------------------
+class Ch19VerbSuffixParadigmDrill(ExercisePDF):
+    _instructions = (
+        'Part A: Supply the Qal Perfect 3ms (שָׁמַר) with the given object suffix. '
+        'Part B: Supply the Qal Imperfect 3ms (יִשְׁמֹר) with the given object suffix. '
+        'Note the energic nun before 3ms suffix in Part B.'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'Suffix (person)', 'Form']
+        cr   = [0.06, 0.30, 0.64]
+
+        rows_a = [
+            ['1', '+1cs (me)', ''], ['2', '+2ms (you m.)', ''], ['3', '+3ms (him)', ''],
+            ['4', '+3fs (her)', ''], ['5', '+1cp (us)', ''], ['6', '+3mp (them)', ''],
+        ]
+        ans_a = [
+            ['1', '+1cs (me)', 'שְׁמָרַנִי'], ['2', '+2ms (you m.)', 'שְׁמָרְךָ'],
+            ['3', '+3ms (him)', 'שְׁמָרוֹ'], ['4', '+3fs (her)', 'שְׁמָרָהּ'],
+            ['5', '+1cp (us)', 'שְׁמָרָנוּ'], ['6', '+3mp (them)', 'שְׁמָרָם'],
+        ]
+        rows_b = [
+            ['7', '+1cs (me)', ''], ['8', '+3ms (him)', ''], ['9', '+1cp (us)', ''],
+        ]
+        ans_b = [
+            ['7', '+1cs (me)', 'יִשְׁמְרֵנִי'],
+            ['8', '+3ms (him)', 'יִשְׁמְרֶנּוּ'],
+            ['9', '+1cp (us)', 'יִשְׁמְרֵנוּ'],
+        ]
+        self.add_drill_with_answer_key(hdrs, rows_a, ans_a, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Part A — Qal Perfect 3ms + Suffix (שָׁמַר)',
+                                       answer_title='Part A — Answer Key')
+        self.add_drill_with_answer_key(hdrs, rows_b, ans_b, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Part B — Qal Imperfect 3ms + Suffix (יִשְׁמֹר)',
+                                       answer_title='Part B — Answer Key')
+
+def build_ch19_verb_suffix_paradigm_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch19VerbSuffixParadigmDrill,
+        'Chapter 19 — Verb + Pronominal Suffix Paradigm Drill',
+        'BBH Chapter 19 · Qal Pronominal Suffixes on Verbs',
+        ['hebrew', 'bbh', 'ch19', 'exercises', 'ch19-verb-suffix-paradigm-drill'],
+        'ch19-verb-suffix-paradigm-drill.pdf', out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Ch20 — Qal Infinitive Construct Paradigm Drill
+# ---------------------------------------------------------------------------
+class Ch20QalICParadigmDrill(ExercisePDF):
+    _instructions = (
+        'Give the bare Infinitive Construct and the form with לְ for each root class.'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'Root class', 'Bare IC', '+ לְ prefix']
+        cr   = [0.05, 0.25, 0.35, 0.35]
+
+        rows = [
+            ['1', 'Strong A  (שמר)', '', ''],
+            ['2', 'III-ה  (ראה)', '', ''],
+            ['3', 'Biconsonantal  (שוב)', '', ''],
+            ['4', 'I-י  (ישב)', '', ''],
+            ['5', 'I-נ  (נתן)', '', ''],
+            ['6', 'I-aleph  (אמר)', '', ''],
+        ]
+        ans = [
+            ['1', 'Strong A  (שמר)', 'שְׁמֹר', 'לִשְׁמֹר'],
+            ['2', 'III-ה  (ראה)', 'רְאוֹת', 'לִרְאוֹת'],
+            ['3', 'Biconsonantal  (שוב)', 'שׁוּב', 'לָשׁוּב'],
+            ['4', 'I-י  (ישב)', 'שֶׁבֶת', 'לָשֶׁבֶת'],
+            ['5', 'I-נ  (נתן)', 'תֵּת', 'לָתֵת'],
+            ['6', 'I-aleph  (אמר)', 'אֱמֹר', 'לֵאמֹר'],
+        ]
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr,
+                                       answer_heb_cols=[2, 3],
+                                       section_title='Qal Infinitive Construct — Root Classes')
+
+def build_ch20_qal_ic_paradigm_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch20QalICParadigmDrill,
+        'Chapter 20 — Qal Infinitive Construct Paradigm Drill',
+        'BBH Chapter 20 · Qal Infinitive Construct',
+        ['hebrew', 'bbh', 'ch20', 'exercises', 'ch20-qal-ic-paradigm-drill'],
+        'ch20-qal-ic-paradigm-drill.pdf', out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Ch21 — Qal Infinitive Absolute Paradigm Drill
+# ---------------------------------------------------------------------------
+class Ch21QalIAParadigmDrill(ExercisePDF):
+    _instructions = (
+        'Give the Qal Infinitive Absolute for each root class. '
+        'Compare with the IC form — the vowel under R1 is the key distinction.'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'Root class', 'IC form (shown)', 'IA form']
+        cr   = [0.05, 0.25, 0.30, 0.40]
+
+        rows = [
+            ['1', 'Strong A  (שמר)', 'שְׁמֹר', ''],
+            ['2', 'III-ה  (ראה)', 'רְאוֹת', ''],
+            ['3', 'Biconsonantal  (מות)', 'מוּת', ''],
+            ['4', 'I-י  (הלך)', 'לֶכֶת', ''],
+            ['5', 'I-נ  (נתן)', 'תֵּת', ''],
+            ['6', 'I-aleph  (אכל)', 'אֱכֹל', ''],
+        ]
+        ans = [
+            ['1', 'Strong A  (שמר)', 'שְׁמֹר', 'שָׁמוֹר'],
+            ['2', 'III-ה  (ראה)', 'רְאוֹת', 'רָאֹה'],
+            ['3', 'Biconsonantal  (מות)', 'מוּת', 'מוֹת'],
+            ['4', 'I-י  (הלך)', 'לֶכֶת', 'הָלוֹךְ'],
+            ['5', 'I-נ  (נתן)', 'תֵּת', 'נָתוֹן'],
+            ['6', 'I-aleph  (אכל)', 'אֱכֹל', 'אָכוֹל'],
+        ]
+        self.add_drill_with_answer_key(hdrs, rows, ans, col_ratios=cr,
+                                       heb_cols=[2], answer_heb_cols=[3],
+                                       section_title='Qal Infinitive Absolute — Root Classes')
+
+def build_ch21_qal_ia_paradigm_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch21QalIAParadigmDrill,
+        'Chapter 21 — Qal Infinitive Absolute Paradigm Drill',
+        'BBH Chapter 21 · Qal Infinitive Absolute',
+        ['hebrew', 'bbh', 'ch21', 'exercises', 'ch21-qal-ia-paradigm-drill'],
+        'ch21-qal-ia-paradigm-drill.pdf', out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Ch22 — Qal Participle Paradigm Drill
+# ---------------------------------------------------------------------------
+class Ch22QalParticipleParadigmDrill(ExercisePDF):
+    _instructions = (
+        'Part A: Write the Qal Active Participle for the root שמר (4 forms). '
+        'Part B: Write the Qal Passive Participle (qatûl pattern) for the root שמר (4 forms).'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'Form', 'Active (שמר)']
+        cr   = [0.06, 0.20, 0.74]
+
+        rows_a = [['1','ms',''],['2','fs',''],['3','mp',''],['4','fp','']]
+        ans_a  = [
+            ['1','ms','שֹׁמֵר'], ['2','fs','שֹׁמֶרֶת'],
+            ['3','mp','שֹׁמְרִים'], ['4','fp','שֹׁמְרוֹת'],
+        ]
+        rows_b = [['5','ms',''],['6','fs',''],['7','mp',''],['8','fp','']]
+        ans_b  = [
+            ['5','ms','שָׁמוּר'], ['6','fs','שְׁמוּרָה'],
+            ['7','mp','שְׁמוּרִים'], ['8','fp','שְׁמוּרוֹת'],
+        ]
+        self.add_drill_with_answer_key(hdrs, rows_a, ans_a, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Part A — Qal Active Participle (שמר)',
+                                       answer_title='Part A — Answer Key')
+        hdrs_b = ['#', 'Form', 'Passive (שמר)']
+        self.add_drill_with_answer_key(hdrs_b, rows_b, ans_b, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Part B — Qal Passive Participle / Qatûl (שמר)',
+                                       answer_title='Part B — Answer Key')
+
+def build_ch22_qal_participle_paradigm_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch22QalParticipleParadigmDrill,
+        'Chapter 22 — Qal Participle Paradigm Drill',
+        'BBH Chapter 22 · Qal Participle',
+        ['hebrew', 'bbh', 'ch22', 'exercises', 'ch22-qal-participle-paradigm-drill'],
+        'ch22-qal-participle-paradigm-drill.pdf', out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Ch24 — Niphal Paradigm Drill
+# ---------------------------------------------------------------------------
+class Ch24NiphalParadigmDrill(ExercisePDF):
+    _instructions = (
+        'Write the complete Niphal paradigm for the root קטל. '
+        'Work conjugation by conjugation from memory. '
+        'Key: נִ prefix in Perfect; dagesh forte in R1 + tsere in Imperfect.'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'PGN', 'Niphal form (קטל)']
+        cr   = [0.06, 0.18, 0.76]
+        # Perfect
+        rows_pf = [['%d'%i,p,''] for i,p in enumerate(['3ms','3fs','2ms','2fs','1cs','3cp','2mp','2fp','1cp'],1)]
+        ans_pf  = [
+            ['1','3ms','נִקְטַל'],['2','3fs','נִקְטְלָה'],['3','2ms','נִקְטַלְתָּ'],
+            ['4','2fs','נִקְטַלְתְּ'],['5','1cs','נִקְטַלְתִּי'],['6','3cp','נִקְטְלוּ'],
+            ['7','2mp','נִקְטַלְתֶּם'],['8','2fp','נִקְטַלְתֶּן'],['9','1cp','נִקְטַלְנוּ'],
+        ]
+        # Imperfect
+        rows_imp = [['%d'%(i+9),p,''] for i,p in enumerate(['3ms','3fs','2ms','2fs','1cs','3mp','3fp','2mp','2fp','1cp'],1)]
+        ans_imp  = [
+            ['10','3ms','יִקָּטֵל'],['11','3fs','תִּקָּטֵל'],['12','2ms','תִּקָּטֵל'],
+            ['13','2fs','תִּקָּטְלִי'],['14','1cs','אֶקָּטֵל'],['15','3mp','יִקָּטְלוּ'],
+            ['16','3fp','תִּקָּטַלְנָה'],['17','2mp','תִּקָּטְלוּ'],['18','2fp','תִּקָּטַלְנָה'],
+            ['19','1cp','נִקָּטֵל'],
+        ]
+        # Imperative
+        rows_imper = [['%d'%(i+19),p,''] for i,p in enumerate(['2ms','2fs','2mp','2fp'],1)]
+        ans_imper  = [
+            ['20','2ms','הִקָּטֵל'],['21','2fs','הִקָּטְלִי'],
+            ['22','2mp','הִקָּטְלוּ'],['23','2fp','הִקָּטַלְנָה'],
+        ]
+        # IC + IA + Ptc
+        hdrs_misc = ['#', 'Form', 'Niphal (קטל)']
+        rows_misc = [
+            ['24','Inf. Construct (bare)',''], ['25','Inf. Construct +לְ',''],
+            ['26','Inf. Absolute',''],
+            ['27','Participle ms',''], ['28','Participle fs',''],
+            ['29','Participle mp',''], ['30','Participle fp',''],
+        ]
+        ans_misc  = [
+            ['24','Inf. Construct (bare)','הִקָּטֵל'], ['25','Inf. Construct +לְ','לְהִקָּטֵל'],
+            ['26','Inf. Absolute','נִקְטֹל'],
+            ['27','Participle ms','נִקְטָל'], ['28','Participle fs','נִקְטֶלֶת'],
+            ['29','Participle mp','נִקְטָלִים'], ['30','Participle fp','נִקְטָלוֹת'],
+        ]
+
+        for title_q, rows_q, ans_q in [
+            ('Niphal Perfect', rows_pf, ans_pf),
+            ('Niphal Imperfect', rows_imp, ans_imp),
+            ('Niphal Imperative', rows_imper, ans_imper),
+        ]:
+            self.add_drill_with_answer_key(hdrs, rows_q, ans_q, col_ratios=cr,
+                                           answer_heb_cols=[2],
+                                           section_title=title_q,
+                                           answer_title=f'{title_q} — Answer Key')
+        self.add_drill_with_answer_key(hdrs_misc, rows_misc, ans_misc, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Niphal — Inf. Construct · Inf. Absolute · Participle',
+                                       answer_title='Inf./Participle — Answer Key')
+
+def build_ch24_niphal_paradigm_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch24NiphalParadigmDrill,
+        'Chapter 24 — Niphal Paradigm Drill',
+        'BBH Chapter 24 · Niphal Strong',
+        ['hebrew', 'bbh', 'ch24', 'exercises', 'ch24-niphal-paradigm-drill'],
+        'ch24-niphal-paradigm-drill.pdf', out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Ch26 — Hiphil Paradigm Drill
+# ---------------------------------------------------------------------------
+class Ch26HiphilParadigmDrill(ExercisePDF):
+    _instructions = (
+        'Write the complete Hiphil paradigm for the root קטל. '
+        'Key: הִ prefix + chiriq in Perfect; patach under prefix in Imperfect; '
+        'מַ prefix in Participle.'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'PGN', 'Hiphil form (קטל)']
+        cr   = [0.06, 0.18, 0.76]
+        rows_pf = [['%d'%i,p,''] for i,p in enumerate(['3ms','3fs','2ms','2fs','1cs','3cp','2mp','2fp','1cp'],1)]
+        ans_pf  = [
+            ['1','3ms','הִקְטִיל'],['2','3fs','הִקְטִילָה'],['3','2ms','הִקְטַלְתָּ'],
+            ['4','2fs','הִקְטַלְתְּ'],['5','1cs','הִקְטַלְתִּי'],['6','3cp','הִקְטִילוּ'],
+            ['7','2mp','הִקְטַלְתֶּם'],['8','2fp','הִקְטַלְתֶּן'],['9','1cp','הִקְטַלְנוּ'],
+        ]
+        rows_imp = [['%d'%(i+9),p,''] for i,p in enumerate(['3ms','3fs','2ms','2fs','1cs','3mp','3fp','2mp','2fp','1cp'],1)]
+        ans_imp  = [
+            ['10','3ms','יַקְטִיל'],['11','3fs','תַּקְטִיל'],['12','2ms','תַּקְטִיל'],
+            ['13','2fs','תַּקְטִילִי'],['14','1cs','אַקְטִיל'],['15','3mp','יַקְטִילוּ'],
+            ['16','3fp','תַּקְטֵלְנָה'],['17','2mp','תַּקְטִילוּ'],['18','2fp','תַּקְטֵלְנָה'],
+            ['19','1cp','נַקְטִיל'],
+        ]
+        rows_imper = [['%d'%(i+19),p,''] for i,p in enumerate(['2ms','2fs','2mp','2fp'],1)]
+        ans_imper  = [
+            ['20','2ms','הַקְטֵל'],['21','2fs','הַקְטִילִי'],
+            ['22','2mp','הַקְטִילוּ'],['23','2fp','הַקְטֵלְנָה'],
+        ]
+        hdrs_misc = ['#', 'Form', 'Hiphil (קטל)']
+        rows_misc = [
+            ['24','Inf. Construct (bare)',''], ['25','Inf. Construct +לְ',''],
+            ['26','Inf. Absolute',''],
+            ['27','Participle ms',''], ['28','Participle fs',''],
+            ['29','Participle mp',''], ['30','Participle fp',''],
+        ]
+        ans_misc  = [
+            ['24','Inf. Construct (bare)','הַקְטִיל'], ['25','Inf. Construct +לְ','לְהַקְטִיל'],
+            ['26','Inf. Absolute','הַקְטֵל'],
+            ['27','Participle ms','מַקְטִיל'], ['28','Participle fs','מַקְטֶלֶת'],
+            ['29','Participle mp','מַקְטִילִים'], ['30','Participle fp','מַקְטִילוֹת'],
+        ]
+        for title_q, rows_q, ans_q in [
+            ('Hiphil Perfect', rows_pf, ans_pf),
+            ('Hiphil Imperfect', rows_imp, ans_imp),
+            ('Hiphil Imperative', rows_imper, ans_imper),
+        ]:
+            self.add_drill_with_answer_key(hdrs, rows_q, ans_q, col_ratios=cr,
+                                           answer_heb_cols=[2],
+                                           section_title=title_q,
+                                           answer_title=f'{title_q} — Answer Key')
+        self.add_drill_with_answer_key(hdrs_misc, rows_misc, ans_misc, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Hiphil — Inf. Construct · Inf. Absolute · Participle',
+                                       answer_title='Inf./Participle — Answer Key')
+
+def build_ch26_hiphil_paradigm_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch26HiphilParadigmDrill,
+        'Chapter 26 — Hiphil Paradigm Drill',
+        'BBH Chapter 26 · Hiphil Strong',
+        ['hebrew', 'bbh', 'ch26', 'exercises', 'ch26-hiphil-paradigm-drill'],
+        'ch26-hiphil-paradigm-drill.pdf', out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Ch28 — Hophal Paradigm Drill
+# ---------------------------------------------------------------------------
+class Ch28HophalParadigmDrill(ExercisePDF):
+    _instructions = (
+        'Write the Hophal paradigm for the root מות. '
+        'Note: there is NO Hophal Imperative — passives cannot be commanded. '
+        'Key marker: שׁוּ/הוּ prefix (shureq) in Perfect/Imperfect; מוּ in Participle.'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'PGN', 'Hophal form (מות)']
+        cr   = [0.06, 0.18, 0.76]
+        rows_pf = [['%d'%i,p,''] for i,p in enumerate(['3ms','3fs','2ms','2fs','1cs','3cp','2mp','2fp','1cp'],1)]
+        ans_pf  = [
+            ['1','3ms','הוּמַת'],['2','3fs','הוּמְתָה'],['3','2ms','הוּמַתָּ'],
+            ['4','2fs','הוּמַתְּ'],['5','1cs','הוּמַתִּי'],['6','3cp','הוּמְתוּ'],
+            ['7','2mp','הוּמַתֶּם'],['8','2fp','הוּמַתֶּן'],['9','1cp','הוּמַתְנוּ'],
+        ]
+        rows_imp = [['%d'%(i+9),p,''] for i,p in enumerate(['3ms','3fs','2ms','2fs','1cs','3mp','3fp','2mp','2fp','1cp'],1)]
+        ans_imp  = [
+            ['10','3ms','יוּמַת'],['11','3fs','תּוּמַת'],['12','2ms','תּוּמַת'],
+            ['13','2fs','תּוּמְתִי'],['14','1cs','אוּמַת'],['15','3mp','יוּמְתוּ'],
+            ['16','3fp','תּוּמַתְנָה'],['17','2mp','תּוּמְתוּ'],['18','2fp','תּוּמַתְנָה'],
+            ['19','1cp','נוּמַת'],
+        ]
+        hdrs_misc = ['#', 'Form', 'Hophal (מות)']
+        rows_misc = [
+            ['20','Inf. Construct (bare)',''], ['21','Inf. Construct +לְ',''],
+            ['22','Inf. Absolute',''],
+            ['23','Participle ms',''], ['24','Participle fs',''],
+            ['25','Participle mp',''], ['26','Participle fp',''],
+        ]
+        ans_misc  = [
+            ['20','Inf. Construct (bare)','הוּמַת'], ['21','Inf. Construct +לְ','לְהוּמַת'],
+            ['22','Inf. Absolute','הוּמֵת'],
+            ['23','Participle ms','מוּמָת'], ['24','Participle fs','מוּמָתֶת'],
+            ['25','Participle mp','מוּמָתִים'], ['26','Participle fp','מוּמָתוֹת'],
+        ]
+        for title_q, rows_q, ans_q in [
+            ('Hophal Perfect', rows_pf, ans_pf),
+            ('Hophal Imperfect', rows_imp, ans_imp),
+        ]:
+            self.add_drill_with_answer_key(hdrs, rows_q, ans_q, col_ratios=cr,
+                                           answer_heb_cols=[2],
+                                           section_title=title_q,
+                                           answer_title=f'{title_q} — Answer Key')
+        self.add_drill_with_answer_key(hdrs_misc, rows_misc, ans_misc, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Hophal — Inf. Construct · Inf. Absolute · Participle',
+                                       answer_title='Inf./Participle — Answer Key')
+
+def build_ch28_hophal_paradigm_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch28HophalParadigmDrill,
+        'Chapter 28 — Hophal Paradigm Drill',
+        'BBH Chapter 28 · Hophal Strong',
+        ['hebrew', 'bbh', 'ch28', 'exercises', 'ch28-hophal-paradigm-drill'],
+        'ch28-hophal-paradigm-drill.pdf', out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Ch29 — Hophal Weak Paradigm Drill
+# ---------------------------------------------------------------------------
+class Ch29HophalWeakParadigmDrill(ExercisePDF):
+    _instructions = (
+        'Write the Hophal Weak forms. '
+        'Part A uses נגד (I-נ root, qibbuts pattern — ֻ under prefix). '
+        'Part B uses בוא (biconsonantal, shureq pattern). '
+        'The qibbuts vs. shureq distinction is the key diagnostic.'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'PGN / Form', 'Hophal form']
+        cr   = [0.06, 0.28, 0.66]
+
+        rows_a = [
+            ['1','Perfect 3ms',''], ['2','Perfect 3fs',''], ['3','Perfect 2ms',''],
+            ['4','Perfect 1cs',''], ['5','Imperfect 3ms',''], ['6','Imperfect 3fs',''],
+            ['7','Imperfect 3mp',''], ['8','Imperfect 1cp',''],
+            ['9','Participle ms',''], ['10','Participle mp',''],
+        ]
+        ans_a = [
+            ['1','Perfect 3ms','הֻגַּד'], ['2','Perfect 3fs','הֻגְּדָה'],
+            ['3','Perfect 2ms','הֻגַּדְתָּ'], ['4','Perfect 1cs','הֻגַּדְתִּי'],
+            ['5','Imperfect 3ms','יֻגַּד'], ['6','Imperfect 3fs','תֻּגַּד'],
+            ['7','Imperfect 3mp','יֻגְּדוּ'], ['8','Imperfect 1cp','נֻגַּד'],
+            ['9','Participle ms','מֻגָּד'], ['10','Participle mp','מֻגָּדִים'],
+        ]
+        rows_b = [
+            ['11','Imperfect 3ms (בוא)',''], ['12','Participle ms (בוא)',''],
+        ]
+        ans_b = [
+            ['11','Imperfect 3ms (בוא)','יוּבָא'], ['12','Participle ms (בוא)','מוּבָא'],
+        ]
+        self.add_drill_with_answer_key(hdrs, rows_a, ans_a, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Part A — Hophal Weak: נגד (I-נ, qibbuts)',
+                                       answer_title='Part A — Answer Key')
+        self.add_drill_with_answer_key(hdrs, rows_b, ans_b, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Part B — Hophal Weak: בוא (biconsonantal, shureq)',
+                                       answer_title='Part B — Answer Key')
+
+def build_ch29_hophal_weak_paradigm_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch29HophalWeakParadigmDrill,
+        'Chapter 29 — Hophal Weak Paradigm Drill',
+        'BBH Chapter 29 · Hophal Weak',
+        ['hebrew', 'bbh', 'ch29', 'exercises', 'ch29-hophal-weak-paradigm-drill'],
+        'ch29-hophal-weak-paradigm-drill.pdf', out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Ch30 — Piel Paradigm Drill
+# ---------------------------------------------------------------------------
+class Ch30PielParadigmDrill(ExercisePDF):
+    _instructions = (
+        'Write the complete Piel paradigm for the root דבר. '
+        'Key marker: dagesh forte in R2 throughout all conjugations.'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'PGN', 'Piel form (דבר)']
+        cr   = [0.06, 0.18, 0.76]
+        rows_pf = [['%d'%i,p,''] for i,p in enumerate(['3ms','3fs','2ms','2fs','1cs','3cp','2mp','2fp','1cp'],1)]
+        ans_pf  = [
+            ['1','3ms','דִּבֵּר'],['2','3fs','דִּבְּרָה'],['3','2ms','דִּבַּרְתָּ'],
+            ['4','2fs','דִּבַּרְתְּ'],['5','1cs','דִּבַּרְתִּי'],['6','3cp','דִּבְּרוּ'],
+            ['7','2mp','דִּבַּרְתֶּם'],['8','2fp','דִּבַּרְתֶּן'],['9','1cp','דִּבַּרְנוּ'],
+        ]
+        rows_imp = [['%d'%(i+9),p,''] for i,p in enumerate(['3ms','3fs','2ms','2fs','1cs','3mp','3fp','2mp','2fp','1cp'],1)]
+        ans_imp  = [
+            ['10','3ms','יְדַבֵּר'],['11','3fs','תְּדַבֵּר'],['12','2ms','תְּדַבֵּר'],
+            ['13','2fs','תְּדַבְּרִי'],['14','1cs','אֲדַבֵּר'],['15','3mp','יְדַבְּרוּ'],
+            ['16','3fp','תְּדַבֵּרְנָה'],['17','2mp','תְּדַבְּרוּ'],['18','2fp','תְּדַבֵּרְנָה'],
+            ['19','1cp','נְדַבֵּר'],
+        ]
+        rows_imper = [['%d'%(i+19),p,''] for i,p in enumerate(['2ms','2fs','2mp','2fp'],1)]
+        ans_imper  = [
+            ['20','2ms','דַּבֵּר'],['21','2fs','דַּבְּרִי'],
+            ['22','2mp','דַּבְּרוּ'],['23','2fp','דַּבֵּרְנָה'],
+        ]
+        hdrs_misc = ['#', 'Form', 'Piel (דבר)']
+        rows_misc = [
+            ['24','Inf. Construct (bare)',''], ['25','Inf. Construct +לְ',''],
+            ['26','Inf. Absolute',''],
+            ['27','Participle ms',''], ['28','Participle fs',''],
+            ['29','Participle mp',''], ['30','Participle fp',''],
+        ]
+        ans_misc  = [
+            ['24','Inf. Construct (bare)','דַּבֵּר'], ['25','Inf. Construct +לְ','לְדַבֵּר'],
+            ['26','Inf. Absolute','דַּבֵּר'],
+            ['27','Participle ms','מְדַבֵּר'], ['28','Participle fs','מְדַבֶּרֶת'],
+            ['29','Participle mp','מְדַבְּרִים'], ['30','Participle fp','מְדַבְּרוֹת'],
+        ]
+        for title_q, rows_q, ans_q in [
+            ('Piel Perfect', rows_pf, ans_pf),
+            ('Piel Imperfect', rows_imp, ans_imp),
+            ('Piel Imperative', rows_imper, ans_imper),
+        ]:
+            self.add_drill_with_answer_key(hdrs, rows_q, ans_q, col_ratios=cr,
+                                           answer_heb_cols=[2],
+                                           section_title=title_q,
+                                           answer_title=f'{title_q} — Answer Key')
+        self.add_drill_with_answer_key(hdrs_misc, rows_misc, ans_misc, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Piel — Inf. Construct · Inf. Absolute · Participle',
+                                       answer_title='Inf./Participle — Answer Key')
+
+def build_ch30_piel_paradigm_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch30PielParadigmDrill,
+        'Chapter 30 — Piel Paradigm Drill',
+        'BBH Chapter 30 · Piel Strong',
+        ['hebrew', 'bbh', 'ch30', 'exercises', 'ch30-piel-paradigm-drill'],
+        'ch30-piel-paradigm-drill.pdf', out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Ch31 — Piel Weak Paradigm Drill (III-ה: גלה)
+# ---------------------------------------------------------------------------
+class Ch31PielWeakParadigmDrill(ExercisePDF):
+    _instructions = (
+        'Write the Piel Weak paradigm for the root גלה (III-ה: uncover/reveal). '
+        'Note: final ה is retained in the 3ms Perfect; it drops before vowel suffixes.'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'PGN / Form', 'Piel form (גלה)']
+        cr   = [0.06, 0.24, 0.70]
+
+        rows_pf = [['%d'%i,p,''] for i,p in enumerate(['3ms','3fs','2ms','1cs','3cp'],1)]
+        ans_pf  = [
+            ['1','3ms','גִּלָּה'], ['2','3fs','גִּלְּתָה'], ['3','2ms','גִּלִּיתָ'],
+            ['4','1cs','גִּלִּיתִי'], ['5','3cp','גִּלּוּ'],
+        ]
+        rows_imp = [['%d'%(i+5),p,''] for i,p in enumerate(['3ms','3fs','2ms','3mp','1cp'],1)]
+        ans_imp  = [
+            ['6','3ms','יְגַלֶּה'], ['7','3fs','תְּגַלֶּה'], ['8','2ms','תְּגַלֶּה'],
+            ['9','3mp','יְגַלּוּ'], ['10','1cp','נְגַלֶּה'],
+        ]
+        rows_imper = [['%d'%(i+10),p,''] for i,p in enumerate(['2ms','2fs','2mp'],1)]
+        ans_imper  = [
+            ['11','2ms','גַּלֵּה'], ['12','2fs','גַּלִּי'], ['13','2mp','גַּלּוּ'],
+        ]
+        rows_ptc = [['14','Participle ms','']]
+        ans_ptc  = [['14','Participle ms','מְגַלֶּה']]
+
+        for title_q, rows_q, ans_q in [
+            ('Piel Weak Perfect (גלה)', rows_pf, ans_pf),
+            ('Piel Weak Imperfect (גלה)', rows_imp, ans_imp),
+            ('Piel Weak Imperative (גלה)', rows_imper, ans_imper),
+            ('Piel Weak Participle (גלה)', rows_ptc, ans_ptc),
+        ]:
+            self.add_drill_with_answer_key(hdrs, rows_q, ans_q, col_ratios=cr,
+                                           answer_heb_cols=[2],
+                                           section_title=title_q,
+                                           answer_title=f'{title_q} — Answer Key')
+
+def build_ch31_piel_weak_paradigm_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch31PielWeakParadigmDrill,
+        'Chapter 31 — Piel Weak Paradigm Drill',
+        'BBH Chapter 31 · Piel Weak',
+        ['hebrew', 'bbh', 'ch31', 'exercises', 'ch31-piel-weak-paradigm-drill'],
+        'ch31-piel-weak-paradigm-drill.pdf', out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Ch32 — Pual Paradigm Drill
+# ---------------------------------------------------------------------------
+class Ch32PualParadigmDrill(ExercisePDF):
+    _instructions = (
+        'Write the Pual (passive of Piel) paradigm for the root קטל. '
+        'Key: qibbuts (ֻ) under R1 + dagesh forte in R2.'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'PGN / Form', 'Pual form (קטל)']
+        cr   = [0.06, 0.24, 0.70]
+
+        rows_pf = [['%d'%i,p,''] for i,p in enumerate(['3ms','3fs','2ms','3cp','1cs'],1)]
+        ans_pf  = [
+            ['1','3ms','קֻטַּל'], ['2','3fs','קֻטְּלָה'], ['3','2ms','קֻטַּלְתָּ'],
+            ['4','3cp','קֻטְּלוּ'], ['5','1cs','קֻטַּלְתִּי'],
+        ]
+        rows_imp = [['%d'%(i+5),p,''] for i,p in enumerate(['3ms','3fs','2ms','3mp','1cp'],1)]
+        ans_imp  = [
+            ['6','3ms','יְקֻטַּל'], ['7','3fs','תְּקֻטַּל'], ['8','2ms','תְּקֻטַּל'],
+            ['9','3mp','יְקֻטְּלוּ'], ['10','1cp','נְקֻטַּל'],
+        ]
+        rows_ptc = [['11','Participle ms',''],['12','Participle fs',''],
+                    ['13','Participle mp',''],['14','Participle fp','']]
+        ans_ptc  = [
+            ['11','Participle ms','מְקֻטָּל'], ['12','Participle fs','מְקֻטֶּלֶת'],
+            ['13','Participle mp','מְקֻטָּלִים'], ['14','Participle fp','מְקֻטָּלוֹת'],
+        ]
+        for title_q, rows_q, ans_q in [
+            ('Pual Perfect (קטל)', rows_pf, ans_pf),
+            ('Pual Imperfect (קטל)', rows_imp, ans_imp),
+            ('Pual Participle (קטל)', rows_ptc, ans_ptc),
+        ]:
+            self.add_drill_with_answer_key(hdrs, rows_q, ans_q, col_ratios=cr,
+                                           answer_heb_cols=[2],
+                                           section_title=title_q,
+                                           answer_title=f'{title_q} — Answer Key')
+
+def build_ch32_pual_paradigm_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch32PualParadigmDrill,
+        'Chapter 32 — Pual Paradigm Drill',
+        'BBH Chapter 32 · Pual Strong',
+        ['hebrew', 'bbh', 'ch32', 'exercises', 'ch32-pual-paradigm-drill'],
+        'ch32-pual-paradigm-drill.pdf', out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Ch33 — Pual Weak Paradigm Drill (III-ה: בנה)
+# ---------------------------------------------------------------------------
+class Ch33PualWeakParadigmDrill(ExercisePDF):
+    _instructions = (
+        'Write the Pual Weak forms. '
+        'Part A uses בנה (III-ה). '
+        'Part B uses שאל (strong Pual — for comparison).'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'PGN / Form', 'Pual form']
+        cr   = [0.06, 0.24, 0.70]
+
+        rows_a = [['%d'%i,p,''] for i,p in enumerate([
+            'Perfect 3ms (בנה)','Perfect 3fs (בנה)','Perfect 3cp (בנה)',
+            'Imperfect 3ms (בנה)','Imperfect 3fs (בנה)','Imperfect 3mp (בנה)',
+            'Participle ms (בנה)','Participle mp (בנה)',
+        ],1)]
+        ans_a = [
+            ['1','Perfect 3ms (בנה)','בֻּנָּה'], ['2','Perfect 3fs (בנה)','בֻּנְּתָה'],
+            ['3','Perfect 3cp (בנה)','בֻּנּוּ'], ['4','Imperfect 3ms (בנה)','יְבֻנֶּה'],
+            ['5','Imperfect 3fs (בנה)','תְּבֻנֶּה'], ['6','Imperfect 3mp (בנה)','יְבֻנּוּ'],
+            ['7','Participle ms (בנה)','מְבֻנֶּה'], ['8','Participle mp (בנה)','מְבֻנִּים'],
+        ]
+        rows_b = [
+            ['9','Perfect 3ms (שאל)',''], ['10','Imperfect 3ms (שאל)',''],
+        ]
+        ans_b = [
+            ['9','Perfect 3ms (שאל)','שֻׁאַל'], ['10','Imperfect 3ms (שאל)','יְשֻׁאַל'],
+        ]
+        self.add_drill_with_answer_key(hdrs, rows_a, ans_a, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Part A — Pual Weak: בנה (III-ה)',
+                                       answer_title='Part A — Answer Key')
+        self.add_drill_with_answer_key(hdrs, rows_b, ans_b, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Part B — Pual Strong: שאל (comparison)',
+                                       answer_title='Part B — Answer Key')
+
+def build_ch33_pual_weak_paradigm_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch33PualWeakParadigmDrill,
+        'Chapter 33 — Pual Weak Paradigm Drill',
+        'BBH Chapter 33 · Pual Weak',
+        ['hebrew', 'bbh', 'ch33', 'exercises', 'ch33-pual-weak-paradigm-drill'],
+        'ch33-pual-weak-paradigm-drill.pdf', out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Ch34 — Hithpael Paradigm Drill
+# ---------------------------------------------------------------------------
+class Ch34HithpaelParadigmDrill(ExercisePDF):
+    _instructions = (
+        'Write the complete Hithpael paradigm for the root קדשׁ. '
+        'Key: הִתְ prefix in Perfect/Imperative/IC; יִתְ in Imperfect; מִתְ in Participle.'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'PGN', 'Hithpael form (קדשׁ)']
+        cr   = [0.06, 0.18, 0.76]
+        rows_pf = [['%d'%i,p,''] for i,p in enumerate(['3ms','3fs','2ms','2fs','1cs','3cp','2mp','2fp','1cp'],1)]
+        ans_pf  = [
+            ['1','3ms','הִתְקַדֵּשׁ'],['2','3fs','הִתְקַדְּשָׁה'],['3','2ms','הִתְקַדַּשְׁתָּ'],
+            ['4','2fs','הִתְקַדַּשְׁתְּ'],['5','1cs','הִתְקַדַּשְׁתִּי'],['6','3cp','הִתְקַדְּשׁוּ'],
+            ['7','2mp','הִתְקַדַּשְׁתֶּם'],['8','2fp','הִתְקַדַּשְׁתֶּן'],['9','1cp','הִתְקַדַּשְׁנוּ'],
+        ]
+        rows_imp = [['%d'%(i+9),p,''] for i,p in enumerate(['3ms','3fs','2ms','2fs','1cs','3mp','3fp','2mp','2fp','1cp'],1)]
+        ans_imp  = [
+            ['10','3ms','יִתְקַדֵּשׁ'],['11','3fs','תִּתְקַדֵּשׁ'],['12','2ms','תִּתְקַדֵּשׁ'],
+            ['13','2fs','תִּתְקַדְּשִׁי'],['14','1cs','אֶתְקַדֵּשׁ'],['15','3mp','יִתְקַדְּשׁוּ'],
+            ['16','3fp','תִּתְקַדֵּשְׁנָה'],['17','2mp','תִּתְקַדְּשׁוּ'],['18','2fp','תִּתְקַדֵּשְׁנָה'],
+            ['19','1cp','נִתְקַדֵּשׁ'],
+        ]
+        rows_imper = [['%d'%(i+19),p,''] for i,p in enumerate(['2ms','2fs','2mp','2fp'],1)]
+        ans_imper  = [
+            ['20','2ms','הִתְקַדֵּשׁ'],['21','2fs','הִתְקַדְּשִׁי'],
+            ['22','2mp','הִתְקַדְּשׁוּ'],['23','2fp','הִתְקַדֵּשְׁנָה'],
+        ]
+        hdrs_misc = ['#', 'Form', 'Hithpael (קדשׁ)']
+        rows_misc = [
+            ['24','Inf. Construct (bare)',''], ['25','Inf. Construct +לְ',''],
+            ['26','Participle ms',''], ['27','Participle fs',''],
+            ['28','Participle mp',''], ['29','Participle fp',''],
+        ]
+        ans_misc  = [
+            ['24','Inf. Construct (bare)','הִתְקַדֵּשׁ'], ['25','Inf. Construct +לְ','לְהִתְקַדֵּשׁ'],
+            ['26','Participle ms','מִתְקַדֵּשׁ'], ['27','Participle fs','מִתְקַדֶּשֶׁת'],
+            ['28','Participle mp','מִתְקַדְּשִׁים'], ['29','Participle fp','מִתְקַדְּשׁוֹת'],
+        ]
+        for title_q, rows_q, ans_q in [
+            ('Hithpael Perfect', rows_pf, ans_pf),
+            ('Hithpael Imperfect', rows_imp, ans_imp),
+            ('Hithpael Imperative', rows_imper, ans_imper),
+        ]:
+            self.add_drill_with_answer_key(hdrs, rows_q, ans_q, col_ratios=cr,
+                                           answer_heb_cols=[2],
+                                           section_title=title_q,
+                                           answer_title=f'{title_q} — Answer Key')
+        self.add_drill_with_answer_key(hdrs_misc, rows_misc, ans_misc, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Hithpael — Inf. Construct · Participle',
+                                       answer_title='Inf./Participle — Answer Key')
+
+def build_ch34_hithpael_paradigm_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch34HithpaelParadigmDrill,
+        'Chapter 34 — Hithpael Paradigm Drill',
+        'BBH Chapter 34 · Hithpael Strong',
+        ['hebrew', 'bbh', 'ch34', 'exercises', 'ch34-hithpael-paradigm-drill'],
+        'ch34-hithpael-paradigm-drill.pdf', out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Ch35 — Hithpael Weak Paradigm Drill (III-ה: גלה)
+# ---------------------------------------------------------------------------
+class Ch35HithpaelWeakParadigmDrill(ExercisePDF):
+    _instructions = (
+        'Write the Hithpael Weak forms. '
+        'Part A uses גלה (III-ה). '
+        'Part B shows metathesis: when R1 is a sibilant (ז, צ, שׁ, שׂ), '
+        'the ת of הִתְ swaps with R1 (e.g., הִצְטַדֵּק from root צדק).'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'PGN / Form', 'Hithpael form']
+        cr   = [0.06, 0.28, 0.66]
+
+        rows_a = [
+            ['1','Perfect 3ms (גלה)',''], ['2','Perfect 3fs (גלה)',''],
+            ['3','Perfect 2ms (גלה)',''], ['4','Perfect 1cs (גלה)',''],
+            ['5','Perfect 3cp (גלה)',''], ['6','Imperfect 3ms (גלה)',''],
+            ['7','Imperfect 2ms (גלה)',''], ['8','Imperfect 3mp (גלה)',''],
+            ['9','Imperfect 1cp (גלה)',''], ['10','Imperative 2ms (גלה)',''],
+            ['11','Imperative 2fs (גלה)',''], ['12','Imperative 2mp (גלה)',''],
+            ['13','Participle ms (גלה)',''], ['14','Participle mp (גלה)',''],
+        ]
+        ans_a = [
+            ['1','Perfect 3ms (גלה)','הִתְגַּלָּה'], ['2','Perfect 3fs (גלה)','הִתְגַּלְּתָה'],
+            ['3','Perfect 2ms (גלה)','הִתְגַּלִּיתָ'], ['4','Perfect 1cs (גלה)','הִתְגַּלִּיתִי'],
+            ['5','Perfect 3cp (גלה)','הִתְגַּלּוּ'], ['6','Imperfect 3ms (גלה)','יִתְגַּלֶּה'],
+            ['7','Imperfect 2ms (גלה)','תִּתְגַּלֶּה'], ['8','Imperfect 3mp (גלה)','יִתְגַּלּוּ'],
+            ['9','Imperfect 1cp (גלה)','נִתְגַּלֶּה'], ['10','Imperative 2ms (גלה)','הִתְגַּלֵּה'],
+            ['11','Imperative 2fs (גלה)','הִתְגַּלִּי'], ['12','Imperative 2mp (גלה)','הִתְגַּלּוּ'],
+            ['13','Participle ms (גלה)','מִתְגַּלֶּה'], ['14','Participle mp (גלה)','מִתְגַּלִּים'],
+        ]
+        rows_b = [['15','Perfect 3ms (צדק — metathesis)',''], ['16','Imperfect 3ms (שמר — metathesis)',''],]
+        ans_b  = [['15','Perfect 3ms (צדק — metathesis)','הִצְטַדֵּק'], ['16','Imperfect 3ms (שמר — metathesis)','יִשְׁתַּמֵּר'],]
+
+        self.add_drill_with_answer_key(hdrs, rows_a, ans_a, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Part A — Hithpael Weak: גלה (III-ה)',
+                                       answer_title='Part A — Answer Key')
+        self.add_drill_with_answer_key(hdrs, rows_b, ans_b, col_ratios=cr,
+                                       answer_heb_cols=[2],
+                                       section_title='Part B — Hithpael Metathesis Examples',
+                                       answer_title='Part B — Answer Key')
+
+def build_ch35_hithpael_weak_paradigm_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch35HithpaelWeakParadigmDrill,
+        'Chapter 35 — Hithpael Weak Paradigm Drill',
+        'BBH Chapter 35 · Hithpael Weak',
+        ['hebrew', 'bbh', 'ch35', 'exercises', 'ch35-hithpael-weak-paradigm-drill'],
+        'ch35-hithpael-weak-paradigm-drill.pdf', out_dir,
+    )

@@ -70,6 +70,24 @@ from .bbh import (
     build_ch34_function_sort_exercise,
     build_ch35_hithpael_weak_exercise,
     build_ch35_weak_form_id_exercise,
+    build_ch13_qal_perfect_paradigm_drill,
+    build_ch15_qal_imperfect_paradigm_drill,
+    build_ch17_wayyiqtol_paradigm_drill,
+    build_ch18_qal_imperative_paradigm_drill,
+    build_ch19_verb_suffix_paradigm_drill,
+    build_ch20_qal_ic_paradigm_drill,
+    build_ch21_qal_ia_paradigm_drill,
+    build_ch22_qal_participle_paradigm_drill,
+    build_ch24_niphal_paradigm_drill,
+    build_ch26_hiphil_paradigm_drill,
+    build_ch28_hophal_paradigm_drill,
+    build_ch29_hophal_weak_paradigm_drill,
+    build_ch30_piel_paradigm_drill,
+    build_ch31_piel_weak_paradigm_drill,
+    build_ch32_pual_paradigm_drill,
+    build_ch33_pual_weak_paradigm_drill,
+    build_ch34_hithpael_paradigm_drill,
+    build_ch35_hithpael_weak_paradigm_drill,
 )
 from .bbg import (
     build_bbg_ch3_alphabet_drill,
@@ -241,6 +259,34 @@ p26 = build_ch35_hithpael_weak_exercise()
 print(f'Saved: {p26}')
 p27 = build_ch35_weak_form_id_exercise()
 print(f'Saved: {p27}')
+
+# Paradigm completion exercises (BBH Ch13–Ch35)
+paradigm_builders = [
+    build_ch13_qal_perfect_paradigm_drill,
+    build_ch15_qal_imperfect_paradigm_drill,
+    build_ch17_wayyiqtol_paradigm_drill,
+    build_ch18_qal_imperative_paradigm_drill,
+    build_ch19_verb_suffix_paradigm_drill,
+    build_ch20_qal_ic_paradigm_drill,
+    build_ch21_qal_ia_paradigm_drill,
+    build_ch22_qal_participle_paradigm_drill,
+    build_ch24_niphal_paradigm_drill,
+    build_ch26_hiphil_paradigm_drill,
+    build_ch28_hophal_paradigm_drill,
+    build_ch29_hophal_weak_paradigm_drill,
+    build_ch30_piel_paradigm_drill,
+    build_ch31_piel_weak_paradigm_drill,
+    build_ch32_pual_paradigm_drill,
+    build_ch33_pual_weak_paradigm_drill,
+    build_ch34_hithpael_paradigm_drill,
+    build_ch35_hithpael_weak_paradigm_drill,
+]
+for fn in paradigm_builders:
+    try:
+        saved = fn()
+        print(f'Saved: {saved}')
+    except Exception as exc:
+        print(f'ERROR in {fn.__name__}: {exc}')
 
 # BBG (Greek) exercises
 bbg_builders = [
