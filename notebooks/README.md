@@ -131,6 +131,7 @@ the notebooks running in VS Code (5–10 minutes).
 | [both/lexicon/language_analysis.ipynb](both/lexicon/language_analysis.ipynb) | Cross-language analysis: lexicon API (TBESH/TBESG), LXX consistency, domain search |
 | [both/lexicon/morph_distribution.ipynb](both/lexicon/morph_distribution.ipynb) | Morphological distribution — how a root's forms spread across books: Hebrew (dabar/amar/bara stem profiles), Greek (lego/pisteuo tense×voice, logos case distribution); stacked bar charts; print helper |
 | [both/lexicon/collocation_and_phrase.ipynb](both/lexicon/collocation_and_phrase.ipynb) | Collocations and phrase search: PMI/G² collocation statistics for ruach/hesed/logos/pistis; phrase search (dabar YHWH, kyrios Iesous); wildcard patterns; proximity search (ruach within 5 of Elohim) |
+| [both/lexicon/formulaic_language.ipynb](both/lexicon/formulaic_language.ipynb) | Formulaic language and fixed phrase detection: Hebrew top n-grams, prophetic formulas (כֹּה אָמַר יְהוָה/נְאֻם יְהוָה/דְּבַר יְהוָה), blessing/curse formulas, NT dominical formulas (ἀμὴν λέγω ὑμῖν/γέγραπται/epistolary greetings), formula density by book, wildcard variant detection |
 
 ### Intertextuality
 

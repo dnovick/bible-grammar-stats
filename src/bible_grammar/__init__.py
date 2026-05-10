@@ -330,6 +330,17 @@ from .ot_semantic_domains import (
     ot_domain_genre_chart, ot_domain_heatmap,
     COREDOMAIN_NAMES, LEXDOMAIN_TOP, THEOLOGY_COREDOMAINS,
 )
+from .formulaic import (
+    HEBREW_FORMULAS, GREEK_FORMULAS,
+    ot_formula_frequency, nt_formula_frequency,
+    ot_formula_search, nt_formula_search,
+    formula_book_distribution,
+    ot_formula_profile, nt_formula_profile,
+    print_formula_concordance, print_formula_book_distribution,
+    print_ot_formula_profile, print_nt_formula_profile,
+    print_ot_top_ngrams, print_nt_top_ngrams,
+    formula_book_chart, formula_chapter_chart,
+)
 from .ot_discourse import (
     ot_discourse_wayyiqtol_density, ot_discourse_speech_density,
     ot_discourse_lexical_diversity, ot_discourse_peak_score,
