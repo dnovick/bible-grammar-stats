@@ -330,6 +330,15 @@ from .ot_semantic_domains import (
     ot_domain_genre_chart, ot_domain_heatmap,
     COREDOMAIN_NAMES, LEXDOMAIN_TOP, THEOLOGY_COREDOMAINS,
 )
+from .speech_acts import (
+    SPEECH_ACT_TYPES,
+    ot_speech_act_data, ot_speech_act_profile,
+    nt_speech_act_data, nt_speech_act_profile,
+    ot_speech_act_comparison, nt_speech_act_comparison,
+    print_ot_speech_act_profile, print_nt_speech_act_profile,
+    print_speech_act_comparison,
+    speech_act_chart, speech_act_heatmap,
+)
 from .information_structure import (
     ot_information_profile, nt_information_profile,
     ot_clause_linking_comparison, nt_clause_linking_comparison,

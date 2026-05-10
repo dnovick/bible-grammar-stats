@@ -76,6 +76,7 @@ the notebooks running in VS Code (5–10 minutes).
 | [ot/speakers/speaker_attribution.ipynb](ot/speakers/speaker_attribution.ipynb) | OT speaker attribution: who speaks in each book, divine speech by book, YHWH speech verse refs, speaker report generation; discourse particle tagging (הִנֵּה, כִּי, לָכֵן, etc.) with cross-book כִּי comparison |
 | [ot/speakers/syntactic_roles_ot.ipynb](ot/speakers/syntactic_roles_ot.ipynb) | OT syntactic roles: loading OT syntax data (load_syntax_ot), wayyiqtol in Genesis, Aramaic sections; what YHWH+Elohim does (subject_verbs), what YHWH acts upon (object_verbs), who does bara (create), role charts and reports |
 | [ot/speakers/participant_tracking.ipynb](ot/speakers/participant_tracking.ipynb) | OT participant tracking and entity chains: 19 pre-identified participants (YHWH/Patriarchs/Moses/David/etc.), chapter-presence chains, patriarch comparison (Abraham/Isaac/Jacob/Joseph in Gen), Moses across Torah, David vs. Saul in 1 Sam, entity density heatmaps |
+| [ot/speakers/speech_acts.ipynb](ot/speakers/speech_acts.ipynb) | OT speech act classification (Searle): rule-based classifier (assertive/directive/commissive/expressive/declarative), YHWH speech profiles in Isaiah/Jeremiah/Amos, Torah directive vs. commissive, Deuteronomy blessings/curses, YHWH vs. Moses comparison, full OT heatmap |
 
 ---
 
@@ -105,6 +106,7 @@ the notebooks running in VS Code (5–10 minutes).
 | [nt/syntax/coreference.ipynb](nt/syntax/coreference.ipynb) | NT coreference and anaphora chains: most-referenced entities per book, pronoun referent profiles (αὐτός/ἐκεῖνος/ὅς), entity chain chapter distribution, John's ἐκεῖνος for the Paraclete in John 14–16 |
 | [nt/syntax/style_analysis.ipynb](nt/syntax/style_analysis.ipynb) | Greek NT style and authorship stylometrics: participle-to-finite ratio, optative/ἵνα density, MSTTR vocabulary richness, Luke-Acts unity, Pauline authentic vs. disputed clustering, Johannine fingerprint, full NT heatmap |
 | [nt/syntax/information_structure.ipynb](nt/syntax/information_structure.ipynb) | Greek NT information structure: postpositive particle density (δέ/γάρ/οὖν/μέν/ἀλλά), explicit subject pronoun frequency, asyndeton %, Gospel comparison, Pauline γάρ as argumentative connective, Luke-Acts unity, Johannine signature, full NT heatmap |
+| [nt/syntax/speech_acts.ipynb](nt/syntax/speech_acts.ipynb) | NT speech act classification (Searle): rule-based classifier, Gospel synoptic comparison, Pauline directive vs. assertive in undisputed vs. Pastorals, Johannine ἐγώ εἰμι assertives, Hebrews directive/assertive chapter breakdown, full NT heatmap |
 | [nt/syntax/louw_nida_domains.ipynb](nt/syntax/louw_nida_domains.ipynb) | Louw-Nida sub-domain precision queries: 92.4% of NT tokens tagged with LN codes, 6,907 sub-domains, domain breakdowns (faith/31, communication/33, ethics/88, religious activity/53), book/genre heatmaps |
 
 ### Discourse
