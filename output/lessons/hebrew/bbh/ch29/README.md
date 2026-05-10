@@ -9,6 +9,7 @@
 | Exercise | Description |
 |---|---|
 | [exercises/ch29-passage-exercise/](exercises/ch29-passage-exercise/README.md) | Passage exercise — identify and parse weak Hophal verbs in Joseph narrative, Tabernacle, and mixed passages |
+| [exercises/ch29-weak-form-id/](exercises/ch29-weak-form-id/README.md) | Weak-form identification drill — parse 20 weak Hophal forms grouped by weak class (I-yod/vav, III-he, Biconsonantal) + 10 mixed |
 
 ### Flashcards
 

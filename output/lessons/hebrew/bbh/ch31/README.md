@@ -9,6 +9,7 @@
 | Exercise | Description |
 |---|---|
 | [exercises/ch31-passage-exercise/](exercises/ch31-passage-exercise/README.md) | Passage exercise — identify and parse Piel Weak verbs in context (Gen 2–3, Gen 6, Gen 18:19, Gen 16:6, Deu 8:2–3, Amos 3:7, Gen 50:16) |
+| [exercises/ch31-weak-form-id/](exercises/ch31-weak-form-id/README.md) | Weak-form identification drill — parse 20 weak Piel forms grouped by weak class (I-gutt, III-he, Geminate, I-nun) + 10 mixed |
 
 ### Flashcards
 

@@ -9,6 +9,7 @@
 | Exercise | Description |
 |---|---|
 | [exercises/ch33-passage-exercise/](exercises/ch33-passage-exercise/README.md) | Passage exercise — identify and parse weak Pual verbs in context (Gen 4:18; 4:26; 46:22 · Lev 7:36; Num 3:9 · Lev 8:35; Num 22:6; Psa 72:17) |
+| [exercises/ch33-weak-form-id/](exercises/ch33-weak-form-id/README.md) | Weak Pual identification drill — parse 20 weak Pual forms grouped by weak class + 10 mixed |
 
 ### Flashcards
 

@@ -9,6 +9,7 @@
 | Exercise | Description |
 |---|---|
 | [exercises/ch35-passage-exercise/](exercises/ch35-passage-exercise/README.md) | "Spot the Hithpael" — parsing exercise from Gen 22, 18, Exo 20, Psa 95, Gen 35, 1 Sam 10, Gen 44, 2 Kgs 8 with weak-root emphasis |
+| [exercises/ch35-weak-form-id/](exercises/ch35-weak-form-id/README.md) | Weak Hithpael identification drill — parse 20 weak forms grouped by class (I-gutt, III-he, Sibilant metathesis, I-nun) + 10 mixed |
 
 ### Flashcards
 

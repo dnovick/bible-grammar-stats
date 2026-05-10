@@ -6201,3 +6201,1071 @@ def build_ch23_passage_exercise(out_dir: str = None) -> str:
     )
 
 
+# ---------------------------------------------------------------------------
+# Chapter 28 — Hophal Semantic Function Sorting
+# ---------------------------------------------------------------------------
+
+class Ch28FunctionSortExercise(ExercisePDF):
+    _ENTRIES = [
+        SortEntry('1',  'יֻּגַּד',   'Wayyiqtol 3ms',       'Gen 22:20',  '"it was told to Abraham"',                              'SR', 'נָגַד', 'Hophal of Hiphil "to tell"; information was reported'),
+        SortEntry('2',  'יּוּשַׂם',  'Wayyiqtol 3ms',       'Gen 24:33',  '"food was set before him"',                             'SC', 'שִׂים',  'Caused to be placed/set; resulting state prominent'),
+        SortEntry('3',  'הוּרַד',    'Qatal 3ms',            'Gen 39:1',   '"he had been brought down to Egypt"',                   'PT', 'יָרַד', 'Joseph physically moved; Hiphil = to bring down'),
+        SortEntry('4',  'הֻבָּאת',   'Qatal 3fs',            'Gen 33:11',  '"it was brought to him"',                               'PT', 'בּוֹא', 'The gift was physically carried to Jacob'),
+        SortEntry('5',  'הוּשַׁב',   'Qatal 3ms',            'Gen 42:28',  '"it has been returned into my sack"',                   'SC', 'שׁוּב', 'Silver caused to return; state of being-back prominent'),
+        SortEntry('6',  'הוּבְאוּ',  'Qatal 3cp',            'Gen 43:18',  '"we were brought in (to Joseph\'s house)"',             'PT', 'בּוֹא', 'Brothers physically moved into the house'),
+        SortEntry('7',  'יֻּגַּד',   'Wayyiqtol 3ms',       'Gen 38:13',  '"it was told to Tamar"',                                'SR', 'נָגַד', 'News of Judah\'s widowhood reported'),
+        SortEntry('8',  'יֻּגַּד',   'Wayyiqtol 3ms',       'Gen 38:24',  '"it was told to Judah"',                                'SR', 'נָגַד', 'News of Tamar\'s pregnancy reported'),
+        SortEntry('9',  'יֻּגַּד',   'Wayyiqtol 3ms',       'Gen 27:42',  '"it was told to Rebekah"',                              'SR', 'נָגַד', 'Esau\'s threat reported to Rebekah'),
+        SortEntry('10', 'יוּמַת',    'Yiqtol 3ms',          'Gen 26:11',  '"he shall be put to death"',                            'LF', 'מוּת',  'Capital penalty formula; Hophal of Hiphil "to kill"'),
+        SortEntry('11', 'יוּמַת',    'Yiqtol 3ms',          'Exo 19:12',  '"he shall be put to death"',                            'LF', 'מוּת',  'Sinai boundary violation penalty formula'),
+        SortEntry('12', 'יוּמַת',    'Yiqtol 3ms',          'Exo 21:12',  '"he must be put to death"',                             'LF', 'מוּת',  'Murder law capital formula (Exo 21:12)'),
+        SortEntry('13', 'יוּמַת',    'Yiqtol 3ms',          'Exo 21:15',  '"he must be put to death"',                             'LF', 'מוּת',  'Violence-against-parents capital formula'),
+        SortEntry('14', 'יֻּכּוּ',   'Wayyiqtol 3mp',       'Exo 5:14',   '"the Israelite overseers were beaten"',                 'SA', 'נָכָה', 'Root נָכָה has no functional Qal; Hiphil is standard form'),
+        SortEntry('15', 'מֻכִּים',   'Participle mp',       'Exo 5:16',   '"your servants are being beaten"',                      'SA', 'נָכָה', 'Participle of same SA root; ongoing state of being struck'),
+        SortEntry('16', 'יוּסַר',    'Yiqtol 3ms',          'Lev 4:35',   '"it is to be removed"',                                 'SC', 'סוּר',  'Fat portions prescribed to enter state of removal'),
+        SortEntry('17', 'הוּסַר',    'Qatal 3ms',           'Lev 4:31',   '"it was removed"',                                      'SC', 'סוּר',  'Fat portions caused to depart from offering'),
+        SortEntry('18', 'הוּבָא',    'Weqatal 3ms',         'Lev 14:2',   '"he will be brought to the priest"',                    'PT', 'בּוֹא', 'The healed leper physically brought to priest'),
+        SortEntry('19', 'יוּמַת',    'Yiqtol 3ms',          'Num 18:7',   '"he shall be put to death"',                            'LF', 'מוּת',  'Tabernacle-service intrusion penalty formula'),
+        SortEntry('20', 'יֻּגַּד',   'Wayyiqtol 3ms',       'Exo 14:5',   '"it was told to the king of Egypt"',                    'SR', 'נָגַד', 'Israel\'s flight reported to Pharaoh'),
+        SortEntry('21', 'הוּקַם',    'Qatal 3ms',           'Exo 40:17',  '"the tabernacle was set up"',                           'SC', 'קוּם',  'Caused to stand/erect; state of being established'),
+        SortEntry('22', 'יוּשַׁב',   'Wayyiqtol 3ms',       'Exo 10:8',   '"Moses and Aaron were brought back"',                   'SC', 'שׁוּב', 'Caused to return to Pharaoh; state of return prominent'),
+        SortEntry('23', 'הוּחַל',    'Qatal 3ms',           'Gen 4:26',   '"it was begun (to call on the LORD\'s name)"',          'SC', 'חָלַל', 'Worship practice caused to enter state of being begun'),
+        SortEntry('24', 'הוּגַּד',   'Qatal 3ms',           'Exo 26:30',  '"you were shown the pattern of the tabernacle"',        'SR', 'נָגַד', 'The heavenly pattern was reported/revealed to Moses'),
+        SortEntry('25', 'מוּמָת',    'Inf. Construct',      'Num 35:16',  '"the murderer must be put to death"',                   'LF', 'מוּת',  'Hophal infinitive in the capital penalty nominal clause'),
+    ]
+
+    def _build(self):
+        self.add_instructions(
+            'Classify each Hophal verb by semantic function: PT (Physical Transfer), LF (Legal Formula), '
+            'SR (Speech Reporting), SC (State Change), or SA (Simple Action). '
+            'Write your code in the Function column. Answer key is on the last page.'
+        )
+        self.add_note(
+            'PT = Physical Transfer (subject was moved/brought/taken)  |  '
+            'LF = Legal Formula (capital penalty: יוּמַת "shall be put to death")  |  '
+            'SR = Speech Reporting (information was told/reported/shown)  |  '
+            'SC = State Change (subject entered a new state: set up, returned, begun)  |  '
+            'SA = Simple Action (no functional Qal; Hiphil is standard form)'
+        )
+        self.add_sort_table(self._ENTRIES, show_answers=False)
+        self.add_reflection([
+            'The יוּמַת formula (items 10–13, 19) appears in five different legal contexts. '
+            'What does the repetition signal about the Hophal\'s role in Mosaic law?',
+            'Items 1, 7–9, 20, 24 all use root נָגַד. Why is this root almost always in the Hophal '
+            'for "was told"? (Hint: the Hiphil means "to tell/report.")',
+            'Items 16–17 are both from סוּר in Lev 4. One is Qatal, one is Yiqtol. '
+            'What does the conjugation difference signal about time or prescription?',
+        ])
+        self.add_answer_key_sort(self._ENTRIES)
+
+
+def build_ch28_function_sort_exercise(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        Ch28FunctionSortExercise,
+        'Chapter 28 — Hophal Semantic Function Sorting',
+        'BBH Chapter 28 · Hophal Strong Verbs',
+        ['hebrew', 'bbh', 'ch28', 'exercises', 'ch28-function-sort'],
+        'ch28-function-sort.pdf',
+        out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Chapter 28 — Hiphil–Hophal Contrast Drill
+# ---------------------------------------------------------------------------
+
+class Ch28HophalHiphilContrastExercise(ExercisePDF):
+
+    def _build(self):
+        self.add_instructions(
+            'Part A: 8 Hophal forms — translate and name the corresponding Hiphil meaning. '
+            'Part B: 4 מוּת pairs — identify Hiphil vs. Hophal and translate. '
+            'Answer key is on the last page.'
+        )
+        self.add_note(
+            'Hophal prefix vowel: קֻּ (strong/I-gutt); וּ (I-yod/Biconsonantal). '
+            'Hiphil prefix vowel: הִ (perfect); הַ (imperative); מַ (participle). '
+            'Biconsonantal: Hiphil perfect הֵ / Hophal perfect הוּ — one vowel distinguishes them.'
+        )
+
+        hdr_a = ['#', 'Form', 'Conjugation', 'Ref', 'Gloss (blank)', 'Translation', 'Stem']
+        cr_a  = [0.05, 0.13, 0.14, 0.09, 0.28, 0.18, 0.13]
+        rows_a = [
+            ['1', 'הוּבְאוּ',  'Qatal 3cp',       'Gen 43:18', '"we were ___"',                 '', ''],
+            ['2', 'הוּרַד',    'Qatal 3ms',        'Gen 39:1',  '"he had been ___ to Egypt"',    '', ''],
+            ['3', 'הוּשַׁב',   'Qatal 3ms',        'Gen 42:28', '"it has been ___"',             '', ''],
+            ['4', 'הוּקַם',    'Qatal 3ms',        'Exo 40:17', '"the tabernacle was ___"',      '', ''],
+            ['5', 'יֻּגַּד',   'Wayyiqtol 3ms',   'Gen 22:20', '"it was ___"',                  '', ''],
+            ['6', 'יּוּשַׂם',  'Wayyiqtol 3ms',   'Gen 24:33', '"food was ___"',                '', ''],
+            ['7', 'הוּסַר',    'Qatal 3ms',        'Lev 4:31',  '"it was ___"',                  '', ''],
+            ['8', 'יוּשַׁב',   'Wayyiqtol 3ms',   'Exo 10:8',  '"Moses was ___"',               '', ''],
+        ]
+        ans_a = [
+            ['1', 'הוּבְאוּ',  'Qatal 3cp',       'Gen 43:18', '"we were brought in"',         'they were brought',  'Hophal (בּוֹא)'],
+            ['2', 'הוּרַד',    'Qatal 3ms',        'Gen 39:1',  '"he had been brought down"',   'was brought down',   'Hophal (יָרַד)'],
+            ['3', 'הוּשַׁב',   'Qatal 3ms',        'Gen 42:28', '"it has been returned"',       'was returned',       'Hophal (שׁוּב)'],
+            ['4', 'הוּקַם',    'Qatal 3ms',        'Exo 40:17', '"the tabernacle was set up"',  'was set up',         'Hophal (קוּם)'],
+            ['5', 'יֻּגַּד',   'Wayyiqtol 3ms',   'Gen 22:20', '"it was told"',                'it was told',        'Hophal (נָגַד)'],
+            ['6', 'יּוּשַׂם',  'Wayyiqtol 3ms',   'Gen 24:33', '"food was set before him"',    'it was set/placed',  'Hophal (שִׂים)'],
+            ['7', 'הוּסַר',    'Qatal 3ms',        'Lev 4:31',  '"it was removed"',             'was removed',        'Hophal (סוּר)'],
+            ['8', 'יוּשַׁב',   'Wayyiqtol 3ms',   'Exo 10:8',  '"Moses was brought back"',     'was brought back',   'Hophal (שׁוּב)'],
+        ]
+        self.add_section_heading('Part A — Motion and Transfer Roots')
+        self.add_generic_table(hdr_a, rows_a, cr_a, heb_cols=[1], show_answers=False)
+        self.add_section_break()
+
+        hdr_b = ['#', 'Form', 'Stem', 'Conj.', 'Ref', 'Translation']
+        cr_b  = [0.05, 0.16, 0.12, 0.16, 0.14, 0.37]
+        rows_b = [
+            ['9',  'הֵמִית',   '', 'Inf. Construct', 'Gen 18:25', ''],
+            ['10', 'יוּמַת',   '', 'Yiqtol 3ms',     'Gen 26:11', ''],
+            ['11', 'הָמִית',   '', 'Qatal 3ms',       '2 Sam 12:9', ''],
+            ['12', 'הוּמַת',   '', 'Qatal 3ms',       '2 Sam 21:9', ''],
+        ]
+        ans_b = [
+            ['9',  'הֵמִית',   'Hiphil', 'Inf. Construct', 'Gen 18:25',   'to put to death; הֵ prefix = Hiphil Bicons.'],
+            ['10', 'יוּמַת',   'Hophal', 'Yiqtol 3ms',     'Gen 26:11',  'shall be put to death; וּ prefix = Hophal'],
+            ['11', 'הָמִית',   'Hiphil', 'Qatal 3ms',       '2 Sam 12:9', 'he killed; הֵ → הָ (alternate vocalization)'],
+            ['12', 'הוּמַת',   'Hophal', 'Qatal 3ms',       '2 Sam 21:9', 'he was put to death; הוּ = Hophal perfect'],
+        ]
+        self.add_section_heading('Part B — מוּת: Hiphil / Hophal Pairs')
+        self.add_generic_table(hdr_b, rows_b, cr_b, heb_cols=[1], show_answers=False)
+        self.add_section_break()
+
+        self.add_reflection([
+            'In Part A, every Hophal form uses a וּ (shureq) prefix vowel. Explain why '
+            'I-yod and Biconsonantal roots take shureq instead of the usual qibbuts.',
+            'Items 9–12 are all from מוּת. Write the prefix vowel pattern that '
+            'distinguishes Hiphil perfect (הֵמִית) from Hophal qatal (הוּמַת). '
+            'What is the one vowel that differs?',
+        ])
+
+        self.add_section_heading('Answer Key — Part A')
+        self.add_generic_table(hdr_a, rows_a, cr_a, heb_cols=[1],
+                               show_answers=True, answer_rows=ans_a)
+        self.add_section_break()
+        self.add_section_heading('Answer Key — Part B')
+        self.add_generic_table(hdr_b, rows_b, cr_b, heb_cols=[1],
+                               show_answers=True, answer_rows=ans_b)
+
+
+def build_ch28_hophal_hiphil_contrast_exercise(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        Ch28HophalHiphilContrastExercise,
+        'Chapter 28 — Hiphil–Hophal Contrast Drill',
+        'BBH Chapter 28 · Hophal Strong Verbs',
+        ['hebrew', 'bbh', 'ch28', 'exercises', 'ch28-hophal-hiphil-contrast'],
+        'ch28-hophal-hiphil-contrast.pdf',
+        out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Chapter 29 — Hophal Weak-Form Identification Drill
+# ---------------------------------------------------------------------------
+
+class Ch29WeakFormIdExercise(ExercisePDF):
+
+    def _build(self):
+        self.add_instructions(
+            'Part A: identify conjugation, PGN, and root for each form (grouped by weak class). '
+            'Part B: identify the weak class first, then conjugation, PGN, and root. '
+            'Answer key is on the last page.'
+        )
+        self.add_note(
+            'I-yod/Biconsonantal Hophal: uses וּ (shureq) not קֻּ.  '
+            'I-nun: dagesh forte in R2 (nun assimilated).  '
+            'III-he: ending ָה (qatal 3ms) or וּ (3cp).  '
+            'I-guttural: hateph vowel under R1 instead of simple shewa.'
+        )
+
+        hdr = ['#', 'Form', 'Reference', 'Conjugation', 'PGN', 'Root']
+        cr  = [0.05, 0.16, 0.14, 0.20, 0.10, 0.35]
+
+        groups = [
+            ('Group 1: I-yod / I-vav', [
+                ['1', 'הוּרַד',    'Gen 39:1',  '', '', ''],
+                ['2', 'הוּבָא',    'Lev 14:2',  '', '', ''],
+                ['3', 'מוּבָאִים', 'Gen 43:18', '', '', ''],
+                ['4', 'הוּבְאוּ',  'Gen 43:18', '', '', ''],
+                ['5', 'מוּצֵאת',   'Gen 38:25', '', '', ''],
+            ], [
+                ['1', 'הוּרַד',    'Gen 39:1',  'Qatal',     '3ms', 'יָרַד · holem-vav prefix = I-yod Hophal'],
+                ['2', 'הוּבָא',    'Lev 14:2',  'Weqatal',   '3ms', 'בּוֹא · holem-vav prefix = I-yod/Hollow'],
+                ['3', 'מוּבָאִים', 'Gen 43:18', 'Participle', 'mp', 'בּוֹא · מוּ prefix (not מַ) = I-yod Hophal ptc'],
+                ['4', 'הוּבְאוּ',  'Gen 43:18', 'Qatal',     '3cp', 'בּוֹא · holem-vav + plural וּ ending'],
+                ['5', 'מוּצֵאת',   'Gen 38:25', 'Participle', 'fs', 'יָצָא · מוּ prefix + fs ת ending'],
+            ]),
+            ('Group 2: Biconsonantal (Hollow)', [
+                ['6',  'הוּקַם',  'Exo 40:17', '', '', ''],
+                ['7',  'יוּמַת',  'Gen 26:11', '', '', ''],
+                ['8',  'הוּסַר',  'Lev 4:31',  '', '', ''],
+                ['9',  'הוּשַׁב', 'Gen 42:28', '', '', ''],
+                ['10', 'יּוּשַׂם', 'Gen 24:33', '', '', ''],
+            ], [
+                ['6',  'הוּקַם',  'Exo 40:17', 'Qatal',      '3ms', 'קוּם · הוּ prefix = Hophal Bicons. perfect'],
+                ['7',  'יוּמַת',  'Gen 26:11', 'Yiqtol',     '3ms', 'מוּת · יוּ prefix = Hophal Bicons. imperfect'],
+                ['8',  'הוּסַר',  'Lev 4:31',  'Qatal',      '3ms', 'סוּר · הוּ prefix; root סוּר'],
+                ['9',  'הוּשַׁב', 'Gen 42:28', 'Qatal',      '3ms', 'שׁוּב · הוּ prefix; root שׁוּב'],
+                ['10', 'יּוּשַׂם', 'Gen 24:33', 'Wayyiqtol',  '3ms', 'שִׂים · וַיּוּ prefix (dagesh in יּ) = Wayyiqtol'],
+            ]),
+            ('Group 3: I-nun', [
+                ['11', 'יֻּגַּד',  'Gen 22:20', '', '', ''],
+                ['12', 'יֻּגַּד',  'Gen 38:13', '', '', ''],
+                ['13', 'יֻּכּוּ',  'Exo 5:14',  '', '', ''],
+                ['14', 'מֻכִּים', 'Exo 5:16',  '', '', ''],
+                ['15', 'יֻקָּם',  'Gen 4:15',  '', '', ''],
+            ], [
+                ['11', 'יֻּגַּד',  'Gen 22:20', 'Wayyiqtol', '3ms', 'נָגַד · nun assimilated; dagesh in ג'],
+                ['12', 'יֻּגַּד',  'Gen 38:13', 'Wayyiqtol', '3ms', 'נָגַד · same form/root; different context'],
+                ['13', 'יֻּכּוּ',  'Exo 5:14',  'Wayyiqtol', '3mp', 'נָכָה · I-nun + III-he; dagesh in כּ; plural וּ'],
+                ['14', 'מֻכִּים', 'Exo 5:16',  'Participle', 'mp', 'נָכָה · qibbuts under מ + dagesh in כּ = Hophal ptc I-nun/III-he'],
+                ['15', 'יֻקָּם',  'Gen 4:15',  'Yiqtol',    '3ms', 'נָקַם · nun assimilated; dagesh in ק'],
+            ]),
+            ('Group 4: III-he', [
+                ['16', 'הֻגְלוּ',   'Jer 29:1',  '', '', ''],
+                ['17', 'הֻלֶּדֶת', 'Gen 40:20', '', '', ''],
+                ['18', 'מוּכָּה',  'Deu 28:27', '', '', ''],
+                ['19', 'הֻבָּאת',  'Gen 33:11', '', '', ''],
+                ['20', 'יֻּכֶּה',   'Exo 22:1',  '', '', ''],
+            ], [
+                ['16', 'הֻגְלוּ',   'Jer 29:1',  'Qatal',      '3cp', 'גָּלָה · III-he qibbuts; וּ ending 3cp'],
+                ['17', 'הֻלֶּדֶת', 'Gen 40:20', 'Inf. Construct', '—', 'יָלַד · I-nun + III-he; inf. constr. ת ending'],
+                ['18', 'מוּכָּה',  'Deu 28:27', 'Participle', 'fs', 'נָכָה · מוּ + dagesh + III-he ָה ptc fs = Hophal'],
+                ['19', 'הֻבָּאת',  'Gen 33:11', 'Qatal',      '3fs', 'בּוֹא · I-yod + qibbuts; 3fs ת ending'],
+                ['20', 'יֻּכֶּה',   'Exo 22:1',  'Yiqtol',    '3ms', 'נָכָה · I-nun + III-he; seghol + ה = III-he yiqtol'],
+            ]),
+        ]
+
+        for title, rows, ans in groups:
+            self.add_section_heading(title)
+            self.add_generic_table(hdr, rows, cr, heb_cols=[1], show_answers=False)
+            self.add_section_break()
+
+        hdr_b = ['#', 'Form', 'Reference', 'Weak Class', 'Conjugation', 'PGN', 'Root']
+        cr_b  = [0.04, 0.14, 0.12, 0.18, 0.17, 0.09, 0.26]
+        rows_b = [
+            ['21', 'יֻּגַּד',   'Gen 38:24', '', '', '', ''],
+            ['22', 'הוּסַר',    'Lev 4:35',  '', '', '', ''],
+            ['23', 'יוּמַת',    'Exo 21:12', '', '', '', ''],
+            ['24', 'מוּבָאִים', 'Gen 43:18', '', '', '', ''],
+            ['25', 'הוּבָא',    'Lev 14:2',  '', '', '', ''],
+            ['26', 'הוּחַל',    'Gen 4:26',  '', '', '', ''],
+            ['27', 'יֻּכּוּ',   'Exo 5:14',  '', '', '', ''],
+            ['28', 'הוּקַם',    'Exo 40:17', '', '', '', ''],
+            ['29', 'הֻגְלוּ',   'Jer 29:1',  '', '', '', ''],
+            ['30', 'יֻקָּם',    'Gen 4:15',  '', '', '', ''],
+        ]
+        ans_b = [
+            ['21', 'יֻּגַּד',   'Gen 38:24', 'I-nun',          'Wayyiqtol',  '3ms', 'נָגַד'],
+            ['22', 'הוּסַר',    'Lev 4:35',  'Biconsonantal',  'Yiqtol',     '3ms', 'סוּר'],
+            ['23', 'יוּמַת',    'Exo 21:12', 'Biconsonantal',  'Yiqtol',     '3ms', 'מוּת'],
+            ['24', 'מוּבָאִים', 'Gen 43:18', 'I-yod',          'Participle', 'mp',  'בּוֹא'],
+            ['25', 'הוּבָא',    'Lev 14:2',  'I-yod',          'Weqatal',    '3ms', 'בּוֹא'],
+            ['26', 'הוּחַל',    'Gen 4:26',  'I-guttural',     'Qatal',      '3ms', 'חָלַל'],
+            ['27', 'יֻּכּוּ',   'Exo 5:14',  'I-nun + III-he', 'Wayyiqtol',  '3mp', 'נָכָה'],
+            ['28', 'הוּקַם',    'Exo 40:17', 'Biconsonantal',  'Qatal',      '3ms', 'קוּם'],
+            ['29', 'הֻגְלוּ',   'Jer 29:1',  'III-he',         'Qatal',      '3cp', 'גָּלָה'],
+            ['30', 'יֻקָּם',    'Gen 4:15',  'I-nun',          'Yiqtol',     '3ms', 'נָקַם'],
+        ]
+
+        self.add_section_heading('Part B — Mixed Forms')
+        self.add_generic_table(hdr_b, rows_b, cr_b, heb_cols=[1], show_answers=False)
+        self.add_section_break()
+
+        self.add_reflection([
+            'I-yod and Biconsonantal Hophal forms both use וּ (shureq). What phonological '
+            'rule explains this? Compare the Hiphil of the same classes (I-yod uses הוֹ; '
+            'Biconsonantal uses הֵ).',
+            'I-nun forms (items 11–15) have dagesh forte in R2. What happened to the נ? '
+            'Is this the same assimilation as in the Qal/Hiphil of I-nun roots?',
+            'Items 13 and 20 are both from נָכָה (I-nun + III-he). One is wayyiqtol 3mp, '
+            'the other yiqtol 3ms. Compare their endings. Where did the III-he ה go in item 13?',
+        ])
+
+        self.add_section_heading('Answer Key — Part A')
+        for title, rows, ans in groups:
+            self.add_section_heading(title)
+            self.add_generic_table(hdr, rows, cr, heb_cols=[1],
+                                   show_answers=True, answer_rows=ans)
+            self.add_section_break()
+
+        self.add_section_heading('Answer Key — Part B')
+        self.add_generic_table(hdr_b, rows_b, cr_b, heb_cols=[1],
+                               show_answers=True, answer_rows=ans_b)
+
+
+def build_ch29_weak_form_id_exercise(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        Ch29WeakFormIdExercise,
+        'Chapter 29 — Hophal Weak-Form Identification Drill',
+        'BBH Chapter 29 · Hophal Weak Verbs',
+        ['hebrew', 'bbh', 'ch29', 'exercises', 'ch29-weak-form-id'],
+        'ch29-weak-form-id.pdf',
+        out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Chapter 30 — Piel Semantic Function Sorting
+# ---------------------------------------------------------------------------
+
+class Ch30FunctionSortExercise(ExercisePDF):
+    _ENTRIES = [
+        SortEntry('1',  'יְבָרֶךְ',     'Wayyiqtol 3ms',    'Gen 1:22',  '"God blessed them"',                              'SA', 'בָּרַךְ', 'Piel is the primary form; no intensified Qal counterpart'),
+        SortEntry('2',  'יְקַדֵּשׁ',    'Wayyiqtol 3ms',    'Gen 2:3',   '"he set it apart as holy"',                       'F',  'קָדַשׁ', 'Qal = be holy; Piel = cause to be holy (factitive)'),
+        SortEntry('3',  'יְכַל',         'Wayyiqtol 3ms',    'Gen 2:2',   '"he finished"',                                   'I',  'כָּלָה', 'Thorough completion; Qal = be complete'),
+        SortEntry('4',  'שַׁחֵת',        'Inf. Construct',   'Gen 6:17',  '"to destroy utterly"',                            'I',  'שָׁחַת', 'Total/thorough destruction; intensive force'),
+        SortEntry('5',  'יְצַו',         'Wayyiqtol 3ms',    'Gen 2:16',  '"he commanded"',                                  'SA', 'צָוָה',  'Piel is the standard form; Qal is marginal'),
+        SortEntry('6',  'יְגָרֶשׁ',     'Wayyiqtol 3ms',    'Gen 3:24',  '"he drove out forcibly"',                         'I',  'גָּרַשׁ', 'Forcible expulsion; more intensive than basic Qal'),
+        SortEntry('7',  'חַיּוֹת',       'Inf. Construct',   'Gen 7:3',   '"to preserve alive"',                             'F',  'חָיָה',  'Qal = live; Piel = cause to be alive (factitive)'),
+        SortEntry('8',  'יְשַׁלַּח',    'Wayyiqtol 3ms',    'Gen 8:7',   '"he sent out / released"',                        'I',  'שָׁלַח', 'Release/send away with force; Qal = send'),
+        SortEntry('9',  'יְכַסּוּ',     'Wayyiqtol 3mp',    'Gen 9:23',  '"they thoroughly covered"',                       'I',  'כָּסָה', 'Thorough covering; Qal = cover'),
+        SortEntry('10', 'יְדַבֵּר',     'Wayyiqtol 3ms',    'Gen 8:15',  '"he spoke"',                                      'SA', 'דָּבַר', 'Piel is standard form for "to speak"; Qal is rare'),
+        SortEntry('11', 'יְשָׁרֶת',     'Wayyiqtol 3ms',    'Gen 39:4',  '"he served"',                                     'SA', 'שָׁרַת', 'Piel is primary form; denominative from שֵׁרוּת'),
+        SortEntry('12', 'אֲגַדְּלָה',   'Yiqtol 1cs',       'Gen 12:2',  '"I will make great"',                             'F',  'גָּדַל', 'Qal = be great; Piel = cause to be great (factitive)'),
+        SortEntry('13', 'מְקַלֵּל',     'Participle ms',    'Gen 12:3',  '"one who curses"',                                'D',  'קָלַל',  'Qal = be light/small; Piel = declare accursed'),
+        SortEntry('14', 'יְנַגַּע',     'Wayyiqtol 3ms',    'Gen 12:17', '"he struck / afflicted"',                         'I',  'נָגַע',  'Intensive striking/affliction; more severe than Qal'),
+        SortEntry('15', 'וְקִדַּשְׁתָּ', 'Weqatal 2ms',     'Exo 19:10', '"you shall consecrate them"',                     'F',  'קָדַשׁ', 'Cause the people to be in a holy state'),
+        SortEntry('16', 'וְכִבְּסוּ',   'Weqatal 3cp',      'Exo 19:10', '"and they shall wash their garments"',            'I',  'כָּבַס', 'Thorough washing; Qal of כָּבַס is rare'),
+        SortEntry('17', 'יְהַלֲלוּ',   'Wayyiqtol 3mp',    'Gen 12:15', '"they praised her"',                              'SA', 'הָלַל',  'Piel is standard form for "to praise"'),
+        SortEntry('18', 'יְבַקֵּשׁ',    'Wayyiqtol 3ms',    'Gen 37:15', '"he sought"',                                     'I',  'בָּקַשׁ', 'Diligent/intensive seeking'),
+        SortEntry('19', 'לְנַחֵם',      'Inf. Construct',   'Gen 37:35', '"to comfort him"',                                'I',  'נָחַם',  'Active comforting; Niphal = be comforted'),
+        SortEntry('20', 'צִוָּה',        'Perfect 3ms',      'Gen 6:22',  '"he commanded"',                                  'SA', 'צָוָה',  'Same root as #5; Piel is the operative form'),
+        SortEntry('21', 'לְכַפֵּר',     'Inf. Construct',   'Lev 4:20',  '"to make atonement"',                             'DN', 'כָּפַר', 'From כֹּפֶר "ransom/covering"; denominative function'),
+        SortEntry('22', 'יְחַלֵּל',     'Wayyiqtol 3ms',    'Lev 21:12', '"he would profane"',                              'F',  'חָלַל',  'Qal = be profane; Piel = cause to be profane'),
+        SortEntry('23', 'בִּקֵּשׁ',     'Perfect 3ms',      'Gen 43:30', '"he sought"',                                     'I',  'בָּקַשׁ', 'Same root as #18; intensive seeking'),
+        SortEntry('24', 'יְנַחֵם',      'Yiqtol 3ms',       'Gen 5:29',  '"he will comfort us"',                            'SA', 'נָחַם',  'Active sense; Niphal = relent/be comforted; Piel = comfort'),
+        SortEntry('25', 'לְהַלֵּל',     'Inf. Construct',   'Psa 113:1', '"to praise"',                                     'SA', 'הָלַל',  'Standard form for praise; same root as #17'),
+    ]
+
+    def _build(self):
+        self.add_instructions(
+            'Classify each Piel verb: I (Intensive), F (Factitive), D (Declarative), '
+            'DN (Denominative), or SA (Simple Action). '
+            'Answer key is on the last page.'
+        )
+        self.add_note(
+            'I = Intensive (more forceful/thorough than Qal)  |  '
+            'F = Factitive (causes object to be in a state; from stative root)  |  '
+            'D = Declarative (declares/treats something as being in a state)  |  '
+            'DN = Denominative (derived from a noun; performs noun\'s action)  |  '
+            'SA = Simple Action (Piel is primary form; no productive Qal)'
+        )
+        self.add_sort_table(self._ENTRIES, show_answers=False)
+        self.add_reflection([
+            'Items 1, 5, 10, 17, 20, 24 are all SA. What do these roots share? '
+            'Why does "intensification of the Qal" not work for them?',
+            'Items 2, 7, 12, 15, 22 are all Factitive. For each root, name the '
+            'Qal stative meaning and explain how the Piel "causes" that state.',
+            'Item 21 (לְכַפֵּר): if this is Denominative, what noun is it from? '
+            'How does knowing that noun illuminate its meaning in Lev 4:20?',
+        ])
+        self.add_answer_key_sort(self._ENTRIES)
+
+
+def build_ch30_function_sort_exercise(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        Ch30FunctionSortExercise,
+        'Chapter 30 — Piel Semantic Function Sorting',
+        'BBH Chapter 30 · Piel Strong Verbs',
+        ['hebrew', 'bbh', 'ch30', 'exercises', 'ch30-function-sort'],
+        'ch30-function-sort.pdf',
+        out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Chapter 30 — Qal–Piel Contrast Drill
+# ---------------------------------------------------------------------------
+
+class Ch30QalPielContrastExercise(ExercisePDF):
+
+    def _build(self):
+        self.add_instructions(
+            'Part A: Intensive Piel forms — translate and name the function. '
+            'Part B: Factitive Piel forms from stative roots. '
+            'Part C: Declarative / Denominative / SA. '
+            'Answer key is on the last page.'
+        )
+        self.add_note(
+            'Test for Intensive: does the subject do the action more forcefully/thoroughly? '
+            'Test for Factitive: does the subject cause an object to enter a state? '
+            'Test for Declarative: does the subject pronounce/treat something as X?'
+        )
+
+        hdr = ['#', 'Root', 'Qal Meaning', 'Piel Form', 'Ref', 'Translation', 'Function']
+        cr  = [0.04, 0.09, 0.16, 0.14, 0.09, 0.25, 0.23]
+
+        rows_a = [
+            ['1',  'שָׁבַר', 'to break',      'שִׁבֵּר (Perfect 3ms)',    'Exo 32:19', '', ''],
+            ['2',  'כָּסָה', 'to cover',      'יְכַסּוּ (Wayy. 3mp)',     'Gen 9:23',  '', ''],
+            ['3',  'שָׁלַח', 'to send',       'יְשַׁלַּח (Wayy. 3ms)',    'Gen 8:7',   '', ''],
+            ['4',  'גָּרַשׁ', 'to drive out', 'יְגָרֶשׁ (Wayy. 3ms)',     'Gen 3:24',  '', ''],
+            ['5',  'שָׁחַת', 'to corrupt',    'שַׁחֵת (Inf. Constr.)',     'Gen 6:17',  '', ''],
+            ['6',  'כָּבַס', '(Qal rare)',    'וְכִבְּסוּ (Weq. 3cp)',    'Exo 19:10', '', ''],
+            ['7',  'בָּקַשׁ', '(Qal rare)',   'יְבַקֵּשׁ (Wayy. 3ms)',    'Gen 37:15', '', ''],
+        ]
+        ans_a = [
+            ['1',  'שָׁבַר', 'to break',      'שִׁבֵּר (Perfect 3ms)',    'Exo 32:19', 'smashed to pieces',        'I — thorough breaking'],
+            ['2',  'כָּסָה', 'to cover',      'יְכַסּוּ (Wayy. 3mp)',     'Gen 9:23',  'they thoroughly covered',   'I — complete coverage'],
+            ['3',  'שָׁלַח', 'to send',       'יְשַׁלַּח (Wayy. 3ms)',    'Gen 8:7',   'he sent out (released)',    'I — release/send away'],
+            ['4',  'גָּרַשׁ', 'to drive out', 'יְגָרֶשׁ (Wayy. 3ms)',     'Gen 3:24',  'he drove out forcibly',     'I — forcible expulsion'],
+            ['5',  'שָׁחַת', 'to corrupt',    'שַׁחֵת (Inf. Constr.)',     'Gen 6:17',  'to destroy utterly',        'I — total destruction'],
+            ['6',  'כָּבַס', '(Qal rare)',    'וְכִבְּסוּ (Weq. 3cp)',    'Exo 19:10', 'they shall wash',           'I — thorough washing; SA also acceptable'],
+            ['7',  'בָּקַשׁ', '(Qal rare)',   'יְבַקֵּשׁ (Wayy. 3ms)',    'Gen 37:15', 'he sought diligently',      'I — intensive searching'],
+        ]
+
+        rows_b = [
+            ['8',  'קָדַשׁ', 'to be holy',    'יְקַדֵּשׁ (Wayy. 3ms)',    'Gen 2:3',   '', ''],
+            ['9',  'גָּדַל', 'to be great',   'אֲגַדְּלָה (Yiqtol 1cs)',  'Gen 12:2',  '', ''],
+            ['10', 'חָיָה', 'to live',        'חַיּוֹת (Inf. Constr.)',    'Gen 7:3',   '', ''],
+            ['11', 'חָלַל', 'to be profane',  'יְחַלֵּל (Wayy. 3ms)',     'Lev 21:12', '', ''],
+            ['12', 'כָּלָה', 'to be complete','יְכַל (Wayy. 3ms)',         'Gen 2:2',   '', ''],
+        ]
+        ans_b = [
+            ['8',  'קָדַשׁ', 'to be holy',    'יְקַדֵּשׁ (Wayy. 3ms)',    'Gen 2:3',   'he sanctified',             'F — caused to be holy'],
+            ['9',  'גָּדַל', 'to be great',   'אֲגַדְּלָה (Yiqtol 1cs)',  'Gen 12:2',  'I will make great',         'F — cause to be great'],
+            ['10', 'חָיָה', 'to live',        'חַיּוֹת (Inf. Constr.)',    'Gen 7:3',   'to preserve alive',         'F — cause to be alive'],
+            ['11', 'חָלַל', 'to be profane',  'יְחַלֵּל (Wayy. 3ms)',     'Lev 21:12', 'he would profane',          'F — cause to be profane'],
+            ['12', 'כָּלָה', 'to be complete','יְכַל (Wayy. 3ms)',         'Gen 2:2',   'he completed/finished',     'F or I — cause completion'],
+        ]
+
+        rows_c = [
+            ['13', 'קָלַל', 'to be small',  'מְקַלֵּל (Part. ms)',      'Gen 12:3',  '', ''],
+            ['14', 'כָּפַר', '(to cover)',  'לְכַפֵּר (Inf. Constr.)',  'Lev 4:20',  '', ''],
+            ['15', 'שָׁרַת', '(Qal rare)', 'יְשָׁרֶת (Wayy. 3ms)',     'Gen 39:4',  '', ''],
+        ]
+        ans_c = [
+            ['13', 'קָלַל', 'to be small',  'מְקַלֵּל (Part. ms)',      'Gen 12:3',  'one who curses',             'D — declare accursed'],
+            ['14', 'כָּפַר', '(to cover)',  'לְכַפֵּר (Inf. Constr.)',  'Lev 4:20',  'to make atonement',          'DN — from כֹּפֶר (ransom)'],
+            ['15', 'שָׁרַת', '(Qal rare)', 'יְשָׁרֶת (Wayy. 3ms)',     'Gen 39:4',  'he served',                  'SA / DN — primary Piel form'],
+        ]
+
+        self.add_section_heading('Part A — Intensive Roots')
+        self.add_generic_table(hdr, rows_a, cr, heb_cols=[3], show_answers=False)
+        self.add_section_break()
+        self.add_section_heading('Part B — Factitive Roots (Stative Qal)')
+        self.add_generic_table(hdr, rows_b, cr, heb_cols=[3], show_answers=False)
+        self.add_section_break()
+        self.add_section_heading('Part C — Declarative / Denominative / SA')
+        self.add_generic_table(hdr, rows_c, cr, heb_cols=[3], show_answers=False)
+        self.add_section_break()
+
+        self.add_reflection([
+            'For Part A items 1–5, describe the pattern in one sentence: what does "Intensive" '
+            'add to the Qal meaning?',
+            'Part B: for items 8–12, write the stative Qal meaning and the Piel "factitive" meaning. '
+            'What grammatical *object* does the Piel require that the Qal stative does not?',
+            'Items 13–15: for each, explain in one sentence why "Intensive" does not fit.',
+        ])
+
+        self.add_section_heading('Answer Key — Part A')
+        self.add_generic_table(hdr, rows_a, cr, heb_cols=[3],
+                               show_answers=True, answer_rows=ans_a)
+        self.add_section_heading('Answer Key — Part B')
+        self.add_generic_table(hdr, rows_b, cr, heb_cols=[3],
+                               show_answers=True, answer_rows=ans_b)
+        self.add_section_heading('Answer Key — Part C')
+        self.add_generic_table(hdr, rows_c, cr, heb_cols=[3],
+                               show_answers=True, answer_rows=ans_c)
+
+
+def build_ch30_qal_piel_contrast_exercise(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        Ch30QalPielContrastExercise,
+        'Chapter 30 — Qal–Piel Contrast Drill',
+        'BBH Chapter 30 · Piel Strong Verbs',
+        ['hebrew', 'bbh', 'ch30', 'exercises', 'ch30-qal-piel-contrast'],
+        'ch30-qal-piel-contrast.pdf',
+        out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Chapter 31 — Piel Weak-Form Identification Drill
+# ---------------------------------------------------------------------------
+
+class Ch31WeakFormIdExercise(ExercisePDF):
+
+    def _build(self):
+        self.add_instructions(
+            'Part A: identify conjugation, PGN, and root (forms grouped by weak class). '
+            'Part B: identify weak class first, then conjugation, PGN, and root. '
+            'Answer key is on the last page.'
+        )
+        self.add_note(
+            'Piel diagnostic: Dagesh Forte in R2 (or compensatory lengthening when R2 = ר/ע/ח/ה/א). '
+            'III-he: final ה drops in wayyiqtol/jussive (apocopation). '
+            'I-nun: nun is RETAINED in the Piel (not assimilated). '
+            'Geminate: Dagesh in doubled R2 is the Piel marker.'
+        )
+
+        hdr = ['#', 'Form', 'Reference', 'Conjugation', 'PGN', 'Root']
+        cr  = [0.05, 0.18, 0.14, 0.22, 0.10, 0.31]
+
+        groups = [
+            ('Group 1: III-he', [
+                ['1', 'יְכַל',       'Gen 2:2',   '', '', ''],
+                ['2', 'יְצַו',       'Gen 2:16',  '', '', ''],
+                ['3', 'צִוִּיתִי',   'Gen 3:11',  '', '', ''],
+                ['4', 'יְחַיּוּ',   'Gen 12:12', '', '', ''],
+                ['5', 'כִּלָּה',     'Gen 17:22', '', '', ''],
+            ], [
+                ['1', 'יְכַל',       'Gen 2:2',   'Wayyiqtol', '3ms', 'כָּלָה · apocopated (ה dropped); seghol'],
+                ['2', 'יְצַו',       'Gen 2:16',  'Wayyiqtol', '3ms', 'צָוָה · apocopated; tsere under ו'],
+                ['3', 'צִוִּיתִי',   'Gen 3:11',  'Qatal',     '1cs', 'צָוָה · qatal 1cs ending; chiriq-yod retained'],
+                ['4', 'יְחַיּוּ',   'Gen 12:12', 'Yiqtol',    '3mp', 'חָיָה · yiqtol 3mp; ה replaced by וּ + dagesh'],
+                ['5', 'כִּלָּה',     'Gen 17:22', 'Qatal',     '3ms', 'כָּלָה · qatal 3ms; qamets + ָה ending retained'],
+            ]),
+            ('Group 2: I-guttural', [
+                ['6',  'עִנּוּ',      'Gen 15:13', '', '', ''],
+                ['7',  'יְעַנֶּה',   'Exo 22:21', '', '', ''],
+                ['8',  'עַנּוֹת',    'Exo 10:3',  '', '', ''],
+                ['9',  'מְחַיֶּה',   'Neh 9:6',   '', '', ''],
+                ['10', 'וַיְעַנּוּ', 'Exo 1:11',  '', '', ''],
+            ], [
+                ['6',  'עִנּוּ',      'Gen 15:13', 'Qatal',      '3cp', 'עָנָה · I-gutt (ע); composite shewa → simple; dagesh in נּ'],
+                ['7',  'יְעַנֶּה',   'Exo 22:21', 'Yiqtol',     '3ms', 'עָנָה · I-gutt; hateph under ע; seghol + ה (III-he)'],
+                ['8',  'עַנּוֹת',    'Exo 10:3',  'Inf. Constr.', '—', 'עָנָה · I-gutt; inf. construct ending וֹת'],
+                ['9',  'מְחַיֶּה',   'Neh 9:6',   'Participle', 'ms', 'חָיָה · I-gutt (ח) + III-he; seghol + ה ptc ending'],
+                ['10', 'וַיְעַנּוּ', 'Exo 1:11',  'Wayyiqtol',  '3mp', 'עָנָה · I-gutt + III-he; dual: gutt shewa + III-he 3mp'],
+            ]),
+            ('Group 3: Geminate', [
+                ['11', 'יְהַלֲלוּ',  'Gen 12:15', '', '', ''],
+                ['12', 'הַלְלוּ',    'Ps 113:1',  '', '', ''],
+                ['13', 'הִלֵּל',     'Isa 14:12', '', '', ''],
+                ['14', 'מְהַלֵּל',   'Ps 18:4',   '', '', ''],
+                ['15', 'יְהַלֵּל',   'Prov 27:2', '', '', ''],
+            ], [
+                ['11', 'יְהַלֲלוּ',  'Gen 12:15', 'Wayyiqtol', '3mp', 'הָלַל · Geminate; dagesh in doubled ל; patach in prefix'],
+                ['12', 'הַלְלוּ',    'Ps 113:1',  'Imperative', '2mp', 'הָלַל · Geminate; imperative 2mp; dagesh in ל'],
+                ['13', 'הִלֵּל',     'Isa 14:12', 'Qatal',     '3ms', 'הָלַל · Geminate; chiriq under הִ in Piel perfect 3ms'],
+                ['14', 'מְהַלֵּל',   'Ps 18:4',   'Participle', 'ms', 'הָלַל · Geminate; מְ prefix + tsere + dagesh in ל'],
+                ['15', 'יְהַלֵּל',   'Prov 27:2', 'Yiqtol',    '3ms', 'הָלַל · Geminate; patach prefix + tsere + doubled ל'],
+            ]),
+            ('Group 4: I-nun', [
+                ['16', 'יְנַחֵם',    'Gen 5:29',  '', '', ''],
+                ['17', 'יְנַחֲמוּ', 'Gen 37:35', '', '', ''],
+                ['18', 'יְנַגַּע',   'Gen 12:17', '', '', ''],
+                ['19', 'נִסָּה',     'Gen 22:1',  '', '', ''],
+                ['20', 'יְנַסֶּה',   'Deu 8:16',  '', '', ''],
+            ], [
+                ['16', 'יְנַחֵם',    'Gen 5:29',  'Yiqtol',    '3ms', 'נָחַם · I-nun retained (not assimilated in Piel); tsere'],
+                ['17', 'יְנַחֲמוּ', 'Gen 37:35', 'Yiqtol',    '3mp', 'נָחַם · same root; 3mp ending; nun retained'],
+                ['18', 'יְנַגַּע',   'Gen 12:17', 'Wayyiqtol', '3ms', 'נָגַע · I-nun retained; dagesh in ג (R2 Piel marker)'],
+                ['19', 'נִסָּה',     'Gen 22:1',  'Qatal',     '3ms', 'נָסָה · I-nun + III-he; Piel perfect 3ms; qamets + ָה'],
+                ['20', 'יְנַסֶּה',   'Deu 8:16',  'Yiqtol',    '3ms', 'נָסָה · I-nun + III-he; yiqtol; seghol + ה'],
+            ]),
+        ]
+
+        for title, rows, ans in groups:
+            self.add_section_heading(title)
+            self.add_generic_table(hdr, rows, cr, heb_cols=[1], show_answers=False)
+            self.add_section_break()
+
+        hdr_b = ['#', 'Form', 'Reference', 'Weak Class', 'Conjugation', 'PGN', 'Root']
+        cr_b  = [0.04, 0.15, 0.12, 0.17, 0.18, 0.09, 0.25]
+        rows_b = [
+            ['21', 'יְכַסֶּה',    'Gen 37:26',  '', '', '', ''],
+            ['22', 'כִּסָּה',     'Gen 9:23',   '', '', '', ''],
+            ['23', 'יְחַיּוּ',   'Exo 1:17',   '', '', '', ''],
+            ['24', 'יְהַלֲלוּ',  'Ps 22:24',   '', '', '', ''],
+            ['25', 'הִלֵּל',     'Isa 14:12',  '', '', '', ''],
+            ['26', 'צִוָּה',      'Gen 7:9',    '', '', '', ''],
+            ['27', 'יְנַגַּע',   'Gen 12:17',  '', '', '', ''],
+            ['28', 'מְנַחֵם',    'Isa 51:12',  '', '', '', ''],
+            ['29', 'עִנָּה',      'Exo 22:22',  '', '', '', ''],
+            ['30', 'נִסָּה',     'Gen 22:1',   '', '', '', ''],
+        ]
+        ans_b = [
+            ['21', 'יְכַסֶּה',    'Gen 37:26',  'III-he',       'Yiqtol',    '3ms', 'כָּסָה'],
+            ['22', 'כִּסָּה',     'Gen 9:23',   'III-he',       'Qatal',     '3ms', 'כָּסָה'],
+            ['23', 'יְחַיּוּ',   'Exo 1:17',   'I-gutt + III-he', 'Yiqtol', '3mp', 'חָיָה'],
+            ['24', 'יְהַלֲלוּ',  'Ps 22:24',   'Geminate',     'Yiqtol',    '3mp', 'הָלַל'],
+            ['25', 'הִלֵּל',     'Isa 14:12',  'Geminate',     'Qatal',     '3ms', 'הָלַל'],
+            ['26', 'צִוָּה',      'Gen 7:9',    'III-he',       'Qatal',     '3ms', 'צָוָה'],
+            ['27', 'יְנַגַּע',   'Gen 12:17',  'I-nun',        'Wayyiqtol', '3ms', 'נָגַע'],
+            ['28', 'מְנַחֵם',    'Isa 51:12',  'I-nun',        'Participle','ms',  'נָחַם'],
+            ['29', 'עִנָּה',      'Exo 22:22',  'I-gutt',       'Qatal',     '3ms', 'עָנָה'],
+            ['30', 'נִסָּה',     'Gen 22:1',   'I-nun + III-he','Qatal',    '3ms', 'נָסָה'],
+        ]
+
+        self.add_section_heading('Part B — Mixed Forms')
+        self.add_generic_table(hdr_b, rows_b, cr_b, heb_cols=[1], show_answers=False)
+        self.add_section_break()
+
+        self.add_reflection([
+            'III-he: wayyiqtol יְכַל and יְצַו are apocopated. What happened to the ה? '
+            'How does the qatal כִּלָּה differ — is the ה retained?',
+            'I-nun Piel (items 16–20): unlike the Qal/Hiphil, the nun is NOT assimilated. '
+            'Why? (Hint: dagesh forte in R2 is already the Piel stem marker.)',
+            'Geminate items 11–15: what is the tell-tale vowel pattern for Piel Geminate '
+            'perfect (item 13) vs. Piel Geminate yiqtol (items 11, 15)?',
+        ])
+
+        self.add_section_heading('Answer Key — Part A')
+        for title, rows, ans in groups:
+            self.add_section_heading(title)
+            self.add_generic_table(hdr, rows, cr, heb_cols=[1],
+                                   show_answers=True, answer_rows=ans)
+            self.add_section_break()
+        self.add_section_heading('Answer Key — Part B')
+        self.add_generic_table(hdr_b, rows_b, cr_b, heb_cols=[1],
+                               show_answers=True, answer_rows=ans_b)
+
+
+def build_ch31_weak_form_id_exercise(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        Ch31WeakFormIdExercise,
+        'Chapter 31 — Piel Weak-Form Identification Drill',
+        'BBH Chapter 31 · Piel Weak Verbs',
+        ['hebrew', 'bbh', 'ch31', 'exercises', 'ch31-weak-form-id'],
+        'ch31-weak-form-id.pdf',
+        out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Chapter 32 — Piel–Pual Contrast Drill
+# ---------------------------------------------------------------------------
+
+class Ch32PielPualContrastExercise(ExercisePDF):
+
+    def _build(self):
+        self.add_instructions(
+            'Part A: active/passive pairs from the same root — identify stem and translate. '
+            'Part B: 15 mixed forms (Piel / Pual / Hiphil / Hophal) — identify stem, '
+            'conjugation, PGN, and root. Answer key is on the last page.'
+        )
+        self.add_note(
+            'Piel diagnostic: Hireq / tsere under prefix + Dagesh Forte in R2.  '
+            'Pual diagnostic: Qibbuts under R1 + Dagesh Forte in R2 '
+            '(ר rejects dagesh → compensatory lengthening to qamets: מְבֹרָךְ).  '
+            'Hophal: qibbuts under prefix consonant OR shureq for I-yod/Biconsonantal.  '
+            'Hiphil: Hireq under הִ (perfect); patach under prefix (yiqtol/wayyiqtol).'
+        )
+
+        hdr_a = ['#', 'Root', 'Form A', 'Stem A', 'Form B', 'Stem B', 'Translation A / B']
+        cr_a  = [0.04, 0.09, 0.14, 0.09, 0.14, 0.09, 0.41]
+        rows_a = [
+            ['1', 'בָּרַךְ', 'תְּבָרֵךְ (Yiqtol 2ms)',  '', 'מְבֹרָךְ (Part. ms)', '', ''],
+            ['2', 'אָרַר',  'תָּאֹר (Yiqtol 2ms)',      '', 'יוּאָר (Yiqtol 3ms)',  '', ''],
+            ['3', 'קָדַשׁ', 'וְקִדַּשְׁתָּ (Weq. 2ms)', '', 'יְקֻדַּשׁ (Yiqtol 3ms)', '', ''],
+            ['4', 'יָלַד',  'יּוֹלֶד (Wayy. 3ms)',       '', 'יֻלַּד (Qatal 3ms)',  '', ''],
+            ['5', 'כָּסָה', 'יְכַסֶּה (Yiqtol 3ms)',    '', 'יְכֻסּוּ (Wayy. 3mp)', '', ''],
+        ]
+        ans_a = [
+            ['1', 'בָּרַךְ', 'תְּבָרֵךְ (Yiqtol 2ms)',  'Piel', 'מְבֹרָךְ (Part. ms)', 'Pual', 'you bless / is blessed (ר → qamets)'],
+            ['2', 'אָרַר',  'תָּאֹר (Yiqtol 2ms)',      'Piel', 'יוּאָר (Yiqtol 3ms)',  'Pual', 'you curse / is cursed'],
+            ['3', 'קָדַשׁ', 'וְקִדַּשְׁתָּ (Weq. 2ms)', 'Piel', 'יְקֻדַּשׁ (Yiqtol 3ms)', 'Pual', 'you consecrate / will be consecrated'],
+            ['4', 'יָלַד',  'יּוֹלֶד (Wayy. 3ms)',       'Hiphil', 'יֻלַּד (Qatal 3ms)', 'Pual', 'he fathered / was born'],
+            ['5', 'כָּסָה', 'יְכַסֶּה (Yiqtol 3ms)',    'Piel', 'יְכֻסּוּ (Wayy. 3mp)', 'Pual', 'he covers / they were covered'],
+        ]
+
+        hdr_b = ['#', 'Form', 'Stem', 'Conjugation', 'PGN', 'Root']
+        cr_b  = [0.04, 0.18, 0.12, 0.20, 0.10, 0.36]
+        rows_b = [
+            ['6',  'מְבֹרָךְ',    '', '', '', ''],
+            ['7',  'תְּבָרֵךְ',  '', '', '', ''],
+            ['8',  'יֻלַּד',      '', '', '', ''],
+            ['9',  'יְכֻלּוּ',   '', '', '', ''],
+            ['10', 'יְכַסֶּה',   '', '', '', ''],
+            ['11', 'יְכֻסּוּ',   '', '', '', ''],
+            ['12', 'יְבָרֶךְ',   '', '', '', ''],
+            ['13', 'יֻּגַּד',    '', '', '', ''],
+            ['14', 'וַיְקַדֵּשׁ','', '', '', ''],
+            ['15', 'יְקֻדַּשׁ',  '', '', '', ''],
+            ['16', 'שִׁנֵּן',    '', '', '', ''],
+            ['17', 'קֻדַּשׁ',    '', '', '', ''],
+            ['18', 'הוּקַם',     '', '', '', ''],
+            ['19', 'הִקְדִּישׁ', '', '', '', ''],
+            ['20', 'יֻאַר',      '', '', '', ''],
+        ]
+        ans_b = [
+            ['6',  'מְבֹרָךְ',    'Pual',   'Participle', 'ms',  'בָּרַךְ · qamets (compensatory; ר rejects dagesh)'],
+            ['7',  'תְּבָרֵךְ',  'Piel',   'Yiqtol',     '2ms', 'בָּרַךְ · tsere under prefix = Piel'],
+            ['8',  'יֻלַּד',      'Pual',   'Qatal',      '3ms', 'יָלַד · qibbuts + dagesh in ל = Pual'],
+            ['9',  'יְכֻלּוּ',   'Pual',   'Wayyiqtol',  '3mp', 'כָּלָה · qibbuts + dagesh in כּ; III-he 3mp'],
+            ['10', 'יְכַסֶּה',   'Piel',   'Yiqtol',     '3ms', 'כָּסָה · tsere (patach) prefix = Piel'],
+            ['11', 'יְכֻסּוּ',   'Pual',   'Wayyiqtol',  '3mp', 'כָּסָה · qibbuts + dagesh in כּ = Pual'],
+            ['12', 'יְבָרֶךְ',   'Piel',   'Wayyiqtol',  '3ms', 'בָּרַךְ · patach prefix + tsere = Piel'],
+            ['13', 'יֻּגַּד',    'Hophal', 'Wayyiqtol',  '3ms', 'נָגַד · qibbuts under ו + dagesh = Hophal I-nun'],
+            ['14', 'וַיְקַדֵּשׁ', 'Piel',  'Wayyiqtol',  '3ms', 'קָדַשׁ · patach-tsere pattern = Piel'],
+            ['15', 'יְקֻדַּשׁ',  'Pual',   'Yiqtol',     '3ms', 'קָדַשׁ · qibbuts + dagesh = Pual'],
+            ['16', 'שִׁנֵּן',    'Piel',   'Perfect',    '3ms', 'שָׁנַן · chiriq + tsere + dagesh in נּ = Piel'],
+            ['17', 'קֻדַּשׁ',    'Pual',   'Perfect',    '3ms', 'קָדַשׁ · qibbuts + dagesh = Pual perfect'],
+            ['18', 'הוּקַם',     'Hophal', 'Perfect',    '3ms', 'קוּם · shureq prefix = Hophal Biconsonantal'],
+            ['19', 'הִקְדִּישׁ', 'Hiphil', 'Perfect',    '3ms', 'קָדַשׁ · chiriq prefix = Hiphil perfect'],
+            ['20', 'יֻאַר',      'Pual',   'Yiqtol',     '3ms', 'אָרַר · qibbuts + I-aleph (rejects dagesh)'],
+        ]
+
+        self.add_section_heading('Part A — Active / Passive Pairs')
+        self.add_generic_table(hdr_a, rows_a, cr_a, heb_cols=[2, 4], show_answers=False)
+        self.add_section_break()
+        self.add_section_heading('Part B — Mixed Forms: Piel / Pual / Hiphil / Hophal')
+        self.add_generic_table(hdr_b, rows_b, cr_b, heb_cols=[1], show_answers=False)
+        self.add_section_break()
+
+        self.add_reflection([
+            'The Pual diagnostic is "qibbuts under R1 + dagesh in R2." Item 6 (מְבֹרָךְ) has '
+            'qamets, not qibbuts, under ר. What phonological rule explains this? '
+            'Compare item 20 (יֻאַר) where the aleph also rejects dagesh.',
+            'Items 13 (Hophal יֻּגַּד) and 8 (Pual יֻלַּד) both start with qibbuts. '
+            'How do you distinguish a Hophal from a Pual when both use qibbuts?',
+            'Item 4: יּוֹלֶד is Hiphil, not Piel, even though both are active. '
+            'What features identify it as Hiphil rather than Piel?',
+        ])
+
+        self.add_section_heading('Answer Key — Part A')
+        self.add_generic_table(hdr_a, rows_a, cr_a, heb_cols=[2, 4],
+                               show_answers=True, answer_rows=ans_a)
+        self.add_section_heading('Answer Key — Part B')
+        self.add_generic_table(hdr_b, rows_b, cr_b, heb_cols=[1],
+                               show_answers=True, answer_rows=ans_b)
+
+
+def build_ch32_piel_pual_contrast_exercise(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        Ch32PielPualContrastExercise,
+        'Chapter 32 — Piel–Pual Contrast Drill',
+        'BBH Chapter 32 · Pual Strong Verbs',
+        ['hebrew', 'bbh', 'ch32', 'exercises', 'ch32-piel-pual-contrast'],
+        'ch32-piel-pual-contrast.pdf',
+        out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Chapter 33 — Pual Weak-Form Identification Drill
+# ---------------------------------------------------------------------------
+
+class Ch33WeakFormIdExercise(ExercisePDF):
+
+    def _build(self):
+        self.add_instructions(
+            'Part A: identify conjugation, PGN, and root (forms grouped by weak class). '
+            'Part B: identify weak class first, then conjugation, PGN, and root. '
+            'Answer key is on the last page.'
+        )
+        self.add_note(
+            'Pual: Qibbuts under R1 + Dagesh Forte in R2. '
+            'III-he Pual: ends in וּ (3cp) or ָה (3ms). '
+            'I-nun Pual: nun assimilates into R2 dagesh (unlike Piel, where nun is retained). '
+            'I-guttural/aleph + ר reject dagesh → compensatory lengthening.'
+        )
+
+        hdr = ['#', 'Form', 'Reference', 'Conjugation', 'PGN', 'Root']
+        cr  = [0.05, 0.18, 0.14, 0.22, 0.10, 0.31]
+
+        groups = [
+            ('Group 1: III-he', [
+                ['1', 'יְכֻלּוּ',   'Gen 2:1',   '', '', ''],
+                ['2', 'יְכֻסּוּ',   'Gen 7:19',  '', '', ''],
+                ['3', 'צֻוֵּיתָ',  'Gen 45:19', '', '', ''],
+                ['4', 'כֻּלּוּ',   'Ezk 22:31', '', '', ''],
+                ['5', 'צֻוֵּיתִי', 'Gen 45:19', '', '', ''],
+            ], [
+                ['1', 'יְכֻלּוּ',   'Gen 2:1',   'Wayyiqtol', '3mp', 'כָּלָה · qibbuts + dagesh + III-he 3mp'],
+                ['2', 'יְכֻסּוּ',   'Gen 7:19',  'Wayyiqtol', '3mp', 'כָּסָה · qibbuts + dagesh in סּ; III-he 3mp'],
+                ['3', 'צֻוֵּיתָ',  'Gen 45:19', 'Qatal',     '2ms', 'צָוָה · Pual qatal 2ms; III-he chiriq-yod ending'],
+                ['4', 'כֻּלּוּ',   'Ezk 22:31', 'Qatal',     '3cp', 'כָּלָה · qibbuts + dagesh + 3cp וּ ending'],
+                ['5', 'צֻוֵּיתִי', 'Gen 45:19', 'Qatal',     '1cs', 'צָוָה · Pual qatal 1cs; III-he chiriq-yod + י'],
+            ]),
+            ('Group 2: I-nun', [
+                ['6',  'נֻכָּה',  'Exo 9:31',  '', '', ''],
+                ['7',  'נֻכּוּ',  'Exo 9:32',  '', '', ''],
+                ['8',  'נֻתַּץ',  'Jdg 6:28',  '', '', ''],
+                ['9',  'נֻגָּף',  'Num 14:42', '', '', ''],
+                ['10', 'נֻקָּה',  'Num 5:28',  '', '', ''],
+            ], [
+                ['6',  'נֻכָּה',  'Exo 9:31',  'Qatal',     '3fs', 'נָכָה · I-nun assimilates; qibbuts + dagesh in כּ'],
+                ['7',  'נֻכּוּ',  'Exo 9:32',  'Qatal',     '3cp', 'נָכָה · same root; 3cp ending; note contrast with Piel'],
+                ['8',  'נֻתַּץ',  'Jdg 6:28',  'Qatal',     '3ms', 'נָתַץ · I-nun assimilates into dagesh in תּ'],
+                ['9',  'נֻגָּף',  'Num 14:42', 'Yiqtol',    '3mp', 'נָגַף · I-nun assimilates; qibbuts + dagesh'],
+                ['10', 'נֻקָּה',  'Num 5:28',  'Yiqtol',    '3fs', 'נָקָה · I-nun assimilates; III-he feminine ending'],
+            ]),
+            ('Group 3: I-guttural / I-aleph', [
+                ['11', 'אֹרָשָׂה',  'Exo 22:15', '', '', ''],
+                ['12', 'עֻנָּה',    'Isa 51:21', '', '', ''],
+                ['13', 'יֻאַר',     'Num 22:6',  '', '', ''],
+                ['14', 'יְאָרֵר',   'Gen 12:3',  '', '', ''],
+            ], [
+                ['11', 'אֹרָשָׂה',  'Exo 22:15', 'Qatal',     '3fs', 'אָרַשׂ · I-aleph; holem (compensatory; ר rejects dagesh) + 3fs'],
+                ['12', 'עֻנָּה',    'Isa 51:21', 'Qatal',     '3fs', 'עָנָה · I-gutt (ע) + III-he; qibbuts + dagesh in נּ'],
+                ['13', 'יֻאַר',     'Num 22:6',  'Yiqtol',    '3ms', 'אָרַר · I-aleph; aleph rejects dagesh → qibbuts remains'],
+                ['14', 'יְאָרֵר',   'Gen 12:3',  'Yiqtol',    '3ms', 'אָרַר · Piel (not Pual): patach prefix + tsere + dagesh'],
+            ]),
+        ]
+
+        for title, rows, ans in groups:
+            self.add_section_heading(title)
+            self.add_generic_table(hdr, rows, cr, heb_cols=[1], show_answers=False)
+            self.add_section_break()
+
+        hdr_b = ['#', 'Form', 'Reference', 'Weak Class', 'Conjugation', 'PGN', 'Root']
+        cr_b  = [0.04, 0.14, 0.12, 0.18, 0.18, 0.09, 0.25]
+        rows_b = [
+            ['15', 'יְכֻלּוּ',  'Gen 2:1',   '', '', '', ''],
+            ['16', 'נֻכָּה',    'Exo 9:31',  '', '', '', ''],
+            ['17', 'מְבֹרָךְ',  'Num 22:6',  '', '', '', ''],
+            ['18', 'צֻוֵּיתָ', 'Gen 45:19', '', '', '', ''],
+            ['19', 'נֻגָּף',    'Num 14:42', '', '', '', ''],
+            ['20', 'אֹרָשָׂה', 'Exo 22:15', '', '', '', ''],
+        ]
+        ans_b = [
+            ['15', 'יְכֻלּוּ',  'Gen 2:1',   'III-he',       'Wayyiqtol', '3mp', 'כָּלָה'],
+            ['16', 'נֻכָּה',    'Exo 9:31',  'I-nun + III-he', 'Qatal',   '3fs', 'נָכָה'],
+            ['17', 'מְבֹרָךְ',  'Num 22:6',  'Geminate (ר)',  'Participle','ms',  'בָּרַךְ'],
+            ['18', 'צֻוֵּיתָ', 'Gen 45:19', 'III-he',        'Qatal',    '2ms', 'צָוָה'],
+            ['19', 'נֻגָּף',    'Num 14:42', 'I-nun',         'Yiqtol',   '3mp', 'נָגַף'],
+            ['20', 'אֹרָשָׂה', 'Exo 22:15', 'I-aleph + ר',   'Qatal',    '3fs', 'אָרַשׂ'],
+        ]
+
+        self.add_section_heading('Part B — Mixed Forms')
+        self.add_generic_table(hdr_b, rows_b, cr_b, heb_cols=[1], show_answers=False)
+        self.add_section_break()
+
+        self.add_reflection([
+            'III-he Pual (items 1–2): wayyiqtol 3mp ends in וּ. How does this compare '
+            'to the Piel wayyiqtol 3mp of the same III-he roots?',
+            'I-nun Pual (items 6–10) vs. I-nun Piel (Ch31 items 16–20): '
+            'the nun assimilates in the Pual but is retained in the Piel. Why the difference?',
+            'Item 14 (יְאָרֵר) is Piel, not Pual. What features identify it as Piel? '
+            'Compare to item 13 (יֻאַר, Pual). Write the diagnostic for each.',
+        ])
+
+        self.add_section_heading('Answer Key — Part A')
+        for title, rows, ans in groups:
+            self.add_section_heading(title)
+            self.add_generic_table(hdr, rows, cr, heb_cols=[1],
+                                   show_answers=True, answer_rows=ans)
+            self.add_section_break()
+        self.add_section_heading('Answer Key — Part B')
+        self.add_generic_table(hdr_b, rows_b, cr_b, heb_cols=[1],
+                               show_answers=True, answer_rows=ans_b)
+
+
+def build_ch33_weak_form_id_exercise(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        Ch33WeakFormIdExercise,
+        'Chapter 33 — Pual Weak-Form Identification Drill',
+        'BBH Chapter 33 · Pual Weak Verbs',
+        ['hebrew', 'bbh', 'ch33', 'exercises', 'ch33-weak-form-id'],
+        'ch33-weak-form-id.pdf',
+        out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Chapter 34 — Hithpael Semantic Function Sorting
+# ---------------------------------------------------------------------------
+
+class Ch34FunctionSortExercise(ExercisePDF):
+    _ENTRIES = [
+        SortEntry('1',  'מִתְהַלֵּךְ',    'Participle ms',   'Gen 3:8',   '"walking about (in the garden)"',              'IT', 'הָלַךְ', 'Back-and-forth movement; not a single walk'),
+        SortEntry('2',  'יִּתְחַבֵּא',    'Wayyiqtol 3ms',   'Gen 3:8',   '"he hid himself"',                             'R',  'חָבָא',  'Subject acts on itself; concealment'),
+        SortEntry('3',  'יִּתְהַלֵּךְ',   'Wayyiqtol 3ms',   'Gen 5:22',  '"Enoch walked about (with God)"',              'IT', 'הָלַךְ', 'Habitual/continuous walking; same root as #1'),
+        SortEntry('4',  'יִּתְעַצֵּב',    'Wayyiqtol 3ms',   'Gen 6:6',   '"he was grieved (to his heart)"',              'R',  'עָצַב',  'Inward grief; the LORD\'s heart acts on itself'),
+        SortEntry('5',  'יִּתְגַּל',      'Wayyiqtol 3ms',   'Gen 9:21',  '"he uncovered himself"',                       'R',  'גָּלָה', 'Reflexive uncovering; subject = object'),
+        SortEntry('6',  'הִתְהַלֵּךְ',   'Imperative 2ms',  'Gen 13:17', '"walk about (through the land)!"',              'IT', 'הָלַךְ', 'Command to traverse repeatedly; same root'),
+        SortEntry('7',  'הִתְעַנִּי',     'Imperative 2fs',  'Gen 16:9',  '"humble yourself!"',                           'R',  'עָנָה',  'Reflexive self-humbling; subject acts on itself'),
+        SortEntry('8',  'הִתְהַלֵּךְ',   'Imperative 2ms',  'Gen 17:1',  '"walk about before me!"',                      'IT', 'הָלַךְ', 'Continuous conduct before YHWH'),
+        SortEntry('9',  'יִּשְׁתַּחוּ',  'Wayyiqtol 3ms',   'Gen 18:2',  '"he prostrated himself"',                      'R',  'שָׁחָה', 'Reflexive prostration; III-he Hithpael'),
+        SortEntry('10', 'יִּשְׁתַּחוּ',  'Wayyiqtol 3ms',   'Gen 19:1',  '"Lot bowed down"',                             'R',  'שָׁחָה', 'Same form; Lot prostrates himself before the angels'),
+        SortEntry('11', 'יִּתְפַּלֵּל',  'Wayyiqtol 3ms',   'Gen 20:17', '"he prayed"',                                  'DN', 'פָּלַל', 'From פֶּלֶל "mediation/judgment"; to mediate/intercede'),
+        SortEntry('12', 'הִתְבָּרֲכוּ',  'Weqatal 3cp',     'Gen 22:18', '"they will bless themselves / be blessed"',    'R',  'בָּרַךְ', 'Reflexive blessing; can also be read as passive-like'),
+        SortEntry('13', 'הִתְהַלַּכְתִּי', 'Qatal 1cs',     'Gen 24:40', '"I have walked about (before the LORD)"',      'IT', 'הָלַךְ', 'Continuous habitual conduct'),
+        SortEntry('14', 'יִּשְׁתַּחוּ',  'Wayyiqtol 3ms',   'Gen 24:26', '"he bowed down and worshiped"',                'R',  'שָׁחָה', 'Same form; servant prostrates himself'),
+        SortEntry('15', 'הִתְעַשְּׂקוּ', 'Qatal 3cp',       'Gen 26:20', '"they quarreled"',                             'RC', 'עָשַׂק',  'Mutual quarreling; the herdsmen act on one another'),
+        SortEntry('16', 'מִתְנַחֵם',     'Participle ms',   'Gen 27:42', '"is comforting himself"',                      'R',  'נָחַם',  'Esau comforting himself with the thought of revenge'),
+        SortEntry('17', 'יִּתְנַכְּלוּ', 'Wayyiqtol 3mp',   'Gen 37:18', '"they plotted against him"',                  'RC', 'נָכַל',  'Collective/mutual scheming against Joseph'),
+        SortEntry('18', 'וַיִּתְאַבֵּל', 'Wayyiqtol 3ms',   'Gen 37:34', '"he mourned"',                                 'R',  'אָבַל',  'Inward grief expressed outwardly; reflexive mourning'),
+        SortEntry('19', 'תִּתְכַּסֶּה',  'Wayyiqtol 3fs',   'Gen 24:65', '"she covered herself"',                        'R',  'כָּסָה', 'Rebekah covered herself with her veil'),
+        SortEntry('20', 'יִּשְׁתַּחֲווּ', 'Wayyiqtol 3mp',  'Gen 33:7',  '"they bowed down"',                            'R',  'שָׁחָה', 'Jacob\'s wives and children prostrate themselves'),
+        SortEntry('21', 'אֶתְנַהֲלָה',  'Cohortative 1cs', 'Gen 33:14', '"I will journey on slowly"',                   'IT', 'נָהַל',  'Iterative/continuous slow travel; guiding the flocks'),
+        SortEntry('22', 'הִתְקַדְּשׁוּ', 'Imperative 2mp',  'Exo 19:22', '"consecrate yourselves!"',                    'R',  'קָדַשׁ', 'The priests prepare themselves for the theophany'),
+        SortEntry('23', 'וַיִּתְחַזֵּק', 'Wayyiqtol 3ms',   'Exo 7:13',  '"and his heart was strengthened"',            'R',  'חָזַק',  'The heart strengthened itself / became stubborn'),
+        SortEntry('24', 'יִּתְהַלְּלוּ', 'Wayyiqtol 3mp',  'Ps 97:7',   '"they glory in idols"',                        'ES', 'הָלַל',  'Present themselves as glorious; boast in idols'),
+        SortEntry('25', 'הִתְחַזְּקוּ',  'Imperative 2mp',  'Jos 1:6',   '"be strong!"',                                 'ES', 'חָזַק',  'Present/conduct yourselves as strong; estimative force'),
+    ]
+
+    def _build(self):
+        self.add_instructions(
+            'Classify each Hithpael verb: R (Reflexive), RC (Reciprocal), '
+            'IT (Iterative/Frequentative), ES (Estimative/Declarative), or DN (Denominative). '
+            'Answer key is on the last page.'
+        )
+        self.add_note(
+            'R = Reflexive (subject acts on itself)  |  '
+            'RC = Reciprocal (subjects act on one another)  |  '
+            'IT = Iterative/Frequentative (repeated or habitual action)  |  '
+            'ES = Estimative (subject presents itself as being in a state)  |  '
+            'DN = Denominative (derived from a noun)'
+        )
+        self.add_sort_table(self._ENTRIES, show_answers=False)
+        self.add_reflection([
+            'הָלַךְ appears 5 times (items 1, 3, 6, 8, 13). Why is this Iterative rather than Reflexive? '
+            'What does "walking about" add that a single-step Qal walk does not?',
+            'Item 12 (הִתְבָּרֲכוּ, Gen 22:18) can be translated "bless themselves" (R) '
+            'or "be blessed" (passive). What would change if you read this as passive?',
+            'Items 24–25 are Estimative. What does the Hithpael add to הָלַל and חָזַק '
+            'that the Qal of the same root would not express?',
+        ])
+        self.add_answer_key_sort(self._ENTRIES)
+
+
+def build_ch34_function_sort_exercise(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        Ch34FunctionSortExercise,
+        'Chapter 34 — Hithpael Semantic Function Sorting',
+        'BBH Chapter 34 · Hithpael Strong Verbs',
+        ['hebrew', 'bbh', 'ch34', 'exercises', 'ch34-function-sort'],
+        'ch34-function-sort.pdf',
+        out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Chapter 35 — Hithpael Weak-Form Identification Drill
+# ---------------------------------------------------------------------------
+
+class Ch35WeakFormIdExercise(ExercisePDF):
+
+    def _build(self):
+        self.add_instructions(
+            'Part A: identify conjugation, PGN, and root (forms grouped by weak class). '
+            'Part B: mixed forms — identify weak class first, then conjugation, PGN, and root. '
+            'Answer key is on the last page.'
+        )
+        self.add_note(
+            'Sibilant Metathesis: when R1 = שׁ/שׂ/ס/צ, the Hithpael ת swaps with R1 '
+            '(and ת → ט before צ). E.g., שָׁחָה → הִשְׁתַּחֲוָה; שָׁמַר → הִשְׁתַּמֵּר. '
+            'I-guttural: composite shewa under R1 (e.g., הִתְהַלֵּךְ). '
+            'III-he: apocopation in wayyiqtol (ה drops: יִּתְגַּל from גָּלָה).'
+        )
+
+        hdr = ['#', 'Form', 'Reference', 'Conjugation', 'PGN', 'Root']
+        cr  = [0.05, 0.20, 0.14, 0.22, 0.10, 0.29]
+
+        groups = [
+            ('Group 1: III-he', [
+                ['1', 'יִּתְגַּל',      'Gen 9:21',  '', '', ''],
+                ['2', 'יִּשְׁתַּחוּ',  'Gen 18:2',  '', '', ''],
+                ['3', 'הִשְׁתַּחֲוָה', 'Gen 22:5',  '', '', ''],
+                ['4', 'תִּתְכַּסֶּה',  'Gen 24:65', '', '', ''],
+                ['5', 'יִּשְׁתַּחֲווּ', 'Gen 33:7', '', '', ''],
+            ], [
+                ['1', 'יִּתְגַּל',      'Gen 9:21',  'Wayyiqtol', '3ms', 'גָּלָה · III-he apocopated; ה dropped'],
+                ['2', 'יִּשְׁתַּחוּ',  'Gen 18:2',  'Wayyiqtol', '3ms', 'שָׁחָה · metathesis (שׁ + ת swap) + III-he apocopated'],
+                ['3', 'הִשְׁתַּחֲוָה', 'Gen 22:5',  'Qatal',     '3ms', 'שָׁחָה · metathesis + III-he; qamets + ָה retained in qatal'],
+                ['4', 'תִּתְכַּסֶּה',  'Gen 24:65', 'Wayyiqtol', '3fs', 'כָּסָה · strong R1; III-he seghol + ה retained in yiqtol'],
+                ['5', 'יִּשְׁתַּחֲווּ', 'Gen 33:7', 'Wayyiqtol', '3mp', 'שָׁחָה · metathesis + III-he; 3mp וּ ending'],
+            ]),
+            ('Group 2: I-guttural', [
+                ['6',  'מִתְהַלֵּךְ',  'Gen 3:8',   '', '', ''],
+                ['7',  'יִּתְהַלֵּךְ', 'Gen 5:22',  '', '', ''],
+                ['8',  'יִּתְחַבֵּא',  'Gen 3:8',   '', '', ''],
+                ['9',  'הִתְעַנִּי',   'Gen 16:9',  '', '', ''],
+                ['10', 'וַיִּתְחַזֵּק', 'Exo 7:13', '', '', ''],
+            ], [
+                ['6',  'מִתְהַלֵּךְ',  'Gen 3:8',   'Participle',  'ms', 'הָלַךְ · I-gutt (ה); hateph-patach under ה'],
+                ['7',  'יִּתְהַלֵּךְ', 'Gen 5:22',  'Wayyiqtol',   '3ms', 'הָלַךְ · same root; hateph-patach + tsere'],
+                ['8',  'יִּתְחַבֵּא',  'Gen 3:8',   'Wayyiqtol',   '3ms', 'חָבָא · I-gutt (ח) + III-aleph; hateph under ח'],
+                ['9',  'הִתְעַנִּי',   'Gen 16:9',  'Imperative',  '2fs', 'עָנָה · I-gutt (ע) + III-he; hateph under ע'],
+                ['10', 'וַיִּתְחַזֵּק', 'Exo 7:13', 'Wayyiqtol',   '3ms', 'חָזַק · I-gutt (ח); hateph-patach; dagesh in ז'],
+            ]),
+            ('Group 3: Sibilant Metathesis (R1 = שׁ/שׂ/ס/צ)', [
+                ['11', 'יִּשְׁתַּחוּ',  'Gen 19:1',  '', '', ''],
+                ['12', 'הִשְׁתַּחֲוָה', 'Gen 23:7',  '', '', ''],
+                ['13', 'יִּשְׁתַּחֲווּ', 'Gen 33:7', '', '', ''],
+                ['14', 'הִשְׁתַּמֵּר',  'Deu 4:9',   '', '', ''],
+                ['15', 'וַיִּשְׁתֹּמֵם', 'Dan 4:16', '', '', ''],
+            ], [
+                ['11', 'יִּשְׁתַּחוּ',  'Gen 19:1',  'Wayyiqtol', '3ms', 'שָׁחָה · metathesis: ת + שׁ → שׁ + תּ; III-he apocopated'],
+                ['12', 'הִשְׁתַּחֲוָה', 'Gen 23:7',  'Qatal',     '3ms', 'שָׁחָה · metathesis + III-he qatal; ָה retained'],
+                ['13', 'יִּשְׁתַּחֲווּ', 'Gen 33:7', 'Wayyiqtol', '3mp', 'שָׁחָה · same as #11; 3mp וּ ending'],
+                ['14', 'הִשְׁתַּמֵּר',  'Deu 4:9',   'Imperative', '2ms', 'שָׁמַר · metathesis: הִשְׁ instead of הִתְשׁ'],
+                ['15', 'וַיִּשְׁתֹּמֵם', 'Dan 4:16', 'Wayyiqtol', '3ms', 'שָׁמֵם · metathesis; Geminate root'],
+            ]),
+            ('Group 4: I-nun', [
+                ['16', 'מִתְנַחֵם',    'Gen 27:42', '', '', ''],
+                ['17', 'יִּתְנַחֲמוּ', 'Gen 37:35', '', '', ''],
+                ['18', 'יִּתְנַכְּלוּ', 'Gen 37:18', '', '', ''],
+                ['19', 'אֶתְנַהֲלָה',  'Gen 33:14', '', '', ''],
+                ['20', 'מִתְנַדְּבִים', 'Ezr 1:6',  '', '', ''],
+            ], [
+                ['16', 'מִתְנַחֵם',    'Gen 27:42', 'Participle', 'ms', 'נָחַם · I-nun RETAINED (not assimilated) in Hithpael'],
+                ['17', 'יִּתְנַחֲמוּ', 'Gen 37:35', 'Wayyiqtol', '3mp', 'נָחַם · same root; 3mp ending; nun retained'],
+                ['18', 'יִּתְנַכְּלוּ', 'Gen 37:18', 'Wayyiqtol', '3mp', 'נָכַל · I-nun retained; dagesh in כּ = Piel-pattern R2'],
+                ['19', 'אֶתְנַהֲלָה',  'Gen 33:14', 'Cohortative', '1cs', 'נָהַל · I-nun retained; hateph-patach under ה (I-gutt?)'],
+                ['20', 'מִתְנַדְּבִים', 'Ezr 1:6',  'Participle', 'mp', 'נָדַב · I-nun retained; plural מִתְנַ + dagesh in ד'],
+            ]),
+        ]
+
+        for title, rows, ans in groups:
+            self.add_section_heading(title)
+            self.add_generic_table(hdr, rows, cr, heb_cols=[1], show_answers=False)
+            self.add_section_break()
+
+        hdr_b = ['#', 'Form', 'Reference', 'Weak Class', 'Conjugation', 'PGN', 'Root']
+        cr_b  = [0.04, 0.18, 0.12, 0.17, 0.18, 0.09, 0.22]
+        rows_b = [
+            ['21', 'וַיִּשְׁתַּחוּ',  'Gen 24:26', '', '', '', ''],
+            ['22', 'וַיִּתְאַבֵּל', 'Gen 37:34', '', '', '', ''],
+            ['23', 'הִתְקַדְּשׁוּ',  'Exo 19:22', '', '', '', ''],
+            ['24', 'וַיִּתְפַּלֵּל', 'Gen 20:17', '', '', '', ''],
+            ['25', 'הִתְהַלֵּל',    'Jer 9:22',  '', '', '', ''],
+            ['26', 'הִשְׁתַּמֵּר',  'Gen 31:24', '', '', '', ''],
+            ['27', 'מִתְחַזְּקִים',  'Neh 3:20',  '', '', '', ''],
+            ['28', 'יִּתְגַּלְגַּל', 'Ruth 3:8',  '', '', '', ''],
+            ['29', 'הִתְרוֹמֵם',    'Ps 46:11',  '', '', '', ''],
+            ['30', 'הִשְׁתּוֹלֵל',  'Isa 51:7',  '', '', '', ''],
+        ]
+        ans_b = [
+            ['21', 'וַיִּשְׁתַּחוּ',  'Gen 24:26', 'Sibilant metathesis + III-he', 'Wayyiqtol',  '3ms', 'שָׁחָה'],
+            ['22', 'וַיִּתְאַבֵּל', 'Gen 37:34', 'Strong',       'Wayyiqtol',  '3ms', 'אָבַל'],
+            ['23', 'הִתְקַדְּשׁוּ',  'Exo 19:22', 'Strong',       'Imperative', '2mp', 'קָדַשׁ'],
+            ['24', 'וַיִּתְפַּלֵּל', 'Gen 20:17', 'Strong',       'Wayyiqtol',  '3ms', 'פָּלַל'],
+            ['25', 'הִתְהַלֵּל',    'Jer 9:22',  'I-gutt (ה) + Geminate', 'Imperative', '2ms', 'הָלַל'],
+            ['26', 'הִשְׁתַּמֵּר',  'Gen 31:24', 'Sibilant metathesis',    'Imperative', '2ms', 'שָׁמַר'],
+            ['27', 'מִתְחַזְּקִים',  'Neh 3:20',  'I-gutt (ח)',  'Participle', 'mp',  'חָזַק'],
+            ['28', 'יִּתְגַּלְגַּל', 'Ruth 3:8',  'Geminate',    'Wayyiqtol',  '3ms', 'גָּלַל'],
+            ['29', 'הִתְרוֹמֵם',    'Ps 46:11',  'Biconsonantal/Geminate', 'Imperative', '2ms', 'רוּם'],
+            ['30', 'הִשְׁתּוֹלֵל',  'Isa 51:7',  'Sibilant metathesis',    'Qatal',      '3ms', 'שָׁלַל'],
+        ]
+
+        self.add_section_heading('Part B — Mixed Forms')
+        self.add_generic_table(hdr_b, rows_b, cr_b, heb_cols=[1], show_answers=False)
+        self.add_section_break()
+
+        self.add_reflection([
+            'Sibilant metathesis (items 11–15, Part B items 21, 26, 30): write the '
+            'expected (pre-metathesis) form of הִשְׁתַּחֲוָה. Then identify which letters swapped.',
+            'I-guttural Hithpael (items 6–10): how would you distinguish a Hithpael I-guttural '
+            'form (e.g., מִתְהַלֵּךְ) from a Piel I-guttural form (e.g., מְהַלֵּל)?',
+            'III-he apocopation: items 1, 2, 5 (wayyiqtol) drop the final ה. '
+            'Item 3 (qatal 3ms) retains it. Why does the qatal retain the ה but the wayyiqtol does not?',
+        ])
+
+        self.add_section_heading('Answer Key — Part A')
+        for title, rows, ans in groups:
+            self.add_section_heading(title)
+            self.add_generic_table(hdr, rows, cr, heb_cols=[1],
+                                   show_answers=True, answer_rows=ans)
+            self.add_section_break()
+        self.add_section_heading('Answer Key — Part B')
+        self.add_generic_table(hdr_b, rows_b, cr_b, heb_cols=[1],
+                               show_answers=True, answer_rows=ans_b)
+
+
+def build_ch35_weak_form_id_exercise(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        Ch35WeakFormIdExercise,
+        'Chapter 35 — Hithpael Weak-Form Identification Drill',
+        'BBH Chapter 35 · Hithpael Weak Verbs',
+        ['hebrew', 'bbh', 'ch35', 'exercises', 'ch35-weak-form-id'],
+        'ch35-weak-form-id.pdf',
+        out_dir,
+    )
+

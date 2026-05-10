@@ -53,13 +53,23 @@ from .bbh import (
     build_ch27_nh_contrast_exercise,
     build_ch27_bg_drill_exercise,
     build_ch28_hophal_exercise,
+    build_ch28_function_sort_exercise,
+    build_ch28_hophal_hiphil_contrast_exercise,
     build_ch29_hophal_weak_exercise,
+    build_ch29_weak_form_id_exercise,
     build_ch30_exercise,
+    build_ch30_function_sort_exercise,
+    build_ch30_qal_piel_contrast_exercise,
     build_ch31_piel_weak_exercise,
+    build_ch31_weak_form_id_exercise,
     build_ch32_exercise,
+    build_ch32_piel_pual_contrast_exercise,
     build_ch33_exercise,
+    build_ch33_weak_form_id_exercise,
     build_ch34_hithpael_exercise,
+    build_ch34_function_sort_exercise,
     build_ch35_hithpael_weak_exercise,
+    build_ch35_weak_form_id_exercise,
 )
 from .bbg import (
     build_bbg_ch3_alphabet_drill,
@@ -186,20 +196,40 @@ p9 = build_ch27_weak_form_id_exercise()
 print(f'Saved: {p9}')
 p10 = build_ch28_hophal_exercise()
 print(f'Saved: {p10}')
-p11 = build_ch30_exercise()
+p11 = build_ch28_function_sort_exercise()
 print(f'Saved: {p11}')
-p12 = build_ch32_exercise()
+p12 = build_ch28_hophal_hiphil_contrast_exercise()
 print(f'Saved: {p12}')
-p13 = build_ch33_exercise()
+p13 = build_ch29_hophal_weak_exercise()
 print(f'Saved: {p13}')
-p12 = build_ch34_hithpael_exercise()
-print(f'Saved: {p12}')
-p13 = build_ch35_hithpael_weak_exercise()
-print(f'Saved: {p13}')
-p14 = build_ch29_hophal_weak_exercise()
+p14 = build_ch29_weak_form_id_exercise()
 print(f'Saved: {p14}')
-p15 = build_ch31_piel_weak_exercise()
+p15 = build_ch30_exercise()
 print(f'Saved: {p15}')
+p16 = build_ch30_function_sort_exercise()
+print(f'Saved: {p16}')
+p17 = build_ch30_qal_piel_contrast_exercise()
+print(f'Saved: {p17}')
+p18 = build_ch31_piel_weak_exercise()
+print(f'Saved: {p18}')
+p19 = build_ch31_weak_form_id_exercise()
+print(f'Saved: {p19}')
+p20 = build_ch32_exercise()
+print(f'Saved: {p20}')
+p21 = build_ch32_piel_pual_contrast_exercise()
+print(f'Saved: {p21}')
+p22 = build_ch33_exercise()
+print(f'Saved: {p22}')
+p23 = build_ch33_weak_form_id_exercise()
+print(f'Saved: {p23}')
+p24 = build_ch34_hithpael_exercise()
+print(f'Saved: {p24}')
+p25 = build_ch34_function_sort_exercise()
+print(f'Saved: {p25}')
+p26 = build_ch35_hithpael_weak_exercise()
+print(f'Saved: {p26}')
+p27 = build_ch35_weak_form_id_exercise()
+print(f'Saved: {p27}')
 
 # BBG (Greek) exercises
 bbg_builders = [

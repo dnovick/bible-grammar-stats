@@ -9,6 +9,7 @@
 | Exercise | Description |
 |---|---|
 | [exercises/ch32-passage-exercise/](exercises/ch32-passage-exercise/README.md) | Passage exercise — identify and parse Pual Strong verbs in Torah and Prophets texts |
+| [exercises/ch32-piel-pual-contrast/](exercises/ch32-piel-pual-contrast/README.md) | Piel vs. Pual contrast drill — distinguish active and passive Piel-group forms across 25 items |
 
 ### Flashcards
 

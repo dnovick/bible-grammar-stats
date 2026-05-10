@@ -15,6 +15,8 @@
 | Exercise | Description |
 |---|---|
 | [exercises/ch30-passage-exercise/](exercises/ch30-passage-exercise/README.md) | Passage exercise — identify and parse Piel Strong verbs in Torah narrative |
+| [exercises/ch30-function-sort/](exercises/ch30-function-sort/README.md) | Semantic function sorting — classify 25 Piel forms as I / F / D / DN / SA |
+| [exercises/ch30-qal-piel-contrast/](exercises/ch30-qal-piel-contrast/README.md) | Qal vs. Piel contrast drill — parse 25 forms and identify stem, noting meaning shift |
 
 ### Flashcards
 

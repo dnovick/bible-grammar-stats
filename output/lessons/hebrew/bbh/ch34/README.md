@@ -9,6 +9,7 @@
 | Exercise | Description |
 |---|---|
 | [exercises/ch34-passage-exercise/](exercises/ch34-passage-exercise/README.md) | Passage exercise — identify and parse Hithpael verbs in 1 Kgs 8, Gen 20, Jos 3, Exo 19, Gen 22, 2 Sam 10 |
+| [exercises/ch34-function-sort/](exercises/ch34-function-sort/README.md) | Semantic function sorting — classify 25 Hithpael forms as R / RC / IT / ES / DN |
 
 ### Flashcards
 
