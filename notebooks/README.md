@@ -67,6 +67,7 @@ the notebooks running in VS Code (5–10 minutes).
 | [ot/syntax/predicate_argument.ipynb](ot/syntax/predicate_argument.ipynb) | Predicate-argument structure (semantic role labeling): what God/YHWH does (A0 agent), what is created/given/judged (A1 patient), theological verb profiles (בָּרָא/נָתַן/שָׁפַט), most common agent–verb–patient triples by book |
 | [ot/syntax/discourse_structure.ipynb](ot/syntax/discourse_structure.ipynb) | OT discourse structure (Longacre 1983): narrative peak scoring per chapter (wayyiqtol + speech + TTR composite), episode boundary detection (wayehi scene-setters, wayyiqtol chain gaps), Akedah case study (Gen 22), cross-book wayyiqtol density comparison |
 | [ot/syntax/register_analysis.ipynb](ot/syntax/register_analysis.ipynb) | Hebrew register and style analysis: TTR/MSTTR vocabulary richness, wayyiqtol density fingerprint, particle density, Isaiah 1–39 vs. 40–66 stylometric comparison, Torah law vs. narrative, radar and heatmap charts |
+| [ot/syntax/information_structure.ipynb](ot/syntax/information_structure.ipynb) | Hebrew information structure: parataxis vs. hypotaxis ratios, fronted elements (topic/focus proxies), nominal (verbless) clause %, infinitive construct density, Isaiah 1–39 vs. 40–66 clause-linking comparison, LXX translation implications |
 
 ### Speaker & Role Analysis
 
@@ -103,6 +104,7 @@ the notebooks running in VS Code (5–10 minutes).
 | [nt/syntax/demonstratives.ipynb](nt/syntax/demonstratives.ipynb) | Greek demonstrative pronouns: οὗτος vs. ἐκεῖνος frequency, attributive/substantival use, case/gender profiles, near/far genre comparison, John's distinctive use of ἐκεῖνος for the Paraclete |
 | [nt/syntax/coreference.ipynb](nt/syntax/coreference.ipynb) | NT coreference and anaphora chains: most-referenced entities per book, pronoun referent profiles (αὐτός/ἐκεῖνος/ὅς), entity chain chapter distribution, John's ἐκεῖνος for the Paraclete in John 14–16 |
 | [nt/syntax/style_analysis.ipynb](nt/syntax/style_analysis.ipynb) | Greek NT style and authorship stylometrics: participle-to-finite ratio, optative/ἵνα density, MSTTR vocabulary richness, Luke-Acts unity, Pauline authentic vs. disputed clustering, Johannine fingerprint, full NT heatmap |
+| [nt/syntax/information_structure.ipynb](nt/syntax/information_structure.ipynb) | Greek NT information structure: postpositive particle density (δέ/γάρ/οὖν/μέν/ἀλλά), explicit subject pronoun frequency, asyndeton %, Gospel comparison, Pauline γάρ as argumentative connective, Luke-Acts unity, Johannine signature, full NT heatmap |
 | [nt/syntax/louw_nida_domains.ipynb](nt/syntax/louw_nida_domains.ipynb) | Louw-Nida sub-domain precision queries: 92.4% of NT tokens tagged with LN codes, 6,907 sub-domains, domain breakdowns (faith/31, communication/33, ethics/88, religious activity/53), book/genre heatmaps |
 
 ### Discourse

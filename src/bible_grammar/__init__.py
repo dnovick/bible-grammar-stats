@@ -330,6 +330,13 @@ from .ot_semantic_domains import (
     ot_domain_genre_chart, ot_domain_heatmap,
     COREDOMAIN_NAMES, LEXDOMAIN_TOP, THEOLOGY_COREDOMAINS,
 )
+from .information_structure import (
+    ot_information_profile, nt_information_profile,
+    ot_clause_linking_comparison, nt_clause_linking_comparison,
+    print_ot_information_profile, print_nt_information_profile,
+    print_ot_clause_linking_comparison, print_nt_clause_linking_comparison,
+    nt_clause_linking_chart, nt_information_heatmap, ot_clause_linking_chart,
+)
 from .ot_participant import (
     KNOWN_OT_PARTICIPANTS,
     ot_participant_data, ot_participant_subject_verbs, ot_participant_object_verbs,
