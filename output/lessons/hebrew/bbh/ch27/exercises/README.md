@@ -12,3 +12,4 @@
 | [ch27-biconsig-drill/](ch27-biconsig-drill/README.md) | "Biconsonantal / Geminate Disambiguation Drill" — 24-item drill distinguishing Biconsonantal from Geminate roots in Niphal and Hiphil; Parts A (Niphal only), B (Hiphil only), C (mixed + distractors) |
 | [ch27-qal-hiphil-contrast/](ch27-qal-hiphil-contrast/README.md) | "Qal–Hiphil Contrast Drill (Weak Verbs)" — 15 weak-root Hiphil forms in three parts: I-י/I-נ, Hollow, III-ה; students supply translation, semantic function, and one-sentence explanation |
 | [ch27-function-sort/](ch27-function-sort/README.md) | "Semantic Function Sorting (Weak Roots)" — 24 weak-root Hiphil forms from the OT; classify each as C / F / D / SA / DN |
+| [ch27-stem-id-drill/](ch27-stem-id-drill/README.md) | "Qal / Niphal / Hiphil Stem Identification Drill (Weak Roots)" — 24 weak-root forms (I-י, Hollow, III-ה) interleaved across all three stems and six conjugation types |

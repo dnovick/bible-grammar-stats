@@ -354,6 +354,93 @@ def build_ch26_exercise(out_dir: str = None) -> str:
 
 
 # ---------------------------------------------------------------------------
+# Chapter 26 — Qal / Niphal / Hiphil Stem Identification Drill (Strong Roots)
+# ---------------------------------------------------------------------------
+_CH26_STEM_ROWS = [
+    ['1',  'קָטַל',      '',  '',            '',    ''],
+    ['2',  'הִקְטִיל',   '',  '',            '',    ''],
+    ['3',  'נִקְטַל',    '',  '',            '',    ''],
+    ['4',  'שָׁמַר',     '',  '',            '',    ''],
+    ['5',  'הִשְׁמִיד',  '',  '',            '',    ''],
+    ['6',  'נִשְׁמַר',   '',  '',            '',    ''],
+    ['7',  'כָּתַב',     '',  '',            '',    ''],
+    ['8',  'הִכְבִּיד',  '',  '',            '',    ''],
+    ['9',  'נִכְתַּב',   '',  '',            '',    ''],
+    ['10', 'יִשְׁמֹר',   '',  '',            '',    ''],
+    ['11', 'יַכְבִּיד',  '',  '',            '',    ''],
+    ['12', 'יִשָּׁמֵר',  '',  '',            '',    ''],
+    ['13', 'וַיִּשְׁמֹר', '', '',           '',    ''],
+    ['14', 'וַיַּכְבֵּד', '', '',           '',    ''],
+    ['15', 'וַיִּשָּׁמֵר', '', '',          '',    ''],
+    ['16', 'שְׁמֹר',     '',  '',            '',    ''],
+    ['17', 'הַכְבֵּד',   '',  '',            '',    ''],
+    ['18', 'הִשָּׁמֵר',  '',  '',            '',    ''],
+    ['19', 'שָׁמוֹר',    '',  '',            '',    ''],
+    ['20', 'הַכְבֵּד',   '',  '',            '',    ''],
+    ['21', 'הִשָּׁמֵר',  '',  '',            '',    ''],
+    ['22', 'שֹׁמֵר',     '',  '',            '',    ''],
+    ['23', 'מַכְבִּיד',  '',  '',            '',    ''],
+    ['24', 'נִשְׁמָר',   '',  '',            '',    ''],
+]
+_CH26_STEM_ANS = [
+    ['1',  'קָטַל',      'Qal',    'Perfect',      '3ms', 'קטל'],
+    ['2',  'הִקְטִיל',   'Hiphil', 'Perfect',      '3ms', 'קטל'],
+    ['3',  'נִקְטַל',    'Niphal', 'Perfect',      '3ms', 'קטל'],
+    ['4',  'שָׁמַר',     'Qal',    'Perfect',      '3ms', 'שׁמר'],
+    ['5',  'הִשְׁמִיד',  'Hiphil', 'Perfect',      '3ms', 'שׁמד'],
+    ['6',  'נִשְׁמַר',   'Niphal', 'Perfect',      '3ms', 'שׁמר'],
+    ['7',  'כָּתַב',     'Qal',    'Perfect',      '3ms', 'כתב'],
+    ['8',  'הִכְבִּיד',  'Hiphil', 'Perfect',      '3ms', 'כבד'],
+    ['9',  'נִכְתַּב',   'Niphal', 'Perfect',      '3ms', 'כתב'],
+    ['10', 'יִשְׁמֹר',   'Qal',    'Imperfect',    '3ms', 'שׁמר'],
+    ['11', 'יַכְבִּיד',  'Hiphil', 'Imperfect',    '3ms', 'כבד'],
+    ['12', 'יִשָּׁמֵר',  'Niphal', 'Imperfect',    '3ms', 'שׁמר'],
+    ['13', 'וַיִּשְׁמֹר', 'Qal',   'Wayyiqtol',   '3ms', 'שׁמר'],
+    ['14', 'וַיַּכְבֵּד', 'Hiphil','Wayyiqtol',   '3ms', 'כבד'],
+    ['15', 'וַיִּשָּׁמֵר', 'Niphal','Wayyiqtol',  '3ms', 'שׁמר'],
+    ['16', 'שְׁמֹר',     'Qal',    'Imperative',   '2ms', 'שׁמר'],
+    ['17', 'הַכְבֵּד',   'Hiphil', 'Imperative',   '2ms', 'כבד'],
+    ['18', 'הִשָּׁמֵר',  'Niphal', 'Imperative',   '2ms', 'שׁמר'],
+    ['19', 'שָׁמוֹר',    'Qal',    'Inf. Absolute', '—',  'שׁמר'],
+    ['20', 'הַכְבֵּד',   'Hiphil', 'Inf. Absolute', '—',  'כבד'],
+    ['21', 'הִשָּׁמֵר',  'Niphal', 'Inf. Absolute', '—',  'שׁמר'],
+    ['22', 'שֹׁמֵר',     'Qal',    'Participle',   'ms',  'שׁמר'],
+    ['23', 'מַכְבִּיד',  'Hiphil', 'Participle',   'ms',  'כבד'],
+    ['24', 'נִשְׁמָר',   'Niphal', 'Participle',   'ms',  'שׁמר'],
+]
+
+class Ch26StemIdDrill(ExercisePDF):
+    _instructions = (
+        'For each verb form, identify the stem (Qal / Niphal / Hiphil), '
+        'then fill in the conjugation, PGN (person–gender–number), and root. '
+        'All 24 forms are from strong roots. '
+        'Non-finite forms (Inf. Absolute, Participle): enter — in PGN, or note gender for participles.'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'Hebrew Form', 'Stem', 'Conjugation', 'PGN', 'Root']
+        cr   = [0.05, 0.18, 0.15, 0.22, 0.15, 0.25]
+        self.add_drill_with_answer_key(
+            hdrs, _CH26_STEM_ROWS, _CH26_STEM_ANS,
+            col_ratios=cr,
+            heb_cols=[1],
+            answer_heb_cols=[5],
+            section_title='Qal / Niphal / Hiphil — Strong Roots',
+        )
+
+
+def build_ch26_stem_id_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch26StemIdDrill,
+        'Chapter 26 — Qal / Niphal / Hiphil Stem Identification Drill',
+        'BBH Chapter 26 · Hiphil Strong Verbs',
+        ['hebrew', 'bbh', 'ch26', 'exercises', 'ch26-stem-id-drill'],
+        'ch26-stem-id-drill.pdf', out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
 # Chapter 25 — "Spot the Niphal" Passage Exercise
 # ---------------------------------------------------------------------------
 class Ch25Exercise(PassageExercise):
@@ -1684,6 +1771,94 @@ def build_ch27_function_sort_exercise(out_dir: str = None) -> str:
         ['hebrew', 'bbh', 'ch27', 'exercises', 'ch27-function-sort'],
         'ch27-function-sort.pdf',
         out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Chapter 27 — Qal / Niphal / Hiphil Stem Identification Drill (Weak Roots)
+# ---------------------------------------------------------------------------
+_CH27_STEM_ROWS = [
+    ['1',  'יָלַד',       '',  '',              '',    ''],
+    ['2',  'הוֹלִיד',     '',  '',              '',    ''],
+    ['3',  'נוֹלַד',      '',  '',              '',    ''],
+    ['4',  'שָׁב',        '',  '',              '',    ''],
+    ['5',  'הֵשִׁיב',     '',  '',              '',    ''],
+    ['6',  'נָשׁוּב',     '',  '',              '',    ''],
+    ['7',  'עָלָה',       '',  '',              '',    ''],
+    ['8',  'הֶעֱלָה',     '',  '',              '',    ''],
+    ['9',  'נַעֲלָה',     '',  '',              '',    ''],
+    ['10', 'יָשׁוּב',     '',  '',              '',    ''],
+    ['11', 'יָשִׁיב',     '',  '',              '',    ''],
+    ['12', 'יִוָּלֵד',    '',  '',              '',    ''],
+    ['13', 'וַיָּשָׁב',   '',  '',              '',    ''],
+    ['14', 'וַיָּשֶׁב',   '',  '',              '',    ''],
+    ['15', 'וַיִּוָּלֵד', '',  '',              '',    ''],
+    ['16', 'שׁוּב',       '',  '',              '',    ''],
+    ['17', 'הָשֵׁב',      '',  '',              '',    ''],
+    ['18', 'עֲלֵה',       '',  '',              '',    ''],
+    ['19', 'עָלֹה',       '',  '',              '',    ''],
+    ['20', 'הַעֲלֵה',     '',  '',              '',    ''],
+    ['21', 'הֵעָלוֹת',    '',  '',              '',    ''],
+    ['22', 'שָׁב',        '',  '',              '',    ''],
+    ['23', 'מֵשִׁיב',     '',  '',              '',    ''],
+    ['24', 'נוֹלָד',      '',  '',              '',    ''],
+]
+_CH27_STEM_ANS = [
+    ['1',  'יָלַד',       'Qal',    'Perfect',         '3ms', 'ילד'],
+    ['2',  'הוֹלִיד',     'Hiphil', 'Perfect',         '3ms', 'ילד'],
+    ['3',  'נוֹלַד',      'Niphal', 'Perfect',         '3ms', 'ילד'],
+    ['4',  'שָׁב',        'Qal',    'Perfect',         '3ms', 'שׁוב'],
+    ['5',  'הֵשִׁיב',     'Hiphil', 'Perfect',         '3ms', 'שׁוב'],
+    ['6',  'נָשׁוּב',     'Niphal', 'Perfect',         '3ms', 'שׁוב'],
+    ['7',  'עָלָה',       'Qal',    'Perfect',         '3ms', 'עלה'],
+    ['8',  'הֶעֱלָה',     'Hiphil', 'Perfect',         '3ms', 'עלה'],
+    ['9',  'נַעֲלָה',     'Niphal', 'Perfect',         '3ms', 'עלה'],
+    ['10', 'יָשׁוּב',     'Qal',    'Imperfect',       '3ms', 'שׁוב'],
+    ['11', 'יָשִׁיב',     'Hiphil', 'Imperfect',       '3ms', 'שׁוב'],
+    ['12', 'יִוָּלֵד',    'Niphal', 'Imperfect',       '3ms', 'ילד'],
+    ['13', 'וַיָּשָׁב',   'Qal',    'Wayyiqtol',      '3ms', 'שׁוב'],
+    ['14', 'וַיָּשֶׁב',   'Hiphil', 'Wayyiqtol',      '3ms', 'שׁוב'],
+    ['15', 'וַיִּוָּלֵד', 'Niphal', 'Wayyiqtol',      '3ms', 'ילד'],
+    ['16', 'שׁוּב',       'Qal',    'Imperative',      '2ms', 'שׁוב'],
+    ['17', 'הָשֵׁב',      'Hiphil', 'Imperative',      '2ms', 'שׁוב'],
+    ['18', 'עֲלֵה',       'Qal',    'Imperative',      '2ms', 'עלה'],
+    ['19', 'עָלֹה',       'Qal',    'Inf. Absolute',   '—',   'עלה'],
+    ['20', 'הַעֲלֵה',     'Hiphil', 'Imperative',      '2ms', 'עלה'],
+    ['21', 'הֵעָלוֹת',    'Niphal', 'Inf. Construct',  '—',   'עלה'],
+    ['22', 'שָׁב',        'Qal',    'Participle',      'ms',  'שׁוב'],
+    ['23', 'מֵשִׁיב',     'Hiphil', 'Participle',      'ms',  'שׁוב'],
+    ['24', 'נוֹלָד',      'Niphal', 'Participle',      'ms',  'ילד'],
+]
+
+class Ch27StemIdDrill(ExercisePDF):
+    _instructions = (
+        'For each verb form, identify the stem (Qal / Niphal / Hiphil), '
+        'then fill in the conjugation, PGN (person–gender–number), and root. '
+        'All 24 forms come from weak roots: I-י (ילד), Hollow (שׁוב), and III-ה (עלה). '
+        'Notice that the same root appears in multiple stems — the vowel patterns and prefixes distinguish them. '
+        'Non-finite forms: enter — in PGN, or note gender for participles.'
+    )
+
+    def _build(self):
+        self.add_instructions(self._instructions)
+        hdrs = ['#', 'Hebrew Form', 'Stem', 'Conjugation', 'PGN', 'Root']
+        cr   = [0.05, 0.18, 0.15, 0.22, 0.15, 0.25]
+        self.add_drill_with_answer_key(
+            hdrs, _CH27_STEM_ROWS, _CH27_STEM_ANS,
+            col_ratios=cr,
+            heb_cols=[1],
+            answer_heb_cols=[5],
+            section_title='Qal / Niphal / Hiphil — Weak Roots',
+        )
+
+
+def build_ch27_stem_id_drill(out_dir=None):
+    return _build_exercise_pdf(
+        Ch27StemIdDrill,
+        'Chapter 27 — Qal / Niphal / Hiphil Stem Identification Drill (Weak Roots)',
+        'BBH Chapter 27 · Hiphil Weak Verbs',
+        ['hebrew', 'bbh', 'ch27', 'exercises', 'ch27-stem-id-drill'],
+        'ch27-stem-id-drill.pdf', out_dir,
     )
 
 
