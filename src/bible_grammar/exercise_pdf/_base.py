@@ -20,7 +20,7 @@ Or use build_ch26_exercise() to regenerate the Chapter 26 exercise directly.
 """
 
 from dataclasses import dataclass
-from typing import Optional
+from typing import Any, List, Optional, Tuple, cast
 import os
 
 from reportlab.lib.pagesizes import LETTER
@@ -39,7 +39,7 @@ _FONTS_REGISTERED = False
 UNICODE_TRANSLIT_FONT = None   # set to font name if Arial Unicode MS is available
 
 
-def _register_fonts():
+def _register_fonts() -> None:
     global _FONTS_REGISTERED, UNICODE_TRANSLIT_FONT
     if _FONTS_REGISTERED:
         return
@@ -189,11 +189,15 @@ class ExercisePDF:
     SUBH_SIZE   = 9.5
     LABEL_SIZE  = 8
 
-    def __init__(self, title: str, subtitle: str = ''):
+    _canvas: canvas.Canvas   # assigned in save() before any drawing method runs
+    _path: Optional[str]
+    _fields: List[Tuple[Any, ...]]
+
+    def __init__(self, title: str, subtitle: str = '') -> None:
         _register_fonts()
         self.title    = title
         self.subtitle = subtitle
-        self._canvas  = None
+        self._canvas  = cast(canvas.Canvas, None)  # real value set in save()
         self._path    = None
         self._y       = 0.0
         self._page    = 0
@@ -201,21 +205,21 @@ class ExercisePDF:
         self._field_idx = 0
 
     # ------------------------------------------------------------------ pages
-    def _usable_w(self):
+    def _usable_w(self) -> float:
         return self.PAGE_W - self.MARGIN_L - self.MARGIN_R
 
-    def _col_widths(self):
+    def _col_widths(self) -> List[float]:
         w = self._usable_w()
         return [r * w for r in self.COL_RATIOS]
 
-    def _new_page(self):
+    def _new_page(self) -> None:
         if self._page > 0:
             self._canvas.showPage()
         self._page += 1
         self._y = self.PAGE_H - self.MARGIN_T
         self._draw_header()
 
-    def _draw_header(self):
+    def _draw_header(self) -> None:
         c = self._canvas
         if self._page == 1:
             c.setFont('Helvetica-Bold', 14)
@@ -239,12 +243,12 @@ class ExercisePDF:
             c.drawRightString(self.PAGE_W - self.MARGIN_R, self._y, f'page {self._page}')
             self._y -= 0.22 * inch
 
-    def _check_space(self, needed: float):
+    def _check_space(self, needed: float) -> None:
         if self._y - needed < self.MARGIN_B:
             self._new_page()
 
     # ---------------------------------------------------------------- helpers
-    def _hline(self, y, color=C_RULE, width=0.5):
+    def _hline(self, y: float, color: Any = C_RULE, width: float = 0.5) -> None:
         self._canvas.setStrokeColor(color)
         self._canvas.setLineWidth(width)
         self._canvas.line(self.MARGIN_L, y, self.PAGE_W - self.MARGIN_R, y)
@@ -254,7 +258,7 @@ class ExercisePDF:
         return len(lines) * (size + 2)
 
     def _draw_wrapped(self, text: str, font: str, size: float,
-                       x: float, y: float, max_w: float, color=black) -> float:
+                       x: float, y: float, max_w: float, color: Any = black) -> float:
         """Draw wrapped text, return new y (lower)."""
         c = self._canvas
         c.setFont(font, size)
@@ -267,7 +271,7 @@ class ExercisePDF:
         return y
 
     # -------------------------------------------------------- public sections
-    def add_instructions(self, text: str):
+    def add_instructions(self, text: str) -> None:
         self._check_space(1.0 * inch)
         c = self._canvas
         w = self._usable_w()
@@ -283,7 +287,7 @@ class ExercisePDF:
                                      w - 0.2 * inch)
         self._y -= 0.15 * inch
 
-    def add_section_heading(self, text: str):
+    def add_section_heading(self, text: str) -> None:
         self._check_space(0.5 * inch)
         self._y -= 0.12 * inch
         self._canvas.setFont('Helvetica-Bold', self.HEAD_SIZE)
@@ -294,20 +298,20 @@ class ExercisePDF:
         self._y -= 0.08 * inch
 
     def add_drill_with_answer_key(self, headers: list, rows: list, answers: list,
-                                   col_ratios: list = None,
-                                   heb_cols: list = None,
-                                   translit_cols: list = None,
+                                   col_ratios: Optional[list] = None,
+                                   heb_cols: Optional[list] = None,
+                                   translit_cols: Optional[list] = None,
                                    section_title: str = 'Items 1–20',
                                    answer_title: str = 'Answer Key',
-                                   greek_cols: list = None,
+                                   greek_cols: Optional[list] = None,
                                    use_greek: bool = False,
-                                   answer_heb_cols: list = None):
+                                   answer_heb_cols: Optional[list] = None) -> None:
         """Render a drill section followed by an answer key section."""
         if use_greek:
             self.add_section_heading(section_title)
-            self.add_greek_table(headers, rows, col_ratios, greek_cols=greek_cols, show_answers=False)
+            self.add_greek_table(headers, rows, col_ratios, greek_cols=greek_cols, show_answers=False)  # type: ignore[attr-defined]
             self.add_section_heading(answer_title)
-            self.add_greek_table(headers, rows, col_ratios, greek_cols=greek_cols,
+            self.add_greek_table(headers, rows, col_ratios, greek_cols=greek_cols,  # type: ignore[attr-defined]
                                  show_answers=True, answer_rows=answers)
         else:
             self.add_section_heading(section_title)
@@ -321,10 +325,10 @@ class ExercisePDF:
                                    answer_heb_cols=answer_heb_cols)
 
     def add_multi_part_drill(self, parts: list,
-                             heb_cols: list = None,
-                             translit_cols: list = None,
-                             greek_cols: list = None,
-                             use_greek: bool = False):
+                             heb_cols: Optional[list] = None,
+                             translit_cols: Optional[list] = None,
+                             greek_cols: Optional[list] = None,
+                             use_greek: bool = False) -> None:
         """
         Render multiple drill parts each followed by their answer key.
 
@@ -356,7 +360,7 @@ class ExercisePDF:
                 use_greek=use_greek,
             )
 
-    def add_section_break(self):
+    def add_section_break(self) -> None:
         self._check_space(0.3 * inch)
         self._y -= 0.12 * inch
         c = self._canvas
@@ -367,7 +371,7 @@ class ExercisePDF:
         c.setDash()
         self._y -= 0.15 * inch
 
-    def add_passage(self, block: PassageBlock):
+    def add_passage(self, block: PassageBlock) -> None:
         """Draw ref + Hebrew + English (+ optional watchout)."""
         c = self._canvas
         w = self._usable_w()
@@ -431,7 +435,7 @@ class ExercisePDF:
                 self._y -= (self.SUBH_SIZE + 2)
             self._y -= 0.08*inch
 
-    def add_verb_table(self, verbs: list[VerbEntry], show_answers: bool = True):
+    def add_verb_table(self, verbs: list, show_answers: bool = True) -> None:
         """Draw the parse table for one or more verbs."""
         cw = self._col_widths()
         x0 = self.MARGIN_L
@@ -554,12 +558,12 @@ class ExercisePDF:
         self._y = y - 0.1 * inch
 
     def add_generic_table(self, headers: list, rows: list,
-                          col_ratios: list = None,
-                          heb_cols: list = None,
-                          translit_cols: list = None,
+                          col_ratios: Optional[list] = None,
+                          heb_cols: Optional[list] = None,
+                          translit_cols: Optional[list] = None,
                           show_answers: bool = True,
-                          answer_rows: list = None,
-                          answer_heb_cols: list = None):
+                          answer_rows: Optional[list] = None,
+                          answer_heb_cols: Optional[list] = None) -> None:
         """
         Draw a generic parse table with arbitrary columns.
 
@@ -696,7 +700,7 @@ class ExercisePDF:
 
         self._y = y - 0.1 * inch
 
-    def add_note(self, text: str):
+    def add_note(self, text: str) -> None:
         """Draw a note/info box."""
         c = self._canvas
         w = self._usable_w()
@@ -713,7 +717,7 @@ class ExercisePDF:
                                      w - 0.2*inch, color=HexColor('#333333'))
         self._y -= 0.1*inch
 
-    def add_score(self, text: str):
+    def add_score(self, text: str) -> None:
         c = self._canvas
         w = self._usable_w()
         h = 0.32 * inch
@@ -728,7 +732,7 @@ class ExercisePDF:
         c.drawString(self.MARGIN_L + 0.1*inch, self._y, text)
         self._y -= (h - 0.09*inch + 0.1*inch)
 
-    def add_coverage_table(self, rows: list[tuple[str, str]]):
+    def add_coverage_table(self, rows: list) -> None:
         """Draw a simple 2-col coverage table."""
         c = self._canvas
         cw = [2.2*inch, self._usable_w() - 2.2*inch]
@@ -758,7 +762,7 @@ class ExercisePDF:
             y -= row_h
         self._y = y - 0.1*inch
 
-    def add_contrast_table(self, entries: list['ContrastEntry'], show_answers: bool = True):
+    def add_contrast_table(self, entries: list, show_answers: bool = True) -> None:
         """Draw a Qal-Hiphil contrast table with fillable Translation and Function columns."""
         c = self._canvas
         w = self._usable_w()
@@ -875,7 +879,7 @@ class ExercisePDF:
 
         self._y = y - 0.08 * inch
 
-    def add_answer_key_contrast(self, entries: list['ContrastEntry']):
+    def add_answer_key_contrast(self, entries: list) -> None:
         """Draw a compact answer key page for the contrast drill."""
         self._new_page()
         c = self._canvas
@@ -937,7 +941,7 @@ class ExercisePDF:
 
         self._y -= 0.1 * inch
 
-    def add_answer_key_sort(self, entries: list['SortEntry']):
+    def add_answer_key_sort(self, entries: list) -> None:
         """Draw a compact answer key page for the function-sort exercise."""
         self._new_page()
         c = self._canvas
@@ -998,7 +1002,7 @@ class ExercisePDF:
 
         self._y -= 0.1 * inch
 
-    def add_sort_table(self, entries: list['SortEntry'], show_answers: bool = True):
+    def add_sort_table(self, entries: list, show_answers: bool = True) -> None:
         """Draw a semantic-function sorting table with a single fillable Function column."""
         c = self._canvas
         w = self._usable_w()
@@ -1105,7 +1109,7 @@ class ExercisePDF:
 
         self._y = y - 0.08 * inch
 
-    def add_nh_table(self, entries: list['NHEntry'], show_answers: bool = True):
+    def add_nh_table(self, entries: list, show_answers: bool = True) -> None:
         """Draw a Niphal-Hiphil contrast table with fillable Stem/Conjugation/PGN/Root columns."""
         c = self._canvas
         w = self._usable_w()
@@ -1195,7 +1199,7 @@ class ExercisePDF:
 
         self._y = y - 0.08 * inch
 
-    def add_bg_table(self, entries: list['BGEntry'], show_answers: bool = True):
+    def add_bg_table(self, entries: list, show_answers: bool = True) -> None:
         """Draw a Biconsonantal/Geminate drill table with 5 fillable fields per row."""
         c = self._canvas
         w = self._usable_w()
@@ -1285,7 +1289,7 @@ class ExercisePDF:
 
         self._y = y - 0.08 * inch
 
-    def add_reflection(self, questions: list[str]):
+    def add_reflection(self, questions: list) -> None:
         self._check_space(0.4*inch)
         c = self._canvas
         w = self._usable_w()
@@ -1306,7 +1310,7 @@ class ExercisePDF:
             self._y -= 6
 
     # -------------------------------------------------------- save
-    def save(self, path: str):
+    def save(self, path: str) -> str:
         self._path = path
         os.makedirs(os.path.dirname(path), exist_ok=True)
         self._canvas = canvas.Canvas(path, pagesize=LETTER)
@@ -1321,7 +1325,7 @@ class ExercisePDF:
         self._canvas.save()
         return path
 
-    def _build(self):
+    def _build(self) -> None:
         raise NotImplementedError('Subclass must implement _build()')
 
 
@@ -1337,10 +1341,10 @@ class ExercisePDF:
 class PassageExercise(ExercisePDF):
     _instructions: str = ''
 
-    def _render_passages(self, show_answers: bool):
+    def _render_passages(self, show_answers: bool) -> None:
         raise NotImplementedError('Subclass must implement _render_passages()')
 
-    def _build(self):
+    def _build(self) -> None:
         self.add_instructions(self._instructions)
         self._render_passages(show_answers=False)
 
@@ -1363,9 +1367,9 @@ class PassageExercise(ExercisePDF):
 
 
 
-def _build_exercise_pdf(klass, title: str, subtitle: str,
+def _build_exercise_pdf(klass: Any, title: str, subtitle: str,
                         path_parts: list, filename: str,
-                        out_dir: str = None) -> str:
+                        out_dir: Optional[str] = None) -> str:
     """
     Instantiate `klass(title, subtitle)`, save to the standard output path, and return the path.
 
