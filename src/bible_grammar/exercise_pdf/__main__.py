@@ -52,6 +52,8 @@ from .bbh import (
     build_ch27_weak_form_id_exercise,
     build_ch27_nh_contrast_exercise,
     build_ch27_bg_drill_exercise,
+    build_ch27_contrast_exercise,
+    build_ch27_function_sort_exercise,
     build_ch28_hophal_exercise,
     build_ch28_function_sort_exercise,
     build_ch28_hophal_hiphil_contrast_exercise,
@@ -223,6 +225,10 @@ p8 = build_ch27_exercise()
 print(f'Saved: {p8}')
 p9 = build_ch27_weak_form_id_exercise()
 print(f'Saved: {p9}')
+p9b = build_ch27_contrast_exercise()
+print(f'Saved: {p9b}')
+p9c = build_ch27_function_sort_exercise()
+print(f'Saved: {p9c}')
 p10 = build_ch28_hophal_exercise()
 print(f'Saved: {p10}')
 p11 = build_ch28_function_sort_exercise()

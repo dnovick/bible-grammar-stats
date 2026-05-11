@@ -1544,6 +1544,150 @@ def build_ch27_bg_drill_exercise(out_dir: str = None) -> str:
 
 
 # ---------------------------------------------------------------------------
+# Chapter 27 — Qal–Hiphil Contrast Drill (Weak Verbs)
+# ---------------------------------------------------------------------------
+class Ch27ContrastExercise(ExercisePDF):
+
+    _ENTRIES_A = [
+        ContrastEntry('1',  'יָדַע', 'to know',        'הוֹדִיעַ', 'Perfect 3ms',    'Deu 4:9',   'he made known / declared',       'Causative',      'Causing others to know; Qal = to know'),
+        ContrastEntry('2',  'יָצָא', 'to go out',       'הוֹצִיא', 'Perfect 3ms',    'Gen 15:7',  'he brought out',                 'Causative',      'God caused Abram to exit Ur; Qal = go out'),
+        ContrastEntry('3',  'יָשַׁב', 'to sit, dwell',  'הוֹשִׁיב', 'Wayyiqtol 3ms', 'Gen 47:11', 'he settled them (in the land)',  'Causative',      'Joseph caused his family to dwell; Qal = sit/dwell'),
+        ContrastEntry('4',  'נָפַל', 'to fall',         'הִפִּיל', 'Wayyiqtol 3ms',  'Gen 2:21',  'he caused to fall / cast down',  'Causative',      'God caused deep sleep to fall on Adam; Qal = fall'),
+        ContrastEntry('5',  'נָגַשׁ', 'to draw near',   'הִגִּישׁ', 'Wayyiqtol 3ms', 'Gen 43:31', 'he set before them / brought near', 'Causative',   'Joseph caused food to be set before them; Qal = draw near'),
+    ]
+    _ENTRIES_B = [
+        ContrastEntry('6',  'בּוֹא', 'to come, go in',  'הֵבִיא', 'Perfect 3ms',    'Gen 43:17', 'he brought',                    'Causative',      'Brothers caused to come to Joseph\'s house; Qal = come'),
+        ContrastEntry('7',  'שׁוּב', 'to return',        'הֵשִׁיב', 'Wayyiqtol 3ms', 'Gen 42:25', 'he gave back / returned it',    'Causative',      'Joseph caused the silver to be returned; Qal = return'),
+        ContrastEntry('8',  'קוּם', 'to rise, stand',   'הֵקִים', 'Wayyiqtol 3ms',  'Gen 6:18',  'he established / confirmed',    'Causative',      'God caused the covenant to stand; Qal = rise/stand'),
+        ContrastEntry('9',  'מוּת', 'to die',            'יָמִית', 'Imperfect 3ms',  'Deu 17:12', 'he will put to death',          'Causative',      'Causing death; Qal = die'),
+        ContrastEntry('10', 'שִׂים', 'to set, put',      'יָשִׂים', 'Imperfect 3ms', 'Gen 24:2',  'he will put / place',           'Simple Action',  'Hiphil = primary usage for placing; Qal rare in same sense'),
+    ]
+    _ENTRIES_C = [
+        ContrastEntry('11', 'עָלָה', 'to go up',        'הֶעֱלָה', 'Perfect 3ms',    'Gen 46:4',   'he brought up',          'Causative',      'God caused Jacob to go up to Egypt; Qal = go up'),
+        ContrastEntry('12', 'רָאָה', 'to see',           'הֶרְאָה', 'Perfect 3ms',    'Deu 34:1',   'he showed',              'Causative',      'LORD caused Moses to see the land; Qal = see'),
+        ContrastEntry('13', 'נָטָה', 'to stretch out',   'הִטָּה',  'Wayyiqtol 3ms', 'Exo 10:13',  'he stretched out',       'Causative',      'Moses stretched out his staff; Qal = extend/stretch'),
+        ContrastEntry('14', 'גָּלָה', 'to go into exile', 'הִגְלָה', 'Perfect 3ms',   '2 Kgs 17:6', 'he exiled / sent into exile', 'Causative', 'King caused Israel to go into exile; Qal = go into exile'),
+        ContrastEntry('15', 'הָיָה', 'to be',            'יֶהְיֶה', 'Imperfect 3ms', '—',          'it will be / come about', 'Simple Action', 'III-ה root; Hiphil rare in this sense; Qal = be/become'),
+    ]
+
+    def _build(self):
+        self.add_instructions(
+            'For each item: (1) write an English translation of the Hiphil form in the Translation '
+            'column; (2) write the semantic function (Causative / Factitive / Declarative / Simple '
+            'Action) in the Function column. Answer key is on the last page.'
+        )
+
+        self.add_section_heading('Part A — I-י / I-נ Weak Roots')
+        self.add_note('These roots lose or assimilate their first consonant in the Hiphil. The causative relationship with the Qal is preserved.')
+        self.add_contrast_table(self._ENTRIES_A, show_answers=False)
+
+        self.add_section_heading('Part B — Hollow Roots (I/II-ו/י)')
+        self.add_note(
+            'Hollow roots contract the middle vowel-letter in Hiphil. '
+            'Identify the two outer consonants, then apply the causative logic.'
+        )
+        self.add_contrast_table(self._ENTRIES_B, show_answers=False)
+
+        self.add_section_heading('Part C — III-ה Weak Roots')
+        self.add_note('III-ה roots add a ה in Hiphil Perfect (הֶ prefix + ָה suffix) and drop the ה in prefix conjugations.')
+        self.add_contrast_table(self._ENTRIES_C, show_answers=False)
+
+        self.add_reflection([
+            'In Part A, the I-י roots (יָדַע, יָצָא, יָשַׁב) all use הוֹ– as the Hiphil prefix. '
+            'What happens to the initial י? Describe the contraction in one sentence.',
+            'Items 8 (קוּם) and 9 (מוּת) are both hollow roots classified as Causative. '
+            'Can a hollow root ever produce a Factitive or Declarative Hiphil? Give a reason for your answer.',
+            'Compare עָלָה in Ch26\'s exercise and item 11 here. Both use the same root, but item 11 '
+            'is a Perfect rather than Imperative. Does the weak-root form change your ability to recognize it as Hiphil?',
+        ])
+
+        self.add_answer_key_contrast(self._ENTRIES_A + self._ENTRIES_B + self._ENTRIES_C)
+
+
+def build_ch27_contrast_exercise(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        Ch27ContrastExercise,
+        'Chapter 27 — Qal–Hiphil Contrast Drill (Weak Verbs)',
+        'BBH Chapter 27 · Hiphil Weak Verbs',
+        ['hebrew', 'bbh', 'ch27', 'exercises', 'ch27-qal-hiphil-contrast'],
+        'ch27-qal-hiphil-contrast.pdf',
+        out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Chapter 27 — Semantic Function Sorting (Weak Roots)
+# ---------------------------------------------------------------------------
+class Ch27FunctionSortExercise(ExercisePDF):
+
+    _ENTRIES = [
+        SortEntry('1',  'הוֹצִיא',   'Perfect 3ms',    'Gen 15:7',   '"I am the LORD who brought you out of Ur"',                       'C',  'יָצָא',  'Qal = go out; Hiphil = cause to go out / bring out'),
+        SortEntry('2',  'הוֹשִׁיב',  'Wayyiqtol 3ms',  'Gen 47:11',  '"Joseph settled his father and brothers in Egypt"',               'C',  'יָשַׁב', 'Qal = sit/dwell; Hiphil = cause to dwell / settle'),
+        SortEntry('3',  'הוֹדִיעַ',  'Perfect 3ms',    'Deu 4:9',    '"make them known to your children and grandchildren"',            'C',  'יָדַע',  'Qal = know; Hiphil = cause to know / make known'),
+        SortEntry('4',  'הֵבִיא',    'Perfect 3ms',    'Gen 43:17',  '"the man brought Joseph\'s brothers into Joseph\'s house"',        'C',  'בּוֹא',  'Qal = come; Hiphil = cause to come / bring'),
+        SortEntry('5',  'הֵשִׁיב',   'Wayyiqtol 3ms',  'Gen 42:25',  '"Joseph commanded that each man\'s money be returned"',           'C',  'שׁוּב',  'Qal = return; Hiphil = cause to return / give back'),
+        SortEntry('6',  'הֵקִים',    'Wayyiqtol 3ms',  'Gen 6:18',   '"I will establish my covenant with you"',                         'C',  'קוּם',  'Qal = rise/stand; Hiphil = cause to stand / establish'),
+        SortEntry('7',  'יָמִית',    'Imperfect 3ms',  'Deu 17:12',  '"that man shall be put to death"',                               'C',  'מוּת',  'Qal = die; Hiphil = cause to die / put to death'),
+        SortEntry('8',  'הִפִּיל',   'Wayyiqtol 3ms',  'Gen 2:21',   '"the LORD caused a deep sleep to fall on the man"',               'C',  'נָפַל',  'Qal = fall; Hiphil = cause to fall / cast down'),
+        SortEntry('9',  'הִגִּישׁ',  'Wayyiqtol 3ms',  'Gen 43:31',  '"Joseph set the meal before them"',                              'C',  'נָגַשׁ', 'Qal = draw near; Hiphil = cause to draw near / set before'),
+        SortEntry('10', 'הֶעֱלָה',   'Perfect 3ms',    'Gen 46:4',   '"I will also bring you up again"',                               'C',  'עָלָה',  'Qal = go up; Hiphil = cause to go up / bring up'),
+        SortEntry('11', 'הֶרְאָה',   'Perfect 3ms',    'Deu 34:1',   '"the LORD showed him all the land"',                             'C',  'רָאָה',  'Qal = see; Hiphil = cause to see / show'),
+        SortEntry('12', 'הִטָּה',    'Wayyiqtol 3ms',  'Exo 10:13',  '"Moses stretched out his staff over Egypt"',                     'C',  'נָטָה',  'Qal = extend/stretch; Hiphil = cause to extend / stretch out'),
+        SortEntry('13', 'הִגְלָה',   'Perfect 3ms',    '2 Kgs 17:6', '"the king of Assyria exiled Israel to Assyria"',                 'C',  'גָּלָה', 'Qal = go into exile; Hiphil = cause to go into exile / exile'),
+        SortEntry('14', 'הֵרַע',     'Perfect 3ms',    'Gen 19:9',   '"now we will deal worse with you than with them"',               'F',  'רָעַע',  'Qal = be bad; Hiphil = make worse / treat badly'),
+        SortEntry('15', 'הֶחֱיָה',   'Wayyiqtol 3ms',  'Gen 47:25',  '"you have saved our lives!"',                                    'C',  'חָיָה',  'Qal = live; Hiphil = cause to live / save alive'),
+        SortEntry('16', 'הִשְׁחִית', 'Wayyiqtol 3ms',  'Gen 6:12',   '"for all flesh had corrupted its way on earth"',                 'SA', 'שָׁחַת', 'Hiphil = destroy/corrupt; Niphal = be destroyed; Hiphil is primary usage'),
+        SortEntry('17', 'הֵרִים',    'Wayyiqtol 3ms',  'Gen 22:10',  '"Abraham reached out his hand and lifted the knife"',            'C',  'רוּם',   'Qal = be high/rise; Hiphil = cause to rise / lift up'),
+        SortEntry('18', 'הֵשִׁיב',   'Perfect 3ms',    'Num 23:20',  '"I have received a command to bless"',                           'C',  'שׁוּב',  'Qal = return; Hiphil = receive back / cause to return (blessing)'),
+        SortEntry('19', 'הֵמִיר',    'Perfect 3ms',    'Lev 27:10',  '"he shall not exchange it or substitute it"',                    'SA', 'מוּר',   'To exchange/substitute; Hiphil is primary form for this meaning'),
+        SortEntry('20', 'יַשְׁמִיעַ', 'Imperfect 3ms', 'Deu 4:36',   '"from heaven he made you hear his voice"',                       'C',  'שָׁמַע', 'Qal = hear; Hiphil = cause to hear / proclaim'),
+        SortEntry('21', 'הֵבִין',    'Perfect 3ms',    'Neh 8:8',    '"they gave the sense so that the people understood"',            'C',  'בִּין',   'Qal = understand; Hiphil = cause to understand / give understanding'),
+        SortEntry('22', 'הִרְבָּה',  'Perfect 3ms',    'Gen 22:17',  '"I will greatly multiply your offspring"',                       'C',  'רָבָה',  'Qal = be many; Hiphil = cause to be many / multiply'),
+        SortEntry('23', 'הִגְדִּיל', 'Perfect 3ms',    'Joel 2:21',  '"for the LORD has done great things"',                           'F',  'גָּדַל', 'Qal = be great; Hiphil = cause greatness / do great things'),
+        SortEntry('24', 'הִכְשִׁיל', 'Perfect 3ms',    'Lam 1:14',   '"he made my strength fail / he caused me to stumble"',          'C',  'כָּשַׁל', 'Qal = stumble; Hiphil = cause to stumble / make strength fail'),
+    ]
+
+    def _build(self):
+        self.add_instructions(
+            'Classify each Hiphil verb as C (Causative), F (Factitive), D (Declarative), '
+            'SA (Simple Action), or DN (Denominative). Write your answer in the Function column. '
+            'All roots are weak roots from Ch27 weak classes. Answer key is on the last page.'
+        )
+
+        self.add_note(
+            'C = Causative (subject causes another to act/experience)  |  '
+            'F = Factitive (subject causes object to be in a state)  |  '
+            'D = Declarative (subject declares something as being in a state)  |  '
+            'SA = Simple Action (Hiphil is the standard form; no common Qal)  |  '
+            'DN = Denominative (Hiphil derived from a noun)'
+        )
+
+        self.add_sort_table(self._ENTRIES, show_answers=False)
+
+        self.add_reflection([
+            'Items 1, 2, 4, 8, 10, 12, 13 are all Causative. What do the underlying Qal roots have '
+            'in common — motion, state, or position — that makes the Causative reading natural?',
+            'Item 6 (קוּם, "to rise / stand") is Causative: God caused the covenant to stand. '
+            'How is this different from Factitive? (Hint: what is the "object" being caused — a state or an action?)',
+            'Items 21 (הֵבִין, "to understand") and 22 (הִרְבָּה, "to multiply") are both Causative. '
+            'Identify the Qal meaning for each root and explain how the Hiphil extends it.',
+        ])
+
+        self.add_answer_key_sort(self._ENTRIES)
+
+
+def build_ch27_function_sort_exercise(out_dir: str = None) -> str:
+    return _build_exercise_pdf(
+        Ch27FunctionSortExercise,
+        'Chapter 27 — Semantic Function Sorting (Weak Roots)',
+        'BBH Chapter 27 · Hiphil Weak Verbs',
+        ['hebrew', 'bbh', 'ch27', 'exercises', 'ch27-function-sort'],
+        'ch27-function-sort.pdf',
+        out_dir,
+    )
+
+
+# ---------------------------------------------------------------------------
 # Chapter 30 — "Spot the Piel" Passage Exercise (Piel Strong)
 # ---------------------------------------------------------------------------
 class Ch30PielExercise(PassageExercise):
