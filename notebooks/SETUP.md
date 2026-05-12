@@ -6,26 +6,31 @@
 
 ---
 
-## Quick setup — one command
+## Quick setup — two commands
 
 Open a terminal in the project root folder and run:
 
 **Mac / Linux:**
 ```bash
 bash setup.sh
+python scripts/build_db.py
 ```
 
 **Windows:**
 ```bat
 setup.bat
+python scripts/build_db.py
 ```
 
-The script creates the virtual environment, installs all dependencies, and
-registers the Jupyter kernel. It takes 2–5 minutes on first run.
+`setup.sh` / `setup.bat` creates the virtual environment, installs all dependencies,
+and registers the Jupyter kernel (2–5 minutes on first run).
+
+`scripts/build_db.py` builds the processed data cache that all notebooks rely on
+(~5–30 seconds, one-time only — does not re-run on subsequent launches).
 
 ---
 
-## After the script finishes
+## After the scripts finish
 
 1. Open VS Code. If you haven't already, install the **Jupyter** extension
    (click the Extensions icon in the left sidebar, search "Jupyter", install
@@ -38,8 +43,7 @@ registers the Jupyter kernel. It takes 2–5 minutes on first run.
 
 4. Click **Run All** (or press `Shift+Enter` to run cells one at a time).
 
-The first cell loads the MACULA data and may take 10–20 seconds. Subsequent
-cells run much faster.
+The first cell loads the MACULA data from the cache and runs in 1–2 seconds.
 
 ---
 
@@ -60,7 +64,7 @@ source .venv/bin/activate
 
 ---
 
-## What the script does (for reference)
+## What the scripts do (for reference)
 
 | Step | Command |
 |---|---|
@@ -68,9 +72,11 @@ source .venv/bin/activate
 | Activate | `source .venv/bin/activate` |
 | Install dependencies | `pip install -r requirements-notebooks.txt` |
 | Register Jupyter kernel | `python -m ipykernel install --user --name berean-bible-bots --display-name "Berean Bible Bots"` |
+| Build data cache | `python scripts/build_db.py` |
 
-Running the script again is safe — it skips the venv creation if `.venv`
+Running `setup.sh` / `setup.bat` again is safe — it skips the venv creation if `.venv`
 already exists and re-installs/upgrades packages as needed.
+`scripts/build_db.py` only needs to be run once; subsequent runs simply rebuild the cache.
 
 ---
 
@@ -88,6 +94,10 @@ reload VS Code (`Cmd+Shift+P` → "Reload Window").
 **"Module not found" error when running a cell:**
 You selected a different kernel. Click the kernel name in the top-right
 corner and switch to **Berean Bible Bots**.
+
+**"File not found" or "No such parquet" error on the first cell:**
+Run `python scripts/build_db.py` from the project root (with the `.venv`
+activated). This only needs to be done once.
 
 **Text-Fabric data download prompt on first run:**
 Some notebooks use MACULA Hebrew/Greek data via Text-Fabric. On first use

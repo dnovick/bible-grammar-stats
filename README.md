@@ -57,17 +57,21 @@ Built to answer questions like:
 git clone --recurse-submodules <repo-url>
 cd berean-bible-bots
 
-# 2. Install dependencies
-pip install -r requirements.txt
+# 2. One-command setup — creates a virtual environment, installs all dependencies,
+#    and registers the Jupyter kernel
+bash setup.sh          # Mac / Linux
+# setup.bat            # Windows
 
 # 3. Build the processed database (one-time, ~5 seconds)
+source .venv/bin/activate          # Mac / Linux
+# .venv\Scripts\activate           # Windows
 python scripts/build_db.py
 
-# 4. Launch notebooks
-jupyter notebook notebooks/
+# 4. Open any notebook in notebooks/ in VS Code and select the "Berean Bible Bots" kernel
 ```
 
-See [docs/getting-started.md](docs/getting-started.md) for full setup instructions.
+See [notebooks/SETUP.md](notebooks/SETUP.md) for notebook setup details and
+[docs/getting-started.md](docs/getting-started.md) for developer/API usage.
 
 ---
 
