@@ -41,6 +41,24 @@
 - [Hiphil (הִפְעִיל) Verb Morphology](#hiphil-הפעיל-verb-morphology)
 - [Hebrew Preposition Analysis](#hebrew-preposition-analysis)
 - [Greek Preposition Analysis](#greek-preposition-analysis)
+- [Derived Stem Verb Morphology](#derived-stem-verb-morphology)
+- [OT Noun Morphology](#ot-noun-morphology)
+- [OT Number Morphology](#ot-number-morphology)
+- [NT Noun Morphology](#nt-noun-morphology)
+- [NT Participle Analysis](#nt-participle-analysis)
+- [NT Mood Usage](#nt-mood-usage)
+- [NT Discourse Particles](#nt-discourse-particles)
+- [Greek Demonstratives](#greek-demonstratives)
+- [NT Coreference & Anaphora](#nt-coreference--anaphora)
+- [OT Participant Tracking](#ot-participant-tracking)
+- [OT Predicate-Argument Structure](#ot-predicate-argument-structure)
+- [OT Discourse Structure](#ot-discourse-structure)
+- [Speech Act Classification](#speech-act-classification)
+- [Information Structure](#information-structure)
+- [Stylometrics & Register Analysis](#stylometrics--register-analysis)
+- [Formulaic Language](#formulaic-language)
+- [Biblical Aramaic Verb Morphology](#biblical-aramaic-verb-morphology)
+- [Biblical Aramaic Nominal System](#biblical-aramaic-nominal-system)
 - [Slash Commands (Claude Code Skills)](#slash-commands-claude-code-skills)
 
 ---
@@ -1623,6 +1641,915 @@ greek_prep_by_book('ἐν', corpus='lxx')
 ```
 
 **Notebook:** `notebooks/both/syntax/13_greek_preposition_analysis.ipynb`
+
+---
+
+## Derived Stem Verb Morphology
+
+Dedicated analysis modules for each of the seven major derived Hebrew verb stems
+(Niphal, Piel, Pual, Hophal, Hiphil, Hithpael — Hiphil documented separately above).
+Each module provides the same analysis pattern: conjugation distribution, top roots,
+root × conjugation cross-table, book distribution, stem-dominant roots, and semantic
+function categories, plus a full Markdown report with charts.
+
+### Niphal (נִפְעַל) — Reflexive-Passive
+
+Typical functions: passive of Qal, reflexive, reciprocal, tolerative, middle/stative.
+
+```python
+from bible_grammar import (
+    niphal_data, niphal_conjugation_profile, niphal_top_roots,
+    niphal_root_conjugation, niphal_book_distribution, niphal_dominant_roots,
+    niphal_semantic_categories,
+    print_niphal_overview, print_niphal_conjugation, print_niphal_top_roots,
+    print_niphal_root_conjugation, print_niphal_book_distribution,
+    print_niphal_dominant_roots, print_niphal_semantic_categories,
+    niphal_conjugation_chart, niphal_book_chart, niphal_stem_chart,
+    niphal_root_heatmap, niphal_report,
+)
+
+print_niphal_overview()
+# → 4,139 tokens · 5.7% of all OT verbs · 410 unique roots
+
+niphal_report()
+# → output/reports/ot/verbs/niphal_report.md + charts
+```
+
+### Piel (פִּעֵל) — Intensive-Active
+
+Typical functions: intensive, factitive (makes a state into an action), declarative,
+denominative.
+
+```python
+from bible_grammar import (
+    piel_data, piel_conjugation_profile, piel_top_roots,
+    piel_root_conjugation, piel_book_distribution, piel_dominant_roots,
+    piel_semantic_categories,
+    print_piel_overview, print_piel_conjugation, print_piel_top_roots,
+    print_piel_root_conjugation, print_piel_book_distribution,
+    print_piel_dominant_roots, print_piel_semantic_categories,
+    piel_conjugation_chart, piel_book_chart, piel_stem_chart,
+    piel_root_heatmap, piel_report,
+)
+
+print_piel_overview()
+
+piel_report()
+# → output/reports/ot/verbs/piel_report.md + charts
+```
+
+### Pual (פֻּעַל) — Intensive-Passive
+
+Passive counterpart of the Piel. Less common than the Niphal passive.
+
+```python
+from bible_grammar import (
+    pual_data, pual_conjugation_profile, pual_top_roots,
+    pual_root_conjugation, pual_book_distribution, pual_dominant_roots,
+    pual_semantic_categories,
+    print_pual_overview, print_pual_conjugation, print_pual_top_roots,
+    print_pual_root_conjugation, print_pual_book_distribution,
+    print_pual_dominant_roots, print_pual_semantic_categories,
+    pual_conjugation_chart, pual_book_chart, pual_stem_chart,
+    pual_root_heatmap, pual_report,
+)
+
+print_pual_overview()
+
+pual_report()
+# → output/reports/ot/verbs/pual_report.md + charts
+```
+
+### Hophal (הָפְעַל) — Causative-Passive
+
+Passive of the Hiphil causative (~480 tokens — least common major stem). Restricted
+to roots where the Hiphil causative is established.
+
+```python
+from bible_grammar import (
+    hophal_data, hophal_conjugation_profile, hophal_top_roots,
+    hophal_root_conjugation, hophal_book_distribution, hophal_dominant_roots,
+    hophal_semantic_categories,
+    print_hophal_overview, print_hophal_conjugation, print_hophal_top_roots,
+    print_hophal_root_conjugation, print_hophal_book_distribution,
+    print_hophal_dominant_roots, print_hophal_semantic_categories,
+    hophal_conjugation_chart, hophal_book_chart, hophal_stem_chart,
+    hophal_root_heatmap, hophal_report,
+)
+
+print_hophal_overview()
+# → ~480 tokens · least common major stem
+
+hophal_report()
+# → output/reports/ot/verbs/hophal_report.md + charts
+```
+
+### Hithpael (הִתְפַּעֵל) — Reflexive-Intensive
+
+Typical functions: reflexive of the Piel, reciprocal, iterative, tolerative.
+
+```python
+from bible_grammar import (
+    hithpael_data, hithpael_conjugation_profile, hithpael_top_roots,
+    hithpael_root_conjugation, hithpael_book_distribution, hithpael_dominant_roots,
+    hithpael_semantic_categories,
+    print_hithpael_overview, print_hithpael_conjugation, print_hithpael_top_roots,
+    print_hithpael_root_conjugation, print_hithpael_book_distribution,
+    print_hithpael_dominant_roots, print_hithpael_semantic_categories,
+    hithpael_conjugation_chart, hithpael_book_chart, hithpael_stem_chart,
+    hithpael_root_heatmap, hithpael_report,
+)
+
+print_hithpael_overview()
+
+hithpael_report()
+# → output/reports/ot/verbs/hithpael_report.md + charts
+```
+
+All derived-stem modules share the same pattern:
+
+| Function pattern | Description |
+|---|---|
+| `*_overview()` | Total tokens, % of OT verbs, unique roots, books |
+| `*_conjugation(book=None)` | Distribution by conjugation type |
+| `*_top_roots(n, book=None)` | Most frequent roots with gloss |
+| `*_root_conjugation()` | Root × conjugation frequency heatmap data |
+| `*_book_distribution()` | Count + % per OT book |
+| `*_dominant_roots(min_pct=70)` | Roots ≥70% stem-specific |
+| `*_semantic_categories()` | Semantic function distribution |
+| `*_report()` | Full Markdown report + charts |
+
+---
+
+## OT Noun Morphology
+
+`ot_noun_profile.py` provides state, gender, number, and article statistics for
+Hebrew nouns across the OT, backed by the MACULA Hebrew WLC dataset.
+
+Key teaching point (BBH Ch4, Ch10): the three noun **states** — absolute (free form),
+construct (bound to following noun in a chain), and determined (with definite article
+or pronominal suffix) — each have distinct forms and functions.
+
+```python
+from bible_grammar import (
+    ot_noun_data, ot_adj_data,
+    ot_noun_gender_profile, ot_noun_number_profile, ot_noun_state_profile,
+    ot_noun_gender_state, ot_noun_top_lemmas, ot_noun_lemma_state,
+    ot_noun_book_distribution, ot_noun_genre_profile,
+    ot_article_usage, ot_construct_top_lemmas,
+    print_ot_noun_overview, print_ot_noun_gender, print_ot_noun_state,
+    print_ot_noun_top_lemmas, print_ot_construct_top_lemmas,
+    print_ot_noun_genre_profile, print_ot_noun_book_distribution,
+    print_ot_article_usage,
+    ot_noun_state_chart, ot_noun_gender_chart,
+    ot_noun_genre_heatmap, ot_noun_book_chart,
+)
+
+# OT-wide noun state distribution
+print_ot_noun_state()
+# → absolute 64.5% · construct 19.3% · determined 16.2%
+
+# Top construct-state nouns (identify key construct chains)
+print_ot_construct_top_lemmas(20)
+# → דְּבַר 1,632 (word of) · בֵּן 1,503 (son of) · עֶבֶד 853 (servant of) …
+
+# Article usage statistics (article vs. anarthrous)
+print_ot_article_usage()
+
+# State distribution across Torah / Historical / Wisdom / Prophets
+print_ot_noun_genre_profile()
+
+# Top 20 nouns in Genesis
+print_ot_noun_top_lemmas(20, book='Gen')
+```
+
+**Notebook:** `notebooks/ot/nouns/01_ot_noun_profile.ipynb`
+
+---
+
+## OT Number Morphology
+
+`ot_numbers.py` analyses the 6,881 Hebrew number tokens (class_='num') in the MACULA
+Hebrew WLC dataset, covering cardinals, ordinals, gender polarity, construct chains,
+and distribution across the corpus.
+
+**Key pedagogical point (BBH Ch11):** the gender-polarity rule — cardinal numbers 3–10
+take the *opposite* gender of the noun they count. Numbers 1–2 agree normally; 11–19
+use both forms; 20+ are invariable.
+
+```python
+from bible_grammar import (
+    ot_number_data, ot_number_frequency,
+    ot_number_gender_profile, ot_number_state_profile,
+    ot_number_book_distribution, ot_number_genre_profile,
+    ot_number_polarity_table, ot_top_number_lemmas,
+    print_ot_number_overview, print_ot_number_frequency,
+    print_ot_number_gender, print_ot_number_state,
+    print_ot_number_book_distribution, print_ot_number_genre_profile,
+    print_ot_number_polarity,
+    ot_number_frequency_chart, ot_number_genre_chart, ot_number_book_chart,
+)
+
+# OT-wide overview
+print_ot_number_overview()
+# → 6,881 number tokens · 39 books · Torah 41% of total
+
+# Gender polarity demonstration for cardinals 3–10
+print_ot_number_polarity()
+# → שָׁלֹשׁ (three): masc form counts fem nouns, fem form counts masc nouns
+
+# Books with concentrated number usage (census, chronology, temple dimensions)
+print_ot_number_book_distribution()
+# → Numbers 17% · 1 Chr 11% · 2 Chr 9% · Exodus 8%
+
+# Genre distribution
+print_ot_number_genre_profile()
+```
+
+**Notebook:** `notebooks/ot/numbers/01_ot_numbers.ipynb`
+
+---
+
+## NT Noun Morphology
+
+`nt_noun_profile.py` provides case, gender, number, and article co-occurrence statistics
+for Greek nouns across the GNT, backed by MACULA Greek syntax data.
+
+```python
+from bible_grammar import (
+    nt_noun_data,
+    nt_noun_case_profile, nt_noun_gender_profile, nt_noun_number_profile,
+    nt_noun_case_gender, nt_noun_top_lemmas, nt_noun_lemma_case,
+    nt_noun_book_distribution, nt_noun_genre_profile, nt_article_stats,
+    print_nt_noun_overview, print_nt_noun_case, print_nt_noun_gender,
+    print_nt_noun_case_gender, print_nt_noun_top_lemmas,
+    print_nt_noun_genre_profile, print_nt_noun_book_distribution,
+    print_nt_article_stats,
+    nt_noun_case_chart, nt_noun_gender_chart,
+    nt_noun_genre_heatmap, nt_noun_case_gender_heatmap, nt_noun_book_chart,
+)
+
+# GNT-wide case distribution
+print_nt_noun_case()
+# → nominative 33% · accusative 28% · genitive 25% · dative 13% · vocative 1%
+
+# Article statistics (with/without the article)
+print_nt_article_stats()
+
+# Top 20 noun lemmas in John
+print_nt_noun_top_lemmas(20, book='Jhn')
+
+# Case × genre heatmap
+print_nt_noun_genre_profile()
+
+# Lemma × case crosstab for key theological terms
+nt_noun_lemma_case(['θεός', 'κύριος', 'Χριστός', 'πνεῦμα'])
+```
+
+**Notebook:** `notebooks/nt/nouns/01_nt_noun_profile.ipynb`
+
+---
+
+## NT Participle Analysis
+
+`nt_participles.py` provides tense × voice profiles, syntactic role classification
+(adverbial/adjectival/substantival), genitive absolute counts, and perfect participle
+statistics for the GNT.
+
+Key teaching points (BBG Ch26–30): participles agree with their head noun in case,
+gender, and number; genitive absolutes have no grammatical connection to the main
+clause; perfect participles express abiding state.
+
+```python
+from bible_grammar import (
+    nt_participle_data,
+    nt_participle_tense_profile, nt_participle_voice_profile,
+    nt_participle_tense_voice, nt_participle_role_profile,
+    nt_participle_top_lemmas, nt_participle_book_distribution,
+    nt_participle_genre_profile, nt_genitive_absolutes, nt_perfect_participles,
+    print_nt_participle_overview, print_nt_participle_tense,
+    print_nt_participle_voice, print_nt_participle_tense_voice,
+    print_nt_participle_role, print_nt_participle_top_lemmas,
+    print_nt_participle_genre_profile, print_nt_genitive_absolutes,
+    print_nt_perfect_participles, print_nt_participle_book_distribution,
+    nt_participle_tense_chart, nt_participle_genre_heatmap, nt_participle_book_chart,
+)
+
+# GNT-wide overview
+print_nt_participle_overview()
+
+# Tense distribution for the whole GNT
+print_nt_participle_tense()
+# → present 49.2% · aorist 39.1% · perfect 6.4% · future 0.1%
+
+# Tense × voice crosstab in Romans
+print_nt_participle_tense_voice(book='Rom')
+
+# Syntactic role classification (adverbial/adjectival/substantival)
+print_nt_participle_role()
+
+# Genitive absolutes — no grammatical connection to the main clause
+print_nt_genitive_absolutes()
+# → concentrated in Matthew (Acts 27%) and Luke (24%)
+
+# Perfect participles (abiding state)
+print_nt_perfect_participles(20)
+
+# Genre comparison (Gospels / Acts / Pauline / General)
+print_nt_participle_genre_profile()
+```
+
+**Notebook:** `notebooks/nt/participles/01_nt_participle_analysis.ipynb`
+
+---
+
+## NT Mood Usage
+
+`nt_moods.py` analyses the three non-indicative moods taught in BBG Ch31–33:
+subjunctive, infinitive, and imperative — covering construction types,
+tense profiles, and genre comparison.
+
+```python
+from bible_grammar import (
+    nt_mood_data, nt_mood_profile,
+    nt_subjunctive_profile, nt_infinitive_profile, nt_imperative_profile,
+    nt_subjunctive_constructions, nt_infinitive_constructions,
+    nt_imperative_tense_comparison, nt_mood_genre_profile,
+    nt_mood_book_distribution,
+    print_nt_mood_overview,
+    print_nt_subjunctive_profile, print_nt_infinitive_profile,
+    print_nt_imperative_profile,
+    print_nt_subjunctive_constructions, print_nt_infinitive_constructions,
+    print_nt_imperative_tense_comparison, print_nt_mood_genre_profile,
+    nt_mood_chart, nt_subjunctive_chart, nt_imperative_chart, nt_mood_genre_heatmap,
+)
+
+# All mood distribution for the GNT
+print_nt_mood_overview()
+# → indicative 55% · subjunctive 13% · participle 22% · infinitive 8% · imperative 6%
+
+# Subjunctive construction types (purpose / conditional / hortatory / prohibitive)
+print_nt_subjunctive_constructions()
+# → ἵνα + subj: purpose/content clauses dominate (52%)
+# → ἐάν + subj: conditional (24%)
+# → μή + subj: prohibitive (8%)
+
+# Infinitive construction types (complementary / articular / indirect discourse)
+print_nt_infinitive_constructions()
+
+# Imperative: present vs. aorist — key teaching distinction
+print_nt_imperative_tense_comparison()
+# → present imperative 55% (ongoing / habitual command)
+# → aorist imperative 45% (specific / punctiliar command)
+
+# Subjunctive profile scoped to John
+print_nt_subjunctive_profile(book='Jhn')
+
+# Genre heatmap (which genres favour which moods?)
+print_nt_mood_genre_profile()
+```
+
+**Notebook:** `notebooks/nt/moods/01_nt_mood_analysis.ipynb`
+
+---
+
+## NT Discourse Particles
+
+`nt_discourse.py` analyses the distribution and function of major Greek discourse
+particles (καί, δέ, ὅτι, ἵνα, γάρ, οὖν, ἀλλά, μή, οὐ, εἰ) across the GNT.
+
+```python
+from bible_grammar import (
+    nt_particle_frequency, nt_particle_by_book, nt_particle_genre_profile,
+    nt_hina_profile, nt_hoti_profile,
+    print_nt_particle_overview, print_nt_particle_frequency,
+    print_nt_particle_genre_profile, print_nt_hina_profile, print_nt_hoti_profile,
+    nt_particle_frequency_chart, nt_particle_genre_heatmap, nt_particle_book_chart,
+)
+
+# GNT-wide particle overview
+print_nt_particle_overview()
+# → καί 32.1% (coordinative) · δέ 11.8% (continuative) · ὅτι 8.4% (content/causal)
+
+# Particle frequency scoped to Romans
+print_nt_particle_frequency(book='Rom')
+
+# Particle % by genre group (Gospels / Acts / Pauline / General)
+print_nt_particle_genre_profile()
+
+# ἵνα clause function classification (purpose / content / result / epexegetic)
+print_nt_hina_profile()
+# → purpose 68% · content 28% · result 3% · epexegetic 1%
+
+# ἵνα classification in John
+print_nt_hina_profile(book='Jhn')
+
+# ὅτι function classification (recitative / causal / content)
+print_nt_hoti_profile()
+
+# Bar chart of δέ across all NT books
+nt_particle_book_chart('δέ')
+```
+
+**Notebook:** `notebooks/nt/discourse/01_nt_discourse_particles.ipynb`
+
+---
+
+## Greek Demonstratives
+
+`nt_demonstratives.py` analyses the 1,709 demonstrative tokens in the GNT,
+covering οὗτος (this/these, 1,388), ἐκεῖνος (that/those, 244), τοιοῦτος (such, 57),
+and τοσοῦτος (so great, 20).
+
+Key teaching points (BBG Ch13): near demonstrative οὗτος vs. far demonstrative ἐκεῖνος;
+three uses: attributive (article-noun-demonstrative), substantival (noun slot), predicate
+(with copula).
+
+```python
+from bible_grammar import (
+    nt_demo_data, nt_demo_frequency,
+    nt_demo_case_profile, nt_demo_gender_profile, nt_demo_use_profile,
+    nt_demo_book_distribution, nt_demo_genre_profile,
+    nt_demo_near_far_comparison, nt_demo_top_cooccurrences,
+    print_nt_demo_overview, print_nt_demo_frequency,
+    print_nt_demo_case, print_nt_demo_gender, print_nt_demo_use,
+    print_nt_demo_book_distribution, print_nt_demo_genre_profile,
+    print_nt_demo_near_far,
+    nt_demo_frequency_chart, nt_demo_case_chart,
+    nt_demo_genre_heatmap, nt_demo_book_chart,
+)
+
+# Overall frequency
+print_nt_demo_frequency()
+# → οὗτος 81% · ἐκεῖνος 14% · τοιοῦτος 3% · τοσοῦτος 1%
+
+# Case distribution for οὗτος
+print_nt_demo_case(lemma='οὗτος')
+
+# Near vs. far demonstrative by genre
+print_nt_demo_near_far()
+# → John: ἐκεῖνος 19% (Jesus referring to the Spirit / another person)
+# → Revelation: οὗτος 97% (this beast, this vision…)
+
+# Attributive vs. substantival usage
+print_nt_demo_use()
+
+# Most common nouns co-occurring with οὗτος in context
+nt_demo_top_cooccurrences('οὗτος', n=15)
+```
+
+**Notebook:** `notebooks/nt/demonstratives/01_nt_demonstratives.ipynb`
+
+---
+
+## NT Coreference & Anaphora
+
+`nt_coreference.py` tracks pronominal reference chains using the MACULA Greek NT
+`referent` column (~14,471 tokens), which links pronouns and relative clauses back
+to their antecedent by xml_id.
+
+```python
+from bible_grammar import (
+    nt_referent_data, nt_referent_frequency,
+    nt_entity_chain, nt_pronoun_referents, nt_book_entity_density,
+    print_nt_referent_overview, print_nt_referent_frequency,
+    print_nt_entity_chain, print_nt_pronoun_referents,
+    print_nt_book_entity_density,
+    nt_referent_book_chart, nt_entity_density_chart,
+    KNOWN_ENTITIES,
+)
+
+# Most-referenced antecedents across the whole GNT
+print_nt_referent_frequency(top_n=15)
+
+# How often is Jesus referenced by pronoun per book?
+print_nt_referent_frequency(book='Jhn', top_n=10)
+
+# All tokens that refer to Jesus in Matthew (full coreference chain)
+print_nt_entity_chain(KNOWN_ENTITIES['Jesus (Mat)'], book='Mat')
+
+# What does αὐτός refer to in each Gospel?
+print_nt_pronoun_referents('αὐτός', book='Jhn', top_n=10)
+
+# Participant density per chapter (who appears most?)
+print_nt_book_entity_density('Jhn', top_n=10)
+# → Jesus: every chapter · Peter ch13–21 · Thomas ch11,14,20 …
+
+# Pre-identified participants include:
+print(list(KNOWN_ENTITIES.keys()))
+# ['Jesus (Mat)', 'Jesus (Mrk)', …, 'Paul (Rom)', …, 'Peter (Jhn)',
+#  'Disciples (Mat)', 'Brothers (2Co)']
+```
+
+**Notebook:** `notebooks/nt/coreference/01_nt_coreference.ipynb`
+
+---
+
+## OT Participant Tracking
+
+`ot_participant.py` follows 19 pre-identified named participants (YHWH, Abraham, Moses,
+David, etc.) through OT narrative: what they do as grammatical subject, what is done to
+them as object, and where they appear chapter by chapter.
+
+```python
+from bible_grammar import (
+    KNOWN_OT_PARTICIPANTS,
+    ot_participant_data, ot_participant_subject_verbs,
+    ot_participant_object_verbs, ot_participant_chain,
+    ot_entity_density, ot_participant_compare,
+    print_ot_participant_profile, print_ot_participant_chain,
+    print_ot_participant_compare,
+    ot_participant_chain_chart, ot_entity_density_chart,
+)
+
+# Pre-identified participants
+print(list(KNOWN_OT_PARTICIPANTS.keys()))
+# YHWH, Elohim, Abraham, Isaac, Jacob, Joseph, Moses, Aaron,
+# Joshua, David, Solomon, Elijah, Isaiah, Jeremiah, Daniel,
+# Ruth, Esther, Saul, Jonah
+
+# What verbs does Abraham appear as subject of?
+print_ot_participant_profile('אַבְרָהָם', book='Gen')
+
+# What is done to Moses (as object) in Exodus?
+ot_participant_object_verbs('מֹשֶׁה', book='Exo')
+
+# Chapter-by-chapter appearance of Jacob in Genesis
+print_ot_participant_chain('Gen', 'יַעֲקֹב')
+
+# Compare subject-verb profiles of Abraham vs. Moses
+print_ot_participant_compare(['אַבְרָהָם', 'מֹשֶׁה'])
+
+# Entity co-presence density heatmap for Genesis
+ot_entity_density('Gen')
+```
+
+**Notebook:** `notebooks/ot/participants/01_ot_participant_tracking.ipynb`
+
+---
+
+## OT Predicate-Argument Structure
+
+`ot_predicate_args.py` exposes the MACULA Hebrew PropBank-style `frame` column —
+68,207 verb tokens annotated with semantic roles A0 (agent) and A1 (patient).
+
+```python
+from bible_grammar import (
+    ot_frame_data, ot_agent_verbs, ot_patient_verbs,
+    ot_verb_agents, ot_verb_patients, ot_frame_pairs,
+    print_ot_agent_verbs, print_ot_patient_verbs,
+    print_ot_verb_agents, print_ot_verb_patients, print_ot_frame_pairs,
+    ot_agent_verbs_chart, ot_patient_verbs_chart,
+)
+
+# What does YHWH (A0) do most in the Torah?
+print_ot_agent_verbs('יְהוָה', book_group='Torah', top_n=20)
+# → אָמַר 4,832 (said) · נָתַן 847 (gave) · צָוָה 712 (commanded) …
+
+# What gets created/destroyed/given (A1) in Genesis?
+print_ot_patient_verbs('Gen', top_n=20)
+
+# Who are the agents (A0) of בָּרָא (bara, create)?
+print_ot_verb_agents('בָּרָא')
+# → exclusively divine subjects (אֱלֹהִים, יְהוָה)
+
+# Who or what does יָצַא (go out) take as A0?
+print_ot_verb_agents('יָצַא', top_n=15)
+
+# Most common A0 → verb → A1 triples in Genesis
+print_ot_frame_pairs(book='Gen', top_n=20)
+```
+
+**Notebook:** `notebooks/ot/predicate_args/01_ot_predicate_args.ipynb`
+
+---
+
+## OT Discourse Structure
+
+`ot_discourse.py` provides narrative peak and episode boundary detection for OT
+narrative, based on the Longacre (1983) discourse grammar model.
+
+**Metrics:**
+- **Wayyiqtol density** — narrative backbone concentration by chapter
+- **Speech density** — direct speech clustering by chapter
+- **Peak score** — climax detection: dense wayyiqtol + speech + rare lexis + short clauses
+- **Episode boundaries** — disjunctive clauses, וַיְהִי scene-setting formulas, chain gaps
+
+```python
+from bible_grammar import (
+    ot_discourse_wayyiqtol_density, ot_discourse_speech_density,
+    ot_discourse_peak_score, ot_discourse_episode_boundaries,
+    ot_discourse_narrative_profile,
+    print_ot_discourse_overview, print_ot_wayyiqtol_density,
+    print_ot_speech_density, print_ot_peak_score, print_ot_episode_boundaries,
+    ot_discourse_density_chart, ot_discourse_peak_chart,
+)
+
+# Wayyiqtol density by chapter in Genesis
+print_ot_wayyiqtol_density('Gen')
+
+# Where is the narrative peak of Genesis 22?
+print_ot_peak_score('Gen')
+# → ch22 peak score highest — the binding of Isaac
+
+# Episode boundaries in Ruth
+print_ot_episode_boundaries('Rut')
+
+# Chapters with most direct speech in 1 Samuel
+print_ot_speech_density('1Sa')
+
+# Full discourse overview for a book
+print_ot_discourse_overview('Exo')
+
+# Combined metrics as a dict
+profile = ot_discourse_narrative_profile('Gen')
+```
+
+**Notebook:** `notebooks/ot/discourse/01_ot_discourse_structure.ipynb`
+
+---
+
+## Speech Act Classification
+
+`speech_acts.py` applies a rule-based Searle (1969) speech act classifier to biblical
+direct discourse for both OT Hebrew and NT Greek. Morphological and lexical cues
+determine which speech act type wins.
+
+| Type | Definition | Hebrew cues | Greek cues |
+|---|---|---|---|
+| **Assertive** | claims a state of affairs | predicate nominals, "I am YHWH" | εἰμί + predicate, οὗτός ἐστιν |
+| **Directive** | commands/requests | imperative, cohortative, negated yiqtol | imperative, ἵνα clause |
+| **Commissive** | commits to future action | שָׁבַע (swear), נָדַר (vow), כִּי | future indicative, ἐγώ + promise |
+| **Expressive** | praise, lament, thanks | הָלַל, אוֹי, אֵיכָה, בָּכָה | εὐχαριστέω, δοξάζω, αἰνέω |
+| **Declarative** | changes reality by utterance | בָּרַךְ (bless), אָרַר (curse), קָרָא (name) | forgiveness, naming, pronouncement |
+
+```python
+from bible_grammar import (
+    SPEECH_ACT_TYPES,
+    ot_speech_act_data, ot_speech_act_profile,
+    nt_speech_act_data, nt_speech_act_profile,
+    print_ot_speech_act_profile, print_nt_speech_act_profile,
+    print_speech_act_comparison,
+    speech_act_chart, speech_act_heatmap,
+)
+
+# YHWH's speech act profile in Isaiah
+print_ot_speech_act_profile('יְהוָה', book='Isa')
+# → directive 44% · assertive 31% · commissive 14% · declarative 8%
+
+# Compare YHWH's speech in Isaiah vs. Jeremiah
+print_speech_act_comparison(['Isa', 'Jer'], lang='OT')
+
+# Jesus's speech acts in the Gospels
+print_nt_speech_act_profile(book='Jhn')
+# → assertive 38% ("I AM" sayings) · directive 30% · expressive 16%
+
+# Which Pauline letters have most commissive (promise) content?
+print_speech_act_comparison(['Rom', 'Gal', '2Co', 'Eph'], lang='NT')
+```
+
+**Notebook:** `notebooks/both/speech_acts/01_speech_act_analysis.ipynb`
+
+---
+
+## Information Structure
+
+`information_structure.py` analyses clause-linking strategies, parataxis/hypotaxis
+ratios, fronted elements, and postpositive particle profiles for OT Hebrew and NT Greek.
+
+**Hebrew metrics:** parataxis ratio (wayyiqtol/waw chains), hypotaxis ratio (כִּי/אֲשֶׁר
+subordination), fronted element ratio (non-verb-initial clauses), nominal clause %.
+
+**Greek metrics:** δέ/γάρ/οὖν/μέν density per 1,000 tokens, asyndeton %, explicit
+subject-pronoun %.
+
+```python
+from bible_grammar import (
+    ot_information_profile, nt_information_profile,
+    ot_clause_linking_comparison, nt_clause_linking_comparison,
+    print_ot_information_profile, print_nt_information_profile,
+    print_ot_clause_linking_comparison, print_nt_clause_linking_comparison,
+    nt_clause_linking_chart, nt_information_heatmap, ot_clause_linking_chart,
+)
+
+# Is Deuteronomy more hypotactic than Genesis?
+print_ot_clause_linking_comparison(['Gen', 'Deu', 'Isa', 'Psa'])
+# → Deuteronomy hypotaxis 28% (legal if…then) vs. Genesis 14% (narrative)
+
+# Which NT book uses most γάρ (Paul is dominant)?
+print_nt_clause_linking_comparison(['Rom', 'Gal', 'Mrk', 'Jhn', 'Rev'])
+# → Romans γάρ density 9.2 / 1k · Mark 1.1 / 1k
+
+# Full profile for a single book
+print_ot_information_profile('Gen')
+print_nt_information_profile('Rom')
+
+# NT heatmap: particle density across books
+nt_information_heatmap(['Mat', 'Mrk', 'Luk', 'Jhn', 'Rom', 'Heb', 'Rev'])
+```
+
+**Notebook:** `notebooks/both/information_structure/01_information_structure.ipynb`
+
+---
+
+## Stylometrics & Register Analysis
+
+`stylometrics.py` computes quantitative style metrics that capture lexical richness,
+syntactic register, and morphological fingerprints for individual books or proposed
+authorial units.
+
+| Hebrew metric | Description |
+|---|---|
+| `ttr` | Type-token ratio (unique lemmas / total tokens) |
+| `msttr` | Mean segmental TTR — fair cross-length comparison |
+| `hapax_density` | Hapax tokens / total (%) |
+| `wayyiqtol_density` | Narrative backbone ratio (%) |
+| `inf_construct_density` | Inf. constructs per 1,000 tokens |
+| `asher_density` | אֲשֶׁר relative markers per 1,000 |
+
+| Greek metric | Description |
+|---|---|
+| `ttr` / `msttr` | Vocabulary richness |
+| `ptc_to_finite_ratio` | Participial style marker |
+| `optative_density` | Optative per 1,000 (rare; high in Luke/Acts) |
+| `hina_density` | ἵνα per 1,000 tokens |
+| `inf_density` | Infinitives per 1,000 |
+
+```python
+from bible_grammar import (
+    book_style_profile, style_comparison, msttr,
+    print_style_profile, print_style_comparison,
+    style_radar_chart, style_heatmap,
+)
+
+# Full style metrics for a single book
+print_style_profile('Gen', lang='H')
+print_style_profile('Rom', lang='G')
+
+# Side-by-side comparison of proposed Deutero-Isaiah
+print_style_comparison(['Isa'], lang='H')   # vs. chapters 1-39 / 40-66 (split internally)
+
+# Which Pauline letters cluster together by style?
+print_style_comparison(['Rom', 'Gal', '1Co', '2Co', 'Eph', 'Col', 'Php', 'Phm'], lang='G')
+
+# Compare Mark vs. Luke participle usage
+print_style_comparison(['Mrk', 'Luk', 'Jhn', 'Act'], lang='G')
+
+# MSTTR for a single book (window=1000 tokens)
+score = msttr('Job', lang='H', window=1000)
+
+# Visual comparison
+style_radar_chart(['Rom', 'Heb', 'Rev'], lang='G')
+style_heatmap(['Gen', 'Deu', 'Isa', 'Psa', 'Pro', 'Job'], lang='H')
+```
+
+**Notebook:** `notebooks/both/stylometrics/01_stylometrics.ipynb`
+
+---
+
+## Formulaic Language
+
+`formulaic.py` detects and analyses fixed biblical expressions — prophetic formulas,
+doxological phrases, oath/blessing/curse formulas, and epistolary greetings — using
+lemma-sequence matching with optional wildcard support.
+
+**Curated Hebrew formulas** include: כֹּה אָמַר יְהוָה (thus says YHWH), נְאֻם יְהוָה
+(oracle of YHWH), דְּבַר יְהוָה (word of YHWH), and more.
+
+**Curated Greek formulas** include: ἀμὴν λέγω ὑμῖν (truly I say to you), χάρις ὑμῖν
+καὶ εἰρήνη (grace to you and peace), and more.
+
+```python
+from bible_grammar import (
+    HEBREW_FORMULAS, GREEK_FORMULAS,
+    ot_formula_frequency, nt_formula_frequency,
+    ot_formula_search, nt_formula_search,
+    formula_book_distribution, ot_formula_profile, nt_formula_profile,
+    print_formula_concordance, print_formula_book_distribution,
+    print_ot_formula_profile, print_nt_formula_profile,
+    print_ot_top_ngrams, print_nt_top_ngrams,
+    formula_book_chart, formula_chapter_chart,
+)
+
+# How often does כֹּה אָמַר יְהוָה appear and where?
+print_formula_book_distribution(['כֹּה', 'אָמַר', 'יְהוָה'], lang='OT')
+# → Jeremiah 159 · Ezekiel 125 · Amos 25 · Isaiah 21 …
+
+# Where does ἀμὴν λέγω ὑμῖν cluster?
+print_formula_concordance(['ἀμήν', 'λέγω', 'ὑμῖν'], lang='NT')
+
+# Top-30 Hebrew bigrams in the Psalms
+print_ot_top_ngrams(n=2, min_count=5, top_n=30)
+
+# All curated formula profile at once
+print_ot_formula_profile()
+print_nt_formula_profile()
+
+# Wildcard search: כֹּה אָמַר <any> (any speaker, not just YHWH)
+ot_formula_search(['כֹּה', 'אָמַר', '*'])
+
+# Chapter distribution of ἀμὴν λέγω ὑμῖν in John
+formula_chapter_chart('Jhn', 'amen_lego', lang='NT')
+```
+
+**Notebook:** `notebooks/both/formulaic/01_formulaic_language.ipynb`
+
+---
+
+## Biblical Aramaic Verb Morphology
+
+`aramaic_profile.py` analyses the ~1,800 Aramaic verb tokens in the Daniel and Ezra
+sections of the MACULA Hebrew WLC dataset. Covers all Aramaic stems (Peal, Haphel,
+Pael, Peil, Hithpeel, etc.) with conjugation profiles, top roots, and book comparison.
+
+```python
+from bible_grammar import (
+    aramaic_data, aramaic_verb_data,
+    aramaic_stem_profile, aramaic_conj_profile, aramaic_stem_conj,
+    aramaic_top_roots, aramaic_book_distribution, aramaic_stem_by_book,
+    print_aramaic_overview, print_aramaic_stem_profile,
+    print_aramaic_conj_profile, print_aramaic_stem_conj,
+    print_aramaic_top_roots, print_aramaic_book_distribution,
+    aramaic_stem_chart, aramaic_conj_chart, aramaic_stem_book_chart,
+)
+
+# Overview of all Aramaic tokens
+print_aramaic_overview()
+# → 7,549 total Aramaic tokens (Daniel + Ezra + scattered Gen/Jer)
+
+# Verb stem distribution
+print_aramaic_stem_profile()
+# → Peal 63% · Haphel 14% · Pael 12% · Peil 5% · Hithpeel 4%
+
+# Conjugation profile (across all stems)
+print_aramaic_conj_profile()
+# → qatal 27% · participle active 25% · yiqtol 22% · imperative 8%
+
+# Stem × conjugation cross-table
+print_aramaic_stem_conj()
+
+# Daniel vs. Ezra stem comparison
+print_aramaic_book_distribution()
+
+# Top 20 Aramaic roots in Daniel
+print_aramaic_top_roots(20, book='Dan')
+# → אָמַר 97 (say) · הֲוָה 87 (be) · מְלַךְ 51 (reign) …
+
+# Haphel (causative) profile in detail
+print_aramaic_stem_conj(stem='haphel')
+```
+
+**Notebook:** `notebooks/ot/aramaic/01_aramaic_verb_profile.ipynb`
+
+---
+
+## Biblical Aramaic Nominal System
+
+`aramaic_nominal.py` covers Aramaic noun states (absolute / construct / determined),
+gender, number, pronouns, prepositions, and adjectives in Daniel and Ezra.
+
+Key teaching point (BBA Ch4–6): Biblical Aramaic nouns have three states just like
+Hebrew, but the **determined state** (-ָא suffix) is by far the most common in Aramaic
+prose (often >70% of noun tokens), unlike Hebrew where the definite article is separate.
+
+```python
+from bible_grammar import (
+    aramaic_noun_data, aramaic_pron_data, aramaic_prep_data, aramaic_adj_data,
+    aramaic_noun_state_profile, aramaic_noun_gender_profile,
+    aramaic_noun_number_profile, aramaic_noun_gender_state,
+    aramaic_noun_top_lemmas, aramaic_noun_state_by_book,
+    aramaic_pron_type_profile, aramaic_prep_frequency,
+    aramaic_class_distribution,
+    print_aramaic_nominal_overview, print_aramaic_noun_state,
+    print_aramaic_noun_gender, print_aramaic_noun_top_lemmas,
+    print_aramaic_noun_state_by_book, print_aramaic_pron_profile,
+    print_aramaic_prep_frequency,
+    aramaic_noun_state_chart, aramaic_noun_state_book_chart, aramaic_prep_chart,
+)
+
+# Noun state distribution (determined state dominates in Aramaic)
+print_aramaic_noun_state()
+# → determined 71% · absolute 17% · construct 12%
+
+# Daniel vs. Ezra noun state comparison
+print_aramaic_noun_state_by_book()
+
+# Top 20 Aramaic noun lemmas
+print_aramaic_noun_top_lemmas(20)
+# → מֶלֶךְ 180 (king) · אֱלָהּ 95 (God) · בַּר 88 (son) …
+
+# Pronoun type profile (personal / demonstrative / interrogative)
+print_aramaic_pron_profile()
+
+# Preposition frequency
+print_aramaic_prep_frequency(15)
+# → לְ 28% · בְּ 22% · מִן 18% · עַל 12% · עַד 7%
+
+# Full word class breakdown
+aramaic_class_distribution()
+```
+
+**Notebook:** `notebooks/ot/aramaic/02_aramaic_nominal_profile.ipynb`
 
 ---
 

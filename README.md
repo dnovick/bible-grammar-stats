@@ -44,7 +44,7 @@ Built to answer questions like:
 | [docs/data-sources.md](docs/data-sources.md) | Data submodules, morphological coverage, data notes |
 | [docs/getting-started.md](docs/getting-started.md) | Installation, prerequisites, first steps |
 | [docs/project-structure.md](docs/project-structure.md) | Directory tree and module descriptions |
-| [docs/features.md](docs/features.md) | Full API reference — all 35+ analysis features with code examples |
+| [docs/features.md](docs/features.md) | Full API reference — all 50+ analysis features with code examples |
 | [docs/lesson-packages.md](docs/lesson-packages.md) | BBH / BBG / BBA lesson packages, exercise formats, PDF generation |
 | [notebooks/README.md](notebooks/README.md) | Jupyter notebook index by corpus and topic |
 
@@ -86,6 +86,22 @@ See [docs/getting-started.md](docs/getting-started.md) for full setup instructio
 - **Louw-Nida Domain Search** — semantic domain queries across the Greek NT
 - **Genre Comparison** — morphological patterns by literary genre (OT + NT)
 - **Theological Term Reports** — 14 pre-built cross-testament trajectory studies
+- **Derived Stem Morphology** — Niphal, Piel, Pual, Hophal, Hithpael (plus Hiphil) with full analysis suite
+- **OT Noun & Number Morphology** — state/gender/number profiles; gender-polarity rule for cardinals
+- **NT Noun & Participle Analysis** — case/gender profiles; tense × voice; genitive absolutes; perfect participles
+- **NT Mood Usage** — subjunctive constructions, infinitive types, present vs. aorist imperatives
+- **NT Discourse Particles** — καί/δέ/ὅτι/ἵνα/γάρ/οὖν/ἀλλά classification; ἵνα and ὅτι function profiles
+- **Greek Demonstratives** — οὗτος vs. ἐκεῖνος; near/far comparison by genre
+- **NT Coreference & Anaphora** — pronoun referent chains via MACULA xml_id (~14,471 tokens)
+- **OT Participant Tracking** — 19 major figures tracked by subject/object/chapter presence
+- **OT Predicate-Argument Structure** — PropBank A0/A1 semantic roles (~68k verb tokens)
+- **OT Discourse Structure** — narrative peak scoring, episode boundaries (Longacre model)
+- **Speech Act Classification** — Searle taxonomy: assertive/directive/commissive/expressive/declarative
+- **Information Structure** — parataxis/hypotaxis ratios, fronted elements, particle density (OT + NT)
+- **Stylometrics & Register** — TTR/MSTTR, wayyiqtol density, participle ratios, authorship fingerprinting
+- **Formulaic Language** — prophetic formulas, doxological phrases, n-gram detection, blessing/curse patterns
+- **Biblical Aramaic Verb Morphology** — Peal/Haphel/Pael stems, Daniel vs. Ezra comparison
+- **Biblical Aramaic Nominal System** — determined state dominance, pronouns, prepositions
 - **Lesson Packages** — BBH Ch1–35, BBG Ch1–36, BBA Ch1–22 with exercises and Anki decks
 
 For full API documentation and code examples, see [docs/features.md](docs/features.md).
