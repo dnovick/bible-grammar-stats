@@ -100,7 +100,7 @@ for bar, v in zip(bars, cnts):
              str(v), va='center', fontsize=8.5)
 ax1.set_xlabel('Occurrences', fontsize=10)
 ax1.set_title(
-    get_display('קֶרֶן') + ' (noun, H7161) — Distribution by book\n(n=75)',
+    get_display('Noun קֶרֶן (H7161) — Distribution by book') + '\n(n=75)',
     fontsize=11, fontweight='bold')
 ax1.xaxis.grid(True, linestyle='--', alpha=0.4)
 ax1.set_axisbelow(True)
@@ -162,7 +162,7 @@ ax3.set_xticks(range(len(lxx_labels)))
 ax3.set_xticklabels(lxx_labels, fontsize=9.5)
 ax3.set_ylabel('OT tokens', fontsize=10)
 ax3.set_title(
-    'LXX translation of ' + get_display('קֶרֶן') + ' / ' + get_display('קָרַן') + '\n(noun + verb combined)',
+    get_display('LXX translation of קֶרֶן / קָרַן') + '\n(noun + verb combined)',
     fontsize=11, fontweight='bold')
 ax3.yaxis.grid(True, linestyle='--', alpha=0.4)
 ax3.set_axisbelow(True)
@@ -265,7 +265,7 @@ wedges3, texts3, autos3 = ax4.pie(
 for at in autos3:
     at.set_fontsize(9)
 ax4.set_title(
-    'Semantic usage of ' + get_display('קֶרֶן') + ' (noun, n=75)\nby category',
+    get_display('Semantic usage of קֶרֶן (noun, n=75)') + '\nby category',
     fontsize=11, fontweight='bold')
 fig3.tight_layout()
 chart3_path = CHART_DIR / 'qeren_semantic_categories.png'
@@ -278,7 +278,7 @@ print(f"Chart 3 saved: {chart3_path}")
 # ============================================================
 
 TRANSLATIONS_EXO34 = {
-    'Hebrew MT\n(קָרַן)':    'shone / radiated',
+    get_display('Hebrew MT\n(קָרַן)'): 'shone / radiated',
     'LXX\n(δεδόξασται)':     'glorified',
     'Peshitta':              'glorified',
     'Vulgate\n(cornuta)':    'horned',
@@ -306,7 +306,7 @@ ax5.set_xticks(range(len(labels4)))
 ax5.set_xticklabels(labels4, fontsize=9)
 ax5.set_yticks([])
 ax5.set_title(
-    'Exodus 34:29–35 — How each tradition renders ' + get_display('קָרַן') + '\n'
+    get_display('Exodus 34:29–35 — How each tradition renders קָרַן') + '\n'
     '(blue = light/glory; red = horned)',
     fontsize=11, fontweight='bold')
 ax5.spines['top'].set_visible(False)
