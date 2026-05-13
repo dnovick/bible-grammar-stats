@@ -432,4 +432,76 @@ fig2.savefig(chart2_path, dpi=150, bbox_inches='tight')
 plt.close(fig2)
 print(f"Chart 2 saved: {chart2_path}")
 
+# ============================================================
+# CHART 3: NT occurrences — book bar + semantic function pie
+# ============================================================
+NT_FUNC_COLORS = {
+    'assembled together':  '#2ca02c',
+    'assembled to worship': '#1f77b4',
+    'assembled against':   '#d62728',
+    'same place':          '#ff7f0e',
+    'conjugal reunion':    '#9467bd',
+    'community/together':  '#17becf',
+}
+
+nt_book_counts = nt_df.groupby(['book_label', 'function']).size().reset_index(name='count')
+nt_book_order = nt_df.groupby('book_label').size().sort_values(ascending=False).index.tolist()
+
+fig3, axes3 = plt.subplots(1, 2, figsize=(13, 5))
+
+# Left: horizontal bar by book, coloured by function
+ax4 = axes3[0]
+book_totals = nt_df.groupby('book_label').size().reindex(nt_book_order)
+nt_func_counts = nt_df['function'].value_counts()
+func_colors_assigned = [
+    NT_FUNC_COLORS.get(f, '#7f7f7f') for f in nt_func_counts.index
+]
+
+# Build stacked bars per book
+bottoms = np.zeros(len(nt_book_order))
+func_groups = nt_df.groupby('function')
+legend_patches = []
+for func, color in NT_FUNC_COLORS.items():
+    sub = nt_df[nt_df['function'] == func]
+    counts_by_book = sub.groupby('book_label').size().reindex(nt_book_order, fill_value=0)
+    bars3 = ax4.barh(nt_book_order, counts_by_book.values, left=bottoms,
+                     color=color, edgecolor='white', linewidth=0.5, label=func)
+    bottoms += counts_by_book.values
+    if sub.shape[0] > 0:
+        legend_patches.append(mpatches.Patch(color=color, label=func))
+
+for i, book in enumerate(nt_book_order):
+    total = book_totals[book]
+    ax4.text(total + 0.05, i, str(total), va='center', fontsize=9)
+
+ax4.set_xlabel('Occurrences', fontsize=10)
+ax4.set_title('ἐπὶ τὸ αὐτό in the NT\nDistribution by book (n=10)',
+              fontsize=11, fontweight='bold')
+ax4.xaxis.grid(True, linestyle='--', alpha=0.4)
+ax4.set_axisbelow(True)
+ax4.legend(handles=legend_patches, loc='lower right', fontsize=8)
+
+# Right: semantic function pie
+ax5 = axes3[1]
+nt_func_vals = nt_df['function'].value_counts()
+pie_colors = [NT_FUNC_COLORS.get(f, '#7f7f7f') for f in nt_func_vals.index]
+wedges5, texts5, autotexts5 = ax5.pie(
+    nt_func_vals.values,
+    labels=nt_func_vals.index,
+    autopct='%1.0f%%',
+    startangle=140,
+    colors=pie_colors,
+    explode=[0.04] * len(nt_func_vals),
+    textprops={'fontsize': 8},
+)
+for at in autotexts5:
+    at.set_fontsize(8.5)
+ax5.set_title('NT semantic function distribution\n(n=10)', fontsize=11, fontweight='bold')
+
+fig3.tight_layout(pad=2.5)
+chart3_path = CHART_DIR / 'epi_to_auto_nt_distribution.png'
+fig3.savefig(chart3_path, dpi=150, bbox_inches='tight')
+plt.close(fig3)
+print(f"Chart 3 saved: {chart3_path}")
+
 print("All data and charts generated.")

@@ -263,7 +263,7 @@ passages in Jeremiah, Hosea, and Micah also carry strong positive valence.
 The phrase appears **10 times in the GNT**, concentrated in Acts and 1 Corinthians —
 both texts centrally concerned with the gathered Christian community (ἐκκλησία).
 
-![NT distribution is primarily Acts + 1 Corinthians](../../../charts/both/phrase_studies/epi_to_auto_lxx_distribution.png)
+![NT distribution by book and semantic function](../../../charts/both/phrase_studies/epi_to_auto_nt_distribution.png)
 
 ### Complete NT concordance
 
@@ -402,6 +402,7 @@ and social solidarity.
 *Charts:*
 - `output/charts/both/phrase_studies/epi_to_auto_lxx_distribution.png`
 - `output/charts/both/phrase_studies/epi_to_auto_hebrew_sources.png`
+- `output/charts/both/phrase_studies/epi_to_auto_nt_distribution.png`
 
 *Data files:*
 - `output/reports/both/phrase_studies/epi_to_auto_lxx.csv`
