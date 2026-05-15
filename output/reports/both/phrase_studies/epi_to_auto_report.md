@@ -2,6 +2,8 @@
 
 **LXX + Greek NT Occurrence Analysis**
 
+*Build script: [scripts/build_epi_to_auto.py](../../../../scripts/build_epi_to_auto.py)*
+
 ---
 
 ## Contents
