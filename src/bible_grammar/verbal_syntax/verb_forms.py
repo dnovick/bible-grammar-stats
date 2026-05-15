@@ -379,7 +379,7 @@ def aspect_comparison_chart(
     width = 0.8 / len(books)
 
     fig, ax = plt.subplots(figsize=(max(10, len(active_forms) * 1.4), 6))
-    colors = plt.cm.tab10.colors
+    colors = plt.cm.tab10.colors  # type: ignore[attr-defined]
 
     for i, book in enumerate(books):
         pcts = [

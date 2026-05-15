@@ -1,16 +1,13 @@
 """Build קָרַן / קֶרֶן (qaran/qeren) word-study report, charts, and CSV data."""
-import sys
-sys.path.insert(0, 'src')
-from bible_grammar.syntax_ot import load_syntax_ot  # noqa: E402
-from bible_grammar.lxx_query import query_lxx  # noqa: E402
-from bible_grammar.translations import load_translations  # noqa: E402
-import pandas as pd  # noqa: E402
-import matplotlib  # noqa: E402
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt  # noqa: E402
-import matplotlib.patches as mpatches  # noqa: E402
-from pathlib import Path  # noqa: E402
-from bidi.algorithm import get_display  # noqa: E402
+import matplotlib; matplotlib.use('Agg')  # noqa: E702
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+import pandas as pd
+from pathlib import Path
+from bidi.algorithm import get_display
+from bible_grammar.syntax_ot import load_syntax_ot
+from bible_grammar.lxx_query import query_lxx
+from bible_grammar.translations import load_translations
 
 OUT = Path('output/reports/both/word_studies')
 OUT.mkdir(parents=True, exist_ok=True)
