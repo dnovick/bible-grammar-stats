@@ -1,5 +1,9 @@
 # Berean Bible Bots
 
+<p align="center">
+  <img src="images/berean-bible-bots.png" alt="Berean Bible Bots" width="480">
+</p>
+
 > **⚠ AI-Generated / Work in Progress**
 >
 > The code, lesson packages, exercises, Anki and Flashcards Deluxe decks, and analysis outputs in this repository
