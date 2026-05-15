@@ -81,12 +81,12 @@ class TestResolveToken:
 
     def test_lemma_string_no_strongs(self) -> None:
         # resolve_strongs is imported lazily from wordstudy inside _resolve_token
-        with patch("bible_grammar.wordstudy.resolve_strongs", return_value=None):
+        with patch("bible_grammar.lexical.wordstudy.resolve_strongs", return_value=None):
             result = _resolve_token("εἰρήνη")
         assert "lemma" in result
 
     def test_resolved_lemma_returns_strongs(self) -> None:
-        with patch("bible_grammar.wordstudy.resolve_strongs", return_value="G1515"):
+        with patch("bible_grammar.lexical.wordstudy.resolve_strongs", return_value="G1515"):
             result = _resolve_token("εἰρήνη")
         assert result == {"strongs": "G1515"}
 
