@@ -23,7 +23,7 @@ from pathlib import Path
 import pandas as pd
 from ..core import db as _db
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+_REPO_ROOT = Path(__file__).resolve().parents[3]
 _XREF_FILE = _REPO_ROOT / "scrollmapper-data" / "sources_backup" / "extras" / "cross_references.txt"
 
 # Map scrollmapper abbreviations → our book_id codes

@@ -5,7 +5,7 @@ from pathlib import Path
 import pandas as pd
 from .morphology import decode_hebrew, decode_greek, extract_greek_grammar
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+_REPO_ROOT = Path(__file__).resolve().parents[3]
 _DATA_DIR = _REPO_ROOT / "stepbible-data" / "Translators Amalgamated OT+NT"
 
 _TAHOT_FILES = [

@@ -59,7 +59,7 @@ from pathlib import Path
 from typing import Any
 import pandas as pd
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+_REPO_ROOT = Path(__file__).resolve().parents[3]
 _MACULA_OT_DIR = _REPO_ROOT / "macula-hebrew" / "WLC" / "lowfat"
 _OT_PARQUET = _REPO_ROOT / "data" / "processed" / "macula_syntax_ot.parquet"
 

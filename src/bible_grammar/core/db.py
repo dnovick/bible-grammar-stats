@@ -5,7 +5,7 @@ from pathlib import Path
 import pandas as pd
 from .reference import BOOKS
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+_REPO_ROOT = Path(__file__).resolve().parents[3]
 _PROCESSED = _REPO_ROOT / "data" / "processed"
 DB_PATH = _PROCESSED / "bible_grammar.db"
 PARQUET_PATH = _PROCESSED / "words.parquet"

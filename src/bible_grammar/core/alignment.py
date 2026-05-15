@@ -24,7 +24,7 @@ import pandas as pd
 from pathlib import Path
 from . import db as _db
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+_REPO_ROOT = Path(__file__).resolve().parents[3]
 _PROCESSED = _REPO_ROOT / "data" / "processed"
 ALIGNMENT_PARQUET = _PROCESSED / "alignment.parquet"
 

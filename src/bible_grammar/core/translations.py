@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 import pandas as pd
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+_REPO_ROOT = Path(__file__).resolve().parents[3]
 _SCROLL_ROOT = _REPO_ROOT / "scrollmapper-data" / "sources"
 
 _SOURCES = {

@@ -37,7 +37,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+_REPO_ROOT = Path(__file__).resolve().parents[3]
 _TBESH = _REPO_ROOT / "stepbible-data" / "Lexicons" / \
     "TBESH - Translators Brief lexicon of Extended Strongs for Hebrew - STEPBible.org CC BY.txt"
 _TBESG = _REPO_ROOT / "stepbible-data" / "Lexicons" / \

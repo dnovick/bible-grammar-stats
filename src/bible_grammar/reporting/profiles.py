@@ -33,7 +33,7 @@ import pandas as pd
 from ..core import db as _db
 from ..core.reference import BOOKS, book_info, all_book_ids
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+_REPO_ROOT = Path(__file__).resolve().parents[3]
 _PROFILES_DIR = _REPO_ROOT / "output" / "reports" / "ot" / "survey"
 
 _BOOK_ORDER = {b[0]: b[3] for b in BOOKS}

@@ -495,8 +495,9 @@ def export_genre_compare(corpus: str = 'OT') -> dict[str, Path]:
 
 def export_divine_names(corpora: list[str] | None = None) -> dict[str, Path]:
     """Export divine names analysis to CSV + HTML."""
-    from ..names.divine_names import (divine_name_summary, divine_name_by_section,
-                               divine_name_table, divine_names_chart)
+    from ..names.divine_names import (
+        divine_name_summary, divine_name_by_section,
+        divine_name_table, divine_names_chart)
 
     if corpora is None:
         corpora = ['OT', 'LXX', 'NT']
