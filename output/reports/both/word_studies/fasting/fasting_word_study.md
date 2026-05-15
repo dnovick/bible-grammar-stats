@@ -260,3 +260,16 @@ The single Aramaic occurrence (Dan 6:18) stands apart. טְוָת is not used fo
 | Hebrew verb conjugation distribution | `output/charts/both/word_studies/fasting/fasting_hebrew_verb_morph.png` |
 | LXX by book | `output/charts/both/word_studies/fasting/fasting_lxx_by_book.png` |
 | Greek NT by book | `output/charts/both/word_studies/fasting/fasting_greek_nt_by_book.png` |
+
+---
+
+## 7. Data Exports
+
+| File | Contents | Rows |
+|---|---|---|
+| [fasting_hebrew_ot.csv](fasting_hebrew_ot.csv) | All 47 OT Hebrew occurrences — ref, Hebrew text, Strong's, POS, morph, stem, gloss, LXX alignment, KJV verse |
+| [fasting_aramaic_ot.csv](fasting_aramaic_ot.csv) | The single Aramaic occurrence (Dan 6:18 טְוָת H2908) — ref, text, morph, gloss, KJV verse |
+| [fasting_lxx.csv](fasting_lxx.csv) | All 50 LXX occurrences of νηστεύω / νηστεία — ref, Greek word, lemma, Strong's, POS, morph, KJV verse |
+| [fasting_greek_nt.csv](fasting_greek_nt.csv) | All 29 Greek NT occurrences of the five fasting lemmas — ref, Greek word, lemma, Strong's, POS, morph, tense/voice/mood, gloss, KJV verse |
+
+*Regenerate with:* `python3 scripts/build_fasting_report.py`
