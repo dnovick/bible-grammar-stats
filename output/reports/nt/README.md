@@ -23,6 +23,7 @@ Studies of Greek grammar, vocabulary, and structure in the New Testament.
 | [λόγος (G3056)](lexicon/g3056-semantic-profile.md) | *logos* — word, reason | Distribution, collocates, semantic range |
 | [Greek Words for "Obey" — NT and LXX](lexicon/obey-greek-word-study.md) | ὑπακούω, πειθαρχέω, etc. | Cross-term word study with LXX comparison |
 | [Greek NT Case Distribution by Book](lexicon/nt-case-distribution-by-book.md) | — | Nominative / genitive / dative / accusative proportions per book |
+| [2 Timothy 3:1–5 — Vice List Word Study](lexicon/2tim3-vice-list/index.md) | 22 terms | Etymology, OT/LXX background, NT distribution, and theological notes for every term in Paul's last-days vice catalogue |
 
 ---
 
