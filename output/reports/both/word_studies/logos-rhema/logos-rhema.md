@@ -351,7 +351,7 @@ The LXX translators show no consistent preference for one term over the other wh
 
 ### Contextual Scripture References (Sliding Window)
 
-> **Methodology note:** The same-verse counts above only capture explicit co-occurrences. Many passages use λόγος or ῥῆμα to refer to scripture without a scripture-marker in the same verse — e.g. 2 Tim 4:2 ("Preach the *word*") draws its referent from 3:15–16 several verses earlier. The analysis below uses a sliding window of **±8 sequential verses within the same book** to catch contextually implicit scripture references. This is a heuristic: any term within 8 verses of γραφή (scripture), γράφω (it is written), νόμος (law), or προφήτης (prophet) is flagged. Many hits will be coincidental proximity rather than genuine semantic connection — use the KJV text and context to judge each entry.
+> **Methodology note:** The same-verse counts above only capture explicit co-occurrences. Many passages use λόγος or ῥῆμα to refer to scripture without a scripture-marker in the same verse — e.g. 2 Tim 4:2 ("Preach the *word*") draws its referent from 3:15–16 several verses earlier. The analysis below uses a sliding window of **±8 sequential verses within the same book** to catch contextually implicit scripture references, anchored on γραφή (scripture), γράφω (it is written), νόμος (law), and προφήτης (prophet). This table shows all raw proximity hits — many will be coincidental. Run `classify_window_hits.py` to filter this to confirmed scripture references only.
 
 **λόγος — contextual scripture proximity hits**
 

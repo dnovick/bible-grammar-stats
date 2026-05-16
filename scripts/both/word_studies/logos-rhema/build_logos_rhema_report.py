@@ -12,7 +12,15 @@ Generates:
     logos-rhema.md                      — main markdown report
     logos-rhema-concordance.csv         — full NT concordance for both terms
     logos-rhema-lxx-concordance.csv     — LXX concordance for both terms
+    window-hits.csv                     — raw sliding-window hits (input for classifier)
+    window-hits-classified.json         — LLM verdicts (produced by classify_window_hits.py)
+
+Workflow for classified sliding-window section:
+  1. python build_logos_rhema_report.py     (generates window-hits.csv)
+  2. python classify_window_hits.py         (generates window-hits-classified.json)
+  3. python build_logos_rhema_report.py     (report uses classified verdicts)
 """
+import json
 import matplotlib; matplotlib.use('Agg')  # noqa: E702
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -23,6 +31,8 @@ from bible_grammar.core.reference import BOOKS
 
 REPORT_DIR = Path('output/reports/both/word_studies/logos-rhema')
 CHART_DIR = Path('output/charts/both/word_studies/logos-rhema')
+WINDOW_HITS_CSV = REPORT_DIR / 'window-hits.csv'
+WINDOW_CLASSIFIED_JSON = REPORT_DIR / 'window-hits-classified.json'
 REPORT_DIR.mkdir(parents=True, exist_ok=True)
 CHART_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -652,26 +662,90 @@ def _sliding_window_scripture(nt_df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def _csv_window_hits(df: pd.DataFrame, kjv_df: pd.DataFrame) -> None:
+    """Export window hits to CSV for the LLM classifier."""
+    rows = []
+    for _, r in df.iterrows():
+        book, ch, vs = r['book'], r['chapter'], r['verse']
+        kjv_row = kjv_df[(kjv_df['book_id'] == book) &
+                         (kjv_df['chapter'] == ch) &
+                         (kjv_df['verse'] == vs)]
+        kjv_text = kjv_row['text'].values[0] if len(kjv_row) else ''
+        rows.append({
+            'word_term': r['word_term'],
+            'word_ref': r['word_ref'],
+            'greek_form': r['greek_form'],
+            'verse_dist': r['verse_dist'],
+            'sc_ref': r['sc_ref'],
+            'sc_term': r['sc_term'],
+            'kjv_text': kjv_text,
+        })
+    pd.DataFrame(rows).to_csv(WINDOW_HITS_CSV, index=False)
+    print(f'CSV: {WINDOW_HITS_CSV}  ({len(rows)} rows)')
+
+
+def _load_classification_cache() -> dict:
+    """Load window-hits-classified.json; return empty dict if absent."""
+    if WINDOW_CLASSIFIED_JSON.exists():
+        return json.loads(WINDOW_CLASSIFIED_JSON.read_text(encoding='utf-8'))
+    return {}
+
+
 def _window_table_lines(df: pd.DataFrame, kjv_df: pd.DataFrame,
-                        term_label: str) -> list:
-    """Markdown table rows for one term from the sliding-window results."""
+                        term_label: str, cache: dict) -> list:
+    """Markdown table rows for one term from the sliding-window results.
+
+    If cache is non-empty: show only 'yes' and 'uncertain' verdicts, adding a
+    Verdict + Reasoning column.  If cache is empty: show all hits unfiltered.
+    """
     sub = df[df['word_term'] == term_label].copy()
     if sub.empty:
         return [f'*No contextual scripture hits for {term_label} within the window.*']
-    lines = ['| Reference | Greek form | Nearest scripture anchor | Dist. | KJV text |',
-             '|---|---|---|---|---|']
+
+    classified = bool(cache)
+    if classified:
+        header = ('| Reference | Greek form | Nearest scripture anchor | Dist. '
+                  '| Verdict | Reasoning | KJV text |')
+        sep = '|---|---|---|---|---|---|---|'
+    else:
+        header = ('| Reference | Greek form | Nearest scripture anchor | Dist. '
+                  '| KJV text |')
+        sep = '|---|---|---|---|---|'
+
+    lines = [header, sep]
+    shown = 0
     for _, r in sub.iterrows():
         ref = r['word_ref']
+        key = f'{term_label}|{ref}'
+        if classified:
+            entry = cache.get(key)
+            if entry is None:
+                continue
+            verdict = entry['verdict']
+            if verdict == 'no':
+                continue
+            verdict_md = '✓ yes' if verdict == 'yes' else '? uncertain'
+            reasoning = entry['reasoning'].replace('|', '&#124;')[:80]
         book, ch, vs = r['book'], r['chapter'], r['verse']
         kjv_row = kjv_df[(kjv_df['book_id'] == book) &
                          (kjv_df['chapter'] == ch) &
                          (kjv_df['verse'] == vs)]
         kjv_text = kjv_row['text'].values[0][:90] + '…' if len(kjv_row) else ''
         kjv_text = kjv_text.replace('|', '&#124;')
-        lines.append(
-            f'| {ref} | {r["greek_form"]} | {r["sc_ref"]} ({r["sc_term"]}) '
-            f'| {r["verse_dist"]} | {kjv_text} |'
-        )
+        if classified:
+            lines.append(
+                f'| {ref} | {r["greek_form"]} | {r["sc_ref"]} ({r["sc_term"]}) '
+                f'| {r["verse_dist"]} | {verdict_md} | {reasoning} | {kjv_text} |'
+            )
+        else:
+            lines.append(
+                f'| {ref} | {r["greek_form"]} | {r["sc_ref"]} ({r["sc_term"]}) '
+                f'| {r["verse_dist"]} | {kjv_text} |'
+            )
+        shown += 1
+
+    if shown == 0:
+        return [f'*No confirmed or uncertain scripture hits for {term_label}.*']
     return lines
 
 
@@ -702,6 +776,9 @@ def _build_report() -> None:
     sc_nomos = (len(logos_vset & _vset('G3551')), len(rhema_vset & _vset('G3551')))
     sc_proph = (len(logos_vset & _vset('G4396')), len(rhema_vset & _vset('G4396')))
     window_df = _sliding_window_scripture(nt)
+    _csv_window_hits(window_df, kjv)
+    classification_cache = _load_classification_cache()
+    classified = bool(classification_cache)
 
     # NT books where each appears
     logos_books = sorted(logos_nt['book_id'].unique(),
@@ -1127,24 +1204,33 @@ def _build_report() -> None:
         '',
         '### Contextual Scripture References (Sliding Window)',
         '',
-        '> **Methodology note:** The same-verse counts above only capture explicit '
-        'co-occurrences. Many passages use λόγος or ῥῆμα to refer to scripture without '
-        'a scripture-marker in the same verse — e.g. 2 Tim 4:2 ("Preach the *word*") '
-        'draws its referent from 3:15–16 several verses earlier. The analysis below '
-        'uses a sliding window of **±8 sequential verses within the same book** to '
-        'catch contextually implicit scripture references. This is a heuristic: any '
-        f'term within {_SC_WINDOW} verses of γραφή (scripture), γράφω (it is written), '
-        f'νόμος (law), or προφήτης (prophet) is flagged. Many hits will be coincidental '
-        'proximity rather than genuine semantic connection — use the KJV text and '
-        'context to judge each entry.',
+        (
+            '> **Methodology note:** The same-verse counts above only capture explicit '
+            'co-occurrences. Many passages use λόγος or ῥῆμα to refer to scripture '
+            'without a scripture-marker in the same verse — e.g. 2 Tim 4:2 ("Preach '
+            'the *word*") draws its referent from 3:15–16 several verses earlier. '
+            'The analysis below uses a sliding window of '
+            f'**±{_SC_WINDOW} sequential verses within the same book** to catch '
+            'contextually implicit scripture references, anchored on γραφή (scripture), '
+            'γράφω (it is written), νόμος (law), and προφήτης (prophet). '
+            + (
+                'Each hit has been reviewed by an LLM classifier (Claude Sonnet via '
+                'AWS Bedrock); the table below shows only **yes** (confirmed) and '
+                '**uncertain** verdicts. *Still verify with the surrounding context.*'
+                if classified else
+                'This table shows all raw proximity hits — many will be coincidental. '
+                'Run `classify_window_hits.py` to filter this to confirmed scripture '
+                'references only.'
+            )
+        ),
         '',
         '**λόγος — contextual scripture proximity hits**',
         '',
-    ] + _window_table_lines(window_df, kjv, 'λόγος') + [
+    ] + _window_table_lines(window_df, kjv, 'λόγος', classification_cache) + [
         '',
         '**ῥῆμα — contextual scripture proximity hits**',
         '',
-    ] + _window_table_lines(window_df, kjv, 'ῥῆμα') + [
+    ] + _window_table_lines(window_df, kjv, 'ῥῆμα', classification_cache) + [
         '',
         '### Summary',
         '',
