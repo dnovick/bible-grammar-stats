@@ -38,6 +38,14 @@ kjv = trans[trans['translation'] == 'KJV'].copy()
 
 nt = words[words['source'] == 'TAGNT'].copy()
 
+# Sequential verse index within each book (used for sliding-window proximity)
+_vseq = (nt[['book_id', 'chapter', 'verse']]
+         .drop_duplicates()
+         .sort_values(['book_id', 'chapter', 'verse'])
+         .copy())
+_vseq['book_vseq'] = _vseq.groupby('book_id').cumcount()
+nt = nt.merge(_vseq, on=['book_id', 'chapter', 'verse'], how='left')
+
 logos_nt = nt[nt['strongs'].str.contains('G3056', na=False)].copy()
 rhema_nt = nt[nt['strongs'].str.contains('G4487', na=False)].copy()
 
@@ -587,6 +595,86 @@ def _build_both_verse_lines(
     return lines
 
 
+_SCRIPTURE_ANCHORS = {
+    'γραφή (scripture)':     'G1124',
+    'γράφω (it is written)': 'G1125',
+    'νόμος (law)':           'G3551',
+    'προφήτης (prophet)':    'G4396',
+}
+_SC_WINDOW = 8  # sequential verses within the same book
+
+
+def _sliding_window_scripture(nt_df: pd.DataFrame) -> pd.DataFrame:
+    """Return deduplicated rows of (word_term, word_ref, greek_form, verse_dist,
+    nearest_sc_ref, nearest_sc_term, kjv) for λόγος/ῥῆμα within _SC_WINDOW
+    sequential verses of a scripture-anchor term, excluding exact same-verse hits
+    (those are handled by the explicit same-verse section).
+    """
+    rows = []
+    for sc_label, sc_strongs in _SCRIPTURE_ANCHORS.items():
+        sc_rows = nt_df[nt_df['strongs'].str.contains(sc_strongs, na=False)][
+            ['book_id', 'chapter', 'verse', 'book_vseq']].drop_duplicates()
+        for term_strongs, term_label in [('G3056', 'λόγος'), ('G4487', 'ῥῆμα')]:
+            term_rows = nt_df[nt_df['strongs'].str.contains(term_strongs, na=False)][
+                ['book_id', 'chapter', 'verse', 'book_vseq', 'word']
+            ].drop_duplicates(subset=['book_id', 'chapter', 'verse'])
+            for _, sc_r in sc_rows.iterrows():
+                book = sc_r['book_id']
+                sc_seq = int(sc_r['book_vseq'])
+                sc_ch, sc_vs = int(sc_r['chapter']), int(sc_r['verse'])
+                near = term_rows[
+                    (term_rows['book_id'] == book) &
+                    (term_rows['book_vseq'] >= sc_seq - _SC_WINDOW) &
+                    (term_rows['book_vseq'] <= sc_seq + _SC_WINDOW)
+                ]
+                for _, t_r in near.iterrows():
+                    t_ch, t_vs = int(t_r['chapter']), int(t_r['verse'])
+                    if t_ch == sc_ch and t_vs == sc_vs:
+                        continue
+                    rows.append({
+                        'word_term': term_label,
+                        'book': book,
+                        'chapter': t_ch,
+                        'verse': t_vs,
+                        'word_ref': f'{book} {t_ch}:{t_vs}',
+                        'greek_form': t_r['word'],
+                        'verse_dist': abs(int(t_r['book_vseq']) - sc_seq),
+                        'sc_ref': f'{book} {sc_ch}:{sc_vs}',
+                        'sc_term': sc_label,
+                    })
+    if not rows:
+        return pd.DataFrame()
+    df = pd.DataFrame(rows)
+    # keep the nearest anchor for each term-verse
+    df = (df.sort_values('verse_dist')
+            .drop_duplicates(subset=['word_term', 'word_ref'])
+            .sort_values(['word_term', 'book', 'chapter', 'verse']))
+    return df
+
+
+def _window_table_lines(df: pd.DataFrame, kjv_df: pd.DataFrame,
+                        term_label: str) -> list:
+    """Markdown table rows for one term from the sliding-window results."""
+    sub = df[df['word_term'] == term_label].copy()
+    if sub.empty:
+        return [f'*No contextual scripture hits for {term_label} within the window.*']
+    lines = ['| Reference | Greek form | Nearest scripture anchor | Dist. | KJV text |',
+             '|---|---|---|---|---|']
+    for _, r in sub.iterrows():
+        ref = r['word_ref']
+        book, ch, vs = r['book'], r['chapter'], r['verse']
+        kjv_row = kjv_df[(kjv_df['book_id'] == book) &
+                         (kjv_df['chapter'] == ch) &
+                         (kjv_df['verse'] == vs)]
+        kjv_text = kjv_row['text'].values[0][:90] + '…' if len(kjv_row) else ''
+        kjv_text = kjv_text.replace('|', '&#124;')
+        lines.append(
+            f'| {ref} | {r["greek_form"]} | {r["sc_ref"]} ({r["sc_term"]}) '
+            f'| {r["verse_dist"]} | {kjv_text} |'
+        )
+    return lines
+
+
 def _build_report() -> None:
     logos_total_nt = len(logos_nt)
     rhema_total_nt = len(rhema_nt)
@@ -613,6 +701,7 @@ def _build_report() -> None:
     sc_grapho = (len(logos_vset & _vset('G1125')), len(rhema_vset & _vset('G1125')))
     sc_nomos = (len(logos_vset & _vset('G3551')), len(rhema_vset & _vset('G3551')))
     sc_proph = (len(logos_vset & _vset('G4396')), len(rhema_vset & _vset('G4396')))
+    window_df = _sliding_window_scripture(nt)
 
     # NT books where each appears
     logos_books = sorted(logos_nt['book_id'].unique(),
@@ -715,6 +804,8 @@ def _build_report() -> None:
         '- [Synoptic Pericope Comparison](#synoptic-pericope-comparison)',
         '- [Use with Reference to Written Scripture]'
         '(#use-with-reference-to-written-scripture)',
+        '  - [Contextual Scripture References (Sliding Window)]'
+        '(#contextual-scripture-references-sliding-window)',
         '- [Theological Significance](#theological-significance)',
         '- [Key Observations](#key-observations)',
         '- [Data Files](#data-files)',
@@ -1033,6 +1124,27 @@ def _build_report() -> None:
         'when rendering the Decalogue — both appear, sometimes in adjacent references. '
         'This confirms that in the OT/LXX context the two terms were closer in meaning '
         'than they would become in NT theological usage.',
+        '',
+        '### Contextual Scripture References (Sliding Window)',
+        '',
+        '> **Methodology note:** The same-verse counts above only capture explicit '
+        'co-occurrences. Many passages use λόγος or ῥῆμα to refer to scripture without '
+        'a scripture-marker in the same verse — e.g. 2 Tim 4:2 ("Preach the *word*") '
+        'draws its referent from 3:15–16 several verses earlier. The analysis below '
+        'uses a sliding window of **±8 sequential verses within the same book** to '
+        'catch contextually implicit scripture references. This is a heuristic: any '
+        f'term within {_SC_WINDOW} verses of γραφή (scripture), γράφω (it is written), '
+        f'νόμος (law), or προφήτης (prophet) is flagged. Many hits will be coincidental '
+        'proximity rather than genuine semantic connection — use the KJV text and '
+        'context to judge each entry.',
+        '',
+        '**λόγος — contextual scripture proximity hits**',
+        '',
+    ] + _window_table_lines(window_df, kjv, 'λόγος') + [
+        '',
+        '**ῥῆμα — contextual scripture proximity hits**',
+        '',
+    ] + _window_table_lines(window_df, kjv, 'ῥῆμα') + [
         '',
         '### Summary',
         '',
