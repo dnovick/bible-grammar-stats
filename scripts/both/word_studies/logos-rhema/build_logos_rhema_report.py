@@ -323,6 +323,29 @@ def _csv_lxx_concordance() -> None:
 
 # ── Markdown report ───────────────────────────────────────────────────────────
 
+def _build_both_verse_lines(
+    both_verses: pd.DataFrame,
+    detail: "dict[tuple[str, int, int], tuple[str, str, list[str]]]",
+) -> "list[str]":
+    """Build the detailed both-verses section lines."""
+    lines = []
+    for _, row in both_verses.iterrows():
+        key = (row['book_id'], int(row['chapter']), int(row['verse']))
+        if key not in detail:
+            continue
+        heading, quote, bullets = detail[key]
+        lines += [
+            '---',
+            '',
+            f'### {heading}',
+            '',
+            quote,
+            '',
+        ] + [f'- {b}' for b in bullets] + ['']
+    lines.append('---')
+    return lines
+
+
 def _build_report() -> None:
     logos_total_nt = len(logos_nt)
     rhema_total_nt = len(rhema_nt)
@@ -361,12 +384,65 @@ def _build_report() -> None:
         if lc > 0 or rc > 0:
             nt_book_table.append(f'| {BOOK_NAMES.get(b, b)} | {lc or "—"} | {rc or "—"} |')
 
-    # Both-verses block
-    both_blocks = []
-    for _, row in both_verses.iterrows():
-        text = _kjv(row['book_id'], row['chapter'], row['verse'])
-        ref = f"{row['book_id']} {row['chapter']}:{row['verse']}"
-        both_blocks.append(f'**{ref}** — *"{text}"*')
+    # Both-verses detail: word-level logos/rhema positions and forms
+    BOTH_DETAIL = {
+        ('Mat', 12, 36): (
+            'Matthew 12:36',
+            '> *"But I say unto you, That every idle **word** [ῥῆμα, Acc. Sg.] that men '
+            'shall speak, they shall give **account** [λόγον, Acc. Sg.] thereof in the '
+            'day of judgment."* (KJV)',
+            [
+                '**ῥῆμα** (word#6): the individual *spoken utterance* — the idle remark '
+                'as a concrete speech act',
+                '**λόγος** (word#16): the *account* or *reckoning* rendered — here '
+                'carrying its sense of reasoned explanation, not "word" at all',
+                'The KJV renders both as "word" / "account," obscuring that Jesus uses '
+                'two different words with deliberately different senses in a single sentence',
+            ],
+        ),
+        ('Jhn', 12, 48): (
+            'John 12:48',
+            '> *"He that rejecteth me, and receiveth not my **words** [ῥήματά, Acc. Pl.] '
+            'hath one that judgeth him: the **word** [λόγος, Nom. Sg.] that I have spoken, '
+            'the same shall judge him in the last day."* (KJV)',
+            [
+                '**ῥήματα** (word#8): the individual *sayings* of Jesus — the specific '
+                'utterances one might hear and reject',
+                '**λόγος** (word#15): the *message as a whole* — the authoritative word '
+                'of Christ considered as a unified, judicial reality',
+                'The shift from plural ῥήματα to singular λόγος is not accidental: '
+                'rejecting the individual words amounts to rejecting the Word entire',
+            ],
+        ),
+        ('Act', 10, 44): (
+            'Acts 10:44',
+            '> *"While Peter yet spake these **words** [ῥήματα, Acc. Pl.], the Holy Ghost '
+            'fell on all them which heard the **word** [λόγον, Acc. Sg.]."* (KJV)',
+            [
+                '**ῥήματα** (word#6): the specific sentences Peter was speaking — the '
+                'ongoing, audible proclamation in progress',
+                '**λόγος** (word#18): the *word/message* as received content — the gospel '
+                'message that the hearers were taking in',
+                'The Holy Spirit falls during the ῥήματα (the act of speaking) and upon '
+                'those hearing the λόγος (the message) — the two are simultaneous but distinct',
+            ],
+        ),
+        ('Heb', 12, 19): (
+            'Hebrews 12:19',
+            '> *"And the sound of a trumpet, and the voice of **words** [ῥημάτων, Gen. Pl.]; '
+            'which voice they that heard intreated that the **word** [λόγον, Acc. Sg.] '
+            'should not be spoken to them any more:"* (KJV)',
+            [
+                '**ῥημάτων** (word#6): the terrifying *utterances* at Sinai — the audible, '
+                'individual declarations from the fire and darkness (Deut 4:12)',
+                '**λόγος** (word#14): the *word* (message) they begged not to hear further '
+                '— the ongoing divine address considered as a single overwhelming communication',
+                'The Sinai theophany is described first in terms of its individual ῥήματα '
+                '(each terrifying pronouncement), then as a λόγος (the word as a whole) '
+                'too terrible to bear',
+            ],
+        ),
+    }
 
     lines = [
         '# Word Study: λόγος (G3056) and ῥῆμα (G4487)',
@@ -517,13 +593,12 @@ def _build_report() -> None:
         f'Only **{len(both_verses)} NT verses** contain both λόγος and ῥῆμα — '
         'making these passages especially revealing for understanding the distinction:',
         '',
-    ] + [''] + [f'- {b}\n' for b in both_blocks] + [
+    ] + _build_both_verse_lines(both_verses, BOTH_DETAIL) + [
         '',
-        'In John 12:48, the distinction is particularly clear: **τὰ ῥήματα** refers '
-        'to the specific words Jesus spoke (the concrete utterances), while **ὁ λόγος** '
-        'refers to the message/word as a whole that will judge. In Acts 10:44, Peter '
-        'speaks **ῥήματα** (the specific words of proclamation) and the Spirit falls on '
-        'those who heard **τὸν λόγον** (the word/message as content).',
+        'Across all four verses the pattern is consistent: **ῥῆμα** points to the '
+        'individual, concrete utterance as a speech event; **λόγος** points to the word '
+        'considered as message, content, or rational account. The KJV\'s use of "word" '
+        'for both regularly masks this distinction.',
         '',
         '---',
         '',

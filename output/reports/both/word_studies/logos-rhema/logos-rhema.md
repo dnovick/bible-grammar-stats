@@ -143,17 +143,49 @@ The book-by-book detail:
 
 Only **4 NT verses** contain both λόγος and ῥῆμα — making these passages especially revealing for understanding the distinction:
 
+---
 
-- **Mat 12:36** — *"But I say unto you, That every idle word that men shall speak, they shall give account thereof in the day of judgment."*
+### Matthew 12:36
 
-- **Jhn 12:48** — *"He that rejecteth me, and receiveth not my words, hath one that judgeth him: the word that I have spoken, the same shall judge him in the last day."*
+> *"But I say unto you, That every idle **word** [ῥῆμα, Acc. Sg.] that men shall speak, they shall give **account** [λόγον, Acc. Sg.] thereof in the day of judgment."* (KJV)
 
-- **Act 10:44** — *"While Peter yet spake these words, the Holy Ghost fell on all them which heard the word."*
+- **ῥῆμα** (word#6): the individual *spoken utterance* — the idle remark as a concrete speech act
+- **λόγος** (word#16): the *account* or *reckoning* rendered — here carrying its sense of reasoned explanation, not "word" at all
+- The KJV renders both as "word" / "account," obscuring that Jesus uses two different words with deliberately different senses in a single sentence
 
-- **Heb 12:19** — *"And the sound of a trumpet, and the voice of words; which voice they that heard intreated that the word should not be spoken to them any more:"*
+---
 
+### John 12:48
 
-In John 12:48, the distinction is particularly clear: **τὰ ῥήματα** refers to the specific words Jesus spoke (the concrete utterances), while **ὁ λόγος** refers to the message/word as a whole that will judge. In Acts 10:44, Peter speaks **ῥήματα** (the specific words of proclamation) and the Spirit falls on those who heard **τὸν λόγον** (the word/message as content).
+> *"He that rejecteth me, and receiveth not my **words** [ῥήματά, Acc. Pl.] hath one that judgeth him: the **word** [λόγος, Nom. Sg.] that I have spoken, the same shall judge him in the last day."* (KJV)
+
+- **ῥήματα** (word#8): the individual *sayings* of Jesus — the specific utterances one might hear and reject
+- **λόγος** (word#15): the *message as a whole* — the authoritative word of Christ considered as a unified, judicial reality
+- The shift from plural ῥήματα to singular λόγος is not accidental: rejecting the individual words amounts to rejecting the Word entire
+
+---
+
+### Acts 10:44
+
+> *"While Peter yet spake these **words** [ῥήματα, Acc. Pl.], the Holy Ghost fell on all them which heard the **word** [λόγον, Acc. Sg.]."* (KJV)
+
+- **ῥήματα** (word#6): the specific sentences Peter was speaking — the ongoing, audible proclamation in progress
+- **λόγος** (word#18): the *word/message* as received content — the gospel message that the hearers were taking in
+- The Holy Spirit falls during the ῥήματα (the act of speaking) and upon those hearing the λόγος (the message) — the two are simultaneous but distinct
+
+---
+
+### Hebrews 12:19
+
+> *"And the sound of a trumpet, and the voice of **words** [ῥημάτων, Gen. Pl.]; which voice they that heard intreated that the **word** [λόγον, Acc. Sg.] should not be spoken to them any more:"* (KJV)
+
+- **ῥημάτων** (word#6): the terrifying *utterances* at Sinai — the audible, individual declarations from the fire and darkness (Deut 4:12)
+- **λόγος** (word#14): the *word* (message) they begged not to hear further — the ongoing divine address considered as a single overwhelming communication
+- The Sinai theophany is described first in terms of its individual ῥήματα (each terrifying pronouncement), then as a λόγος (the word as a whole) too terrible to bear
+
+---
+
+Across all four verses the pattern is consistent: **ῥῆμα** points to the individual, concrete utterance as a speech event; **λόγος** points to the word considered as message, content, or rational account. The KJV's use of "word" for both regularly masks this distinction.
 
 ---
 
