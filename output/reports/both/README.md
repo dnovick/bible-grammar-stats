@@ -14,6 +14,7 @@ Each word study traces a Hebrew or Greek term across all relevant corpora, with 
 |---|---|---|
 | [Fasting Vocabulary](word_studies/fasting/fasting_word_study.md) | צוּם / צוֹם / νηστεύω | Hebrew OT, Aramaic OT, LXX, Greek NT |
 | [קֶרֶן / קָרַן — Horn / Radiance](word_studies/qeren/qeren_report.md) | H7161 / H7160 | Hebrew OT, LXX, translations |
+| [λόγος vs ῥῆμα — "Word"](word_studies/logos-rhema/logos-rhema.md) | G3056 / G4487 | LXX, Greek NT |
 
 ---
 
