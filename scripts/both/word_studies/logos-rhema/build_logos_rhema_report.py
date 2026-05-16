@@ -323,6 +323,46 @@ def _csv_lxx_concordance() -> None:
     print(f'CSV: {path}  ({len(df_out)} rows)')
 
 
+# ── NT by-book table (3-panel HTML) ──────────────────────────────────────────
+
+def _nt_book_html(logos: pd.DataFrame, rhema: pd.DataFrame) -> str:
+    """Three side-by-side HTML sub-tables of NT book counts."""
+    gospels_acts = ['Mat', 'Mrk', 'Luk', 'Jhn', 'Act']
+    pauline = ['Rom', '1Co', '2Co', 'Gal', 'Eph', 'Php', 'Col',
+               '1Th', '2Th', '1Ti', '2Ti', 'Tit', 'Phm']
+    general_apoc = ['Heb', 'Jas', '1Pe', '2Pe', '1Jn', '2Jn', '3Jn', 'Jud', 'Rev']
+
+    lc = logos.groupby('book_id').size().to_dict()
+    rc = rhema.groupby('book_id').size().to_dict()
+
+    def _panel(books: list, title: str) -> str:
+        rows = '\n'.join(
+            f'<tr><td>{BOOK_NAMES.get(b, b)}</td>'
+            f'<td align="right">{lc.get(b, 0) or "—"}</td>'
+            f'<td align="right">{rc.get(b, 0) or "—"}</td></tr>'
+            for b in books
+            if lc.get(b, 0) > 0 or rc.get(b, 0) > 0
+        )
+        return (
+            '<table>\n'
+            f'<tr><th colspan="3" align="left"><b>{title}</b></th></tr>\n'
+            '<tr><th align="left">Book</th>'
+            '<th>λόγος</th><th>ῥῆμα</th></tr>\n'
+            f'{rows}\n'
+            '</table>'
+        )
+
+    panels = [
+        _panel(gospels_acts, 'Gospels &amp; Acts'),
+        _panel(pauline, 'Pauline Epistles'),
+        _panel(general_apoc, 'General Epistles &amp; Revelation'),
+    ]
+    cells = '\n<td width="32">&nbsp;</td>\n'.join(
+        f'<td valign="top">\n{p}\n</td>' for p in panels
+    )
+    return f'<table>\n<tr>\n{cells}\n</tr>\n</table>'
+
+
 # ── Markdown report ───────────────────────────────────────────────────────────
 
 def _build_both_verse_lines(
@@ -392,13 +432,7 @@ def _build_report() -> None:
     logos_lxx_top = logos_lxx.groupby('book_id').size().sort_values(ascending=False).head(5)
     rhema_lxx_top = rhema_lxx.groupby('book_id').size().sort_values(ascending=False).head(5)
 
-    # NT by book table
-    nt_book_table = []
-    for b in NT_ORDER:
-        lc = len(logos_nt[logos_nt['book_id'] == b])
-        rc = len(rhema_nt[rhema_nt['book_id'] == b])
-        if lc > 0 or rc > 0:
-            nt_book_table.append(f'| {BOOK_NAMES.get(b, b)} | {lc or "—"} | {rc or "—"} |')
+    nt_book_html = _nt_book_html(logos_nt, rhema_nt)
 
     # Both-verses detail: word-level logos/rhema positions and forms
     BOTH_DETAIL = {
@@ -529,9 +563,7 @@ def _build_report() -> None:
         '![NT frequency by book](../../../../charts/both/word_studies/logos-rhema/'
         'logos-rhema-nt-by-book.png)',
         '',
-        '| Book | λόγος | ῥῆμα |',
-        '|---|---|---|',
-    ] + nt_book_table + [
+        nt_book_html,
         '',
         '![NT genre distribution](../../../../charts/both/word_studies/logos-rhema/'
         'logos-rhema-nt-genre-pie.png)',

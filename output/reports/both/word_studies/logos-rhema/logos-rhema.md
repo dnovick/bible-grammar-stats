@@ -52,33 +52,55 @@ Books with **only ῥῆμα** (no λόγος): Jud
 
 ![NT frequency by book](../../../../charts/both/word_studies/logos-rhema/logos-rhema-nt-by-book.png)
 
-| Book | λόγος | ῥῆμα |
-|---|---|---|
-| Matthew | 33 | 6 |
-| Mark | 24 | 2 |
-| Luke | 32 | 20 |
-| John | 40 | 12 |
-| Acts | 65 | 14 |
-| Romans | 8 | 5 |
-| 1 Corinthians | 17 | — |
-| 2 Corinthians | 9 | 2 |
-| Galatians | 2 | — |
-| Ephesians | 4 | 2 |
-| Philippians | 4 | — |
-| Colossians | 7 | — |
-| 1 Thessalonians | 9 | — |
-| 2 Thessalonians | 5 | — |
-| 1 Timothy | 8 | — |
-| 2 Timothy | 7 | — |
-| Titus | 5 | — |
-| Hebrews | 12 | 4 |
-| James | 5 | — |
-| 1 Peter | 6 | 2 |
-| 2 Peter | 4 | 1 |
-| 1 John | 7 | — |
-| 3 John | 1 | — |
-| Jude | — | 1 |
-| Revelation | 18 | — |
+<table>
+<tr>
+<td valign="top">
+<table>
+<tr><th colspan="3" align="left"><b>Gospels &amp; Acts</b></th></tr>
+<tr><th align="left">Book</th><th>λόγος</th><th>ῥῆμα</th></tr>
+<tr><td>Matthew</td><td align="right">33</td><td align="right">6</td></tr>
+<tr><td>Mark</td><td align="right">24</td><td align="right">2</td></tr>
+<tr><td>Luke</td><td align="right">32</td><td align="right">20</td></tr>
+<tr><td>John</td><td align="right">40</td><td align="right">12</td></tr>
+<tr><td>Acts</td><td align="right">65</td><td align="right">14</td></tr>
+</table>
+</td>
+<td width="32">&nbsp;</td>
+<td valign="top">
+<table>
+<tr><th colspan="3" align="left"><b>Pauline Epistles</b></th></tr>
+<tr><th align="left">Book</th><th>λόγος</th><th>ῥῆμα</th></tr>
+<tr><td>Romans</td><td align="right">8</td><td align="right">5</td></tr>
+<tr><td>1 Corinthians</td><td align="right">17</td><td align="right">—</td></tr>
+<tr><td>2 Corinthians</td><td align="right">9</td><td align="right">2</td></tr>
+<tr><td>Galatians</td><td align="right">2</td><td align="right">—</td></tr>
+<tr><td>Ephesians</td><td align="right">4</td><td align="right">2</td></tr>
+<tr><td>Philippians</td><td align="right">4</td><td align="right">—</td></tr>
+<tr><td>Colossians</td><td align="right">7</td><td align="right">—</td></tr>
+<tr><td>1 Thessalonians</td><td align="right">9</td><td align="right">—</td></tr>
+<tr><td>2 Thessalonians</td><td align="right">5</td><td align="right">—</td></tr>
+<tr><td>1 Timothy</td><td align="right">8</td><td align="right">—</td></tr>
+<tr><td>2 Timothy</td><td align="right">7</td><td align="right">—</td></tr>
+<tr><td>Titus</td><td align="right">5</td><td align="right">—</td></tr>
+</table>
+</td>
+<td width="32">&nbsp;</td>
+<td valign="top">
+<table>
+<tr><th colspan="3" align="left"><b>General Epistles &amp; Revelation</b></th></tr>
+<tr><th align="left">Book</th><th>λόγος</th><th>ῥῆμα</th></tr>
+<tr><td>Hebrews</td><td align="right">12</td><td align="right">4</td></tr>
+<tr><td>James</td><td align="right">5</td><td align="right">—</td></tr>
+<tr><td>1 Peter</td><td align="right">6</td><td align="right">2</td></tr>
+<tr><td>2 Peter</td><td align="right">4</td><td align="right">1</td></tr>
+<tr><td>1 John</td><td align="right">7</td><td align="right">—</td></tr>
+<tr><td>3 John</td><td align="right">1</td><td align="right">—</td></tr>
+<tr><td>Jude</td><td align="right">—</td><td align="right">1</td></tr>
+<tr><td>Revelation</td><td align="right">18</td><td align="right">—</td></tr>
+</table>
+</td>
+</tr>
+</table>
 
 ![NT genre distribution](../../../../charts/both/word_studies/logos-rhema/logos-rhema-nt-genre-pie.png)
 
