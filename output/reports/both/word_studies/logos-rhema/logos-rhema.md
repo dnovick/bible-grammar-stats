@@ -50,7 +50,7 @@ Books with **only λόγος** (no ῥῆμα): 1Co, 1Jn, 1Th, 1Ti, 2Th, 2Ti, 3J
 
 Books with **only ῥῆμα** (no λόγος): Jud
 
-![NT frequency by book](../../../charts/both/word_studies/logos-rhema/logos-rhema-nt-by-book.png)
+![NT frequency by book](../../../../charts/both/word_studies/logos-rhema/logos-rhema-nt-by-book.png)
 
 | Book | λόγος | ῥῆμα |
 |---|---|---|
@@ -80,7 +80,7 @@ Books with **only ῥῆμα** (no λόγος): Jud
 | Jude | — | 1 |
 | Revelation | 18 | — |
 
-![NT genre distribution](../../../charts/both/word_studies/logos-rhema/logos-rhema-nt-genre-pie.png)
+![NT genre distribution](../../../../charts/both/word_studies/logos-rhema/logos-rhema-nt-genre-pie.png)
 
 λόγος is distributed across all NT genres with particular concentration in Acts (65 occurrences) and the Gospels. ῥῆμα is almost entirely absent from the Pauline epistles — its weight falls on the Gospels (especially Luke), Acts, and a handful of general epistles.
 
@@ -90,7 +90,7 @@ Books with **only ῥῆμα** (no λόγος): Jud
 
 In the LXX canonical OT, λόγος occurs **961 times** and ῥῆμα **478 times**.
 
-![LXX frequency by book](../../../charts/both/word_studies/logos-rhema/logos-rhema-lxx-by-book.png)
+![LXX frequency by book](../../../../charts/both/word_studies/logos-rhema/logos-rhema-lxx-by-book.png)
 
 **Top 5 books for λόγος (LXX):**
 
@@ -122,7 +122,7 @@ The LXX translators drew on several Hebrew terms when choosing between λόγο�
 |---|---|---|---|
 | דָּבָר (H1697) | 824 | 417 | 66% |
 
-![dābar split by genre](../../../charts/both/word_studies/logos-rhema/logos-rhema-hebrew-sources.png)
+![dābar split by genre](../../../../charts/both/word_studies/logos-rhema/logos-rhema-hebrew-sources.png)
 
 The genre breakdown reveals a striking pattern: the Former Prophets (Samuel, Kings, Joshua, Judges) show the highest ῥῆμα share — consistent with their use of דָּבָר for specific, concrete speech events and royal decrees. Torah, Psalms, and Latter Prophets tilt strongly toward λόγος, especially in formulaic expressions like "the word of the LORD came to..." where the translators favored the more theologically weighty λόγος.
 
@@ -135,7 +135,7 @@ The genre breakdown reveals a striking pattern: the Former Prophets (Samuel, Kin
 
 The book-by-book detail:
 
-![dābar split by book](../../../charts/both/word_studies/logos-rhema/logos-rhema-dabar-split.png)
+![dābar split by book](../../../../charts/both/word_studies/logos-rhema/logos-rhema-dabar-split.png)
 
 ---
 

@@ -434,14 +434,14 @@ def _build_report() -> None:
         f'Books with **only ῥῆμα** (no λόγος): '
         f'{", ".join(sorted(rhema_only)) if rhema_only else "none"}',
         '',
-        '![NT frequency by book](../../../charts/both/word_studies/logos-rhema/'
+        '![NT frequency by book](../../../../charts/both/word_studies/logos-rhema/'
         'logos-rhema-nt-by-book.png)',
         '',
         '| Book | λόγος | ῥῆμα |',
         '|---|---|---|',
     ] + nt_book_table + [
         '',
-        '![NT genre distribution](../../../charts/both/word_studies/logos-rhema/'
+        '![NT genre distribution](../../../../charts/both/word_studies/logos-rhema/'
         'logos-rhema-nt-genre-pie.png)',
         '',
         'λόγος is distributed across all NT genres with particular concentration in Acts '
@@ -456,7 +456,7 @@ def _build_report() -> None:
         f'In the LXX canonical OT, λόγος occurs **{logos_total_lxx:,} times** and '
         f'ῥῆμα **{rhema_total_lxx:,} times**.',
         '',
-        '![LXX frequency by book](../../../charts/both/word_studies/logos-rhema/'
+        '![LXX frequency by book](../../../../charts/both/word_studies/logos-rhema/'
         'logos-rhema-lxx-by-book.png)',
         '',
         '**Top 5 books for λόγος (LXX):**',
@@ -485,7 +485,7 @@ def _build_report() -> None:
         f'| דָּבָר (H1697) | {dabar_to_logos} | {dabar_to_rhema} | '
         f'{dabar_logos_pct}% |',
         '',
-        '![dābar split by genre](../../../charts/both/word_studies/logos-rhema/'
+        '![dābar split by genre](../../../../charts/both/word_studies/logos-rhema/'
         'logos-rhema-hebrew-sources.png)',
         '',
         'The genre breakdown reveals a striking pattern: the Former Prophets '
@@ -507,7 +507,7 @@ def _build_report() -> None:
         '',
         'The book-by-book detail:',
         '',
-        '![dābar split by book](../../../charts/both/word_studies/logos-rhema/'
+        '![dābar split by book](../../../../charts/both/word_studies/logos-rhema/'
         'logos-rhema-dabar-split.png)',
         '',
         '---',
