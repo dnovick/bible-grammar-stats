@@ -16,6 +16,7 @@ Each word study traces a Hebrew or Greek term across all relevant corpora, with 
 | [קֶרֶן / קָרַן — Horn / Radiance](word_studies/qeren/qeren_report.md) | H7161 / H7160 | Hebrew OT, LXX, translations |
 | [λόγος vs ῥῆμα — "Word"](word_studies/logos-rhema/logos-rhema.md) | G3056 / G4487 | LXX, Greek NT |
 | [παράκλητος / παρακαλέω / παράκλησις — Comforter, Advocate](word_studies/parakletos/parakletos-report.md) | G3875 / G3870 / G3874 | Hebrew OT, LXX, Greek NT |
+| [Greek Prayer Vocabulary — 1 Timothy 2:1](word_studies/prayer-vocabulary/prayer-vocabulary-report.md) | G1162 / G4335 / G1783 / G2169 + verbs | Hebrew OT, LXX, Greek NT |
 
 ---
 
