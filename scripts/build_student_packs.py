@@ -1,9 +1,9 @@
 """Build student zip packages for BBH, BBG, and BBA.
 
 Produces three self-contained zips under output/student-packs/:
-  BBH.zip  — Hebrew lessons, exercises (HTML+PDF), flashcard decks, OT charts
-  BBG.zip  — Greek lessons, exercises (HTML+PDF), flashcard decks, NT+Both charts
-  BBA.zip  — Aramaic lessons, exercises (HTML+PDF), flashcard decks
+  BBH.zip  — Hebrew lessons, exercises (HTML+PDF+MD), flashcard decks, OT charts
+  BBG.zip  — Greek lessons, exercises (HTML+PDF+MD), flashcard decks, NT+Both charts
+  BBA.zip  — Aramaic lessons, exercises (HTML+PDF+MD), flashcard decks
 
 Each chapter folder contains:
   lesson.html         — rendered lesson (README.md → styled HTML)
@@ -190,14 +190,16 @@ def build_course(
                 html_name = md_file.stem + ".html"
                 zf.writestr(f"{zip_ch}/{html_name}", _md_to_html(md_file, nav))
 
-            # Exercises — HTML and PDF only
+            # Exercises — HTML, PDF, and MD
             ex_root = ch_dir / "exercises"
             if ex_root.exists():
                 for ex_dir in sorted(ex_root.iterdir()):
                     if not ex_dir.is_dir():
                         continue
-                    for ext in ("*.html", "*.pdf"):
+                    for ext in ("*.html", "*.pdf", "*.md"):
                         for f in sorted(ex_dir.glob(ext)):
+                            if f.name == "README.md":
+                                continue
                             zf.write(f, f"{zip_ch}/exercises/{ex_dir.name}/{f.name}")
 
             # Flashcard decks (.txt and -fd.txt; skip .md versions)
@@ -243,7 +245,7 @@ def _build_index(zip_name: str, course_label: str, chapters: list[tuple]) -> str
     body = f"""<h1>{course_label}</h1>
 <h2>Student Lesson Package</h2>
 <p>Click any chapter below to open the lesson. Each chapter folder also contains
-interactive exercises (HTML) and printable exercises (PDF), plus flashcard files
+interactive exercises (HTML), printable exercises (PDF), static reference copies (MD), plus flashcard files
 for import into Anki or Flashcards Deluxe.</p>
 <h3>Chapters</h3>
 <ul>
