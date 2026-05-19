@@ -53,7 +53,7 @@ The Hiphil is the primary **causative** stem in Biblical Hebrew. A verb that is 
 | **Causative** | Subject causes another to perform the action | הֵבִיא "he brought" ← בּוֹא "to come/go" |
 | **Declarative** | Subject declares or treats the object as something | הִצְדִּיק "he declared righteous" ← צָדַק "to be righteous" |
 | **Factitive** | Subject causes a state to come into existence | הֶחֱזִיק "he strengthened" ← חָזַק "to be strong" |
-| **Simple action** | No causative force; Hiphil is the standard lexical form | הִשְׁתַּחֲוָה "he bowed down / worshiped" |
+| **Simple action** | No causative force; Hiphil is the standard lexical form | הִגִּיד "he told / declared" ← נָגַד (Hiphil-only) |
 | **Denominative** *(not in BBH)* | Action derived from a noun | הִמְטִיר "he caused to rain" ← מָטָר "rain" |
 
 > **Key diagnostic:** Ask, "Is the subject *doing* the action, or *causing* someone else to do it?" If causing — it is likely Hiphil.
