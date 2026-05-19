@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Download processed data files from S3 so notebooks can run.
+set -euo pipefail
+
+DATA_URL="https://bereanbiblebots.com/data"
+DATA_DIR="$(dirname "$0")/../data/processed"
+mkdir -p "$DATA_DIR"
+
+files=(
+    alignment.parquet
+    bible_grammar.db
+    lxx.parquet
+    macula_syntax.parquet
+    macula_syntax_ot.parquet
+    targum.parquet
+    translations.parquet
+    word_alignment.parquet
+    words.parquet
+)
+
+for f in "${files[@]}"; do
+    dest="$DATA_DIR/$f"
+    if [ ! -f "$dest" ]; then
+        echo "Downloading $f..."
+        curl -fsSL "$DATA_URL/$f" -o "$dest"
+    fi
+done
+
+echo "Data files ready."

@@ -364,6 +364,19 @@ NOTEBOOK_SECTIONS = [
 ]
 
 
+BINDER_BASE = (
+    "https://mybinder.org/v2/gh/dnovick/berean-bible-bots/main"
+    "?urlpath=lab/tree/"
+)
+
+
+def _binder_badge(nb_rel: str) -> str:
+    """Return a Binder launch badge markdown string for the given notebook path."""
+    url = f"{BINDER_BASE}notebooks/{nb_rel}"
+    badge = "https://mybinder.org/badge_logo.svg"
+    return f"[![Launch in Binder]({badge})]({url})"
+
+
 def build_notebooks() -> list:
     """Copy notebooks into mkdocs_src and return nav entries."""
     nb_src = REPO / "notebooks"
@@ -375,16 +388,17 @@ def build_notebooks() -> list:
     nb_dst.mkdir(parents=True)
 
     # Write index page
+    binder_url = f"{BINDER_BASE}notebooks/"
     (nb_dst / "index.md").write_text(
         "# Notebooks\n\n"
         "Interactive analysis notebooks covering the full `bible_grammar` toolkit "
         "— Hebrew OT, Greek NT, Septuagint, Peshitta, and Targumim.\n\n"
         "Each notebook below is rendered statically with its outputs. "
-        "Interactive execution via Binder is coming soon (see [issue #49]"
-        "(https://github.com/dnovick/berean-bible-bots/issues/49)).\n\n"
-        "> **Note:** Charts and tables require the processed data files "
-        "(`data/processed/`) which are not in the repository. "
-        "Outputs shown here were generated locally.\n",
+        f"To run a notebook interactively, click the **Launch in Binder** badge "
+        f"on any notebook page, or launch the full environment:\n\n"
+        f"[![Launch in Binder](https://mybinder.org/badge_logo.svg)]({binder_url})\n\n"
+        "> **Note:** Binder sessions download the processed data files (~295 MB) "
+        "at startup via `binder/postBuild`, so the first launch takes a few minutes.\n",
         encoding="utf-8",
     )
 
@@ -400,6 +414,7 @@ def build_notebooks() -> list:
                     continue
                 dst_path = nb_dst / nb_rel
                 dst_path.parent.mkdir(parents=True, exist_ok=True)
+
                 shutil.copy(src, dst_path)
                 section_entries.append(
                     {nb_title: f"notebooks/{nb_rel}"}

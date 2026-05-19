@@ -41,6 +41,9 @@ extra_javascript:
 extra_files:
   - "*.pdf"
 
+hooks:
+  - docs_hooks.py
+
 plugins:
   - search
   - mkdocs-jupyter:

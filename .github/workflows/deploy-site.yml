@@ -11,6 +11,9 @@ on:
       - 'mkdocs_nav.yml'
       - 'overrides/**'
       - 'scripts/build_mkdocs.py'
+      - 'docs_hooks.py'
+      - 'notebooks/**'
+      - 'binder/**'
       - '.github/workflows/deploy-site.yml'
 
 jobs:
@@ -30,7 +33,8 @@ jobs:
             mkdocs==1.6.1 \
             mkdocs-material==9.7.6 \
             mkdocstrings==1.0.4 \
-            mkdocstrings-python==2.0.3
+            mkdocstrings-python==2.0.3 \
+            mkdocs-jupyter==0.25.1
 
       - name: Build MkDocs source tree
         run: python scripts/build_mkdocs.py
@@ -50,6 +54,7 @@ jobs:
           aws s3 sync mkdocs_out/ s3://${{ secrets.S3_BUCKET }}/ \
             --delete \
             --exclude "downloads/*" \
+            --exclude "data/*" \
             --cache-control "max-age=300"
 
       - name: Upload student pack ZIPs
