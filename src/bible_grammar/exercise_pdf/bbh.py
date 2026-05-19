@@ -33,43 +33,43 @@ class Ch26Exercise(PassageExercise):
         self.add_passage(PassageBlock(
             '6:12',
             'וַיַּרְא אֱלֹהִים אֶת־הָאָרֶץ וְהִנֵּה נִשְׁחָתָה כִּי־הִשְׁחִית כָּל־בָּשָׂר אֶת־דַּרְכּוֹ עַל־הָאָרֶץ',
-            '"And God saw the earth, and behold, it [20] ____; for all flesh had [1] ____ its way upon the earth."'))
+            '"And God saw the earth, and behold, it [1] ____; for all flesh had [2] ____ its way upon the earth."'))
         self.add_verb_table([
-            VerbEntry('20', 'נִשְׁחָתָה', 'Weqatal', '3fs', 'שָׁחַת', 'NOT Hiphil — Niphal passive: it was corrupt; נִ- prefix = Niphal, not הִ- Hiphil'),
-            VerbEntry('1', 'הִשְׁחִית', 'Perfect (qatal)', '3ms', 'שָׁחַת', 'Causative — had corrupted'),
+            VerbEntry('1', 'נִשְׁחָתָה', 'Weqatal', '3fs', 'שָׁחַת', 'NOT Hiphil — Niphal passive: it was corrupt; נִ- prefix = Niphal, not הִ- Hiphil'),
+            VerbEntry('2', 'הִשְׁחִית', 'Perfect (qatal)', '3ms', 'שָׁחַת', 'Causative — had corrupted'),
         ], show_answers=show_answers)
 
         self.add_passage(PassageBlock(
             '6:13',
             'הִנְנִי מַשְׁחִיתָם עִם־הָאָרֶץ',
-            '"Behold, I am [2] ____ them with the earth."'))
-        self.add_verb_table([VerbEntry('2', 'מַשְׁחִיתָם', 'Participle + 3mp suffix', 'ms', 'שָׁחַת', 'Causative — destroying them')], show_answers=show_answers)
+            '"Behold, I am [3] ____ them with the earth."'))
+        self.add_verb_table([VerbEntry('3', 'מַשְׁחִיתָם', 'Participle + 3mp suffix', 'ms', 'שָׁחַת', 'Causative — destroying them')], show_answers=show_answers)
 
         self.add_passage(PassageBlock(
             '6:17',
             'וַאֲנִי הִנְנִי מֵבִיא אֶת־הַמַּבּוּל מַיִם עַל־הָאָרֶץ',
-            '"As for me, behold, I am [3] ____ the flood of waters upon the earth."'))
-        self.add_verb_table([VerbEntry('3', 'מֵבִיא', 'Participle', 'ms', 'בּוֹא', 'Causative — bringing')], show_answers=show_answers)
+            '"As for me, behold, I am [4] ____ the flood of waters upon the earth."'))
+        self.add_verb_table([VerbEntry('4', 'מֵבִיא', 'Participle', 'ms', 'בּוֹא', 'Causative — bringing')], show_answers=show_answers)
 
         self.add_passage(PassageBlock(
             '6:18',
             'וַהֲקִמֹתִי אֶת־בְּרִיתִי אִתָּךְ',
-            '"But I will [4] ____ my covenant with you."'))
-        self.add_verb_table([VerbEntry('4', 'וַהֲקִמֹתִי', 'Weqatal', '1cs', 'קוּם', 'Factitive — I will establish')], show_answers=show_answers)
+            '"But I will [5] ____ my covenant with you."'))
+        self.add_verb_table([VerbEntry('5', 'וַהֲקִמֹתִי', 'Weqatal', '1cs', 'קוּם', 'Factitive — I will establish')], show_answers=show_answers)
 
         self.add_passage(PassageBlock(
             '6:19',
             'מִכָּל־בָּשָׂר שְׁנַיִם מִכֹּל תָּבִיא אֶל־הַתֵּבָה',
-            '"Of every living thing you shall [5] ____ two of every kind into the ark."'))
-        self.add_verb_table([VerbEntry('5', 'תָּבִיא', 'Imperfect', '2ms', 'בּוֹא', 'Causative — you shall bring')], show_answers=show_answers)
+            '"Of every living thing you shall [6] ____ two of every kind into the ark."'))
+        self.add_verb_table([VerbEntry('6', 'תָּבִיא', 'Imperfect', '2ms', 'בּוֹא', 'Causative — you shall bring')], show_answers=show_answers)
 
         self.add_passage(PassageBlock(
             '6:19–20',
             'לְהַחֲיֹת אִתָּךְ … לְהַחֲיוֹת',
-            '"to [6] ____ them alive with you … to [7] ____ them"'))
+            '"to [7] ____ them alive with you … to [8] ____ them"'))
         self.add_verb_table([
-            VerbEntry('6', 'לְהַחֲיֹת', 'Inf. Construct', '—', 'חָיָה', 'Causative — to keep alive'),
-            VerbEntry('7', 'לְהַחֲיוֹת', 'Inf. Construct', '—', 'חָיָה', 'Causative — to keep alive'),
+            VerbEntry('7', 'לְהַחֲיֹת', 'Inf. Construct', '—', 'חָיָה', 'Causative — to keep alive'),
+            VerbEntry('8', 'לְהַחֲיוֹת', 'Inf. Construct', '—', 'חָיָה', 'Causative — to keep alive'),
         ], show_answers=show_answers)
 
         self.add_section_break()
@@ -80,8 +80,8 @@ class Ch26Exercise(PassageExercise):
         self.add_passage(PassageBlock(
             '7:4',
             'כִּי לְיָמִים עוֹד שִׁבְעָה אָנֹכִי מַמְטִיר עַל־הָאָרֶץ אַרְבָּעִים יוֹם',
-            '"For in seven days I will [8] ____ rain on the earth forty days."'))
-        self.add_verb_table([VerbEntry('8', 'מַמְטִיר', 'Participle', 'ms', 'מָטַר', 'Causative/Denominative — causing rain')], show_answers=show_answers)
+            '"For in seven days I will [9] ____ rain on the earth forty days."'))
+        self.add_verb_table([VerbEntry('9', 'מַמְטִיר', 'Participle', 'ms', 'מָטַר', 'Causative/Denominative — causing rain')], show_answers=show_answers)
 
         self.add_section_break()
 
@@ -89,28 +89,28 @@ class Ch26Exercise(PassageExercise):
         self.add_section_heading('Passage C — Genesis 8:1–21')
 
         self.add_passage(PassageBlock('8:1', 'וַיַּעֲבֵר אֱלֹהִים רוּחַ עַל־הָאָרֶץ',
-            '"And God [9] ____ a wind over the earth."'))
-        self.add_verb_table([VerbEntry('9', 'וַיַּעֲבֵר', 'Wayyiqtol', '3ms', 'עָבַר', 'Causative — caused to pass over')], show_answers=show_answers)
+            '"And God [10] ____ a wind over the earth."'))
+        self.add_verb_table([VerbEntry('10', 'וַיַּעֲבֵר', 'Wayyiqtol', '3ms', 'עָבַר', 'Causative — caused to pass over')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('8:9', 'וַיָּבֵא אֹתָהּ אֵלָיו אֶל־הַתֵּבָה',
-            '"And he [10] ____ her back to him into the ark."'))
-        self.add_verb_table([VerbEntry('10', 'וַיָּבֵא', 'Wayyiqtol', '3ms', 'בּוֹא', 'Causative — brought')], show_answers=show_answers)
+            '"And he [11] ____ her back to him into the ark."'))
+        self.add_verb_table([VerbEntry('11', 'וַיָּבֵא', 'Wayyiqtol', '3ms', 'בּוֹא', 'Causative — brought')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('8:13', 'וַיָּסַר נֹחַ אֶת־מִכְסֵה הַתֵּבָה',
-            '"And Noah [11] ____ the covering of the ark."'))
-        self.add_verb_table([VerbEntry('11', 'וַיָּסַר', 'Wayyiqtol', '3ms', 'סוּר', 'Causative — removed')], show_answers=show_answers)
+            '"And Noah [12] ____ the covering of the ark."'))
+        self.add_verb_table([VerbEntry('12', 'וַיָּסַר', 'Wayyiqtol', '3ms', 'סוּר', 'Causative — removed')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('8:17', 'הַיְצֵא אִתָּךְ כָּל־הַחַיָּה',
-            '"[12] ____ with you every living thing."'))
-        self.add_verb_table([VerbEntry('12', 'הַיְצֵא', 'Imperative', '2ms', 'יָצָא', 'Causative — bring out!')], show_answers=show_answers)
+            '"[13] ____ with you every living thing."'))
+        self.add_verb_table([VerbEntry('13', 'הַיְצֵא', 'Imperative', '2ms', 'יָצָא', 'Causative — bring out!')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('8:20', 'וַיַּעַל עֹלֹת בַּמִּזְבֵּחַ',
-            '"And he [13] ____ burnt offerings on the altar."'))
-        self.add_verb_table([VerbEntry('13', 'וַיַּעַל', 'Wayyiqtol', '3ms', 'עָלָה', 'Causative — offered up')], show_answers=show_answers)
+            '"And he [14] ____ burnt offerings on the altar."'))
+        self.add_verb_table([VerbEntry('14', 'וַיַּעַל', 'Wayyiqtol', '3ms', 'עָלָה', 'Causative — offered up')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('8:21', 'לֹא־אֹסִף לְהַכֹּת אֶת־כָּל־חַי',
-            '"I will never again [14] ____ every living thing."'))
-        self.add_verb_table([VerbEntry('14', 'לְהַכֹּת', 'Inf. Construct', '—', 'נָכָה', 'Causative — to strike down')], show_answers=show_answers)
+            '"I will never again [15] ____ every living thing."'))
+        self.add_verb_table([VerbEntry('15', 'לְהַכֹּת', 'Inf. Construct', '—', 'נָכָה', 'Causative — to strike down')], show_answers=show_answers)
 
         self.add_section_break()
 
@@ -120,11 +120,11 @@ class Ch26Exercise(PassageExercise):
         self.add_passage(PassageBlock(
             '22:17',
             'כִּי בָרֵךְ אֲבָרֶכְךָ וְהַרְבָּה אַרְבֶּה אֶת־זַרְעֲךָ כְּכוֹכְבֵי הַשָּׁמַיִם',
-            '"For I will surely bless you, and I will [15] ____ [16] ____ your offspring as the stars of heaven."',
-            watchout='Watch out: בָּרֵךְ and אֲבָרֶכְךָ are Piel forms of בָּרַךְ ("to bless") — not Hiphil. Parse only verbs 15–16.'))
+            '"For I will surely bless you, and I will [16] ____ [17] ____ your offspring as the stars of heaven."',
+            watchout='Watch out: בָּרֵךְ and אֲבָרֶכְךָ are Piel forms of בָּרַךְ ("to bless") — not Hiphil. Parse only verbs 16–17.'))
         self.add_verb_table([
-            VerbEntry('15', 'וְהַרְבָּה', 'Inf. Absolute', '—', 'רָבָה', 'Causative — emphatic modifier (surely/multiplying)'),
-            VerbEntry('16', 'אַרְבֶּה',  'Imperfect',   '1cs', 'רָבָה', 'Causative — I will multiply'),
+            VerbEntry('16', 'וְהַרְבָּה', 'Inf. Absolute', '—', 'רָבָה', 'Causative — emphatic modifier (surely/multiplying)'),
+            VerbEntry('17', 'אַרְבֶּה',  'Imperfect',   '1cs', 'רָבָה', 'Causative — I will multiply'),
         ], show_answers=show_answers)
 
         self.add_section_break()
@@ -135,12 +135,12 @@ class Ch26Exercise(PassageExercise):
         self.add_passage(PassageBlock(
             '7:2',
             'וּנְתָנָם יְהוָה אֱלֹהֶיךָ לְפָנֶיךָ וְהִכִּיתָם הַכֵּה תַכֶּה לֹא־תִכְרֹת לָהֶם בְּרִית',
-            '"When the LORD your God [21] ____ them over, you shall [17] ____ them — [18] ____ [19] ____ them — [22] ____ no covenant with them."'))
+            '"When the LORD your God [18] ____ them over, you shall [19] ____ them — [20] ____ [21] ____ them — [22] ____ no covenant with them."'))
         self.add_verb_table([
-            VerbEntry('21', 'וּנְתָנָם', 'Weqatal',      '3ms', 'נָתַן', 'NOT Hiphil — Qal: and he gives/gives over; וּ + Qal perfect/weqatal; no הִ- prefix'),
-            VerbEntry('17', 'וְהִכִּיתָם', 'Weqatal',    '2ms', 'נָכָה', 'Causative — and you shall strike them'),
-            VerbEntry('18', 'הַכֵּה',    'Inf. Absolute', '—', 'נָכָה', 'Causative — emphatic modifier (certainly)'),
-            VerbEntry('19', 'תַכֶּה',    'Imperfect',    '2ms', 'נָכָה', 'Causative — you shall strike'),
+            VerbEntry('18', 'וּנְתָנָם', 'Weqatal',      '3ms', 'נָתַן', 'NOT Hiphil — Qal: and he gives/gives over; וּ + Qal perfect/weqatal; no הִ- prefix'),
+            VerbEntry('19', 'וְהִכִּיתָם', 'Weqatal',    '2ms', 'נָכָה', 'Causative — and you shall strike them'),
+            VerbEntry('20', 'הַכֵּה',    'Inf. Absolute', '—', 'נָכָה', 'Causative — emphatic modifier (certainly)'),
+            VerbEntry('21', 'תַכֶּה',    'Imperfect',    '2ms', 'נָכָה', 'Causative — you shall strike'),
             VerbEntry('22', 'תִכְרֹת',  'Imperfect',    '2ms', 'כָּרַת', 'NOT Hiphil — Qal: you shall cut (covenant); plain Qal imperfect; no הַ- Hiphil prefix'),
         ], show_answers=show_answers)
 
@@ -160,10 +160,10 @@ class Ch26Exercise(PassageExercise):
 
         # ── Notes + Score ─────────────────────────────────────────────────────
         self.add_note(
-            'Note: #1 (הִשְׁחִית) and B1 (הֵחֵל) are Perfect (qatal), not Weqatal — both follow כִּי '
-            'with no waw prefix. #15–16 and #18–19 illustrate the emphatic inf. absolute + imperfect '
+            'Note: #2 (הִשְׁחִית) and B1 (הֵחֵל) are Perfect (qatal), not Weqatal — both follow כִּי '
+            'with no waw prefix. #16–17 and #20–21 illustrate the emphatic inf. absolute + imperfect '
             'construction: the inf. absolute intensifies the finite verb ("shall certainly strike"). '
-            '#20 (נִשְׁחָתָה) is Niphal of the same root as #1 — compare: Niphal נִ- vs. Hiphil הִ-.'
+            '#1 (נִשְׁחָתָה) is Niphal of the same root as #2 — compare: Niphal נִ- vs. Hiphil הִ-.'
         )
         self.add_score(
             'Score: 19 Hiphil + 3 non-Hiphil + 2 bonus = 24 total.  '
@@ -173,15 +173,15 @@ class Ch26Exercise(PassageExercise):
         # ── Coverage table ────────────────────────────────────────────────────
         self.add_section_heading('Conjugation Coverage')
         self.add_coverage_table([
-            ('Wayyiqtol (5)',          '#9, #10, #11, #13, B2'),
-            ('Inf. Construct (3)',     '#6, #7, #14'),
-            ('Participle (3)',         '#2, #3, #8'),
-            ('Imperfect (3)',          '#5, #16, #19'),
-            ('Perfect / qatal (2)',    '#1, B1'),
-            ('Weqatal (2)',            '#4, #17'),
-            ('Inf. Absolute (2)',      '#15, #18'),
-            ('Imperative (1)',         '#12'),
-            ('Non-Hiphil (3)',         '#20 (Niphal Weqatal 3fs), #21 (Qal Weqatal 3ms), #22 (Qal Imperfect 2ms)'),
+            ('Wayyiqtol (5)',          '#10, #11, #12, #14, B2'),
+            ('Inf. Construct (3)',     '#7, #8, #15'),
+            ('Participle (3)',         '#3, #4, #9'),
+            ('Imperfect (3)',          '#6, #17, #21'),
+            ('Perfect / qatal (2)',    '#2, B1'),
+            ('Weqatal (2)',            '#5, #19'),
+            ('Inf. Absolute (2)',      '#16, #20'),
+            ('Imperative (1)',         '#13'),
+            ('Non-Hiphil (3)',         '#1 (Niphal Weqatal 3fs), #18 (Qal Weqatal 3ms), #22 (Qal Imperfect 2ms)'),
         ])
 
         # ── Reflection (only on question pages, not repeated in key) ──────────
@@ -458,7 +458,7 @@ class Ch25Exercise(PassageExercise):
         'Is it Niphal? (Yes / No). If Yes: parse conjugation, PGN, and root, '
         'then state the semantic function (Passive / Reflexive / Middle / Simple Action). '
         'If No: identify the correct stem and parse fully. '
-        'Three verbs in Part C are not Niphal — drawn from Qal already studied. '
+        'Three verbs in this exercise are not Niphal — drawn from Qal already studied. '
         'Answer key begins on the page marked "Answer Key".'
     )
 
@@ -473,19 +473,22 @@ class Ch25Exercise(PassageExercise):
         self.add_verb_table([VerbEntry('1', 'וְנִפְקְחוּ', 'Weqatal', '3cp', 'פָּקַח', 'Middle — will be opened')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('3:6',
-            'וְנֶחְמָ֤ד הָעֵץ֙ לְהַשְׂכִּ֔יל',
-            '"…and that the tree was desirable to make one wise."'))
-        self.add_verb_table([VerbEntry('2', 'וְנֶחְמָד', 'Participle ms', 'ms', 'חָמַד', 'Passive — desirable (substantival ptc.)')], show_answers=show_answers)
+            'וַתֵּרֶא הָאִשָּׁה כִּי טוֹב הָעֵץ … וְנֶחְמָ֤ד הָעֵץ֙ לְהַשְׂכִּ֔יל',
+            '"So when the woman [2] ____ that the tree was good … and the tree was [3] ____ to make one wise."'))
+        self.add_verb_table([
+            VerbEntry('2', 'וַתֵּרֶא', 'Wayyiqtol', '3fs', 'רָאָה', 'NOT Niphal — Qal: and she saw; III-ה Qal wayyiqtol; no נ-/תִ- Niphal marker'),
+            VerbEntry('3', 'וְנֶחְמָד', 'Participle ms', 'ms', 'חָמַד', 'Passive — desirable (substantival ptc.)'),
+        ], show_answers=show_answers)
 
         self.add_passage(PassageBlock('3:7',
             'וַתִּפָּקַ֙חְנָה֙ עֵינֵ֣י שְׁנֵיהֶ֔ם',
-            '"Then the eyes of both of them [3] ____."'))
-        self.add_verb_table([VerbEntry('3', 'וַתִּפָּקַחְנָה', 'Wayyiqtol', '3fp', 'פָּקַח', 'Middle — they were opened')], show_answers=show_answers)
+            '"Then the eyes of both of them [4] ____."'))
+        self.add_verb_table([VerbEntry('4', 'וַתִּפָּקַחְנָה', 'Wayyiqtol', '3fp', 'פָּקַח', 'Middle — they were opened')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('3:10',
             'וָאִירָ֛א כִּֽי־עֵירֹ֥ם אָנֹ֖כִי וָאֵחָבֵֽא',
-            '"I was afraid, because I was naked, and [4] ____."'))
-        self.add_verb_table([VerbEntry('4', 'וָאֵחָבֵא', 'Wayyiqtol', '1cs', 'חָבָא', 'Reflexive — I hid myself')], show_answers=show_answers)
+            '"I was afraid, because I was naked, and [5] ____."'))
+        self.add_verb_table([VerbEntry('5', 'וָאֵחָבֵא', 'Wayyiqtol', '1cs', 'חָבָא', 'Reflexive — I hid myself')], show_answers=show_answers)
 
         self.add_section_break()
 
@@ -494,31 +497,34 @@ class Ch25Exercise(PassageExercise):
 
         self.add_passage(PassageBlock('6:6',
             'וַיִּנָּ֣חֶם יְהוָ֔ה כִּֽי־עָשָׂ֥ה אֶת־הָאָדָ֖ם בָּאָ֑רֶץ',
-            '"And the LORD [5] ____ that he had made man on the earth."'))
-        self.add_verb_table([VerbEntry('5', 'וַיִּנָּחֶם', 'Wayyiqtol', '3ms', 'נָחַם', 'Simple Action (Niphal-only) — relented')], show_answers=show_answers)
+            '"And the LORD [6] ____ that he [7] ____ man on the earth."'))
+        self.add_verb_table([
+            VerbEntry('6', 'וַיִּנָּחֶם', 'Wayyiqtol', '3ms', 'נָחַם', 'Simple Action (Niphal-only) — relented'),
+            VerbEntry('7', 'עָשָׂה', 'Perfect', '3ms', 'עָשָׂה', 'NOT Niphal — Qal: he made/did; III-ה Qal perfect; contrast Niphal וַיִּנָּחֶם earlier in the verse'),
+        ], show_answers=show_answers)
 
         self.add_passage(PassageBlock('6:7',
             'נִחַ֖מְתִּי כִּ֥י עֲשִׂיתִֽם',
-            '"I [6] ____ that I made them."'))
-        self.add_verb_table([VerbEntry('6', 'נִחַמְתִּי', 'Weqatal', '1cs', 'נָחַם', 'Simple Action (Niphal-only) — I regret')], show_answers=show_answers)
+            '"I [8] ____ that I made them."'))
+        self.add_verb_table([VerbEntry('8', 'נִחַמְתִּי', 'Weqatal', '1cs', 'נָחַם', 'Simple Action (Niphal-only) — I regret')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('6:11',
             'וַתִּשָּׁחֵ֥ת הָאָ֖רֶץ … וַתִּמָּלֵ֥א הָאָ֖רֶץ חָמָֽס',
-            '"The earth [7] ____ … and the earth [8] ____ with violence."'))
+            '"The earth [9] ____ … and the earth [10] ____ with violence."'))
         self.add_verb_table([
-            VerbEntry('7', 'וַתִּשָּׁחֵת', 'Wayyiqtol', '3fs', 'שָׁחַת', 'Passive — it was corrupted'),
-            VerbEntry('8', 'וַתִּמָּלֵא', 'Wayyiqtol', '3fs', 'מָלֵא', 'Passive — it was filled'),
+            VerbEntry('9', 'וַתִּשָּׁחֵת', 'Wayyiqtol', '3fs', 'שָׁחַת', 'Passive — it was corrupted'),
+            VerbEntry('10', 'וַתִּמָּלֵא', 'Wayyiqtol', '3fs', 'מָלֵא', 'Passive — it was filled'),
         ], show_answers=show_answers)
 
         self.add_passage(PassageBlock('6:12',
             'וְהִנֵּ֥ה נִשְׁחָ֑תָה כִּֽי־הִשְׁחִ֧ית כָּל־בָּשָׂ֛ר',
-            '"and behold, it [9] ____, for all flesh had corrupted its way."'))
-        self.add_verb_table([VerbEntry('9', 'נִשְׁחָתָה', 'Weqatal', '3fs', 'שָׁחַת', 'Passive — it was corrupt')], show_answers=show_answers)
+            '"and behold, it [11] ____, for all flesh had corrupted its way."'))
+        self.add_verb_table([VerbEntry('11', 'נִשְׁחָתָה', 'Weqatal', '3fs', 'שָׁחַת', 'Passive — it was corrupt')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('6:21',
             'וְהָיָ֥ה לְךָ֖ וְלָהֶ֥ם לְאָכְלָֽה יֵֽאָכֵ֔ל',
-            '"it shall be food for you and for them — it shall [10] ____."'))
-        self.add_verb_table([VerbEntry('10', 'יֵאָכֵל', 'Imperfect', '3ms', 'אָכַל', 'Passive — it shall be eaten')], show_answers=show_answers)
+            '"it shall be food for you and for them — it shall [12] ____."'))
+        self.add_verb_table([VerbEntry('12', 'יֵאָכֵל', 'Imperfect', '3ms', 'אָכַל', 'Passive — it shall be eaten')], show_answers=show_answers)
 
         self.add_section_break()
 
@@ -527,18 +533,18 @@ class Ch25Exercise(PassageExercise):
 
         self.add_passage(PassageBlock('21:23',
             'הִשָּׁ֨בְעָ֜ה לִּ֗י בֵּאלֹהִ֛ים הֵ֖נָּה',
-            '"[11] ____ to me by God here."'))
-        self.add_verb_table([VerbEntry('11', 'הִשָּׁבְעָה', 'Imperative', '2ms', 'שָׁבַע', 'Reflexive — Swear! (bind yourself by oath)')], show_answers=show_answers)
+            '"[13] ____ to me by God here."'))
+        self.add_verb_table([VerbEntry('13', 'הִשָּׁבְעָה', 'Imperative', '2ms', 'שָׁבַע', 'Reflexive — Swear! (bind yourself by oath)')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('21:24',
             'וַיֹּ֙אמֶר֙ אַבְרָהָ֔ם אָנֹכִ֖י אִשָּׁבֵֽעַ',
-            '"And Abraham said, \'I [12] ____.\'"'))
-        self.add_verb_table([VerbEntry('12', 'אִשָּׁבֵעַ', 'Imperfect', '1cs', 'שָׁבַע', 'Reflexive — I will swear')], show_answers=show_answers)
+            '"And Abraham said, \'I [14] ____.\'"'))
+        self.add_verb_table([VerbEntry('14', 'אִשָּׁבֵעַ', 'Imperfect', '1cs', 'שָׁבַע', 'Reflexive — I will swear')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('21:31',
             'כִּ֛י שָׁ֥ם נִשְׁבְּע֖וּ שְׁנֵיהֶֽם',
-            '"For there [13] ____ both of them."'))
-        self.add_verb_table([VerbEntry('13', 'נִשְׁבְּעוּ', 'Weqatal', '3mp', 'שָׁבַע', 'Reflexive — they swore (bound themselves by oath)')], show_answers=show_answers)
+            '"For there [15] ____ both of them."'))
+        self.add_verb_table([VerbEntry('15', 'נִשְׁבְּעוּ', 'Weqatal', '3mp', 'שָׁבַע', 'Reflexive — they swore (bound themselves by oath)')], show_answers=show_answers)
 
         self.add_section_break()
 
@@ -546,41 +552,18 @@ class Ch25Exercise(PassageExercise):
         self.add_section_heading('Bonus — Genesis 21:3, 21:8')
 
         self.add_passage(PassageBlock('21:3', 'אֲשֶׁר־נּֽוֹלַד־לֹ֛ו', '"who had been born to him"'))
-        self.add_passage(PassageBlock('21:8', 'וַיִּגְדַּ֤ל הַיֶּ֙לֶד֙ וַיִּגָּמַ֑ל', '"And the child grew and was weaned."'))
+        self.add_passage(PassageBlock('21:8', 'וַיִּגְדַּ֤ל הַיֶּ֙לֶד֙ וַיִּגָּמַ֑ל', '"And the child [16] ____ and was weaned."'))
         self.add_verb_table([
             VerbEntry('B1', 'נּוֹלַד',  'Weqatal',   '3ms', 'יָלַד', 'Passive — who had been born'),
+            VerbEntry('16', 'וַיִּגְדַּל', 'Wayyiqtol', '3ms', 'גָּדַל', 'NOT Niphal — Qal: and he grew; plain Qal wayyiqtol; contrast Niphal וַיִּגָּמַל in same verse'),
             VerbEntry('B2', 'וַיִּגָּמַל', 'Wayyiqtol', '3ms', 'גָּמַל', 'Passive — was weaned'),
         ], show_answers=show_answers)
 
         self.add_section_break()
 
-        # ── Part C — Distractors ───────────────────────────────────────────────
-        self.add_section_heading('Part C — Distractor Check')
         self.add_note(
-            'These three verbs come from the same passages. None are Niphal. '
-            'Answer "No" for Niphal? and complete the full parse.'
-        )
-
-        self.add_passage(PassageBlock('3:6',
-            'וַתֵּרֶא הָאִשָּׁה כִּי טוֹב הָעֵץ לְמַאֲכָל',
-            '"So when the woman [14] ____ that the tree was good for food."'))
-        self.add_verb_table([VerbEntry('14', 'וַתֵּרֶא', 'Wayyiqtol', '3fs', 'רָאָה', 'NOT Niphal — Qal: and she saw; III-ה Qal wayyiqtol; no נ-/תִ- Niphal marker')], show_answers=show_answers)
-
-        self.add_passage(PassageBlock('6:6',
-            'כִּי עָשָׂה אֶת־הָאָדָם בָּאָרֶץ',
-            '"that he [15] ____ mankind on the earth."'))
-        self.add_verb_table([VerbEntry('15', 'עָשָׂה', 'Perfect', '3ms', 'עָשָׂה', 'NOT Niphal — Qal: he made/did; III-ה Qal perfect; contrast Niphal וַיִּנָּחֶם earlier in the verse')], show_answers=show_answers)
-
-        self.add_passage(PassageBlock('21:8',
-            'וַיִּגְדַּל הַיֶּלֶד',
-            '"And [16] ____ the child."'))
-        self.add_verb_table([VerbEntry('16', 'וַיִּגְדַּל', 'Wayyiqtol', '3ms', 'גָּדַל', 'NOT Niphal — Qal: and he grew; plain Qal wayyiqtol; contrast Niphal וַיִּגָּמַל in same verse')], show_answers=show_answers)
-
-        self.add_section_break()
-
-        self.add_note(
-            'Items 5–6 (וַיִּנָּחֶם / נִחַמְתִּי) are both from נָחַם, a verb that occurs almost exclusively '
-            'in the Niphal. Items 11–13 all parse as Reflexive from שָׁבַע — '
+            'Items 6–8 (וַיִּנָּחֶם / נִחַמְתִּי) are both from נָחַם, a verb that occurs almost exclusively '
+            'in the Niphal. Items 13–15 all parse as Reflexive from שָׁבַע — '
             'notice how Imperative, Imperfect, and Weqatal all express the same oath-swearing action.'
         )
         self.add_score(
@@ -590,12 +573,12 @@ class Ch25Exercise(PassageExercise):
 
         self.add_section_heading('Conjugation Coverage')
         self.add_coverage_table([
-            ('Wayyiqtol (5)',   '#3, #5, #7, #8, B2'),
-            ('Weqatal (5)',     '#1, #6, #9, #13, B1'),
-            ('Imperfect (2)',   '#10, #12'),
-            ('Participle (1)',  '#2'),
-            ('Imperative (1)',  '#11'),
-            ('Non-Niphal (3)',  '#14 (Qal Wayyiqtol 3fs), #15 (Qal Perfect 3ms), #16 (Qal Wayyiqtol 3ms)'),
+            ('Wayyiqtol (6)',   '#4, #5, #6, #9, #10, B2'),
+            ('Weqatal (5)',     '#1, #8, #11, #15, B1'),
+            ('Imperfect (2)',   '#12, #14'),
+            ('Participle (1)',  '#3'),
+            ('Imperative (1)',  '#13'),
+            ('Non-Niphal (3)',  '#2 (Qal Wayyiqtol 3fs), #7 (Qal Perfect 3ms), #16 (Qal Wayyiqtol 3ms)'),
         ])
 
         if not show_answers:
@@ -632,7 +615,7 @@ class Ch24Exercise(PassageExercise):
         'Is it Niphal? (Yes / No). If Yes: parse conjugation, PGN, and root, '
         'then state the semantic function (Passive / Reflexive / Simple Action). '
         'If No: identify the correct stem and parse fully. '
-        'Three verbs in Part C are not Niphal — drawn from Qal already studied. '
+        'Three verbs in this exercise are not Niphal — drawn from Qal already studied. '
         'Answer key begins on the page marked "Answer Key".'
     )
 
@@ -643,13 +626,19 @@ class Ch24Exercise(PassageExercise):
 
         self.add_passage(PassageBlock('37:7',
             'וְהִנֵּה קָמָה אֲלֻמָּתִי וְגַם נִצָּבָה',
-            '"and behold, my sheaf arose and [1] ____."'))
-        self.add_verb_table([VerbEntry('1', 'נִצָּבָה', 'Perfect', '3fs', 'נָצַב', 'Reflexive — it stood upright (stationed itself)')], show_answers=show_answers)
+            '"and behold, my sheaf [1] ____ and [2] ____."'))
+        self.add_verb_table([
+            VerbEntry('1', 'קָמָה', 'Perfect', '3fs', 'קוּם', 'NOT Niphal — Qal: she/it arose (no נ- prefix; plain Qal of hollow verb)'),
+            VerbEntry('2', 'נִצָּבָה', 'Perfect', '3fs', 'נָצַב', 'Reflexive — it stood upright (stationed itself)'),
+        ], show_answers=show_answers)
 
         self.add_passage(PassageBlock('37:36',
             'וְהַמְּדָנִים מָכְרוּ אֹתוֹ … וַיִּמָּכֵר יוֹסֵף אֶל־מִצְרָיִם',
-            '"Now the Midianites had sold him … and Joseph [2] ____ into Egypt."'))
-        self.add_verb_table([VerbEntry('2', 'וַיִּמָּכֵר', 'Wayyiqtol', '3ms', 'מָכַר', 'Passive — he was sold')], show_answers=show_answers)
+            '"Now the Midianites [3] ____ him … and Joseph [4] ____ into Egypt."'))
+        self.add_verb_table([
+            VerbEntry('3', 'מָכְרוּ', 'Perfect', '3cp', 'מָכַר', 'NOT Niphal — Qal: they sold; no נִ- prefix; contrast with Niphal וַיִּמָּכֵר in same verse'),
+            VerbEntry('4', 'וַיִּמָּכֵר', 'Wayyiqtol', '3ms', 'מָכַר', 'Passive — he was sold'),
+        ], show_answers=show_answers)
 
         self.add_section_break()
 
@@ -658,18 +647,18 @@ class Ch24Exercise(PassageExercise):
 
         self.add_passage(PassageBlock('44:9',
             'אֲשֶׁר יִמָּצֵא אִתּוֹ מֵעֲבָדֶיךָ וָמֵת',
-            '"With whichever of your servants [3] ____ [the cup] shall die."'))
-        self.add_verb_table([VerbEntry('3', 'יִמָּצֵא', 'Imperfect', '3ms', 'מָצָא', 'Passive — is found')], show_answers=show_answers)
+            '"With whichever of your servants [5] ____ [the cup] shall die."'))
+        self.add_verb_table([VerbEntry('5', 'יִמָּצֵא', 'Imperfect', '3ms', 'מָצָא', 'Passive — is found')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('44:12',
             'וַיִּמָּצֵא הַגָּבִיעַ בְּאַמְתַּחַת בִּנְיָמִן',
-            '"And the cup [4] ____ in Benjamin\'s sack."'))
-        self.add_verb_table([VerbEntry('4', 'וַיִּמָּצֵא', 'Wayyiqtol', '3ms', 'מָצָא', 'Passive — was found')], show_answers=show_answers)
+            '"And the cup [6] ____ in Benjamin\'s sack."'))
+        self.add_verb_table([VerbEntry('6', 'וַיִּמָּצֵא', 'Wayyiqtol', '3ms', 'מָצָא', 'Passive — was found')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('44:20',
             'יֶשׁ לָנוּ אָב זָקֵן וְיֶלֶד זְקֻנִים קָטָן וְאָחִיו מֵת וַיִּוָּתֵר הוּא',
-            '"We have an aged father … his brother is dead, and he alone [5] ____."'))
-        self.add_verb_table([VerbEntry('5', 'וַיִּוָּתֵר', 'Wayyiqtol', '3ms', 'יָתַר', 'Passive/Middle — was left, remained')], show_answers=show_answers)
+            '"We have an aged father … his brother is dead, and he alone [7] ____."'))
+        self.add_verb_table([VerbEntry('7', 'וַיִּוָּתֵר', 'Wayyiqtol', '3ms', 'יָתַר', 'Passive/Middle — was left, remained')], show_answers=show_answers)
 
         self.add_section_break()
 
@@ -678,13 +667,16 @@ class Ch24Exercise(PassageExercise):
 
         self.add_passage(PassageBlock('45:1',
             'וְלֹא־יָכֹל יוֹסֵף לְהִתְאַפֵּק לְכֹל הַנִּצָּבִים עָלָיו',
-            '"Joseph could no longer control himself before all those [6] ____ near him."'))
-        self.add_verb_table([VerbEntry('6', 'הַנִּצָּבִים', 'Participle', 'mp', 'נָצַב', 'Reflexive — those standing (stationed themselves)')], show_answers=show_answers)
+            '"Joseph [8] ____ no longer control himself before all those [9] ____ near him."'))
+        self.add_verb_table([
+            VerbEntry('8', 'יָכֹל', 'Perfect', '3ms', 'יָכֹל', 'NOT Niphal — Qal: he was able; Qal-only verb; לֹא יָכֹל = could not'),
+            VerbEntry('9', 'הַנִּצָּבִים', 'Participle', 'mp', 'נָצַב', 'Reflexive — those standing (stationed themselves)'),
+        ], show_answers=show_answers)
 
         self.add_passage(PassageBlock('45:16',
             'וְהַקֹּל נִשְׁמַע בֵּית פַּרְעֹה לֵאמֹר בָּאוּ אֲחֵי־יוֹסֵף',
-            '"And the report [7] ____ in Pharaoh\'s household, \'Joseph\'s brothers have come.\'"'))
-        self.add_verb_table([VerbEntry('7', 'נִשְׁמַע', 'Perfect', '3ms', 'שָׁמַע', 'Passive — was heard')], show_answers=show_answers)
+            '"And the report [10] ____ in Pharaoh\'s household, \'Joseph\'s brothers have come.\'"'))
+        self.add_verb_table([VerbEntry('10', 'נִשְׁמַע', 'Perfect', '3ms', 'שָׁמַע', 'Passive — was heard')], show_answers=show_answers)
 
         self.add_section_break()
 
@@ -693,15 +685,15 @@ class Ch24Exercise(PassageExercise):
 
         self.add_passage(PassageBlock('47:14',
             'וַיְלַקֵּט יוֹסֵף אֶת־כָּל־הַכֶּסֶף הַנִּמְצָא בְאֶרֶץ־מִצְרַיִם',
-            '"And Joseph collected all the silver [8] ____ in the land of Egypt."'))
-        self.add_verb_table([VerbEntry('8', 'הַנִּמְצָא', 'Participle', 'ms', 'מָצָא', 'Passive — that was found')], show_answers=show_answers)
+            '"And Joseph collected all the silver [11] ____ in the land of Egypt."'))
+        self.add_verb_table([VerbEntry('11', 'הַנִּמְצָא', 'Participle', 'ms', 'מָצָא', 'Passive — that was found')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('47:31',
             'הִשָּׁבְעָה לִי וַיִּשָּׁבַע לוֹ',
-            '"[9] ____ to me." And he [10] ____ to him."'))
+            '"[12] ____ to me." And he [13] ____ to him."'))
         self.add_verb_table([
-            VerbEntry('9', 'הִשָּׁבְעָה', 'Imperative', '2ms', 'שָׁבַע', 'Reflexive — swear! (bind yourself by oath)'),
-            VerbEntry('10', 'וַיִּשָּׁבַע', 'Wayyiqtol', '3ms', 'שָׁבַע', 'Reflexive — he swore (bound himself by oath)'),
+            VerbEntry('12', 'הִשָּׁבְעָה', 'Imperative', '2ms', 'שָׁבַע', 'Reflexive — swear! (bind yourself by oath)'),
+            VerbEntry('13', 'וַיִּשָּׁבַע', 'Wayyiqtol', '3ms', 'שָׁבַע', 'Reflexive — he swore (bound himself by oath)'),
         ], show_answers=show_answers)
 
         self.add_section_break()
@@ -711,18 +703,18 @@ class Ch24Exercise(PassageExercise):
 
         self.add_passage(PassageBlock('49:1',
             'הֵאָסְפוּ וְאַגִּידָה לָכֶם',
-            '"[11] ____ and I will tell you."'))
-        self.add_verb_table([VerbEntry('11', 'הֵאָסְפוּ', 'Imperative', '2mp', 'אָסַף', 'Passive — gather yourselves!')], show_answers=show_answers)
+            '"[14] ____ and I will tell you."'))
+        self.add_verb_table([VerbEntry('14', 'הֵאָסְפוּ', 'Imperative', '2mp', 'אָסַף', 'Passive — gather yourselves!')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('49:29',
             'אֲנִי נֶאֱסָף אֶל־עַמִּי',
-            '"I am [12] ____ to my people."'))
-        self.add_verb_table([VerbEntry('12', 'נֶאֱסָף', 'Participle', 'ms', 'אָסַף', 'Passive — am about to be gathered (die)')], show_answers=show_answers)
+            '"I am [15] ____ to my people."'))
+        self.add_verb_table([VerbEntry('15', 'נֶאֱסָף', 'Participle', 'ms', 'אָסַף', 'Passive — am about to be gathered (die)')], show_answers=show_answers)
 
         self.add_passage(PassageBlock('49:33',
             'וַיֵּאָסֶף אֶל־עַמָּיו',
-            '"and he was [13] ____ to his people."'))
-        self.add_verb_table([VerbEntry('13', 'וַיֵּאָסֶף', 'Wayyiqtol', '3ms', 'אָסַף', 'Passive — was gathered (died)')], show_answers=show_answers)
+            '"and he was [16] ____ to his people."'))
+        self.add_verb_table([VerbEntry('16', 'וַיֵּאָסֶף', 'Wayyiqtol', '3ms', 'אָסַף', 'Passive — was gathered (died)')], show_answers=show_answers)
 
         self.add_section_break()
 
@@ -739,33 +731,9 @@ class Ch24Exercise(PassageExercise):
 
         self.add_section_break()
 
-        # ── Part C — Distractors ───────────────────────────────────────────────
-        self.add_section_heading('Part C — Distractor Check')
         self.add_note(
-            'These three verbs come from the same passages. None are Niphal. '
-            'Answer "No" for Niphal? and complete the full parse.'
-        )
-
-        self.add_passage(PassageBlock('37:7',
-            'וְהִנֵּה קָמָה אֲלֻמָּתִי',
-            '"and behold, my sheaf [14] ____."'))
-        self.add_verb_table([VerbEntry('14', 'קָמָה', 'Perfect', '3fs', 'קוּם', 'NOT Niphal — Qal: she/it arose (no נ- prefix; plain Qal of hollow verb)')], show_answers=show_answers)
-
-        self.add_passage(PassageBlock('37:36',
-            'וְהַמְּדָנִים מָכְרוּ אֹתוֹ',
-            '"Now the Midianites [15] ____ him."'))
-        self.add_verb_table([VerbEntry('15', 'מָכְרוּ', 'Perfect', '3cp', 'מָכַר', 'NOT Niphal — Qal: they sold; no נִ- prefix; contrast with Niphal וַיִּמָּכֵר in same verse')], show_answers=show_answers)
-
-        self.add_passage(PassageBlock('45:1',
-            'וְלֹא־יָכֹל יוֹסֵף לְהִתְאַפֵּק',
-            '"Joseph [16] ____ no longer control himself."'))
-        self.add_verb_table([VerbEntry('16', 'יָכֹל', 'Perfect', '3ms', 'יָכֹל', 'NOT Niphal — Qal: he was able; Qal-only verb; לֹא יָכֹל = could not')], show_answers=show_answers)
-
-        self.add_section_break()
-
-        self.add_note(
-            'Items 12–13 (נֶאֱסָף / וַיֵּאָסֶף) are both from אָסַף — the euphemism "gathered to '
-            'one\'s people" means death. Items 9–10 both parse as Reflexive from שָׁבַע — '
+            'Items 15–16 (נֶאֱסָף / וַיֵּאָסֶף) are both from אָסַף — the euphemism "gathered to '
+            'one\'s people" means death. Items 12–13 both parse as Reflexive from שָׁבַע — '
             'notice Imperative followed by Wayyiqtol in the same verse (Gen 47:31).'
         )
         self.add_score(
@@ -775,13 +743,13 @@ class Ch24Exercise(PassageExercise):
 
         self.add_section_heading('Conjugation Coverage')
         self.add_coverage_table([
-            ('Wayyiqtol (5)',   '#2, #4, #5, #10, #13'),
-            ('Participle (3)',  '#6, #8, #12'),
-            ('Imperfect (1)',   '#3'),
-            ('Perfect (2)',     '#1, #7'),
-            ('Imperative (3)',  '#9, #11, B2'),
+            ('Wayyiqtol (5)',   '#4, #6, #7, #13, #16'),
+            ('Participle (3)',  '#9, #11, #15'),
+            ('Imperfect (1)',   '#5'),
+            ('Perfect (2)',     '#2, #10'),
+            ('Imperative (3)',  '#12, #14, B2'),
             ('Weqatal (1)',     'B1'),
-            ('Non-Niphal (3)',  '#14 (Qal Perf 3fs), #15 (Qal Perf 3cp), #16 (Qal Perf 3ms)'),
+            ('Non-Niphal (3)',  '#1 (Qal Perf 3fs), #3 (Qal Perf 3cp), #8 (Qal Perf 3ms)'),
         ])
 
         if not show_answers:
@@ -2383,7 +2351,7 @@ class Ch29HophalWeakExercise(PassageExercise):
         self.add_verb_table([
             VerbEntry('3', 'הַשָּׁב', 'Participle', 'ms', 'שׁוּב',
                       'Hophal Ptc. — (money) that was returned (biconsonantal; Hiphil heshiv)'),
-            VerbEntry('11', 'מוּבָאִים', 'Participle', 'mp', 'בּוֹא',
+            VerbEntry('4', 'מוּבָאִים', 'Participle', 'mp', 'בּוֹא',
                       'Hophal Ptc. mp — being brought in (mu- prefix; same root as #2)'),
         ], show_answers=show_answers)
 
@@ -2391,7 +2359,7 @@ class Ch29HophalWeakExercise(PassageExercise):
             'כִּי יוּבָא אִתָּנוּ אֶל בֵּיתוֹ',
             '"because we are being brought into his house."'))
         self.add_verb_table([
-            VerbEntry('4', 'יוּבָא', 'Imperfect', '3ms', 'בּוֹא',
+            VerbEntry('5', 'יוּבָא', 'Imperfect', '3ms', 'בּוֹא',
                       'Hophal — will be brought (yu- prefix = Hophal Impf.; I-yod)'),
         ], show_answers=show_answers)
 
@@ -2404,7 +2372,7 @@ class Ch29HophalWeakExercise(PassageExercise):
             'וַיְהִי בַּחֹדֶשׁ הָרִאשׁוֹן בַּשָּׁנָה הַשֵּׁנִית הוּקַם הַמִּשְׁכָּן',
             '"In the first month of the second year — the tabernacle was set up."'))
         self.add_verb_table([
-            VerbEntry('5', 'הוּקַם', 'Perfect', '3ms', 'קוּם',
+            VerbEntry('6', 'הוּקַם', 'Perfect', '3ms', 'קוּם',
                       'Hophal — was set up (biconsonantal; Hiphil heqim = to set up/establish)'),
         ], show_answers=show_answers)
 
@@ -2412,7 +2380,7 @@ class Ch29HophalWeakExercise(PassageExercise):
             'וּבְיוֹם הָקִים אֶת הַמִּשְׁכָּן כִּסָּה הֶעָנָן אֶת הַמִּשְׁכָּן',
             '"And on the day he set up the tabernacle, the cloud covered the tabernacle."'))
         self.add_verb_table([
-            VerbEntry('12', 'הָקִים', 'Perfect', '3ms', 'קוּם',
+            VerbEntry('7', 'הָקִים', 'Perfect', '3ms', 'קוּם',
                       'NOT Hophal — Hiphil active: "he set up" (ha- prefix, i-class; contrast huqam)'),
         ], show_answers=show_answers)
 
@@ -2420,7 +2388,7 @@ class Ch29HophalWeakExercise(PassageExercise):
             'בְּהֵעָלֹת הֶעָנָן מֵעַל הַמִּשְׁכָּן יִסְעוּ בְּנֵי יִשְׂרָאֵל',
             '"Whenever the cloud lifted, the people of Israel set out."'))
         self.add_verb_table([
-            VerbEntry('13', 'יִסְעוּ', 'Qal Impf.', '3mp', 'נָסַע',
+            VerbEntry('8', 'יִסְעוּ', 'Qal Impf.', '3mp', 'נָסַע',
                       'NOT Hophal — Qal Impf. 3mp (I-nun assimilation; yi- prefix, not yu-)'),
         ], show_answers=show_answers)
 
@@ -2428,8 +2396,8 @@ class Ch29HophalWeakExercise(PassageExercise):
             'וְאִם לֹא יֻקַּם הַמִּשְׁכָּן',
             '"And if the tabernacle was not set up…"'))
         self.add_verb_table([
-            VerbEntry('6', 'יֻקַּם', 'Imperfect', '3ms', 'קוּם',
-                      'Hophal — will be set up (Qibbuts yu variant; biconsonantal; same root as #5)'),
+            VerbEntry('9', 'יֻקַּם', 'Imperfect', '3ms', 'קוּם',
+                      'Hophal — will be set up (Qibbuts yu variant; biconsonantal; same root as #6)'),
         ], show_answers=show_answers)
 
         self.add_section_break()
@@ -2441,7 +2409,7 @@ class Ch29HophalWeakExercise(PassageExercise):
             'וְאֶת הַכֶּסֶף הַמּוּשָׁב בְּפִי אַמְתְּחֹתֵיכֶם הוּשַׁב תָּשִׁיבוּ',
             '"and the money that was returned in the mouth of your sacks — bring it back."'))
         self.add_verb_table([
-            VerbEntry('7', 'הוּשַׁב', 'Perfect', '3ms', 'שׁוּב',
+            VerbEntry('10', 'הוּשַׁב', 'Perfect', '3ms', 'שׁוּב',
                       'Hophal — was returned/brought back (biconsonantal; Hiphil heshiv)'),
         ], show_answers=show_answers)
 
@@ -2449,7 +2417,7 @@ class Ch29HophalWeakExercise(PassageExercise):
             'הִוא מוּצֵאת וְהִיא שָׁלְחָה אֶל חָמִיהָ לֵאמֹר',
             '"She was being brought out, and she sent word to her father-in-law, saying…"'))
         self.add_verb_table([
-            VerbEntry('8', 'מוּצֵאת', 'Participle', 'fs', 'יָצָא',
+            VerbEntry('11', 'מוּצֵאת', 'Participle', 'fs', 'יָצָא',
                       'Hophal Ptc. fs — being brought out (I-yod; mu- prefix; Hiphil hotzi)'),
         ], show_answers=show_answers)
 
@@ -2457,7 +2425,7 @@ class Ch29HophalWeakExercise(PassageExercise):
             'וַיִּשְׁלַח יְהוּדָה אֶת גְּדִי הָעִזִּים וְלֹא מְצָאָהּ',
             '"And Judah sent the young goat, but he did not find her."'))
         self.add_verb_table([
-            VerbEntry('14', 'מְצָאָהּ', 'Qal Pf.', '3ms + 3fs', 'מָצָא',
+            VerbEntry('12', 'מְצָאָהּ', 'Qal Pf.', '3ms + 3fs', 'מָצָא',
                       'NOT Hophal — Qal Pf. 3ms + 3fs obj. suffix (me = Qal, not Hophal mu-)'),
         ], show_answers=show_answers)
 
@@ -2465,7 +2433,7 @@ class Ch29HophalWeakExercise(PassageExercise):
             'הוּצָא הַחוֹמֶר מֵהֶם',
             '"The straw was taken away from them."'))
         self.add_verb_table([
-            VerbEntry('9', 'הוּצָא', 'Perfect', '3ms', 'יָצָא',
+            VerbEntry('13', 'הוּצָא', 'Perfect', '3ms', 'יָצָא',
                       'Hophal — was brought out (I-yod; hu- prefix; Hiphil hotzi = to bring out)'),
         ], show_answers=show_answers)
 
@@ -2473,7 +2441,7 @@ class Ch29HophalWeakExercise(PassageExercise):
             'הֻגַּד לְמֶלֶךְ מִצְרַיִם כִּי בָרַח הָעָם',
             '"It was told to the king of Egypt that the people had fled."'))
         self.add_verb_table([
-            VerbEntry('10', 'הֻגַּד', 'Perfect', '3ms', 'נָגַד',
+            VerbEntry('14', 'הֻגַּד', 'Perfect', '3ms', 'נָגַד',
                       'Hophal — it was told (I-nun assimilation + Qibbuts; Hiphil higgid = to tell)'),
         ], show_answers=show_answers)
 
@@ -2542,7 +2510,7 @@ class Ch31PielWeakExercise(PassageExercise):
             'וַהֲקִמֹתִי אֶת בְּרִיתִי אִתָּךְ לְהַחֲיוֹת אִתָּךְ',
             '"and I will establish my covenant with you, to keep alive with you…"'))
         self.add_verb_table([
-            VerbEntry('13', 'לְהַחֲיוֹת', 'Hiphil Inf.Const.', '—', 'חָיָה',
+            VerbEntry('4', 'לְהַחֲיוֹת', 'Hiphil Inf.Const.', '—', 'חָיָה',
                       'NOT Piel — Hiphil Inf. Const. (leha- prefix); "to keep alive" (causative)'),
         ], show_answers=show_answers)
 
@@ -2550,7 +2518,7 @@ class Ch31PielWeakExercise(PassageExercise):
             'חִיָּה אֶת אֲשֶׁר בָּאָרֶץ',
             '"Keep alive what is on the earth."'))
         self.add_verb_table([
-            VerbEntry('4', 'חִיָּה', 'Perfect', '3ms', 'חָיָה',
+            VerbEntry('5', 'חִיָּה', 'Perfect', '3ms', 'חָיָה',
                       'Factitive — "kept alive"; III-he: Hireq + dagesh in R2 + qamets-he'),
         ], show_answers=show_answers)
 
@@ -2558,7 +2526,7 @@ class Ch31PielWeakExercise(PassageExercise):
             'לְמַעַן אֲשֶׁר יְצַוֶּה אֶת בָּנָיו וְאֶת בֵּיתוֹ אַחֲרָיו',
             '"so that he will command his sons and his household after him…"'))
         self.add_verb_table([
-            VerbEntry('5', 'יְצַוֶּה', 'Imperfect', '3ms', 'צָוָה',
+            VerbEntry('6', 'יְצַוֶּה', 'Imperfect', '3ms', 'צָוָה',
                       'Denominative — III-he Impf. 3ms: ye- prefix + patach + dagesh in R2 + tsere-he'),
         ], show_answers=show_answers)
 
@@ -2566,7 +2534,7 @@ class Ch31PielWeakExercise(PassageExercise):
             'וַיְחַיּוּ אֶת יַלְדֵי הַנָּשִׁים הָעִבְרִיּוֹת',
             '"and they kept alive the male children of the Hebrew women." (the midwives)'))
         self.add_verb_table([
-            VerbEntry('6', 'וַיְחַיּוּ', 'Wayyiqtol', '3mp', 'חָיָה',
+            VerbEntry('7', 'וַיְחַיּוּ', 'Wayyiqtol', '3mp', 'חָיָה',
                       'Factitive — III-he Wayyiqtol 3mp: vayyeh + cha + yod (dagesh in yod) + u suffix'),
         ], show_answers=show_answers)
 
@@ -2579,7 +2547,7 @@ class Ch31PielWeakExercise(PassageExercise):
             'עִנָּה אֹתָהּ שָׂרַי',
             '"Sarai afflicted / humbled her."'))
         self.add_verb_table([
-            VerbEntry('7', 'עִנָּה', 'Perfect', '3ms', 'עָנָה',
+            VerbEntry('8', 'עִנָּה', 'Perfect', '3ms', 'עָנָה',
                       'Factitive — "she afflicted/humbled"; III-he: Hireq + dagesh in R2 + qamets-he'),
         ], show_answers=show_answers)
 
@@ -2587,7 +2555,7 @@ class Ch31PielWeakExercise(PassageExercise):
             'לְמַעַן עַנֹּתְךָ לְנַסֹּתְךָ',
             '"to humble you and to test you…"'))
         self.add_verb_table([
-            VerbEntry('8', 'עַנֹּתְךָ', 'Inf. Construct', '— + 2ms', 'עָנָה',
+            VerbEntry('9', 'עַנֹּתְךָ', 'Inf. Construct', '— + 2ms', 'עָנָה',
                       'Factitive — III-he Inf. Const. + 2ms suffix: patach + dagesh in nun + tav'),
         ], show_answers=show_answers)
 
@@ -2595,7 +2563,7 @@ class Ch31PielWeakExercise(PassageExercise):
             'לְמַעַן הוֹדִיעֲךָ כִּי לֹא עַל הַלֶּחֶם לְבַדּוֹ יִחְיֶה הָאָדָם',
             '"in order to make you know that man does not live by bread alone."'))
         self.add_verb_table([
-            VerbEntry('14', 'הוֹדִיעֲךָ', 'Hiphil Inf.Const.', '— + 2ms', 'יָדַע',
+            VerbEntry('10', 'הוֹדִיעֲךָ', 'Hiphil Inf.Const.', '— + 2ms', 'יָדַע',
                       'NOT Piel — Hiphil Inf. Const. of I-yod root yada (ho- prefix); "to make known"'),
         ], show_answers=show_answers)
 
@@ -2603,7 +2571,7 @@ class Ch31PielWeakExercise(PassageExercise):
             'יְעַנֶּה יְהוָה אֱלֹהֶיךָ אֹתְךָ בַּמִּדְבָּר',
             '"The LORD your God will humble you in the wilderness."'))
         self.add_verb_table([
-            VerbEntry('9', 'יְעַנֶּה', 'Imperfect', '3ms', 'עָנָה',
+            VerbEntry('11', 'יְעַנֶּה', 'Imperfect', '3ms', 'עָנָה',
                       'Factitive — III-he Impf. 3ms: ye- + patach + dagesh in nun + tsere-he ending'),
         ], show_answers=show_answers)
 
@@ -2616,7 +2584,7 @@ class Ch31PielWeakExercise(PassageExercise):
             'כִּי לֹא יַעֲשֶׂה אֲדֹנָי יְהוִה דָּבָר כִּי אִם גִּלָּה סוֹדוֹ אֶל עֲבָדָיו הַנְּבִיאִים',
             '"For the Lord GOD does nothing without revealing his secret to his servants the prophets."'))
         self.add_verb_table([
-            VerbEntry('10', 'גִּלָּה', 'Perfect', '3ms', 'גָּלָה',
+            VerbEntry('12', 'גִּלָּה', 'Perfect', '3ms', 'גָּלָה',
                       'Declarative/Intensive — "revealed"; III-he: Hireq + dagesh in lamed + qamets-he'),
         ], show_answers=show_answers)
 
@@ -2624,7 +2592,7 @@ class Ch31PielWeakExercise(PassageExercise):
             'וַיְצַוּוּ אֶל יוֹסֵף לֵאמֹר אָבִיךָ צִוָּה לִפְנֵי מוֹתוֹ',
             '"They sent a command to Joseph, saying, Your father gave orders before his death…"'))
         self.add_verb_table([
-            VerbEntry('11', 'וַיְצַוּוּ', 'Wayyiqtol', '3mp', 'צָוָה',
+            VerbEntry('13', 'וַיְצַוּוּ', 'Wayyiqtol', '3mp', 'צָוָה',
                       'Denominative — Wayyiqtol 3mp of tsavah III-he; "they commanded"'),
         ], show_answers=show_answers)
 
@@ -2632,7 +2600,7 @@ class Ch31PielWeakExercise(PassageExercise):
             'כָּל הַמִּצְוָה אֲשֶׁר אָנֹכִי מְצַוְּךָ הַיּוֹם תִּשְׁמְרוּן לַעֲשׂוֹת',
             '"All the commandment that I am commanding you today, you shall be careful to do."'))
         self.add_verb_table([
-            VerbEntry('12', 'מְצַוְּךָ', 'Participle', 'ms + 2ms', 'צָוָה',
+            VerbEntry('14', 'מְצַוְּךָ', 'Participle', 'ms + 2ms', 'צָוָה',
                       'Denominative — Piel Ptc. ms + 2ms suffix: me- + patach + dagesh in R2'),
         ], show_answers=show_answers)
 

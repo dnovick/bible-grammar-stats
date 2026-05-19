@@ -13,7 +13,7 @@ The three passages below contain a rich variety of Niphal functions. Genesis 3 h
 1. Parse it — give **conjugation**, **person-gender-number**, and **root**.
 2. State the **semantic function** (Passive / Reflexive / Middle / Simple action — or "NOT Niphal" for distractors).
 
-Distractors (14–16) are Qal verbs drawn from the same passages. Students must distinguish Niphal from Qal active forms appearing alongside them.
+Distractors (#2, #7, #16) are Qal verbs drawn inline from the same passages. Students must distinguish Niphal from Qal active forms appearing alongside them.
 
 An answer key is at the bottom.
 
@@ -33,32 +33,32 @@ An answer key is at the bottom.
 
 ‎**3:6** — **וַתֵּ֣רֶא** הָֽאִשָּׁ֡ה כִּ֣י טֹוב֩ הָעֵ֨ץ לְמַאֲכָ֜ל וְכִ֧י תַֽאֲוָה־ה֣וּא לָעֵינַ֗יִם **וְנֶחְמָ֤ד** הָעֵץ֙ לְהַשְׂכִּ֔יל
 
-*"[14] \_\_\_\_ the woman that the tree was good for food … and that the tree was desirable to make one wise [2] \_\_\_\_."*
+*"So when the woman [2] \_\_\_\_ that the tree was good for food … and the tree was [3] \_\_\_\_ to make one wise."*
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| 14 | וַתֵּרֶא | | | | | |
-| 2 | וְנֶחְמָד | | | | | |
+| 2 | וַתֵּרֶא | | | | | |
+| 3 | וְנֶחְמָד | | | | | |
 
 ---
 
 ‎**3:7** — וַתִּפָּקַ֙חְנָה֙ עֵינֵ֣י שְׁנֵיהֶ֔ם
 
-*"Then the eyes of both of them [3] \_\_\_\_."*
+*"Then the eyes of both of them [4] \_\_\_\_."*
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| 3 | וַתִּפָּקַחְנָה | | | | | |
+| 4 | וַתִּפָּקַחְנָה | | | | | |
 
 ---
 
 ‎**3:10** — וָאִירָ֛א כִּֽי־עֵירֹ֥ם אָנֹ֖כִי **וָאֵחָבֵֽא**
 
-*"I was afraid, because I was naked, and [4] \_\_\_\_."*
+*"I was afraid, because I was naked, and [5] \_\_\_\_."*
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| 4 | וָאֵחָבֵא | | | | | |
+| 5 | וָאֵחָבֵא | | | | | |
 
 ---
 
@@ -66,53 +66,53 @@ An answer key is at the bottom.
 
 ‎**6:6** — **וַיִּנָּ֣חֶם** יְהוָ֔ה כִּֽי־**עָשָׂ֥ה** אֶת־הָאָדָ֖ם בָּאָ֑רֶץ
 
-*"And the LORD [5] \_\_\_\_ that he [15] \_\_\_\_ man on the earth."*
+*"And the LORD [6] \_\_\_\_ that he [7] \_\_\_\_ man on the earth."*
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| 5 | וַיִּנָּחֶם | | | | | |
-| 15 | עָשָׂה | | | | | |
+| 6 | וַיִּנָּחֶם | | | | | |
+| 7 | עָשָׂה | | | | | |
 
 ---
 
 ‎**6:7** — **נִחַ֖מְתִּי** כִּ֥י עֲשִׂיתִֽם
 
-*"I [6] \_\_\_\_ that I made them."*
+*"I [8] \_\_\_\_ that I made them."*
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| 6 | נִחַמְתִּי | | | | | |
+| 8 | נִחַמְתִּי | | | | | |
 
 ---
 
 ‎**6:11** — וַתִּשָּׁחֵ֥ת הָאָ֖רֶץ … וַתִּמָּלֵ֥א הָאָ֖רֶץ חָמָֽס
 
-*"The earth [7] \_\_\_\_ … and the earth [8] \_\_\_\_ with violence."*
+*"The earth [9] \_\_\_\_ … and the earth [10] \_\_\_\_ with violence."*
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| 7 | וַתִּשָּׁחֵת | | | | | |
-| 8 | וַתִּמָּלֵא | | | | | |
+| 9 | וַתִּשָּׁחֵת | | | | | |
+| 10 | וַתִּמָּלֵא | | | | | |
 
 ---
 
 ‎**6:12** — וְהִנֵּ֥ה **נִשְׁחָ֑תָה** כִּֽי־הִשְׁחִ֧ית כָּל־בָּשָׂ֛ר
 
-*"and behold, it [9] \_\_\_\_, for all flesh had corrupted its way."*
+*"and behold, it [11] \_\_\_\_, for all flesh had corrupted its way."*
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| 9 | נִשְׁחָתָה | | | | | |
+| 11 | נִשְׁחָתָה | | | | | |
 
 ---
 
 ‎**6:21** — וְאָסַפְתָּ֣ אֵלֶ֔יךָ וְהָיָ֥ה לְךָ֖ וְלָהֶ֥ם לְאָכְלָֽה **יֵֽאָכֵ֔ל**
 
-*"Gather it to yourself; it shall be food for you and for them — it shall [10] \_\_\_\_."*
+*"Gather it to yourself; it shall be food for you and for them — it shall [12] \_\_\_\_."*
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| 10 | יֵאָכֵל | | | | | |
+| 12 | יֵאָכֵל | | | | | |
 
 ---
 
@@ -120,31 +120,31 @@ An answer key is at the bottom.
 
 ‎**21:23** — הִשָּׁ֨בְעָ֜ה לִּ֗י בֵּאלֹהִ֛ים הֵ֖נָּה
 
-*"[11] \_\_\_\_ to me by God here."*
+*"[13] \_\_\_\_ to me by God here."*
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| 11 | הִשָּׁבְעָה | | | | | |
+| 13 | הִשָּׁבְעָה | | | | | |
 
 ---
 
 ‎**21:24** — וַיֹּ֙אמֶר֙ אַבְרָהָ֔ם אָנֹכִ֖י **אִשָּׁבֵֽעַ**
 
-*"And Abraham said, 'I [12] \_\_\_\_.'"*
+*"And Abraham said, 'I [14] \_\_\_\_.'"*
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| 12 | אִשָּׁבֵעַ | | | | | |
+| 14 | אִשָּׁבֵעַ | | | | | |
 
 ---
 
 ‎**21:31** — כִּ֛י שָׁ֥ם **נִשְׁבְּע֖וּ** שְׁנֵיהֶֽם
 
-*"For there [13] \_\_\_\_ both of them."*
+*"For there [15] \_\_\_\_ both of them."*
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| 13 | נִשְׁבְּעוּ | | | | | |
+| 15 | נִשְׁבְּעוּ | | | | | |
 
 ---
 
@@ -156,7 +156,7 @@ An answer key is at the bottom.
 
 ‎**21:8** — **וַיִּגְדַּ֤ל** הַיֶּ֙לֶד֙ **וַיִּגָּמַ֑ל**
 
-*"And the child [16] \_\_\_\_ and [B2] \_\_\_\_."*
+*"And the child [16] \_\_\_\_ and was weaned."*
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
@@ -171,25 +171,40 @@ An answer key is at the bottom.
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
 | 1 | וְנִפְקְחוּ | Yes | Weqatal | 3cp | פָּקַח | Middle — *will be opened* (eyes open themselves) |
-| 14 | וַתֵּרֶא | No | Wayyiqtol | 3fs | רָאָה | No (Qal) — *she saw*; Qal wayyiqtol 3fs; no נ prefix |
-| 2 | וְנֶחְמָד | Yes | Participle ms | ms | חָמַד | Passive — *desirable* (substantival ptc., "desired") |
-| 3 | וַתִּפָּקַחְנָה | Yes | Wayyiqtol | 3fp | פָּקַח | Middle — *they were opened* (the eyes opened) |
-| 4 | וָאֵחָבֵא | Yes | Wayyiqtol | 1cs | חָבָא | Reflexive — *I hid myself* |
-| 5 | וַיִּנָּחֶם | Yes | Wayyiqtol | 3ms | נָחַם | Simple (Niphal-only) — *he regretted / relented* |
-| 15 | עָשָׂה | No | Perfect | 3ms | עָשָׂה | No (Qal) — *he had made*; active Qal perfect; note III-ה root |
-| 6 | נִחַמְתִּי | Yes | Weqatal | 1cs | נָחַם | Simple (Niphal-only) — *I regret* |
-| 7 | וַתִּשָּׁחֵת | Yes | Wayyiqtol | 3fs | שָׁחַת | Passive — *it was corrupted* |
-| 8 | וַתִּמָּלֵא | Yes | Wayyiqtol | 3fs | מָלֵא | Passive — *it was filled* |
-| 9 | נִשְׁחָתָה | Yes | Weqatal | 3fs | שָׁחַת | Passive — *it was corrupt* |
-| 10 | יֵאָכֵל | Yes | Imperfect | 3ms | אָכַל | Passive — *it shall be eaten* |
-| 11 | הִשָּׁבְעָה | Yes | Imperative | 2ms | שָׁבַע | Reflexive — *swear!* (bind yourself by oath) |
-| 12 | אִשָּׁבֵעַ | Yes | Imperfect | 1cs | שָׁבַע | Reflexive — *I will swear* |
-| 13 | נִשְׁבְּעוּ | Yes | Weqatal | 3mp | שָׁבַע | Reflexive — *they swore* (bound themselves by oath) |
+| 2 | וַתֵּרֶא | No | Wayyiqtol | 3fs | רָאָה | No (Qal) — *she saw*; Qal wayyiqtol 3fs; no נ-/תִ- Niphal marker |
+| 3 | וְנֶחְמָד | Yes | Participle ms | ms | חָמַד | Passive — *desirable* (substantival ptc., "desired") |
+| 4 | וַתִּפָּקַחְנָה | Yes | Wayyiqtol | 3fp | פָּקַח | Middle — *they were opened* (the eyes opened) |
+| 5 | וָאֵחָבֵא | Yes | Wayyiqtol | 1cs | חָבָא | Reflexive — *I hid myself* |
+| 6 | וַיִּנָּחֶם | Yes | Wayyiqtol | 3ms | נָחַם | Simple (Niphal-only) — *he regretted / relented* |
+| 7 | עָשָׂה | No | Perfect | 3ms | עָשָׂה | No (Qal) — *he had made*; contrast with Niphal וַיִּנָּחֶם earlier in the verse |
+| 8 | נִחַמְתִּי | Yes | Weqatal | 1cs | נָחַם | Simple (Niphal-only) — *I regret* |
+| 9 | וַתִּשָּׁחֵת | Yes | Wayyiqtol | 3fs | שָׁחַת | Passive — *it was corrupted* |
+| 10 | וַתִּמָּלֵא | Yes | Wayyiqtol | 3fs | מָלֵא | Passive — *it was filled* |
+| 11 | נִשְׁחָתָה | Yes | Weqatal | 3fs | שָׁחַת | Passive — *it was corrupt* |
+| 12 | יֵאָכֵל | Yes | Imperfect | 3ms | אָכַל | Passive — *it shall be eaten* |
+| 13 | הִשָּׁבְעָה | Yes | Imperative | 2ms | שָׁבַע | Reflexive — *swear!* (bind yourself by oath) |
+| 14 | אִשָּׁבֵעַ | Yes | Imperfect | 1cs | שָׁבַע | Reflexive — *I will swear* |
+| 15 | נִשְׁבְּעוּ | Yes | Weqatal | 3mp | שָׁבַע | Reflexive — *they swore* (bound themselves by oath) |
 | B1 | נּוֹלַד | Yes | Weqatal | 3ms | יָלַד | Passive — *who had been born* |
-| 16 | וַיִּגְדַּל | No | Wayyiqtol | 3ms | גָּדַל | No (Qal) — *grew*; active Qal; contrast with B2 Niphal passive of different root in same verse |
+| 16 | וַיִּגְדַּל | No | Wayyiqtol | 3ms | גָּדַל | No (Qal) — *grew*; active Qal; contrast with B2 Niphal passive in same verse |
 | B2 | וַיִּגָּמַל | Yes | Wayyiqtol | 3ms | גָּמַל | Passive — *was weaned* |
 
-> **Score:** 13 Niphal + 3 non-Niphal + 2 bonus = 18 total (distractors 14–16 are unscored practice). 15–18 = excellent; 11–14 = review the paradigm; below 11 = revisit §23.3–23.13 before the next class.
+> **Score:** 13 Niphal + 3 non-Niphal + 2 bonus = 18 total (distractors #2, #7, #16 are unscored practice). 15–18 = excellent; 11–14 = review the paradigm; below 11 = revisit §23.3–23.13 before the next class.
+
+---
+
+## Conjugation Coverage
+
+| Conjugation | Items |
+|---|---|
+| Wayyiqtol (6) | #4, #5, #6, #9, #10, B2 |
+| Weqatal (5) | #1, #8, #11, #15, B1 |
+| Imperfect (2) | #12, #14 |
+| Participle (1) | #3 |
+| Imperative (1) | #13 |
+| Non-Niphal (3) | #2 (Qal Wayyiqtol 3fs), #7 (Qal Perfect 3ms), #16 (Qal Wayyiqtol 3ms) |
+
+> **Note:** Items 6–8 (וַיִּנָּחֶם / נִחַמְתִּי) are both from נָחַם, a verb that occurs almost exclusively in the Niphal. Items 13–15 all parse as Reflexive from שָׁבַע — notice how Imperative, Imperfect, and Weqatal all express the same oath-swearing action.
 
 ---
 
