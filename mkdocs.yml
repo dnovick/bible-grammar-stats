@@ -1,5 +1,5 @@
 site_name: Berean Bible Bots
-site_url: https://bereanbiblebots.com/learn/
+site_url: https://bereanbiblebots.com/
 site_description: Free exercises, flashcard decks, and reference materials for students of Biblical Hebrew, Aramaic, and Greek.
 site_author: David Novick
 repo_url: https://github.com/dnovick/berean-bible-bots
@@ -7,9 +7,11 @@ repo_name: berean-bible-bots
 
 docs_dir: mkdocs_src
 site_dir: mkdocs_out
+custom_dir: overrides
 
 theme:
   name: material
+  custom_dir: overrides
   palette:
     - scheme: default
       primary: custom
@@ -55,5 +57,6 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   - attr_list
+  - meta
 
 INHERIT: mkdocs_nav.yml

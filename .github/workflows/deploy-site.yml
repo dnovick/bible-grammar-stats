@@ -4,12 +4,12 @@ on:
   push:
     branches: [main]
     paths:
-      - 'site/**'
       - 'output/lessons/**'
       - 'output/student-packs/**'
       - 'mkdocs_src/**'
       - 'mkdocs.yml'
       - 'mkdocs_nav.yml'
+      - 'overrides/**'
       - 'scripts/build_mkdocs.py'
       - '.github/workflows/deploy-site.yml'
 
@@ -45,16 +45,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Sync landing page to S3
+      - name: Sync MkDocs site to S3
         run: |
-          aws s3 sync site/ s3://${{ secrets.S3_BUCKET }}/ \
-            --exclude "learn/*" \
-            --cache-control "max-age=300"
-
-      - name: Sync MkDocs site to S3 under /learn/
-        run: |
-          aws s3 sync mkdocs_out/ s3://${{ secrets.S3_BUCKET }}/learn/ \
+          aws s3 sync mkdocs_out/ s3://${{ secrets.S3_BUCKET }}/ \
             --delete \
+            --exclude "downloads/*" \
             --cache-control "max-age=300"
 
       - name: Upload student pack ZIPs

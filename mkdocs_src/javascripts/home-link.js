@@ -1,8 +1,8 @@
-// Point the logo/site-name links back to the landing page root
+// Point the logo and site-name links to the root homepage
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(
         "a.md-header__button.md-logo, a.md-header__title"
     ).forEach(function (el) {
-        el.setAttribute("href", "https://bereanbiblebots.com/");
+        el.setAttribute("href", "/");
     });
 });
