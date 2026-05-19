@@ -13,7 +13,7 @@ The three passages below contain a rich variety of Niphal functions. Genesis 3 h
 1. Parse it — give **conjugation**, **person-gender-number**, and **root**.
 2. State the **semantic function** (Passive / Reflexive / Middle / Simple action — or "NOT Niphal" for distractors).
 
-Distractors (D1–D3) are Qal verbs drawn from the same passages. Students must distinguish Niphal from Qal active forms appearing alongside them.
+Distractors (14–16) are Qal verbs drawn from the same passages. Students must distinguish Niphal from Qal active forms appearing alongside them.
 
 An answer key is at the bottom.
 
@@ -33,11 +33,11 @@ An answer key is at the bottom.
 
 ‎**3:6** — **וַתֵּ֣רֶא** הָֽאִשָּׁ֡ה כִּ֣י טֹוב֩ הָעֵ֨ץ לְמַאֲכָ֜ל וְכִ֧י תַֽאֲוָה־ה֣וּא לָעֵינַ֗יִם **וְנֶחְמָ֤ד** הָעֵץ֙ לְהַשְׂכִּ֔יל
 
-*"[D1] \_\_\_\_ the woman that the tree was good for food … and that the tree was desirable to make one wise [2] \_\_\_\_."*
+*"[14] \_\_\_\_ the woman that the tree was good for food … and that the tree was desirable to make one wise [2] \_\_\_\_."*
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| D1 | וַתֵּרֶא | | | | | |
+| 14 | וַתֵּרֶא | | | | | |
 | 2 | וְנֶחְמָד | | | | | |
 
 ---
@@ -66,12 +66,12 @@ An answer key is at the bottom.
 
 ‎**6:6** — **וַיִּנָּ֣חֶם** יְהוָ֔ה כִּֽי־**עָשָׂ֥ה** אֶת־הָאָדָ֖ם בָּאָ֑רֶץ
 
-*"And the LORD [5] \_\_\_\_ that he [D2] \_\_\_\_ man on the earth."*
+*"And the LORD [5] \_\_\_\_ that he [15] \_\_\_\_ man on the earth."*
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
 | 5 | וַיִּנָּחֶם | | | | | |
-| D2 | עָשָׂה | | | | | |
+| 15 | עָשָׂה | | | | | |
 
 ---
 
@@ -156,12 +156,12 @@ An answer key is at the bottom.
 
 ‎**21:8** — **וַיִּגְדַּ֤ל** הַיֶּ֙לֶד֙ **וַיִּגָּמַ֑ל**
 
-*"And the child [D3] \_\_\_\_ and [B2] \_\_\_\_."*
+*"And the child [16] \_\_\_\_ and [B2] \_\_\_\_."*
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
 | B1 | נּוֹלַד | | | | | |
-| D3 | וַיִּגְדַּל | | | | | |
+| 16 | וַיִּגְדַּל | | | | | |
 | B2 | וַיִּגָּמַל | | | | | |
 
 ---
@@ -171,12 +171,12 @@ An answer key is at the bottom.
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
 | 1 | וְנִפְקְחוּ | Yes | Weqatal | 3cp | פָּקַח | Middle — *will be opened* (eyes open themselves) |
-| D1 | וַתֵּרֶא | No | Wayyiqtol | 3fs | רָאָה | No (Qal) — *she saw*; Qal wayyiqtol 3fs; no נ prefix |
+| 14 | וַתֵּרֶא | No | Wayyiqtol | 3fs | רָאָה | No (Qal) — *she saw*; Qal wayyiqtol 3fs; no נ prefix |
 | 2 | וְנֶחְמָד | Yes | Participle ms | ms | חָמַד | Passive — *desirable* (substantival ptc., "desired") |
 | 3 | וַתִּפָּקַחְנָה | Yes | Wayyiqtol | 3fp | פָּקַח | Middle — *they were opened* (the eyes opened) |
 | 4 | וָאֵחָבֵא | Yes | Wayyiqtol | 1cs | חָבָא | Reflexive — *I hid myself* |
 | 5 | וַיִּנָּחֶם | Yes | Wayyiqtol | 3ms | נָחַם | Simple (Niphal-only) — *he regretted / relented* |
-| D2 | עָשָׂה | No | Perfect | 3ms | עָשָׂה | No (Qal) — *he had made*; active Qal perfect; note III-ה root |
+| 15 | עָשָׂה | No | Perfect | 3ms | עָשָׂה | No (Qal) — *he had made*; active Qal perfect; note III-ה root |
 | 6 | נִחַמְתִּי | Yes | Weqatal | 1cs | נָחַם | Simple (Niphal-only) — *I regret* |
 | 7 | וַתִּשָּׁחֵת | Yes | Wayyiqtol | 3fs | שָׁחַת | Passive — *it was corrupted* |
 | 8 | וַתִּמָּלֵא | Yes | Wayyiqtol | 3fs | מָלֵא | Passive — *it was filled* |
@@ -186,10 +186,10 @@ An answer key is at the bottom.
 | 12 | אִשָּׁבֵעַ | Yes | Imperfect | 1cs | שָׁבַע | Reflexive — *I will swear* |
 | 13 | נִשְׁבְּעוּ | Yes | Weqatal | 3mp | שָׁבַע | Reflexive — *they swore* (bound themselves by oath) |
 | B1 | נּוֹלַד | Yes | Weqatal | 3ms | יָלַד | Passive — *who had been born* |
-| D3 | וַיִּגְדַּל | No | Wayyiqtol | 3ms | גָּדַל | No (Qal) — *grew*; active Qal; contrast with B2 Niphal passive of different root in same verse |
+| 16 | וַיִּגְדַּל | No | Wayyiqtol | 3ms | גָּדַל | No (Qal) — *grew*; active Qal; contrast with B2 Niphal passive of different root in same verse |
 | B2 | וַיִּגָּמַל | Yes | Wayyiqtol | 3ms | גָּמַל | Passive — *was weaned* |
 
-> **Score:** 13 main + 2 bonus = 15 total (distractors D1–D3 are unscored practice). 13–15 = excellent; 9–12 = review the paradigm; below 9 = revisit §23.3–23.13 before the next class.
+> **Score:** 13 Niphal + 3 non-Niphal + 2 bonus = 18 total (distractors 14–16 are unscored practice). 15–18 = excellent; 11–14 = review the paradigm; below 11 = revisit §23.3–23.13 before the next class.
 
 ---
 

@@ -13,7 +13,7 @@ The flood narrative (Gen 6–8) is one of the most Hiphil-dense passages in the 
 1. Parse it — give the **conjugation**, **person-gender-number** (use `—` for non-finite forms), and **root**.
 2. State the **semantic function** (Causative / Declarative / Factitive / Simple action — or "NOT Hiphil" for distractors).
 
-Distractors (D1–D3) include Niphal and Qal verbs from the same passages. At ch26, students have learned Qal and Niphal — both can appear in Hiphil-dense passages and must be distinguished.
+Distractors (20–22) include Niphal and Qal verbs from the same passages. At ch26, students have learned Qal and Niphal — both can appear in Hiphil-dense passages and must be distinguished.
 
 An answer key is at the bottom.
 
@@ -23,11 +23,11 @@ An answer key is at the bottom.
 
 ‎**6:12** — וַיַּ֧רְא אֱלֹהִ֛ים אֶת־הָאָ֖רֶץ וְהִנֵּ֣ה **נִשְׁחָ֑תָה** כִּֽי־**הִשְׁחִ֧ית** כָּל־בָּשָׂ֛ר אֶת־דַּרְכּ֖וֹ עַל־הָאָֽרֶץ
 
-*"And God saw the earth, and behold, it [D1] \_\_\_\_; for all flesh had [1] \_\_\_\_ its way upon the earth."*
+*"And God saw the earth, and behold, it [20] \_\_\_\_; for all flesh had [1] \_\_\_\_ its way upon the earth."*
 
 | # | Verb | Hiphil? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| D1 | נִשְׁחָתָה | | | | | |
+| 20 | נִשְׁחָתָה | | | | | |
 | 1 | הִשְׁחִית | | | | | |
 
 ---
@@ -176,15 +176,15 @@ An answer key is at the bottom.
 
 ‎**7:2** — **וּנְתָנָ֞ם** יְהוָ֤ה אֱלֹהֶ֙יךָ֙ לְפָנֶ֔יךָ **וְהִכִּיתָ֖ם** **הַכֵּ֣ה** **תַכֶּ֑ה** לֹא־**תִכְרֹ֥ת** לָהֶ֛ם בְּרִ֖ית
 
-*"When the LORD your God [D2] \_\_\_\_ them over to you, you shall [17] \_\_\_\_ them — [18] \_\_\_\_ [19] \_\_\_\_ them — you shall [D3] \_\_\_\_ no covenant with them."*
+*"When the LORD your God [21] \_\_\_\_ them over to you, you shall [17] \_\_\_\_ them — [18] \_\_\_\_ [19] \_\_\_\_ them — you shall [22] \_\_\_\_ no covenant with them."*
 
 | # | Verb | Hiphil? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| D2 | וּנְתָנָם | | | | | |
+| 21 | וּנְתָנָם | | | | | |
 | 17 | וְהִכִּיתָם | | | | | |
 | 18 | הַכֵּה | | | | | |
 | 19 | תַכֶּה | | | | | |
-| D3 | תִכְרֹת | | | | | |
+| 22 | תִכְרֹת | | | | | |
 
 ---
 
@@ -209,7 +209,7 @@ An answer key is at the bottom.
 
 | # | Verb | Hiphil? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| D1 | נִשְׁחָתָה | No | Weqatal | 3fs | שָׁחַת | No (Niphal) — *was corrupt*; Niphal weqatal passive; נ assimilates: וְהִנֵּה נִשְׁחָתָה |
+| 20 | נִשְׁחָתָה | No | Weqatal | 3fs | שָׁחַת | No (Niphal) — *was corrupt*; Niphal weqatal passive; נ assimilates: וְהִנֵּה נִשְׁחָתָה |
 | 1 | הִשְׁחִית | Yes | Perfect (qatal) | 3ms | שָׁחַת | Causative — *had corrupted* |
 | 2 | מַשְׁחִיתָם | Yes | Participle + 3mp suffix | ms | שָׁחַת | Causative — *destroying them* |
 | 3 | מֵבִיא | Yes | Participle | ms | בּוֹא | Causative — *bringing* |
@@ -226,20 +226,20 @@ An answer key is at the bottom.
 | 14 | לְהַכֹּת | Yes | Inf. Construct | — | נָכָה | Causative — *to strike down* |
 | 15 | וְהַרְבָּה | Yes | Inf. Absolute | — | רָבָה | Causative — emphatic modifier (*multiplying* / *surely*) |
 | 16 | אַרְבֶּה | Yes | Imperfect | 1cs | רָבָה | Causative — *I will multiply* |
-| D2 | וּנְתָנָם | No | Perfect + 3mp suffix | 3ms | נָתַן | No (Qal) — *gives them over*; Qal perfect of נָתַן with object suffix |
+| 21 | וּנְתָנָם | No | Perfect + 3mp suffix | 3ms | נָתַן | No (Qal) — *gives them over*; Qal perfect of נָתַן with object suffix |
 | 17 | וְהִכִּיתָם | Yes | Weqatal | 2ms | נָכָה | Causative — *and you shall strike them* |
 | 18 | הַכֵּה | Yes | Inf. Absolute | — | נָכָה | Causative — emphatic modifier (*striking* / *certainly*) |
 | 19 | תַכֶּה | Yes | Imperfect | 2ms | נָכָה | Causative — *you shall strike* |
-| D3 | תִכְרֹת | No | Imperfect | 2ms | כָּרַת | No (Qal) — *you shall make* (covenant); plain Qal imperfect; no הִ prefix |
+| 22 | תִכְרֹת | No | Imperfect | 2ms | כָּרַת | No (Qal) — *you shall make* (covenant); plain Qal imperfect; no הִ prefix |
 | B1 | הֵחֵל | Yes | Perfect (qatal) | 3ms | חָלַל | Causative — *began* (Hiphil of חָלַל = "to begin"; idiomatic use) |
 | B2 | וַיּוֹלֶד | Yes | Wayyiqtol | 3ms | יָלַד | Causative — *fathered / begat* |
 
 > **Notes:**
 > - #1 הִשְׁחִית and B1 הֵחֵל are both **Perfect (qatal)**, not Weqatal. Both follow כִּי with no waw prefix.
-> - D1 נִשְׁחָתָה is Niphal (passive); #1 הִשְׁחִית is Hiphil (active causative) — same root שָׁחַת, different stems in the same verse.
+> - 20 נִשְׁחָתָה is Niphal (passive); #1 הִשְׁחִית is Hiphil (active causative) — same root שָׁחַת, different stems in the same verse.
 > - #15–#16 and #18–#19 illustrate the **emphatic inf. absolute + imperfect** construction.
 
-> **Score:** 19 main + 2 bonus = 21 total (distractors D1–D3 unscored). 18–21 = excellent; 13–17 = review the paradigm; below 13 = revisit §26.3–26.13 before the next class.
+> **Score:** 19 Hiphil + 3 non-Hiphil + 2 bonus = 24 total (distractors 20–22 unscored). 21–24 = excellent; 16–20 = review the paradigm; below 16 = revisit §26.3–26.13 before the next class.
 
 ---
 

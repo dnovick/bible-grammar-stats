@@ -57,13 +57,13 @@ For each bolded verb, indicate:
 
 *Context: God commands Noah; Abraham is chosen to command his household.*
 
-> וַהֲקִמֹתִי אֶת בְּרִיתִי אִתָּךְ — **לְהַחֲיוֹת (D1)** אִתָּךְ **מִכֹּל חַי מִכֹּל בָּשָׂר שְׁנַיִם מִכֹּל תָּבִיא אֶל הַתֵּבָה**
+> וַהֲקִמֹתִי אֶת בְּרִיתִי אִתָּךְ — **לְהַחֲיוֹת (13)** אִתָּךְ **מִכֹּל חַי מִכֹּל בָּשָׂר שְׁנַיִם מִכֹּל תָּבִיא אֶל הַתֵּבָה**
 
 "…and I will establish my covenant with you… **to keep alive** with you…" (Gen 6:18–19)
 
 | # | Verb | Piel? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| D1 | לְהַחֲיוֹת | | | | | |
+| 13 | לְהַחֲיוֹת | | | | | |
 
 ---
 
@@ -123,13 +123,13 @@ For each bolded verb, indicate:
 
 ---
 
-> וַיְעַנְּךָ וַיַּרְעִבֶךָ וַיַּאֲכִלְךָ אֶת הַמָּן — **לְמַעַן הוֹדִיעֲךָ (D2)** כִּי לֹא עַל הַלֶּחֶם לְבַדּוֹ יִחְיֶה הָאָדָם
+> וַיְעַנְּךָ וַיַּרְעִבֶךָ וַיַּאֲכִלְךָ אֶת הַמָּן — **לְמַעַן הוֹדִיעֲךָ (14)** כִּי לֹא עַל הַלֶּחֶם לְבַדּוֹ יִחְיֶה הָאָדָם
 
 "…and he fed you manna **in order to make you know** that man does not live by bread alone." (Deu 8:3)
 
 | # | Verb | Piel? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| D2 | הוֹדִיעֲךָ | | | | | |
+| 14 | הוֹדִיעֲךָ | | | | | |
 
 ---
 
@@ -177,13 +177,13 @@ For each bolded verb, indicate:
 
 ---
 
-> **הוּבָא (D3)** יוֹסֵף מִצְרָיְמָה
+> **הוּבָא (15)** יוֹסֵף מִצְרָיְמָה
 
 "**Joseph was brought** to Egypt." (Gen 39:1 — same form as ch29 exercise, included as cross-stem review)
 
 | # | Verb | Piel? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| D3 | הוּבָא | | | | | |
+| 15 | הוּבָא | | | | | |
 
 ---
 
@@ -193,7 +193,7 @@ For each bolded verb, indicate:
 
 2. Verbs 2 and 3 are both forms of צוה (Piel Perf. 1cs + 2ms object suffix). How does the object suffix affect the form, and what rule about R2 (ו of III-ה roots) applies in the Piel Perfect? Can you spot where the vowel contraction occurs?
 
-3. Distractor D1 (לְהַחֲיוֹת) is Hiphil Inf. Construct of חיה, while verbs 4 and 6 are Piel of the same root. Compare: Hiphil לְהַחֲיוֹת ("to keep alive" — causative) vs. Piel חִיָּה ("kept alive" — intensive/factitive). What is the diagnostic morphological difference that tells you one is Hiphil and the other is Piel?
+3. Distractor 13 (לְהַחֲיוֹת) is Hiphil Inf. Construct of חיה, while verbs 4 and 6 are Piel of the same root. Compare: Hiphil לְהַחֲיוֹת ("to keep alive" — causative) vs. Piel חִיָּה ("kept alive" — intensive/factitive). What is the diagnostic morphological difference that tells you one is Hiphil and the other is Piel?
 
 ---
 
@@ -204,21 +204,21 @@ For each bolded verb, indicate:
 | 1 | וַיְצַו | Yes | Wayyiqtol | 3ms | צוה | Piel — Denominative (from מִצְוָה); III-ה apocopated in Wayyiqtol: וַיְצַו |
 | 2 | צִוִּיתִיךָ | Yes | Perfect | 1cs + 2ms obj. | צוה | Piel — Denominative; III-ה: ו contraction in Pf. + 2ms suffix; "I commanded you" |
 | 3 | צִוִּיתִיךָ | Yes | Perfect | 1cs + 2ms obj. | צוה | Piel — Denominative; same form as #2, repeated in different literary context |
-| D1 | לְהַחֲיוֹת | No | Inf. Construct | — | חיה | NOT Piel — Hiphil Inf. Const. of חיה (III-ה); לְהַ- prefix = Hiphil marker; "to keep alive" (causative) |
+| 13 | לְהַחֲיוֹת | No | Inf. Construct | — | חיה | NOT Piel — Hiphil Inf. Const. of חיה (III-ה); לְהַ- prefix = Hiphil marker; "to keep alive" (causative) |
 | 4 | חִיָּה | Yes | Perfect | 3ms | חיה | Piel — Factitive; III-ה root: Piel Pf. 3ms = חִיָּה (Hireq under R1 + dagesh in R2 + ָה); "kept alive" |
 | 5 | יְצַוֶּה | Yes | Imperfect | 3ms | צוה | Piel — Denominative; III-ה Impf. 3ms: יְ prefix + patach under R1 + dagesh forte in צּ + tsere-He ending |
 | 6 | וַיְחַיּוּ | Yes | Wayyiqtol | 3mp | חיה | Piel — Factitive; III-ה Wayyiqtol 3mp: וַיְ + חַ + יּ (dagesh forte in yod) + וּ suffix; "they kept alive" |
 | 7 | עִנָּה | Yes | Perfect | 3ms | ענה | Piel — Factitive; III-ה root ענה; Hireq under ע + dagesh forte in נּ + ָה; "she afflicted/humbled" |
 | 8 | עַנֹּתְךָ | Yes | Inf. Construct | — + 2ms suffix | ענה | Piel — Factitive; III-ה Inf. Const. with 2ms suffix: לְעַנֹּתְךָ (patach under ע + dagesh in נּ); "to humble you" |
-| D2 | הוֹדִיעֲךָ | No | Inf. Construct | — + 2ms suffix | ידע | NOT Piel — Hiphil Inf. Const. of ידע (I-י); הוֹ- prefix = Hiphil marker; "to make known / to cause to know" |
+| 14 | הוֹדִיעֲךָ | No | Inf. Construct | — + 2ms suffix | ידע | NOT Piel — Hiphil Inf. Const. of ידע (I-י); הוֹ- prefix = Hiphil marker; "to make known / to cause to know" |
 | 9 | יְעַנֶּה | Yes | Imperfect | 3ms | ענה | Piel — Factitive; III-ה Impf. 3ms: יְ prefix + patach under ע + dagesh forte in נּ + tsere-He; "will humble" |
 | 10 | גִּלָּה | Yes | Perfect | 3ms | גלה | Piel — Declarative/Intensive; III-ה root גלה: Hireq under ג + dagesh forte in לּ + ָה; "revealed" |
 | 11 | וַיְצַוּוּ | Yes | Wayyiqtol | 3mp | צוה | Piel — Denominative; Wayyiqtol 3mp of צוה III-ה: וַיְ + צַ + וּ (3mp ending); "they commanded/sent word" |
 | 12 | מְצַוְּךָ | Yes | Participle | ms + 2ms obj. | צוה | Piel — Denominative; Piel Ptc. ms with 2ms suffix: מְ prefix + patach under צ + dagesh in וּ; "commanding you" |
-| D3 | הוּבָא | No | Perfect | 3ms | בוא | NOT Piel — Hophal Pf. 3ms of I-י root בוא; הוּ prefix (u-class) = Hophal; "was brought" |
+| 15 | הוּבָא | No | Perfect | 3ms | בוא | NOT Piel — Hophal Pf. 3ms of I-י root בוא; הוּ prefix (u-class) = Hophal; "was brought" |
 
 > **Notes on distractors:**
-> - **D1 לְהַחֲיוֹת** is Hiphil Inf. Construct of חיה. The לְהַ- prefix marks Hiphil (not Piel). Piel Inf. Const. of חיה would be לְחַיּוֹת (no הַ- prefix).
-> - **D2 הוֹדִיעֲךָ** is Hiphil Inf. Const. of ידע (I-י). The הוֹ- (Holem-Vav) prefix marks Hiphil; Piel of ידע is extremely rare and has different morphology.
-> - **D3 הוּבָא** is Hophal Perfect 3ms of בוא. The הוּ- (Shureq) prefix marks Hophal (u-class vowel), not Piel (i-class vowel under R1 + dagesh forte in R2).
+> - **13 לְהַחֲיוֹת** is Hiphil Inf. Construct of חיה. The לְהַ- prefix marks Hiphil (not Piel). Piel Inf. Const. of חיה would be לְחַיּוֹת (no הַ- prefix).
+> - **14 הוֹדִיעֲךָ** is Hiphil Inf. Const. of ידע (I-י). The הוֹ- (Holem-Vav) prefix marks Hiphil; Piel of ידע is extremely rare and has different morphology.
+> - **15 הוּבָא** is Hophal Perfect 3ms of בוא. The הוּ- (Shureq) prefix marks Hophal (u-class vowel), not Piel (i-class vowel under R1 + dagesh forte in R2).
 > - Verb **#1 וַיְצַו** is the apocopated Piel Wayyiqtol 3ms of צוה: the III-ה drops in the Wayyiqtol, yielding וַיְצַו instead of *וַיְצַוֶּה. Compare with the full imperfect form in #5 (יְצַוֶּה).

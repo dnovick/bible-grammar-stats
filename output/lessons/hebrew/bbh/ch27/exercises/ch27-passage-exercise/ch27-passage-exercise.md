@@ -209,7 +209,7 @@ These three verbs are drawn from the same corpus. **None are Hiphil.** Answer "N
 
 ---
 
-**D1.** וַיַּשְׁכֵּם אַבְרָהָם בַּבֹּקֶר **וַיֵּלֶךְ** אֶל הַמָּקוֹם
+**19.** וַיַּשְׁכֵּם אַבְרָהָם בַּבֹּקֶר **וַיֵּלֶךְ** אֶל הַמָּקוֹם
 *(Gen 22:3)* — "And Abraham rose early in the morning and **went** to the place."
 
 | Hiphil? | Conjugation | PGN | Root | Weak class | Stem / Function |
@@ -218,7 +218,7 @@ These three verbs are drawn from the same corpus. **None are Hiphil.** Answer "N
 
 ---
 
-**D2.** וַיִּקְרָא אַבְרָהָם אֶת שֶׁם בְּנוֹ אֲשֶׁר **נוֹלַד** לוֹ
+**20.** וַיִּקְרָא אַבְרָהָם אֶת שֶׁם בְּנוֹ אֲשֶׁר **נוֹלַד** לוֹ
 *(Gen 21:3)* — "And Abraham called the name of his son who **was born** to him."
 
 | Hiphil? | Conjugation | PGN | Root | Weak class | Stem / Function |
@@ -227,7 +227,7 @@ These three verbs are drawn from the same corpus. **None are Hiphil.** Answer "N
 
 ---
 
-**D3.** כִּי בְּיוֹם אֲכָלְךָ מִמֶּנּוּ מוֹת **תָּמוּת**
+**21.** כִּי בְּיוֹם אֲכָלְךָ מִמֶּנּוּ מוֹת **תָּמוּת**
 *(Gen 2:17)* — "for in the day you eat of it you shall surely **die**."
 
 | Hiphil? | Conjugation | PGN | Root | Weak class | Stem / Function |
@@ -260,6 +260,6 @@ These three verbs are drawn from the same corpus. **None are Hiphil.** Answer "N
 | 18 | מוֹצִיא | Yes | Participle | ms | יָצָא | I-י | the one who brings out |
 | B1 | וַיָּשֶׂם | Yes | Wayyiqtol | 3ms | שִׂים | Biconsonantal | and he placed |
 | B2 | יַגִּישׁ | Yes | Imperfect | 3ms | נָגַשׁ | I-נ | let him bring near |
-| D1 | וַיֵּלֶךְ | No | Wayyiqtol | 3ms | הָלַךְ | I-guttural (Holam–Vav hollow-like) | NOT Hiphil — Qal: *and he went*; no הִ/הַ prefix; plain Qal of הָלַךְ |
-| D2 | נוֹלַד | No | Perfect | 3ms | יָלַד | I-י | NOT Hiphil — Niphal passive: *was born*; נוֹ- prefix = Niphal of I-י root |
-| D3 | תָּמוּת | No | Imperfect | 2ms | מוּת | Biconsonantal | NOT Hiphil — Qal: *you will die*; תָּ- prefix = Qal imperfect 2ms; no הַ- prefix |
+| 19 | וַיֵּלֶךְ | No | Wayyiqtol | 3ms | הָלַךְ | I-guttural (Holam–Vav hollow-like) | NOT Hiphil — Qal: *and he went*; no הִ/הַ prefix; plain Qal of הָלַךְ |
+| 20 | נוֹלַד | No | Perfect | 3ms | יָלַד | I-י | NOT Hiphil — Niphal passive: *was born*; נוֹ- prefix = Niphal of I-י root |
+| 21 | תָּמוּת | No | Imperfect | 2ms | מוּת | Biconsonantal | NOT Hiphil — Qal: *you will die*; תָּ- prefix = Qal imperfect 2ms; no הַ- prefix |

@@ -13,7 +13,7 @@ The passages below are drawn from the Joseph story (Genesis 37–50), one of the
 1. Parse it — give **conjugation**, **person-gender-number**, and **root**.
 2. State the **semantic function** (Passive / Reflexive / Simple action — or "NOT Niphal" for distractors).
 
-Distractors (D1–D3) are Qal verbs drawn from the same passages. Students learning to spot the Niphal must learn to distinguish it from the Qal active forms alongside it.
+Distractors (14–16) are Qal verbs drawn from the same passages. Students learning to spot the Niphal must learn to distinguish it from the Qal active forms alongside it.
 
 An answer key is at the bottom.
 
@@ -23,22 +23,22 @@ An answer key is at the bottom.
 
 ‎**37:7** — וְהִנֵּה **קָ֣מָה** אֲלֻמָּתִ֗י וְגַם **נִצָּ֑בָה**
 
-*"and behold, my sheaf [D1] \_\_\_\_ and [1] \_\_\_\_."*
+*"and behold, my sheaf [14] \_\_\_\_ and [1] \_\_\_\_."*
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| D1 | קָמָה | | | | | |
+| 14 | קָמָה | | | | | |
 | 1 | נִצָּבָה | | | | | |
 
 ---
 
 ‎**37:36** — וְהַ֨מְּדָנִ֔ים **מָכְר֥וּ** אֹת֖וֹ … **וַיִּמָּכֵ֤ר** יוֹסֵף֙ אֶל־מִצְרָ֔יִם
 
-*"Now the Midianites [D2] \_\_\_\_ him … and Joseph [2] \_\_\_\_ into Egypt."*
+*"Now the Midianites [15] \_\_\_\_ him … and Joseph [2] \_\_\_\_ into Egypt."*
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| D2 | מָכְרוּ | | | | | |
+| 15 | מָכְרוּ | | | | | |
 | 2 | וַיִּמָּכֵר | | | | | |
 
 ---
@@ -83,11 +83,11 @@ An answer key is at the bottom.
 
 ‎**45:1** — וְלֹא־**יָכֹל֩** יוֹסֵ֨ף לְהִתְאַפֵּ֜ק לְכֹ֣ל הַ**נִּצָּבִ֣ים** עָלָ֗יו
 
-*"Joseph [D3] \_\_\_\_ no longer control himself before all those [6] \_\_\_\_ near him."*
+*"Joseph [16] \_\_\_\_ no longer control himself before all those [6] \_\_\_\_ near him."*
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| D3 | יָכֹל | | | | | |
+| 16 | יָכֹל | | | | | |
 | 6 | הַנִּצָּבִים | | | | | |
 
 ---
@@ -174,14 +174,14 @@ An answer key is at the bottom.
 
 | # | Verb | Niphal? | Conjugation | PGN | Root | Stem / Function |
 |---|---|---|---|---|---|---|
-| D1 | קָמָה | No | Perfect | 3fs | קוּם | No (Qal) — *arose*; biconsonantal Qal perfect 3fs; no נ prefix or dagesh forte |
+| 14 | קָמָה | No | Perfect | 3fs | קוּם | No (Qal) — *arose*; biconsonantal Qal perfect 3fs; no נ prefix or dagesh forte |
 | 1 | נִצָּבָה | Yes | Perfect | 3fs | נָצַב | Reflexive — *it stood upright* (the sheaf stationed itself) |
-| D2 | מָכְרוּ | No | Perfect | 3cp | מָכַר | No (Qal) — *had sold*; active Qal; contrast with #2 Niphal passive of the same root |
+| 15 | מָכְרוּ | No | Perfect | 3cp | מָכַר | No (Qal) — *had sold*; active Qal; contrast with #2 Niphal passive of the same root |
 | 2 | וַיִּמָּכֵר | Yes | Wayyiqtol | 3ms | מָכַר | Passive — *he was sold* |
 | 3 | יִמָּצֵא | Yes | Imperfect | 3ms | מָצָא | Passive — *is found* |
 | 4 | וַיִּמָּצֵא | Yes | Wayyiqtol | 3ms | מָצָא | Passive — *was found* |
 | 5 | וַיִּוָּתֵר | Yes | Wayyiqtol | 3ms | יָתַר | Passive/Middle — *was left, remained* |
-| D3 | יָכֹל | No | Perfect | 3ms | יָכֹל | No (Qal) — *was able / could*; Qal stative with no Niphal counterpart |
+| 16 | יָכֹל | No | Perfect | 3ms | יָכֹל | No (Qal) — *was able / could*; Qal stative with no Niphal counterpart |
 | 6 | הַנִּצָּבִים | Yes | Participle | mp | נָצַב | Reflexive — *those standing* (having stationed themselves) |
 | 7 | נִשְׁמַע | Yes | Perfect | 3ms | שָׁמַע | Passive — *was heard* |
 | 8 | הַנִּמְצָא | Yes | Participle | ms | מָצָא | Passive — *that was found / which was found* |
@@ -193,7 +193,7 @@ An answer key is at the bottom.
 | B1 | וְהִשָּׁמַרְתֶּם | Yes | Weqatal | 2mp | שָׁמַר | Reflexive — *take heed for yourselves* |
 | B2 | הִשָּׁמְרוּ | Yes | Imperative | 2mp | שָׁמַר | Reflexive — *take heed!* (guard yourselves) |
 
-> **Score:** 13 main + 2 bonus = 15 total (distractors D1–D3 are unscored practice). 13–15 = excellent; 9–12 = review the paradigm; below 9 = revisit §24.3–24.13 before the next class.
+> **Score:** 13 Niphal + 3 non-Niphal + 2 bonus = 18 total (distractors 14–16 are unscored practice). 15–18 = excellent; 11–14 = review the paradigm; below 11 = revisit §24.3–24.13 before the next class.
 
 ---
 
