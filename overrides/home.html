@@ -79,8 +79,11 @@
 
   .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.2rem;
+  }
+  @media (max-width: 600px) {
+    .card-grid { grid-template-columns: 1fr; }
   }
   .course-card {
     background: var(--md-default-bg-color);
