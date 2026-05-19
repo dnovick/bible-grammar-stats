@@ -10,6 +10,10 @@
 |---|---|
 | [exercises/ch33-passage-exercise/](exercises/ch33-passage-exercise/README.md) | Passage exercise — identify and parse weak Pual verbs in context (Gen 4:18; 4:26; 46:22 · Lev 7:36; Num 3:9 · Lev 8:35; Num 22:6; Psa 72:17) |
 | [exercises/ch33-weak-form-id/](exercises/ch33-weak-form-id/README.md) | Weak Pual identification drill — parse 20 weak Pual forms grouped by weak class + 10 mixed |
+| [exercises/ch33-function-sort/](exercises/ch33-function-sort/README.md) | Semantic function sorting — Pual Weak verbs by function type |
+| [exercises/ch33-pual-weak-paradigm-drill/](exercises/ch33-pual-weak-paradigm-drill/README.md) | Paradigm drill — write selected Pual Weak forms for בנה (III-ה) from memory |
+| [exercises/ch33-qal-piel-pual-contrast/](exercises/ch33-qal-piel-pual-contrast/README.md) | Qal–Piel–Pual contrast drill (weak roots) |
+| [exercises/ch33-stem-id-drill/](exercises/ch33-stem-id-drill/README.md) | Stem identification drill — Qal/Piel/Pual weak roots |
 
 ### Flashcards
 

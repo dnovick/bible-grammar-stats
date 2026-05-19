@@ -16,6 +16,7 @@
 |---|---|
 | [exercises/ch13-parsing-drill/](exercises/ch13-parsing-drill/README.md) | 25-item parsing drill — identify PGN and root for each Qal Perfect form |
 | [exercises/ch13-passage-exercise/](exercises/ch13-passage-exercise/README.md) | 15 Qal Perfect verbs from early Genesis to parse (PGN + root) and identify usage type |
+| [exercises/ch13-qal-perfect-paradigm-drill/](exercises/ch13-qal-perfect-paradigm-drill/README.md) | Paradigm drill — write all 9 inflected Qal Perfect forms of קטל from memory |
 
 ### Flashcards
 

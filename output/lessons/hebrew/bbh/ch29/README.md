@@ -10,6 +10,10 @@
 |---|---|
 | [exercises/ch29-passage-exercise/](exercises/ch29-passage-exercise/README.md) | Passage exercise — identify and parse weak Hophal verbs in Joseph narrative, Tabernacle, and mixed passages |
 | [exercises/ch29-weak-form-id/](exercises/ch29-weak-form-id/README.md) | Weak-form identification drill — parse 20 weak Hophal forms grouped by weak class (I-yod/vav, III-he, Biconsonantal) + 10 mixed |
+| [exercises/ch29-function-sort/](exercises/ch29-function-sort/README.md) | Semantic function sorting — Hophal Weak verbs by function type |
+| [exercises/ch29-hophal-weak-paradigm-drill/](exercises/ch29-hophal-weak-paradigm-drill/README.md) | Paradigm drill — write selected Hophal Weak forms for נגד (I-נ) and בוא (hollow) |
+| [exercises/ch29-qal-hiphil-hophal-contrast/](exercises/ch29-qal-hiphil-hophal-contrast/README.md) | Qal–Hiphil–Hophal contrast drill (weak roots) — three-way stem discrimination |
+| [exercises/ch29-stem-id-drill/](exercises/ch29-stem-id-drill/README.md) | Stem identification drill — Qal/Hiphil/Hophal weak roots |
 
 ### Flashcards
 

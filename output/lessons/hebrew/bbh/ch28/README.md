@@ -17,6 +17,8 @@
 | [exercises/ch28-passage-exercise/](exercises/ch28-passage-exercise/README.md) | Passage exercise — identify and parse Hophal verbs in Torah legal and narrative texts |
 | [exercises/ch28-function-sort/](exercises/ch28-function-sort/README.md) | Semantic function sorting — classify 25 Hophal forms as PT / LF / SR / SC / SA |
 | [exercises/ch28-hophal-hiphil-contrast/](exercises/ch28-hophal-hiphil-contrast/README.md) | Hophal vs. Hiphil contrast drill — parse 25 forms and identify the stem |
+| [exercises/ch28-hophal-paradigm-drill/](exercises/ch28-hophal-paradigm-drill/README.md) | Paradigm drill — write all 26 inflected forms of מות (Hophal) from memory |
+| [exercises/ch28-stem-id-drill/](exercises/ch28-stem-id-drill/README.md) | Stem identification drill — Qal/Hiphil/Hophal strong roots |
 
 ### Flashcards
 
