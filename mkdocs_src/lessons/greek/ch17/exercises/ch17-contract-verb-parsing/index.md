@@ -1,0 +1,7 @@
+# Contract Verb Parsing
+
+*Chapter 17 — Contract Verbs*
+
+[Open full screen](ch17-contract-verb-parsing.html){.md-button}
+
+<iframe src="ch17-contract-verb-parsing.html" style="width:100%;height:85vh;border:1px solid #ddd;border-radius:6px;" title="Contract Verb Parsing"></iframe>
