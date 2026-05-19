@@ -1,0 +1,41 @@
+name: Deploy Site to S3
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'output/student-packs/**'
+      - '.github/workflows/deploy-site.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Sync site files to S3
+        run: |
+          aws s3 sync site/ s3://${{ secrets.S3_BUCKET }}/ \
+            --delete \
+            --cache-control "max-age=300"
+
+      - name: Upload student pack ZIPs
+        run: |
+          for f in output/student-packs/*.zip; do
+            aws s3 cp "$f" s3://${{ secrets.S3_BUCKET }}/downloads/ \
+              --cache-control "max-age=86400"
+          done
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
