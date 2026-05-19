@@ -28,39 +28,39 @@ Write your answer (C / F / D / SA / DN) in the blank column.
 
 | # | Hebrew Form | Conjugation | Ref | Contextual Gloss | Function |
 |---|---|---|---|---|---|
-| 1  | יָּבֵא | Wayyiqtol 3ms | Gen 2:19 | "he brought them to the man" | |
-| 2  | תּוֹצֵא | Wayyiqtol 3fs | Gen 1:12 | "the earth brought forth vegetation" | |
-| 3  | הֵשִׁיב | Weqatal 3ms | Gen 14:16 | "he brought back his brother Lot" | |
+| 1  | וַיָּבֵא | Wayyiqtol 3ms | Gen 2:19 | "he brought them to the man" | |
+| 2  | וַתּוֹצֵא | Wayyiqtol 3fs | Gen 1:12 | "the earth brought forth vegetation" | |
+| 3  | וַיָּשֶׁב | Wayyiqtol 3ms | Gen 14:16 | "he brought back his brother Lot" | |
 | 4  | הִשְׁקָה | Perfect 3ms | Gen 2:6 | "a mist…watered the whole surface" | |
-| 5  | יּוֹלֶד | Wayyiqtol 3ms | Gen 5:3 | "Adam fathered a son" | |
+| 5  | וַיּוֹלֶד | Wayyiqtol 3ms | Gen 5:3 | "Adam fathered a son" | |
 | 6  | הַעֲלֵה | Imperative 2ms | Gen 22:2 | "offer him there as a burnt offering" | |
-| 7  | תֹּרֶד | Wayyiqtol 3fs | Gen 24:18 | "she lowered her jar to give him a drink" | |
-| 8  | הֵסִיר | Wayyiqtol 3ms | Gen 30:35 | "he removed the streaked goats" | |
-| 9  | יַּגֵּד | Wayyiqtol 3ms | Gen 9:22 | "Ham told his brothers" | |
+| 7  | וַתֹּרֶד | Wayyiqtol 3fs | Gen 24:18 | "she lowered her jar to give him a drink" | |
+| 8  | וַיָּסַר | Wayyiqtol 3ms | Gen 30:35 | "he removed the streaked goats" | |
+| 9  | וַיַּגֵּד | Wayyiqtol 3ms | Gen 9:22 | "Ham told his brothers" | |
 | 10 | הִגִּיד | Weqatal 3ms | Gen 3:11 | "who told you that you were naked?" | |
-| 11 | תַּשְׁלֵךְ | Wayyiqtol 3fs | Gen 21:15 | "she threw the child under one of the bushes" | |
+| 11 | וַתַּשְׁלֵךְ | Wayyiqtol 3fs | Gen 21:15 | "she threw the child under one of the bushes" | |
 | 12 | הִזְכַּרְתָּ | Perfect 2ms | Gen 40:14 | "mention me to Pharaoh" | |
 | 13 | מַזְכִּיר | Participle ms | Gen 41:9 | "I am bringing my faults to mind" | |
 | 14 | הֵמִית | Inf. Construct | Gen 18:25 | "Far be it from you to put the righteous to death" | |
 | 15 | הַכּוֹת | Inf. Construct | Gen 4:15 | "lest anyone who found him strike him" | |
 | 16 | הִשְׁמַדְתִּי | Perfect 1cs | Lev 26:30 | "I will destroy your high places" | |
 | 17 | תַּשְׁמִידוּ | Imperfect 2mp | Num 33:52 | "you shall demolish all their figured stones" | |
-| 18 | יַּכְבֵּד | Wayyiqtol 3ms | Exo 8:28 | "Pharaoh hardened his heart this time also" | |
-| 19 | הַכְבֵּד | Inf. Absolute | Exo 8:11 | "he made his heart stubborn" | |
-| 20 | תַּגְדֵּל | Wayyiqtol 2ms | Gen 19:19 | "you have shown great kindness to me" | |
+| 18 | וַיַּכְבֵּד | Wayyiqtol 3ms | Exo 8:32 | "Pharaoh hardened his heart this time also" | |
+| 19 | וְהַכְבֵּד | Inf. Absolute | Exo 8:15 | "he made his heart stubborn" | |
+| 20 | וַתַּגְדֵּל | Wayyiqtol 2ms | Gen 19:19 | "you have shown great kindness to me" | |
 | 21 | הִרְשִׁיעוּ | Perfect 3cp | Deu 25:1 | "they shall acquit the innocent and condemn the guilty" | |
 | 22 | יַרְשִׁיעֻ | Imperfect 3mp | Exo 22:8 | "the judges shall declare him guilty" | |
-| 23 | יַּעַל | Wayyiqtol 3ms | Gen 8:20 | "Noah offered burnt offerings on the altar" | |
+| 23 | וַיַּעַל | Wayyiqtol 3ms | Gen 8:20 | "Noah offered burnt offerings on the altar" | |
 | 24 | הָמִית | Inf. Construct | Gen 37:18 | "they conspired against him to kill him" | |
 | 25 | מַמְטִיר | Participle ms | Gen 7:4 | "I am about to send rain on the earth" | |
-| 26 | יַּשְׁכֵּם | Wayyiqtol 3ms | Gen 22:3 | "Abraham rose early in the morning" | |
+| 26 | וַיַּשְׁכֵּם | Wayyiqtol 3ms | Gen 22:3 | "Abraham rose early in the morning" | |
 | 27 | הַאְזִינוּ | Imperative 2mp | Deu 32:1 | "give ear, O heavens, and I will speak" | |
 
 ---
 
 ## Discussion Questions
 
-1. Items 18–19 both come from כָּבֵד (Exo 8). The root means "to be heavy." How does the Hiphil meaning connect to that? Is this Factitive or Causative — and why?
+1. Items 18–19 both come from כָּבֵד (Exo 8:32, 8:15). The root means "to be heavy." How does the Hiphil meaning connect to that? Is this Factitive or Causative — and why?
 2. Items 21–22 both use רָשָׁע and both classify as Declarative. Compare Deu 25:1 (a judicial verdict) with Exo 22:8 (a court decision). What do they have in common that makes both Declarative rather than Factitive?
 3. Items 12–13 (זָכַר, "to remember") might seem like Simple Action, but they are classified as Causative. What is the Causative reading? Does it change the translation?
 4. Items 25–27 are Denominative. For each one, identify the underlying noun. How does knowing the noun make the Hiphil meaning immediately transparent?
