@@ -1,8 +1,8 @@
 {% extends "main.html" %}
 
-{% block tabs %}
-{{ super() }}
+{% block tabs %}{{ super() }}{% endblock %}
 
+{% block content %}
 <style>
   .hero {
     background: var(--md-primary-fg-color);
@@ -228,7 +228,5 @@
 
 </div>
 
-{% endblock %}
-
-{% block content %}{% endblock %}
 {% block footer %}{% endblock %}
+{% endblock %}
