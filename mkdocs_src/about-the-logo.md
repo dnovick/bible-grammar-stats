@@ -64,9 +64,9 @@ hide:
 
 <p>There's just one small problem: <strong>the AI got a few things wrong.</strong></p>
 
-<p>If you look closely, you'll notice that the text in the manuscripts and on the pages isn't quite... right. The AI knows what ancient manuscripts are <em>supposed to look like</em> — it just can't actually read or write them.</p>
+<p>If you look closely, you'll notice that the text in the manuscripts and on the pages isn't quite... right. For example, the AI knows what ancient manuscripts are <em>supposed to look like</em> — it just can't actually read or write them.</p>
 
-<p>Consider it a puzzle. Can you find all the errors? How many invented characters can you spot? Is that Hebrew? Greek? Or something from a language that has never existed?</p>
+<p>Consider it a puzzle. Can you find all the errors? Is that Hebrew? Greek? Or something from a language that has never existed?</p>
 
 <p>We think it's a fitting reminder for this entire project:</p>
 
