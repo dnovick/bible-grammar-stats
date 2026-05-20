@@ -35,6 +35,14 @@ Studies of Greek grammar, vocabulary, and structure in the New Testament.
 
 ---
 
+## Discourse Analysis
+
+| Report | Description |
+|---|---|
+| [καί Semantic Function Analysis](discourse/kai-semantic-functions.md) | Classification of all 8,978 GNT καί tokens by function: additive, adjunctive, ascensive, temporal, correlative, adversative, explicative |
+
+---
+
 ## Book Surveys (Language Profiles)
 
 Each profile covers the grammatical makeup of a NT book — verb tense/mood/voice, noun cases, vocabulary statistics.
