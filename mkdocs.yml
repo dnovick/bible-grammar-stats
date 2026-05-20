@@ -59,6 +59,7 @@ plugins:
             show_root_heading: true
 
 markdown_extensions:
+  - admonition
   - tables
   - toc:
       permalink: true
