@@ -261,6 +261,11 @@ def build_course(lang: str, course: str, label: str, titles: dict[str, str]) -> 
 
 
 NOTEBOOK_SECTIONS = [
+    ("Getting Started", [
+        ("Introduction", [
+            ("tutorial/getting_started.ipynb", "Getting Started"),
+        ]),
+    ]),
     ("Old Testament (Hebrew)", [
         ("Verb Stems", [
             ("ot/verbs/stem_overview.ipynb", "Stem Overview"),
@@ -373,6 +378,9 @@ Interactive analysis notebooks covering the full `bible_grammar` toolkit \
 Each notebook below is rendered statically with its outputs. \
 Click the **Open in Colab** badge on any notebook page to run it interactively \
 in Google Colab — no local installation required.
+
+New to Jupyter or this project? Start with the \
+[Getting Started](tutorial/getting_started.ipynb) notebook.
 
 ## Running in Google Colab
 
