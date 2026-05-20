@@ -55,7 +55,7 @@ hide:
 
 <h1>About the Logo</h1>
 
-<img src="assets/logo.png" alt="Berean Bible Bots logo" />
+<img src="../assets/logo.png" alt="Berean Bible Bots logo" />
 <p class="logo-caption">The Berean Bible Bots logo — spot anything unusual?</p>
 
 <div class="logo-body">
