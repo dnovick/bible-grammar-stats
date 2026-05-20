@@ -1,6 +1,6 @@
 ---
 template: home.html
-title: Berean Bible Bots
+title: ""
 hide:
   - navigation
   - toc
